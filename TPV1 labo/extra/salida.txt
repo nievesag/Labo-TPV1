@@ -1,0 +1,8 @@
+1/2/20 Ford B-Max 7 día(s) por 210 euros
+8/2/20 Ford B-Max 5 día(s) por 150 euros
+21/5/21 Seat Alhambra 7 día(s) por 280 euros
+29/5/21 Seat Alhambra 4 día(s) por 160 euros
+13/3/22 Toyota Auris 1 día(s) por 32 euros
+1/1/23 ERROR: Modelo inexistente
+5/1/23 Seat Toledo 5 día(s) por 175 euros
+15/7/23 Toyota Auris 6 día(s) por 192 euros
