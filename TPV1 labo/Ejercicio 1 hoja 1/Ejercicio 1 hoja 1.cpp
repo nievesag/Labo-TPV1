@@ -19,8 +19,6 @@ void MoveVector(array<int, 5> vector, int tam)
 	}
 }
 
-
-
 #pragma once
 class Vector
 {
@@ -44,8 +42,6 @@ public:
 
 int main()
 {
-	
-
 	const int tam = 5;
 	array<int, 5> vector = { 0, 1, 2, 3, 4 }; // vector uwuwuwuwu
 
@@ -54,12 +50,11 @@ int main()
 		cout << vector[i];
 	}
 
-
+	cout << "\n";
+	
 	std::cout << "Hello World!\n"; // gonorrea
-
 
 	MoveVector(vector, tam); // puntero para guardar la direccion
 
 	return 666;
 }
-
