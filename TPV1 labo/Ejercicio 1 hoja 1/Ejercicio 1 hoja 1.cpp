@@ -5,12 +5,17 @@
 #include<array>
 using namespace std;
 
-void MoveVector(int vector[], int tam)
+void MoveVector(array<int, 5> vector, int tam)
 {
 	array<int, 5> a;
 	for (int i = 0; i < tam; i++)
 	{
-		a[(i + 1) % sizeof(a)] = vector[i];
+		a[(i + 1) % a.size()] = vector[i];
+	}
+
+	for (int i = 0; i < vector.size(); i++)
+	{
+		cout << a[i];
 	}
 }
 
@@ -39,18 +44,22 @@ public:
 
 int main()
 {
-	std::cout << "Hello World!\n";
+	
 
 	const int tam = 5;
-	int vector[5] = { 0, 1, 2, 3, 4 }; // vector de enteros
-	MoveVector(vector, tam); // puntero para guardar la direccion
+	array<int, 5> vector = { 0, 1, 2, 3, 4 }; // vector uwuwuwuwu
 
-	for (int i = 0; i < sizeof(vector); i++) 
+	for (int i = 0; i < vector.size(); i++)
 	{
-
+		cout << vector[i];
 	}
 
-	return 0;
-	
+
+	std::cout << "Hello World!\n"; // gonorrea
+
+
+	MoveVector(vector, tam); // puntero para guardar la direccion
+
+	return 666;
 }
 
