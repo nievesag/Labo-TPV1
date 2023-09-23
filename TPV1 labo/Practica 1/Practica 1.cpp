@@ -6,7 +6,8 @@
 #include <string>
 #include <array>
 #include <windows.h>
-#include "Date.h"
+//#include "Date.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -20,7 +21,11 @@ struct coche {
 // elemento tipo alquiler
 struct alquiler {
     coche* coche;
-    string fecha;
+    int fecha;
+
+    int dia;
+    int mes;
+    int year;
     int cant;
 };
 
@@ -28,11 +33,13 @@ struct alquiler {
 coche* ListaCoches;
 // declaracion del array dinamico ListaAlquiler
 alquiler* ListaAlquiler;
+int tamListaAlquileres = 0;
+int tamListaCoches = 0;
 
 
 bool leerModelos()
 {
-    int tamListaCoches = 0;
+
 
     // abre el archivo coches.txt
     fstream coches("coches.txt");
@@ -113,7 +120,7 @@ int buscarCoche(coche* List, int codigo, int size) {
 
 bool leerAlquileres() {
 
-    int tamListaAlquileres = 0;
+
 
     // abre el archivo rent.txt
     fstream rent("rent.txt");
@@ -141,8 +148,18 @@ bool leerAlquileres() {
             // si existe el puntero indica al coche
             else ListaAlquiler[i].coche = ListaCoches + b;
 
+            char barra = ' ';
+
             // lee la fecha
-            rent >> ListaAlquiler[i].fecha;
+            rent >> ListaAlquiler[i].year;
+            // char para leer la barra de la fecha
+            rent >> barra;
+            rent >> ListaAlquiler[i].mes;
+            rent >> barra;
+            rent >> ListaAlquiler[i].dia;
+
+            ListaAlquiler[i].fecha = ListaAlquiler[i].year + 100 * ListaAlquiler[i].mes + 10000 * ListaAlquiler[i].dia;
+
             // lee la cantidad de dias
             rent >> ListaAlquiler[i].cant;
 
@@ -160,17 +177,61 @@ bool leerAlquileres() {
             cout << "\n";
         }
         */
-
-
     }
-
-
 
     return rent.is_open();
 }
 
+bool operator<(const alquiler& izdo, const alquiler& dcho) {
+    // Definición del orden
+    return izdo.fecha < dcho.fecha;
+}
+
 
 void ordenarAlquileres() {
+
+    alquiler* a = ListaAlquiler + 8;
+    sort(ListaAlquiler, a);
+
+    //--------DEBUG---------
+    /*
+    for (int i = 0; i < 8; i++) {
+
+        cout << ListaAlquiler[i].fecha;
+        cout << "\n";
+    }
+    */
+}
+
+
+void mostrarAlquileres() {
+
+    for (int i = 0; i < tamListaAlquileres; i++) {
+        cout << ListaAlquiler[i].year;
+        cout << "/";
+        cout << ListaAlquiler[i].mes;
+        cout << "/";
+        cout << ListaAlquiler[i].dia;
+
+        cout << " ";
+        if (ListaAlquiler[i].coche == nullptr) {
+            cout << "ERROR: Modelo inexistente";
+        }
+        else {
+            cout << ListaAlquiler[i].coche->nombre;
+            cout << " ";
+            cout << ListaAlquiler[i].cant;
+            cout << " dia(s) por ";
+
+            if (ListaAlquiler[i].coche == nullptr) {
+                cout << ListaAlquiler[i].coche->nombre;
+            }
+            cout << ListaAlquiler[i].coche->precio * ListaAlquiler[i].cant;
+            cout << " euros";
+        }
+        cout << "\n";
+
+    }
 
 }
 
@@ -182,12 +243,7 @@ int main()
 
     leerAlquileres();
 
+    ordenarAlquileres();
 
-
-
-
-
-
-
-
+    mostrarAlquileres();
 }
