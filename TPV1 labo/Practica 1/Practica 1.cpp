@@ -81,6 +81,38 @@ bool leerModelos()
     return coches.is_open(); // true -> archivo coches abierto / false -> error
 }
 
+int buscarCoche(coche* List, int codigo, int size) {
+
+    int ini = 0, fini = size - 1;
+    int med = -1;
+
+    coche* ptr = List;
+    bool enc = false;
+
+    // bucle continua mientras no se haya encontrado y no se pase ini de fini
+    while (!enc && ini <= fini) {
+
+        // reiniia el medio en cada vuelta
+        med = (ini + fini) / 2;
+
+        // si el codigo dado es menor que el que hemos encontrado
+        if (codigo < ptr[med].codigo) {
+            // se mueve el indice del final hacia abajo la distancia de med - 1
+            fini = med - 1;
+        }
+        else if (codigo > ptr[med].codigo) {
+            // se mueve el indice del principio hacia arriba la distancia med +1
+            ini = med + 1;
+        }
+        // si son iguales se ha encontrado
+        else enc = true;
+    }
+
+    if (ini > fini) med = -1;
+
+    return med;
+}
+
 bool leerAlquileres() {
     // abre el archivo rent.txt
     fstream rent("rent.txt");
@@ -139,38 +171,6 @@ bool leerAlquileres() {
     }
 
     return rent.is_open(); // true -> archivo coches abierto / false -> error
-}
-
-int buscarCoche(coche* List, int codigo, int size) {
-
-    int ini = 0, fini = size - 1;
-    int med = -1;
-
-    coche* ptr = List;
-    bool enc = false;
-
-    // bucle continua mientras no se haya encontrado y no se pase ini de fini
-    while (!enc && ini <= fini) {
-
-        // reiniia el medio en cada vuelta
-        med = (ini + fini) / 2;
-
-        // si el codigo dado es menor que el que hemos encontrado
-        if (codigo < ptr[med].codigo) {
-            // se mueve el indice del final hacia abajo la distancia de med - 1
-            fini = med - 1;
-        }
-        else if (codigo > ptr[med].codigo) {
-            // se mueve el indice del principio hacia arriba la distancia med +1
-            ini = med + 1;
-        }
-        // si son iguales se ha encontrado
-        else enc = true;
-    }
-
-    if (ini > fini) med = -1;
-
-    return med;
 }
 
 bool operator<(const alquiler& izdo, const alquiler& dcho) {
