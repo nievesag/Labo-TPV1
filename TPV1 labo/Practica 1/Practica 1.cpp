@@ -6,8 +6,8 @@
 #include <string>
 #include <array>
 #include <windows.h>
-//#include "Date.h"
 #include <algorithm>
+//#include "Date.h"
 
 using namespace std;
 
@@ -20,9 +20,8 @@ struct coche {
 
 // elemento tipo alquiler
 struct alquiler {
-    coche* coche;
+    coche* coche; // puntero a coche
     int fecha;
-
     int dia;
     int mes;
     int year;
@@ -31,16 +30,15 @@ struct alquiler {
 
 // declaracion del array dinamico ListaCoches
 coche* ListaCoches;
+int tamListaCoches = 0; // inicializacion a 0
+
 // declaracion del array dinamico ListaAlquiler
 alquiler* ListaAlquiler;
-int tamListaAlquileres = 0;
-int tamListaCoches = 0;
+int tamListaAlquileres = 0; // inicializacion a 0
 
-
+#pragma region metodos
 bool leerModelos()
 {
-
-
     // abre el archivo coches.txt
     fstream coches("coches.txt");
 
@@ -51,7 +49,7 @@ bool leerModelos()
         // saca el tamaño de la lista de coches
         coches >> tamListaCoches;
 
-        // crea el array dinamico ListaCoches
+        // crea el array dinamico ListaCoches con elementos de tipo coche y tamaño tamListaCoches
         ListaCoches = new coche[tamListaCoches];
 
         // bucle para leer los datos
@@ -67,8 +65,7 @@ bool leerModelos()
             ListaCoches[i].nombre += " " + c;
         }
 
-
-        // --------PARA DEBUG------------
+        // ----------DEBUG------------
         /*
         for (int i = 0; i < tamListaCoches; i++) {
             cout << ListaCoches[i].codigo;
@@ -81,47 +78,10 @@ bool leerModelos()
         */
     }
 
-    return coches.is_open();
+    return coches.is_open(); // true -> archivo coches abierto / false -> archivo coches cerrado
 }
-
-
-int buscarCoche(coche* List, int codigo, int size) {
-
-    int ini = 0, fini = size - 1;
-    int med = -1;
-
-    coche* ptr = List;
-    bool enc = false;
-
-    // bucle continua mientras no se haya encontrado y no se pase ini de fini
-    while (!enc && ini <= fini) {
-
-        // reiniia el medio en cada vuelta
-        med = (ini + fini) / 2;
-
-        // si el codigo dado es menor que el que hemos encontrado
-        if (codigo < ptr[med].codigo) {
-            // se mueve el indice del final hacia abajo la distancia de med - 1
-            fini = med - 1;
-        }
-        else if (codigo > ptr[med].codigo) {
-            // se mueve el indice del principio hacia arriba la distancia med +1
-            ini = med + 1;
-        }
-        // si son iguales se ha encontrado
-        else enc = true;
-    }
-
-    if (ini > fini) med = -1;
-
-    return med;
-}
-
 
 bool leerAlquileres() {
-
-
-
     // abre el archivo rent.txt
     fstream rent("rent.txt");
 
@@ -162,10 +122,9 @@ bool leerAlquileres() {
 
             // lee la cantidad de dias
             rent >> ListaAlquiler[i].cant;
-
         }
 
-        // --------PARA DEBUG------------
+        // ----------DEBUG------------
         /*
         for (int i = 0; i < tamListaAlquileres; i++) {
             cout << ListaAlquiler[i].fecha;
@@ -182,11 +141,42 @@ bool leerAlquileres() {
     return rent.is_open();
 }
 
+int buscarCoche(coche* List, int codigo, int size) {
+
+    int ini = 0, fini = size - 1;
+    int med = -1;
+
+    coche* ptr = List;
+    bool enc = false;
+
+    // bucle continua mientras no se haya encontrado y no se pase ini de fini
+    while (!enc && ini <= fini) {
+
+        // reiniia el medio en cada vuelta
+        med = (ini + fini) / 2;
+
+        // si el codigo dado es menor que el que hemos encontrado
+        if (codigo < ptr[med].codigo) {
+            // se mueve el indice del final hacia abajo la distancia de med - 1
+            fini = med - 1;
+        }
+        else if (codigo > ptr[med].codigo) {
+            // se mueve el indice del principio hacia arriba la distancia med +1
+            ini = med + 1;
+        }
+        // si son iguales se ha encontrado
+        else enc = true;
+    }
+
+    if (ini > fini) med = -1;
+
+    return med;
+}
+
 bool operator<(const alquiler& izdo, const alquiler& dcho) {
     // Definición del orden
     return izdo.fecha < dcho.fecha;
 }
-
 
 void ordenarAlquileres() {
 
@@ -234,6 +224,7 @@ void mostrarAlquileres() {
     }
 
 }
+#pragma endregion
 
 int main()
 {
