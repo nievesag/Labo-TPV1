@@ -78,7 +78,7 @@ bool leerModelos()
         */
     }
 
-    return coches.is_open(); // true -> archivo coches abierto / false -> archivo coches cerrado
+    return coches.is_open(); // true -> archivo coches abierto / false -> error
 }
 
 bool leerAlquileres() {
@@ -121,7 +121,7 @@ bool leerAlquileres() {
             ListaAlquiler[i].fecha = ListaAlquiler[i].year + 100 * ListaAlquiler[i].mes + 10000 * ListaAlquiler[i].dia;
 
             // lee la cantidad de dias
-            rent >> ListaAlquiler[i].cant;
+            rent >> ListaAlquiler[i].cant; 
         }
 
         // ----------DEBUG------------
@@ -138,7 +138,7 @@ bool leerAlquileres() {
         */
     }
 
-    return rent.is_open();
+    return rent.is_open(); // true -> archivo coches abierto / false -> error
 }
 
 int buscarCoche(coche* List, int codigo, int size) {
@@ -193,7 +193,6 @@ void ordenarAlquileres() {
     */
 }
 
-
 void mostrarAlquileres() {
 
     for (int i = 0; i < tamListaAlquileres; i++) {
@@ -220,9 +219,7 @@ void mostrarAlquileres() {
             cout << " euros";
         }
         cout << "\n";
-
     }
-
 }
 #pragma endregion
 
