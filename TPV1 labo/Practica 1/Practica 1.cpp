@@ -62,7 +62,7 @@ bool leerModelos()
             // lee el nombre
             coches >> ListaCoches[i].nombre;
             coches >> c;
-            ListaCoches[i].nombre += " " + c;
+            ListaCoches[i].nombre += " " + c; // para las dos palabras del modelo del coche
         }
 
         // ----------DEBUG------------
@@ -90,7 +90,7 @@ bool leerAlquileres() {
         // saca el tamaño de la lista de coches
         rent >> tamListaAlquileres;
 
-        // crea el array dinamico ListaCoches
+        // crea el array dinamico ListaCoches con elementos de tipo coalquiler y tamaño tamListaAlquileres
         ListaAlquiler = new alquiler[tamListaAlquileres];
 
         int a, b;
@@ -103,7 +103,7 @@ bool leerAlquileres() {
             // b recibe el indice del coche, si no existe recibe -1
             b = buscarCoche(ListaCoches, a, 10);
 
-            // si no existe el puntero es null
+            // si no existe el puntero -> valor de puntero null
             if (b == -1) ListaAlquiler[i].coche = nullptr;
             // si existe el puntero indica al coche
             else ListaAlquiler[i].coche = ListaCoches + b;
