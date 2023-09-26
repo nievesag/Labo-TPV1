@@ -234,4 +234,6 @@ int main()
     ordenarAlquileres();
 
     mostrarAlquileres();
+
+
 }
