@@ -16,6 +16,7 @@ Coche::Coche(int p, int c, string n)
 Coche::Coche(const Coche& coche)
 	: precio(coche.precio), codigo(coche.codigo), nombre(coche.nombre) { }
 
+
 // lee
 istream& operator>>(istream& in, Coche& c) {
 	char space;
@@ -35,4 +36,7 @@ ostream& operator<<(ostream& out, const Coche& c) {
 
 	return out;
 }
+
+
+
 

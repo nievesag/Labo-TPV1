@@ -24,12 +24,18 @@
     <ClCompile Include="Coche.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="ListaCoches.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Practica 1\Date.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Coche.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaCoches.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
