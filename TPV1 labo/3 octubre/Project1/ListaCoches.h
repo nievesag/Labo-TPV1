@@ -6,15 +6,15 @@
 
 using namespace std;
 
-
 class ListaCoches
 {
-
+	// variables privadas
 private:
 	// declaracion del array dinamico ListaCoches
 	Coche* ListCoche;
 	int tamListaCoches; // = 0; // inicializacion a 0
 
+	// metodos publicos
 public:
 	// constructoras
 	ListaCoches() : ListCoche(), tamListaCoches(0) {};
@@ -24,8 +24,7 @@ public:
 	// operadores
 	//
 
-	//metodos
+	// declaracion de metodos
 	bool leerModelos();
-
 };
 

@@ -1,5 +1,5 @@
 //
-// Implementación de la clase Coche
+// Implementación de la clase Coche -> funciona como el struct coches
 //
 #include <iostream>
 #include <string>
