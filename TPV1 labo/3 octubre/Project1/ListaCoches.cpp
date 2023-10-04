@@ -26,7 +26,7 @@ bool ListaCoches::leerModelos()
     for (int i = 0; i < tamListaCoches; i++)
     {
         // lee el codigo
-        coches >> ListCoche[i].codigo;
+        coches >> ListCoche[i].Coche.getCodigo();
         // lee el precio
         coches >> ListCoche[i].precio;
         // lee el nombre

@@ -9,7 +9,7 @@ using namespace std;
 class Coche
 {
 	// variables privadas
-public: // ---------------------------- ATENCIÓN A NAVEGANTES: he puesto las varaiabes publicas para acceder a ellas desde lista coches (aun teniendo el incluye no accedea ellas (????))
+private:
 	int codigo, precio;
 	string nombre;
 	
@@ -25,5 +25,24 @@ public:
 	friend istream& operator>>(istream& in, Coche& c);
 	// escribe
 	friend ostream& operator<<(ostream& in, const Coche& c);
+
+	// declaraciones de metodos
+		// Setter
+	void setCodigo(int c);
+
+		// Getter
+	int getCodigo();
+
+	// Setter
+	void setPrecio(int p);
+
+	// Getter
+	int getPrecio();
+
+	// Setter
+	void setNombre(string n);
+
+	// Getter
+	string getNombre();
 };
 
