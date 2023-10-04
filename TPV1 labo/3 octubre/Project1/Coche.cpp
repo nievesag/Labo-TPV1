@@ -36,10 +36,11 @@ ostream& operator<<(ostream& out, const Coche& c) {
 	return out;
 }
 
-// declaraciones de metodos
+// implementacion de metodos
+/*
 	// Setter
-void setCodigo(int c, Coche& coche) {
-	coche.codigo = c;
+void setCodigo(int c) {
+	codigo = c;
 }
 
 	// Getter
@@ -66,3 +67,4 @@ void setNombre(string n) {
 string getNombre() {
 	return nombre;
 }
+*/

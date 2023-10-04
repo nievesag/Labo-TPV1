@@ -26,23 +26,54 @@ public:
 	// escribe
 	friend ostream& operator<<(ostream& in, const Coche& c);
 
-	// declaraciones de metodos
+	// Setter
+	void setCodigo(int c) {
+		codigo = c;
+	}
+
+	// Getter
+	int getCodigo() {
+		return codigo;
+	}
+
+	// Setter
+	void setPrecio(int p) {
+		precio = p;
+	}
+
+	// Getter
+	int getPrecio() {
+		return precio;
+	}
+
+	// Setter
+	void setNombre(string n) {
+		nombre = n;
+	}
+
+	// Getter
+	string getNombre() {
+		return nombre;
+	}
+
+	/*
+	// declaraciones de metodos ---------> no sé si solo tiene que ir la declaración o el setter y el getter de una
 		// Setter
 	void setCodigo(int c);
 
 		// Getter
 	int getCodigo();
 
-	// Setter
+		// Setter
 	void setPrecio(int p);
 
-	// Getter
+		// Getter
 	int getPrecio();
 
-	// Setter
+		// Setter
 	void setNombre(string n);
 
-	// Getter
-	string getNombre();
+		// Getter
+	string getNombre(); */
 };
 

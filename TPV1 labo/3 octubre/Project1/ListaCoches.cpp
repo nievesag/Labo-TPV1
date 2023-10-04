@@ -26,13 +26,13 @@ bool ListaCoches::leerModelos()
     for (int i = 0; i < tamListaCoches; i++)
     {
         // lee el codigo
-        coches >> ListCoche[i].Coche.getCodigo();
+        coches << ListCoche[i].getCodigo();
         // lee el precio
-        coches >> ListCoche[i].precio;
+        coches << ListCoche[i].getPrecio();
         // lee el nombre
-        coches >> ListCoche[i].nombre;
+        coches << ListCoche[i].getNombre();
         coches >> c;
-        ListCoche[i].nombre += " " + c; // para las dos palabras del modelo del coche
+        ListCoche[i].getNombre() += " " + c; // para las dos palabras del modelo del coche
     }
     return coches.is_open(); // true -> archivo coches abierto / false -> error
 }
