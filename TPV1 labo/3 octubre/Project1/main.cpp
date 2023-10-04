@@ -90,7 +90,7 @@ int buscarCoche(coche* List, int codigo, int size) {
     int ini = 0, fini = size - 1;
     int med = -1;
 
-    coche *p = List;
+    coche* p = List;
     bool enc = false;
 
     // bucle continua mientras no se haya encontrado y no se pase ini de fini

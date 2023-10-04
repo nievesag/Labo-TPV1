@@ -20,7 +20,7 @@ public:
 	Coche(int p, int c, string n);
 	Coche(const Coche& coche);
 
-	// declaracion de operadores -------------------------------------------- ?? los operadores de leer y escribir tienen que estar aqui o en lista
+	// declaracion de operadores -------------------------------------------- ?? los operadores de leer y escribir tienen que estar aqui o en lista ??
 	// lee
 	friend istream& operator>>(istream& in, Coche& c);
 	// escribe
