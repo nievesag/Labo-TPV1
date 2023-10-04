@@ -69,7 +69,7 @@ bool leerModelos()
             ListaCoches[i].nombre += " " + c; // para las dos palabras del modelo del coche
         }
 
-        // ----------DEBUG------------
+        // -----------DEBUG------------
         /*
         for (int i = 0; i < tamListaCoches; i++) {
             cout << ListaCoches[i].codigo;
@@ -90,7 +90,7 @@ int buscarCoche(coche* List, int codigo, int size) {
     int ini = 0, fini = size - 1;
     int med = -1;
 
-    coche* ptr = List;
+    coche *p = List;
     bool enc = false;
 
     // bucle continua mientras no se haya encontrado y no se pase ini de fini
@@ -100,11 +100,11 @@ int buscarCoche(coche* List, int codigo, int size) {
         med = (ini + fini) / 2;
 
         // si el codigo dado es menor que el que hemos encontrado
-        if (codigo < ptr[med].codigo) {
+        if (codigo < p[med].codigo) {
             // se mueve el indice del final hacia abajo la distancia de med - 1
             fini = med - 1;
         }
-        else if (codigo > ptr[med].codigo) {
+        else if (codigo > p[med].codigo) {
             // se mueve el indice del principio hacia arriba la distancia med +1
             ini = med + 1;
         }

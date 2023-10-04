@@ -1,9 +1,8 @@
 //
-// Implementación de la clase Coche -> funciona como el struct coches
+// Implementación de la clase Coche -> funciona como el struct coche
 //
 #include <iostream>
 #include <string>
-#include <iomanip>
 #include "Coche.h"
 
 using namespace std;
@@ -36,7 +35,3 @@ ostream& operator<<(ostream& out, const Coche& c) {
 
 	return out;
 }
-
-
-
-
