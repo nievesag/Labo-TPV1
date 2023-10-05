@@ -26,6 +26,6 @@ public:
 
 	// declaracion de metodos
 	bool leerModelos();
-	int buscarCoche();
+	int buscarCoche(Coche* List, int codigo, int size);
 };
 

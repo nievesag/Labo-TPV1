@@ -37,7 +37,7 @@ bool ListaCoches::leerModelos()
     return coches.is_open(); // true -> archivo coches abierto / false -> error
 }
 
-int ListaCoches::buscarCoche() 
+int ListaCoches::buscarCoche(Coche* List, int codigo, int size)
 {
     int size;
     int ini = 0, fini = size - 1;
@@ -53,11 +53,11 @@ int ListaCoches::buscarCoche()
         med = (ini + fini) / 2;
 
         // si el codigo dado es menor que el que hemos encontrado
-        if (coche.codigo < p[med].codigo) {
+        if (coche.getCodigo() < p[med].getCodigo()) {
             // se mueve el indice del final hacia abajo la distancia de med - 1
             fini = med - 1;
         }
-        else if (coche.codigo > p[med].codigo) {
+        else if (coche.codigo > p[med].getCodigo()) {
             // se mueve el indice del principio hacia arriba la distancia med +1
             ini = med + 1;
         }

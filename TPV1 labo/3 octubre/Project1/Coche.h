@@ -56,8 +56,7 @@ public:
 		return nombre;
 	}
 
-	/*
-	// declaraciones de metodos ---------> no sé si solo tiene que ir la declaración o el setter y el getter de una
+	/* // declaraciones de metodos ---------> no sé si solo tiene que ir la declaración o el setter y el getter de una
 		// Setter
 	void setCodigo(int c);
 
