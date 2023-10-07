@@ -256,24 +256,23 @@ void mostrarAlquileres() {
 */
 
 
-void Prep() {
+// si quitamos el & peta btw
+void Prep(ListaCoches& listaa) {
 
-    ListaCoches list;
-
-    list.leerModelos();
+    listaa.leerModelos();
 
 }
 
-/*
-void TryOuts(ListaCoches list) {
+
+void TryOuts(ListaCoches& list) {
 
     //1548 30 Volkswagen Golf
 
-    //int i = list.buscarCoche(1540, list.getTam());
-    //cout << i;
+    int i = list.buscarCoche(1548, list.getTam());
+    cout << i;
         
 }
-*/
+
 #pragma endregion
 
 int main()
@@ -281,11 +280,11 @@ int main()
     SetConsoleOutputCP(CP_UTF8);
 
     // declaracion de la lista
-    
+    ListaCoches list;
 
-    Prep();
+    Prep(list);
 
-    //TryOuts(list);
+    TryOuts(list);
 
     //leerModelos();
 

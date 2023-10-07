@@ -7,6 +7,8 @@
 #include <fstream>
 #include "Coche.h" // ??????? si lista coches.h incluche coche.h esto tiene que incluirlo????????
 
+#include <iostream>
+
 using namespace std;
 
 bool ListaCoches::leerModelos()
@@ -41,9 +43,21 @@ bool ListaCoches::leerModelos()
 
         // lee el nombre
         cochesRead >> c;
-        ListCoche[i].setNombre(c);
         cochesRead >> extra;
-        ListCoche[i].setNombre(" " + extra); // para las dos palabras del modelo del coche
+        ListCoche[i].setNombre(c + " " + extra); // para las dos palabras del modelo del coche
+
+
+        // -----------DEBUG------------
+        /*
+        for (int i = 0; i < tamListaCoches; i++) {
+            cout << ListCoche[i].getCodigo();
+            cout << " ";
+            cout << ListCoche[i].getNombre();
+            cout << " ";
+            cout << ListCoche[i].getPrecio();
+            cout << "\n";
+        }
+        */
     }
     return cochesRead.is_open(); // true -> archivo coches abierto / false -> error
 }
