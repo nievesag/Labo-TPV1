@@ -31,6 +31,8 @@ public:
 	bool leerModelos();
 	int buscarCoche(int codigo, int size);
 
+	void deleteMem();
+
 	// Getter
 	int getTam() {
 		return tamListaCoches;

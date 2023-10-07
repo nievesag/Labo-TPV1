@@ -257,9 +257,9 @@ void mostrarAlquileres() {
 
 
 // si quitamos el & peta btw
-void Prep(ListaCoches& listaa) {
+void Prep(ListaCoches& lista) {
 
-    listaa.leerModelos();
+    lista.leerModelos();
 
 }
 
@@ -271,6 +271,10 @@ void TryOuts(ListaCoches& list) {
     int i = list.buscarCoche(1548, list.getTam());
     cout << i;
         
+}
+
+void BorraMem(ListaCoches& lista) {
+    lista.deleteMem();
 }
 
 #pragma endregion
@@ -285,6 +289,8 @@ int main()
     Prep(list);
 
     TryOuts(list);
+
+    BorraMem(list);
 
     //leerModelos();
 

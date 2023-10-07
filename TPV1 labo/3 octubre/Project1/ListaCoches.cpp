@@ -46,19 +46,16 @@ bool ListaCoches::leerModelos()
         cochesRead >> extra;
         ListCoche[i].setNombre(c + " " + extra); // para las dos palabras del modelo del coche
 
-
-        // -----------DEBUG------------
-        /*
-        for (int i = 0; i < tamListaCoches; i++) {
-            cout << ListCoche[i].getCodigo();
-            cout << " ";
-            cout << ListCoche[i].getNombre();
-            cout << " ";
-            cout << ListCoche[i].getPrecio();
-            cout << "\n";
-        }
-        */
     }
+
+
+    // -----------DEBUG------------
+    for (int i = 0; i < tamListaCoches; i++) {
+        cout << ListCoche[i];
+        cout << &ListCoche[i];
+        cout << "\n";
+    }
+
     return cochesRead.is_open(); // true -> archivo coches abierto / false -> error
 }
 
@@ -95,4 +92,11 @@ int ListaCoches::buscarCoche( int codigo, int size)
     if (ini > fini) med = -1;
 
     return med;
+}
+
+void ListaCoches::deleteMem()
+{
+    // borra la memoria dinamica (se supone)
+    delete[] ListCoche;
+
 }
