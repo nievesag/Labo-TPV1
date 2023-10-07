@@ -5,19 +5,23 @@
 #include <array>
 #include "ListaCoches.h"
 #include <fstream>
-// #include "Coche.h" // ??????? si lista coches.h incluche coche.h esto tiene que incluirlo????????
+#include "Coche.h" // ??????? si lista coches.h incluche coche.h esto tiene que incluirlo????????
 
 using namespace std;
 
 bool ListaCoches::leerModelos()
 {
     // abre el archivo coches.txt
-    fstream coches("coches.txt");
+    fstream cochesRead("coches.txt");
 
-    string c;
+    // c para el primer nombre, extra para el segundo
+    string c, extra;
+
+    // code para los valores del codigo y el precio
+    int code;
 
     // saca el tamaño de la lista de coches
-    coches >> tamListaCoches;
+    cochesRead >> tamListaCoches;
 
     // crea el array dinamico ListaCoches con elementos de tipo coche y tamaño tamListaCoches
     ListCoche = new Coche[tamListaCoches];
@@ -26,20 +30,27 @@ bool ListaCoches::leerModelos()
     for (int i = 0; i < tamListaCoches; i++)
     {
         // lee el codigo
-        coches << ListCoche[i].getCodigo();
+        cochesRead >> code;
+        // lo mete en la lista
+        ListCoche[i].setCodigo(code);
+
         // lee el precio
-        coches << ListCoche[i].getPrecio();
+        cochesRead >> code; 
+        // lo mete en el precio
+        ListCoche[i].setPrecio(code);
+
         // lee el nombre
-        coches << ListCoche[i].getNombre();
-        coches >> c;
-        ListCoche[i].getNombre() += " " + c; // para las dos palabras del modelo del coche
+        cochesRead >> c;
+        ListCoche[i].setNombre(c);
+        cochesRead >> extra;
+        ListCoche[i].setNombre(" " + extra); // para las dos palabras del modelo del coche
     }
-    return coches.is_open(); // true -> archivo coches abierto / false -> error
+    return cochesRead.is_open(); // true -> archivo coches abierto / false -> error
 }
 
-int ListaCoches::buscarCoche(Coche* List, int codigo, int size)
+int ListaCoches::buscarCoche( int codigo, int size)
 {
-    int size;
+    //int size;
     int ini = 0, fini = size - 1;
     int med = -1;
 
@@ -53,11 +64,13 @@ int ListaCoches::buscarCoche(Coche* List, int codigo, int size)
         med = (ini + fini) / 2;
 
         // si el codigo dado es menor que el que hemos encontrado
-        if (coche.getCodigo() < p[med].getCodigo()) {
+        //coche.getCodigo()
+        if (codigo < p[med].getCodigo()) {
             // se mueve el indice del final hacia abajo la distancia de med - 1
             fini = med - 1;
         }
-        else if (coche.codigo > p[med].getCodigo()) {
+        // coche.codigo
+        else if (codigo > p[med].getCodigo()) {
             // se mueve el indice del principio hacia arriba la distancia med +1
             ini = med + 1;
         }

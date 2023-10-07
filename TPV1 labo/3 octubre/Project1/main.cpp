@@ -9,20 +9,27 @@
 #include <array>
 #include <windows.h>
 #include <algorithm>
-//#include "Date.h"
+
+// inclusion de las clases
+#include "Date.h"
+#include "ListaCoches.h"
 
 using namespace std;
 
 //--------------------QUITAR-------------------------(super comentario)----------------------------------------------
 // elemento tipo coche
+/*
 struct coche {
     int codigo;
     int precio;
     string nombre;
 };
+*/
+
 //------------------------------------------------------------------------------------------------
 
 // elemento tipo alquiler
+/*
 struct alquiler {
     coche* coche; // puntero a coche
     int fecha;
@@ -31,16 +38,22 @@ struct alquiler {
     int year;
     int cant;
 };
+*/
+
 
 // declaracion del array dinamico ListaCoches
-coche* ListaCoches;
-int tamListaCoches = 0; // inicializacion a 0
+//coche* ListaCoches;
+//int tamListaCoches = 0; // inicializacion a 0
 
 // declaracion del array dinamico ListaAlquiler
-alquiler* ListaAlquiler;
-int tamListaAlquileres = 0; // inicializacion a 0
+//alquiler* ListaAlquiler;
+//int tamListaAlquileres = 0; // inicializacion a 0
 
 #pragma region metodos
+
+
+// LEER MODELOS
+/*
 bool leerModelos()
 {
     // abre el archivo coches.txt
@@ -70,7 +83,7 @@ bool leerModelos()
         }
 
         // -----------DEBUG------------
-        /*
+        ///*
         for (int i = 0; i < tamListaCoches; i++) {
             cout << ListaCoches[i].codigo;
             cout << " ";
@@ -79,13 +92,16 @@ bool leerModelos()
             cout << ListaCoches[i].precio;
             cout << "\n";
         }
-        */
+        
     }
 
     return coches.is_open(); // true -> archivo coches abierto / false -> error
 }
+*/
 
-int buscarCoche(coche* List, int codigo, int size) {
+// BUSCAR COCHE
+/*
+* int buscarCoche(coche* List, int codigo, int size) {
 
     int ini = 0, fini = size - 1;
     int med = -1;
@@ -116,7 +132,10 @@ int buscarCoche(coche* List, int codigo, int size) {
 
     return med;
 }
+*/
 
+// LEER ALQUILER
+/*
 bool leerAlquileres() {
     // abre el archivo rent.txt
     fstream rent("rent.txt");
@@ -161,7 +180,7 @@ bool leerAlquileres() {
         }
 
         // ----------DEBUG------------
-        /*
+        ///*
         for (int i = 0; i < tamListaAlquileres; i++) {
             cout << ListaAlquiler[i].fecha;
             cout << " ";
@@ -171,32 +190,41 @@ bool leerAlquileres() {
             else cout << ListaAlquiler[i].coche->codigo;
             cout << "\n";
         }
-        */
+        
     }
 
     return rent.is_open(); // true -> archivo coches abierto / false -> error
 }
+*/
 
+// OPERATOR<
+/*
 bool operator<(const alquiler& izdo, const alquiler& dcho) {
     // Definición del orden
     return izdo.fecha < dcho.fecha;
 }
+*/
 
+// ORDENAR ALQUILER
+/*
 void ordenarAlquileres() {
 
     alquiler* a = ListaAlquiler + 8;
     sort(ListaAlquiler, a);
 
     //--------DEBUG---------
-    /*
+    ///*
     for (int i = 0; i < 8; i++) {
 
         cout << ListaAlquiler[i].fecha;
         cout << "\n";
     }
-    */
+    
 }
+*/
 
+// MOSTRAR ALQUILER
+/*
 void mostrarAlquileres() {
 
     for (int i = 0; i < tamListaAlquileres; i++) {
@@ -225,19 +253,47 @@ void mostrarAlquileres() {
         cout << "\n";
     }
 }
+*/
+
+
+void Prep() {
+
+    ListaCoches list;
+
+    list.leerModelos();
+
+}
+
+/*
+void TryOuts(ListaCoches list) {
+
+    //1548 30 Volkswagen Golf
+
+    //int i = list.buscarCoche(1540, list.getTam());
+    //cout << i;
+        
+}
+*/
 #pragma endregion
 
 int main()
 {
     SetConsoleOutputCP(CP_UTF8);
 
-    leerModelos();
+    // declaracion de la lista
+    
 
-    leerAlquileres();
+    Prep();
 
-    ordenarAlquileres();
+    //TryOuts(list);
 
-    mostrarAlquileres();
+    //leerModelos();
+
+    //leerAlquileres();
+
+    //ordenarAlquileres();
+
+    //mostrarAlquileres();
 
 
 }

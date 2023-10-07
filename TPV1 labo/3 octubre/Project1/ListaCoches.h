@@ -2,6 +2,9 @@
 // Implementación de la clase ListaCoches
 //
 
+#ifndef LISTACOCHES_H
+#define LISTACOCHES_H
+
 #include "Coche.h"
 
 using namespace std;
@@ -26,6 +29,13 @@ public:
 
 	// declaracion de metodos
 	bool leerModelos();
-	int buscarCoche(Coche* List, int codigo, int size);
+	int buscarCoche(int codigo, int size);
+
+	// Getter
+	int getTam() {
+		return tamListaCoches;
+	}
 };
+
+#endif
 

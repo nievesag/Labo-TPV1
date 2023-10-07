@@ -1,13 +1,14 @@
 //
 // Declaración de la clase Coche -> funciona como el struct coche
 //
+using namespace std;
+
+#ifndef COCHE_H
+#define COCHE_H
 
 #include <string>
 
-using namespace std;
-
-class Coche
-{
+class Coche {
 	// variables privadas
 private:
 	int codigo, precio;
@@ -55,6 +56,8 @@ public:
 	string getNombre() {
 		return nombre;
 	}
+	
+	
 
 	/* // declaraciones de metodos ---------> no sé si solo tiene que ir la declaración o el setter y el getter de una
 		// Setter
@@ -75,4 +78,7 @@ public:
 		// Getter
 	string getNombre(); */
 };
+
+#endif
+
 
