@@ -28,6 +28,7 @@ public:
 	// escribe
 	friend ostream& operator<<(ostream& in, const Coche& c);
 
+	// para acceso externo a variables privadas
 	// Setter
 	void setCodigo(int c) {
 		codigo = c;

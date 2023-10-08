@@ -15,7 +15,7 @@ class ListaCoches {
 private:
 	// declaracion del array dinamico ListaCoches
 	Coche* ListCoche;
-	int tamListaCoches; // = 0; // inicializacion a 0
+	int tamListaCoches;
 
 	// metodos publicos
 public:

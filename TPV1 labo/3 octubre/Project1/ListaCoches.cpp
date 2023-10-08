@@ -2,11 +2,9 @@
 // Implementación de la clase ListaCoches
 //
 
-#include <array>
 #include "ListaCoches.h"
+#include <array>
 #include <fstream>
-#include "Coche.h" // ??????? si lista coches.h incluche coche.h esto tiene que incluirlo????????
-
 #include <iostream>
 
 using namespace std;
@@ -57,7 +55,7 @@ bool ListaCoches::leerModelos()
     return cochesRead.is_open(); // true -> archivo coches abierto / false -> error
 }
 
-int ListaCoches::buscarCoche( int codigo, int size)
+int ListaCoches::buscarCoche(int codigo, int size)
 {
     //int size;
     int ini = 0, fini = size - 1;

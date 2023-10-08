@@ -1,7 +1,6 @@
 //
 // Declaración de la clase Alquiler -> funciona como el struct alquiler
 //
-using namespace std;
 
 #ifndef ALQUILER_H
 #define ALQUILER_H

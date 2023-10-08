@@ -16,23 +16,6 @@
 
 using namespace std;
 
-//--------------------QUITAR-------------------------(super comentario)----------------------------------------------
-// elemento tipo alquiler
-/*
-struct alquiler {
-    coche* coche; // puntero a coche
-    int fecha;
-    int dia;
-    int mes;
-    int year;
-    int cant;
-};
-*/
-
-// declaracion del array dinamico ListaAlquiler
-//alquiler* ListaAlquiler;
-//int tamListaAlquileres = 0; // inicializacion a 0
-
 #pragma region metodos
 // LEER ALQUILER
 /*
@@ -90,7 +73,6 @@ bool leerAlquileres() {
             else cout << ListaAlquiler[i].coche->codigo;
             cout << "\n";
         }
-        
     }
 
     return rent.is_open(); // true -> archivo coches abierto / false -> error
@@ -158,7 +140,6 @@ void mostrarAlquileres() {
 void Prep(ListaCoches& lista) {
 
     lista.leerModelos();
-
 }
 
 void TryOuts(ListaCoches& list) {
@@ -167,13 +148,11 @@ void TryOuts(ListaCoches& list) {
 
     int i = list.buscarCoche(1548, list.getTam());
     cout << i;
-        
 }
 
 void BorraMem(ListaCoches& lista) {
 
     lista.deleteMem();
-
 }
 #pragma endregion
 
@@ -197,6 +176,4 @@ int main()
     //ordenarAlquileres();
 
     //mostrarAlquileres();
-
-
 }
