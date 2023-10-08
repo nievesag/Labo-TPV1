@@ -17,13 +17,16 @@ private:
 	// info archivo rent -> codigo / fecha / cantidad
 	Coche* coche; // puntero a coche
 	Date* date; // puntero a fecha
+	int dia;
+	int mes;
+	int year;
 	int cant;
 
 	// metodos publicos
 public:
 	// constructoras
-	Alquiler() : coche(), date(), cant() {};
-	Alquiler(Coche* codigo, Date* date, int cant);
+	Alquiler() : coche(), date(), dia(), mes(), year(), cant() {};
+	Alquiler(Coche* codigo, Date* date, int dia, int mes, int year, int cant);
 	Alquiler(const Alquiler& alquiler);
 
 	// declaracion de operadores
@@ -43,6 +46,7 @@ public:
 		return coche->getCodigo();
 	}
 
+	/*
 	// wtf acceso a la fecha me esta desquiciando ligeramente ????????
 	// Setter
 	void setDate(Date& d) {
@@ -52,6 +56,31 @@ public:
 	// Getter
 	int getDate() {
 		return date;
+	}
+	*/
+
+	void setDia(int d) {
+		dia = d;
+	}
+
+	int getDia() {
+		return dia;
+	}
+
+	void setMes(int m) {
+		mes = m;
+	}
+
+	int getMes() {
+		return mes;
+	}
+
+	void setYear(int y) {
+		year = y;
+	}
+
+	int getYear() {
+		return year;
 	}
 
 	// Setter
