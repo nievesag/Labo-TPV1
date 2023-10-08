@@ -15,7 +15,6 @@ Coche::Coche(int p, int c, string n)
 Coche::Coche(const Coche& coche)
 	: precio(coche.precio), codigo(coche.codigo), nombre(coche.nombre) { }
 
-
 // lee
 istream& operator>>(istream& in, Coche& c) {
 	char space;
@@ -35,36 +34,3 @@ ostream& operator<<(ostream& out, const Coche& c) {
 
 	return out;
 }
-
-// implementacion de metodos
-/*
-	// Setter
-void setCodigo(int c) {
-	codigo = c;
-}
-
-	// Getter
-int getCodigo() {
-	return codigo;
-}
-
-	// Setter
-void setPrecio(int p) {
-	precio = p;
-}
-
-	// Getter
-int getPrecio() {
-	return precio;
-}
-
-	// Setter
-void setNombre(string n) {
-	nombre = n;
-}
-
-	// Getter
-string getNombre() {
-	return nombre;
-}
-*/

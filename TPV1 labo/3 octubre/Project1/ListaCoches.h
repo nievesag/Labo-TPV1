@@ -1,5 +1,5 @@
 //
-// Implementación de la clase ListaCoches
+// Declaracion de la clase ListaCoches
 //
 
 #ifndef LISTACOCHES_H
@@ -9,8 +9,8 @@
 
 using namespace std;
 
-class ListaCoches
-{
+class ListaCoches {
+
 	// variables privadas
 private:
 	// declaracion del array dinamico ListaCoches
@@ -23,9 +23,6 @@ public:
 	ListaCoches() : ListCoche(), tamListaCoches(0) {};
 	ListaCoches(Coche* list, int tam);
 	ListaCoches(const ListaCoches& list);
-
-	// operadores
-	//
 
 	// declaracion de metodos
 	bool leerModelos();

@@ -17,17 +17,6 @@
 using namespace std;
 
 //--------------------QUITAR-------------------------(super comentario)----------------------------------------------
-// elemento tipo coche
-/*
-struct coche {
-    int codigo;
-    int precio;
-    string nombre;
-};
-*/
-
-//------------------------------------------------------------------------------------------------
-
 // elemento tipo alquiler
 /*
 struct alquiler {
@@ -40,100 +29,11 @@ struct alquiler {
 };
 */
 
-
-// declaracion del array dinamico ListaCoches
-//coche* ListaCoches;
-//int tamListaCoches = 0; // inicializacion a 0
-
 // declaracion del array dinamico ListaAlquiler
 //alquiler* ListaAlquiler;
 //int tamListaAlquileres = 0; // inicializacion a 0
 
 #pragma region metodos
-
-
-// LEER MODELOS
-/*
-bool leerModelos()
-{
-    // abre el archivo coches.txt
-    fstream coches("coches.txt");
-
-    string c;
-
-    if (coches.is_open()) {
-
-        // saca el tamaño de la lista de coches
-        coches >> tamListaCoches;
-
-        // crea el array dinamico ListaCoches con elementos de tipo coche y tamaño tamListaCoches
-        ListaCoches = new coche[tamListaCoches];
-
-        // bucle para leer los datos
-        for (int i = 0; i < tamListaCoches; i++)
-        {
-            // lee el codigo
-            coches >> ListaCoches[i].codigo;
-            // lee el precio
-            coches >> ListaCoches[i].precio;
-            // lee el nombre
-            coches >> ListaCoches[i].nombre;
-            coches >> c;
-            ListaCoches[i].nombre += " " + c; // para las dos palabras del modelo del coche
-        }
-
-        // -----------DEBUG------------
-        ///*
-        for (int i = 0; i < tamListaCoches; i++) {
-            cout << ListaCoches[i].codigo;
-            cout << " ";
-            cout << ListaCoches[i].nombre;
-            cout << " ";
-            cout << ListaCoches[i].precio;
-            cout << "\n";
-        }
-        
-    }
-
-    return coches.is_open(); // true -> archivo coches abierto / false -> error
-}
-*/
-
-// BUSCAR COCHE
-/*
-* int buscarCoche(coche* List, int codigo, int size) {
-
-    int ini = 0, fini = size - 1;
-    int med = -1;
-
-    coche* p = List;
-    bool enc = false;
-
-    // bucle continua mientras no se haya encontrado y no se pase ini de fini
-    while (!enc && ini <= fini) {
-
-        // reiniia el medio en cada vuelta
-        med = (ini + fini) / 2;
-
-        // si el codigo dado es menor que el que hemos encontrado
-        if (codigo < p[med].codigo) {
-            // se mueve el indice del final hacia abajo la distancia de med - 1
-            fini = med - 1;
-        }
-        else if (codigo > p[med].codigo) {
-            // se mueve el indice del principio hacia arriba la distancia med +1
-            ini = med + 1;
-        }
-        // si son iguales se ha encontrado
-        else enc = true;
-    }
-
-    if (ini > fini) med = -1;
-
-    return med;
-}
-*/
-
 // LEER ALQUILER
 /*
 bool leerAlquileres() {
@@ -218,8 +118,7 @@ void ordenarAlquileres() {
 
         cout << ListaAlquiler[i].fecha;
         cout << "\n";
-    }
-    
+    } 
 }
 */
 
@@ -255,14 +154,12 @@ void mostrarAlquileres() {
 }
 */
 
-
 // si quitamos el & peta btw
 void Prep(ListaCoches& lista) {
 
     lista.leerModelos();
 
 }
-
 
 void TryOuts(ListaCoches& list) {
 
@@ -274,9 +171,10 @@ void TryOuts(ListaCoches& list) {
 }
 
 void BorraMem(ListaCoches& lista) {
-    lista.deleteMem();
-}
 
+    lista.deleteMem();
+
+}
 #pragma endregion
 
 int main()

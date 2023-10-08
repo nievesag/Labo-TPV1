@@ -45,9 +45,7 @@ bool ListaCoches::leerModelos()
         cochesRead >> c;
         cochesRead >> extra;
         ListCoche[i].setNombre(c + " " + extra); // para las dos palabras del modelo del coche
-
     }
-
 
     // -----------DEBUG------------
     for (int i = 0; i < tamListaCoches; i++) {
@@ -71,11 +69,11 @@ int ListaCoches::buscarCoche( int codigo, int size)
     // bucle continua mientras no se haya encontrado y no se pase ini de fini
     while (!enc && ini <= fini) {
 
-        // reiniia el medio en cada vuelta
+        // reinicia el medio en cada vuelta
         med = (ini + fini) / 2;
 
         // si el codigo dado es menor que el que hemos encontrado
-        //coche.getCodigo()
+        //coche.getCodigo() 
         if (codigo < p[med].getCodigo()) {
             // se mueve el indice del final hacia abajo la distancia de med - 1
             fini = med - 1;
@@ -98,5 +96,4 @@ void ListaCoches::deleteMem()
 {
     // borra la memoria dinamica (se supone)
     delete[] ListCoche;
-
 }
