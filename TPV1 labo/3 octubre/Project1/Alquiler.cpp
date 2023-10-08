@@ -22,9 +22,8 @@ Alquiler::Alquiler(const Alquiler& alquiler)
 // lee
 istream& operator>>(istream& in, Alquiler& a) {
 	char space;
-	string ap;
 
-	in >> Coche.getCodigo() >> space >> a.dia >> a.mes >> a.year >> space >> a.cant;
+	in >> coche.getCodigo() >> space >> a.dia >> a.mes >> a.year >> space >> a.cant;
 
 	return in;
 }

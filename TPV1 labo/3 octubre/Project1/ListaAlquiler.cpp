@@ -26,8 +26,6 @@ bool ListaAlquiler::leerAlquileres()
 
         int a, b;
 
-        // Coche *p = ListCoches;
-
         // bucle para leer los datos
         for (int i = 0; i < tamListaAlquiler; i++)
         {
@@ -38,35 +36,35 @@ bool ListaAlquiler::leerAlquileres()
             b = ListCoches.buscarCoche(ListCoches, a, 10);
 
             // si no existe el puntero -> valor de puntero null
-            if (b == -1) ListAlquiler[i].coche = nullptr;
+            if (b == -1) ListAlquiler[i].getCoche() = nullptr;
             // si existe el puntero indica al coche
-            else ListAlquiler[i].coche = ListCoches + b;
+            else ListAlquiler[i].getCoche() = ListCoches + b;
 
             char barra = ' ';
 
             // lee la fecha
-            rent >> ListAlquiler[i].year;
+            rent >> ListAlquiler[i].getYear();
             // char para leer la barra de la fecha
             rent >> barra;
-            rent >> ListAlquiler[i].mes;
+            rent >> ListAlquiler[i].getMes();
             rent >> barra;
-            rent >> ListAlquiler[i].dia;
+            rent >> ListAlquiler[i].getDia();
 
-            ListAlquiler[i].fecha = ListAlquiler[i].year + 100 * ListAlquiler[i].mes + 10000 * ListAlquiler[i].dia;
+            ListAlquiler[i].getDate() = ListAlquiler[i].getYear() + 100 * ListAlquiler[i].getMes() + 10000 * ListAlquiler[i].dia;
 
             // lee la cantidad de dias
-            rent >> ListAlquiler[i].cant;
+            rent >> ListAlquiler[i].getCant();
         }
 
         // ----------DEBUG------------
         ///*
         for (int i = 0; i < tamListaAlquiler; i++) {
-            cout << ListAlquiler[i].fecha;
+            cout << ListAlquiler[i].getDate();
             cout << " ";
-            cout << ListAlquiler[i].cant;
+            cout << ListAlquiler[i].getCant();
             cout << " ";
-            if (!ListAlquiler[i].coche) cout << "ERROR";
-            else cout << ListAlquiler[i].coche->codigo;
+            if (!ListAlquiler[i].getCoche()) cout << "ERROR";
+            else cout << ListAlquiler[i].getCoche()->getCodigo();
             cout << "\n";
         }
     }
@@ -91,26 +89,26 @@ void ListaAlquiler::ordenarAlquileres()
 void ListaAlquiler::mostrarAlquileres() 
 {
     for (int i = 0; i < tamListaAlquiler; i++) {
-        cout << ListAlquiler[i].year;
+        cout << ListAlquiler[i].getYear();
         cout << "/";
-        cout << ListAlquiler[i].mes;
+        cout << ListAlquiler[i].getMes();
         cout << "/";
-        cout << ListAlquiler[i].dia;
+        cout << ListAlquiler[i].getDia();
 
         cout << " ";
-        if (ListAlquiler[i].coche == nullptr) {
+        if (ListAlquiler[i].getCoche() == nullptr) {
             cout << "ERROR: Modelo inexistente";
         }
         else {
-            cout << ListAlquiler[i].coche->nombre;
+            cout << ListAlquiler[i].getCant()->getNombre();
             cout << " ";
-            cout << ListAlquiler[i].cant;
+            cout << ListAlquiler[i].getCant();
             cout << " dia(s) por ";
 
-            if (ListAlquiler[i].coche == nullptr) {
-                cout << ListAlquiler[i].coche->nombre;
+            if (ListAlquiler[i].getCoche() == nullptr) {
+                cout << ListAlquiler[i].getCoche()->getNombre();
             }
-            cout << ListAlquiler[i].coche->precio * ListAlquiler[i].getCant();
+            cout << ListAlquiler[i].getCoche()->getPrecio() * ListAlquiler[i].getCant();
             cout << " euros";
         }
         cout << "\n";

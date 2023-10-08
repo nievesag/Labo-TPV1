@@ -46,18 +46,14 @@ public:
 		return coche->getCodigo();
 	}
 
-	/*
-	// wtf acceso a la fecha me esta desquiciando ligeramente ????????
-	// Setter
-	void setDate(Date& d) {
-		date = &d;
-	}
-
 	// Getter
-	int getDate() {
+	Date* getDate() {
 		return date;
 	}
-	*/
+
+	Coche* getCoche() {
+		return coche;
+	}
 
 	void setDia(int d) {
 		dia = d;
