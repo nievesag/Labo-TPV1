@@ -55,6 +55,7 @@ Alquiler Alquiler::leeAlquiler(ListaCoches& listCoches)
         else {
             Coche* caux;
             caux = listCoches.getListCoches();
+            caux += b;
             al.setCoche(caux);
         }
 

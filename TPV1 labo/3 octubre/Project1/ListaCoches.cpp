@@ -45,12 +45,14 @@ bool ListaCoches::leerModelos()
         ListCoche[i].setNombre(c + " " + extra); // para las dos palabras del modelo del coche
     }
 
+    /*
     // -----------DEBUG------------
     for (int i = 0; i < tamListaCoches; i++) {
         cout << ListCoche[i];
         cout << &ListCoche[i];
         cout << "\n";
     }
+    */
 
     return cochesRead.is_open(); // true -> archivo coches abierto / false -> error
 }
