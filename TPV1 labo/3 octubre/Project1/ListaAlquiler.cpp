@@ -160,7 +160,6 @@ ostream& operator<<(ostream&, const ListaAlquiler& list)
 
 }
 
-
 ListaAlquiler::~ListaAlquiler() {
     // borra la memoria dinamica (se supone) (eu confio)
     delete[] ListAlquiler;

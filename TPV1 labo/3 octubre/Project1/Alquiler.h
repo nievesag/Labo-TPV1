@@ -46,6 +46,7 @@ public:
 	// para acceso externo a variables privadas
 	// Setter
 	void setCoche(Coche* c) {
+
 		//puntero hacia coche
 		coche = c;
 		
