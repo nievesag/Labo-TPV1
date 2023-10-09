@@ -33,8 +33,6 @@ Alquiler Alquiler::leeAlquiler(ListaCoches& listCoches)
 {
     Alquiler al;
 
-    
-
     // abre el archivo rent.txt
     fstream rent("rent.txt");
 
@@ -79,15 +77,22 @@ Alquiler Alquiler::leeAlquiler(ListaCoches& listCoches)
         al.setDate(al.getYear() + 100 * al.getMes() + 10000 * al.getDia());
 
         // lee la cantidad de dias
-        rent << aux;
+        rent >> aux;
 
         al.setCant(aux);
-
-        
     }
+
     return al;
 }
 
+// escribe
+ostream& operator<<(ostream& out, const Alquiler& a) {
+    out << a.coche->getCodigo()
+        << " " << a.date
+        << " " << a.cant;
+
+    return out;
+}
 
 /*
 // lee
@@ -102,14 +107,3 @@ istream& operator>>(istream& in, Alquiler& a) {
     return in;
 }
 */
-
-
-
-// escribe
-ostream& operator<<(ostream& out, const Alquiler& a) {
-    out << a.coche->getCodigo()
-        << " " << a.date
-        << " " << a.cant;
-
-    return out;
-}

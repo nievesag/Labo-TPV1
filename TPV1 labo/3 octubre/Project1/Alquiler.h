@@ -53,6 +53,7 @@ public:
 		//coche->setCodigo(c); // acceso al metodo setCodigo de coche (puntero->atributo =equivalente a= (*puntero).atributo)
 	}
 
+
 	// Getter
 	int getCodigo() {
 		return coche->getCodigo();

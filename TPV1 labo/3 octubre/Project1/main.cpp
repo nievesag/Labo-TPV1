@@ -1,7 +1,7 @@
 // Ines Primo
 // Nieves Alonso
 
-// AMPLIACIÓN 
+// AMPLIACIÓN CON CLASES
 
 #include <iostream>
 
@@ -80,63 +80,6 @@ bool leerAlquileres() {
     }
 
     return rent.is_open(); // true -> archivo coches abierto / false -> error
-}
-*/
-
-// OPERATOR<
-/*
-bool operator<(const alquiler& izdo, const alquiler& dcho) {
-    // Definición del orden
-    return izdo.fecha < dcho.fecha;
-}
-*/
-
-// ORDENAR ALQUILER
-/*
-void ordenarAlquileres() {
-
-    alquiler* a = ListaAlquiler + 8;
-    sort(ListaAlquiler, a);
-
-    //--------DEBUG---------
-    ///*
-    for (int i = 0; i < 8; i++) {
-
-        cout << ListaAlquiler[i].fecha;
-        cout << "\n";
-    } 
-}
-*/
-
-// MOSTRAR ALQUILER
-/*
-void mostrarAlquileres() {
-
-    for (int i = 0; i < tamListaAlquileres; i++) {
-        cout << ListaAlquiler[i].year;
-        cout << "/";
-        cout << ListaAlquiler[i].mes;
-        cout << "/";
-        cout << ListaAlquiler[i].dia;
-
-        cout << " ";
-        if (ListaAlquiler[i].coche == nullptr) {
-            cout << "ERROR: Modelo inexistente";
-        }
-        else {
-            cout << ListaAlquiler[i].coche->nombre;
-            cout << " ";
-            cout << ListaAlquiler[i].cant;
-            cout << " dia(s) por ";
-
-            if (ListaAlquiler[i].coche == nullptr) {
-                cout << ListaAlquiler[i].coche->nombre;
-            }
-            cout << ListaAlquiler[i].coche->precio * ListaAlquiler[i].cant;
-            cout << " euros";
-        }
-        cout << "\n";
-    }
 }
 */
 

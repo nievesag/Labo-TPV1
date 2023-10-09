@@ -17,6 +17,7 @@ class ListaAlquiler {
 private:
 	// declaracion del array dinamico ListaAlquiler
 	Alquiler* ListAlquiler;
+	Alquiler* alquiler;
 	int tamListaAlquiler;
 
 	// metodos publicos
@@ -43,6 +44,10 @@ public:
 	// Getter
 	int getTam() {
 		return tamListaAlquiler;
+	}
+
+	void setAlquiler(Alquiler* a) {
+		alquiler = a;
 	}
 
 };
