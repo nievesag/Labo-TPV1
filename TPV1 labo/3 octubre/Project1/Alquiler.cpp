@@ -52,7 +52,7 @@ Alquiler Alquiler::leeAlquiler(ListaCoches& listCoches)
         if (b == -1) al.setCoche(nullptr);
 
         // si existe el puntero indica al coche
-        else al.setCoche(listCoches& >> b);
+        else al.setCoche(listCoches[b].getCoche(b));
 
         char barra = ' ';
         int aux;
