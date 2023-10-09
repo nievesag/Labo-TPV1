@@ -162,18 +162,25 @@ void BorraMem(ListaCoches& lista) {
 int main()
 {
     SetConsoleOutputCP(CP_UTF8);
-
-    ListaCoches list;
+    
     ListaCoches listCoch;
     ListaAlquiler listAlq;
 
-    Prep(listCoch, listAlq);
-    Prep(listCoch, listAlq);
+    //Prep(listCoch, listAlq);
 
-    TryOuts(list);
+    //TryOuts(list);
+
+    listCoch.leerModelos();
+
+    listAlq.leerAlquileres();
+
+    listAlq.ordenarAlquileres();
+
+    cout << listAlq;
 
 
-    BorraMem(list);
+
+    //BorraMem(list);
 
     //leerModelos();
 

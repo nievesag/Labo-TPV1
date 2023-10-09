@@ -42,6 +42,10 @@ public:
 	int getTam() {
 		return tamListaCoches;
 	}
+
+	Coche* getListCoche() {
+		return ListCoche;
+	}
 };
 
 #endif
