@@ -102,7 +102,3 @@ ListaCoches::~ListaCoches() {
     ListCoche = nullptr;
     tamListaCoches = 0;
 }
-{
-    // borra la memoria dinamica (se supone)
-    delete[] ListCoche;
-}
