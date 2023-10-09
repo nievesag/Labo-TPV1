@@ -58,6 +58,7 @@ public:
 	string getNombre() {
 		return nombre;
 	}
+
 };
 #endif
 
