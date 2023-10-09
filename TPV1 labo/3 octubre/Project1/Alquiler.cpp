@@ -28,22 +28,61 @@ bool Alquiler::operator<(const Alquiler& izq) const
     return false;
 }
 
-bool Alquiler::leeAlquiler(const ListaCoches& listCoches)
+// falta el const (lo he quitado porque no iba)
+Alquiler Alquiler::leeAlquiler(ListaCoches& listCoches)
 {
+    Alquiler al;
+
     int tamListaAlquileres;
 
     // abre el archivo rent.txt
     fstream rent("rent.txt");
 
+    int a, b;
+
     if (rent.is_open()) {
 
+        // lee el codigo
+        rent >> a;
+
+        // b recibe el indice del coche, si no existe recibe -1
+        b = listCoches.buscarCoche(a, 10);
+
+        // si no existe el puntero -> valor de puntero null
+        if (b == -1) al.setCoche(nullptr);
+
+        // si existe el puntero indica al coche
+        else al.setCoche(listaCoches & +b);
+
+        char barra = ' ';
+        int aux;
+
+        // lee la fecha
+        rent << aux;
+        al.setYear(aux);
+        // char para leer la barra de la fecha
+        rent << barra;
+        rent << aux;
+        al.setMes(aux);
+        rent << barra;
+        rent << aux;
+        al.setDia(aux);
+
+        al.setDate(al.getYear() + 100 * al.getMes() + 10000 * al.getDia());
+
+        // lee la cantidad de dias
+        rent << aux;
+
+        al.setCant(aux);
+
+        /*
         // saca el tamaño de la lista de coches
         rent >> tamListaAlquileres;
 
-        /*
+
         // crea el array dinamico ListaCoches con elementos de tipo coalquiler y tamaño tamListaAlquileres
         ListaAlquiler listAlquiler = new ListaAlquiler[tamListaAlquileres];
-        */
+
         int a, b;
 
         // bucle para leer los datos
@@ -87,9 +126,15 @@ bool Alquiler::leeAlquiler(const ListaCoches& listCoches)
             else cout << ListaAlquiler[i].coche->codigo;
             cout << "\n";
         }
+
     }
 
     return rent.is_open(); // true -> archivo coches abierto / false -> error
+        */
+
+        return al; // true -> archivo coches abierto / false -> error
+    }
+        
 }
 
 

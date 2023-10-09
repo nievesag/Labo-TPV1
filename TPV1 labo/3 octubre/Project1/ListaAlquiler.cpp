@@ -21,7 +21,9 @@ bool ListaAlquiler::leerAlquileres(ListaCoches listCoches)
         // saca el tamaño de la lista de coches
         rent >> tamListaAlquiler;
 
-        // crea el array dinamico ListaCoches con elementos de tipo coalquiler y tamaño tamListaAlquileres
+        Alquiler al;
+
+        // crea el array dinamico ListAlquiler con elementos de tipo coalquiler y tamaño tamListaAlquileres
         ListAlquiler = new Alquiler[tamListaAlquiler];
 
         int a, b;
@@ -29,7 +31,13 @@ bool ListaAlquiler::leerAlquileres(ListaCoches listCoches)
         // bucle para leer los datos
         for (int i = 0; i < tamListaAlquiler; i++)
         {
-            // lee el codigo
+            al.leeAlquiler(listCoches);
+
+            // añade el alquiler
+            ListAlquiler[i] = al;
+
+            /*
+            * // lee el codigo
             rent >> a;
 
             // b recibe el indice del coche, si no existe recibe -1
@@ -55,8 +63,11 @@ bool ListaAlquiler::leerAlquileres(ListaCoches listCoches)
 
             // lee la cantidad de dias
             rent << ListAlquiler[i].getCant();
+            */
+            
         }
 
+        /*
         // ----------DEBUG------------
         ///*
         for (int i = 0; i < tamListaAlquiler; i++) {
@@ -68,6 +79,8 @@ bool ListaAlquiler::leerAlquileres(ListaCoches listCoches)
             else cout << ListAlquiler[i].getCoche()->getCodigo();
             cout << "\n";
         }
+        */
+        
     }
 
     return rent.is_open(); // true -> archivo coches abierto / false -> error

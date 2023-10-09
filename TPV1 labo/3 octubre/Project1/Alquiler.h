@@ -18,6 +18,7 @@ private:
 	// info archivo rent -> codigo / fecha / cantidad
 	Coche* coche; // puntero a coche
 	Date* date; // puntero a fecha
+	int date2;
 	int dia;
 	int mes;
 	int year;
@@ -39,13 +40,16 @@ public:
 
 	bool operator<(const Alquiler& izq) const;
 
-	bool leeAlquiler(const ListaCoches& listCoches);
+	Alquiler leeAlquiler(ListaCoches& listCoches);
 
 
 	// para acceso externo a variables privadas
 	// Setter
-	void setCoche(int c) {
-		coche->setCodigo(c); // acceso al metodo setCodigo de coche (puntero->atributo =equivalente a= (*puntero).atributo)
+	void setCoche(Coche* c) {
+		//puntero hacia coche
+		coche = c;
+		
+		//coche->setCodigo(c); // acceso al metodo setCodigo de coche (puntero->atributo =equivalente a= (*puntero).atributo)
 	}
 
 	// Getter
@@ -54,8 +58,13 @@ public:
 	}
 
 	// Getter
-	Date* getDate() {
-		return date;
+	// lo he cambiado porque es mas comodo
+	int getDate() {
+		return date2;
+	}
+
+	void setDate(int d) {
+		date2 = d;
 	}
 
 	Coche* getCoche(int pos) {
