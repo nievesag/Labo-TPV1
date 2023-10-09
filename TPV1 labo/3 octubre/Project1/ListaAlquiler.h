@@ -37,6 +37,10 @@ public:
 	int getTam() {
 		return tamListaAlquiler;
 	}
+
+	Coche* getCoche(int pos) {
+		return coche;
+	}
 };
 
 #endif

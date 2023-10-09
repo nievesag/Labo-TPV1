@@ -44,17 +44,17 @@ bool ListaAlquiler::leerAlquileres()
             char barra = ' ';
 
             // lee la fecha
-            rent >> ListAlquiler[i].getYear();
+            rent << ListAlquiler[i].getYear();
             // char para leer la barra de la fecha
-            rent >> barra;
-            rent >> ListAlquiler[i].getMes();
-            rent >> barra;
-            rent >> ListAlquiler[i].getDia();
+            rent << barra;
+            rent << ListAlquiler[i].getMes();
+            rent << barra;
+            rent << ListAlquiler[i].getDia();
 
             ListAlquiler[i].getDate() = ListAlquiler[i].getYear() + 100 * ListAlquiler[i].getMes() + 10000 * ListAlquiler[i].getDia();
 
             // lee la cantidad de dias
-            rent >> ListAlquiler[i].getCant();
+            rent << ListAlquiler[i].getCant();
         }
 
         // ----------DEBUG------------
@@ -97,7 +97,7 @@ void ListaAlquiler::mostrarAlquileres()
         cout << ListAlquiler[i].getDia();
 
         cout << " ";
-        if (ListAlquiler[i].getCoche() == nullptr) {
+        if (ListAlquiler[i].getCoche(i) == nullptr) {
             cout << "ERROR: Modelo inexistente";
         }
         else {

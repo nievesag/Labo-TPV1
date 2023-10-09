@@ -3,6 +3,7 @@
 //
 #include <iostream>
 #include "Alquiler.h"
+#include "ListaCoches.h"
 #include <fstream>
 
 // si lo tiene el h lo necesita el cpp??
@@ -23,7 +24,7 @@ Alquiler::Alquiler(const Alquiler& alquiler)
 istream& operator>>(istream& in, Alquiler& a) {
 	char space;
 
-	in >> Coche.getCodigo() >> space >> a.dia >> a.mes >> a.year >> space >> a.cant;
+	in >> ListaCoches.getCoche()->getCodigo() >> space >> a.dia >> a.mes >> a.year >> space >> a.cant;
 
 	return in;
 }

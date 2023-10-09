@@ -7,6 +7,7 @@
 
 #include "Date.h"
 #include "Coche.h"
+#include "ListaCoches.h"
 
 using namespace std;
 

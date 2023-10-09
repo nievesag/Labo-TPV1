@@ -90,6 +90,11 @@ int ListaCoches::buscarCoche(int codigo, int size)
     return med;
 }
 
+void insertaCoche(int codigo, int precio, string nombre) 
+{
+    // TODO
+}
+
 void ListaCoches::deleteMem()
 {
     // borra la memoria dinamica (se supone)

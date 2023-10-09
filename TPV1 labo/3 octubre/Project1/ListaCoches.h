@@ -6,6 +6,7 @@
 #define LISTACOCHES_H
 
 #include "Coche.h"
+#include <string>
 
 using namespace std;
 
@@ -24,9 +25,16 @@ public:
 	ListaCoches(Coche* list, int tam);
 	ListaCoches(const ListaCoches& list);
 
+	// declaracion de operadores
+	// lee
+	friend istream& operator>>(istream& in, ListaCoches& lc);
+	// escribe
+	friend ostream& operator<<(ostream& in, const ListaCoches& lc);
+
 	// declaracion de metodos
 	bool leerModelos();
 	int buscarCoche(int codigo, int size);
+	void insertaCoche(int codigo, int precio, string nombre);
 
 	void deleteMem();
 
