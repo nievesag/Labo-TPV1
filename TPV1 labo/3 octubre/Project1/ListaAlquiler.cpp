@@ -36,9 +36,10 @@ bool ListaAlquiler::leerAlquileres()
             b = ListCoches.buscarCoche(ListCoches, a, 10);
 
             // si no existe el puntero -> valor de puntero null
-            if (b == -1) ListAlquiler[i].getCoche() = nullptr;
+            if (b == -1) ListAlquiler[i].getCoche(i) = nullptr;
+
             // si existe el puntero indica al coche
-            else ListAlquiler[i].getCoche() = ListCoches + b;
+            else ListAlquiler[i].getCoche(i) = ListCoches + b;
 
             char barra = ' ';
 
@@ -50,7 +51,7 @@ bool ListaAlquiler::leerAlquileres()
             rent >> barra;
             rent >> ListAlquiler[i].getDia();
 
-            ListAlquiler[i].getDate() = ListAlquiler[i].getYear() + 100 * ListAlquiler[i].getMes() + 10000 * ListAlquiler[i].dia;
+            ListAlquiler[i].getDate() = ListAlquiler[i].getYear() + 100 * ListAlquiler[i].getMes() + 10000 * ListAlquiler[i].getDia();
 
             // lee la cantidad de dias
             rent >> ListAlquiler[i].getCant();
@@ -100,15 +101,15 @@ void ListaAlquiler::mostrarAlquileres()
             cout << "ERROR: Modelo inexistente";
         }
         else {
-            cout << ListAlquiler[i].getCant()->getNombre();
+            cout << ListAlquiler[i].getCoche(i)->getNombre();
             cout << " ";
             cout << ListAlquiler[i].getCant();
             cout << " dia(s) por ";
 
-            if (ListAlquiler[i].getCoche() == nullptr) {
-                cout << ListAlquiler[i].getCoche()->getNombre();
+            if (ListAlquiler[i].getCoche(i) == nullptr) {
+                cout << ListAlquiler[i].getCoche(i)->getNombre();
             }
-            cout << ListAlquiler[i].getCoche()->getPrecio() * ListAlquiler[i].getCant();
+            cout << ListAlquiler[i].getCoche(i)->getPrecio() * ListAlquiler[i].getCant();
             cout << " euros";
         }
         cout << "\n";

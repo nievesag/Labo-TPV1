@@ -12,7 +12,7 @@
 using namespace std;
 
 // constructora con las variables declaradas en h
-Alquiler::Alquiler(Coche* coche, Date* date, int dia, int mes, int year, int cant)
+Alquiler::Alquiler(Coche* c, Date* date, int dia, int mes, int year, int cant)
 	: coche(coche), date(date), dia(dia), mes(mes), year(year), cant(cant) { }
 
 // constructora del tipo coche 
@@ -23,7 +23,7 @@ Alquiler::Alquiler(const Alquiler& alquiler)
 istream& operator>>(istream& in, Alquiler& a) {
 	char space;
 
-	in >> coche.getCodigo() >> space >> a.dia >> a.mes >> a.year >> space >> a.cant;
+	in >> Coche.getCodigo() >> space >> a.dia >> a.mes >> a.year >> space >> a.cant;
 
 	return in;
 }

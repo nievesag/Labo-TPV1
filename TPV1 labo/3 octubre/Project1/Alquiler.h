@@ -51,7 +51,7 @@ public:
 		return date;
 	}
 
-	Coche* getCoche() {
+	Coche* getCoche(int pos) {
 		return coche;
 	}
 

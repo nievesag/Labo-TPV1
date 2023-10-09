@@ -6,11 +6,13 @@
 #define LISTACOCHES_H
 
 #include "Alquiler.h"
+#include "Date.h"
+#include <fstream>
 
 using namespace std;
 
-class ListaAlquiler
-{
+class ListaAlquiler {
+
 	// variables privadas
 private:
 	// declaracion del array dinamico ListaAlquiler
@@ -22,7 +24,7 @@ public:
 	// constructoras
 	ListaAlquiler() : ListAlquiler(), tamListaAlquiler(0) {};
 	ListaAlquiler(Alquiler* alquiler, int tam);
-	ListaAlquiler(const ListaAlquiler& list);
+	ListaAlquiler(const ListaAlquiler& alquiler);
 
 	// decaracion de metodos
 	bool leerAlquileres();
