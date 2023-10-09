@@ -36,7 +36,7 @@ public:
 	int buscarCoche(int codigo, int size);
 	void insertaCoche(int codigo, int precio, string nombre);
 
-	void deleteMem();
+	~ListaCoches();
 
 	// Getter
 	int getTam() {

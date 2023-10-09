@@ -2,8 +2,8 @@
 // Declaracion de la clase ListaAlquiler
 //
 
-#ifndef LISTACOCHES_H
-#define LISTACOCHES_H
+#ifndef LISTAALQUILERES_H
+#define LISTAALQUILERES_H
 
 #include "Alquiler.h"
 #include "Date.h"
@@ -31,7 +31,11 @@ public:
 	void ordenarAlquileres();
 	void mostrarAlquileres();
 
+	bool leerAlquileres(ListaCoches listCoches);
+
 	void deleteMem();
+
+	~ListaAlquiler();
 
 	// Getter
 	int getTam() {

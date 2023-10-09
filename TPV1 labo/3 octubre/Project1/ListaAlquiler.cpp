@@ -11,7 +11,7 @@
 
 using namespace std;
 
-bool ListaAlquiler::leerAlquileres() 
+bool ListaAlquiler::leerAlquileres(ListaCoches listCoches)
 {
     // abre el archivo rent.txt
     fstream rent("rent.txt");
@@ -33,10 +33,10 @@ bool ListaAlquiler::leerAlquileres()
             rent >> a;
 
             // b recibe el indice del coche, si no existe recibe -1
-            b = ListCoches.buscarCoche(ListCoches, a, 10);
+            b = listCoches.buscarCoche(a, 10);
 
             // si no existe el puntero -> valor de puntero null
-            if (b == -1) ListAlquiler[i].getCoche(i) = nullptr;
+            if (b == -1) ListAlquiler[i].setCoche(i) = nullptr;
 
             // si existe el puntero indica al coche
             else ListAlquiler[i].getCoche(i) = ListCoches + b;
@@ -73,7 +73,7 @@ bool ListaAlquiler::leerAlquileres()
     return rent.is_open(); // true -> archivo coches abierto / false -> error
 }
 
-void ListaAlquiler::ordenarAlquileres() 
+void ListaAlquiler::ordenarAlquileres()
 {
     Alquiler* a = ListAlquiler + 8;
     sort(ListAlquiler, a);
@@ -87,7 +87,7 @@ void ListaAlquiler::ordenarAlquileres()
     }
 }
 
-void ListaAlquiler::mostrarAlquileres() 
+void ListaAlquiler::mostrarAlquileres()
 {
     for (int i = 0; i < tamListaAlquiler; i++) {
         cout << ListAlquiler[i].getYear();
@@ -116,8 +116,11 @@ void ListaAlquiler::mostrarAlquileres()
     }
 }
 
-void ListaAlquiler::deleteMem() 
-{
+
+ListaAlquiler::~ListaAlquiler() {
     // borra la memoria dinamica (se supone) (eu confio)
     delete[] ListAlquiler;
+    ListAlquiler = nullptr;
+    tamListaAlquiler = 0;
 }
+

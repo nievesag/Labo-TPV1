@@ -36,6 +36,12 @@ public:
 	// escribe
 	friend ostream& operator<<(ostream& in, const Alquiler& a);
 
+
+	bool operator<(const Alquiler& izq) const;
+
+	bool leeAlquiler(const ListaCoches& listCoches);
+
+
 	// para acceso externo a variables privadas
 	// Setter
 	void setCoche(int c) {

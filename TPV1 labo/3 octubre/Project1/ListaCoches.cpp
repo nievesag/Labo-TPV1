@@ -95,7 +95,13 @@ void insertaCoche(int codigo, int precio, string nombre)
     // TODO
 }
 
-void ListaCoches::deleteMem()
+// destructora
+ListaCoches::~ListaCoches() {
+
+    delete[] ListCoche;
+    ListCoche = nullptr;
+    tamListaCoches = 0;
+}
 {
     // borra la memoria dinamica (se supone)
     delete[] ListCoche;
