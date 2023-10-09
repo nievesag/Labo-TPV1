@@ -13,6 +13,7 @@
 // inclusion de las clases
 #include "Date.h"
 #include "ListaCoches.h"
+#include "ListaAlquiler.h"
 
 using namespace std;
 
@@ -137,9 +138,11 @@ void mostrarAlquileres() {
 */
 
 // si quitamos el & peta btw
-void Prep(ListaCoches& lista) {
+void Prep(ListaCoches& listCoch, ListaAlquiler& listAlq) {
 
-    lista.leerModelos();
+    listCoch.leerModelos();
+
+    listAlq.leerAlquileres();
 }
 
 void TryOuts(ListaCoches& list) {
@@ -152,7 +155,7 @@ void TryOuts(ListaCoches& list) {
 
 void BorraMem(ListaCoches& lista) {
 
-    lista.deleteMem();
+    //lista.deleteMem();
 }
 #pragma endregion
 
@@ -160,12 +163,15 @@ int main()
 {
     SetConsoleOutputCP(CP_UTF8);
 
-    // declaracion de la lista
     ListaCoches list;
+    ListaCoches listCoch;
+    ListaAlquiler listAlq;
 
-    Prep(list);
+    Prep(listCoch, listAlq);
+    Prep(listCoch, listAlq);
 
     TryOuts(list);
+
 
     BorraMem(list);
 

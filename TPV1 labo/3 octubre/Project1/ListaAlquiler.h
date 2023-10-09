@@ -33,6 +33,8 @@ public:
 
 	bool leerAlquileres(ListaCoches listCoches);
 
+	friend ostream& operator<<(ostream&, const ListaAlquiler&);
+
 	void deleteMem();
 
 	~ListaAlquiler();

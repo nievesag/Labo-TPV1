@@ -130,10 +130,43 @@ void ListaAlquiler::mostrarAlquileres()
 }
 
 
+ostream& operator<<(ostream&, const ListaAlquiler& list)
+{
+    for (int i = 0; i < list.tamListaAlquiler; i++) {
+        cout << ListAlquiler[i].getYear();
+        cout << "/";
+        cout << ListAlquiler[i].getMes();
+        cout << "/";
+        cout << ListAlquiler[i].getDia();
+
+        cout << " ";
+        if (ListAlquiler[i].getCoche(i) == nullptr) {
+            cout << "ERROR: Modelo inexistente";
+        }
+        else {
+            cout << ListAlquiler[i].getCoche(i)->getNombre();
+            cout << " ";
+            cout << ListAlquiler[i].getCant();
+            cout << " dia(s) por ";
+
+            if (ListAlquiler[i].getCoche(i) == nullptr) {
+                cout << ListAlquiler[i].getCoche(i)->getNombre();
+            }
+            cout << ListAlquiler[i].getCoche(i)->getPrecio() * ListAlquiler[i].getCant();
+            cout << " euros";
+        }
+        cout << "\n";
+    }
+
+}
+
+
 ListaAlquiler::~ListaAlquiler() {
     // borra la memoria dinamica (se supone) (eu confio)
     delete[] ListAlquiler;
     ListAlquiler = nullptr;
     tamListaAlquiler = 0;
 }
+
+
 
