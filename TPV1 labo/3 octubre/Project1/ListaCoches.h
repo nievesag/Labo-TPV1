@@ -34,13 +34,16 @@ public:
 	// declaracion de metodos
 	bool leerModelos();
 	int buscarCoche(int codigo, int size);
-	void insertaCoche(int codigo, int precio, string nombre);
 
 	~ListaCoches();
 
 	// Getter
 	int getTam() {
 		return tamListaCoches;
+	}
+
+	Coche* getListCoches() {
+		return ListCoche;
 	}
 };
 

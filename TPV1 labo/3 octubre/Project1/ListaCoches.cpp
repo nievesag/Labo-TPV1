@@ -90,11 +90,6 @@ int ListaCoches::buscarCoche(int codigo, int size)
     return med;
 }
 
-void insertaCoche(int codigo, int precio, string nombre) 
-{
-    // TODO
-}
-
 // destructora
 ListaCoches::~ListaCoches() {
 
