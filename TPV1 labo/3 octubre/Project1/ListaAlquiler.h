@@ -22,27 +22,29 @@ private:
 	// metodos publicos
 public:
 	// constructoras
-	ListaAlquiler() : ListAlquiler(), tamListaAlquiler(0) {};
-	ListaAlquiler(Alquiler* alquiler, int tam);
-	ListaAlquiler(const ListaAlquiler& alquiler);
+	ListaAlquiler() : ListAlquiler(nullptr), tamListaAlquiler(0) {};
+	//ListaAlquiler(Alquiler* alquiler, int tam);
+	//ListaAlquiler(const ListaAlquiler& alquiler);
 
 	// decaracion de metodos
-	bool leerAlquileres();
+	bool leerAlquileres(ListaCoches listCoches);
 	void ordenarAlquileres();
 	void mostrarAlquileres();
 
-	bool leerAlquileres(ListaCoches listCoches);
-
-	friend ostream& operator<<(ostream&, const ListaAlquiler&);
-
-	void deleteMem();
+	friend ostream& operator<<(ostream& out, const ListaAlquiler&);
 
 	~ListaAlquiler();
+
+	// setter
+	int setTam(int tam) {
+		tamListaAlquiler = tam;
+	}
 
 	// Getter
 	int getTam() {
 		return tamListaAlquiler;
 	}
+
 };
 
 #endif

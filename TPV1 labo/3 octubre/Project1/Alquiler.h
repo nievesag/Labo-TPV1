@@ -27,13 +27,13 @@ private:
 	// metodos publicos
 public:
 	// constructoras
-	Alquiler() : coche(), date(), dia(), mes(), year(), cant() {};
-	Alquiler(Coche* codigo, Date* date, int dia, int mes, int year, int cant);
+	Alquiler() : coche(nullptr), date(nullptr), date2(0), dia(0), mes(0), year(0), cant(0) {};
+	Alquiler(Coche* codigo, Date* date,int date2, int dia, int mes, int year, int cant);
 	Alquiler(const Alquiler& alquiler);
 
 	// declaracion de operadores
 	// lee 
-	friend istream& operator>>(istream& in, Alquiler& a);
+	//friend istream& operator>>(istream& in, Alquiler& a);
 	// escribe
 	friend ostream& operator<<(ostream& in, const Alquiler& a);
 

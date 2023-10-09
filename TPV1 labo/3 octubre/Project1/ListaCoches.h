@@ -21,16 +21,16 @@ private:
 	// metodos publicos
 public:
 	// constructoras
-	ListaCoches() : ListCoche(), tamListaCoches(0) {};
-	ListaCoches(Coche* list, int tam);
-	ListaCoches(const ListaCoches& list);
+	ListaCoches() : ListCoche(nullptr), tamListaCoches(0) {};
+	//ListaCoches(Coche* list, int tam);
+	//ListaCoches(const ListaCoches& list);
 
-	// declaracion de operadores
+	/*// declaracion de operadores
 	// lee
 	friend istream& operator>>(istream& in, ListaCoches& lc);
 	// escribe
 	friend ostream& operator<<(ostream& in, const ListaCoches& lc);
-
+	*/
 	// declaracion de metodos
 	bool leerModelos();
 	int buscarCoche(int codigo, int size);

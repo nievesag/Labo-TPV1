@@ -4,11 +4,14 @@
 // AMPLIACIÓN 
 
 #include <iostream>
-#include <fstream>
+
 #include <string>
 #include <array>
-#include <windows.h>
 #include <algorithm>
+
+#include <windows.h>
+#include <fstream>
+
 
 // inclusion de las clases
 #include "Date.h"
@@ -142,7 +145,7 @@ void Prep(ListaCoches& listCoch, ListaAlquiler& listAlq) {
 
     listCoch.leerModelos();
 
-    listAlq.leerAlquileres();
+    listAlq.leerAlquileres(listCoch);
 }
 
 void TryOuts(ListaCoches& list) {
@@ -166,19 +169,17 @@ int main()
     ListaCoches listCoch;
     ListaAlquiler listAlq;
 
-    //Prep(listCoch, listAlq);
-
-    //TryOuts(list);
-
     listCoch.leerModelos();
 
-    listAlq.leerAlquileres();
+    listAlq.leerAlquileres(listCoch);
 
     listAlq.ordenarAlquileres();
 
     cout << listAlq;
 
+    listCoch.~ListaCoches();
 
+    listAlq.~ListaAlquiler();
 
     //BorraMem(list);
 

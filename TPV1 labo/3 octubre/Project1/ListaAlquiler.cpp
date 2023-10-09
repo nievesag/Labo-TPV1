@@ -26,7 +26,7 @@ bool ListaAlquiler::leerAlquileres(ListaCoches listCoches)
         // crea el array dinamico ListAlquiler con elementos de tipo coalquiler y tamaño tamListaAlquileres
         ListAlquiler = new Alquiler[tamListaAlquiler];
 
-        int a, b;
+        int a = 0, b = 0;
 
         // bucle para leer los datos
         for (int i = 0; i < tamListaAlquiler; i++)
@@ -80,7 +80,7 @@ bool ListaAlquiler::leerAlquileres(ListaCoches listCoches)
             cout << "\n";
         }
         */
-        
+
     }
 
     return rent.is_open(); // true -> archivo coches abierto / false -> error
@@ -130,34 +130,34 @@ void ListaAlquiler::mostrarAlquileres()
 }
 
 
-ostream& operator<<(ostream&, const ListaAlquiler& list)
+ostream& operator<<(ostream& out, const ListaAlquiler& list)
 {
     for (int i = 0; i < list.tamListaAlquiler; i++) {
-        cout << list.ListAlquiler[i].getYear();
-        cout << "/";
-        cout << list.ListAlquiler[i].getMes();
-        cout << "/";
-        cout << list.ListAlquiler[i].getDia();
+        out << list.ListAlquiler[i].getYear();
+        out << "/";
+        out << list.ListAlquiler[i].getMes();
+        out << "/";
+        out << list.ListAlquiler[i].getDia();
 
-        cout << " ";
+        out << " ";
         if (list.ListAlquiler[i].getCoche(i) == nullptr) {
-            cout << "ERROR: Modelo inexistente";
+            out << "ERROR: Modelo inexistente";
         }
         else {
-            cout << list.ListAlquiler[i].getCoche(i)->getNombre();
-            cout << " ";
-            cout << list.ListAlquiler[i].getCant();
-            cout << " dia(s) por ";
+            out << list.ListAlquiler[i].getCoche(i)->getNombre();
+            out << " ";
+            out << list.ListAlquiler[i].getCant();
+            out << " dia(s) por ";
 
             if (list.ListAlquiler[i].getCoche(i) == nullptr) {
-                cout << list.ListAlquiler[i].getCoche(i)->getNombre();
+                out << list.ListAlquiler[i].getCoche(i)->getNombre();
             }
-            cout << list.ListAlquiler[i].getCoche(i)->getPrecio() * list.ListAlquiler[i].getCant();
-            cout << " euros";
+            out << list.ListAlquiler[i].getCoche(i)->getPrecio() * list.ListAlquiler[i].getCant();
+            out << " euros";
         }
-        cout << "\n";
+        out << "\n";
     }
-
+    return out;
 }
 
 ListaAlquiler::~ListaAlquiler() {
