@@ -4,11 +4,11 @@
 
 using namespace std;
 
-Texture::Texture(SDL_Renderer* renderer, SDL_Texture* texture, size_t rows, size_t columns)
-  : renderer(renderer)
-  , texture(texture)
-  , nrows(rows)
-  , ncolumns(columns)
+Texture::Texture(SDL_Renderer* renderer, SDL_Texture* texture, size_t rows, size_t columns) : 
+	renderer(renderer), 
+	texture(texture), 
+	nrows(rows), 
+	ncolumns(columns)
 {
 	SDL_QueryTexture(texture, nullptr, nullptr, &width, &height);
 
