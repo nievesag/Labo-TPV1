@@ -93,6 +93,7 @@ public:
 
 
 // CODIGO PARA PROBAR VECTOR2D (PONER EN EL MAIN)
+// (poner #include "Vector2D.h"; en el main para probarlo individualmente)
 /*
 	// --- MIRAR QUE SE CREA BIEN
 	Vector2D<int> uwu(1, 2);
