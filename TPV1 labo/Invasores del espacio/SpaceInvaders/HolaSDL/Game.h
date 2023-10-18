@@ -1,6 +1,7 @@
 #include "checkML.h"
 #include <SDL.h>
 #include <array>
+#include "texture.h"
 
 // #include <iostream>
 
@@ -28,31 +29,86 @@ private:
 		int nw, nh;
 	};
 
+	// cantidad de texturas que va a haber
+	static const int NUM_TEXTURES = 5;
 
 	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo Texture* 
-	// 5 es el tamaño que he puesto de placeholder, no se como ponerlo si no
-	array<TextureSpec, 5> textureSpec{};
+	array<TextureSpec, NUM_TEXTURES> textureSpec{};
 
 	// enum texture name -> el indice tiene la info de la textura
 	enum TextureName Alien1, Alien2, Alien3, Nave, Bunker;
 	
 	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	// array de las texturas como tal de tipo texture (añadir el include y meterlas en la carpeta)
-	//array<Texture*, 5> textures;
+	array<Texture*, NUM_TEXTURES> textures;
 
 	// INI ELEMENTOS DE JUEGO (vector2D): (TODO) 
-
+	// ??
 
 	// metodos publicos
 public:
-	// constructora
-	// destructora
-	// run
-	// render
-	// update
-	// handleEvents -> input del jugador
-	// getDirection
-	// bool cannotMove
-	// fireLaser
+	// ---- constructora ----
+	// se cargan las texturas y se guardan en los arrays 
+	// (lo de exit es porque si no pones algo en ese sitio da error y me toca los cojones,
+	// pero no se si es necesario iniciar ahi el exit (no he puesto NUM_TEXTURES porque
+	// es estatica y no se puede modificar))
+	Game::Game() : exit(false) {
+		// se inician las texturas 
+
+
+	}
+
+
+	// ---- destructora ----
+	Game::~Game() {
+
+		// elimina las texturas entiendo
+		//delete[] ????;
+	}
+
+	// ---- run ----
+	// bucle principal del juego
+	void run() {
+
+
+	}
+
+	// ---- render ----
+	// renderiza la pantalla
+	void render() {
+
+	}
+
+	// ---- update ----
+	// actualiza el juego
+	void update() {
+
+	}
+
+	// ---- handleEvents ----
+	// input del jugador
+	void handleEvents() {
+
+	}
+
+	// ---- getDirection ----
+	// direccion de movimiento de los alienigenas
+	void getDirection() {
+
+	}
+
+	// ---- cannotMove ----
+	// confirma si se pueden seguir moviendo en la misma direccion los aliens
+	bool cannotMove() {
+
+		// !!!!!! placeholder para que no de error
+		return true;
+	}
+
+	// ---- fireLaser -----
+	// dispara laseres wow
+	void fireLaser() {
+
+	}
 };
 
