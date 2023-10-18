@@ -52,63 +52,38 @@ public:
 	// (lo de exit es porque si no pones algo en ese sitio da error y me toca los cojones,
 	// pero no se si es necesario iniciar ahi el exit (no he puesto NUM_TEXTURES porque
 	// es estatica y no se puede modificar))
-	Game::Game() : exit(false) {
-		// se inician las texturas 
-
-
-	}
+	Game::Game() : exit(false) {}
 
 
 	// ---- destructora ----
-	Game::~Game() {
-
-		// elimina las texturas entiendo
-		//delete[] ????;
-	}
+	Game::~Game();
 
 	// ---- run ----
 	// bucle principal del juego
-	void run() {
-
-
-	}
+	void run();
 
 	// ---- render ----
 	// renderiza la pantalla
-	void render() {
-
-	}
+	void render();
 
 	// ---- update ----
 	// actualiza el juego
-	void update() {
-
-	}
+	void update();
 
 	// ---- handleEvents ----
 	// input del jugador
-	void handleEvents() {
-
-	}
+	void handleEvents();
 
 	// ---- getDirection ----
 	// direccion de movimiento de los alienigenas
-	void getDirection() {
-
-	}
+	void getDirection();
 
 	// ---- cannotMove ----
 	// confirma si se pueden seguir moviendo en la misma direccion los aliens
-	bool cannotMove() {
-
-		// !!!!!! placeholder para que no de error
-		return true;
-	}
+	bool cannotMove();
 
 	// ---- fireLaser -----
 	// dispara laseres wow
-	void fireLaser() {
-
-	}
+	void fireLaser();
 };
 
