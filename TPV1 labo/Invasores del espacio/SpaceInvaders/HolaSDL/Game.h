@@ -1,5 +1,6 @@
 #include "checkML.h"
 #include <SDL.h>
+#include <array>
 
 // #include <iostream>
 
@@ -27,10 +28,18 @@ private:
 		int nw, nh;
 	};
 
+
 	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo Texture* 
+	// 5 es el tamaño que he puesto de placeholder, no se como ponerlo si no
+	array<TextureSpec, 5> textureSpec{};
 
 	// enum texture name -> el indice tiene la info de la textura
+	enum TextureName Alien1, Alien2, Alien3, Nave, Bunker;
 	
+	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	// array de las texturas como tal de tipo texture (añadir el include y meterlas en la carpeta)
+	//array<Texture*, 5> textures;
+
 	// INI ELEMENTOS DE JUEGO (vector2D): (TODO) 
 
 
