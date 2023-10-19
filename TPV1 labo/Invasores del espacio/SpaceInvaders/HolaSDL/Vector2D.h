@@ -1,5 +1,5 @@
 //
-// Declaración de la clase Vector2D
+// Declaración e imeplementación de la clase Vector2D -> no necesita cpp
 //
 
 #ifndef VECTOR2D_H
@@ -21,9 +21,9 @@ public:
 	Vector2D::Vector2D(T x, T y)
 		: x(x), y(y) { }
 
-	// constructora con un vector (deberiamos ponerlo con el setter????)
+	// constructora con un vector (deberiamos ponerlo con el setter????) -> 
 	// no entiendo por que da error oop
-	//Vector2D::Vector2D(const Vector2D& vec) 
+	// Vector2D::Vector2D(const Vector2D& vec) 
 	//	: x(vec.getX()), y(vec.getY()) { }
 
 	// ---- destructora ----
@@ -48,7 +48,6 @@ public:
 
 	// ---- OPERADORES ----
 	
-	// suma / resta (+/-)
 	// operador +
 	Vector2D<T>& operator+(Vector2D<T> const& other) {
 		Vector2D<T> aux (0,0);
@@ -86,7 +85,6 @@ public:
 		return aux;
 	}
 	
-
 	// establecer alias
 	template <typename T> using Point2D = Vector2D;
 };

@@ -1,3 +1,6 @@
+#ifndef GAME_H
+#define GAME_H
+
 #include "checkML.h"
 #include <SDL.h>
 #include <array>
@@ -7,7 +10,6 @@
 
 using namespace std;
 using uint = unsigned int;
-
 
 class Game
 {
@@ -49,10 +51,12 @@ private:
 public:
 	// ---- constructora ----
 	// se cargan las texturas y se guardan en los arrays 
-	// (lo de exit es porque si no pones algo en ese sitio da error y me toca los cojones,
-	// pero no se si es necesario iniciar ahi el exit (no he puesto NUM_TEXTURES porque
-	// es estatica y no se puede modificar))
-	Game::Game() : exit(false) {}
+	// necesario iniciar ahi el exit???? (falla si no hay nada) (no poner NUM_TEXTURES pq es estatica y no modificable)
+	// igual que en el vector yo haría un setPlayer(posicion(Vector2D)) y un getPlayer(posicion) 
+	// la contructora del game debe inicializar los objetos de juego en una posición
+
+	Game::Game() 
+		: exit(false) { }
 
 
 	// ---- destructora ----
@@ -87,3 +91,4 @@ public:
 	void fireLaser();
 };
 
+#endif // GAME_H
