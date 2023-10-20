@@ -19,7 +19,7 @@ public:
 	// ---- constructora ----
 	// constructora con las variables declaradas
 	Vector2D::Vector2D(T x, T y)
-		: x(x), y(y) { }
+		: x(x), y(y) {} // los corchetes vacios inicializa las variables a 0
 
 	// constructora con un vector (deberiamos ponerlo con el setter????) -> 
 	// no entiendo por que da error oop

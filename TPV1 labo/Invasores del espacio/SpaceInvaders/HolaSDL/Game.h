@@ -5,6 +5,7 @@
 #include <SDL.h>
 #include <array>
 #include "texture.h"
+#include "Vector2D.h"
 
 // #include <iostream>
 
@@ -37,27 +38,25 @@ private:
 	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo Texture* 
 	array<TextureSpec, NUM_TEXTURES> textureSpec{};
 
-	// enum texture name -> el indice tiene la info de la textura
-	enum TextureName Alien1, Alien2, Alien3, Nave, Bunker;
-	
-	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	// array de las texturas como tal de tipo texture (añadir el include y meterlas en la carpeta)
-	array<Texture*, NUM_TEXTURES> textures;
+	// declaración de los elementos de juego
+	Cannon* cannon;
 
-	// INI ELEMENTOS DE JUEGO (vector2D): (TODO) 
-	// ??
+	// INI ELEMENTOS DE JUEGO (vector2D): (TODO) -> en la constructora (?) (creo)
+	 
+	// enum texture name -> el indice tiene la info de la textura
+	enum TextureName Alien1{}, Alien2{}, Alien3{}, Nave{}, Bunker{}; // los corchetes vacios inicializan los elementos a 0
+	
+	// array de las texturas como tal de tipo texture (añadir el include y meterlas en la carpeta) !!!!!!
+	array<Texture*, NUM_TEXTURES> textures{};
 
 	// metodos publicos
 public:
 	// ---- constructora ----
 	// se cargan las texturas y se guardan en los arrays 
 	// necesario iniciar ahi el exit???? (falla si no hay nada) (no poner NUM_TEXTURES pq es estatica y no modificable)
-	// igual que en el vector yo haría un setPlayer(posicion(Vector2D)) y un getPlayer(posicion) 
 	// la contructora del game debe inicializar los objetos de juego en una posición
-
 	Game::Game() 
 		: exit(false) { }
-
 
 	// ---- destructora ----
 	Game::~Game();
@@ -89,6 +88,11 @@ public:
 	// ---- fireLaser -----
 	// dispara laseres wow
 	void fireLaser();
+
+	// game elements getters
+	Cannon* getCannon() {
+		return cannon;
+	}
 };
 
 #endif // GAME_H 
