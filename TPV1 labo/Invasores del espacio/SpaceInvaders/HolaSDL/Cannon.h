@@ -15,7 +15,7 @@ class Cannon
 private:
 	SDL_Texture* texture = nullptr; // punteron a su textura
 	Game* game = nullptr; // puntero al juego -> para lanzar laseres
-	Vector2D<int> position(); // posicion actual en Point2D !!!!!!!!!!!!!!!!!!! USAR POINT2D
+	Vector2D<int> position; // posicion actual en Point2D !!!!!!!!!!!!!!!!!!! USAR POINT2D
 	int lifes, // numero de vidas restantes
 		laserCoolDown; // tiempo de regarga del laser
 
@@ -26,7 +26,7 @@ private:
 public:
 	// ---- constructura ----
 	Cannon(Vector2D<int> position, SDL_Texture* texture, int lifes, int laserCoolDown)
-		: texture(texture), lifes(lifes), laserCoolDown(laserCoolDown) {}; // falta inicializar la position (estoy en ello je)
+		: texture(texture), lifes(lifes), laserCoolDown(laserCoolDown) {}; // falta inicializar la position (estoy en ello je) !!!!!!!!!
 	Cannon(const Cannon& cannon);
 
 	// ---- render ----
