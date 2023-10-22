@@ -16,6 +16,7 @@ class Game
 {
 	// atributos privados -> QUE NO VARIABLES
 private:
+
 	SDL_Window* window = nullptr; // puntero a ventana
 	SDL_Renderer* renderer = nullptr; // puntero a renderer !!!!!!! TODO EN EL MISMO RENDERER
 
@@ -39,7 +40,7 @@ private:
 	array<TextureSpec, NUM_TEXTURES> textureSpec{};
 
 	// declaración de los elementos de juego
-	Cannon* cannon;
+	//Cannon* cannon;
 
 	// INI ELEMENTOS DE JUEGO (vector2D): (TODO) -> en la constructora (?) (creo)
 	 
@@ -55,8 +56,8 @@ public:
 	// se cargan las texturas y se guardan en los arrays 
 	// necesario iniciar ahi el exit???? (falla si no hay nada) (no poner NUM_TEXTURES pq es estatica y no modificable)
 	// la contructora del game debe inicializar los objetos de juego en una posición
-	Game::Game() 
-		: exit(false) { }
+	Game::Game();
+
 
 	// ---- destructora ----
 	Game::~Game();
@@ -89,10 +90,17 @@ public:
 	// dispara laseres wow
 	void fireLaser();
 
+	/*
 	// game elements getters
 	Cannon* getCannon() {
 		return cannon;
 	}
+	*/
+
+	bool getExit() {
+		return exit;
+	}
+	
 };
 
 #endif // GAME_H 

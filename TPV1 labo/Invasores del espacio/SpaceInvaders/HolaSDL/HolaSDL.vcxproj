@@ -68,18 +68,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\textures\texture.cpp" />
     <ClCompile Include="Alien.cpp" />
     <ClCompile Include="Bunker.cpp" />
     <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="texture.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\textures\texture.h" />
     <ClInclude Include="Alien.h" />
     <ClInclude Include="Bunker.h" />
+    <ClInclude Include="C:\Users\ineso\Downloads\texture.h" />
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Game.h" />

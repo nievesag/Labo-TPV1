@@ -24,10 +24,13 @@ private:
 
 	// metodos publicos
 public:
+	/*
 	// ---- constructura ----
 	Cannon(Vector2D<int> position, SDL_Texture* texture, int lifes, int laserCoolDown)
 		: texture(texture), lifes(lifes), laserCoolDown(laserCoolDown) {}; // falta inicializar la position (estoy en ello je) !!!!!!!!!
 	Cannon(const Cannon& cannon);
+	*/
+	
 
 	// ---- render ----
 	// renderiza el estado del jugador

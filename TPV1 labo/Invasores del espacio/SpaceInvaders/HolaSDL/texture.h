@@ -4,10 +4,9 @@
 #include <SDL.h>
 #include <iostream>
 
-/*
- * Object-oriented wrapper for SDL textures with frame support
+/**
+ * Object-oriented wrapper for SDL textures with frame support.
  */
-
 class Texture
 {
 	SDL_Renderer* renderer = nullptr;
