@@ -14,6 +14,7 @@ array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
 	{ "..\Invasores del espacio\SpaceInvaders\images\aliens.png", 48, 32 },			  // alien 3
 	{ "..\Invasores del espacio\SpaceInvaders\images\spaceship.png", 34, 21 },		  // nave
 	{ "..\Invasores del espacio\SpaceInvaders\images\bunker.png", 88, 57 }			  // bunker
+		// !!!! usar texture root (LEER ENUNCIADO)
 };
 
 // constructora
@@ -45,6 +46,17 @@ Game::~Game()
 
 void Game::loadTextures()
 {
+	SDL_Texture* tex = nullptr;
+	SDL_Surface* surface = nullptr; // leer
+	for (int i = 0; i < NUM_TEXTURES; i++) {
 
+		// pasar url load etc noscuantitos como diaria ines
+		// surface = 
+
+		//
+		tex = SDL_CreateTextureFromSurface(renderer, surface);
+
+
+	}
 
 }

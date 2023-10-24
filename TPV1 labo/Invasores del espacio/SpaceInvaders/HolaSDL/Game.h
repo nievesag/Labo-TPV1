@@ -3,6 +3,7 @@
 
 #include "checkML.h"
 #include <SDL.h>
+#include "SDL_image.h"
 #include <array>
 #include "texture.h"
 #include "Vector2D.h"
@@ -14,22 +15,19 @@
 using namespace std;
 using uint = unsigned int;
 
-
 class Game
 {
 public:
-
 	// cantidad de texturas que va a haber
 	static const int NUM_TEXTURES = 5;
-
+	
+	// array de las texturas como tal de tipo texture (añadir el include y meterlas en la carpeta) !!!!!!
+	array<Texture*, NUM_TEXTURES> textures{};
 
 	// atributos privados -> QUE NO VARIABLES
 private:
-
 	SDL_Window* window = nullptr; // puntero a ventana
 	SDL_Renderer* renderer = nullptr; // puntero a renderer !!!!!!! TODO EN EL MISMO RENDERER
-
-	Alien* alien;
 
 	// tiene que ser estática porque es un atributo, constante para todos los objetos de la clase
 	// inicializarlas aqui
@@ -40,19 +38,15 @@ private:
 
 	// declaración de los elementos de juego
 	Cannon* cannon = nullptr;
+	Alien* alien;
 	 
 	// INI ELEMENTOS DE JUEGO (vector2D): (TODO) -> en la constructora (?) (creo)
 	
 	// enum texture name -> el indice tiene la info de la textura
 	enum TextureName Alien1 {}, Alien2{}, Alien3{}, Nave{}, Bunker{}; // los corchetes vacios inicializan los elementos a 0
-	
-	// array de las texturas como tal de tipo texture (añadir el include y meterlas en la carpeta) !!!!!!
-	array<Texture*, NUM_TEXTURES> textures{};
 
 	// metodos publicos
 public:
-	
-
 	// ---- constructora ----
 	// se cargan las texturas y se guardan en los arrays 
 	// necesario iniciar ahi el exit???? (falla si no hay nada) (no poner NUM_TEXTURES pq es estatica y no modificable)
