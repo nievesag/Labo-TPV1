@@ -7,15 +7,14 @@ struct TextureSpec
 	int nw, nh;
 };
 
-
-
 // ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo Texture* 
 array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
-	TextureSpec{"",0,0},
-	{}
-
+	TextureSpec{"..\Invasores del espacio\SpaceInvaders\images\aliens.png", 32, 32},  // alien 1
+	{ "..\Invasores del espacio\SpaceInvaders\images\aliens.png", 44, 32 },			  // alien 2
+	{ "..\Invasores del espacio\SpaceInvaders\images\aliens.png", 48, 32 },			  // alien 3
+	{ "..\Invasores del espacio\SpaceInvaders\images\spaceship.png", 34, 21 },		  // nave
+	{ "..\Invasores del espacio\SpaceInvaders\images\bunker.png", 88, 57 }			  // bunker
 };
-
 
 // constructora
 
@@ -43,16 +42,6 @@ Game::~Game()
 	SDL_Quit(); // cierra pantalla
 }
 
-void Game::textureArray()
-{
-	// ----------- ALIEN 1 ------------
-	textureSpec[Alien1].url = "";
-	textureSpec[Alien1].nw = 0;
-	textureSpec[Alien1].nh = 0;
-
-
-
-}
 
 void Game::loadTextures()
 {

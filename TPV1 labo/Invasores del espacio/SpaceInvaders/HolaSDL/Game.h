@@ -103,8 +103,6 @@ public:
 
 	// metodos auxiliares
 private:
-	void textureArray();
-
 	void loadTextures();
 };
 
