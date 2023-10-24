@@ -6,19 +6,30 @@
 #include <array>
 #include "texture.h"
 #include "Vector2D.h"
+#include "Cannon.h"
+#include "Alien.h"
 
 // #include <iostream>
 
 using namespace std;
 using uint = unsigned int;
 
+
 class Game
 {
+public:
+
+	// cantidad de texturas que va a haber
+	static const int NUM_TEXTURES = 5;
+
+
 	// atributos privados -> QUE NO VARIABLES
 private:
 
 	SDL_Window* window = nullptr; // puntero a ventana
 	SDL_Renderer* renderer = nullptr; // puntero a renderer !!!!!!! TODO EN EL MISMO RENDERER
+
+	Alien* alien;
 
 	// tiene que ser estática porque es un atributo, constante para todos los objetos de la clase
 	// inicializarlas aqui
@@ -27,37 +38,26 @@ private:
 
 	bool exit; // se llama exit (salida para los que no sepan catalan)
 
-	struct TextureSpec 
-	{
-		const char* url;
-		int nw, nh;
-	};
-
-	// cantidad de texturas que va a haber
-	static const int NUM_TEXTURES = 5;
-
-	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo Texture* 
-	array<TextureSpec, NUM_TEXTURES> textureSpec{};
-
 	// declaración de los elementos de juego
-	//Cannon* cannon;
-
-	// INI ELEMENTOS DE JUEGO (vector2D): (TODO) -> en la constructora (?) (creo)
+	Cannon* cannon = nullptr;
 	 
+	// INI ELEMENTOS DE JUEGO (vector2D): (TODO) -> en la constructora (?) (creo)
+	
 	// enum texture name -> el indice tiene la info de la textura
-	enum TextureName Alien1{}, Alien2{}, Alien3{}, Nave{}, Bunker{}; // los corchetes vacios inicializan los elementos a 0
+	enum TextureName Alien1 {}, Alien2{}, Alien3{}, Nave{}, Bunker{}; // los corchetes vacios inicializan los elementos a 0
 	
 	// array de las texturas como tal de tipo texture (añadir el include y meterlas en la carpeta) !!!!!!
 	array<Texture*, NUM_TEXTURES> textures{};
 
 	// metodos publicos
 public:
+	
+
 	// ---- constructora ----
 	// se cargan las texturas y se guardan en los arrays 
 	// necesario iniciar ahi el exit???? (falla si no hay nada) (no poner NUM_TEXTURES pq es estatica y no modificable)
 	// la contructora del game debe inicializar los objetos de juego en una posición
 	Game::Game();
-
 
 	// ---- destructora ----
 	Game::~Game();
@@ -100,7 +100,12 @@ public:
 	bool getExit() {
 		return exit;
 	}
-	
+
+	// metodos auxiliares
+private:
+	void textureArray();
+
+	void loadTextures();
 };
 
 #endif // GAME_H 

@@ -85,10 +85,11 @@ public:
 		return aux;
 	}
 	
-	// establecer alias
-	template <typename T> using Point2D = Vector2D;
+
 };
 
+	// establecer alias
+	template <typename T> using Point2D = Vector2D<T>;
 
 // CODIGO PARA PROBAR VECTOR2D (PONER EN EL MAIN)
 // (poner #include "Vector2D.h"; en el main para probarlo individualmente)

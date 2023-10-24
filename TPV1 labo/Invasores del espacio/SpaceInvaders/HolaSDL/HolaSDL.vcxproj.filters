@@ -59,7 +59,7 @@
     <ClInclude Include="Bunker.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\ineso\Downloads\texture.h">
+    <ClInclude Include="texture.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

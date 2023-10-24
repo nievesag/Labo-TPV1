@@ -4,7 +4,10 @@
 #include "checkML.h"
 #include <SDL.h>
 #include "Vector2D.h"
-#include "Game.h"
+//#include "Game.h"
+
+// es una promesa de la existencia de la clase game
+class Game;
 
 using namespace std;
 using uint = unsigned int;
@@ -15,23 +18,20 @@ class Cannon
 private:
 	SDL_Texture* texture = nullptr; // punteron a su textura
 	Game* game = nullptr; // puntero al juego -> para lanzar laseres
-	Vector2D<int> position; // posicion actual en Point2D !!!!!!!!!!!!!!!!!!! USAR POINT2D
-	int lifes, // numero de vidas restantes
-		laserCoolDown; // tiempo de regarga del laser
+	Point2D<int> position; // posicion actual en Point2D
+	int lifes,				 // numero de vidas restantes
+		laserCoolDown;			// tiempo de regarga del laser
 
-	// no sé si tiene que ser un enum, es para los eventos -> int?
-	enum movState still {}, right{}, left{}; // estados de movimiento
+	Vector2D<int> direction;
 
 	// metodos publicos
 public:
-	/*
-	// ---- constructura ----
-	Cannon(Vector2D<int> position, SDL_Texture* texture, int lifes, int laserCoolDown)
-		: texture(texture), lifes(lifes), laserCoolDown(laserCoolDown) {}; // falta inicializar la position (estoy en ello je) !!!!!!!!!
-	Cannon(const Cannon& cannon);
-	*/
 	
-
+	// ---- constructura ----
+	Cannon(Point2D<int> position, SDL_Texture* texture, int lifes, int laserCoolDown, Vector2D<int> direction)
+		: position(position), texture(texture), lifes(lifes), laserCoolDown(laserCoolDown), direction(direction) {}; // falta inicializar la position (estoy en ello je) !!!!!!!!!
+	Cannon(const Cannon& cannon);
+	
 	// ---- render ----
 	// renderiza el estado del jugador
 	void render();

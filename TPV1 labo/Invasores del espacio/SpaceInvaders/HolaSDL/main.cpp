@@ -18,15 +18,10 @@ void xd()
 
 int main(int argc, char* argv[])
 {
-	
-	Game* ay = new Game();
+	// no hace borrarlo porque es estatico, se borra solo al salir de ambito (si fuese puntero: delete ay;)
+	Game ay;
 
-	//SDL_Delay(3000);
-
-	delete[] ay;
-	
-	SDL_Quit(); // cierra pantalla
-	
+	SDL_Delay(3000);
 
 	return 69;
 }

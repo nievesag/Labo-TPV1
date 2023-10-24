@@ -4,7 +4,11 @@
 #include "checkML.h"
 #include <SDL.h>
 #include "Vector2D.h"
-#include "Game.h"
+//#include "Game.h"
+
+// para evitar la inclusión cruzada
+// estableces la existencia de la clase porque solo se va a usar a través de un puntero
+class Game; 
 
 using namespace std;
 using uint = unsigned int;

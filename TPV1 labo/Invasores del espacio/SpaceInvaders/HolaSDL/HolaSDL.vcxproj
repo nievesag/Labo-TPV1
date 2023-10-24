@@ -79,11 +79,11 @@
   <ItemGroup>
     <ClInclude Include="Alien.h" />
     <ClInclude Include="Bunker.h" />
-    <ClInclude Include="C:\Users\ineso\Downloads\texture.h" />
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Laser.h" />
+    <ClInclude Include="texture.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
