@@ -47,13 +47,12 @@ Game::~Game()
 
 void Game::loadTextures()
 {
-	//SDL_Texture* tex = nullptr;
-	//SDL_Surface* surface = nullptr; // leer
-	//const char* file;
+	// bucle para rellenar el array de texturas
 	for (int i = 0; i < NUM_TEXTURES; i++) {
 
+		// crea la textura con el url y tal
 		Texture* tex = new Texture(renderer, textureSpec[i].url, textureSpec[i].nh, textureSpec[i].nw);
-
+		// la mete en el array
 		textures[i] = tex;
 	}
 
