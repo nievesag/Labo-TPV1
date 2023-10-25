@@ -9,16 +9,15 @@ struct TextureSpec
 
 // ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo Texture* 
 array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
-	TextureSpec{"..\Invasores del espacio\SpaceInvaders\images\aliens.png", 32, 32},  // alien 1
-	{ "..\Invasores del espacio\SpaceInvaders\images\aliens.png", 44, 32 },			  // alien 2
-	{ "..\Invasores del espacio\SpaceInvaders\images\aliens.png", 48, 32 },			  // alien 3
-	{ "..\Invasores del espacio\SpaceInvaders\images\spaceship.png", 34, 21 },		  // nave
-	{ "..\Invasores del espacio\SpaceInvaders\images\bunker.png", 88, 57 }			  // bunker
+	TextureSpec{"..\\images\\aliens.png", 32, 32},  // alien 1
+	{ "..\\images\\aliens.png", 44, 32 },			  // alien 2
+	{ "..\\images\\aliens.png", 48, 32 },			  // alien 3
+	{ "..\\images\\spaceship.png", 34, 21 },		  // nave
+	{ "..\\images\\bunker.png", 88, 57 }			  // bunker
 		// !!!! usar texture root (LEER ENUNCIADO)
 };
 
 // constructora
-
 Game::Game()
 {
 	int winX, winY; // Posición de la ventana
@@ -30,6 +29,8 @@ Game::Game()
 	window = SDL_CreateWindow("boo", winX, winY, winWidth, winHeight, SDL_WINDOW_SHOWN);
 
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+	loadTextures();
 }
 
 Game::~Game()
@@ -46,17 +47,14 @@ Game::~Game()
 
 void Game::loadTextures()
 {
-	SDL_Texture* tex = nullptr;
-	SDL_Surface* surface = nullptr; // leer
+	//SDL_Texture* tex = nullptr;
+	//SDL_Surface* surface = nullptr; // leer
+	//const char* file;
 	for (int i = 0; i < NUM_TEXTURES; i++) {
 
-		// pasar url load etc noscuantitos como diaria ines
-		// surface = 
+		Texture* tex = new Texture(renderer, textureSpec[i].url, textureSpec[i].nh, textureSpec[i].nw);
 
-		//
-		tex = SDL_CreateTextureFromSurface(renderer, surface);
-
-
+		textures[i] = tex;
 	}
 
 }
