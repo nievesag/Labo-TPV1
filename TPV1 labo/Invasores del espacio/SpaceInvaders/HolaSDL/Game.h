@@ -1,55 +1,67 @@
 #ifndef GAME_H
 #define GAME_H
 
+// MEMORY LEAKS
 #include "checkML.h"
+
+// SDL
 #include <SDL.h>
 #include "SDL_image.h"
+
+// AUX
 #include <array>
+	// classes
 #include "texture.h"
 #include "Vector2D.h"
+
+// GAME ELEMENTS
 #include "Cannon.h"
 #include "Alien.h"
-
-// #include <iostream>
+#include "Bunker.h"
+#include "Laser.h"
 
 using namespace std;
 using uint = unsigned int;
 
+// ------------------------------ GAME ------------------------------
 class Game
 {
+	// ----- TEXTURES -----
 public:
 	// cantidad de texturas que va a haber
 	static const int NUM_TEXTURES = 5;
 	
-	// array de las texturas como tal de tipo texture (añadir el include y meterlas en la carpeta) !!!!!!
+	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo Texture* 
 	array<Texture*, NUM_TEXTURES> textures{};
 
-	// atributos privados -> QUE NO VARIABLES
+
+
+	// ----- ATRIBUTOS PRIVADOS -----
 private:
 	SDL_Window* window = nullptr; // puntero a ventana
 	SDL_Renderer* renderer = nullptr; // puntero a renderer !!!!!!! TODO EN EL MISMO RENDERER
 
-	// tiene que ser estática porque es un atributo, constante para todos los objetos de la clase
-	// inicializarlas aqui
+	// constantes de tamaño de pantalla -> inicializar en h
+	// tiene que ser estática porque es un atributo (constante para todos los objetos de la clase)
 	static constexpr uint winWidth = 800; 
 	static constexpr uint winHeight = 600;
 
-	bool exit; // se llama exit (salida para los que no sepan catalan)
+	// booleano salida del juego
+	bool exit;
 
 	// declaración de los elementos de juego
-	Cannon* cannon = nullptr;
+	Cannon* cannon;
 	Alien* alien;
-	 
-	// INI ELEMENTOS DE JUEGO (vector2D): (TODO) -> en la constructora (?) (creo)
+	Bunker* bunker;
 	
 	// enum texture name -> el indice tiene la info de la textura
 	enum TextureName Alien1 {}, Alien2{}, Alien3{}, Nave{}, Bunker{}; // los corchetes vacios inicializan los elementos a 0
 
-	// metodos publicos
+
+
+	// ----- METODOS PUBLICOS -----
 public:
 	// ---- constructora ----
-	// se cargan las texturas y se guardan en los arrays 
-	// necesario iniciar ahi el exit???? (falla si no hay nada) (no poner NUM_TEXTURES pq es estatica y no modificable)
 	// la contructora del game debe inicializar los objetos de juego en una posición
 	Game::Game();
 
@@ -84,19 +96,23 @@ public:
 	// dispara laseres wow
 	void fireLaser();
 
+	// ---- getters ----
 	/*
-	// game elements getters
 	Cannon* getCannon() {
 		return cannon;
 	}
-	*/
 
 	bool getExit() {
 		return exit;
 	}
+	*/
 
-	// metodos auxiliares
+
+
+	// ----- METODOS AUXILIARES -----
 private:
+	// ---- loadTexture ----
+	// se cargan las texturas y se guardan en los arrays
 	void loadTextures();
 };
 

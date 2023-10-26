@@ -1,20 +1,23 @@
 #include "Game.h"
 
+using namespace std;
+
 struct TextureSpec
 {
 	const char* url;
+
 	// width height
 	int nw, nh;
 };
 
-// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo Texture* 
+// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo TextureSpec 
+// !!!! usar texture root (LEER ENUNCIADO)
 array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
-	TextureSpec{"..\\images\\aliens.png", 32, 32},  // alien 1
+	TextureSpec{"..\\images\\aliens.png", 32, 32},	  // alien 1
 	{ "..\\images\\aliens.png", 44, 32 },			  // alien 2
 	{ "..\\images\\aliens.png", 48, 32 },			  // alien 3
 	{ "..\\images\\spaceship.png", 34, 21 },		  // nave
 	{ "..\\images\\bunker.png", 88, 57 }			  // bunker
-		// !!!! usar texture root (LEER ENUNCIADO)
 };
 
 // constructora
@@ -33,6 +36,7 @@ Game::Game()
 	loadTextures();
 }
 
+// destructora
 Game::~Game()
 {
 	// memoria dinamica que borrar creo
@@ -44,16 +48,15 @@ Game::~Game()
 	SDL_Quit(); // cierra pantalla
 }
 
-
 void Game::loadTextures()
 {
 	// bucle para rellenar el array de texturas
 	for (int i = 0; i < NUM_TEXTURES; i++) {
 
-		// crea la textura con el url y tal
+		// crea la textura con el url, width y height
 		Texture* tex = new Texture(renderer, textureSpec[i].url, textureSpec[i].nh, textureSpec[i].nw);
+
 		// la mete en el array
 		textures[i] = tex;
 	}
-
 }
