@@ -13,8 +13,6 @@ void Alien::render()
 	destRect.x = position.getX();
 	destRect.y = position.getY();
 
-	std::cout << destRect.w << " " << destRect.h << endl;
-
 	// lo mete en el render
 	texture->renderFrame(destRect, type-1, 0);
 }

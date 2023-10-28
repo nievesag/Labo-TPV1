@@ -13,9 +13,9 @@ struct TextureSpec
 // ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo TextureSpec 
 // !!!! usar texture root (LEER ENUNCIADO)
 array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
-	TextureSpec{"..\\images\\aliens.png", 2, 3},	  // alien 1 // 32,32
-	{ "..\\images\\aliens.png", 2, 3 },			  // alien 2 // 44,32
-	{ "..\\images\\aliens.png", 2, 3 },			  // alien 3 // 48,32
+	TextureSpec{"..\\images\\aliens2.png", 2, 3},	  // alien 1 // 32,32
+	{ "..\\images\\aliens2.png", 2, 3 },			  // alien 2 // 44,32
+	{ "..\\images\\aliens2.png", 2, 3 },			  // alien 3 // 48,32
 	{ "..\\images\\spaceship.png", 1, 1},		  // nave	 // 34,21
 	{ "..\\images\\bunker.png", 1, 3 }			  // bunker  // 88,57
 };
@@ -35,17 +35,7 @@ Game::Game()
 
 	loadTextures();
 
-	// placeholder para hacer la nave
-	Point2D<int> coord(400,500);
-	Vector2D<int> vel(0,0);
-
-	cannon = new Cannon(coord, textures[Nave], 1, 10, vel);
-
-
-	// placeholder para hacer un alien
-	Point2D<int> acoord(111, 50);
-
-	alien = new Alien(acoord, textures[Alien1], 1);
+	loadMap();
 	
 }
 
@@ -92,5 +82,21 @@ void Game::loadTextures()
 		// la mete en el array
 		textures[i] = tex;
 	}
+}
+
+void Game::loadMap()
+{
+	// placeholder para hacer la nave
+	Point2D<int> coord(400, 500);
+	Vector2D<int> vel(0, 0);
+
+	cannon = new Cannon(coord, textures[Nave], 1, 10, vel);
+
+	// placeholder para hacer un alien
+	Point2D<int> acoord(111, 50);
+
+	alien = new Alien(acoord, textures[Alien1], 1);
+
+
 }
 

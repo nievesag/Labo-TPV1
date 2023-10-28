@@ -112,6 +112,12 @@ private:
 	// ---- loadTexture ----
 	// se cargan las texturas y se guardan en los arrays
 	void loadTextures();
+
+	// ----- loadMap ------
+	// para poder cargar el mapa con la informacion necesaria
+	// (crea los aliens y tal)
+	// pretendo que aqui se lean los txt y que se hagan bucles para crear los bichitos
+	void loadMap();
 };
 
 #endif // GAME_H 
