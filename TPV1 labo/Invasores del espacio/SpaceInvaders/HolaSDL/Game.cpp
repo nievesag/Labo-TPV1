@@ -40,7 +40,6 @@ Game::Game()
 	Vector2D<int> vel(1,0);
 
 	cannon = new Cannon(coord, textures[Nave], 1, 10, vel);
-
 	
 
 }
