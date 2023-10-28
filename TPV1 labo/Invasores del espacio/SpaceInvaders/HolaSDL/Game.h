@@ -35,7 +35,6 @@ public:
 	array<Texture*, NUM_TEXTURES> textures{};
 
 
-
 	// ----- ATRIBUTOS PRIVADOS -----
 private:
 	SDL_Window* window = nullptr; // puntero a ventana
@@ -49,16 +48,15 @@ private:
 	// booleano salida del juego
 	bool exit;
 
+	// enum texture name -> el indice tiene la info de la textura
+	enum TextureName Alien1, Alien2, Alien3, Nave, Escudo; // los corchetes vacios inicializan los elementos a 0
+
 	// declaración de los elementos de juego
 	Cannon* cannon;
 	Alien* alien;
-	Bunker* bunker;
+	//Bunker* bunker;
 	
-	// enum texture name -> el indice tiene la info de la textura
-	enum TextureName Alien1 {}, Alien2{}, Alien3{}, Nave{}, Bunker{}; // los corchetes vacios inicializan los elementos a 0
-
-
-
+	
 	// ----- METODOS PUBLICOS -----
 public:
 	// ---- constructora ----

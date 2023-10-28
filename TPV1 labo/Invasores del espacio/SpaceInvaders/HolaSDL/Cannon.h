@@ -4,7 +4,7 @@
 #include "checkML.h"
 #include <SDL.h>
 #include "Vector2D.h"
-//#include "Game.h"
+#include "texture.h"
 
 // es una promesa de la existencia de la clase game
 class Game;
@@ -16,7 +16,8 @@ class Cannon
 {
 	// atributos privados
 private:
-	SDL_Texture* texture = nullptr; // punteron a su textura
+	//SDL_Texture* texture = nullptr; // punteron a su textura
+	Texture* texture = nullptr;	 // punteron a su textura
 	Game* game = nullptr; // puntero al juego -> para lanzar laseres
 	Point2D<int> position; // posicion actual en Point2D
 	int lifes,				 // numero de vidas restantes
@@ -28,7 +29,7 @@ private:
 public:
 	
 	// ---- constructura ----
-	Cannon(Point2D<int> position, SDL_Texture* texture, int lifes, int laserCoolDown, Vector2D<int> direction)
+	Cannon(Point2D<int> position, Texture* texture, int lifes, int laserCoolDown, Vector2D<int> direction)
 		: position(position), texture(texture), lifes(lifes), laserCoolDown(laserCoolDown), direction(direction) {}; // falta inicializar la position (estoy en ello je) !!!!!!!!!
 	Cannon(const Cannon& cannon);
 	

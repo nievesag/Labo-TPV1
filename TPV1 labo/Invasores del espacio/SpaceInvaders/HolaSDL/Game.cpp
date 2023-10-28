@@ -34,6 +34,15 @@ Game::Game()
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
 	loadTextures();
+
+	// placeholder para hacer la nave
+	Point2D<int> coord(400,500);
+	Vector2D<int> vel(1,0);
+
+	cannon = new Cannon(coord, textures[Nave], 1, 10, vel);
+
+	
+
 }
 
 // destructora
@@ -48,6 +57,21 @@ Game::~Game()
 	SDL_Quit(); // cierra pantalla
 }
 
+void Game::run()
+{
+	render();
+
+
+}
+
+void Game::render()
+{
+
+	cannon->render();
+
+	SDL_RenderPresent(renderer);
+}
+
 void Game::loadTextures()
 {
 	// bucle para rellenar el array de texturas
@@ -60,3 +84,4 @@ void Game::loadTextures()
 		textures[i] = tex;
 	}
 }
+
