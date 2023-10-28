@@ -6,8 +6,8 @@ void Cannon::render()
 	SDL_Rect destRect;
 
 	// tamaño
-	destRect.w = texture->getFrameWidth()*20;
-	destRect.h = texture->getFrameHeight()*20;
+	destRect.w = texture->getFrameWidth();
+	destRect.h = texture->getFrameHeight();
 
 	// posicion
 	destRect.x = position.getX();

@@ -4,6 +4,7 @@
 #include "checkML.h"
 #include <SDL.h>
 #include "Vector2D.h"
+#include "texture.h"
 //#include "Game.h"
 
 // para evitar la inclusión cruzada
@@ -19,14 +20,16 @@ class Alien
 private:
 	Vector2D<int> position; // posicion actual en Point2D !!!!!!!!!!!!!!!!!!! USAR POINT2D
 	int type;
-	SDL_Texture* texture = nullptr; // punteron a su textura
+	Texture* texture = nullptr; // punteron a su textura
 	Game* game = nullptr; // puntero al juego -> para saber la dir común de movimiento de ese tipo de aliens
 						  // + informar de que ya no se puede desplazar en ella
 
-	// metodos publicos
+	// metodos publicos 
 public:
 	// ---- constructora ----
-
+	Alien(Point2D<int> position, Texture* texture, int type)
+		: position(position), texture(texture), type(type) {}; // falta inicializar la position (estoy en ello je) !!!!!!!!!
+	Alien(const Alien& alien);
 
 	// ---- render ----
 	void render();

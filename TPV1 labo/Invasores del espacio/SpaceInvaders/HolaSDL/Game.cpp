@@ -13,11 +13,11 @@ struct TextureSpec
 // ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo TextureSpec 
 // !!!! usar texture root (LEER ENUNCIADO)
 array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
-	TextureSpec{"..\\images\\aliens.png", 32, 32},	  // alien 1
-	{ "..\\images\\aliens.png", 44, 32 },			  // alien 2
-	{ "..\\images\\aliens.png", 48, 32 },			  // alien 3
-	{ "..\\images\\spaceship.png", 34, 21 },		  // nave
-	{ "..\\images\\bunker.png", 88, 57 }			  // bunker
+	TextureSpec{"..\\images\\aliens.png", 3, 3},	  // alien 1 // 32,32
+	{ "..\\images\\aliens.png", 3, 3 },			  // alien 2 // 44,32
+	{ "..\\images\\aliens.png", 3, 3 },			  // alien 3 // 48,32
+	{ "..\\images\\spaceship.png", 1, 1},		  // nave	 // 34,21
+	{ "..\\images\\bunker.png", 1, 3 }			  // bunker  // 88,57
 };
 
 // constructora
@@ -37,19 +37,22 @@ Game::Game()
 
 	// placeholder para hacer la nave
 	Point2D<int> coord(400,500);
-	Vector2D<int> vel(1,0);
+	Vector2D<int> vel(0,0);
 
 	cannon = new Cannon(coord, textures[Nave], 1, 10, vel);
-	
 
+
+	// placeholder para hacer un alien
+	Point2D<int> acoord(111, 50);
+
+	alien = new Alien(acoord, textures[Alien1], 1);
+	
 }
 
 // destructora
 Game::~Game()
 {
 	// memoria dinamica que borrar creo
-	// SDL_DestroyRenderer(renderer);
-	// da error por razones que desconzco
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	
@@ -58,16 +61,23 @@ Game::~Game()
 
 void Game::run()
 {
+	// renderiza el juego
 	render();
-
 
 }
 
 void Game::render()
 {
+	// render de los aliens
+	alien->render();
 
+	// render del cannon
 	cannon->render();
 
+	// render del bunker
+
+
+	// render de todo
 	SDL_RenderPresent(renderer);
 }
 
