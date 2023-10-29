@@ -62,7 +62,8 @@ void Game::render()
 	SDL_RenderClear(renderer);
 
 	// render de los aliens
-	alien->render();
+	for (int i = 0; i < aliens.size(); i++)
+		aliens[i]->render();
 
 	// render del cannon
 	cannon->render();
@@ -89,7 +90,7 @@ void Game::loadTextures()
 
 void Game::loadMap()
 {
-	ifstream in("..\\mapas\\prueba.txt");
+	ifstream in("..\\mapas\\original.txt");
 	int type;
 	int x, y;
 	int atype;
