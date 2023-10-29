@@ -29,8 +29,13 @@ private:
 public:
 	
 	// ---- constructura ----
-	Cannon(Point2D<int> position, Texture* texture, int lifes, int laserCoolDown, Vector2D<int> direction)
-		: position(position), texture(texture), lifes(lifes), laserCoolDown(laserCoolDown), direction(direction) {}; // falta inicializar la position (estoy en ello je) !!!!!!!!!
+	Cannon(Point2D<int> position, Texture* texture, int lifes, int laserCoolDown, 
+		Vector2D<int> direction, Game* game)
+		// inicializacion de los valores
+		: position(position), texture(texture), lifes(lifes), laserCoolDown(laserCoolDown), 
+		direction(direction), game(game) {}; // falta inicializar la position (estoy en ello je) !!!!!!!!!
+
+	//
 	Cannon(const Cannon& cannon);
 	
 	// ---- render ----

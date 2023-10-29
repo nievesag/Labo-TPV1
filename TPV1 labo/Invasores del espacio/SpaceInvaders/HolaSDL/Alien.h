@@ -27,8 +27,11 @@ private:
 	// metodos publicos 
 public:
 	// ---- constructora ----
-	Alien(Point2D<int> position, Texture* texture, int type)
-		: position(position), texture(texture), type(type) {}; // falta inicializar la position (estoy en ello je) !!!!!!!!!
+	Alien(Point2D<int> position, Texture* texture, int type, Game* game)
+		: position(position), texture(texture), type(type), game(game) {}; 
+	// falta inicializar la position (estoy en ello je) !!!!!!!!!
+
+	//
 	Alien(const Alien& oldalien);
 
 	// ---- render ----

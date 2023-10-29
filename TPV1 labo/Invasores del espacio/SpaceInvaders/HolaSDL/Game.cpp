@@ -109,13 +109,13 @@ void Game::loadMap()
 		if (type == 0) {
 			Vector2D<int> vel(0, 0);
 
-			cannon = new Cannon(coord, textures[Nave], 1, 10, vel);
+			cannon = new Cannon(coord, textures[Nave], 1, 10, vel, this);
 		}
 		// si es un alien
 		else if (type == 1) {
 			in >> atype;
 
-			Alien* alien = new Alien(coord, textures[atype], 1);
+			Alien* alien = new Alien(coord, textures[atype], 1, this);
 
 			aliens.push_back(alien);
 
