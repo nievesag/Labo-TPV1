@@ -3,8 +3,12 @@
 
 #include "checkML.h"
 #include <SDL.h>
+#include "texture.h"
 #include "Vector2D.h"
-#include "Game.h"
+
+// para evitar la inclusión cruzada
+// estableces la existencia de la clase porque solo se va a usar a través de un puntero
+class Game;
 
 using namespace std;
 using uint = unsigned int;
@@ -15,12 +19,15 @@ class Bunker
 private:
 	Vector2D<int> position; // posicion actual en Point2D !!!!!!!!!!!!!!!!!!! USAR POINT2D
 	int lifes; // vidas restantes
-	SDL_Texture* texture = nullptr; // punteron a su textura
+	Texture* texture = nullptr; // punteron a su textura
 
 	// metodos publicos
 public:
 	// ---- constructora ----
-
+	Bunker(Point2D<int> position, Texture* texture, int lifes)
+		// inicializacion de los valores
+		: position(position), texture(texture), lifes(lifes){}; 
+	// falta inicializar la position (estoy en ello je) !!!!!!!!!
 
 	// ---- render ----
 	void render();

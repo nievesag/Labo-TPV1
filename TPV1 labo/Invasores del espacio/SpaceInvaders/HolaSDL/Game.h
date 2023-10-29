@@ -51,12 +51,12 @@ private:
 	bool exit;
 
 	// enum texture name -> el indice tiene la info de la textura
-	enum TextureName {Alien1, Alien2, Alien3, Nave, Bunker}; // los corchetes vacios inicializan los elementos a 0
+	enum TextureName {Alien1, Alien2, Alien3, Nave, Escudo }; // los corchetes vacios inicializan los elementos a 0
 
 	// declaración de los elementos de juego
 	Cannon* cannon;
 	vector<Alien*> aliens;
-	//vector<Bunker*> bunkers;
+	vector<Bunker*> bunkers;
 	
 	
 	// ----- METODOS PUBLICOS -----
