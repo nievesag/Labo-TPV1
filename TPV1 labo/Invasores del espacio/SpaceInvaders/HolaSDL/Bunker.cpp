@@ -14,5 +14,5 @@ void Bunker::render()
 	destRect.y = position.getY();
 
 	// lo mete en el render
-	texture->render(destRect);
+	texture->renderFrame(destRect, 0, 0);
 }
