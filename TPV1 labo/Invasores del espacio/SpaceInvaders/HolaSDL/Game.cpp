@@ -96,8 +96,6 @@ void Game::loadMap()
 	int type;
 	int x, y;
 	int atype;
-	int contador = 0;
-
 
 	// in.eof() devuelve si se ha acabado el fichero
 	while (!in.eof()) {
@@ -120,8 +118,6 @@ void Game::loadMap()
 			Alien* alien = new Alien(coord, textures[atype], 1, this);
 
 			aliens.push_back(alien);
-
-			contador++;
 		}
 		// si es un bunker
 		else if (type == 2) {
