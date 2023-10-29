@@ -1,5 +1,7 @@
 #include "Alien.h"
 
+
+
 void Alien::render()
 {
 	// posicion para el coso 

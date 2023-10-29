@@ -10,6 +10,8 @@
 
 // AUX
 #include <array>
+#include <vector>
+#include <fstream>
 	// classes
 #include "texture.h"
 #include "Vector2D.h"
@@ -53,8 +55,8 @@ private:
 
 	// declaración de los elementos de juego
 	Cannon* cannon;
-	Alien* alien;
-	//Bunker* bunker;
+	vector<Alien*> aliens;
+	//vector<Bunker*> bunkers;
 	
 	
 	// ----- METODOS PUBLICOS -----

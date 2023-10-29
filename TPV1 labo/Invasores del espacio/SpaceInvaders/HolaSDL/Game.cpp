@@ -58,6 +58,9 @@ void Game::run()
 
 void Game::render()
 {
+	// limpia pantalla
+	SDL_RenderClear(renderer);
+
 	// render de los aliens
 	alien->render();
 
@@ -86,16 +89,45 @@ void Game::loadTextures()
 
 void Game::loadMap()
 {
-	// placeholder para hacer la nave
-	Point2D<int> coord(400, 500);
-	Vector2D<int> vel(0, 0);
+	ifstream in("..\\mapas\\prueba.txt");
+	int type;
+	int x, y;
+	int atype;
+	int contador = 0;
 
-	cannon = new Cannon(coord, textures[Nave], 1, 10, vel);
 
-	// placeholder para hacer un alien
-	Point2D<int> acoord(111, 50);
+	// in.eof() devuelve si se ha acabado el fichero
+	while (!in.eof()) {
+		in >> type;
+		in >> x;
+		in >> y;
+		Point2D<int> coord(x, y);
 
-	alien = new Alien(acoord, textures[Alien1], 1);
+
+		// si es la nave
+		if (type == 0) {
+			Vector2D<int> vel(0, 0);
+
+			cannon = new Cannon(coord, textures[Nave], 1, 10, vel);
+		}
+		// si es un alien
+		else if (type == 1) {
+			in >> atype;
+
+			Alien* alien = new Alien(coord, textures[atype], 1);
+
+			aliens.push_back(alien);
+
+			contador++;
+		}
+		// si es un bunker
+		else if (type == 2) {
+
+			// bunker
+		}
+	}
+
+	
 
 
 }

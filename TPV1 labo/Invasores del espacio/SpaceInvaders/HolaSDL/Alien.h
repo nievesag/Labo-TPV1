@@ -29,7 +29,7 @@ public:
 	// ---- constructora ----
 	Alien(Point2D<int> position, Texture* texture, int type)
 		: position(position), texture(texture), type(type) {}; // falta inicializar la position (estoy en ello je) !!!!!!!!!
-	Alien(const Alien& alien);
+	Alien(const Alien& oldalien);
 
 	// ---- render ----
 	void render();
