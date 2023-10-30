@@ -1,4 +1,5 @@
 #include "Cannon.h"
+#include "Game.h"
 
 void Cannon::render()
 {
@@ -76,13 +77,17 @@ void Cannon::movement()
 		}
 	}
 
-	//position = position + (direction * speed);
 
+	//if(position.getX() > 0 && position.getX() < game->getWinWidth()-texture->getFrameWidth())
 	position.setX(position.getX() + (direction.getX() * speed));
-	position.setY(position.getY() + (direction.getY() * speed));
+
+	if (position.getX() < 0)
+		position.setX(0);
+	else if(position.getX() > game->getWinWidth()-texture->getFrameWidth())
+		position.setX(game->getWinWidth() - texture->getFrameWidth());
 
 
-
+	/*
 	// debug (placeholder)
 	if (keyB) {
 
@@ -92,5 +97,7 @@ void Cannon::movement()
 
 		//std::cout << keyA << " " << keyD << endl;
 	}
+	*/
+	
 	
 }
