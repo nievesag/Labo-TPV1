@@ -36,6 +36,7 @@ Game::Game()
 	loadTextures();
 
 	loadMap();
+
 }
 
 // destructora
@@ -122,8 +123,15 @@ void Game::run()
 // ACTUALIZAR 
 void Game::update()
 {
+	// update de los aliens
+	for (int i = 0; i < aliens.size(); i++)
+		aliens[i]->update();
+
 	// update de cada elemneto de juego
 	cannon->update();
+
+	// updare de los bunkers
+
 }
 
 // PINTAR
@@ -165,4 +173,22 @@ void Game::handleEvents()
 	}
 
 	// update current frame + render current frame
+}
+
+// devuelve la direccion
+int Game::getDirection() {
+
+	//return alienDir;
+
+	return alienDir;
+}	
+
+// cambia la direccion
+void Game::cannotMove() {
+
+	alienDir = -alienDir;
+
+	for (int i = 0; i < aliens.size(); i++) {
+		aliens[i]->lowerAlien();
+	}
 }

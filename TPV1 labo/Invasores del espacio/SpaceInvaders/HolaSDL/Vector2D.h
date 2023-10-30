@@ -21,6 +21,7 @@ public:
 	Vector2D::Vector2D(T x, T y)
 		: x(x), y(y) {} // los corchetes vacios inicializa las variables a 0
 
+
 	// constructora con un vector (deberiamos ponerlo con el setter????) -> 
 	// no entiendo por que da error oop
 	// Vector2D::Vector2D(const Vector2D& vec) 

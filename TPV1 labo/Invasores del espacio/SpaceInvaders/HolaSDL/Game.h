@@ -25,6 +25,7 @@
 using namespace std;
 using uint = unsigned int;
 
+
 // ------------------------------ GAME ------------------------------
 class Game
 {
@@ -44,11 +45,13 @@ private:
 
 	// constantes de tamaño de pantalla -> inicializar en h
 	// tiene que ser estática porque es un atributo (constante para todos los objetos de la clase)
-	static constexpr uint winWidth = 800; 
+	static constexpr uint winWidth = 800;
 	static constexpr uint winHeight = 600;
 
 	// booleano salida del juego
 	bool exit;
+
+	int alienDir = 1;
 
 	// enum texture name -> el indice tiene la info de la textura
 	enum TextureName {Alien1, Alien2, Alien3, Nave, Escudo};
@@ -85,11 +88,11 @@ public:
 
 	// ---- getDirection ----
 	// direccion de movimiento de los alienigenas
-	void getDirection();
+	int getDirection();
 
 	// ---- cannotMove ----
 	// confirma si se pueden seguir moviendo en la misma direccion los aliens
-	bool cannotMove();
+	void cannotMove();
 
 	// ---- fireLaser -----
 	// dispara laseres wow
@@ -105,6 +108,14 @@ public:
 		return exit;
 	}
 	*/
+
+	uint getWinWidth() {
+		return winWidth;
+	}
+
+	uint getWinHeight() {
+		return winHeight;
+	}
 
 
 	// ----- METODOS AUXILIARES -----

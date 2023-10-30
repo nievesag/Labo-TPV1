@@ -88,11 +88,9 @@ void Cannon::movement()
 
 		//std::cout << position.getX() << " " << position.getY() << endl;
 
-		std::cout << direction.getX() << " " << direction.getY() << endl;
+		//std::cout << direction.getX() << " " << direction.getY() << endl;
 
 		//std::cout << keyA << " " << keyD << endl;
-
-
 	}
 	
 }
