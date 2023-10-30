@@ -79,7 +79,7 @@ void Game::loadMap()
 		in >> type;
 		in >> x;
 		in >> y;
-		Point2D<int> coord(x, y);
+		Point2D<> coord(x, y);
 
 		// si es la nave
 		if (type == 0) {
@@ -114,7 +114,6 @@ void Game::run()
 		// !!!!!!!! no estoy segura de si se ejecuta handleEvents o update antes (así está en las diapos).
 		handleEvents();
 		update();
-		render();
 
 		// renderiza el juego
 		render();
@@ -163,7 +162,7 @@ void Game::handleEvents()
 		if (event.type == SDL_QUIT) exit = true;
 
 		// MANEJO DE EVENTOS DE OBJETOS DE JUEGO
-		else if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) { cannon->handleEvents(event); }
+		else { cannon->handleEvents(event); }
 	}
 
 	// update current frame + render current frame

@@ -6,7 +6,7 @@
 #define VECTOR2D_H
 
 // !!! por las plantillas usar definiciones de funciones en el h -> el código depende del argumento que le pases (código no cerrado)
-template <typename T> class Vector2D 
+template <class T = double> class Vector2D 
 {
 	// variables privadas
 private: 
@@ -25,15 +25,6 @@ public:
 	// no entiendo por que da error oop
 	// Vector2D::Vector2D(const Vector2D& vec) 
 	//	: x(vec.getX()), y(vec.getY()) { }
-
-	// ---- destructora ----
-	// lo he pensado otra vez e igual no hace falta una destructora porque no usa memoria
-	// dinamica (aka new) :v (me hacia ilusion el :v)
-	Vector2D::~Vector2D() {
-
-		// ????
-		//delete[] ????;
-	}
 
 	// ---- getters ----
 	// getter x
@@ -89,7 +80,7 @@ public:
 };
 
 	// establecer alias
-	template <typename T> using Point2D = Vector2D<T>;
+	template <class T = double> using Point2D = Vector2D<T>;
 
 // CODIGO PARA PROBAR VECTOR2D (PONER EN EL MAIN)
 // (poner #include "Vector2D.h"; en el main para probarlo individualmente)
