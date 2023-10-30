@@ -28,10 +28,8 @@ private:
 public:
 	// ---- constructora ----
 	Alien(Point2D<int> position, Texture* texture, int type, Game* game)
-		: position(position), texture(texture), type(type), game(game) {}; 
-	// falta inicializar la position (estoy en ello je) !!!!!!!!!
+		: position(position), texture(texture), type(type), game(game) {};
 
-	//
 	Alien(const Alien& oldalien);
 
 	// ---- render ----

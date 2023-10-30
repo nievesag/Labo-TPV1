@@ -7,6 +7,7 @@
 #include "texture.h"
 
 // es una promesa de la existencia de la clase game
+// para evitar inclusiones cruzadas
 class Game;
 
 using namespace std;
@@ -16,26 +17,22 @@ class Cannon
 {
 	// atributos privados
 private:
-	//SDL_Texture* texture = nullptr; // punteron a su textura
-	Texture* texture = nullptr;	 // punteron a su textura
-	Game* game = nullptr; // puntero al juego -> para lanzar laseres
-	Point2D<int> position; // posicion actual en Point2D
-	int lifes,				 // numero de vidas restantes
+	Texture* texture = nullptr;	// punteron a su textura
+	Game* game = nullptr;		// puntero al juego -> para lanzar laseres
+	Point2D<int> position;		// posicion actual en Point2D
+	int lifes,					// numero de vidas restantes
 		laserCoolDown;			// tiempo de regarga del laser
-
-	Vector2D<int> direction;
+	Vector2D<int> direction;	// direccion de movimiento
 
 	// metodos publicos
 public:
-	
 	// ---- constructura ----
 	Cannon(Point2D<int> position, Texture* texture, int lifes, int laserCoolDown, 
 		Vector2D<int> direction, Game* game)
 		// inicializacion de los valores
 		: position(position), texture(texture), lifes(lifes), laserCoolDown(laserCoolDown), 
-		direction(direction), game(game) {}; // falta inicializar la position (estoy en ello je) !!!!!!!!!
+		  direction(direction), game(game){}; // falta inicializar la position ?? 
 
-	//
 	Cannon(const Cannon& cannon);
 	
 	// ---- render ----
@@ -52,6 +49,6 @@ public:
 
 	// ---- handleEvent ----
 	// para el input (determina estado de movimiento + disparar laser)
-	void handleEvents();
+	void handleEvents(SDL_Event& event);
 };
 #endif // CANNON_H

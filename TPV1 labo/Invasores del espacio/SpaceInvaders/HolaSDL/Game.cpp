@@ -42,41 +42,18 @@ Game::Game()
 // destructora
 Game::~Game()
 {
-	// memoria dinamica que borrar creo
+	// limpia las texturas
+	for (uint i = 0; i < NUM_TEXTURES; i++) delete textures[i];
+
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
-	
 	SDL_Quit(); // cierra pantalla
 }
 
-void Game::run()
-{
-	// renderiza el juego
-	render();
 
-}
-
-void Game::render()
-{
-	// limpia pantalla
-	SDL_RenderClear(renderer);
-
-	// render de los aliens
-	for (int i = 0; i < aliens.size(); i++)
-		aliens[i]->render();
-
-	// render del cannon
-	cannon->render();
-
-	// render del bunker
-	for (int i = 0; i < bunkers.size(); i++)
-		bunkers[i]->render();
-
-
-	// render de todo
-	SDL_RenderPresent(renderer);
-}
-
+// ----- LOGICA DE JUEGO -----
+// cargar | manejar eventos -> actualizar -> pintar -> manejar eventos etc
+// CARGA
 void Game::loadTextures()
 {
 	// bucle para rellenar el array de texturas
@@ -104,7 +81,6 @@ void Game::loadMap()
 		in >> y;
 		Point2D<int> coord(x, y);
 
-
 		// si es la nave
 		if (type == 0) {
 			Vector2D<int> vel(0, 0);
@@ -126,12 +102,69 @@ void Game::loadMap()
 			Bunker* bun = new Bunker(coord, textures[Escudo], 1);
 
 			bunkers.push_back(bun);
-
 		}
 	}
-
-	
-
-
 }
 
+// RUN
+void Game::run()
+{
+	while (!exit) // Falta el control de tiempo
+	{
+		// !!!!!!!! no estoy segura de si se ejecuta handleEvents o update antes (así está en las diapos).
+		handleEvents();
+		update();
+		render();
+
+		// renderiza el juego
+		render();
+	}
+}
+
+// ACTUALIZAR 
+void Game::update()
+{
+	// update de cada elemneto de juego
+	cannon->update();
+}
+
+// PINTAR
+void Game::render()
+{
+	// limpia pantalla
+	SDL_RenderClear(renderer);
+
+	// render de los aliens
+	for (int i = 0; i < aliens.size(); i++)
+		aliens[i]->render();
+
+	// render del cannon
+	cannon->render();
+
+	// render del bunker
+	for (int i = 0; i < bunkers.size(); i++)
+		bunkers[i]->render();
+
+	// render de todo
+	SDL_RenderPresent(renderer);
+}
+
+// MANEJAR EVENTOS
+void Game::handleEvents()
+{
+	SDL_Event event; // crea evento
+
+	// MIENTRAS HAYA EVENTOS
+		// si hay eventos &event se llena con el evento a ejecutar si no NULL
+		// es decir, pollea hasta que se hayan manejado todos los eventos
+	while (SDL_PollEvent(&event) && !exit) {
+
+		// si se solicita quit bool exit = true
+		if (event.type == SDL_QUIT) exit = true;
+
+		// MANEJO DE EVENTOS DE OBJETOS DE JUEGO
+		else if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) { cannon->handleEvents(event); }
+	}
+
+	// update current frame + render current frame
+}

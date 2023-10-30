@@ -16,3 +16,15 @@ void Cannon::render()
 	// lo mete en el render
 	texture->render(destRect);
 }
+
+void Cannon::update()
+{
+	// NO MODIFICAR POSICION SI NO DIRECCION
+	// se mueve según su direccion
+}
+
+void Cannon::handleEvents(SDL_Event& event)
+{
+	// actualiza direccion de movimiento (izq, der, quieto)
+	// le dice al update hacia donde moverse
+}
