@@ -14,5 +14,5 @@ void Alien::render()
 	destRect.y = position.getY();
 
 	// lo mete en el render
-	texture->renderFrame(destRect, type-1, 0);
+	texture->renderFrame(destRect, type, 0);
 }

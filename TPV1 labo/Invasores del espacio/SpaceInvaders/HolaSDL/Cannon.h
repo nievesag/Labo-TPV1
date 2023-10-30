@@ -19,24 +19,24 @@ class Cannon
 private:
 	Texture* texture = nullptr;	// punteron a su textura
 	Game* game = nullptr;		// puntero al juego -> para lanzar laseres
-	Point2D<> position;		// posicion actual en Point2D
+	Point2D<double> position;		// posicion actual en Point2D
 
 	int lifes,					// numero de vidas restantes
 		laserCoolDown;			// tiempo de regarga del laser
 
 	// MOVIMIENTO
-	Vector2D<> direction;	// direccion de movimiento
-	float speed = 5;			// velocidad de movimiento
-	bool keyA, keyD;			// tecla pulsada A o D !!!!! añadir espacio para el disparo?
+	Vector2D<double> direction;	// direccion de movimiento
+	float speed = 0.1;			// velocidad de movimiento
+	bool keyA = false, keyD = false, keyB = false;	// tecla pulsada A o D !!!!! añadir espacio para el disparo?
 
 	// metodos publicos
 public:
 	// ---- constructura ----
-	Cannon(Point2D<> position, Texture* texture, int lifes, int laserCoolDown, 
-		Vector2D<> direction, Game* game)
+	Cannon(Point2D<double> position, Texture* texture, int lifes, int laserCoolDown, 
+		Vector2D<double> direction, Game* game)
 		// inicializacion de los valores
 		: position(position), texture(texture), lifes(lifes), laserCoolDown(laserCoolDown), 
-		  direction(0,0), game(game){}; 
+		  direction(direction), game(game){}; 
 
 	Cannon(const Cannon& cannon);
 	

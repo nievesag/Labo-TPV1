@@ -6,7 +6,7 @@
 #define VECTOR2D_H
 
 // !!! por las plantillas usar definiciones de funciones en el h -> el código depende del argumento que le pases (código no cerrado)
-template <class T = double> class Vector2D 
+template <typename T> class Vector2D 
 {
 	// variables privadas
 private: 
@@ -35,6 +35,14 @@ public:
 	// getter y
 	T getY() {
 		return y;
+	}
+
+	void setX(T newX) {
+		x = newX;
+	}
+
+	void setY(T newY) {
+		y = newY;
 	}
 
 	// ---- OPERADORES ----
@@ -75,8 +83,6 @@ public:
 
 		return aux;
 	}
-	
-
 };
 
 	// establecer alias

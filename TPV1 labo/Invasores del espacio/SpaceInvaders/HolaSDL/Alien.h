@@ -18,7 +18,7 @@ class Alien
 {
 	// atributos privados
 private:
-	Vector2D<int> position; // posicion actual en Point2D !!!!!!!!!!!!!!!!!!! USAR POINT2D
+	Vector2D<double> position; // posicion actual en Point2D !!!!!!!!!!!!!!!!!!! USAR POINT2D
 	int type;
 	Texture* texture = nullptr; // punteron a su textura
 	Game* game = nullptr; // puntero al juego -> para saber la dir común de movimiento de ese tipo de aliens
@@ -27,7 +27,7 @@ private:
 	// metodos publicos 
 public:
 	// ---- constructora ----
-	Alien(Point2D<int> position, Texture* texture, int type, Game* game)
+	Alien(Point2D<double> position, Texture* texture, int type, Game* game)
 		: position(position), texture(texture), type(type), game(game) {};
 
 	Alien(const Alien& oldalien);

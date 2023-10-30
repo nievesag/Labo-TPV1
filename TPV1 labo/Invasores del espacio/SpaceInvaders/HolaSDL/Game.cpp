@@ -78,11 +78,11 @@ void Game::loadMap()
 		in >> type;
 		in >> x;
 		in >> y;
-		Point2D<> coord(x, y);
+		Point2D<double> coord(x, y);
 
 		// si es la nave
 		if (type == 0) {
-			Vector2D<int> vel(0, 0);
+			Vector2D<double> vel(0, 0);
 
 			cannon = new Cannon(coord, textures[Nave], 1, 10, vel, this);
 		}
@@ -90,7 +90,7 @@ void Game::loadMap()
 		else if (type == 1) {
 			in >> atype;
 
-			Alien* alien = new Alien(coord, textures[atype], 1, this);
+			Alien* alien = new Alien(coord, textures[atype], atype, this);
 
 			aliens.push_back(alien);
 		}
