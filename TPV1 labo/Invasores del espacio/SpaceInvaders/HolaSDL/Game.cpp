@@ -16,8 +16,8 @@ array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
 	TextureSpec{"..\\images\\aliens2.png", 2, 3},	  // alien 1 // 32,32
 	{ "..\\images\\aliens2.png", 2, 3 },			  // alien 2 // 44,32
 	{ "..\\images\\aliens2.png", 2, 3 },			  // alien 3 // 48,32
-	{ "..\\images\\spaceship.png", 1, 1},		  // nave	 // 34,21
-	{ "..\\images\\bunker.png", 4, 1 }			  // bunker  // 88,57
+	{ "..\\images\\spaceship.png", 1, 1},			  // nave	 // 34,21
+	{ "..\\images\\bunker.png", 4, 1 }				  // bunker  // 88,57
 };
 
 // constructora
@@ -36,7 +36,6 @@ Game::Game()
 	loadTextures();
 
 	loadMap();
-	
 }
 
 // destructora
