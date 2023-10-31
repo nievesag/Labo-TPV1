@@ -22,6 +22,10 @@ void Cannon::update()
 {
 	// actualiza el movimiento
 	movement();
+
+	shoot();
+
+
 }
 
 void Cannon::handleEvents(SDL_Event event)
@@ -34,27 +38,30 @@ void Cannon::handleEvents(SDL_Event event)
 
 	if (event.type == SDL_KEYDOWN) {
 		// movimento a la izq
-		if (key == SDL_SCANCODE_A) {
-			keyA = true;
-		}
+		if (key == SDL_SCANCODE_A) keyA = true;
+
 		// movimiento a la derecha
-		else if (key == SDL_SCANCODE_D) {
-			keyD = true;
-		}
-		else if (key == SDL_SCANCODE_B)
-			keyB = true;
+		else if (key == SDL_SCANCODE_D) keyD = true;
+
+		// disparar
+		else if (key == SDL_SCANCODE_SPACE) keySpace = true;
+
+		// salir del juego
+		else if (key == SDL_SCANCODE_B) keyE = true;
 	}
+
 	else if (event.type == SDL_KEYUP) {
 		// movimento a la izq
-		if (key == SDL_SCANCODE_A) {
-			keyA = false;
-		}
+		if (key == SDL_SCANCODE_A) keyA = false; 
+
 		// movimiento a la derecha
-		else if (key == SDL_SCANCODE_D) {
-			keyD = false;
-		}
-		else if (key == SDL_SCANCODE_B)
-			keyB = false;
+		else if (key == SDL_SCANCODE_D) keyD = false;
+
+		// disparar
+		else if (key == SDL_SCANCODE_SPACE) keySpace = false;
+
+		// salir del juego
+		else if (key == SDL_SCANCODE_E) keyE = false;
 	}
 }
 
@@ -76,28 +83,43 @@ void Cannon::movement()
 			direction = Vector2D<double>(1, 0);
 		}
 	}
+	if (keyE) game->setExit(true);
 
 
 	//if(position.getX() > 0 && position.getX() < game->getWinWidth()-texture->getFrameWidth())
 	position.setX(position.getX() + (direction.getX() * speed));
 
-	if (position.getX() < 0)
-		position.setX(0);
+	if (position.getX() < 0) position.setX(0);
 	else if(position.getX() > game->getWinWidth()-texture->getFrameWidth())
 		position.setX(game->getWinWidth() - texture->getFrameWidth());
 
 
-	/*
+	
 	// debug (placeholder)
-	if (keyB) {
+	if (keySpace) {
 
 		//std::cout << position.getX() << " " << position.getY() << endl;
 
 		//std::cout << direction.getX() << " " << direction.getY() << endl;
 
 		//std::cout << keyA << " " << keyD << endl;
+
+		
 	}
-	*/
+}
+
+void Cannon::shoot()
+{
+
+	if (keySpace) {
+
+		// firea un laser
+		game->fireLaser(true);
+
+		// debug
+		std::cout << "COJONEEEEEEEEES" << " ";
+
+	}
 	
-	
+
 }

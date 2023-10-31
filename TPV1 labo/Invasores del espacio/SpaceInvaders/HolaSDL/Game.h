@@ -32,7 +32,7 @@ class Game
 	// ----- TEXTURES -----
 public:
 	// cantidad de texturas que va a haber
-	static const int NUM_TEXTURES = 5;
+	static const int NUM_TEXTURES = 6;
 	
 	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo Texture* 
 	array<Texture*, NUM_TEXTURES> textures{};
@@ -54,7 +54,7 @@ private:
 	int alienDir = 1;
 
 	// enum texture name -> el indice tiene la info de la textura
-	enum TextureName {Alien1, Alien2, Alien3, Nave, Escudo};
+	enum TextureName {Alien1, Alien2, Alien3, Nave, Escudo, Fondo};
 
 	// declaración de los elementos de juego
 	Cannon* cannon;
@@ -96,7 +96,7 @@ public:
 
 	// ---- fireLaser -----
 	// dispara laseres wow
-	void fireLaser();
+	void fireLaser(bool frenemy);
 
 	// ---- getters ----
 	/*
@@ -117,6 +117,18 @@ public:
 		return winHeight;
 	}
 
+	// placeholder
+	void setExit(bool tetas) {
+		exit = tetas;
+	}
+
+	bool GetExit() {
+		return exit;
+	}
+
+	// devuelve el puntero al renderer
+	SDL_Renderer* getRenderer() { return renderer; }
+
 
 	// ----- METODOS AUXILIARES -----
 private:
@@ -129,6 +141,9 @@ private:
 	// (crea los aliens y tal)
 	// pretendo que aqui se lean los txt y que se hagan bucles para crear los bichitos
 	void loadMap();
+
+	//
+	void renderBackground();
 };
 
 #endif // GAME_H 

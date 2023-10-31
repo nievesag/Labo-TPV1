@@ -13,14 +13,16 @@ class Laser
 {
 	// atributos privados
 private:
-	Vector2D<int> position; // posicion actual en Point2D !!!!!!!!!!!!!!!!!!! USAR POINT2D
-	Vector2D<int> vel;
+	Vector2D<double> position; 
+	Vector2D<double> vel;
 	bool frenemy; // laser de alien o de nave
+	Game* game;
 
 	// metodos publicos
 public:
 	// ---- constructora ----
-
+	Laser(Vector2D<double> position, Vector2D<double> velocity, bool frenemy, Game* game)
+		: position(position), vel(velocity), frenemy(frenemy), game(game) {};
 
 	// ---- render ----
 	void render();
@@ -28,6 +30,17 @@ public:
 	// ---- update ----
 	//  avanzar con su velocidad y comprobar si ha acertado a algún objetivo
 	void update();
+
+protected:
+
+	// mueve el laser segun el vector velocidad
+	void move();
+
+	// mira si puede seguir moviendose
+	bool cannotMove();
+
+	//
+	void killLaser();
 };
 
 #endif

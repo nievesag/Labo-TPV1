@@ -20,7 +20,7 @@ class Alien
 private:
 	Vector2D<double> position; // posicion actual en Point2D !!!!!!!!!!!!!!!!!!! USAR POINT2D
 	int type;
-	double speed = 0.02;
+	double speed = 0.01;
 	Texture* texture = nullptr; // punteron a su textura
 	Game* game = nullptr; // puntero al juego -> para saber la dir común de movimiento de ese tipo de aliens
 						  // + informar de que ya no se puede desplazar en ella

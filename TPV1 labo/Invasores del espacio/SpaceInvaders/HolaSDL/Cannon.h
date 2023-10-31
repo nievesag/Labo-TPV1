@@ -26,8 +26,9 @@ private:
 
 	// MOVIMIENTO
 	Vector2D<double> direction;	// direccion de movimiento
-	float speed = 0.1;			// velocidad de movimiento
-	bool keyA = false, keyD = false, keyB = false;	// tecla pulsada A o D !!!!! añadir espacio para el disparo?
+	float speed = 0.05;			// velocidad de movimiento
+	bool keyA = false, keyD = false, keyE = false,	// tecla pulsada A o D !!!!! añadir espacio para el disparo
+		keySpace = false;
 
 	// metodos publicos
 public:
@@ -56,8 +57,16 @@ public:
 	// para el input (determina estado de movimiento + disparar laser)
 	void handleEvents(SDL_Event event);
 
+	// returns position
+	Point2D<double> getPosition() { return position; }
+
 	// metodos auxiliares
 private:
+
+	//
 	void movement();
+
+	//
+	void shoot();
 };
 #endif // CANNON_H
