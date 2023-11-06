@@ -41,7 +41,7 @@ public:
 	// ---- update ----
 	// movimiento, disparar aleatoriamente después del cooldown 
 	// return false -> el alien ha sido dañado
-	void update();
+	void update(bool pum);
 
 	// ---- hit ----
 	// recibir daño

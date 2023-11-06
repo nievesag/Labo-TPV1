@@ -29,7 +29,7 @@ public:
 
 	// ---- update ----
 	//  avanzar con su velocidad y comprobar si ha acertado a algún objetivo
-	void update();
+	void update(bool pum);
 	void getPosition();
 
 protected:
