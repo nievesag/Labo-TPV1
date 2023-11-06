@@ -60,6 +60,7 @@ private:
 	Cannon* cannon;
 	vector<Alien*> aliens;
 	vector<Bunker*> bunkers;
+	vector<Laser*> laseres;
 	
 	// ----- METODOS PUBLICOS -----
 public:
@@ -98,16 +99,7 @@ public:
 	// dispara laseres wow
 	void fireLaser(bool frenemy);
 
-	// ---- getters ----
-	/*
-	Cannon* getCannon() {
-		return cannon;
-	}
-
-	bool getExit() {
-		return exit;
-	}
-	*/
+	void checkColision();
 
 	uint getWinWidth() {
 		return winWidth;

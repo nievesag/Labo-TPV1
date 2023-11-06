@@ -51,7 +51,7 @@ Game::~Game()
 	SDL_Quit(); // cierra pantalla
 }
 
-
+#pragma region Logica Juego
 // ----- LOGICA DE JUEGO -----
 // cargar | manejar eventos -> actualizar -> pintar -> manejar eventos etc
 // CARGA
@@ -139,7 +139,9 @@ void Game::update()
 	// update de cada elemneto de juego
 	cannon->update();
 
-	// updare de los bunkers
+	// update de los bunkers
+
+	// !!!!!!!!!! COMPROBAR COLISIONES AQUI
 
 }
 
@@ -186,6 +188,7 @@ void Game::handleEvents()
 
 	// update current frame + render current frame
 }
+#pragma endregion
 
 // devuelve la direccion
 int Game::getDirection() { return alienDir; }	
@@ -209,6 +212,14 @@ void Game::fireLaser(bool frenemy)
 	Vector2D<double> vel(0, 1);
 
 	// crea un laser
-	Laser laser(pos, vel, frenemy, this);
+	// en el vector de laseres: inserta un &laser al final
+	laseres.push_back(new Laser(pos, vel, frenemy, this));
+	// -> NO ES NECESARIO PASAR LA VELOCIDAD (?) 
+	// -> PASAR RENDERER
+}
 
+void Game::checkColision()
+{
+	// comprueba las colisiones 
+	// LLAMAR DESDE LASER
 }

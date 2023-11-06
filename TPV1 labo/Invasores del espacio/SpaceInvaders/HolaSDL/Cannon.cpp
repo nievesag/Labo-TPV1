@@ -18,14 +18,12 @@ void Cannon::render()
 	texture->render(destRect);
 }
 
-void Cannon::update()
+void Cannon::update(bool pum)
 {
 	// actualiza el movimiento
 	movement();
 
 	shoot();
-
-
 }
 
 void Cannon::handleEvents(SDL_Event event)

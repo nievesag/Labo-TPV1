@@ -30,6 +30,7 @@ public:
 	// ---- update ----
 	//  avanzar con su velocidad y comprobar si ha acertado a algún objetivo
 	void update();
+	void getPosition();
 
 protected:
 

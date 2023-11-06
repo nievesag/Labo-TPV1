@@ -16,12 +16,13 @@ void Laser::render()
 	SDL_RenderFillRect(game->getRenderer(), &destRect);
 }
 
-void Laser::update()
+// avanzar de acuerdo a su velocidad y comprobar si ha acertado objetivo
+void Laser::update(bool pum)
 {
+	game->checkColision();
 	// si se puede mover se mueve
 	if (!cannotMove()) {
 
-		// mueve el laser
 		move();
 	}
 	else {
@@ -31,20 +32,27 @@ void Laser::update()
 	}
 }
 
+
 void Laser::move()
 {
-	// TO DO
+	// TODO
 
 }
 
 bool Laser::cannotMove()
 {
-	// TO DO
+	// TODO
 
 	return false;
 }
 
 void Laser::killLaser()
 {
-	// TO DO
+	// TODO
+}
+
+// accede a la posicion del laser
+void Laser::getPosition()
+{
+
 }

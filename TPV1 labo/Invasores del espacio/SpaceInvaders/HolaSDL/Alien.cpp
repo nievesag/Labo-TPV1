@@ -19,7 +19,7 @@ void Alien::render()
 }
 
 
-void Alien::update()
+void Alien::update(bool pum)
 {
 	//
 	move();
