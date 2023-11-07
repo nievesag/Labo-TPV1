@@ -12,6 +12,8 @@
 #include <array>
 #include <vector>
 #include <fstream>
+#include <random>
+#include <time.h>
 	// classes
 #include "texture.h"
 #include "Vector2D.h"
@@ -61,6 +63,9 @@ private:
 	vector<Alien*> aliens;
 	vector<Bunker*> bunkers;
 	vector<Laser*> laseres;
+
+	// crea semilla
+	std::mt19937_64 randomGenerator;
 	
 	// ----- METODOS PUBLICOS -----
 public:
@@ -118,6 +123,11 @@ public:
 		return exit;
 	}
 
+	/*
+	int Game::getRandomRange(int min, int max) {
+		int randomGenerator = time(nullptr);
+		return uniform_int_distribution<int>(min, max)(randomGenerator);
+	}*/
 
 	// devuelve el puntero al renderer
 	SDL_Renderer* getRenderer() { return renderer; }

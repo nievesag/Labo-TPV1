@@ -35,6 +35,9 @@ public:
 
 	Alien(const Alien& oldalien);
 
+	//
+	Alien::~Alien();
+
 	// ---- render ----
 	void render();
 

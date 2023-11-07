@@ -1,6 +1,12 @@
 #include "Alien.h"
 #include "Game.h"
 
+Alien::~Alien()
+{
+	// destruye cosas
+
+}
+
 void Alien::render()
 {
 	// posicion para el coso 
@@ -18,7 +24,6 @@ void Alien::render()
 	texture->renderFrame(destRect, type, 0);
 }
 
-
 void Alien::update(bool pum)
 {
 	//
@@ -35,7 +40,6 @@ void Alien::move()
 	if (position.getX() < 0 || position.getX() > game->getWinWidth() - texture->getFrameWidth()) {
 		game->cannotMove();
 	}
-		
 }
 
 void Alien::lowerAlien()

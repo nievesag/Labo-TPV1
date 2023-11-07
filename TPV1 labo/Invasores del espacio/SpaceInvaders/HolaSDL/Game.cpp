@@ -22,7 +22,7 @@ array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
 };
 
 // constructora
-Game::Game()
+Game::Game() : randomGenerator(time(nullptr))
 {
 	int winX, winY; // Posición de la ventana
 	winX = winY = SDL_WINDOWPOS_CENTERED;
@@ -37,14 +37,20 @@ Game::Game()
 	loadTextures();
 
 	loadMap();
-
 }
 
 // destructora
 Game::~Game()
 {
 	// limpia las texturas
-	for (uint i = 0; i < NUM_TEXTURES; i++) delete textures[i];
+	
+	for (int i = 0; i < aliens.size(); i++) delete aliens[i];
+	for (int i = 0; i < bunkers.size(); i++) delete bunkers[i];
+	for (int i = 0; i < laseres.size(); i++) delete laseres[i];
+
+	delete cannon;
+
+	for (int i = 0; i < NUM_TEXTURES; i++) delete textures[i];
 
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
@@ -220,7 +226,6 @@ void Game::fireLaser(bool frenemy)
 
 	if (frenemy) velocity = -1;
 	else velocity = 1;
-
 
 	// pone la velocidad
 	Vector2D<double> vel(0, velocity);

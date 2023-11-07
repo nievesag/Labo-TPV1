@@ -23,7 +23,5 @@ int main(int argc, char* argv[])
 
 	ay.run();
 
-	//SDL_Delay(3000);
-
 	return 69;
 }
