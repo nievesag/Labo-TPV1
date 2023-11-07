@@ -96,6 +96,8 @@ void Cannon::movement()
 	// debug (placeholder)
 	if (keySpace) {
 
+		shoot();
+
 		//std::cout << position.getX() << " " << position.getY() << endl;
 
 		//std::cout << direction.getX() << " " << direction.getY() << endl;
@@ -108,16 +110,13 @@ void Cannon::movement()
 
 void Cannon::shoot()
 {
-
 	if (keySpace) {
 
 		// firea un laser
 		game->fireLaser(true);
 
 		// debug
-		std::cout << "COJONEEEEEEEEES" << " ";
+		//std::cout << "COJONEEEEEEEEES" << " ";
 
 	}
-	
-
 }

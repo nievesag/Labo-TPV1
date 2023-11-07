@@ -122,7 +122,7 @@ void Game::run()
 		handleEvents();
 		
 		//
-		update();
+		update(true);
 
 		// renderiza el juego
 		render();
@@ -130,16 +130,20 @@ void Game::run()
 }
 
 // ACTUALIZAR 
-void Game::update()
+void Game::update(bool pum)
 {
 	// update de los aliens
 	for (int i = 0; i < aliens.size(); i++)
-		aliens[i]->update();
+		aliens[i]->update(pum);
 
 	// update de cada elemneto de juego
-	cannon->update();
+	cannon->update(pum);
 
 	// update de los bunkers
+
+	// upadte de los laseres
+	for (int i = 0; i < laseres.size(); i++)
+		laseres[i]->update(pum);
 
 	// !!!!!!!!!! COMPROBAR COLISIONES AQUI
 
@@ -164,6 +168,10 @@ void Game::render()
 	// render del bunker
 	for (int i = 0; i < bunkers.size(); i++)
 		bunkers[i]->render();
+
+	// render del laser
+	for (int i = 0; i < laseres.size(); i++)
+		laseres[i]->render();
 
 	// render de todo
 	SDL_RenderPresent(renderer);
@@ -208,14 +216,18 @@ void Game::fireLaser(bool frenemy)
 	// pone la posicion
 	Point2D<double>pos = cannon->getPosition();
 
+	double velocity;
+
+	if (frenemy) velocity = -1;
+	else velocity = 1;
+
+
 	// pone la velocidad
-	Vector2D<double> vel(0, 1);
+	Vector2D<double> vel(0, velocity);
 
 	// crea un laser
 	// en el vector de laseres: inserta un &laser al final
-	laseres.push_back(new Laser(pos, vel, frenemy, this));
-	// -> NO ES NECESARIO PASAR LA VELOCIDAD (?) 
-	// -> PASAR RENDERER
+	laseres.push_back(new Laser(pos, vel, frenemy, this, 1));
 }
 
 void Game::checkColision()

@@ -81,7 +81,7 @@ public:
 
 	// ---- update ----
 	// actualiza el juego
-	void update();
+	void update(bool pum);
 
 	// ---- handleEvents ----
 	// input del jugador
@@ -117,6 +117,7 @@ public:
 	bool GetExit() {
 		return exit;
 	}
+
 
 	// devuelve el puntero al renderer
 	SDL_Renderer* getRenderer() { return renderer; }
