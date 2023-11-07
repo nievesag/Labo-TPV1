@@ -22,7 +22,7 @@ private:
 	Point2D<double> position;		// posicion actual en Point2D
 
 	int lifes,					// numero de vidas restantes
-		laserCoolDown;			// tiempo de regarga del laser
+		laserCoolDown;			// tiempo de recarga del laser
 
 	// MOVIMIENTO
 	Vector2D<double> direction;	// direccion de movimiento
@@ -33,10 +33,10 @@ private:
 	// metodos publicos
 public:
 	// ---- constructura ----
-	Cannon(Point2D<double> position, Texture* texture, int lifes, int laserCoolDown, 
+	Cannon(Point2D<double> position, Texture* texture, int lifes, int laserCoolDown,
 		Vector2D<double> direction, Game* game)
 		// inicializacion de los valores
-		: position(position), texture(texture), lifes(lifes), laserCoolDown(laserCoolDown), 
+		: position(position), texture(texture), lifes(lifes), laserCoolDown(laserCoolDown),
 		  direction(direction), game(game){}; 
 
 	Cannon(const Cannon& cannon);

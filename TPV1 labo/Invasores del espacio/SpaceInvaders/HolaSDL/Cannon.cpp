@@ -90,22 +90,6 @@ void Cannon::movement()
 	if (position.getX() < 0) position.setX(0);
 	else if(position.getX() > game->getWinWidth()-texture->getFrameWidth())
 		position.setX(game->getWinWidth() - texture->getFrameWidth());
-
-
-	
-	// debug (placeholder)
-	if (keySpace) {
-
-		shoot();
-
-		//std::cout << position.getX() << " " << position.getY() << endl;
-
-		//std::cout << direction.getX() << " " << direction.getY() << endl;
-
-		//std::cout << keyA << " " << keyD << endl;
-
-		
-	}
 }
 
 void Cannon::shoot()
@@ -116,7 +100,6 @@ void Cannon::shoot()
 		game->fireLaser(true);
 
 		// debug
-		//std::cout << "COJONEEEEEEEEES" << " ";
-
+		std::cout << "COJONEEEEEEEEES" << " ";
 	}
 }

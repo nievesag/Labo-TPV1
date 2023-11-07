@@ -15,7 +15,7 @@ void Laser::render()
 
 	// tamaño
 	destRect.w = 2;
-	destRect.h = 4;
+	destRect.h = 10;
 
 	// posicion
 	destRect.x = (position.getX()+offset);
