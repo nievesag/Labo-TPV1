@@ -19,7 +19,7 @@ class Cannon
 private:
 	Texture* texture = nullptr;	// punteron a su textura
 	Game* game = nullptr;		// puntero al juego -> para lanzar laseres
-	Point2D<double> position;		// posicion actual en Point2D
+	Point2D<double> position;	// posicion actual en Point2D
 
 	int lifes,					// numero de vidas restantes
 		laserCoolDown;			// tiempo de recarga del laser
@@ -27,8 +27,8 @@ private:
 	// MOVIMIENTO
 	Vector2D<double> direction;	// direccion de movimiento
 	float speed = 0.05;			// velocidad de movimiento
-	bool keyA = false, keyD = false, keyE = false,	// tecla pulsada A o D !!!!! añadir espacio para el disparo
-		keySpace = false;
+	// input
+	bool keyA = false, keyD = false, keyE = false, keySpace = false;
 
 	// metodos publicos
 public:
@@ -65,11 +65,8 @@ public:
 
 	// metodos auxiliares
 private:
-
-	//
 	void movement();
 
-	//
 	void shoot();
 };
 #endif // CANNON_H

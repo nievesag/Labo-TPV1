@@ -42,14 +42,13 @@ Game::Game() : randomGenerator(time(nullptr))
 // destructora
 Game::~Game()
 {
-	// limpia las texturas
-	
+	// limpia elementos de juego
 	for (int i = 0; i < aliens.size(); i++) delete aliens[i];
 	for (int i = 0; i < bunkers.size(); i++) delete bunkers[i];
 	for (int i = 0; i < laseres.size(); i++) delete laseres[i];
-
 	delete cannon;
 
+	// limpia las texturas
 	for (int i = 0; i < NUM_TEXTURES; i++) delete textures[i];
 
 	SDL_DestroyWindow(window);
@@ -57,9 +56,10 @@ Game::~Game()
 	SDL_Quit(); // cierra pantalla
 }
 
-#pragma region Logica Juego
+#pragma region Logica de Juego
 // ----- LOGICA DE JUEGO -----
 // cargar | manejar eventos -> actualizar -> pintar -> manejar eventos etc
+
 // CARGA
 void Game::loadTextures()
 {
@@ -113,11 +113,6 @@ void Game::loadMap()
 	}
 }
 
-void Game::renderBackground()
-{
-	// renderiza el fondo (le odio)
-	textures[Fondo]->render();
-}
 
 // RUN
 void Game::run()
@@ -134,6 +129,7 @@ void Game::run()
 		render();
 	}
 }
+
 
 // ACTUALIZAR 
 void Game::update(bool pum)
@@ -154,6 +150,7 @@ void Game::update(bool pum)
 	// !!!!!!!!!! COMPROBAR COLISIONES AQUI
 
 }
+
 
 // PINTAR
 void Game::render()
@@ -182,6 +179,13 @@ void Game::render()
 	// render de todo
 	SDL_RenderPresent(renderer);
 }
+
+void Game::renderBackground()
+{
+	// renderiza el fondo
+	textures[Fondo]->render();
+}
+
 
 // MANEJAR EVENTOS
 void Game::handleEvents()

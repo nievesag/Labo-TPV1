@@ -4,7 +4,6 @@
 Alien::~Alien()
 {
 	// destruye cosas
-
 }
 
 void Alien::render()
@@ -26,9 +25,7 @@ void Alien::render()
 
 void Alien::update(bool pum)
 {
-	//
 	move();
-
 }
 
 void Alien::move()

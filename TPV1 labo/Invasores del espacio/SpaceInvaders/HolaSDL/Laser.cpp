@@ -3,8 +3,7 @@
 
 void Laser::render()
 {
-	//SDL_SetRenderDrawColor(game->getRenderer(), 0, 0, 255, 255);
-
+	// si es amigo/enemigo pintar de un color u otro
 	if (frenemy)
 		SDL_SetRenderDrawColor(game->getRenderer(), 255, 0, 114, 255);
 	else 
@@ -21,6 +20,7 @@ void Laser::render()
 	destRect.x = (position.getX()+offset);
 	destRect.y = position.getY();
 
+	// dibuja el rectangulo
 	SDL_RenderFillRect(game->getRenderer(), &destRect);
 }
 
@@ -28,6 +28,7 @@ void Laser::render()
 void Laser::update(bool pum)
 {
 	game->checkColision();
+
 	// si se puede mover se mueve
 	if (!cannotMove()) {
 		move();
@@ -43,7 +44,6 @@ void Laser::move()
 	// mueve al laser
 	position.setY(position.getY() + (vel.getY() * speed));
 }
-
 
 bool Laser::cannotMove()
 {

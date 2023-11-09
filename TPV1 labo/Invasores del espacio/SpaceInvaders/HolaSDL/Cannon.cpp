@@ -23,14 +23,12 @@ void Cannon::update(bool pum)
 	// actualiza el movimiento
 	movement();
 
+	// dispara
 	shoot();
 }
 
 void Cannon::handleEvents(SDL_Event event)
 {
-	// actualiza direccion de movimiento (izq, der, quieto)
-	// le dice al update hacia donde moverse
-
 	// escanea y evalua que tecla has tocado
 	SDL_Scancode key = event.key.keysym.scancode;
 
@@ -83,8 +81,7 @@ void Cannon::movement()
 	}
 	if (keyE) game->setExit(true);
 
-
-	//if(position.getX() > 0 && position.getX() < game->getWinWidth()-texture->getFrameWidth())
+	// if(position.getX() > 0 && position.getX() < game->getWinWidth()-texture->getFrameWidth())
 	position.setX(position.getX() + (direction.getX() * speed));
 
 	if (position.getX() < 0) position.setX(0);

@@ -17,7 +17,7 @@ class Bunker
 {
 	// atributos privados
 private:
-	Vector2D<double> position; // posicion actual en Point2D !!!!!!!!!!!!!!!!!!! USAR POINT2D
+	Vector2D<double> position; // posicion actual en Point2D
 	int lifes; // vidas restantes
 	Texture* texture = nullptr; // punteron a su textura
 
@@ -27,7 +27,6 @@ public:
 	Bunker(Point2D<double> position, Texture* texture, int lifes)
 		// inicializacion de los valores
 		: position(position), texture(texture), lifes(lifes){}; 
-	// falta inicializar la position (estoy en ello je) !!!!!!!!!
 
 	// ---- render ----
 	void render();
@@ -39,7 +38,6 @@ public:
 	// ---- hit ----
 	// recibir daño -> -1 vida, cambiar textura
 	void hit();
-
 };
 
 #endif

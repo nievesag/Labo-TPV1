@@ -123,15 +123,14 @@ public:
 		return exit;
 	}
 
+	// devuelve el puntero al renderer
+	SDL_Renderer* getRenderer() { return renderer; }
+
 	/*
 	int Game::getRandomRange(int min, int max) {
 		int randomGenerator = time(nullptr);
 		return uniform_int_distribution<int>(min, max)(randomGenerator);
 	}*/
-
-	// devuelve el puntero al renderer
-	SDL_Renderer* getRenderer() { return renderer; }
-
 
 	// ----- METODOS AUXILIARES -----
 private:
@@ -145,7 +144,6 @@ private:
 	// pretendo que aqui se lean los txt y que se hagan bucles para crear los bichitos
 	void loadMap();
 
-	//
 	void renderBackground();
 };
 
