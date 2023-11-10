@@ -106,7 +106,7 @@ void Game::loadMap()
 		else if (type == 2) {
 			Vector2D<int> vel(0, 0);
 
-			Bunker* bun = new Bunker(coord, textures[Escudo], 4);
+			Bunker* bun = new Bunker(coord, textures[Escudo], textures[Escudo]->getNumColumns());
 
 			bunkers.push_back(bun);
 		}
