@@ -98,7 +98,10 @@ void Game::loadMap()
 		else if (type == 1) {
 			in >> atype;
 
-			Alien* alien = new Alien(coord, textures[atype], atype, this);
+			double min = getRandomRange(100, 150);
+			double max = getRandomRange(290, 330);
+
+			Alien* alien = new Alien(coord, textures[atype], atype, this, min, max);
 
 			aliens.push_back(alien);
 		}
@@ -134,6 +137,8 @@ void Game::run()
 // ACTUALIZAR 
 void Game::update(bool pum)
 {
+	if (aliens.size() == 0) exit = true;
+
 	// ----------------------------------- ALIEN -----------------------------------------
 	for (int i = 0; i < aliens.size(); i++) {
 
@@ -154,7 +159,7 @@ void Game::update(bool pum)
 	// ------------------------------------CANNON -----------------------------------------
 	if (!cannon->update(pum)) {
 
-		//exit = true;
+		exit = true;
 	}
 
 	// ----------------------------------- BUNKER -----------------------------------------
@@ -193,6 +198,7 @@ void Game::update(bool pum)
 		}
 
 	}
+
 }
 
 
@@ -289,7 +295,6 @@ bool Game::checkColision(Laser* laser)
 				collision = true;
 
 				// le dice al alien que le han pegado un hostion
-				//cout << "eirbuhfwiojoñdflkjhlwja-e.fhwklj" << endl;
 				aliens[i]->hit();
 			}
 			i++;

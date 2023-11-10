@@ -27,7 +27,8 @@ private:
 	double alienOffSet = 10;
 
 	double attackCD,
-		attackCDcounter;	// cooldown del disparo
+		attackCDcounter,	// cooldown del disparo
+		minCD, maxCD;
 
 	// rectangulo del render
 	SDL_Rect destRect;
@@ -35,10 +36,11 @@ private:
 	// metodos publicos 
 public:
 	// ---- constructora ----
-	Alien(Point2D<double> position, Texture* texture, int type, Game* game)
-		: position(position), texture(texture), type(type), game(game) 
+	Alien(Point2D<double> position, Texture* texture, int type, Game* game, double minCD, double maxCD)
+		: position(position), texture(texture), type(type), game(game), minCD(minCD), maxCD(maxCD)
 	{
 		alive = true; 
+
 	};
 
 	Alien(const Alien& oldalien);

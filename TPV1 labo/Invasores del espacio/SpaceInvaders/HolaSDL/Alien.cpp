@@ -69,7 +69,6 @@ void Alien::shoot()
 	//	
 	if (attackCDcounter >= attackCD) 
 	{
-
 		// crea un laser nuevo
 		game->fireLaser(this->getPosition(), Vector2D<double>(0, LASER_SPEED), false);
 	}
@@ -84,7 +83,7 @@ void Alien::attack()
 		if (attackCDcounter >= attackCD) {
 
 			// elige un nuevo cooldown 
-			attackCD = game->getRandomRange(1500, 2000);
+			attackCD = game->getRandomRange(minCD, maxCD)*30;
 
 			// reinicia el contador
 			attackCDcounter = 0;

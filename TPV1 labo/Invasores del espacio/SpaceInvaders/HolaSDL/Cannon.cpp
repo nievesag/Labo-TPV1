@@ -98,7 +98,6 @@ void Cannon::shoot()
 	if (keySpace && elapsedTime >= laserCoolDown) {
 
 
-		std::cout << elapsedTime << " " << laserCoolDown << endl;
 		// firea un laser
 		game->fireLaser(this->getPosition(), Vector2D<double>(0, -LASER_SPEED), true);
 

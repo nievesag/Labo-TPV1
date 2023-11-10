@@ -27,21 +27,6 @@ bool Laser::update(bool pum)
 {
 	move();
 
-	/*
-	game->checkColision();
-
-	// si se puede mover se mueve
-	if (!cannotMove()) {
-		move();
-	}
-	else {
-		// acaba con el laser
-		killLaser();
-	}
-	*/
-
-	//cout << game->checkColision(this) << endl;
-
 	return game->checkColision(this);
 	
 }
@@ -53,8 +38,6 @@ void Laser::move()
 	//vel.getX() *= speed;
 
 	position = position + vel;
-
-	//std::cout << position.getX() << " " << position.getY() << endl;
 }
 
 bool Laser::cannotMove()
