@@ -134,8 +134,6 @@ void Game::run()
 // ACTUALIZAR 
 void Game::update(bool pum)
 {
-	bool alive = true;
-
 	// ----------------------------------- ALIEN -----------------------------------------
 	for (int i = 0; i < aliens.size(); i++) {
 
@@ -155,6 +153,7 @@ void Game::update(bool pum)
 
 	// ------------------------------------CANNON -----------------------------------------
 	if (!cannon->update(pum)) {
+
 		//exit = true;
 	}
 
@@ -194,8 +193,6 @@ void Game::update(bool pum)
 		}
 
 	}
-
-	// !!!!!!!!!! COMPROBAR COLISIONES AQUI
 }
 
 
