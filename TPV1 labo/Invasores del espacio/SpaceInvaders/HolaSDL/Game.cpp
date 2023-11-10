@@ -323,6 +323,7 @@ bool Game::checkColision(Laser* laser)
 			// le dice a los laseres que le han dado
 			laseres[i]->hit();
 		}
+		i++;
 	}
 
 	// COLISIONES CON BUNKERS
