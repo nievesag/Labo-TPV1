@@ -11,13 +11,15 @@ void Bunker::render()
 	destRect.y = position.getY();
 
 	// lo mete en el render
-	texture->renderFrame(destRect, 0, 0);
+	texture->renderFrame(destRect, 0, hits);
 }
 
 bool Bunker::update()
 {
-	//if (lifes <= 0) return false;
+	// si esta muerto devuelve false
+	if (hits == lifes) return false;
 
+	// si esta vivo devuelve true
 	return true;
 }
 

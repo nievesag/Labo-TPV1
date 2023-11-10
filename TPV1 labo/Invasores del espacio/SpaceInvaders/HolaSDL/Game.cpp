@@ -106,7 +106,7 @@ void Game::loadMap()
 		else if (type == 2) {
 			Vector2D<int> vel(0, 0);
 
-			Bunker* bun = new Bunker(coord, textures[Escudo], 1);
+			Bunker* bun = new Bunker(coord, textures[Escudo], 4);
 
 			bunkers.push_back(bun);
 		}
@@ -153,7 +153,6 @@ void Game::update(bool pum)
 		}
 
 	}
-		
 
 	// ------------------------------------CANNON -----------------------------------------
 	cannon->update(pum);
@@ -303,9 +302,7 @@ bool Game::checkColision(Laser* laser)
 				//cout << "eirbuhfwiojoñdflkjhlwja-e.fhwklj" << endl;
 				aliens[i]->hit();
 			}
-
 			i++;
-
 		}
 	}
 	// si es del alien
@@ -318,6 +315,22 @@ bool Game::checkColision(Laser* laser)
 			cout << "exploto bruh" << endl;
 		}
 
+	}
+
+	// reinicia el contador
+	i = 0;
+	
+	// recorre los bunkers
+	while (i < bunkers.size() && !collision) {
+
+		// si colisiona con un bunker
+		if (SDL_HasIntersection(bunkers[i]->getRect(), laser->getRect())) {
+
+			collision = true;
+
+			bunkers[i]->hit();
+		}
+		i++;
 	}
 
 
