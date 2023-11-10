@@ -310,6 +310,12 @@ bool Game::checkColision(Laser* laser)
 
 	// reinicia el contador
 	i = 0;
+	
+	for (const auto i : laseres)
+		if (SDL_HasIntersection(laser->getRect(), i->getRect())
+			&& laser->getFrenemy() == !i->getFrenemy()) {
+			i->hit(); return true;
+		}
 
 	// COLISIONES CON OTRO LASER
 	// recorre los lasers
