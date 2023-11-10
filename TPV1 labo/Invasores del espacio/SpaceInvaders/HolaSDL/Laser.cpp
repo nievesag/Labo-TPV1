@@ -23,11 +23,9 @@ void Laser::render()
 }
 
 // avanzar de acuerdo a su velocidad y comprobar si ha acertado objetivo
-void Laser::update(bool pum)
+bool Laser::update(bool pum)
 {
 	move();
-
-	game->checkColision(this);
 
 	/*
 	game->checkColision();
@@ -41,6 +39,10 @@ void Laser::update(bool pum)
 		killLaser();
 	}
 	*/
+
+	//cout << game->checkColision(this) << endl;
+
+	return game->checkColision(this);
 	
 }
 

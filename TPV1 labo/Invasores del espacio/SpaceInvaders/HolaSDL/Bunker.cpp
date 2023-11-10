@@ -2,9 +2,6 @@
 
 void Bunker::render()
 {
-	// posicion para el coso 
-	SDL_Rect destRect;
-
 	// tamaño
 	destRect.w = texture->getFrameWidth();
 	destRect.h = texture->getFrameHeight();
@@ -16,3 +13,16 @@ void Bunker::render()
 	// lo mete en el render
 	texture->renderFrame(destRect, 0, 0);
 }
+
+bool Bunker::update()
+{
+	//if (lifes <= 0) return false;
+
+	return true;
+}
+
+void Bunker::hit()
+{
+	hits++;
+}
+

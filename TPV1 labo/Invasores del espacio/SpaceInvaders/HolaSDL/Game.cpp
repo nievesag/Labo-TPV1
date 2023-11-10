@@ -136,7 +136,7 @@ void Game::update(bool pum)
 {
 	bool alive = true;
 
-	// update de los aliens
+	// ----------------------------------- ALIEN -----------------------------------------
 	for (int i = 0; i < aliens.size(); i++) {
 
 		// si devuelve que esta muerto
@@ -152,22 +152,50 @@ void Game::update(bool pum)
 			delete deadAlien;
 		}
 
-			
 	}
 		
 
-	// update de cada elemneto de juego
+	// ------------------------------------CANNON -----------------------------------------
 	cannon->update(pum);
 
-	// update de los bunkers
+	// ----------------------------------- BUNKER -----------------------------------------
+	for (int i = 0; i < bunkers.size(); i++) {
 
-	// upadte de los laseres
-	for (int i = 0; i < laseres.size(); i++)
-		laseres[i]->update(pum);
+		// si ha detectado que esta muerto
+		if (!bunkers[i]->update()) {
+			
+			// variable auxiliar para guardar el laser
+			Bunker* deadbunker = bunkers[i];
+
+			// elimina el laser del vector de laseres
+			bunkers.erase(bunkers.begin() + i);
+
+			// borra la memoria dinamica
+			delete deadbunker;
+			
+		}
+	}
+
+	// ----------------------------------- LASER -----------------------------------------
+	for (int i = 0; i < laseres.size(); i++) {
+		
+		// si ha detectado que esta muerto
+		if (laseres[i]->update(pum)) {
+
+			// variable auxiliar para guardar el laser
+			Laser* deadlaser = laseres[i];
+
+			// elimina el laser del vector de laseres
+			laseres.erase(laseres.begin() + i);
+
+			// borra la memoria dinamica
+			delete deadlaser;
+
+		}
+
+	}
 
 	// !!!!!!!!!! COMPROBAR COLISIONES AQUI
-
-
 }
 
 
@@ -256,19 +284,27 @@ void Game::fireLaser(bool frenemy, Vector2D<double> vel)
 
 bool Game::checkColision(Laser* laser)
 {
+	int i = 0;
+	bool collision = false;
+
 	// si es de la nave
 	if (laser->getFrenemy()) {
 
 		// recorre todos los aliens que hay
-		for (int i = 0; i < aliens.size(); i++) {
+		while (i < aliens.size() && !collision) {
 
 			// si se intersecciona el laser con un alien
 			if (SDL_HasIntersection(aliens[i]->getRect(), laser->getRect())) {
 				
-				// le dice al alien que le han pegado un hostion
-				cout << "eirbuhfwiojoñdflkjhlwja-e.fhwklj" << endl;
+				// marca la colision como que ha colisionado
+				collision = true;
 
+				// le dice al alien que le han pegado un hostion
+				//cout << "eirbuhfwiojoñdflkjhlwja-e.fhwklj" << endl;
+				aliens[i]->hit();
 			}
+
+			i++;
 
 		}
 	}
@@ -280,7 +316,6 @@ bool Game::checkColision(Laser* laser)
 
 			// le dice a la nave que ha explotado puuuum
 			cout << "exploto bruh" << endl;
-
 		}
 
 	}
@@ -288,6 +323,5 @@ bool Game::checkColision(Laser* laser)
 
 	// comprueba las colisiones 
 	// LLAMAR DESDE LASER
-	return true;
-
+	return collision;
 }

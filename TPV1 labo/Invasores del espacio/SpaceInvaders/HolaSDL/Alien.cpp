@@ -25,9 +25,22 @@ void Alien::render()
 
 bool Alien::update(bool pum)
 {
+	// si esta muerto devuelve false
+	if (!alive) return false;
+
+	// se mueve
 	move();
 
-	return alive;
+	// si esta vivo devuelve true
+	return true;
+}
+
+
+void Alien::hit() {
+
+	// lo mata oops
+	alive = false;
+
 }
 
 void Alien::move()
@@ -43,5 +56,6 @@ void Alien::move()
 
 void Alien::lowerAlien()
 {
+	// lo baja 
 	position.setY(position.getY() + alienOffSet);
 }
