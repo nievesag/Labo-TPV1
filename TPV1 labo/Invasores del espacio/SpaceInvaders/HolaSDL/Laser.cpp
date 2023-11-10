@@ -23,7 +23,10 @@ void Laser::render()
 
 bool Laser::update(bool pum)
 {
-	 // avanzar de acuerdo a su velocidad
+	// si esta muerto devuelve false
+	if (!alive) return false;
+
+	// avanzar de acuerdo a su velocidad
 	move();
 
 	// comprueba las colisiones del propio laser
@@ -41,5 +44,5 @@ void Laser::move()
 
 void Laser::hit()
 {
-	
+	alive = false;
 }

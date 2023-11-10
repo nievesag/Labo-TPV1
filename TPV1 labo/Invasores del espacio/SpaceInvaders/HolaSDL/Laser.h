@@ -19,6 +19,7 @@ private:
 	Game* game;
 	bool frenemy; // laser de alien o de nave
 				  // si es del cannon es true, si es del alien es false (basciamente friend or no)
+	bool alive;
 
 	Vector2D<double> vel;
 	double speed;
@@ -30,7 +31,10 @@ private:
 public:
 	// ---- constructora ----
 	Laser(Vector2D<double> position, Vector2D<double> velocity, bool frenemy, Game* game)
-		: position(position), vel(velocity), frenemy(frenemy), game(game) {};
+		: position(position), vel(velocity), frenemy(frenemy), game(game) 
+	{
+		alive = true;
+	};
 
 	// ---- render ----
 	void render();

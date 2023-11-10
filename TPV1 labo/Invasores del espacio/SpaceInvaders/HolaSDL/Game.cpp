@@ -155,7 +155,6 @@ void Game::update(bool pum)
 
 	// ------------------------------------CANNON -----------------------------------------
 	if (!cannon->update(pum)) {
-
 		exit = true;
 	}
 
@@ -173,7 +172,6 @@ void Game::update(bool pum)
 
 			// borra la memoria dinamica
 			delete deadbunker;
-			
 		}
 	}
 
@@ -191,7 +189,6 @@ void Game::update(bool pum)
 
 			// borra la memoria dinamica
 			delete deadlaser;
-
 		}
 	}
 }
