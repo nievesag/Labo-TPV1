@@ -25,8 +25,8 @@ private:
 	// metodos publicos
 public:
 	// ---- constructora ----
-	Laser(Vector2D<double> position, Vector2D<double> velocity, bool frenemy, Game* game, double speed)
-		: position(position), vel(velocity), frenemy(frenemy), game(game), speed(speed) {};
+	Laser(Vector2D<double> position, Vector2D<double> velocity, bool frenemy, Game* game)
+		: position(position), vel(velocity), frenemy(frenemy), game(game) {};
 
 	// ---- render ----
 	void render();

@@ -92,7 +92,7 @@ void Game::loadMap()
 		if (type == 0) {
 			Vector2D<double> vel(0, 0);
 
-			cannon = new Cannon(coord, textures[Nave], 1, 100, vel, this);
+			cannon = new Cannon(coord, textures[Nave], 1, laserCoolDown, vel, this);
 		}
 		// si es un alien
 		else if (type == 1) {
@@ -148,6 +148,8 @@ void Game::update(bool pum)
 		laseres[i]->update(pum);
 
 	// !!!!!!!!!! COMPROBAR COLISIONES AQUI
+
+	//cout << SDL_GetTicks() << endl;
 
 }
 
@@ -221,26 +223,25 @@ void Game::cannotMove() {
 	}
 }
 
-void Game::fireLaser(bool frenemy)
+void Game::fireLaser(bool frenemy, Vector2D<double> vel)
 {
 	// pone la posicion
 	Point2D<double>pos = cannon->getPosition();
 
-	double velocity;
-
-	if (frenemy) velocity = -1;
-	else velocity = 1;
+	//double velocity = LASER_SPEED;
 
 	// pone la velocidad
-	Vector2D<double> vel(0, velocity);
+	//Vector2D<double> vel(0, velocity);
 
 	// crea un laser
 	// en el vector de laseres: inserta un &laser al final
-	laseres.push_back(new Laser(pos, vel, frenemy, this, 1));
+	laseres.push_back(new Laser(pos, vel, frenemy, this));
 }
 
 void Game::checkColision()
 {
 	// comprueba las colisiones 
 	// LLAMAR DESDE LASER
+
+
 }

@@ -22,7 +22,8 @@ private:
 	Point2D<double> position;	// posicion actual en Point2D
 
 	int lifes,					// numero de vidas restantes
-		laserCoolDown;			// tiempo de recarga del laser
+		laserCoolDown,			// tiempo de recarga del laser
+		cdstart = 0;
 
 	// MOVIMIENTO
 	Vector2D<double> direction;	// direccion de movimiento

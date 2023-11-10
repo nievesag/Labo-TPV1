@@ -39,6 +39,14 @@ public:
 	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo Texture* 
 	array<Texture*, NUM_TEXTURES> textures{};
 
+	// velocidades de los objetos
+	static constexpr double laserSpeed = 0.05;
+
+	// gestion de frames y framerate 
+	static constexpr double FRAMERATE = 60,
+							TIME_BT_FRAMES = 100 / FRAMERATE,
+							LASER_SPEED = laserSpeed * TIME_BT_FRAMES;
+
 
 	// ----- ATRIBUTOS PRIVADOS -----
 private:
@@ -53,7 +61,12 @@ private:
 	// booleano salida del juego
 	bool exit;
 
-	int alienDir = 1;
+
+	int laserCoolDown = 500, 
+		alienDir = 1;
+	
+
+
 
 	// enum texture name -> el indice tiene la info de la textura
 	enum TextureName {Alien1, Alien2, Alien3, Nave, Escudo, Fondo};
@@ -102,7 +115,7 @@ public:
 
 	// ---- fireLaser -----
 	// dispara laseres wow
-	void fireLaser(bool frenemy);
+	void fireLaser(bool frenemy, Vector2D<double> vel);
 
 	void checkColision();
 

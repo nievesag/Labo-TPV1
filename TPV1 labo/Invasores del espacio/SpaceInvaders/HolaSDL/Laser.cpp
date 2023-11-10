@@ -27,6 +27,11 @@ void Laser::render()
 // avanzar de acuerdo a su velocidad y comprobar si ha acertado objetivo
 void Laser::update(bool pum)
 {
+	move();
+
+	game->checkColision();
+
+	/*
 	game->checkColision();
 
 	// si se puede mover se mueve
@@ -37,12 +42,19 @@ void Laser::update(bool pum)
 		// acaba con el laser
 		killLaser();
 	}
+	*/
+	
 }
 
 void Laser::move()
 {
 	// mueve al laser
-	position.setY(position.getY() + (vel.getY() * speed));
+	//position.setY(position.getY() + (vel.getY() * speed));
+	//vel.getX() *= speed;
+
+	position = position + vel;
+
+	//std::cout << position.getX() << " " << position.getY() << endl;
 }
 
 bool Laser::cannotMove()

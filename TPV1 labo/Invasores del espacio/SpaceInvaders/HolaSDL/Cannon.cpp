@@ -81,22 +81,30 @@ void Cannon::movement()
 	}
 	if (keyE) game->setExit(true);
 
-	// if(position.getX() > 0 && position.getX() < game->getWinWidth()-texture->getFrameWidth())
+	// se mueve la nave
 	position.setX(position.getX() + (direction.getX() * speed));
 
-	if (position.getX() < 0) position.setX(0);
+	// para que no se pase de largo la nave
+	if (position.getX() < 0) 
+		position.setX(0);
 	else if(position.getX() > game->getWinWidth()-texture->getFrameWidth())
 		position.setX(game->getWinWidth() - texture->getFrameWidth());
 }
 
 void Cannon::shoot()
 {
-	if (keySpace) {
+	int elapsedTime = SDL_GetTicks() - cdstart;
 
+	if (keySpace && elapsedTime >= laserCoolDown) {
+
+
+		std::cout << elapsedTime << " " << laserCoolDown << endl;
 		// firea un laser
-		game->fireLaser(true);
+		game->fireLaser(true, Vector2D<double>(0, -game->LASER_SPEED));
 
 		// debug
-		std::cout << "COJONEEEEEEEEES" << " ";
+		//std::cout << "COJONEEEEEEEEES" << " ";
+
+		cdstart = SDL_GetTicks(); // resetea el contador del cd al 0 relativo
 	}
 }
