@@ -29,9 +29,9 @@ using uint = unsigned int;
 
 
 // gestion de frames y framerate 
-static constexpr double FRAMERATE = 60,
-						TIME_BT_FRAMES = 100 / FRAMERATE,
-						LASER_SPEED = 0.05 * TIME_BT_FRAMES;
+static constexpr double FRAMERATE = 60,							// frames por segundo
+						TIME_BT_FRAMES = 100 / FRAMERATE,		// tiempo entre frames
+						LASER_SPEED = 0.05 * TIME_BT_FRAMES;	// velocidad de laser
 
 
 // ------------------------------ GAME ------------------------------
@@ -45,9 +45,6 @@ public:
 	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo Texture* 
 	array<Texture*, NUM_TEXTURES> textures{};
 
-	// velocidades de los objetos
-	//static constexpr double laserSpeed = 0.05;
-
 	// ----- ATRIBUTOS PRIVADOS -----
 private:
 	SDL_Window* window = nullptr; // puntero a ventana
@@ -60,7 +57,6 @@ private:
 
 	// booleano salida del juego
 	bool exit;
-
 
 	int laserCoolDown = 500, 
 		alienDir = 1;

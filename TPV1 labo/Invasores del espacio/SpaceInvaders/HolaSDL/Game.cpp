@@ -120,15 +120,12 @@ void Game::loadMap()
 // RUN
 void Game::run()
 {
-	while (!exit) // Falta el control de tiempo
+	while (!exit) // !!!!!!!!!!!!!!!!!!!!!! Falta el control de tiempo
 	{
-		// !!!!!!!! no estoy segura de si se ejecuta handleEvents o update antes (así está en las diapos).
 		handleEvents();
 		
-		//
 		update(true);
 
-		// renderiza el juego
 		render();
 	}
 }
@@ -196,9 +193,7 @@ void Game::update(bool pum)
 			delete deadlaser;
 
 		}
-
 	}
-
 }
 
 
@@ -282,7 +277,8 @@ bool Game::checkColision(Laser* laser)
 	int i = 0;
 	bool collision = false;
 
-	// si es de la nave
+	// COLISIONES CON ALIENS
+	// si el laser es de la nave
 	if (laser->getFrenemy()) {
 
 		// recorre todos los aliens que hay
@@ -300,21 +296,42 @@ bool Game::checkColision(Laser* laser)
 			i++;
 		}
 	}
-	// si es del alien
+
+	// COLISIONES CON CANNON
+	// si el laser es del alien
 	else {
-		
 		// si se intersecciona el laser con un alien
 		if (SDL_HasIntersection(cannon->getRect(), laser->getRect())) {
 
 			// le dice a la nave que ha explotado puuuum
 			cannon->hit();
 		}
-
 	}
 
 	// reinicia el contador
 	i = 0;
 	
+	for (const auto i : laseres)
+		if (SDL_HasIntersection(laser->getRect(), i->getRect())
+			&& laser->getFrenemy() == !i->getFrenemy()) {
+			i->hit(); return true;
+		}
+
+	// COLISIONES CON OTRO LASER
+	// recorre los lasers
+	while (i < laseres.size() && !collision) {
+
+		// si colisiona con otro laser y es de diferente origen
+		if (SDL_HasIntersection(laser->getRect(), laseres[i]->getRect()) && laser->getFrenemy() == !laseres[i]->getFrenemy()) {
+
+			collision = true;
+
+			// le dice a los laseres que le han dado
+			laseres[i]->hit();
+		}
+	}
+
+	// COLISIONES CON BUNKERS
 	// recorre los bunkers
 	while (i < bunkers.size() && !collision) {
 
@@ -323,13 +340,10 @@ bool Game::checkColision(Laser* laser)
 
 			collision = true;
 
+			// le dice a los bunkeres que le han dado
 			bunkers[i]->hit();
 		}
 		i++;
 	}
-
-
-	// comprueba las colisiones 
-	// LLAMAR DESDE LASER
 	return collision;
 }

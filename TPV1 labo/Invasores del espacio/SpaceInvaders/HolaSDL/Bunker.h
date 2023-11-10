@@ -17,15 +17,13 @@ class Bunker
 {
 	// atributos privados
 private:
-	Vector2D<double> position; // posicion actual en Point2D
-	int lifes, // vidas restantes
-		hits;
+	Vector2D<double> position;  // posicion actual en Point2D
+
 	Texture* texture = nullptr; // punteron a su textura
+	SDL_Rect destRect;			// posicion 
 
-
-	// posicion para el coso 
-	SDL_Rect destRect;
-
+	int lifes,					// vidas restantes
+		hits;
 
 	// metodos publicos
 public:

@@ -3,7 +3,6 @@
 
 void Cannon::render()
 {
-
 	// tamanio
 	destRect.w = texture->getFrameWidth();
 	destRect.h = texture->getFrameHeight();

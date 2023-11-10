@@ -17,30 +17,30 @@ class Alien
 {
 	// atributos privados
 private:
-	Vector2D<double> position; // posicion actual en Point2D
+	Vector2D<double> position;  // posicion actual en Point2D
 	int type;
 	double speed = 0.01;
 	bool alive;
 	Texture* texture = nullptr; // punteron a su textura
-	Game* game = nullptr; // puntero al juego -> para saber la dir común de movimiento de ese tipo de aliens
-						  // + informar de que ya no se puede desplazar en ella
+	Game* game = nullptr;		// puntero al juego -> para saber la dir común de movimiento de ese tipo de aliens
+								// + informar de que ya no se puede desplazar en ella
+
 	double alienOffSet = 10;
 
 	double attackCD,
-		attackCDcounter,	// cooldown del disparo
-		minCD, maxCD;
+		   attackCDcounter,		// cooldown del disparo
+		   minCD, maxCD;
 
 	// rectangulo del render
 	SDL_Rect destRect;
 
-	// metodos publicos 
+	// metodos publicos
 public:
 	// ---- constructora ----
 	Alien(Point2D<double> position, Texture* texture, int type, Game* game, double minCD, double maxCD)
 		: position(position), texture(texture), type(type), game(game), minCD(minCD), maxCD(maxCD)
 	{
 		alive = true; 
-
 	};
 
 	Alien(const Alien& oldalien);
@@ -79,8 +79,6 @@ public:
 	Point2D<double> getPosition() { return position; }
 
 	void setAttackCD(double newCD) { attackCD = newCD; }
-
-
 };
 
 #endif

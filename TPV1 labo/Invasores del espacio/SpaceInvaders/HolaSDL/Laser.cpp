@@ -9,7 +9,6 @@ void Laser::render()
 	else 
 		SDL_SetRenderDrawColor(game->getRenderer(), 255, 242, 0, 255);
 
-
 	// tamaño
 	destRect.w = 2;
 	destRect.h = 10;
@@ -22,13 +21,13 @@ void Laser::render()
 	SDL_RenderFillRect(game->getRenderer(), &destRect);
 }
 
-// avanzar de acuerdo a su velocidad y comprobar si ha acertado objetivo
 bool Laser::update(bool pum)
 {
+	 // avanzar de acuerdo a su velocidad
 	move();
 
+	// comprueba las colisiones del propio laser
 	return game->checkColision(this);
-	
 }
 
 void Laser::move()
@@ -40,20 +39,7 @@ void Laser::move()
 	position = position + vel;
 }
 
-bool Laser::cannotMove()
+void Laser::hit()
 {
-	// TODO
-
-	return false;
-}
-
-void Laser::killLaser()
-{
-	// TODO
-}
-
-// accede a la posicion del laser
-void Laser::getPosition()
-{
-
+	
 }

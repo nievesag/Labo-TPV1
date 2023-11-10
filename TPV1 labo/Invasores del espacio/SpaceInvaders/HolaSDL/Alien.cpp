@@ -8,9 +8,6 @@ Alien::~Alien()
 
 void Alien::render()
 {
-	// posicion para el coso 
-	
-
 	// tamaño
 	destRect.w = texture->getFrameWidth();
 	destRect.h = texture->getFrameHeight();
@@ -38,12 +35,10 @@ bool Alien::update(bool pum)
 	return true;
 }
 
-
 void Alien::hit() {
 
 	// lo mata oops
 	alive = false;
-
 }
 
 void Alien::move()
@@ -62,7 +57,6 @@ void Alien::lowerAlien()
 	// lo baja 
 	position.setY(position.getY() + alienOffSet);
 }
-
 
 void Alien::shoot() 
 {
@@ -87,14 +81,10 @@ void Alien::attack()
 
 			// reinicia el contador
 			attackCDcounter = 0;
-
-
 		}
 		else 
 			attackCDcounter++;
 
-
 		shoot();
 	}
-
 }

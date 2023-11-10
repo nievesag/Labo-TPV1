@@ -15,14 +15,15 @@ class Laser
 {
 	// atributos privados
 private:
-	Vector2D<double> position; 
-	Vector2D<double> vel;
+	Vector2D<double> position;
+	Game* game;
 	bool frenemy; // laser de alien o de nave
 				  // si es del cannon es true, si es del alien es false (basciamente friend or no)
-	double speed;
-	Game* game;
-	int offset = 15;
 
+	Vector2D<double> vel;
+	double speed;
+
+	int offset = 15;
 	SDL_Rect destRect;
 
 	// metodos publicos
@@ -38,22 +39,18 @@ public:
 	//  avanzar con su velocidad y comprobar si ha acertado a algún objetivo
 	bool update(bool pum);
 
-	//
-	void getPosition();
-
-	//
+	// devuelve si es de la nave (true) o de los aliens (false)
 	bool getFrenemy() { return frenemy; };
 
+	// devuelve posicion
 	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
+
+	// ---- hit ----
+	// recibir daño
+	void hit();
 
 protected:
 	// mueve el laser segun el vector velocidad
 	void move();
-
-	// mira si puede seguir moviendose
-	bool cannotMove();
-
-	//
-	void killLaser();
 };
 #endif
