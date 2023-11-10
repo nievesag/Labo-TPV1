@@ -31,6 +31,9 @@ private:
 	// input
 	bool keyA = false, keyD = false, keyE = false, keySpace = false;
 
+	// posicion para el coso 
+	SDL_Rect destRect;
+
 	// metodos publicos
 public:
 	// ---- constructura ----
@@ -63,6 +66,9 @@ public:
 
 	// returns position
 	Point2D<double> getPosition() { return position; }
+
+	// devuelve el rect del render
+	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
 
 	// metodos auxiliares
 private:

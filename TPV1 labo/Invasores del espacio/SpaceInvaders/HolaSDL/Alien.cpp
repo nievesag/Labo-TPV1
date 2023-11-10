@@ -9,7 +9,7 @@ Alien::~Alien()
 void Alien::render()
 {
 	// posicion para el coso 
-	SDL_Rect destRect;
+	
 
 	// tamaño
 	destRect.w = texture->getFrameWidth();
@@ -23,9 +23,11 @@ void Alien::render()
 	texture->renderFrame(destRect, type, 0);
 }
 
-void Alien::update(bool pum)
+bool Alien::update(bool pum)
 {
 	move();
+
+	return alive;
 }
 
 void Alien::move()

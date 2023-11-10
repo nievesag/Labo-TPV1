@@ -9,8 +9,6 @@ void Laser::render()
 	else 
 		SDL_SetRenderDrawColor(game->getRenderer(), 255, 242, 0, 255);
 
-	// posicion para el coso 
-	SDL_Rect destRect;
 
 	// tamaño
 	destRect.w = 2;
@@ -29,7 +27,7 @@ void Laser::update(bool pum)
 {
 	move();
 
-	game->checkColision();
+	game->checkColision(this);
 
 	/*
 	game->checkColision();

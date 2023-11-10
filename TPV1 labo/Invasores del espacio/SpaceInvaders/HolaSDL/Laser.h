@@ -18,9 +18,12 @@ private:
 	Vector2D<double> position; 
 	Vector2D<double> vel;
 	bool frenemy; // laser de alien o de nave
+				  // si es del cannon es true, si es del alien es false (basciamente friend or no)
 	double speed;
 	Game* game;
 	int offset = 15;
+
+	SDL_Rect destRect;
 
 	// metodos publicos
 public:
@@ -34,7 +37,14 @@ public:
 	// ---- update ----
 	//  avanzar con su velocidad y comprobar si ha acertado a algún objetivo
 	void update(bool pum);
+
+	//
 	void getPosition();
+
+	//
+	bool getFrenemy() { return frenemy; };
+
+	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
 
 protected:
 	// mueve el laser segun el vector velocidad

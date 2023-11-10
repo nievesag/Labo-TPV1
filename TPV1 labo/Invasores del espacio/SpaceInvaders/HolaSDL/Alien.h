@@ -20,16 +20,20 @@ private:
 	Vector2D<double> position; // posicion actual en Point2D
 	int type;
 	double speed = 0.01;
+	bool alive;
 	Texture* texture = nullptr; // punteron a su textura
 	Game* game = nullptr; // puntero al juego -> para saber la dir común de movimiento de ese tipo de aliens
 						  // + informar de que ya no se puede desplazar en ella
 	double alienOffSet = 10;
 
+	// rectangulo del render
+	SDL_Rect destRect;
+
 	// metodos publicos 
 public:
 	// ---- constructora ----
 	Alien(Point2D<double> position, Texture* texture, int type, Game* game)
-		: position(position), texture(texture), type(type), game(game) {};
+		: position(position), texture(texture), type(type), game(game) { alive = true; };
 
 	Alien(const Alien& oldalien);
 
@@ -42,7 +46,7 @@ public:
 	// ---- update ----
 	// movimiento, disparar aleatoriamente después del cooldown 
 	// return false -> el alien ha sido dañado
-	void update(bool pum);
+	bool update(bool pum);
 
 	// ---- hit ----
 	// recibir daño
@@ -54,6 +58,12 @@ public:
 
 	// baja al alien 1
 	void lowerAlien();
+
+
+	// devuelve el rect 
+	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
+
+
 };
 
 #endif

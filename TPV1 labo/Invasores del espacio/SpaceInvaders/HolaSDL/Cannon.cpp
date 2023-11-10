@@ -3,10 +3,8 @@
 
 void Cannon::render()
 {
-	// posicion para el coso 
-	SDL_Rect destRect;
 
-	// tamaño
+	// tamanio
 	destRect.w = texture->getFrameWidth();
 	destRect.h = texture->getFrameHeight();
 

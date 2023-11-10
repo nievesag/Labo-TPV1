@@ -117,7 +117,7 @@ public:
 	// dispara laseres wow
 	void fireLaser(bool frenemy, Vector2D<double> vel);
 
-	void checkColision();
+	bool checkColision(Laser* laser);
 
 	uint getWinWidth() {
 		return winWidth;

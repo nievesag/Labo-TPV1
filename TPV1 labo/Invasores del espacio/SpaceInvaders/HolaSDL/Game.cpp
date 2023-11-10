@@ -134,9 +134,27 @@ void Game::run()
 // ACTUALIZAR 
 void Game::update(bool pum)
 {
+	bool alive = true;
+
 	// update de los aliens
-	for (int i = 0; i < aliens.size(); i++)
-		aliens[i]->update(pum);
+	for (int i = 0; i < aliens.size(); i++) {
+
+		// si devuelve que esta muerto
+		if (!aliens[i]->update(pum)) {
+			
+			// guarda el alien en una variable auxiliar
+			Alien* deadAlien = aliens[i];
+
+			// lo quita del vector
+			aliens.erase(aliens.begin()+i);
+
+			// elimina la memoria dinamica
+			delete deadAlien;
+		}
+
+			
+	}
+		
 
 	// update de cada elemneto de juego
 	cannon->update(pum);
@@ -149,7 +167,6 @@ void Game::update(bool pum)
 
 	// !!!!!!!!!! COMPROBAR COLISIONES AQUI
 
-	//cout << SDL_GetTicks() << endl;
 
 }
 
@@ -187,7 +204,6 @@ void Game::renderBackground()
 	// renderiza el fondo
 	textures[Fondo]->render();
 }
-
 
 // MANEJAR EVENTOS
 void Game::handleEvents()
@@ -238,10 +254,40 @@ void Game::fireLaser(bool frenemy, Vector2D<double> vel)
 	laseres.push_back(new Laser(pos, vel, frenemy, this));
 }
 
-void Game::checkColision()
+bool Game::checkColision(Laser* laser)
 {
+	// si es de la nave
+	if (laser->getFrenemy()) {
+
+		// recorre todos los aliens que hay
+		for (int i = 0; i < aliens.size(); i++) {
+
+			// si se intersecciona el laser con un alien
+			if (SDL_HasIntersection(aliens[i]->getRect(), laser->getRect())) {
+				
+				// le dice al alien que le han pegado un hostion
+				cout << "eirbuhfwiojoñdflkjhlwja-e.fhwklj" << endl;
+
+			}
+
+		}
+	}
+	// si es del alien
+	else {
+		
+		// si se intersecciona el laser con un alien
+		if (SDL_HasIntersection(cannon->getRect(), laser->getRect())) {
+
+			// le dice a la nave que ha explotado puuuum
+			cout << "exploto bruh" << endl;
+
+		}
+
+	}
+
+
 	// comprueba las colisiones 
 	// LLAMAR DESDE LASER
-
+	return true;
 
 }
