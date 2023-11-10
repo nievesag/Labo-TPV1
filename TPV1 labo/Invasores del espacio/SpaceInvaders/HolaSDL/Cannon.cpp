@@ -16,13 +16,15 @@ void Cannon::render()
 	texture->render(destRect);
 }
 
-void Cannon::update(bool pum)
+bool Cannon::update(bool pum)
 {
 	// actualiza el movimiento
 	movement();
 
 	// dispara
 	shoot();
+
+	return lifes > 0;
 }
 
 void Cannon::handleEvents(SDL_Event event)
@@ -105,4 +107,9 @@ void Cannon::shoot()
 
 		cdstart = SDL_GetTicks(); // resetea el contador del cd al 0 relativo
 	}
+}
+
+void Cannon::hit() {
+
+	lifes--;
 }

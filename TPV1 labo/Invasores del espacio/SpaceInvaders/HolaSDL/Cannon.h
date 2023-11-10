@@ -54,7 +54,7 @@ public:
 	// !!!!!!!!!!!!!
 	// todos los update devuelven un booleano indicando si el objeto sigue vivo o 
 	// ha de ser eliminado por Game (que maneja la coleccion de elementos de la escena)
-	void update(bool pum);
+	bool update(bool pum);
 
 	// ---- hit ----
 	// recibir daño

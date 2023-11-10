@@ -67,13 +67,12 @@ void Alien::lowerAlien()
 void Alien::shoot() 
 {
 	//	
-	if (attackCDcounter >= attackCD) {
+	if (attackCDcounter >= attackCD) 
+	{
 
 		// crea un laser nuevo
 		game->fireLaser(this->getPosition(), Vector2D<double>(0, LASER_SPEED), false);
 	}
-
-	
 }
 
 void Alien::attack()
@@ -94,7 +93,6 @@ void Alien::attack()
 		}
 		else 
 			attackCDcounter++;
-
 
 
 		shoot();

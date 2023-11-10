@@ -100,8 +100,6 @@ void Game::loadMap()
 
 			Alien* alien = new Alien(coord, textures[atype], atype, this);
 
-			//alien->setAttackCD(getRandomRange(1500, 2000));
-
 			aliens.push_back(alien);
 		}
 		// si es un bunker
@@ -153,11 +151,12 @@ void Game::update(bool pum)
 			// elimina la memoria dinamica
 			delete deadAlien;
 		}
-
 	}
 
 	// ------------------------------------CANNON -----------------------------------------
-	cannon->update(pum);
+	if (!cannon->update(pum)) {
+		//exit = true;
+	}
 
 	// ----------------------------------- BUNKER -----------------------------------------
 	for (int i = 0; i < bunkers.size(); i++) {
@@ -306,7 +305,7 @@ bool Game::checkColision(Laser* laser)
 		if (SDL_HasIntersection(cannon->getRect(), laser->getRect())) {
 
 			// le dice a la nave que ha explotado puuuum
-			//cout << "exploto bruh" << endl;
+			cannon->hit();
 		}
 
 	}
