@@ -98,7 +98,7 @@ void Cannon::shoot()
 
 		std::cout << elapsedTime << " " << laserCoolDown << endl;
 		// firea un laser
-		game->fireLaser(true, Vector2D<double>(0, -game->LASER_SPEED));
+		game->fireLaser(this->getPosition(), Vector2D<double>(0, -LASER_SPEED), true);
 
 		// debug
 		//std::cout << "COJONEEEEEEEEES" << " ";

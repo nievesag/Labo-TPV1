@@ -100,6 +100,8 @@ void Game::loadMap()
 
 			Alien* alien = new Alien(coord, textures[atype], atype, this);
 
+			//alien->setAttackCD(getRandomRange(1500, 2000));
+
 			aliens.push_back(alien);
 		}
 		// si es un bunker
@@ -266,16 +268,8 @@ void Game::cannotMove() {
 	}
 }
 
-void Game::fireLaser(bool frenemy, Vector2D<double> vel)
+void Game::fireLaser(Point2D<double> pos, Vector2D<double> vel, bool frenemy)
 {
-	// pone la posicion
-	Point2D<double>pos = cannon->getPosition();
-
-	//double velocity = LASER_SPEED;
-
-	// pone la velocidad
-	//Vector2D<double> vel(0, velocity);
-
 	// crea un laser
 	// en el vector de laseres: inserta un &laser al final
 	laseres.push_back(new Laser(pos, vel, frenemy, this));
@@ -312,7 +306,7 @@ bool Game::checkColision(Laser* laser)
 		if (SDL_HasIntersection(cannon->getRect(), laser->getRect())) {
 
 			// le dice a la nave que ha explotado puuuum
-			cout << "exploto bruh" << endl;
+			//cout << "exploto bruh" << endl;
 		}
 
 	}

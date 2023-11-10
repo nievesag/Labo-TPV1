@@ -26,6 +26,9 @@ private:
 						  // + informar de que ya no se puede desplazar en ella
 	double alienOffSet = 10;
 
+	double attackCD,
+		attackCDcounter;	// cooldown del disparo
+
 	// rectangulo del render
 	SDL_Rect destRect;
 
@@ -33,7 +36,10 @@ private:
 public:
 	// ---- constructora ----
 	Alien(Point2D<double> position, Texture* texture, int type, Game* game)
-		: position(position), texture(texture), type(type), game(game) { alive = true; };
+		: position(position), texture(texture), type(type), game(game) 
+	{
+		alive = true; 
+	};
 
 	Alien(const Alien& oldalien);
 
@@ -59,9 +65,18 @@ public:
 	// baja al alien 1
 	void lowerAlien();
 
+	// el alien dispara
+	void shoot();
+
+	// gestiona el cooldown de los disparos
+	void attack();
 
 	// devuelve el rect 
 	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
+
+	Point2D<double> getPosition() { return position; }
+
+	void setAttackCD(double newCD) { attackCD = newCD; }
 
 
 };

@@ -28,6 +28,12 @@ using namespace std;
 using uint = unsigned int;
 
 
+// gestion de frames y framerate 
+static constexpr double FRAMERATE = 60,
+						TIME_BT_FRAMES = 100 / FRAMERATE,
+						LASER_SPEED = 0.05 * TIME_BT_FRAMES;
+
+
 // ------------------------------ GAME ------------------------------
 class Game
 {
@@ -40,13 +46,7 @@ public:
 	array<Texture*, NUM_TEXTURES> textures{};
 
 	// velocidades de los objetos
-	static constexpr double laserSpeed = 0.05;
-
-	// gestion de frames y framerate 
-	static constexpr double FRAMERATE = 60,
-							TIME_BT_FRAMES = 100 / FRAMERATE,
-							LASER_SPEED = laserSpeed * TIME_BT_FRAMES;
-
+	//static constexpr double laserSpeed = 0.05;
 
 	// ----- ATRIBUTOS PRIVADOS -----
 private:
@@ -64,9 +64,6 @@ private:
 
 	int laserCoolDown = 500, 
 		alienDir = 1;
-	
-
-
 
 	// enum texture name -> el indice tiene la info de la textura
 	enum TextureName {Alien1, Alien2, Alien3, Nave, Escudo, Fondo};
@@ -115,9 +112,11 @@ public:
 
 	// ---- fireLaser -----
 	// dispara laseres wow
-	void fireLaser(bool frenemy, Vector2D<double> vel);
+	void fireLaser(Point2D<double> pos, Vector2D<double> vel, bool frenemy);
 
+	// gestiona las colisiones con el laser especificado
 	bool checkColision(Laser* laser);
+
 
 	uint getWinWidth() {
 		return winWidth;
@@ -128,8 +127,8 @@ public:
 	}
 
 	// placeholder
-	void setExit(bool tetas) {
-		exit = tetas;
+	void setExit(bool aux) {
+		exit = aux;
 	}
 
 	bool GetExit() {
@@ -139,11 +138,10 @@ public:
 	// devuelve el puntero al renderer
 	SDL_Renderer* getRenderer() { return renderer; }
 
-	/*
+	
 	int Game::getRandomRange(int min, int max) {
-		int randomGenerator = time(nullptr);
 		return uniform_int_distribution<int>(min, max)(randomGenerator);
-	}*/
+	}
 
 	// ----- METODOS AUXILIARES -----
 private:
@@ -152,11 +150,11 @@ private:
 	void loadTextures();
 
 	// ----- loadMap ------
-	// para poder cargar el mapa con la informacion necesaria
-	// (crea los aliens y tal)
+	// para poder cargar el mapa con la informacion necesaria (crea los aliens y tal)
 	// pretendo que aqui se lean los txt y que se hagan bucles para crear los bichitos
 	void loadMap();
 
+	// renderea el fondo
 	void renderBackground();
 };
 

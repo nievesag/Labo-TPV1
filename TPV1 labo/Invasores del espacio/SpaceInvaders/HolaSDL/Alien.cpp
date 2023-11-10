@@ -31,6 +31,9 @@ bool Alien::update(bool pum)
 	// se mueve
 	move();
 
+	// gestiona los disparos
+	attack();
+
 	// si esta vivo devuelve true
 	return true;
 }
@@ -58,4 +61,43 @@ void Alien::lowerAlien()
 {
 	// lo baja 
 	position.setY(position.getY() + alienOffSet);
+}
+
+
+void Alien::shoot() 
+{
+	//	
+	if (attackCDcounter >= attackCD) {
+
+		// crea un laser nuevo
+		game->fireLaser(this->getPosition(), Vector2D<double>(0, LASER_SPEED), false);
+	}
+
+	
+}
+
+void Alien::attack()
+{
+	// si es del tipo de alien que dispara
+	if (type == 0) {
+
+		// gestion de cooldown
+		if (attackCDcounter >= attackCD) {
+
+			// elige un nuevo cooldown 
+			attackCD = game->getRandomRange(1500, 2000);
+
+			// reinicia el contador
+			attackCDcounter = 0;
+
+
+		}
+		else 
+			attackCDcounter++;
+
+
+
+		shoot();
+	}
+
 }
