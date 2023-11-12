@@ -43,12 +43,16 @@ public:
 	//  avanzar con su velocidad y comprobar si ha acertado a algún objetivo
 	bool update(bool pum);
 
+	// devuelve si esta fuera del marco de juego 
+	bool isOut();
+
 	// devuelve si es de la nave (true) o de los aliens (false)
 	bool getFrenemy() { return frenemy; };
 
 	// devuelve posicion
 	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
 
+	// devuelve si esta vivo el laser
 	bool IsAlive() { return alive; }
 
 	// ---- hit ----

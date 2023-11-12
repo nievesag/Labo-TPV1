@@ -34,6 +34,10 @@ static constexpr double FRAMERATE = 60,							// frames por segundo
 						LASER_SPEED = 0.05 * TIME_BT_FRAMES,	// velocidad de laser
 						ALIEN_SPEED = 0.02 * TIME_BT_FRAMES;
 
+// constantes de tamaño de pantalla -> inicializar en h
+	// tiene que ser estática porque es un atributo (constante para todos los objetos de la clase)
+static constexpr uint winWidth = 800;
+static constexpr uint winHeight = 600;
 
 // ------------------------------ GAME ------------------------------
 class Game
@@ -51,10 +55,7 @@ private:
 	SDL_Window* window = nullptr; // puntero a ventana
 	SDL_Renderer* renderer = nullptr; // puntero a renderer !!!!!!! TODO EN EL MISMO RENDERER
 
-	// constantes de tamaño de pantalla -> inicializar en h
-	// tiene que ser estática porque es un atributo (constante para todos los objetos de la clase)
-	static constexpr uint winWidth = 800;
-	static constexpr uint winHeight = 600;
+	
 
 	// booleano salida del juego
 	bool exit;

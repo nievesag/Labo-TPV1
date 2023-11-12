@@ -184,6 +184,8 @@ void Game::update(bool pum)
 		// si ha detectado que esta muerto
 		if (laseres[i]->update(pum) || !laseres[i]->IsAlive()) {
 
+			cout << "aaaa " << endl;
+
 			// variable auxiliar para guardar el laser
 			Laser* deadlaser = laseres[i];
 
