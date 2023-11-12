@@ -11,7 +11,6 @@ struct TextureSpec
 };
 
 // ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo TextureSpec 
-// !!!! usar texture root (LEER ENUNCIADO)
 array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
 	TextureSpec{"..\\images\\aliens2.png", 2, 3},	  // alien 1 // 32,32
 	{ "..\\images\\aliens2.png", 2, 3 },			  // alien 2 // 44,32
@@ -33,6 +32,10 @@ Game::Game() : randomGenerator(time(nullptr))
 	window = SDL_CreateWindow("boo", winX, winY, winWidth, winHeight, SDL_WINDOW_SHOWN);
 
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+	// ERRORES DE SDL
+	if (window == nullptr || renderer == nullptr)
+		throw "Error loading SDL window or renderer"s;
 
 	loadTextures();
 
@@ -68,56 +71,78 @@ void Game::EndGame()
 // CARGA
 void Game::loadTextures()
 {
+	try {
 	// bucle para rellenar el array de texturas
-	for (int i = 0; i < NUM_TEXTURES; i++) {
+		for (int i = 0; i < NUM_TEXTURES; i++) {
 
-		// crea la textura con el url, width y height
-		Texture* tex = new Texture(renderer, textureSpec[i].url, textureSpec[i].nh, textureSpec[i].nw);
+			// crea la textura con el url, width y height
+			Texture* tex = new Texture(renderer, textureSpec[i].url, textureSpec[i].nh, textureSpec[i].nw);
 
-		// la mete en el array
-		textures[i] = tex;
+			// la mete en el array
+			textures[i] = tex;
+			if (textures[i] == nullptr) {
+				cout << "Textura null";
+			}
+		}
+	}
+	catch (...) {
+		cout << "Texura no encontrada";
+		this->exit = true;
 	}
 }
 
 void Game::loadMap()
 {
-	ifstream in("..\\mapas\\original.txt");
-	int type;
-	int x, y;
-	int atype;
-
-	// in.eof() devuelve si se ha acabado el fichero
-	while (!in.eof()) {
-		in >> type;
-		in >> x;
-		in >> y;
-		Point2D<double> coord(x, y);
-
-		// si es la nave
-		if (type == 0) {
-			Vector2D<double> vel(0, 0);
-
-			cannon = new Cannon(coord, textures[Nave], 1, laserCoolDown, vel, this);
+	try {
+		ifstream in("..\\mapas\\original.txt");
+		if (in.fail())
+		{
+			const std::error_code ec;
+			throw ("No se ha podido leer mapa");
 		}
-		// si es un alien
-		else if (type == 1) {
-			in >> atype;
 
-			double min = getRandomRange(100, 150);
-			double max = getRandomRange(290, 330);
+		int type;
+		int x, y;
+		int atype;
 
-			Alien* alien = new Alien(coord, textures[atype], atype, this, min, max);
+		// in.eof() devuelve si se ha acabado el fichero
+		while (!in.eof()) {
+			in >> type;
+			in >> x;
+			in >> y;
+			Point2D<double> coord(x, y);
 
-			aliens.push_back(alien);
+			// si es la nave
+			if (type == 0) {
+				Vector2D<double> vel(0, 0);
+
+				cannon = new Cannon(coord, textures[Nave], 1, laserCoolDown, vel, this);
+			}
+			// si es un alien
+			else if (type == 1) {
+				in >> atype;
+
+				double min = getRandomRange(100, 150);
+				double max = getRandomRange(290, 330);
+
+				Alien* alien = new Alien(coord, textures[atype], atype, this, min, max);
+
+				aliens.push_back(alien);
+			}
+			// si es un bunker
+			else if (type == 2) {
+				Vector2D<int> vel(0, 0);
+
+				Bunker* bun = new Bunker(coord, textures[Escudo], textures[Escudo]->getNumColumns());
+
+				bunkers.push_back(bun);
+			}
 		}
-		// si es un bunker
-		else if (type == 2) {
-			Vector2D<int> vel(0, 0);
+	}
 
-			Bunker* bun = new Bunker(coord, textures[Escudo], textures[Escudo]->getNumColumns());
-
-			bunkers.push_back(bun);
-		}
+	catch (...) {
+		cout << "Error en la carga de mapas";
+		this->exit = true;
 	}
 }
 

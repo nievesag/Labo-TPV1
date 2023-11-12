@@ -29,12 +29,12 @@ using uint = unsigned int;
 
 
 // gestion de frames y framerate 
-static constexpr double FRAMERATE = 60,							// frames por segundo
+static constexpr double FRAMERATE = 60,						// frames por segundo
 						TIME_BT_FRAMES = 1 / FRAMERATE,		// tiempo entre frames
-						LASER_SPEED = 0.05 * TIME_BT_FRAMES,	// velocidad de laser
-						ALIEN_SPEED = 0.02 * TIME_BT_FRAMES;
-
-
+						LASER_SPEED = 6 * TIME_BT_FRAMES,	// velocidad de laser
+						ALIEN_SPEED = 4 * TIME_BT_FRAMES,	// velocidad de aliens
+						CANNON_SPEED = 10 * TIME_BT_FRAMES;	// velocidad de cannon
+				
 // constantes de tamaño de pantalla -> inicializar en h
 	// tiene que ser estática porque es un atributo (constante para todos los objetos de la clase)
 static constexpr uint winWidth = 800;

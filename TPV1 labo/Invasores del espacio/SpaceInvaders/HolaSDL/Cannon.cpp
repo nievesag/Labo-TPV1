@@ -81,7 +81,7 @@ void Cannon::movement()
 	if (keyE) game->setExit(true);
 
 	// se mueve la nave
-	position.setX(position.getX() + (direction.getX() * speed));
+	position.setX(position.getX() + (direction.getX() * CANNON_SPEED));
 
 	// para que no se pase de largo la nave
 	if (position.getX() < 0) 
@@ -100,9 +100,6 @@ void Cannon::shoot()
 
 		// firea un laser
 		game->fireLaser(laserPos, Vector2D<double>(0, -LASER_SPEED), true);
-
-		// debug
-		//std::cout << "COJONEEEEEEEEES" << " ";
 
 		cdstart = SDL_GetTicks(); // resetea el contador del cd al 0 relativo
 	}

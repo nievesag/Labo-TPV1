@@ -14,9 +14,9 @@ using uint = unsigned int;
 int main(int argc, char* argv[])
 {
 	// no hace borrarlo porque es estatico, se borra solo al salir de ambito (si fuese puntero: delete ay;)
-	Game ay;
+	Game game;
 
-	ay.run();
+	game.run();
 
 	return 69;
 }
