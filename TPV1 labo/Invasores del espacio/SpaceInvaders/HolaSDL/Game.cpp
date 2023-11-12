@@ -60,6 +60,11 @@ Game::~Game()
 // ----- LOGICA DE JUEGO -----
 // cargar | manejar eventos -> actualizar -> pintar -> manejar eventos etc
 
+void Game::EndGame()
+{
+	exit = true;
+}
+
 // CARGA
 void Game::loadTextures()
 {
@@ -76,7 +81,7 @@ void Game::loadTextures()
 
 void Game::loadMap()
 {
-	ifstream in("..\\mapas\\prueba.txt");
+	ifstream in("..\\mapas\\original.txt");
 	int type;
 	int x, y;
 	int atype;

@@ -73,6 +73,9 @@ public:
 	// gestiona el cooldown de los disparos
 	void attack();
 
+	// dice si ha llegado al final de la linea 
+	bool checkEnd();
+
 	// devuelve el rect 
 	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
 

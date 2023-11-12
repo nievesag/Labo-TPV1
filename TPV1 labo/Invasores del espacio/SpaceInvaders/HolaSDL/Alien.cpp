@@ -54,8 +54,15 @@ void Alien::move()
 
 void Alien::lowerAlien()
 {
-	// lo baja 
-	position.setY(position.getY() + alienOffSet);
+	if (!checkEnd()) {
+		// lo baja 
+		position.setY(position.getY() + alienOffSet);
+	}
+	else {
+		// acaba el juego
+		game->EndGame();
+	}
+	
 }
 
 void Alien::shoot() 
@@ -87,4 +94,9 @@ void Alien::attack()
 
 		shoot();
 	}
+}
+
+bool Alien::checkEnd() {
+
+	return (this->position.getY() >= 150);
 }
