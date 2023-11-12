@@ -11,11 +11,6 @@ using namespace std;
 
 using uint = unsigned int;
 
-void xd()
-{
-	
-}
-
 int main(int argc, char* argv[])
 {
 	// no hace borrarlo porque es estatico, se borra solo al salir de ambito (si fuese puntero: delete ay;)

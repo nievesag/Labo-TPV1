@@ -124,13 +124,21 @@ void Game::loadMap()
 // RUN
 void Game::run()
 {
-	while (!exit) // !!!!!!!!!!!!!!!!!!!!!! Falta el control de tiempo
+	// get ticks al inicio del bucle
+	startTime = SDL_GetTicks();
+
+	while (!exit) 
 	{
 		handleEvents();
 		
-		update(true);
+		// tiempo desde ultima actualizacion
+		frameTime = SDL_GetTicks() - startTime;
 
-		render();
+		if (frameTime > TIME_BT_FRAMES) {
+			update(true); // actualiza todos los objetos de juego
+			startTime = SDL_GetTicks();
+		}
+		render(); // renderiza todos los objetos de juego
 	}
 }
 
@@ -340,7 +348,5 @@ bool Game::checkColision(Laser* laser)
 		i++;
 	}
 
-
-	//
 	return collision;
 }

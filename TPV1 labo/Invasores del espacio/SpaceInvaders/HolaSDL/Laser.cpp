@@ -25,12 +25,8 @@ bool Laser::update(bool pum)
 {
 	// si esta muerto devuelve false
 	if (!alive) {
-
-		//cout << "llega" << endl;
-
 		return false; 
 	}
-
 
 	// avanzar de acuerdo a su velocidad
 	move();
@@ -48,15 +44,10 @@ bool Laser::isOut()
 void Laser::move()
 {
 	// mueve al laser
-	//position.setY(position.getY() + (vel.getY() * speed));
-	//vel.getX() *= speed;
-
 	position = position + vel;
 }
 
 void Laser::hit()
 {
 	alive = false;
-
-	//cout << "DOLOR Y SUFRIMIENTO" << endl;
 }

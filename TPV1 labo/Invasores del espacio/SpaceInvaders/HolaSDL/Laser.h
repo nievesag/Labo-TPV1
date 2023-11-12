@@ -5,7 +5,6 @@
 #include <SDL.h>
 #include "Vector2D.h"
 
-
 class Game;
 
 using namespace std;

@@ -1,11 +1,6 @@
 #include "Alien.h"
 #include "Game.h"
 
-Alien::~Alien()
-{
-	// destruye cosas
-}
-
 void Alien::render()
 {
 	// tamaño
@@ -66,12 +61,10 @@ void Alien::lowerAlien()
 		// acaba el juego
 		game->EndGame();
 	}
-	
 }
 
 void Alien::shoot() 
 {
-	//	
 	if (attackCDcounter >= attackCD) 
 	{
 		// crea un laser nuevo
@@ -101,7 +94,5 @@ void Alien::attack()
 }
 
 bool Alien::checkEnd() {
-
-
 	return (this->position.getY() >= 300);
 }

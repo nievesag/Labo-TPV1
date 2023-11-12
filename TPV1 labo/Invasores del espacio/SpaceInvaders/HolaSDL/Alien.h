@@ -30,7 +30,7 @@ private:
 	double attackCD,
 		   attackCDcounter,		// cooldown del disparo
 		   minCD, maxCD,
-			extraSpeed;
+		   extraSpeed;
 
 	// rectangulo del render
 	SDL_Rect destRect;
@@ -46,9 +46,6 @@ public:
 	};
 
 	Alien(const Alien& oldalien);
-
-	// ---- destructora ----
-	Alien::~Alien();
 
 	// ---- render ----
 	void render();

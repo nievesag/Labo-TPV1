@@ -30,9 +30,10 @@ using uint = unsigned int;
 
 // gestion de frames y framerate 
 static constexpr double FRAMERATE = 60,							// frames por segundo
-						TIME_BT_FRAMES = 100 / FRAMERATE,		// tiempo entre frames
+						TIME_BT_FRAMES = 1 / FRAMERATE,		// tiempo entre frames
 						LASER_SPEED = 0.05 * TIME_BT_FRAMES,	// velocidad de laser
 						ALIEN_SPEED = 0.02 * TIME_BT_FRAMES;
+
 
 // constantes de tamaño de pantalla -> inicializar en h
 	// tiene que ser estática porque es un atributo (constante para todos los objetos de la clase)
@@ -55,8 +56,6 @@ private:
 	SDL_Window* window = nullptr; // puntero a ventana
 	SDL_Renderer* renderer = nullptr; // puntero a renderer !!!!!!! TODO EN EL MISMO RENDERER
 
-	
-
 	// booleano salida del juego
 	bool exit;
 
@@ -75,6 +74,9 @@ private:
 	// crea semilla
 	std::mt19937_64 randomGenerator;
 	
+	uint32_t startTime, frameTime;	// manejo de tiempo en run
+
+
 	// ----- METODOS PUBLICOS -----
 public:
 	// ---- constructora ----
@@ -117,7 +119,6 @@ public:
 
 	// acaba el juego (setea exit a true vamos)
 	void EndGame();
-
 
 	uint getWinWidth() {
 		return winWidth;
