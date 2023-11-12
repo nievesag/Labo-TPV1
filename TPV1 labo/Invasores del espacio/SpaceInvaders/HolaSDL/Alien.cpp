@@ -44,7 +44,7 @@ void Alien::hit() {
 void Alien::move()
 {
 	// mueve al alien
-	position.setX(position.getX() + (game->getDirection() * ALIEN_SPEED));
+	position.setX(position.getX() + (game->getDirection() * (ALIEN_SPEED + extraSpeed)));
 
 	// si se pasa de corto o de largo cambia la direccion y lo baja una posicion
 	if (position.getX() < 0 || position.getX() > game->getWinWidth() - texture->getFrameWidth()) {
@@ -57,8 +57,12 @@ void Alien::lowerAlien()
 	if (!checkEnd()) {
 		// lo baja 
 		position.setY(position.getY() + alienOffSet);
+
+		// aumenta la velocidad
+		extraSpeed += 0.003;
 	}
 	else {
+		
 		// acaba el juego
 		game->EndGame();
 	}
@@ -98,5 +102,6 @@ void Alien::attack()
 
 bool Alien::checkEnd() {
 
-	return (this->position.getY() >= 2000);
+
+	return (this->position.getY() >= 300);
 }

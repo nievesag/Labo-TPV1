@@ -24,28 +24,25 @@ void Laser::render()
 bool Laser::update(bool pum)
 {
 	// si esta muerto devuelve false
-	if (!alive) { 
+	if (!alive) {
 
 		//cout << "llega" << endl;
 
 		return false; 
 	}
 
-	if (isOut()) {
-		return true;
-	}
 
 	// avanzar de acuerdo a su velocidad
 	move();
 
 	// comprueba las colisiones del propio laser
-	return game->checkColision(this);
+	return game->checkColision(this) || isOut();
 }
 
 bool Laser::isOut()
 {
-	return ((this->position.getY() >= winHeight -100 && !frenemy) 
-		|| (this->position.getY() <= 0 + 100 && frenemy));
+	return ((this->position.getY() >= winHeight - 10 && !frenemy) 
+		|| (this->position.getY() <= 0 +10 && frenemy));
 }
 
 void Laser::move()

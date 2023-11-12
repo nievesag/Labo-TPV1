@@ -145,14 +145,11 @@ void Game::update(bool pum)
 		// si devuelve que esta muerto
 		if (!aliens[i]->update(pum)) {
 			
-			// guarda el alien en una variable auxiliar
-			Alien* deadAlien = aliens[i];
+			// borra la memoria dinamica
+			delete aliens[i];
 
 			// lo quita del vector
 			aliens.erase(aliens.begin()+i);
-
-			// elimina la memoria dinamica
-			delete deadAlien;
 		}
 	}
 
@@ -167,14 +164,12 @@ void Game::update(bool pum)
 		// si ha detectado que esta muerto
 		if (!bunkers[i]->update()) {
 			
-			// variable auxiliar para guardar el laser
-			Bunker* deadbunker = bunkers[i];
-
+			// borra la memoria dinamica
+			delete bunkers[i];
+			
 			// elimina el laser del vector de laseres
 			bunkers.erase(bunkers.begin() + i);
-
-			// borra la memoria dinamica
-			delete deadbunker;
+			
 		}
 	}
 
@@ -184,16 +179,15 @@ void Game::update(bool pum)
 		// si ha detectado que esta muerto
 		if (laseres[i]->update(pum) || !laseres[i]->IsAlive()) {
 
-			cout << "aaaa " << endl;
-
 			// variable auxiliar para guardar el laser
-			Laser* deadlaser = laseres[i];
+			//Laser* deadlaser = laseres[i];
+
+			// borra la memoria dinamica
+			delete laseres[i];
 
 			// elimina el laser del vector de laseres
 			laseres.erase(laseres.begin() + i);
 
-			// borra la memoria dinamica
-			delete deadlaser;
 		}
 	}
 }

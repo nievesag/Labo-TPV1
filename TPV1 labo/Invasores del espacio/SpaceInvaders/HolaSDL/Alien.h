@@ -29,7 +29,8 @@ private:
 
 	double attackCD,
 		   attackCDcounter,		// cooldown del disparo
-		   minCD, maxCD;
+		   minCD, maxCD,
+			extraSpeed;
 
 	// rectangulo del render
 	SDL_Rect destRect;
@@ -41,6 +42,7 @@ public:
 		: position(position), texture(texture), type(type), game(game), minCD(minCD), maxCD(maxCD)
 	{
 		alive = true; 
+		extraSpeed = 0;
 	};
 
 	Alien(const Alien& oldalien);

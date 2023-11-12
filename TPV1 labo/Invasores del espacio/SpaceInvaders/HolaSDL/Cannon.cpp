@@ -96,9 +96,10 @@ void Cannon::shoot()
 
 	if (keySpace && elapsedTime >= laserCoolDown) {
 
+		Point2D<double> laserPos(this->getPosition().getX(), this->getPosition().getY() - 10);
 
 		// firea un laser
-		game->fireLaser(this->getPosition(), Vector2D<double>(0, -LASER_SPEED), true);
+		game->fireLaser(laserPos, Vector2D<double>(0, -LASER_SPEED), true);
 
 		// debug
 		//std::cout << "COJONEEEEEEEEES" << " ";
