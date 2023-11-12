@@ -44,7 +44,7 @@ void Alien::hit() {
 void Alien::move()
 {
 	// mueve al alien
-	position.setX(position.getX() + (game->getDirection() * speed));
+	position.setX(position.getX() + (game->getDirection() * ALIEN_SPEED));
 
 	// si se pasa de corto o de largo cambia la direccion y lo baja una posicion
 	if (position.getX() < 0 || position.getX() > game->getWinWidth() - texture->getFrameWidth()) {
@@ -98,5 +98,5 @@ void Alien::attack()
 
 bool Alien::checkEnd() {
 
-	return (this->position.getY() >= 150);
+	return (this->position.getY() >= 2000);
 }
