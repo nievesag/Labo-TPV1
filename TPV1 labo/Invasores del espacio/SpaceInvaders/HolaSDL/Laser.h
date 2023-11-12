@@ -49,6 +49,8 @@ public:
 	// devuelve posicion
 	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
 
+	bool IsAlive() { return alive; }
+
 	// ---- hit ----
 	// recibir daño
 	void hit();

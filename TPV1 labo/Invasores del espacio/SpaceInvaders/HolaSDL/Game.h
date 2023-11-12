@@ -31,7 +31,7 @@ using uint = unsigned int;
 // gestion de frames y framerate 
 static constexpr double FRAMERATE = 60,							// frames por segundo
 						TIME_BT_FRAMES = 100 / FRAMERATE,		// tiempo entre frames
-						LASER_SPEED = 0.05 * TIME_BT_FRAMES;	// velocidad de laser
+						LASER_SPEED = 0.02 * TIME_BT_FRAMES;	// velocidad de laser
 
 
 // ------------------------------ GAME ------------------------------

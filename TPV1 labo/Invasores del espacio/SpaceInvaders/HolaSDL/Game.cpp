@@ -76,7 +76,7 @@ void Game::loadTextures()
 
 void Game::loadMap()
 {
-	ifstream in("..\\mapas\\original.txt");
+	ifstream in("..\\mapas\\prueba.txt");
 	int type;
 	int x, y;
 	int atype;
@@ -116,7 +116,6 @@ void Game::loadMap()
 	}
 }
 
-
 // RUN
 void Game::run()
 {
@@ -129,7 +128,6 @@ void Game::run()
 		render();
 	}
 }
-
 
 // ACTUALIZAR 
 void Game::update(bool pum)
@@ -155,7 +153,7 @@ void Game::update(bool pum)
 
 	// ------------------------------------CANNON -----------------------------------------
 	if (!cannon->update(pum)) {
-		exit = true;
+		//exit = true;
 	}
 
 	// ----------------------------------- BUNKER -----------------------------------------
@@ -179,7 +177,7 @@ void Game::update(bool pum)
 	for (int i = 0; i < laseres.size(); i++) {
 		
 		// si ha detectado que esta muerto
-		if (laseres[i]->update(pum)) {
+		if (laseres[i]->update(pum) || !laseres[i]->IsAlive()) {
 
 			// variable auxiliar para guardar el laser
 			Laser* deadlaser = laseres[i];
@@ -192,7 +190,6 @@ void Game::update(bool pum)
 		}
 	}
 }
-
 
 // PINTAR
 void Game::render()
@@ -313,7 +310,8 @@ bool Game::checkColision(Laser* laser)
 	while (i < laseres.size() && !collision) {
 
 		// si colisiona con otro laser y es de diferente origen
-		if (SDL_HasIntersection(laser->getRect(), laseres[i]->getRect()) && laser->getFrenemy() == !laseres[i]->getFrenemy()) {
+		if (SDL_HasIntersection(laser->getRect(), laseres[i]->getRect()) 
+			&& laser->getFrenemy() == !laseres[i]->getFrenemy()) {
 
 			collision = true;
 
@@ -322,6 +320,9 @@ bool Game::checkColision(Laser* laser)
 		}
 		i++;
 	}
+
+	// reinicia el contador
+	i = 0;
 
 	// COLISIONES CON BUNKERS
 	// recorre los bunkers
@@ -337,5 +338,8 @@ bool Game::checkColision(Laser* laser)
 		}
 		i++;
 	}
+
+
+	//
 	return collision;
 }

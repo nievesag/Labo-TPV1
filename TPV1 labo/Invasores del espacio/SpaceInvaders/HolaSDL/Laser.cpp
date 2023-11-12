@@ -24,7 +24,10 @@ void Laser::render()
 bool Laser::update(bool pum)
 {
 	// si esta muerto devuelve false
-	if (!alive) return false;
+	if (!alive) { 
+
+		return false; 
+	}
 
 	// avanzar de acuerdo a su velocidad
 	move();
@@ -45,4 +48,6 @@ void Laser::move()
 void Laser::hit()
 {
 	alive = false;
+
+	//cout << "DOLOR Y SUFRIMIENTO" << endl;
 }
