@@ -186,6 +186,7 @@ void Game::update(bool damage)
 		// si devuelve que esta muerto
 		if (!aliens[i]->update(damage)) {
 			
+			// icrementa el conador de score segun el tipo de alien
 			SCORE += aliens[i]->GetAlienPoints();
 
 			// borra la memoria dinamica
@@ -194,6 +195,7 @@ void Game::update(bool damage)
 			// lo quita del vector
 			aliens.erase(aliens.begin()+i);
 
+			// actualiza la puntuación del jugador
 			PlayerScore();
 		}
 	}

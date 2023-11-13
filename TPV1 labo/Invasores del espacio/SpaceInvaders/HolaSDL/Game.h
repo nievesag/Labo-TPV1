@@ -167,6 +167,7 @@ private:
 	// renderea el fondo
 	void renderBackground();
 
+	// muestra en consola la puntuacion del jugador
 	void PlayerScore();
 };
 

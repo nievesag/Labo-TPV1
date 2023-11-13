@@ -60,7 +60,6 @@ void Alien::lowerAlien()
 		extraSpeed += 0.003;
 	}
 	else {
-		
 		// acaba el juego
 		game->EndGame();
 	}
@@ -102,7 +101,6 @@ void Alien::animate() {
 
 		// calculo del frame
 		alienFrame = (alienFrame + 1) % 2;
-
 	}
 }
 

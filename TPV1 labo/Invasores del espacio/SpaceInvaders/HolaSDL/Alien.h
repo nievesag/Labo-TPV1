@@ -97,6 +97,7 @@ public:
 	// settea cooldown del alien
 	void setAttackCD(double newCD) { attackCD = newCD; }
 
+	// devuelve el numero de puntuacion a añadir segun el tipo de alien
 	int GetAlienPoints() { return alienPoints; }
 };
 
