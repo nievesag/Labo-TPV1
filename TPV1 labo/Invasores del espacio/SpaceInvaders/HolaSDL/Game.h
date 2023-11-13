@@ -33,7 +33,8 @@ static constexpr double FRAMERATE = 60,						// frames por segundo
 						TIME_BT_FRAMES = 1 / FRAMERATE,		// tiempo entre frames
 						LASER_SPEED = 6 * TIME_BT_FRAMES,	// velocidad de laser
 						ALIEN_SPEED = 4 * TIME_BT_FRAMES,	// velocidad de aliens
-						CANNON_SPEED = 10 * TIME_BT_FRAMES;	// velocidad de cannon
+						CANNON_SPEED = 10 * TIME_BT_FRAMES,	// velocidad de cannon
+						ALIEN_RF = 5 * FRAMERATE;			// cada cuanto se actualiza el alien
 				
 // constantes de tamaño de pantalla -> inicializar en h
 	// tiene que ser estática porque es un atributo (constante para todos los objetos de la clase)
@@ -60,7 +61,8 @@ private:
 	bool exit;
 
 	int laserCoolDown = 500,  // cooldown del laser
-		alienDir = 1;		  // direccion de los aliens
+		alienDir = 1,		  // direccion de los aliens
+		alienFrameUpdate = 0;
 
 	// enum texture name -> el indice tiene la info de la textura
 	enum TextureName {Alien1, Alien2, Alien3, Nave, Escudo, Fondo};
@@ -144,6 +146,8 @@ public:
 	int Game::getRandomRange(int min, int max) {
 		return uniform_int_distribution<int>(min, max)(randomGenerator);
 	}
+
+	int GetAlienFrameUpdate() { return alienFrameUpdate;  }
 
 	// ----- METODOS AUXILIARES -----
 private:

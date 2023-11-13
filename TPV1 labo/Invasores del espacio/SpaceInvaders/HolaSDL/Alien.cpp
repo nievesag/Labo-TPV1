@@ -12,7 +12,7 @@ void Alien::render()
 	destRect.y = position.getY();
 
 	// lo mete en el render
-	texture->renderFrame(destRect, type, 0);
+	texture->renderFrame(destRect, type, alienFrame);
 }
 
 bool Alien::update(bool damage)
@@ -25,6 +25,9 @@ bool Alien::update(bool damage)
 
 	// gestiona los disparos
 	attack();
+
+	// anima
+	animate();
 
 	// si esta vivo devuelve true
 	return true;
@@ -91,6 +94,18 @@ void Alien::attack()
 
 		shoot();
 	}
+}
+
+void Alien::animate() {
+
+	if (game->GetAlienFrameUpdate() >= ALIEN_RF) {
+
+		// calculo del frame
+		alienFrame = (alienFrame + 1) % 2;
+
+	}
+
+	
 }
 
 bool Alien::checkEnd() {

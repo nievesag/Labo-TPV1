@@ -26,6 +26,7 @@ private:
 								// + informar de que ya no se puede desplazar en ella
 
 	double alienOffSet = 10;
+	int alienFrame;
 
 	double attackCD,			// cooldown del disparo
 		   attackCDcounter,		// contador de cooldown del disparo
@@ -42,7 +43,8 @@ public:
 		: position(position), texture(texture), type(type), game(game), minCD(minCD), maxCD(maxCD)
 	{
 		alive = true;	// inicializa alive a true, todos los aliens empiezan vivos
-		extraSpeed = 0;
+		extraSpeed = 0; // inicia la velocidad que aumenta
+		alienFrame = 0; // inicia el frame del alien
 	};
 
 	Alien(const Alien& oldalien);
@@ -71,6 +73,9 @@ public:
 
 	// gestiona el cooldown de los disparos
 	void attack();
+
+	// anima al bicho
+	void animate();
 
 	// dice si ha llegado al final de la linea 
 	bool checkEnd();

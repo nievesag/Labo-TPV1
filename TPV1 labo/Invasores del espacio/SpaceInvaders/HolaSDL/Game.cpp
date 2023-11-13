@@ -230,6 +230,11 @@ void Game::update(bool damage)
 			laseres.erase(laseres.begin() + i);
 		}
 	}
+
+	// reinicia el contador
+	if (alienFrameUpdate >= ALIEN_RF) alienFrameUpdate = 0;
+	else alienFrameUpdate++;
+
 }
 
 // PINTAR
