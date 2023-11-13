@@ -1,0 +1,8 @@
+Autores:
+  Inés Primo López
+  Nieves Alonso Gilsanz
+
+Funcionalidades Opcionales:
+  Animación de los alienígenas
+  Puntucación
+  Aumento de velocidad y bajada de los aliens
