@@ -186,18 +186,29 @@ void Game::update(bool damage)
 		// si devuelve que esta muerto
 		if (!aliens[i]->update(damage)) {
 			
+			SCORE += aliens[i]->GetAlienPoints();
+
 			// borra la memoria dinamica
 			delete aliens[i];
 
 			// lo quita del vector
 			aliens.erase(aliens.begin()+i);
+
+			PlayerScore();
 		}
 	}
 
 	// ------------------------------------CANNON -----------------------------------------
 	if (!cannon->update(damage)) {
+
+		// acaba el juego
 		EndGame();
+
+		// escribe gameover
 		cout << "GAME OVER" << endl;
+
+		// pone la puntuacion
+		PlayerScore();
 	}
 
 	// ----------------------------------- BUNKER -----------------------------------------
@@ -219,9 +230,6 @@ void Game::update(bool damage)
 		
 		// si ha detectado que esta muerto
 		if (laseres[i]->update(damage) || !laseres[i]->IsAlive()) {
-
-			// variable auxiliar para guardar el laser
-			Laser* deadlaser = laseres[i];
 
 			// borra la memoria dinamica
 			delete laseres[i];
@@ -269,6 +277,12 @@ void Game::renderBackground()
 {
 	// renderiza el fondo
 	textures[Fondo]->render();
+}
+
+void Game::PlayerScore()
+{
+	cout << "SCORE: " << SCORE << endl;
+
 }
 
 // MANEJAR EVENTOS

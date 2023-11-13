@@ -28,6 +28,8 @@ private:
 	double alienOffSet = 10;
 	int alienFrame;
 
+	int alienPoints;
+
 	double attackCD,			// cooldown del disparo
 		   attackCDcounter,		// contador de cooldown del disparo
 		   minCD, maxCD,		// minimo y maximo cooldown
@@ -45,6 +47,12 @@ public:
 		alive = true;	// inicializa alive a true, todos los aliens empiezan vivos
 		extraSpeed = 0; // inicia la velocidad que aumenta
 		alienFrame = 0; // inicia el frame del alien
+
+		if (type == 0) alienPoints = 30;
+		else if (type == 1) alienPoints = 20;
+		else if (type == 2) alienPoints = 10;
+		else alienPoints = 0;
+
 	};
 
 	Alien(const Alien& oldalien);
@@ -88,6 +96,8 @@ public:
 
 	// settea cooldown del alien
 	void setAttackCD(double newCD) { attackCD = newCD; }
+
+	int GetAlienPoints() { return alienPoints; }
 };
 
 #endif

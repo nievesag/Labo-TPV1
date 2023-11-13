@@ -34,7 +34,9 @@ static constexpr double FRAMERATE = 60,						// frames por segundo
 						LASER_SPEED = 6 * TIME_BT_FRAMES,	// velocidad de laser
 						ALIEN_SPEED = 4 * TIME_BT_FRAMES,	// velocidad de aliens
 						CANNON_SPEED = 10 * TIME_BT_FRAMES,	// velocidad de cannon
+						END_GAME = 300,						// distancia de los aliens para acabar
 						ALIEN_RF = 5 * FRAMERATE;			// cada cuanto se actualiza el alien
+
 				
 // constantes de tamaño de pantalla -> inicializar en h
 	// tiene que ser estática porque es un atributo (constante para todos los objetos de la clase)
@@ -78,6 +80,8 @@ private:
 	
 	uint32_t startTime, frameTime;	// manejo de tiempo en run
 
+
+	int SCORE;	// score general del player
 
 	// ----- METODOS PUBLICOS -----
 public:
@@ -162,6 +166,8 @@ private:
 
 	// renderea el fondo
 	void renderBackground();
+
+	void PlayerScore();
 };
 
 #endif // GAME_H 

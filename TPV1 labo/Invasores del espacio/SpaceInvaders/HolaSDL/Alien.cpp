@@ -104,10 +104,8 @@ void Alien::animate() {
 		alienFrame = (alienFrame + 1) % 2;
 
 	}
-
-	
 }
 
 bool Alien::checkEnd() {
-	return (this->position.getY() >= 300);
+	return (this->position.getY() >= END_GAME);
 }
