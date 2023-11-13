@@ -5,9 +5,9 @@ void Laser::render()
 {
 	// si es amigo/enemigo pintar de un color u otro
 	if (frenemy)
-		SDL_SetRenderDrawColor(game->getRenderer(), 255, 0, 114, 255);
+		SDL_SetRenderDrawColor(game->getRenderer(), 255, 0, 114, 255);	// cannon
 	else 
-		SDL_SetRenderDrawColor(game->getRenderer(), 255, 242, 0, 255);
+		SDL_SetRenderDrawColor(game->getRenderer(), 255, 242, 0, 255);	// aliens
 
 	// tamaño
 	destRect.w = 2;
@@ -49,5 +49,6 @@ void Laser::move()
 
 void Laser::hit()
 {
+	// laser debe ser eliminado
 	alive = false;
 }

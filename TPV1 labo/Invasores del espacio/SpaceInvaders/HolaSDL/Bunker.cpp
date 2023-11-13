@@ -23,6 +23,7 @@ bool Bunker::update()
 	return true;
 }
 
+// contador de daño
 void Bunker::hit()
 {
 	hits++;

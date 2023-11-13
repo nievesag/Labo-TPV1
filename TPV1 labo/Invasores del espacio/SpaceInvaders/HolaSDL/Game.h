@@ -54,13 +54,13 @@ public:
 	// ----- ATRIBUTOS PRIVADOS -----
 private:
 	SDL_Window* window = nullptr; // puntero a ventana
-	SDL_Renderer* renderer = nullptr; // puntero a renderer !!!!!!! TODO EN EL MISMO RENDERER
+	SDL_Renderer* renderer = nullptr; // puntero a renderer !!! TODO EN EL MISMO RENDERER
 
 	// booleano salida del juego
 	bool exit;
 
-	int laserCoolDown = 500, 
-		alienDir = 1;
+	int laserCoolDown = 500,  // cooldown del laser
+		alienDir = 1;		  // direccion de los aliens
 
 	// enum texture name -> el indice tiene la info de la textura
 	enum TextureName {Alien1, Alien2, Alien3, Nave, Escudo, Fondo};

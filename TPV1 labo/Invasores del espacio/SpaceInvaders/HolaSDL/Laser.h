@@ -14,11 +14,11 @@ class Laser
 {
 	// atributos privados
 private:
-	Vector2D<double> position;
-	Game* game;
+	Point2D<double> position; // posicion del objeto en el juego
+	Game* game;	  // puntero al juego
 	bool frenemy; // laser de alien o de nave
-				  // si es del cannon es true, si es del alien es false (basciamente friend or no)
-	bool alive;
+				  // si es del cannon es true, si es del alien es false (basciamente friend o no)
+	bool alive;	  // si debe seguir en el juego o no
 
 	Vector2D<double> vel;
 	double speed;
@@ -29,9 +29,10 @@ private:
 	// metodos publicos
 public:
 	// ---- constructora ----
-	Laser(Vector2D<double> position, Vector2D<double> velocity, bool frenemy, Game* game)
+	Laser(Point2D<double> position, Vector2D<double> velocity, bool frenemy, Game* game)
 		: position(position), vel(velocity), frenemy(frenemy), game(game) 
 	{
+		// inicializa alive a true al construirse
 		alive = true;
 	};
 
@@ -42,9 +43,14 @@ public:
 	//  avanzar con su velocidad y comprobar si ha acertado a algún objetivo
 	bool update(bool pum);
 
+	// ---- hit ----
+	// recibir daño
+	void hit();
+
 	// devuelve si esta fuera del marco de juego 
 	bool isOut();
 
+	// ---- GETTERS ----
 	// devuelve si es de la nave (true) o de los aliens (false)
 	bool getFrenemy() { return frenemy; };
 
@@ -53,10 +59,6 @@ public:
 
 	// devuelve si esta vivo el laser
 	bool IsAlive() { return alive; }
-
-	// ---- hit ----
-	// recibir daño
-	void hit();
 
 protected:
 	// mueve el laser segun el vector velocidad

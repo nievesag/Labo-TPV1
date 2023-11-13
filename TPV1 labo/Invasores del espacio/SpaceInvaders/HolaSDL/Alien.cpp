@@ -15,7 +15,7 @@ void Alien::render()
 	texture->renderFrame(destRect, type, 0);
 }
 
-bool Alien::update(bool pum)
+bool Alien::update(bool damage)
 {
 	// si esta muerto devuelve false
 	if (!alive) return false;
@@ -32,7 +32,7 @@ bool Alien::update(bool pum)
 
 void Alien::hit() {
 
-	// lo mata oops
+	// lo mata
 	alive = false;
 }
 

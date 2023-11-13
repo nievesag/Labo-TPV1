@@ -29,13 +29,21 @@ Game::Game() : randomGenerator(time(nullptr))
 	// Inicialización del sistema, ventana y renderer
 	SDL_Init(SDL_INIT_EVERYTHING);
 
-	window = SDL_CreateWindow("boo", winX, winY, winWidth, winHeight, SDL_WINDOW_SHOWN);
-
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-
 	// ERRORES DE SDL
-	if (window == nullptr || renderer == nullptr)
-		throw "Error loading SDL window or renderer"s;
+	try {
+		// crea la ventana
+		window = SDL_CreateWindow("Space Invaders", winX, winY, winWidth, winHeight, SDL_WINDOW_SHOWN);
+
+		// crea el renderer para la ventana
+		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+		if (window == nullptr || renderer == nullptr)
+			throw "Error cargando ventana de juego o renderer"s;
+	}
+	catch (...) {
+		cout << "Error cargando ventana de juego o renderer";
+		EndGame();
+	}
 
 	loadTextures();
 
@@ -63,6 +71,7 @@ Game::~Game()
 // ----- LOGICA DE JUEGO -----
 // cargar | manejar eventos -> actualizar -> pintar -> manejar eventos etc
 
+// indica que el juego ha terminado
 void Game::EndGame()
 {
 	exit = true;
@@ -87,7 +96,7 @@ void Game::loadTextures()
 	}
 	catch (...) {
 		cout << "Texura no encontrada";
-		this->exit = true;
+		EndGame();
 	}
 }
 
@@ -97,7 +106,6 @@ void Game::loadMap()
 		ifstream in("..\\mapas\\original.txt");
 		if (in.fail())
 		{
-			const std::error_code ec;
 			throw ("No se ha podido leer mapa");
 		}
 
@@ -142,7 +150,7 @@ void Game::loadMap()
 
 	catch (...) {
 		cout << "Error en la carga de mapas";
-		this->exit = true;
+		EndGame();
 	}
 }
 
@@ -168,7 +176,7 @@ void Game::run()
 }
 
 // ACTUALIZAR 
-void Game::update(bool pum)
+void Game::update(bool damage)
 {
 	if (aliens.size() == 0) exit = true;
 
@@ -176,7 +184,7 @@ void Game::update(bool pum)
 	for (int i = 0; i < aliens.size(); i++) {
 
 		// si devuelve que esta muerto
-		if (!aliens[i]->update(pum)) {
+		if (!aliens[i]->update(damage)) {
 			
 			// borra la memoria dinamica
 			delete aliens[i];
@@ -187,8 +195,9 @@ void Game::update(bool pum)
 	}
 
 	// ------------------------------------CANNON -----------------------------------------
-	if (!cannon->update(pum)) {
-		//exit = true;
+	if (!cannon->update(damage)) {
+		EndGame();
+		cout << "GAME OVER" << endl;
 	}
 
 	// ----------------------------------- BUNKER -----------------------------------------
@@ -202,7 +211,6 @@ void Game::update(bool pum)
 			
 			// elimina el laser del vector de laseres
 			bunkers.erase(bunkers.begin() + i);
-			
 		}
 	}
 
@@ -210,17 +218,16 @@ void Game::update(bool pum)
 	for (int i = 0; i < laseres.size(); i++) {
 		
 		// si ha detectado que esta muerto
-		if (laseres[i]->update(pum) || !laseres[i]->IsAlive()) {
+		if (laseres[i]->update(damage) || !laseres[i]->IsAlive()) {
 
 			// variable auxiliar para guardar el laser
-			//Laser* deadlaser = laseres[i];
+			Laser* deadlaser = laseres[i];
 
 			// borra la memoria dinamica
 			delete laseres[i];
 
 			// elimina el laser del vector de laseres
 			laseres.erase(laseres.begin() + i);
-
 		}
 	}
 }
@@ -270,13 +277,11 @@ void Game::handleEvents()
 	while (SDL_PollEvent(&event) && !exit) {
 
 		// si se solicita quit bool exit = true
-		if (event.type == SDL_QUIT) exit = true;
+		if (event.type == SDL_QUIT) EndGame();
 
 		// MANEJO DE EVENTOS DE OBJETOS DE JUEGO
 		else { cannon->handleEvents(event); }
 	}
-
-	// update current frame + render current frame
 }
 #pragma endregion
 
@@ -293,13 +298,14 @@ void Game::cannotMove() {
 	}
 }
 
+// crea un laser
 void Game::fireLaser(Point2D<double> pos, Vector2D<double> vel, bool frenemy)
 {
-	// crea un laser
 	// en el vector de laseres: inserta un &laser al final
 	laseres.push_back(new Laser(pos, vel, frenemy, this));
 }
 
+// DETECCION DE COLISIONES
 bool Game::checkColision(Laser* laser)
 {
 	int i = 0;
@@ -318,7 +324,7 @@ bool Game::checkColision(Laser* laser)
 				// marca la colision como que ha colisionado
 				collision = true;
 
-				// le dice al alien que le han pegado un hostion
+				// le dice al alien que le han dado
 				aliens[i]->hit();
 			}
 			i++;
@@ -331,7 +337,7 @@ bool Game::checkColision(Laser* laser)
 		// si se intersecciona el laser con un alien
 		if (SDL_HasIntersection(cannon->getRect(), laser->getRect())) {
 
-			// le dice a la nave que ha explotado puuuum
+			// le dice a la nave que le han dado
 			cannon->hit();
 		}
 	}
@@ -372,6 +378,5 @@ bool Game::checkColision(Laser* laser)
 		}
 		i++;
 	}
-
 	return collision;
 }

@@ -51,10 +51,9 @@ public:
 
 	// ---- update ----
 	// actualiza el estado del jugador
-	// !!!!!!!!!!!!!
 	// todos los update devuelven un booleano indicando si el objeto sigue vivo o 
 	// ha de ser eliminado por Game (que maneja la coleccion de elementos de la escena)
-	bool update(bool pum);
+	bool update(bool damage);
 
 	// ---- hit ----
 	// recibir daño
@@ -72,8 +71,10 @@ public:
 
 	// metodos auxiliares
 private:
+	// movimiento
 	void movement();
 
+	// disparo
 	void shoot();
 };
 #endif // CANNON_H

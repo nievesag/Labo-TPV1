@@ -21,12 +21,6 @@ public:
 	Vector2D::Vector2D(T x, T y)
 		: x(x), y(y) {} // los corchetes vacios inicializa las variables a 0
 
-
-	// constructora con un vector (deberiamos ponerlo con el setter????) -> 
-	// no entiendo por que da error oop
-	// Vector2D::Vector2D(const Vector2D& vec) 
-	//	: x(vec.getX()), y(vec.getY()) { }
-
 	// ---- getters ----
 	// getter x
 	T getX() {
@@ -89,30 +83,4 @@ public:
 	// establecer alias
 	template <class T = double> using Point2D = Vector2D<T>;
 
-// CODIGO PARA PROBAR VECTOR2D (PONER EN EL MAIN)
-// (poner #include "Vector2D.h"; en el main para probarlo individualmente)
-/*
-	// --- MIRAR QUE SE CREA BIEN
-	Vector2D<int> uwu(1, 2);
-
-	cout << uwu.getX() << " " << uwu.getY() << endl;
-
-	Vector2D<int> owo(2, 1);
-
-	cout << owo.getX() << " " << owo.getY() << endl;
-	
-	// --- MIRAR QUE RESTE/SUME BIEN
-	Vector2D<int> ewe = owo - uwu;
-
-	cout << ewe.getX() << " " << ewe.getY() << endl;
-
-	// --- MIRAR QUE HAGA EL PRODUCTO ESCALAR BIEN
-	cout << (uwu*owo) << endl;
-
-	// --- MIRAR QUE HAGA EL PRODUCTO CON UN ESCALAR BIEN
-	Vector2D<int> iwi = uwu * 2;
-
-	cout << iwi.getX() << " " << iwi.getY() << endl;
-*/
 #endif
-

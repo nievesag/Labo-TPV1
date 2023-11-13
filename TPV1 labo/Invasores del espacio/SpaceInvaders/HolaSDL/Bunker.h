@@ -23,7 +23,7 @@ private:
 	SDL_Rect destRect;			// posicion 
 
 	int lifes,					// vidas restantes
-		hits;
+		hits;					// contador de golpes
 
 	// metodos publicos
 public:
@@ -43,6 +43,7 @@ public:
 	// recibir daño -> -1 vida, cambiar textura
 	void hit();
 
+	// devuelve rect (posicion) del bunker
 	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
 };
 

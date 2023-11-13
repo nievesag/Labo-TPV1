@@ -15,7 +15,7 @@ void Cannon::render()
 	texture->render(destRect);
 }
 
-bool Cannon::update(bool pum)
+bool Cannon::update(bool damage)
 {
 	// actualiza el movimiento
 	movement();

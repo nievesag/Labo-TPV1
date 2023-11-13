@@ -27,10 +27,10 @@ private:
 
 	double alienOffSet = 10;
 
-	double attackCD,
-		   attackCDcounter,		// cooldown del disparo
-		   minCD, maxCD,
-		   extraSpeed;
+	double attackCD,			// cooldown del disparo
+		   attackCDcounter,		// contador de cooldown del disparo
+		   minCD, maxCD,		// minimo y maximo cooldown
+		   extraSpeed;			// velocidad añadida
 
 	// rectangulo del render
 	SDL_Rect destRect;
@@ -41,7 +41,7 @@ public:
 	Alien(Point2D<double> position, Texture* texture, int type, Game* game, double minCD, double maxCD)
 		: position(position), texture(texture), type(type), game(game), minCD(minCD), maxCD(maxCD)
 	{
-		alive = true; 
+		alive = true;	// inicializa alive a true, todos los aliens empiezan vivos
 		extraSpeed = 0;
 	};
 
@@ -53,7 +53,7 @@ public:
 	// ---- update ----
 	// movimiento, disparar aleatoriamente después del cooldown 
 	// return false -> el alien ha sido dañado
-	bool update(bool pum);
+	bool update(bool damage);
 
 	// ---- hit ----
 	// recibir daño
@@ -78,8 +78,10 @@ public:
 	// devuelve el rect 
 	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
 
+	// devuelve la posicion del alien
 	Point2D<double> getPosition() { return position; }
 
+	// settea cooldown del alien
 	void setAttackCD(double newCD) { attackCD = newCD; }
 };
 
