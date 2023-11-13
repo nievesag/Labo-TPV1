@@ -96,7 +96,7 @@ public:
 
 	// ---- update ----
 	// actualiza el juego
-	void update(bool pum);
+	void update(bool damage);
 
 	// ---- handleEvents ----
 	// input del jugador
