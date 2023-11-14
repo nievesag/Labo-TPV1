@@ -96,7 +96,7 @@ void Game::loadTextures()
 		}
 	}
 	catch (...) {
-		cout << "Texura no encontrada";
+		cout << "Textura no encontrada";
 		EndGame();
 	}
 }
