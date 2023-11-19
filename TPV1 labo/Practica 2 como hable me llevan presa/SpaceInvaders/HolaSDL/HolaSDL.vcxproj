@@ -75,7 +75,11 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mothership.cpp" />
+    <ClCompile Include="SceneObject.cpp" />
+    <ClCompile Include="ShooterAlien.cpp" />
     <ClCompile Include="texture.cpp" />
+    <ClCompile Include="Ufo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Alien.h" />
@@ -85,7 +89,11 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Laser.h" />
+    <ClInclude Include="Mothership.h" />
+    <ClInclude Include="SceneObject.h" />
+    <ClInclude Include="ShooterAlien.h" />
     <ClInclude Include="texture.h" />
+    <ClInclude Include="Ufo.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
