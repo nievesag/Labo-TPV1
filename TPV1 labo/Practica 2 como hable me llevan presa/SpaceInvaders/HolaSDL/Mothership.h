@@ -20,10 +20,10 @@ private:
 	// metodos publicos
 public:
 
-	Mothership::Mothership(int offset,  Point2D<double> position, int width, int height, int vidas) 
-		: offset(offset), SceneObject(position, width, height, vidas)
+	Mothership::Mothership(int offset, Game* game) 
+		: offset(offset), GameObject(game)
 	{
-
+		// ?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?
 	}
 		
 	// ajusta la direccion de los aliens
