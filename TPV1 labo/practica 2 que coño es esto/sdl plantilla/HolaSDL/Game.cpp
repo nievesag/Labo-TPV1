@@ -74,3 +74,9 @@ void Game::loadTextures()
 		}
 	}
 }
+
+void Game::loadMap()
+{
+
+	// ¿?¿?¿?¿?
+}
