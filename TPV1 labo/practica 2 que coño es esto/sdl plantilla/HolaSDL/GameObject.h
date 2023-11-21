@@ -28,19 +28,21 @@ public:
 		// ??????????????????
 	}
 
-	//GameObject::~GameObject();
-
-	// render
-	void const render();
-
-	// update
-	void update();
-
-	// save (guarda partida en un txt)
-	void const save(ostream&);
-
 	// destructora virtual para por polimorfismo
 	virtual GameObject::~GameObject();
+
+	// metodos virtuales puros AKA estan vacios y preparados para un override en los objetos especificos
+
+	// render
+	virtual void render() const;
+
+	// update
+	virtual void update();
+
+	// save del objeto
+	virtual void save(ostream&) const;
+
+
 
 };
 #endif

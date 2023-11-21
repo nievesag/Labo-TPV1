@@ -6,6 +6,8 @@
 //#include "Vector2D.h"
 #include "texture.h"
 #include "SceneObject.h"
+#include "GameObject.h"
+
 
 class Mothership;
 class Game;
@@ -19,81 +21,41 @@ class Alien : public SceneObject
 private:
 	Mothership* mothership;	  // puntero a mothership
 
-	Point2D<double> position;  // posicion actual en Point2D
+	/*
+	
+	
+	//Point2D<double> position;  // posicion actual en Point2D
 	int type;
-	double speed = 0.01;
-	bool alive;
-	Texture* texture = nullptr; // punteron a su textura
-	Game* game = nullptr;		// puntero al juego -> para saber la dir común de movimiento de ese tipo de aliens
+	//double speed = 0.01;
+	//bool alive;
+	//Texture* texture = nullptr; // punteron a su textura
+	//Game* game = nullptr;		// puntero al juego -> para saber la dir común de movimiento de ese tipo de aliens
 	// + informar de que ya no se puede desplazar en ella
 
-	double alienOffSet = 10;
-	int alienFrame;
+	//double alienOffSet = 10;
+	//int alienFrame;
 
-	int alienPoints;
+	//int alienPoints;
 
-	double extraSpeed; // velocidad añadida
+	//double extraSpeed; // velocidad añadida
 
 	// rectangulo del render
-	SDL_Rect destRect;
+	//SDL_Rect destRect;
+	*/
+
+	int type;
+
+
 
 	// metodos publicos 
 public:
 	// ---- constructora ----
 
-	Alien(Point2D<double> position, int width, int height, int vidas, Game* game)
-		: SceneObject(position, width, height, vidas, game) { }
+	//Alien() {}
 
-	/*
-	Alien(Point2D<double> position, int width, int height, int vidas, Game* game, Texture* texture, int type, double minCD, double maxCD)
-		: SceneObject(position, width, height, vidas, game), texture(texture), type(type), minCD(minCD), maxCD(maxCD)
-	{
-		// Point2D<double> position, int width, int height, int vidas, Game* game, Texture* texture, int type, double minCD, double maxCD
-		alive = true;	// inicializa alive a true, todos los aliens empiezan vivos
-		extraSpeed = 0; // inicia la velocidad que aumenta
-		alienFrame = 0; // inicia el frame del alien
+	Alien(int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: type(type), SceneObject(position, width, height, vidas, texture, game) { }
 
-		if (type == 0) alienPoints = 30;
-		else if (type == 1) alienPoints = 20;
-		else if (type == 2) alienPoints = 10;
-		else alienPoints = 0;
-	};
-	*/
 
-	Alien(const Alien& oldalien);
-
-	// ---- render ----
-	void render();
-
-	// ---- update ----
-	// movimiento, disparar aleatoriamente después del cooldown 
-	// return false -> el alien ha sido dañado
-	bool update(bool damage);
-
-	// ---- hit ----
-	// recibir daño
-	void hit();
-
-	// ---- move ----
-	// mueve al alien
-	void move();
-
-	// baja al alien 1
-	void lowerAlien();
-
-	// anima al bicho
-	void animate();
-
-	// dice si ha llegado al final de la linea 
-	bool checkEnd();
-
-	// devuelve el rect 
-	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
-
-	// devuelve la posicion del alien
-	Point2D<double> getPosition() { return position; }
-
-	// devuelve el numero de puntuacion a añadir segun el tipo de alien
-	int GetAlienPoints() { return alienPoints; }
 };
 #endif

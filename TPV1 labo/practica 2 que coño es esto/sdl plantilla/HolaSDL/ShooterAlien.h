@@ -21,8 +21,8 @@ private:
 	// metodos publicos
 public:
 	// desde esta constructora invocar a la contructora padre (Alien)
-	ShooterAlien(int cooldown, Point2D<double> position, Texture* texture, int type, Game* game, double minCD, double maxCD)
-		: cooldown(cooldown), Alien(position, texture, type, game) { }
+	ShooterAlien(int cooldown, double minCD, double maxCD, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: cooldown(cooldown), minCD(minCD), maxCD(maxCD), Alien(type, position, width, height, vidas, texture, game) { }
 
 	// el alien dispara
 	void shoot();

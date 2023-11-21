@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include "Vector2D.h"
+#include "texture.h"
 
 using namespace std;
 using uint = unsigned int;
@@ -21,14 +22,28 @@ private:
 	// vidas del objeto
 	int vidas;
 
+	Texture* texture;
+
 	// metodos publicos
 public:
 
-	SceneObject::SceneObject(Point2D<double> position, int width, int height, int vidas, Game* game) 
-		: position(position), width(width), height(height), vidas(vidas), GameObject(game)
+	SceneObject::SceneObject(Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game)
 	{
 		// ????
 	}
+
+	// virtual para que lo usen los hijos, const porque el ordiginal es const (y no es un metodo que cambie datos)
+	//
+	virtual void render() const override;
+
+	//
+	virtual void update() override;
+
+	//
+	virtual void save(ostream&) const override;
+
+
 
 	// ataque al objeto (basicamente colisiones)
 	virtual void hit(SDL_Rect ataque, bool frenemy);

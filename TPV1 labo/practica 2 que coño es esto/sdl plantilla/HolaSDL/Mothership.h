@@ -40,7 +40,7 @@ public:
 
 	// INFORMAN AL JUEGO
 	// guatafac
-	bool haveLlanded();
+	bool haveLanded();
 
 	// devuelve la cantidad de aliens que quedan
 	int getAlienCount();
