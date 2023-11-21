@@ -11,7 +11,7 @@ class Game;
 using namespace std;
 using uint = unsigned int;
 
-class GameObject : public SceneObject
+class GameObject
 {
 	// atributos privados
 private:
@@ -22,8 +22,8 @@ private:
 	// metodos publicos
 public:
 
-	GameObject::GameObject(Game* game, Point2D<double> position, int width, int height, int vidas)
-		: game(game), SceneObject(position, width, height, vidas)
+	GameObject::GameObject(Game* game)
+		: game(game)
 	{
 		// ??????????????????
 	}
