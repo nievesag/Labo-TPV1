@@ -3,8 +3,9 @@
 
 #include "checkML.h"
 #include <SDL.h>
-#include "Vector2D.h"
+//#include "Vector2D.h"
 #include "texture.h"
+#include "SceneObject.h"
 
 // para evitar la inclusión cruzada
 // estableces la existencia de la clase porque solo se va a usar a través de un puntero
@@ -13,7 +14,7 @@ class Game ;
 using namespace std;
 using uint = unsigned int;
 
-class Alien
+class Alien : public SceneObject 
 {
 	// atributos privados
 private:
@@ -41,9 +42,20 @@ private:
 	// metodos publicos
 public:
 	// ---- constructora ----
-	Alien(Point2D<double> position, Texture* texture, int type, Game* game, double minCD, double maxCD)
-		: position(position), texture(texture), type(type), game(game), minCD(minCD), maxCD(maxCD)
+
+	Alien::Alien(Point2D<double> position, int width, int height, int vidas, Game* game)
+		: SceneObject(position, width, height, vidas, game)
 	{
+
+		// ???????
+	}
+
+	/*
+	
+	Alien(Point2D<double> position, int width, int height, int vidas, Game* game, Texture* texture, int type, double minCD, double maxCD)
+		: SceneObject(position, width, height, vidas, game), texture(texture), type(type), minCD(minCD), maxCD(maxCD)
+	{
+		// Point2D<double> position, int width, int height, int vidas, Game* game, Texture* texture, int type, double minCD, double maxCD 
 		alive = true;	// inicializa alive a true, todos los aliens empiezan vivos
 		extraSpeed = 0; // inicia la velocidad que aumenta
 		alienFrame = 0; // inicia el frame del alien
@@ -54,6 +66,8 @@ public:
 		else alienPoints = 0;
 
 	};
+
+	*/
 
 	Alien(const Alien& oldalien);
 
