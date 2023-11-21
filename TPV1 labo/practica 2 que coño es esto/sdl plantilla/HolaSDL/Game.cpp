@@ -24,11 +24,53 @@ array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
 };
 
 
-
 // constructora del game
 Game::Game()
 {
+	int winX, winY; // Posición de la ventana
+	winX = winY = SDL_WINDOWPOS_CENTERED;
+
+	// Inicialización del sistema, ventana y renderer
+	SDL_Init(SDL_INIT_EVERYTHING);
+
+	// ERRORES DE SDL
+	try {
+		// crea la ventana
+		window = SDL_CreateWindow("Space Invaders", winX, winY, winWidth, winHeight, SDL_WINDOW_SHOWN);
+
+		// crea el renderer para la ventana
+		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+		if (window == nullptr || renderer == nullptr)
+			throw "Error cargando ventana de juego o renderer"s;
+	}
+	catch (...) {
+		cout << "Error cargando ventana de juego o renderer";
+		EndGame();
+	}
+
+	loadTextures();
+
+	loadMap();
 
 
+	// TODO: papopepo
+}
 
+void Game::loadTextures()
+{
+	// bucle para rellenar el array de texturas
+	for (int i = 0; i < NUM_TEXTURES; i++) {
+
+		// crea la textura con el url, width y height
+		Texture* tex = new Texture(renderer, textureSpec[i].url, textureSpec[i].nh, textureSpec[i].nw);
+
+		// la mete en el array
+		textures[i] = tex;
+		if (textures[i] == nullptr) {
+			// throwea algo en concreto
+			// ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ esto es un throweo generico (es un placeholder) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			throw "uwu";
+		}
+	}
 }

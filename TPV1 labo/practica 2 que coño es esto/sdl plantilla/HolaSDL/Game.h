@@ -88,6 +88,23 @@ public:
 
 	// acaba el juego (setea exit a true vamos)
 	void EndGame();
+
+// ------ METODOS PRIVADOS -------
+private:
+	// ---- loadTexture ----
+	// se cargan las texturas y se guardan en los arrays
+	void loadTextures();
+
+	// ----- loadMap ------
+	// para poder cargar el mapa con la informacion necesaria (crea los aliens y tal)
+	// pretendo que aqui se lean los txt y que se hagan bucles para crear los bichitos
+	void loadMap();
+
+	// renderea el fondo
+	void renderBackground();
+
+	// muestra en consola la puntuacion del jugador
+	void PlayerScore();
 };
 
 #endif

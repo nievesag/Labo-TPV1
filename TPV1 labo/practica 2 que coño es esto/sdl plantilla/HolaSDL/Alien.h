@@ -53,8 +53,8 @@ public:
 
 	//Alien() {}
 
-	Alien(int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: type(type), SceneObject(position, width, height, vidas, texture, game) { }
+	Alien(Mothership* mothership, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		:mothership(mothership), type(type), SceneObject(position, width, height, vidas, texture, game) { }
 
 
 };
