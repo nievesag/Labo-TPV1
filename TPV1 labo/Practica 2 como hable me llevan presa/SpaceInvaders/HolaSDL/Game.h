@@ -129,7 +129,7 @@ public:
 	// gestiona las colisiones con el laser especificado
 	bool checkColision(Laser* laser);
 
-	// acaba el juego (setea exit a true vamos)
+	// acaba el juego (setea exit a true)
 	void EndGame();
 
 	uint getWinWidth() {
