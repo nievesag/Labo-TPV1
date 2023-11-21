@@ -16,6 +16,8 @@ private:
 public:
 	// METODOS
 	
+	Vector2D() {} // constructora vacia
+
 	// ---- constructora ----
 	// constructora con las variables declaradas
 	Vector2D::Vector2D(T x, T y)

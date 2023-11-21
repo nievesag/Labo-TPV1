@@ -15,12 +15,12 @@ private:
 	enum state RIGHT, dRIGHT, LEFT, dLEFT;
 
 	// offset del descenso
-	int offset;
+	int level;
 
 	// metodos publicos
 public:
 	Mothership::Mothership(int offset, Game* game) 
-		: offset(offset), GameObject(game) { }
+		: level(level), GameObject(game) { }
 		
 	// ajusta la direccion de los aliens
 	void getDirection();
@@ -28,15 +28,17 @@ public:
 	// devuelve si se sigue moviendo o no (?????????)
 	bool shouldMove();
 
+	// INFORMAN A ALIEN
 	// devuelve si se puede seguir moviendo o no
 	bool cannotMove();
 
 	// devuelve si el alien ha muerto
-	bool alienDead();
+	bool alienDied();
 
 	// devuelve si han llegado al suelo o no (se acaba partida))
 	bool alienLanded();
 
+	// INFORMAN AL JUEGO
 	// guatafac
 	bool haveLlanded();
 

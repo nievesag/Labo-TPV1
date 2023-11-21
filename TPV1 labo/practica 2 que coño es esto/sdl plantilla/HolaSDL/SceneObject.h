@@ -16,12 +16,10 @@ private:
 	Point2D<double> position;
 
 	// dimension del objeto (height & width)
-	//Vector2D<double> dimension;
 	int width, height;
 
 	// vidas del objeto
 	int vidas;
-
 
 	// metodos publicos
 public:
@@ -36,7 +34,11 @@ public:
 	virtual void hit(SDL_Rect ataque, bool frenemy);
 
 	// iterador de objetos (que cojones es esto)
-	//iterator lisObjects;
+	// es como los operadores, creo que básicamente 
+	// se refiere a definir operadores para leer la 
+	// lista de objetos???? 
+	// MIRAR LISTA DE GAME -> es lo mismo????
+	// iterator listObjects;
 
 };
 
