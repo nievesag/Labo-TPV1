@@ -23,6 +23,8 @@
 #include "Alien.h"
 #include "Bunker.h"
 #include "Laser.h"
+#include "GameObject.h"
+#include "SceneObject.h"
 
 using namespace std;
 using uint = unsigned int;
@@ -74,6 +76,10 @@ private:
 	vector<Alien*> aliens;
 	vector<Bunker*> bunkers;
 	vector<Laser*> laseres;
+
+	// vector de sceneObjects
+	vector<SceneObject*> sceneObjects;
+	
 
 	// crea semilla
 	std::mt19937_64 randomGenerator;
