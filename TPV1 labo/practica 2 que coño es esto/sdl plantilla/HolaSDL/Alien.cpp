@@ -2,7 +2,6 @@
 
 void Alien::render(SDL_Rect destRect) const
 {
-
 	// tamaño
 	destRect.w = texture->getFrameWidth();
 	destRect.h = texture->getFrameHeight();
@@ -13,5 +12,14 @@ void Alien::render(SDL_Rect destRect) const
 
 	// lo mete en el render
 	texture->renderFrame(destRect, type, alienFrame);
+}
 
+void Alien::update()
+{
+	cout << "coñete";
+}
+
+void Alien::save(ostream&) const
+{
+	cout << "coñardo";
 }

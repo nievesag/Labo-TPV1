@@ -22,6 +22,8 @@ private:
 	// metodos publicos
 public:
 
+	GameObject () {}
+
 	GameObject::GameObject(Game* game)
 		: game(game)
 	{

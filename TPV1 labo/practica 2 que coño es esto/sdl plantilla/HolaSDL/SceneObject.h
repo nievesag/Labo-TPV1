@@ -30,6 +30,8 @@ protected:
 	// metodos publicos
 public:
 
+	SceneObject () {}
+
 	SceneObject::SceneObject(Point2D<int> position, int width, int height, int vidas, Texture* texture, Game* game)
 		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game)
 	{
@@ -39,19 +41,16 @@ public:
 
 	// -------------> los override van en las clases hijas que lo especifiquen <-------------------------
 	// (en alien, cannon etc)
-	/*
-	// virtual para que lo usen los hijos, const porque el ordiginal es const (y no es un metodo que cambie datos)
-	//
-	virtual void render() const override;
-
-	//
-	virtual void update() override;
-
-	//
-	virtual void save(ostream&) const override;
-	*/
 	
+	// virtual para que lo usen los hijos, const porque el original es const (y no es un metodo que cambie datos)
+	//
+	virtual void render() const;
 
+	//
+	virtual void update();
+
+	//
+	virtual void save(ostream&) const;
 
 
 	// ataque al objeto (basicamente colisiones)

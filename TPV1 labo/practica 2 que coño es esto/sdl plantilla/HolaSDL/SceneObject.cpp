@@ -1,23 +1,16 @@
 #include "SceneObject.h"
 
 
-//
 void SceneObject::render() const
 {
-	//
 }
 
-//
 void SceneObject::update()
 {
-
 }
 
-
-//
 void SceneObject::save(ostream&) const
 {
-
 }
 
 //

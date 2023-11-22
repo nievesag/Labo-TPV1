@@ -110,13 +110,10 @@ void Game::loadMap()
 			Vector2D<double> vel(0, 0);
 
 			// crea un alien
-			SceneObject* obj = new Alien(milfship, 0, 0, coord, 1, 1, 2, textures[0], this);
+			Alien* alien = new Alien(milfship, 0, 0, coord, 1, 1, 2, textures[0], this);
 
+			SceneObject* obj = alien;
 		}
-
-		
-
-
 
 		/*
 		// si es la nave
@@ -145,5 +142,6 @@ void Game::loadMap()
 			bunkers.push_back(bun);
 		}
 		*/
+	}
 		
 }

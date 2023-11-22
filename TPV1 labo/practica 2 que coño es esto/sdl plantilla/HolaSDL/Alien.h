@@ -30,20 +30,20 @@ private:
 	// metodos publicos 
 public:
 	// ---- constructora ----
-
 	Alien(Mothership* mothership, int alienFrame, int type, Point2D<int> position, int width, int height, int vidas, Texture* texture, Game* game)
 		:mothership(mothership), alienFrame(alienFrame), type(type), SceneObject(position, width, height, vidas, texture, game) { }
 
+	Alien() {} // constructora vacia
 
 	// aqui si van los overrides porque aqui se especifican las cositas
 	//
-	virtual void render(SDL_Rect destRect) const override;
+	void render(SDL_Rect destRect) const override;
 
 	//
-	virtual void update() override;
+	void update() override;
 
 	//
-	virtual void save(ostream&) const override;
+	void save(ostream&) const override;
 
 };
 #endif

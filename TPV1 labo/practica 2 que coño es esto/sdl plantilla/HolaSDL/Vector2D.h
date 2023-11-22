@@ -6,16 +6,16 @@
 #define VECTOR2D_H
 
 // !!! por las plantillas usar definiciones de funciones en el h -> el código depende del argumento que le pases (código no cerrado)
-template <typename T> class Vector2D 
+template <typename T> class Vector2D
 {
 	// variables privadas
-private: 
+private:
 	T x, y;
 
 	// metodos publicos
 public:
 	// METODOS
-	
+
 	Vector2D() {} // constructora vacia
 
 	// ---- constructora ----
@@ -29,7 +29,7 @@ public:
 	T getX() const {
 		return x;
 	}
-	
+
 	// getter y
 	T getY() const {
 		return y;
@@ -45,10 +45,10 @@ public:
 	}
 
 	// ---- OPERADORES ----
-	
+
 	// operador +
 	Vector2D<T>& operator+(Vector2D<T> const& other) {
-		Vector2D<T> aux (0,0);
+		Vector2D<T> aux(0, 0);
 
 		aux.x = this->getX() + other.x;
 		aux.y = this->getY() + other.y;
