@@ -21,41 +21,27 @@ class Alien : public SceneObject
 private:
 	Mothership* mothership;	  // puntero a mothership
 
-	/*
-	
-	
-	//Point2D<double> position;  // posicion actual en Point2D
+	// tipo de alien
 	int type;
-	//double speed = 0.01;
-	//bool alive;
-	//Texture* texture = nullptr; // punteron a su textura
-	//Game* game = nullptr;		// puntero al juego -> para saber la dir común de movimiento de ese tipo de aliens
-	// + informar de que ya no se puede desplazar en ella
-
-	//double alienOffSet = 10;
-	//int alienFrame;
-
-	//int alienPoints;
-
-	//double extraSpeed; // velocidad añadida
-
-	// rectangulo del render
-	//SDL_Rect destRect;
-	*/
-
-	int type;
-
 
 
 	// metodos publicos 
 public:
 	// ---- constructora ----
 
-	//Alien() {}
+	Alien(Mothership* mothership, int type, SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		:mothership(mothership), type(type), SceneObject(destRect, position, width, height, vidas, texture, game) { }
 
-	Alien(Mothership* mothership, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		:mothership(mothership), type(type), SceneObject(position, width, height, vidas, texture, game) { }
 
+	// aqui si van los overrides porque aqui se especifican las cositas
+	//
+	virtual void render(SDL_Rect destRect) const override;
+
+	//
+	virtual void update() override;
+
+	//
+	virtual void save(ostream&) const override;
 
 };
 #endif

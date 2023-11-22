@@ -11,7 +11,7 @@ using uint = unsigned int;
 class SceneObject : GameObject
 {
 	// atributos privados
-private:
+protected:
 
 	// posicion del objeto
 	Point2D<double> position;
@@ -24,15 +24,22 @@ private:
 
 	Texture* texture;
 
+	// rectangulo del render
+	SDL_Rect destRect;
+
 	// metodos publicos
 public:
 
-	SceneObject::SceneObject(Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game)
+	SceneObject::SceneObject(SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: destRect(destRect), position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game)
 	{
 		// ????
 	}
 
+
+	// -------------> los override van en las clases hijas que lo especifiquen <-------------------------
+	// (en alien, cannon etc)
+	/*
 	// virtual para que lo usen los hijos, const porque el ordiginal es const (y no es un metodo que cambie datos)
 	//
 	virtual void render() const override;
@@ -42,6 +49,8 @@ public:
 
 	//
 	virtual void save(ostream&) const override;
+	*/
+	
 
 
 
