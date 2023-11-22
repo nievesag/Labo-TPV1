@@ -57,8 +57,8 @@ Game::Game()
 
 	loadMap();
 
+	cout << "AAAAAAAAAA";
 
-	// TODO: papopepo
 }
 
 Game::~Game()
@@ -69,6 +69,47 @@ void Game::run()
 {
 
 
+}
+
+void Game::render()
+{
+	// limpia pantalla
+	SDL_RenderClear(renderer);
+
+	// render del fondo
+	renderBackground();
+
+	// iterador para la lista
+	list<SceneObject*>::iterator it;
+
+	// ITERADOR GUATAFAC
+	for (it = sceneObjectsList.begin(); it != sceneObjectsList.end(); ++it) {
+
+		*it.;
+
+	}
+		
+
+	//
+	/*
+	// render de los aliens
+	for (int i = 0; i < aliens.size(); i++)
+		aliens[i]->render();
+
+	// render del cannon
+	cannon->render();
+
+	// render del bunker
+	for (int i = 0; i < bunkers.size(); i++)
+		bunkers[i]->render();
+
+	// render del laser
+	for (int i = 0; i < laseres.size(); i++)
+		laseres[i]->render();
+	*/
+
+	// render de todo
+	SDL_RenderPresent(renderer);
 }
 
 void Game::EndGame()
@@ -111,45 +152,32 @@ void Game::loadMap()
 		in >> y;
 		Point2D<double> coord(x, y);
 
-		// crea el mothership
-		milfship = new Mothership(10, this);
-
-		if (type == 0) {
-			Vector2D<double> vel(0, 0);
-
-			// crea un alien
-			Alien* alien = new Alien(milfship, 0, 0, coord, 1, 1, 2, textures[0], this);
-
-			SceneObject* obj = alien;
-		}
-
-		/*
 		// si es la nave
 		if (type == 0) {
-			Vector2D<double> vel(0, 0);
 
-			cannon = new Cannon(coord, textures[Nave], 1, laserCoolDown, vel, this);
+			// nave
 		}
 		// si es un alien
 		else if (type == 1) {
 			in >> atype;
 
-			double min = getRandomRange(100, 150);
-			double max = getRandomRange(290, 330);
+			// crea un alien
+			//Alien* alien = new Alien(milfship, 0, 0, coord, 1, 1, 2, textures[atype], this);
 
-			Alien* alien = new Alien(coord, textures[atype], atype, this, min, max);
+			// simplificado asi, si da problemas lo ponemos por separado el SceneObject* obj = alien;
+			//                     mothership  frame type position             width                            height            lifes    texture        game
+			SceneObject* obj = new Alien(milfship, 0, atype, coord, textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);
 
-			aliens.push_back(alien);
+			sceneObjectsList.push_back(obj);
+
 		}
 		// si es un bunker
 		else if (type == 2) {
 			Vector2D<int> vel(0, 0);
 
-			Bunker* bun = new Bunker(coord, textures[Escudo], textures[Escudo]->getNumColumns());
-
-			bunkers.push_back(bun);
+			//bunker
 		}
-		*/
 	}
-		
+
+	cout << "efuhdhijokp";
 }

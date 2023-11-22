@@ -4,13 +4,14 @@
 #include "GameObject.h"
 #include "Vector2D.h"
 #include "texture.h"
+#include <list>
 
 using namespace std;
 using uint = unsigned int;
 
 class SceneObject : GameObject
 {
-	// atributos privados
+	// atributos protegidos
 protected:
 
 	// posicion del objeto
@@ -27,6 +28,9 @@ protected:
 	// rectangulo del render
 	SDL_Rect destRect;
 
+	// iterador de la lista
+	list<SceneObject*>::iterator it;
+	
 	// metodos publicos
 public:
 
@@ -52,9 +56,14 @@ public:
 	//
 	virtual void save(ostream&) const;
 
-
 	// ataque al objeto (basicamente colisiones)
 	virtual void hit(SDL_Rect ataque, bool frenemy);
+
+	// setea el iterador de la posicion del objeto en la lista
+	void setListIterator(list<SceneObject*>::iterator newit)
+	{
+		it = newit;
+	}
 
 	// iterador de objetos (que cojones es esto)
 	// es como los operadores, creo que básicamente 
