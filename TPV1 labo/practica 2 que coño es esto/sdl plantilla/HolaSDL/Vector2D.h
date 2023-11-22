@@ -24,16 +24,18 @@ public:
 		: x(x), y(y) {} // los corchetes vacios inicializa las variables a 0
 
 	// ---- getters ----
+	// const porque no editan las variables 
 	// getter x
-	T getX() {
+	T getX() const {
 		return x;
 	}
 	
 	// getter y
-	T getY() {
+	T getY() const {
 		return y;
 	}
 
+	// ----- setters -----------
 	void setX(T newX) {
 		x = newX;
 	}

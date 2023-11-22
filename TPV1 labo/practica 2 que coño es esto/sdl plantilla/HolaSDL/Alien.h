@@ -29,7 +29,7 @@ private:
 public:
 	// ---- constructora ----
 
-	Alien(Mothership* mothership, int type, SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+	Alien(Mothership* mothership, int type, SDL_Rect destRect, Point2D<int> position, int width, int height, int vidas, Texture* texture, Game* game)
 		:mothership(mothership), type(type), SceneObject(destRect, position, width, height, vidas, texture, game) { }
 
 
