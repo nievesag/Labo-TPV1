@@ -13,16 +13,16 @@ class ShooterAlien : public Alien
 private:
 	// cooldown del disparo
 	int cooldown;
-	Vector2D<double> position;  // posicion actual en Point2D
-	double attackCD,			// cooldown del disparo
-		attackCDcounter,		// contador de cooldown del disparo
-		minCD, maxCD;		// minimo y maximo cooldown
+	//Vector2D<double> position;	// posicion actual en Point2D
+	double attackCD,				// cooldown del disparo
+		attackCDcounter,			// contador de cooldown del disparo
+		minCD, maxCD;				// minimo y maximo cooldown
 
 	// metodos publicos
 public:
 
 	// desde esta constructora invocar a la contructora padre (Alien)
-	ShooterAlien(int cooldown, double minCD, double maxCD, Mothership* mothership, int alienFrame, int type, Point2D<int> position, int width, int height, int vidas, Texture* texture, Game* game)
+	ShooterAlien(int cooldown, double minCD, double maxCD, Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
 		: cooldown(cooldown), minCD(minCD), maxCD(maxCD), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, game) {}
 
 	// el alien dispara

@@ -24,8 +24,6 @@ using uint = unsigned int;
 class SceneObject;
 
 
-
-
 // constantes de tamaño de pantalla -> inicializar en h
 	// tiene que ser estática porque es un atributo (constante para todos los objetos de la clase)
 static constexpr uint winWidth = 800;

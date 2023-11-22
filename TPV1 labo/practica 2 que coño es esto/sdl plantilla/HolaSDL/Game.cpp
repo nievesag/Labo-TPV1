@@ -61,10 +61,18 @@ Game::Game()
 	// TODO: papopepo
 }
 
+Game::~Game()
+{
+}
+
 void Game::run()
 {
 
 
+}
+
+void Game::EndGame()
+{
 }
 
 void Game::loadTextures()
@@ -101,7 +109,7 @@ void Game::loadMap()
 		in >> type;
 		in >> x;
 		in >> y;
-		Point2D<int> coord(x, y);
+		Point2D<double> coord(x, y);
 
 		// crea el mothership
 		milfship = new Mothership(10, this);

@@ -14,7 +14,7 @@ class SceneObject : GameObject
 protected:
 
 	// posicion del objeto
-	Point2D<int> position;
+	Point2D<double> position;
 
 	// dimension del objeto (height & width)
 	int width, height;
@@ -30,9 +30,9 @@ protected:
 	// metodos publicos
 public:
 
-	SceneObject () {}
+	//SceneObject () {}
 
-	SceneObject::SceneObject(Point2D<int> position, int width, int height, int vidas, Texture* texture, Game* game)
+	SceneObject::SceneObject(Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
 		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game)
 	{
 		// ????

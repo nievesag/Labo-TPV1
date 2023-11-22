@@ -21,6 +21,7 @@ class Alien : public SceneObject
 private:
 	Mothership* mothership;	  // puntero a mothership
 
+	//Vector2D<double> position;  // posicion actual en Point2D
 	// tipo de alien
 	int type;
 
@@ -30,10 +31,10 @@ private:
 	// metodos publicos 
 public:
 	// ---- constructora ----
-	Alien(Mothership* mothership, int alienFrame, int type, Point2D<int> position, int width, int height, int vidas, Texture* texture, Game* game)
+	Alien(Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
 		:mothership(mothership), alienFrame(alienFrame), type(type), SceneObject(position, width, height, vidas, texture, game) { }
 
-	Alien() {} // constructora vacia
+	//Alien() {} // constructora vacia
 
 	// aqui si van los overrides porque aqui se especifican las cositas
 	//

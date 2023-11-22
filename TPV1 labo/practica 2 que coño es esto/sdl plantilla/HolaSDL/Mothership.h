@@ -23,7 +23,7 @@ public:
 		: level(level), GameObject(game) { }
 		
 	//
-	virtual void update() override;
+	void update() override;
 
 	// ajusta la direccion de los aliens
 	void getDirection();

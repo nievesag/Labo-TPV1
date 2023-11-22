@@ -16,11 +16,11 @@ private:
 public:
 	// METODOS
 
-	Vector2D() {} // constructora vacia
+	// Vector2D() {} // constructora vacia
 
 	// ---- constructora ----
 	// constructora con las variables declaradas
-	Vector2D::Vector2D(T x, T y)
+	Vector2D(T x, T y)
 		: x(x), y(y) {} // los corchetes vacios inicializa las variables a 0
 
 	// ---- getters ----
