@@ -22,6 +22,9 @@ public:
 	Mothership::Mothership(int offset, Game* game) 
 		: level(level), GameObject(game) { }
 		
+	//
+	virtual void update() override;
+
 	// ajusta la direccion de los aliens
 	void getDirection();
 

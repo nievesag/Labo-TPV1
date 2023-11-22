@@ -24,13 +24,15 @@ private:
 	// tipo de alien
 	int type;
 
+	// frame del alien (para animaciones)
+	int alienFrame;
 
 	// metodos publicos 
 public:
 	// ---- constructora ----
 
-	Alien(Mothership* mothership, int type, SDL_Rect destRect, Point2D<int> position, int width, int height, int vidas, Texture* texture, Game* game)
-		:mothership(mothership), type(type), SceneObject(destRect, position, width, height, vidas, texture, game) { }
+	Alien(Mothership* mothership, int alienFrame, int type, Point2D<int> position, int width, int height, int vidas, Texture* texture, Game* game)
+		:mothership(mothership), alienFrame(alienFrame), type(type), SceneObject(position, width, height, vidas, texture, game) { }
 
 
 	// aqui si van los overrides porque aqui se especifican las cositas

@@ -30,8 +30,8 @@ protected:
 	// metodos publicos
 public:
 
-	SceneObject::SceneObject(SDL_Rect destRect, Point2D<int> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: destRect(destRect), position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game)
+	SceneObject::SceneObject(Point2D<int> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game)
 	{
 		// ????
 	}

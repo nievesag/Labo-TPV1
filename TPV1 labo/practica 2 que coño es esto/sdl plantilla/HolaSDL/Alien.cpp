@@ -14,5 +14,4 @@ void Alien::render(SDL_Rect destRect) const
 	// lo mete en el render
 	texture->renderFrame(destRect, type, alienFrame);
 
-
 }

@@ -1,4 +1,8 @@
+#include "checkML.h"
 #include "Game.h"
+
+
+
 
 
 using namespace std;
@@ -57,6 +61,12 @@ Game::Game()
 	// TODO: papopepo
 }
 
+void Game::run()
+{
+
+
+}
+
 void Game::loadTextures()
 {
 	// bucle para rellenar el array de texturas
@@ -77,6 +87,63 @@ void Game::loadTextures()
 
 void Game::loadMap()
 {
+	// lee el mapa
+	ifstream in("..\\mapas\\original.txt");
+	if (in.fail()) throw ("No se ha podido leer mapa");
 
-	// ¿?¿?¿?¿?
+	// variables auxiliares
+	int type;
+	int x, y;
+	int atype;
+
+	// in.eof() devuelve si se ha acabado el fichero
+	while (!in.eof()) {
+		in >> type;
+		in >> x;
+		in >> y;
+		Point2D<int> coord(x, y);
+
+		// crea el mothership
+		milfship = new Mothership(10, this);
+
+		if (type == 0) {
+			Vector2D<double> vel(0, 0);
+
+			// crea un alien
+			SceneObject* obj = new Alien(milfship, 0, 0, coord, 1, 1, 2, textures[0], this);
+
+		}
+
+		
+
+
+
+		/*
+		// si es la nave
+		if (type == 0) {
+			Vector2D<double> vel(0, 0);
+
+			cannon = new Cannon(coord, textures[Nave], 1, laserCoolDown, vel, this);
+		}
+		// si es un alien
+		else if (type == 1) {
+			in >> atype;
+
+			double min = getRandomRange(100, 150);
+			double max = getRandomRange(290, 330);
+
+			Alien* alien = new Alien(coord, textures[atype], atype, this, min, max);
+
+			aliens.push_back(alien);
+		}
+		// si es un bunker
+		else if (type == 2) {
+			Vector2D<int> vel(0, 0);
+
+			Bunker* bun = new Bunker(coord, textures[Escudo], textures[Escudo]->getNumColumns());
+
+			bunkers.push_back(bun);
+		}
+		*/
+		
 }
