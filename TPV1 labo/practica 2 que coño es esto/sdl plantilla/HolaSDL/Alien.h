@@ -38,7 +38,7 @@ public:
 
 	// aqui si van los overrides porque aqui se especifican las cositas
 	//
-	void render(SDL_Rect destRect) const override;
+	void render() const override;
 
 	//
 	void update() override;

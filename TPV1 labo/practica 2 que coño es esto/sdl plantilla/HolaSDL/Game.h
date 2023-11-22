@@ -51,7 +51,7 @@ private:
 	enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo };
 
 	// booleano salida del juego
-	bool exit;
+	bool exit = false;
 
 	// 
 	list<SceneObject*> sceneObjectsList;

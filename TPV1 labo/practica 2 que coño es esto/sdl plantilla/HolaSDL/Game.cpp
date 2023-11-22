@@ -57,15 +57,40 @@ Game::Game()
 
 	loadMap();
 
-	cout << "AAAAAAAAAA";
+	cout << "AAAAAAAAAA" << endl;
 
 }
 
 Game::~Game()
 {
+	// limpia elementos de juego
+	//
+	cout << "aaaaaa" << endl;
+
+	// limpia las texturas
+	for (int i = 0; i < NUM_TEXTURES; i++) delete textures[i];
+
+	SDL_DestroyWindow(window);
+	SDL_DestroyRenderer(renderer);
+	SDL_Quit(); // cierra pantalla
+
+
 }
 
 void Game::run()
+{
+
+	while (!exit) {
+
+		
+		render(); // actualiza todos los objetos de juego
+	}
+		
+
+
+}
+
+void Game::update()
 {
 
 
@@ -79,41 +104,20 @@ void Game::render()
 	// render del fondo
 	renderBackground();
 
-	// iterador para la lista
-	list<SceneObject*>::iterator it;
+	// iterador para renderizar los objetos
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
 
-	// ITERADOR GUATAFAC
-	for (it = sceneObjectsList.begin(); it != sceneObjectsList.end(); ++it) {
-
-		*it.;
-
+		(*it)->render();
 	}
-		
-
-	//
-	/*
-	// render de los aliens
-	for (int i = 0; i < aliens.size(); i++)
-		aliens[i]->render();
-
-	// render del cannon
-	cannon->render();
-
-	// render del bunker
-	for (int i = 0; i < bunkers.size(); i++)
-		bunkers[i]->render();
-
-	// render del laser
-	for (int i = 0; i < laseres.size(); i++)
-		laseres[i]->render();
-	*/
 
 	// render de todo
 	SDL_RenderPresent(renderer);
 }
 
+
 void Game::EndGame()
 {
+	exit = true;
 }
 
 void Game::loadTextures()
@@ -179,5 +183,10 @@ void Game::loadMap()
 		}
 	}
 
-	cout << "efuhdhijokp";
+}
+
+void Game::renderBackground()
+{
+	// renderiza el fondo
+	textures[Fondo]->render();
 }

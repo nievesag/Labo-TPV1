@@ -1,7 +1,9 @@
 #include "Alien.h"
 
-void Alien::render(SDL_Rect destRect) const
+void Alien::render() const
 {
+	SDL_Rect destRect;
+
 	// tamaño
 	destRect.w = texture->getFrameWidth();
 	destRect.h = texture->getFrameHeight();
