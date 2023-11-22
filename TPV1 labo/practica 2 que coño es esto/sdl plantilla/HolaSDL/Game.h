@@ -96,6 +96,10 @@ public:
 	void save();
 	void load();
 
+	// ---- handleEvents ----
+	// input del jugador
+	void handleEvents();
+
 	// acaba el juego (setea exit a true vamos)
 	void EndGame();
 

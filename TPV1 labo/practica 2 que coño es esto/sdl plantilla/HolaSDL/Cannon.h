@@ -13,13 +13,14 @@ class Cannon : public SceneObject
 	// atributos privados
 private:
 
+	bool keyA = false, keyD = false, keyE = false, keySpace = false;
+
 	// metodos publicos 
 public:
 
 	// ---- constructora ----
 	Cannon( Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
 		: SceneObject(position, width, height, vidas, texture, game) { }
-
 
 	// getter de vidas restantes
 	int getLives() {

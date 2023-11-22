@@ -115,6 +115,23 @@ void Game::render()
 }
 
 
+void Game::handleEvents()
+{
+	SDL_Event event; // crea evento
+
+	// MIENTRAS HAYA EVENTOS
+		// si hay eventos &event se llena con el evento a ejecutar si no NULL
+		// es decir, pollea hasta que se hayan manejado todos los eventos
+	while (SDL_PollEvent(&event) && !exit) {
+
+		// si se solicita quit bool exit = true
+		if (event.type == SDL_QUIT) EndGame();
+
+		// MANEJO DE EVENTOS DE OBJETOS DE JUEGO
+		//else { cannon->handleEvents(event); }
+	}
+}
+
 void Game::EndGame()
 {
 	exit = true;
@@ -149,6 +166,8 @@ void Game::loadMap()
 	int x, y;
 	int atype;
 
+	
+
 	// in.eof() devuelve si se ha acabado el fichero
 	while (!in.eof()) {
 		in >> type;
@@ -172,7 +191,14 @@ void Game::loadMap()
 			//                     mothership  frame type position             width                            height            lifes    texture        game
 			SceneObject* obj = new Alien(milfship, 0, atype, coord, textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);
 
+			// lo mete en la lista
 			sceneObjectsList.push_back(obj);
+
+			//iterador al final de la lista
+			list<SceneObject*>::iterator newit = sceneObjectsList.end();
+
+			// le pasa el iterador
+			obj->setListIterator(newit);
 
 		}
 		// si es un bunker
