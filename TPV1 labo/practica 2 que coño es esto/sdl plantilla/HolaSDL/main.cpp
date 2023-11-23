@@ -18,10 +18,18 @@ using uint = unsigned int;
 
 int main(int argc, char* argv[])
 {
-	// no hace falta borrarlo porque es estatico, se borra solo al salir de ambito (si fuese puntero: delete ay;)
-	Game game;
+    try {
+        // no hace falta borrarlo porque es estatico, se borra solo al salir de ambito (si fuese puntero: delete ay;)
+        Game game;
+        game.run();
+    }
+    catch (exception& e) {
+        cout << e.what() << std::endl;
+        return EXIT_FAILURE;
+    }
 
-	game.run();
+	
+	
 
 	return 69;
 }

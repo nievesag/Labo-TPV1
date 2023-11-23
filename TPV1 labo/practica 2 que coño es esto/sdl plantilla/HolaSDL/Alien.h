@@ -21,7 +21,6 @@ class Alien : public SceneObject
 private:
 	Mothership* mothership;	  // puntero a mothership
 
-	//Vector2D<double> position;  // posicion actual en Point2D
 	// tipo de alien
 	int type;
 

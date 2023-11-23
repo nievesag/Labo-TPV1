@@ -1,11 +1,8 @@
 #include "checkML.h"
 #include "Game.h"
 
-
-
-
-
 using namespace std;
+
 
 struct TextureSpec
 {
@@ -14,7 +11,6 @@ struct TextureSpec
 	// width height
 	int nw, nh;
 };
-
 
 // ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ PLACEHOLDERRRRRRRRRRRRRRRRRRR !!!!!!!!!!!!!!!!!!!
 // ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo TextureSpec 
@@ -37,28 +33,21 @@ Game::Game()
 	// Inicialización del sistema, ventana y renderer
 	SDL_Init(SDL_INIT_EVERYTHING);
 
+	// crea la ventana
+	window = SDL_CreateWindow("Space Invaders", winX, winY, winWidth, winHeight, SDL_WINDOW_SHOWN);
+
+	// crea el renderer para la ventana
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
 	// ERRORES DE SDL
-	try {
-		// crea la ventana
-		window = SDL_CreateWindow("Space Invaders", winX, winY, winWidth, winHeight, SDL_WINDOW_SHOWN);
-
-		// crea el renderer para la ventana
-		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-
-		if (window == nullptr || renderer == nullptr)
-			throw "Error cargando ventana de juego o renderer"s;
-	}
-	catch (...) {
-		cout << "Error cargando ventana de juego o renderer";
-		EndGame();
-	}
+	if (window == nullptr || renderer == nullptr)
+		throw "Error cargando ventana de juego o renderer"s;
 
 	loadTextures();
 
 	loadMap();
 
 	cout << "AAAAAAAAAA" << endl;
-
 }
 
 Game::~Game()
@@ -77,17 +66,12 @@ Game::~Game()
 
 }
 
+#pragma region LOGICA DE JUEGO
 void Game::run()
 {
-
 	while (!exit) {
-
-		
 		render(); // actualiza todos los objetos de juego
 	}
-		
-
-
 }
 
 void Game::update()
@@ -114,6 +98,11 @@ void Game::render()
 	SDL_RenderPresent(renderer);
 }
 
+void Game::renderBackground()
+{
+	// renderiza el fondo
+	textures[Fondo]->render();
+}
 
 void Game::handleEvents()
 {
@@ -131,12 +120,9 @@ void Game::handleEvents()
 		//else { cannon->handleEvents(event); }
 	}
 }
+#pragma endregion
 
-void Game::EndGame()
-{
-	exit = true;
-}
-
+#pragma region LOADS
 void Game::loadTextures()
 {
 	// bucle para rellenar el array de texturas
@@ -149,8 +135,8 @@ void Game::loadTextures()
 		textures[i] = tex;
 		if (textures[i] == nullptr) {
 			// throwea algo en concreto
-			// ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ esto es un throweo generico (es un placeholder) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			throw "uwu";
+			// ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ esto es un throweo generico (es un placeholder)
+			throw "uwu"s;
 		}
 	}
 }
@@ -166,8 +152,6 @@ void Game::loadMap()
 	int x, y;
 	int atype;
 
-	
-
 	// in.eof() devuelve si se ha acabado el fichero
 	while (!in.eof()) {
 		in >> type;
@@ -180,6 +164,7 @@ void Game::loadMap()
 
 			// nave
 		}
+
 		// si es un alien
 		else if (type == 1) {
 			in >> atype;
@@ -188,7 +173,7 @@ void Game::loadMap()
 			//Alien* alien = new Alien(milfship, 0, 0, coord, 1, 1, 2, textures[atype], this);
 
 			// simplificado asi, si da problemas lo ponemos por separado el SceneObject* obj = alien;
-			//                     mothership  frame type position             width                            height            lifes    texture        game
+			// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game
 			SceneObject* obj = new Alien(milfship, 0, atype, coord, textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);
 
 			// lo mete en la lista
@@ -199,8 +184,8 @@ void Game::loadMap()
 
 			// le pasa el iterador
 			obj->setListIterator(newit);
-
 		}
+
 		// si es un bunker
 		else if (type == 2) {
 			Vector2D<int> vel(0, 0);
@@ -208,11 +193,12 @@ void Game::loadMap()
 			//bunker
 		}
 	}
-
 }
+#pragma endregion
 
-void Game::renderBackground()
+#pragma region AUX
+void Game::EndGame()
 {
-	// renderiza el fondo
-	textures[Fondo]->render();
+	exit = true;
 }
+#pragma endregion

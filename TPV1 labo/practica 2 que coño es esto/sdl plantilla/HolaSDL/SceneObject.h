@@ -37,16 +37,13 @@ public:
 	//SceneObject () {}
 
 	SceneObject::SceneObject(Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game)
-	{
-		// ????
-	}
+		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game) { }
 
 
-	// -------------> los override van en las clases hijas que lo especifiquen <-------------------------
+	// -------------> los override van en las clases hijas que lo especifiquen <--------------
 	// (en alien, cannon etc)
 	
-	// virtual para que lo usen los hijos, const porque el original es const (y no es un metodo que cambie datos)
+	// virtual para que lo usen los hijos, const porque no es un metodo que cambie datos
 	//
 	virtual void render() const;
 
@@ -59,19 +56,14 @@ public:
 	// ataque al objeto (basicamente colisiones)
 	virtual void hit(SDL_Rect ataque, bool frenemy);
 
-	// setea el iterador de la posicion del objeto en la lista
-	void setListIterator(list<SceneObject*>::iterator newit)
+	// ----- Iterador de la lista ------
+	// Un iterador funciona como un puntero que apunta a los items de la lista 
+	// Tipos: begin(), end(), advance(), next(), prev(), inserter()
+	void setListIterator(list<SceneObject*>::iterator newit) 
 	{
+		// setea el iterador de la posicion del objeto en la lista
 		it = newit;
 	}
-
-	// iterador de objetos (que cojones es esto)
-	// es como los operadores, creo que básicamente 
-	// se refiere a definir operadores para leer la 
-	// lista de objetos???? 
-	// MIRAR LISTA DE GAME -> es lo mismo????
-	// iterator listObjects;
-
 };
 
 #endif
