@@ -9,7 +9,7 @@
 using namespace std;
 using uint = unsigned int;
 
-class SceneObject : GameObject
+class SceneObject : public GameObject
 {
 	// atributos protegidos
 protected:
@@ -34,8 +34,6 @@ protected:
 	// metodos publicos
 public:
 
-	//SceneObject () {}
-
 	SceneObject::SceneObject(Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
 		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game) { }
 
@@ -48,7 +46,7 @@ public:
 	virtual void render() const;
 
 	//
-	virtual void update();
+	//virtual bool update();
 
 	//
 	virtual void save(ostream&) const;
@@ -64,6 +62,8 @@ public:
 		// setea el iterador de la posicion del objeto en la lista
 		it = newit;
 	}
+
+	void Prueba();
 };
 
 #endif

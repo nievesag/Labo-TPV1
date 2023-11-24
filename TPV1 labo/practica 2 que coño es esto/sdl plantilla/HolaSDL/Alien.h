@@ -8,9 +8,12 @@
 #include "SceneObject.h"
 #include "GameObject.h"
 
+// PLACEHOLDERRRRR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#include "Game.h"
+
 
 class Mothership;
-class Game;
+//class Game;
 
 using namespace std;
 using uint = unsigned int;
@@ -27,11 +30,15 @@ private:
 	// frame del alien (para animaciones)
 	int alienFrame;
 
+	// velocidad del alien
+	int alienSpeed;
+
 	// metodos publicos 
 public:
 	// ---- constructora ----
 	Alien(Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		:mothership(mothership), alienFrame(alienFrame), type(type), SceneObject(position, width, height, vidas, texture, game) { }
+		:mothership(mothership), alienFrame(alienFrame), type(type), SceneObject(position, width, height, vidas, texture, game) 
+	{ alienSpeed = 10; }
 
 	//Alien() {} // constructora vacia
 
@@ -40,10 +47,20 @@ public:
 	void render() const override;
 
 	//
-	void update() override;
+	bool update() override;
 
 	//
 	void save(ostream&) const override;
+
+	// metodos privados (auxiliares)
+private:
+
+	// mueve al alien
+	void move();
+
+	// anima al alien
+	void animate();
+
 
 };
 #endif

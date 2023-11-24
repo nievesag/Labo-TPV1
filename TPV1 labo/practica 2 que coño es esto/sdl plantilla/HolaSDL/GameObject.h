@@ -13,8 +13,8 @@ using uint = unsigned int;
 
 class GameObject
 {
-	// atributos privados
-private:
+	// atributos protegidos
+protected:
 
 	// puntero al game
 	Game* game;
@@ -22,13 +22,10 @@ private:
 	// metodos publicos
 public:
 
-	//GameObject () {}
+	GameObject::GameObject () {}
 
 	GameObject::GameObject(Game* game)
-		: game(game)
-	{
-		// ??????????????????
-	}
+		: game(game) {}
 
 	// destructora virtual para por polimorfismo
 	virtual GameObject::~GameObject();
@@ -41,7 +38,7 @@ public:
 	// cuando se iguala un metodo a 0 obliga a todas las clases hijas a crearlas tmb (override)
 	// si no se va a quejar
 	// update
-	virtual void update() = 0;
+	virtual bool update() = 0;
 
 	// save del objeto
 	virtual void save(ostream&) const;

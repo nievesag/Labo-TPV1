@@ -100,8 +100,17 @@ public:
 	// input del jugador
 	void handleEvents();
 
+	// metodo que llaman los objetos cuando han de ser eliminados
+	void hasDied(list<SceneObject*>::iterator it);
+
 	// acaba el juego (setea exit a true vamos)
 	void EndGame();
+
+	// ------------------- GETTERS ------------------
+
+	uint getWinWidth() { return winWidth; }
+	uint getWinHeight() { return winHeight; }
+	
 
 // ------ METODOS PRIVADOS -------
 private:

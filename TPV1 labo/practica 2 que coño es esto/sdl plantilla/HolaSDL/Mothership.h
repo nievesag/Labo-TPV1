@@ -14,6 +14,9 @@ private:
 	// enum ciclico de estados
 	enum state RIGHT, dRIGHT, LEFT, dLEFT;
 
+	// estado actual del movimiento de los aliens
+	state currentState = RIGHT;
+
 	// offset del descenso
 	int level;
 
@@ -23,10 +26,10 @@ public:
 		: level(level), GameObject(game) { }
 		
 	//
-	void update() override;
+	bool update() override;
 
 	// ajusta la direccion de los aliens
-	void getDirection();
+	Vector2D<int> getDirection();
 
 	// devuelve si se sigue moviendo o no (?????????)
 	bool shouldMove();

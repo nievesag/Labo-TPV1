@@ -16,12 +16,43 @@ void Alien::render() const
 	texture->renderFrame(destRect, type, alienFrame);
 }
 
-void Alien::update()
+bool Alien::update()
 {
-	cout << "coñete";
+	//cout << "coñete";
+
+	// si esta muerto devuelve false
+	if (vidas <= 0) return false;
+
+	// se mueve
+	move();
+
+	// anima
+	animate();
+
+	// si esta vivo devuelve true
+	return true;
 }
 
 void Alien::save(ostream&) const
 {
 	cout << "coñardo";
+}
+
+void Alien::move()
+{
+	// mueve al alien
+	position.setX(position.getX() + (mothership->getDirection().getX() * alienSpeed)); //* (ALIEN_SPEED + extraSpeed)));
+
+
+	// si se pasa de corto o de largo cambia la direccion y lo baja una posicion
+	if (position.getX() < 0 || position.getX() > game->getWinWidth() - texture->getFrameWidth()) {
+		mothership->cannotMove();
+	}
+
+}
+
+void Alien::animate()
+{
+	// se anima ig
+
 }

@@ -56,27 +56,37 @@ Game::~Game()
 	//
 	cout << "aaaaaa" << endl;
 
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
+		delete (*it);
+		cout << "scene object: " << (*it) << endl;
+
+	}
+
 	// limpia las texturas
 	for (int i = 0; i < NUM_TEXTURES; i++) delete textures[i];
 
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit(); // cierra pantalla
-
-
 }
 
 #pragma region LOGICA DE JUEGO
 void Game::run()
 {
 	while (!exit) {
+
+		update();
+
 		render(); // actualiza todos los objetos de juego
 	}
 }
 
 void Game::update()
 {
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
 
+		(*it)->update();
+	}
 
 }
 
