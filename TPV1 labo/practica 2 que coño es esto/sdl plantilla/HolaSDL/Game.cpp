@@ -155,6 +155,7 @@ void Game::handleEvents()
 		else { 
 			while (!in.eof()) {
 				in >> type;
+
 			}
 		}
 
