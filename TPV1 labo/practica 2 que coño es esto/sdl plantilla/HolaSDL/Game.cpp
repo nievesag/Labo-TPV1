@@ -186,8 +186,19 @@ void Game::loadMap()
 
 		// si es la nave
 		if (type == 0) {
+			cout << coord.getX() << " " << coord.getY() << endl;
 
 			// nave
+			SceneObject* obj = new Cannon(coord, textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), 1, textures[Nave], this);
+
+			// lo mete en la lista
+			sceneObjectsList.push_back(obj);
+
+			//iterador al final de la lista
+			list<SceneObject*>::iterator newit = sceneObjectsList.end();
+
+			// le pasa el iterador
+			obj->setListIterator(newit);
 		}
 
 		// si es un alien

@@ -11,6 +11,7 @@
 
 // -------------
 #include "Alien.h"
+#include "Cannon.h"
 #include "SceneObject.h"
 #include "Mothership.h"
 
