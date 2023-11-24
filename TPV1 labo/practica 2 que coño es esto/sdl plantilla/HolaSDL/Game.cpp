@@ -162,6 +162,9 @@ void Game::loadMap()
 	int x, y;
 	int atype;
 
+	// crea la mothership
+	milfship = new Mothership(10, this);
+
 	// in.eof() devuelve si se ha acabado el fichero
 	while (!in.eof()) {
 		in >> type;

@@ -12,10 +12,10 @@ class Mothership : public GameObject
 private:
 	
 	// enum ciclico de estados
-	enum state RIGHT, dRIGHT, LEFT, dLEFT;
+	enum state : int { RIGHT, dRIGHT, LEFT, dLEFT };
 
 	// estado actual del movimiento de los aliens
-	state currentState = RIGHT;
+	state currentState;
 
 	// offset del descenso
 	int level;
@@ -23,7 +23,9 @@ private:
 	// metodos publicos
 public:
 	Mothership::Mothership(int offset, Game* game) 
-		: level(level), GameObject(game) { }
+		: level(level), GameObject(game) {
+		currentState = RIGHT;
+	}
 		
 	//
 	bool update() override;
@@ -33,11 +35,11 @@ public:
 
 	// devuelve si se sigue moviendo o no (?????????)
 	bool shouldMove();
+	
+	// cambia la direccion actual de los aliens
+	void cannotMove();
 
 	// INFORMAN A ALIEN
-	// devuelve si se puede seguir moviendo o no
-	bool cannotMove();
-
 	// devuelve si el alien ha muerto
 	bool alienDied();
 

@@ -23,7 +23,18 @@ Vector2D<int> Mothership::getDirection()
 }
 
 
-bool Mothership::cannotMove()
+void Mothership::cannotMove()
 {
-	return false;
+	cout << "state 1: " << currentState << endl;
+
+	// RIGHT
+	if (currentState == RIGHT) { currentState = dRIGHT; }
+	// DOWN RIGHT
+	else if (currentState == dRIGHT) { currentState = LEFT; }
+	// LEFT
+	else if (currentState == LEFT) { currentState = dLEFT; }
+	// DOWN LEFT
+	else { currentState = RIGHT; }
+
+	cout << "state 2: " << currentState << endl;
 }
