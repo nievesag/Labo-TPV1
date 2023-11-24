@@ -61,6 +61,7 @@ private:
 	// anima al alien
 	void animate();
 
-
+	// baja al alien
+	void lowerAlien();
 };
 #endif
