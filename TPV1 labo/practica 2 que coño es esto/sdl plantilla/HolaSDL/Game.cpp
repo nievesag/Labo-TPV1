@@ -73,12 +73,24 @@ Game::~Game()
 #pragma region LOGICA DE JUEGO
 void Game::run()
 {
-	while (!exit) {
+	// get ticks al inicio del bucle
+	startTime = SDL_GetTicks();
 
-		update();
+	while (!exit)
+	{
+		handleEvents();
 
-		render(); // actualiza todos los objetos de juego
+		// tiempo desde ultima actualizacion
+		frameTime = SDL_GetTicks() - startTime;
+
+		if (frameTime > TIME_BT_FRAMES) {
+			update(); // actualiza todos los objetos de juego
+			startTime = SDL_GetTicks();
+		}
+		render(); // renderiza todos los objetos de juego
 	}
+
+
 }
 
 void Game::update()

@@ -33,6 +33,8 @@ public:
 	// ajusta la direccion de los aliens
 	Vector2D<int> getDirection();
 
+	int getLevel() { return level; }
+
 	// devuelve si se sigue moviendo o no (?????????)
 	bool shouldMove();
 	

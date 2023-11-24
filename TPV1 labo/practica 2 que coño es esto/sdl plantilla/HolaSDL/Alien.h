@@ -31,14 +31,14 @@ private:
 	int alienFrame;
 
 	// velocidad del alien
-	int alienSpeed;
+	double alienSpeed;
 
 	// metodos publicos 
 public:
 	// ---- constructora ----
 	Alien(Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
 		:mothership(mothership), alienFrame(alienFrame), type(type), SceneObject(position, width, height, vidas, texture, game) 
-	{ alienSpeed = 5; }
+	{ alienSpeed = 0.1; }
 
 	//Alien() {} // constructora vacia
 

@@ -41,12 +41,12 @@ void Alien::save(ostream&) const
 void Alien::move()
 {
 	// mueve al alien
-	position.setX(position.getX() + (mothership->getDirection().getX() * alienSpeed)); //* (ALIEN_SPEED + extraSpeed)));
+	position.setX(position.getX() + (mothership->getDirection().getX() * alienSpeed));
+	position.setY(position.getY() + (mothership->getDirection().getY()) * mothership->getLevel());
 
 	// si se pasa de corto o de largo cambia la direccion y lo baja una posicion
 	if (position.getX() < 0 || position.getX() > game->getWinWidth() - texture->getFrameWidth()) {
 		mothership->cannotMove();
-
 	}
 
 }

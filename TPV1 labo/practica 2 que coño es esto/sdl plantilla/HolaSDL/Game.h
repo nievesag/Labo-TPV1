@@ -29,6 +29,16 @@ class SceneObject;
 static constexpr uint winWidth = 800;
 static constexpr uint winHeight = 600;
 
+// ------------------- FRAMES ---------------------
+// gestion de frames y framerate 
+static constexpr double FRAMERATE = 60,						// frames por segundo
+						TIME_BT_FRAMES = 1 / FRAMERATE,		// tiempo entre frames
+						LASER_SPEED = 6 * TIME_BT_FRAMES,	// velocidad de laser
+						ALIEN_SPEED = 4 * TIME_BT_FRAMES,	// velocidad de aliens
+						CANNON_SPEED = 10 * TIME_BT_FRAMES,	// velocidad de cannon
+						END_GAME = 300,						// distancia de los aliens para acabar
+						ALIEN_RF = 5 * FRAMERATE;			// cada cuanto se actualiza el alien
+
 
 // ----------------------------------- x X x G A M E x X x ------------------------------------
 class Game
