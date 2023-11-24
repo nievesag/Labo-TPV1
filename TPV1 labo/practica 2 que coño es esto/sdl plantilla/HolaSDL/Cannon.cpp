@@ -37,7 +37,6 @@ void Cannon::save(ostream&) const
 
 void Cannon::handleEvent(SDL_Event event)
 {
-
 	// escanea y evalua que tecla has tocado
 	SDL_Scancode key = event.key.keysym.scancode;
 

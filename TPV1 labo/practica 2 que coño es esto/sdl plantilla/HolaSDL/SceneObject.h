@@ -23,6 +23,9 @@ protected:
 	// vidas del objeto
 	int vidas;
 
+	// tipo de objeto
+	//int typeObj;
+
 	Texture* texture;
 
 	// rectangulo del render

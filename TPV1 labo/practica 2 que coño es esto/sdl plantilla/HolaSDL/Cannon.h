@@ -23,10 +23,9 @@ private:
 
 	// metodos publicos 
 public:
-
 	// ---- constructora ----
 	Cannon(Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: SceneObject(position, width, height, vidas, texture, game) { };
+		: SceneObject(position, width, height, vidas, texture, game)  { };
 
 
 	// aqui si van los overrides porque aqui se especifican las cositas

@@ -71,6 +71,16 @@ Game::~Game()
 }
 
 #pragma region LOGICA DE JUEGO
+// ----- LOGICA DE JUEGO -----
+// cargar | manejar eventos -> actualizar -> pintar -> manejar eventos etc
+
+
+void Game::EndGame()
+{
+	exit = true;
+}
+
+// RUN
 void Game::run()
 {
 	// get ticks al inicio del bucle
@@ -89,10 +99,9 @@ void Game::run()
 		}
 		render(); // renderiza todos los objetos de juego
 	}
-
-
 }
 
+// ACTUALIZAR 
 void Game::update()
 {
 	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
@@ -102,6 +111,7 @@ void Game::update()
 
 }
 
+// PINTAR
 void Game::render()
 {
 	// limpia pantalla
@@ -126,9 +136,12 @@ void Game::renderBackground()
 	textures[Fondo]->render();
 }
 
+// MANEJAR EVENTOS
 void Game::handleEvents()
 {
 	SDL_Event event; // crea evento
+	ifstream in("..\\mapas\\original.txt");
+	int type;
 
 	// MIENTRAS HAYA EVENTOS
 		// si hay eventos &event se llena con el evento a ejecutar si no NULL
@@ -139,11 +152,17 @@ void Game::handleEvents()
 		if (event.type == SDL_QUIT) EndGame();
 
 		// MANEJO DE EVENTOS DE OBJETOS DE JUEGO
-		//else { cannon->handleEvents(event); }
+		else { 
+			while (!in.eof()) {
+				in >> type;
+			}
+		}
+
 	}
 }
 #pragma endregion
 
+// CARGA
 #pragma region LOADS
 void Game::loadTextures()
 {
@@ -229,12 +248,5 @@ void Game::loadMap()
 			//bunker
 		}
 	}
-}
-#pragma endregion
-
-#pragma region AUX
-void Game::EndGame()
-{
-	exit = true;
 }
 #pragma endregion

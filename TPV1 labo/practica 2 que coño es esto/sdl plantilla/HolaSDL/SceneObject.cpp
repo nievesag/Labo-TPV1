@@ -12,11 +12,8 @@ void SceneObject::save(ostream&) const
 //
 void SceneObject::hit(SDL_Rect ataque, bool frenemy)
 {
-
-
 }
 
 void SceneObject::Prueba()
 {
-
 }
