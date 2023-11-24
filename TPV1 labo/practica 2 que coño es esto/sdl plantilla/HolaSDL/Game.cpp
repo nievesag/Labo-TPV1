@@ -216,7 +216,7 @@ void Game::loadMap()
 			sceneObjectsList.push_back(obj);
 
 			//iterador al final de la lista
-			list<SceneObject*>::iterator newit = sceneObjectsList.end();
+			list<SceneObject*>::iterator newit = sceneObjectsList.end()--;
 
 			// le pasa el iterador
 			obj->setListIterator(newit);

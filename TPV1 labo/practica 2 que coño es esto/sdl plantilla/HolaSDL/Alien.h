@@ -52,6 +52,9 @@ public:
 	//
 	void save(ostream&) const override;
 
+	// baja al alien
+	void lowerAlien();
+
 	// metodos privados (auxiliares)
 private:
 
@@ -61,7 +64,5 @@ private:
 	// anima al alien
 	void animate();
 
-	// baja al alien
-	void lowerAlien();
 };
 #endif

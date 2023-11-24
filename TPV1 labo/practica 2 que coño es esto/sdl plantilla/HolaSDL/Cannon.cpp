@@ -31,6 +31,8 @@ bool Cannon::update()
 
 void Cannon::save(ostream&) const
 {
+
+
 }
 
 void Cannon::handleEvent(SDL_Event event)
