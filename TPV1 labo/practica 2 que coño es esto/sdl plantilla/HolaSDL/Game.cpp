@@ -153,14 +153,12 @@ void Game::handleEvents()
 
 		// MANEJO DE EVENTOS DE OBJETOS DE JUEGO
 		else { 
-			cout << "Funciona por favor te lo rogamos vs y c++ del amor hermoso te queremos..." << endl;
 			list<SceneObject*>::iterator it = sceneObjectsList.begin();
 			// DYNAMIC CAST: se comprueba en ejecucion que el objeto 
 			// en la posicion begin del iterador apunte a un objeto de tipo Cannon
 			// si lo es se accede al metodo 
 			dynamic_cast<Cannon*>(*it)->handleEvent(event);
 		}
-
 	}
 }
 #pragma endregion
