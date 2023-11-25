@@ -19,8 +19,8 @@ class Laser : SceneObject
 private:
 
 	// ---- constructora ----
-	Laser(int lifes, int hits, Point2D<double> position, int typeObj, int width, int height, int vidas, Texture* texture, Game* game)
-		: SceneObject(position, typeObj, width, height, vidas, texture, game) { };
+	Laser(int lifes, int hits, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: SceneObject(position,width, height, vidas, texture, game) { };
 
 	// metodos publicos 
 public:

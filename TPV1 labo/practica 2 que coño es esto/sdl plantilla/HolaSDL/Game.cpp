@@ -153,10 +153,9 @@ void Game::handleEvents()
 
 		// MANEJO DE EVENTOS DE OBJETOS DE JUEGO
 		else { 
-			while (!in.eof()) {
-				in >> type;
-
-			}
+			cout << "Funciona por favor te lo rogamos vs y c++ del amor hermoso te queremos..." << endl;
+			list<SceneObject*>::iterator it = sceneObjectsList.begin();
+			dynamic_cast<Cannon*>(*it)->handleEvent(event);
 		}
 
 	}

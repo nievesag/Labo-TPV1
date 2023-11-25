@@ -40,7 +40,6 @@ public:
 		:mothership(mothership), alienFrame(alienFrame), type(type), SceneObject(position, width, height, vidas, texture, game) 
 	{ 
 		alienSpeed = 0.1;
-		typeObj = 1;
 	}
 
 	//Alien() {} // constructora vacia

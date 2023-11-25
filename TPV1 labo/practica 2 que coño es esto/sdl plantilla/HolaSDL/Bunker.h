@@ -17,11 +17,8 @@ class Bunker : public SceneObject
 	// atributos privados
 private:
 	// ---- constructora ----
-	Bunker(int lifes, int hits, Point2D<double> position, int typeObj, int width, int height, int vidas, Texture* texture, Game* game)
-		: lifes(lifes), hits(hits), SceneObject(position, typeObj, width, height, vidas, texture, game)
-	{
-		typeObj = 2;
-	};
+	Bunker(int lifes, int hits, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: lifes(lifes), hits(hits), SceneObject(position, width, height, vidas, texture, game) { };
 
 	// metodos publicos
 public:
