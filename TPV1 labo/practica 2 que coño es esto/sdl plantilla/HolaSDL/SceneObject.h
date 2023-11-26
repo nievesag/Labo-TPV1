@@ -37,8 +37,8 @@ protected:
 	// metodos publicos
 public:
 
-	SceneObject::SceneObject(Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game) { }
+	SceneObject::SceneObject(SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: destRect(destRect), position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game) { }
 
 
 	// -------------> los override van en las clases hijas que lo especifiquen <--------------
@@ -63,13 +63,21 @@ public:
 	// ----- Iterador de la lista ------
 	// Un iterador funciona como un puntero que apunta a los items de la lista 
 	// Tipos: begin(), end(), advance(), next(), prev(), inserter()
-	void setListIterator(list<SceneObject*>::iterator newit) 
+	void setListIterator(list<SceneObject*>::iterator newit)
 	{
 		// setea el iterador de la posicion del objeto en la lista
 		it = newit;
-	}
+	};
 
-	void Prueba();
+	Point2D<double> getPosition() const { return position; };
+
+	Texture* getTexture() const { return texture; };
+
+	void SetDestRect(SDL_Rect newDR) {
+		destRect = newDR;
+	};
+
+
 };
 
 #endif

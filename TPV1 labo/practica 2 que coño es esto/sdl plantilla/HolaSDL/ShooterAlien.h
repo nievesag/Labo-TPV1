@@ -22,8 +22,8 @@ private:
 public:
 
 	// desde esta constructora invocar a la contructora padre (Alien)
-	ShooterAlien(int cooldown, double minCD, double maxCD, Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: cooldown(cooldown), minCD(minCD), maxCD(maxCD), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, game) {}
+	ShooterAlien(int cooldown, double minCD, double maxCD, Mothership* mothership, int alienFrame, int type, SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: cooldown(cooldown), minCD(minCD), maxCD(maxCD), Alien(mothership, alienFrame, type, destRect, position, width, height, vidas, texture, game) {}
 
 	// el alien dispara
 	void shoot();

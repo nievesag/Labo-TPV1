@@ -19,8 +19,8 @@ private:
 public:
 	// atributos privados
 	// ---- constructora ----
-	Bunker(int lifes, int hits, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: lifes(lifes), hits(hits), SceneObject(position, width, height, vidas, texture, game) 
+	Bunker(int lifes, int hits, SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: lifes(lifes), hits(hits), SceneObject(destRect, position, width, height, vidas, texture, game) 
 	{
 
 	};

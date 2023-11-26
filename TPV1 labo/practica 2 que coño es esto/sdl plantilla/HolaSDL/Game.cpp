@@ -128,6 +128,40 @@ void Game::renderBackground()
 	textures[Fondo]->render();
 }
 
+SDL_Rect Game::SetDestRect(SceneObject* obj)
+{
+	// SDL RECT 
+	SDL_Rect destRect;
+
+	// tamaño
+	destRect.w = obj->getTexture()->getFrameWidth();
+	destRect.h = obj->getTexture()->getFrameHeight();
+
+	// posicion
+	destRect.x = obj->getPosition().getX();
+	destRect.y = obj->getPosition().getY();
+
+	return destRect;
+}
+
+SDL_Rect Game::SetDestRect(Texture* tex, Point2D<double> pos)
+{
+	// SDL RECT 
+	SDL_Rect destRect;
+
+	// tamaño
+	destRect.w = tex->getFrameWidth();
+	destRect.h = tex->getFrameHeight();
+
+	// posicion
+	destRect.x = pos.getX();
+	destRect.y = pos.getY();
+
+	return destRect;
+}
+
+
+
 // MANEJAR EVENTOS
 void Game::handleEvents()
 {
@@ -198,12 +232,14 @@ void Game::loadMap()
 		in >> y;
 		Point2D<double> coord(x, y);
 
+		
 		// si es la nave
 		if (type == 0) {
 			//cout << coord.getX() << " " << coord.getY() << endl;
 
 			// nave
-			SceneObject* obj = new Cannon(coord, textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), 1, textures[Nave], this);
+			SceneObject* obj = new Cannon(SetDestRect(textures[Nave], coord), coord, 
+				textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), 1, textures[Nave], this);
 
 			// lo mete en la lista
 			sceneObjectsList.push_back(obj);
@@ -220,7 +256,8 @@ void Game::loadMap()
 			in >> atype;
 
 			// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game)
-			SceneObject* obj = new Alien(milfship, 0, atype, coord, textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);
+			SceneObject* obj = new Alien(milfship, 0, atype, SetDestRect(textures[atype], coord), coord, 
+				textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);
 
 			// lo mete en la lista
 			sceneObjectsList.push_back(obj);
@@ -230,6 +267,7 @@ void Game::loadMap()
 
 			// le pasa el iterador
 			obj->setListIterator(newit);
+
 		}
 
 		// si es un bunker
@@ -240,7 +278,8 @@ void Game::loadMap()
 			//cout << coord.getX() << " " << coord.getY() << endl;
 
 			//bunker
-			SceneObject* obj = new Bunker(3, 0, coord, textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight(), 1, textures[Escudo], this);
+			SceneObject* obj = new Bunker(3, 0, SetDestRect(textures[Escudo], coord), coord, 
+				textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight(), 1, textures[Escudo], this);
 
 			// lo mete en la lista
 			sceneObjectsList.push_back(obj);

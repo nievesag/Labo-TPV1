@@ -14,6 +14,4 @@ void SceneObject::hit(SDL_Rect ataque, bool frenemy)
 {
 }
 
-void SceneObject::Prueba()
-{
-}
+
