@@ -11,19 +11,31 @@ using uint = unsigned int;
 
 class Bunker : public SceneObject
 {
+private:
 	int lifes,					// vidas restantes
 		hits;					// contador de golpes
 
-	// atributos privados
-private:
-	// ---- constructora ----
-	Bunker(int lifes, int hits, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: lifes(lifes), hits(hits), SceneObject(position, width, height, vidas, texture, game) { };
-
 	// metodos publicos
 public:
+	// atributos privados
+	// ---- constructora ----
+	Bunker(int lifes, int hits, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: lifes(lifes), SceneObject(position, width, height, vidas, texture, game) 
+	{
+		hits = 0;
+	};
 
+	//
+	void render() const override;
 
+	//
+	bool update() override;
+
+	// 
+	//SDL_Rect* getRect() override;
+
+	//
+	//void hit() override;
 };
 
 #endif

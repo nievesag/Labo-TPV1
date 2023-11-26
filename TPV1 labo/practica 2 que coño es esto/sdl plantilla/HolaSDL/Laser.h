@@ -11,20 +11,46 @@ using uint = unsigned int;
 
 class Laser : SceneObject
 {
-	// rojo si viene de la nave
-	// azul si viene de los aliens
-	enum { rojo, azul };
-
 	// atributos privados
 private:
+	// rojo si viene de la nave
+	// azul si viene de los aliens
+	// antiguo frenemy -> mejor char????
+	enum { rojo, azul };
 
-	// ---- constructora ----
-	Laser(int lifes, int hits, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: SceneObject(position,width, height, vidas, texture, game) { };
+	Vector2D<double> vel;
+
+	bool alive;
 
 	// metodos publicos 
 public:
+	// ---- constructora ----
+	Laser(Vector2D<double> velocity, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: vel(velocity), SceneObject(position, width, height, vidas, texture, game)
+	{ 
+		// inicializa alive a true al construirse
+		alive = true;
+	};
 
+	// ---- render ----
+	void render() const override;
+
+	// ---- update ----
+	bool update() override;
+
+	// ---- hit ----
+	// recibir daño
+	//void hit() override;
+
+	// devuelve si esta fuera del marco de juego 
+	bool isOut();
+
+	// devuelve si esta vivo el laser
+	bool IsAlive() { return alive; }
+
+protected:
+	// mueve el laser segun el vector velocidad
+	void move();
 
 };
 

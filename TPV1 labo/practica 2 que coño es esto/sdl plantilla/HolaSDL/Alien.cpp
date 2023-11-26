@@ -18,8 +18,6 @@ void Alien::render() const
 
 bool Alien::update()
 {
-	//cout << "coñete";
-
 	// si esta muerto devuelve false
 	if (vidas <= 0) return false;
 
@@ -40,7 +38,7 @@ void Alien::save(ostream&) const
 
 void Alien::lowerAlien()
 {
-	// si no se acaba (PLACEHOLDER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!)
+	// si no se acaba (PLACEHOLDER!!!!!!!!!!!!!!!!!!!!!)
 	if (true) {
 		// lo baja 
 		position.setY(position.getY() + mothership->getLevel());
@@ -60,13 +58,9 @@ void Alien::move()
 	if (position.getX() < 0 || position.getX() > game->getWinWidth() - texture->getFrameWidth()) {
 		mothership->cannotMove();
 	}
-
 }
-
-
 
 void Alien::animate()
 {
 	// se anima ig
-
 }

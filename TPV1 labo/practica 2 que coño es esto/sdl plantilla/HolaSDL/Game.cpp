@@ -46,16 +46,10 @@ Game::Game()
 	loadTextures();
 
 	loadMap();
-
-	cout << "AAAAAAAAAA" << endl;
 }
 
 Game::~Game()
 {
-	// limpia elementos de juego
-	//
-	cout << "aaaaaa" << endl;
-
 	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
 		delete (*it);
 		cout << "scene object: " << (*it) << endl;
@@ -74,7 +68,7 @@ Game::~Game()
 // ----- LOGICA DE JUEGO -----
 // cargar | manejar eventos -> actualizar -> pintar -> manejar eventos etc
 
-
+// ---------------------------------------------
 void Game::EndGame()
 {
 	exit = true;
@@ -108,7 +102,6 @@ void Game::update()
 
 		(*it)->update();
 	}
-
 }
 
 // PINTAR
@@ -153,7 +146,9 @@ void Game::handleEvents()
 
 		// MANEJO DE EVENTOS DE OBJETOS DE JUEGO
 		else { 
+			// el objeto en begin es el cannon
 			list<SceneObject*>::iterator it = sceneObjectsList.begin();
+
 			// DYNAMIC CAST: se comprueba en ejecucion que el objeto 
 			// en la posicion begin del iterador apunte a un objeto de tipo Cannon
 			// si lo es se accede al metodo 
@@ -225,11 +220,7 @@ void Game::loadMap()
 		else if (type == 1) {
 			in >> atype;
 
-			// crea un alien
-			//Alien* alien = new Alien(milfship, 0, 0, coord, 1, 1, 2, textures[atype], this);
-
-			// simplificado asi, si da problemas lo ponemos por separado el SceneObject* obj = alien;
-			// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game
+			// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game)
 			SceneObject* obj = new Alien(milfship, 0, atype, coord, textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);
 
 			// lo mete en la lista
@@ -244,9 +235,23 @@ void Game::loadMap()
 
 		// si es un bunker
 		else if (type == 2) {
+			// esto no se q es
 			Vector2D<int> vel(0, 0);
 
+			cout << coord.getX() << " " << coord.getY() << endl;
+
 			//bunker
+			SceneObject* obj = new Bunker(3, 0, coord, textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight(), 1, textures[Escudo], this);
+
+			// lo mete en la lista
+			sceneObjectsList.push_back(obj);
+
+			//iterador al final de la lista
+			// (end--)--?
+			list<SceneObject*>::iterator newit = sceneObjectsList.end()--;
+
+			// le pasa el iterador
+			obj->setListIterator(newit);
 		}
 	}
 }

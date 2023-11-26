@@ -20,7 +20,6 @@ private:
 	// input
 	bool keyA = false, keyD = false, keyE = false, keySpace = false;
 
-
 	// metodos publicos 
 public:
 	// ---- constructora ----

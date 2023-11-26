@@ -57,6 +57,9 @@ public:
 	// ataque al objeto (basicamente colisiones)
 	virtual void hit(SDL_Rect ataque, bool frenemy);
 
+	// devuelve rect (posicion) de cada objeto
+	virtual SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
+
 	// ----- Iterador de la lista ------
 	// Un iterador funciona como un puntero que apunta a los items de la lista 
 	// Tipos: begin(), end(), advance(), next(), prev(), inserter()

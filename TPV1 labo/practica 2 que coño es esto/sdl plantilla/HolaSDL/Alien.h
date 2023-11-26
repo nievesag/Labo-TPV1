@@ -11,7 +11,6 @@
 // PLACEHOLDERRRRR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #include "Game.h"
 
-
 class Mothership;
 //class Game;
 
@@ -41,8 +40,6 @@ public:
 	{ 
 		alienSpeed = 0.1;
 	}
-
-	//Alien() {} // constructora vacia
 
 	// aqui si van los overrides porque aqui se especifican las cositas
 	//
