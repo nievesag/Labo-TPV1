@@ -20,9 +20,9 @@ public:
 	// atributos privados
 	// ---- constructora ----
 	Bunker(int lifes, int hits, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: lifes(lifes), SceneObject(position, width, height, vidas, texture, game) 
+		: lifes(lifes), hits(hits), SceneObject(position, width, height, vidas, texture, game) 
 	{
-		hits = 0;
+
 	};
 
 	//

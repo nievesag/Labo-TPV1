@@ -52,8 +52,7 @@ Game::~Game()
 {
 	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
 		delete (*it);
-		cout << "scene object: " << (*it) << endl;
-
+		//cout << "scene object: " << (*it) << endl;
 	}
 
 	// limpia las texturas
@@ -201,7 +200,7 @@ void Game::loadMap()
 
 		// si es la nave
 		if (type == 0) {
-			cout << coord.getX() << " " << coord.getY() << endl;
+			//cout << coord.getX() << " " << coord.getY() << endl;
 
 			// nave
 			SceneObject* obj = new Cannon(coord, textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), 1, textures[Nave], this);
@@ -238,7 +237,7 @@ void Game::loadMap()
 			// esto no se q es
 			Vector2D<int> vel(0, 0);
 
-			cout << coord.getX() << " " << coord.getY() << endl;
+			//cout << coord.getX() << " " << coord.getY() << endl;
 
 			//bunker
 			SceneObject* obj = new Bunker(3, 0, coord, textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight(), 1, textures[Escudo], this);

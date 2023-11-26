@@ -16,7 +16,7 @@ void Bunker::render() const
 	texture->renderFrame(destRect, 0, hits);
 
 	// así no se recorta
-	// texture->render(destRect);
+	//texture->render(destRect);
 }
 
 bool Bunker::update()
