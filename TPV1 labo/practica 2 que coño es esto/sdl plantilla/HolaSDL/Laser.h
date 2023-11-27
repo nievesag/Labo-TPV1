@@ -23,7 +23,7 @@ private:
 	// antiguo frenemy -> mejor char????
 	enum frenemy{ rojo, azul };
 
-	frenemy laserType;
+	char laserType;
 
 	Vector2D<double> vel;
 
@@ -34,8 +34,8 @@ private:
 	// metodos publicos 
 public:
 	// ---- constructora ----
-	Laser(Vector2D<double> velocity, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: vel(velocity), SceneObject(position, width, height, vidas, texture, game)
+	Laser(char type, Vector2D<double> velocity, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: laserType(type), vel(velocity), SceneObject(position, width, height, vidas, texture, game)
 	{ 
 		// inicializa alive a true al construirse
 		alive = true;
@@ -56,6 +56,12 @@ public:
 
 	// devuelve si esta vivo el laser
 	bool IsAlive() { return alive; }
+
+	char getColor() { return laserType; };
+
+	void writeName() override {
+		//cout << "laser" << endl;
+	}
 
 protected:
 	// mueve el laser segun el vector velocidad

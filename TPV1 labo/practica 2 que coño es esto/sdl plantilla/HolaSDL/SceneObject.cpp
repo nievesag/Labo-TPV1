@@ -23,3 +23,7 @@ void SceneObject::updateRect()
 {
 }
 
+void SceneObject::writeName()
+{
+}
+

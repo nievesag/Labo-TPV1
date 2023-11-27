@@ -46,7 +46,15 @@ void Alien::lowerAlien()
 
 bool Alien::hit(SDL_Rect* rect, char frenemy)
 {
-	return false;
+	if (SDL_HasIntersection(rect, &destRect) && frenemy == 'a') {
+
+		// informa al game que ha muerto
+		game->hasDied(it);
+
+		return true;
+	}
+	// si no
+	else return false;
 }
 
 void Alien::move()

@@ -19,7 +19,12 @@ void Bunker::update()
 
 bool Bunker::hit(SDL_Rect* rect, char frenemy)
 {
-	return false;
+	if (SDL_HasIntersection(rect, &destRect) && frenemy) {
+
+		return true;
+	}
+	// si no
+	else return false;
 }
 
 void Bunker::updateRect()

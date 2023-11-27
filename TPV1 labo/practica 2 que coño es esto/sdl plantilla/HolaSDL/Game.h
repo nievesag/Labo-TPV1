@@ -66,6 +66,10 @@ private:
 	// lista de objetos de escena (cannon, aliens, bunkeres, laser)
 	list<SceneObject*> sceneObjectsList;
 
+	// lista de iteradores de objetos que eliminar
+	list<list<SceneObject*>::iterator> objectsToErase;
+
+
 	// puntero al mothership
 	Mothership* milfship;
 
@@ -122,7 +126,7 @@ public:
 
 	// ---- dispara el laser ----
 	// dispara el laser (lo crea realemtente)
-	void fireLaser(Point2D<double> pos, bool frenemy);
+	void fireLaser(Point2D<double> pos, char frenemy);
 
 	// ------------------- GETTERS ------------------
 	uint getWinWidth() { return winWidth; }

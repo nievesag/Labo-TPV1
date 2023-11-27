@@ -30,8 +30,6 @@ protected:
 
 	// iterador de la lista
 	list<SceneObject*>::iterator it;
-
-	char frenemy;
 	
 	// metodos publicos
 public:
@@ -82,6 +80,8 @@ public:
 	//
 	virtual void updateRect();
 
+	virtual void writeName() ;
+
 	// devuelve rect (posicion) de cada objeto
 	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
 
@@ -98,7 +98,6 @@ public:
 
 	Texture* getTexture() const { return texture; };
 
-	char getFrenemy() { return frenemy; };
 };
 
 #endif

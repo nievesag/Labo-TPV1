@@ -67,7 +67,12 @@ void Cannon::handleEvent(SDL_Event event)
 
 bool Cannon::hit(SDL_Rect* rect, char frenemy)
 {
-	return false;
+	if (SDL_HasIntersection(rect, &destRect) && frenemy) {
+
+		return true;
+	}
+	// si no
+	else return false;
 }
 
 void Cannon::updateRect()
@@ -127,5 +132,5 @@ void Cannon::movement()
 void Cannon::shoot()
 {
 	if(keySpace)
-		game->fireLaser(this->position, true);
+		game->fireLaser(this->position, 'a');
 }

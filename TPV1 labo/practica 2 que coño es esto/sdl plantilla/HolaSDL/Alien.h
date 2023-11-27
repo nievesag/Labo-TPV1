@@ -59,6 +59,10 @@ public:
 	// colisiones
 	bool hit(SDL_Rect* rect, char frenemy) override;
 
+	void writeName() override {
+		cout << &it << endl;
+	}
+
 	// metodos privados (auxiliares)
 private:
 	// ---- move ----

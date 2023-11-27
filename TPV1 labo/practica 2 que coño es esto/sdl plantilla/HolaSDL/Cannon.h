@@ -61,6 +61,10 @@ public:
 	// maneja el cooldown
 	void coolDownManagement();
 
+	void writeName() override {
+		//cout << "cannon" << endl;
+	}
+
 private:
 	// movimiento de la nave
 	void movement();

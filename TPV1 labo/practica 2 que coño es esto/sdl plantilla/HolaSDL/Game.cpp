@@ -52,8 +52,10 @@ Game::~Game()
 {
 	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
 		delete (*it);
-		//cout << "scene object: " << (*it) << endl;
 	}
+
+	// borra el mothership
+	delete milfship;
 
 	// limpia las texturas
 	for (int i = 0; i < NUM_TEXTURES; i++) delete textures[i];
@@ -73,14 +75,14 @@ void Game::EndGame()
 	exit = true;
 }
 
-void Game::fireLaser(Point2D<double> pos, bool frenemy)
+void Game::fireLaser(Point2D<double> pos, char frenemy)
 {
 	// Laser(Vector2D<double> velocity, SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
 
 	// settea la velocidad
 	Vector2D<double> vel(0,1);
 
-	if (frenemy)
+	if (frenemy == 'a')
 		SDL_SetRenderDrawColor(renderer, 255, 0, 114, 255);	// cannon
 	else
 		SDL_SetRenderDrawColor(renderer, 255, 242, 0, 255);	// aliens
@@ -88,7 +90,7 @@ void Game::fireLaser(Point2D<double> pos, bool frenemy)
 	// !!!!!!!!!!!!!!!!!!!!!!!!!! COOLDOWN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 	// crea el laser
-	SceneObject* newObj = new Laser(vel, pos, 4, 10, 1, nullptr, this);
+	SceneObject* newObj = new Laser(frenemy, vel, pos, 4, 10, 1, nullptr, this);
 
 	// lo mete en la lista
 	sceneObjectsList.push_back(newObj);
@@ -100,33 +102,18 @@ void Game::fireLaser(Point2D<double> pos, bool frenemy)
 	newObj->setListIterator(newit);
 }
 
-/*
-* bool Game::damage(Laser* laser)
-{
-	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
-		 
-		// se ha pegado un hostion (colisiones)
-		if ((*it)->hit(laser->getRect(), laser->getFrenemy())) {
-			// devuelve si ha hitteado	
-			return true;
-		}
-		else return false;		
-	}
-}
-*/
-
-
 bool Game::damage(Laser* myLaser)
 {
 	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
 
 		// se ha pegado un hostion (colisiones)
-		if ((*it)->hit(myLaser->getRect(), myLaser->getFrenemy())) {
+		if ((*it)->hit(myLaser->getRect(), myLaser->getColor())) {
 			// devuelve si ha hitteado	
 			return true;
 		}
-		else return false;
 	}
+
+	return false;
 }
 
 
@@ -158,6 +145,17 @@ void Game::update()
 
 		(*it)->update();
 	}
+
+	// bucle para borrar los objetos que han de ser borrados
+	for (auto a : objectsToErase) {
+			
+		// lo borra de la lista
+		a = sceneObjectsList.erase(a);
+	}
+
+	// limpia la lista
+	objectsToErase.clear();
+
 }
 
 // PINTAR
@@ -170,7 +168,7 @@ void Game::render()
 	renderBackground();
 
 	// iterador para renderizar los objetos
-	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end()--; it++) {
 
 		(*it)->render();
 	}
@@ -217,8 +215,6 @@ SDL_Rect Game::SetDestRect(Texture* tex, Point2D<double> pos)
 	return destRect;
 }
 
-
-
 // MANEJAR EVENTOS
 void Game::handleEvents()
 {
@@ -245,6 +241,12 @@ void Game::handleEvents()
 			dynamic_cast<Cannon*>(*it)->handleEvent(event);
 		}
 	}
+}
+
+void Game::hasDied(list<SceneObject*>::iterator it)
+{
+	// aniade el objeto a la lista de borradores
+	objectsToErase.push_back(it);
 }
 #pragma endregion
 
@@ -303,6 +305,8 @@ void Game::loadMap()
 			//iterador al final de la lista
 			list<SceneObject*>::iterator newit = sceneObjectsList.end();
 
+			newit--;
+
 			// le pasa el iterador
 			obj->setListIterator(newit);
 		}
@@ -318,7 +322,9 @@ void Game::loadMap()
 			sceneObjectsList.push_back(obj);
 
 			//iterador al final de la lista
-			list<SceneObject*>::iterator newit = sceneObjectsList.end()--;
+			list<SceneObject*>::iterator newit = sceneObjectsList.end();
+
+			newit--;
 
 			// le pasa el iterador
 			obj->setListIterator(newit);
@@ -340,7 +346,9 @@ void Game::loadMap()
 
 			//iterador al final de la lista
 			// (end--)--?
-			list<SceneObject*>::iterator newit = sceneObjectsList.end()--;
+			list<SceneObject*>::iterator newit = sceneObjectsList.end();
+
+			newit--;
 
 			// le pasa el iterador
 			obj->setListIterator(newit);
