@@ -18,7 +18,6 @@ void Cannon::render() const
 
 bool Cannon::update()
 {
-
 	// actualiza el movimiento
 	movement();
 
@@ -26,7 +25,6 @@ bool Cannon::update()
 	shoot();
 
 	return vidas > 0;
-
 }
 
 void Cannon::save(ostream&) const
@@ -48,7 +46,10 @@ void Cannon::handleEvent(SDL_Event event)
 		else if (key == SDL_SCANCODE_D) keyD = true;
 
 		// disparar
-		else if (key == SDL_SCANCODE_SPACE) keySpace = true;
+		else if (key == SDL_SCANCODE_SPACE) {
+			cout << "disparo" << endl;  
+			keySpace = true;
+		}
 
 		// salir del juego
 		else if (key == SDL_SCANCODE_B) keyE = true;
@@ -67,7 +68,11 @@ void Cannon::handleEvent(SDL_Event event)
 		// salir del juego
 		else if (key == SDL_SCANCODE_E) keyE = false;
 	}
+}
 
+bool Cannon::hit(SDL_Rect* rect, char frenemy)
+{
+	return false;
 }
 
 void Cannon::movement()
@@ -100,7 +105,6 @@ void Cannon::movement()
 		position.setX(0);
 	else if (position.getX() > game->getWinWidth() - texture->getFrameWidth())
 		position.setX(game->getWinWidth() - texture->getFrameWidth());
-
 }
 
 void Cannon::shoot()

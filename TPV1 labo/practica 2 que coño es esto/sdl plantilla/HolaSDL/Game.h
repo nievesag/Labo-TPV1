@@ -65,22 +65,17 @@ private:
 	// booleano salida del juego
 	bool exit = false;
 
-	// 
+	// lista de objetos de escena (cannon, aliens, bunkeres, laser)
 	list<SceneObject*> sceneObjectsList;
 
-	/// lo he cambiado a Mothership* pero no sse si esta bien ????????????????????????????????????????????????????
 	// puntero al mothership
 	Mothership* milfship;
 
-	// TAL VEZ i n f o b a r heheheheheheh
-	//
-
+	// MANEJO DEL TIEMPO EN RUN
 	// crea semilla
 	mt19937_64 randomGenerator;
+	uint32_t startTime, frameTime;	
 
-	uint32_t startTime, frameTime;	// manejo de tiempo en run
-
-	// ?¿?¿?¿?¿?¿?¿?¿?¿?¿ (se pone aqui o en el milf????????????????¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿)
 	int SCORE;	// score general del player
 
 	// metodos publicos 
@@ -112,17 +107,21 @@ public:
 	// input del jugador
 	void handleEvents();
 
+	// ---- hasDied ----
 	// metodo que llaman los objetos cuando han de ser eliminados
 	void hasDied(list<SceneObject*>::iterator it);
 
-	// acaba el juego (setea exit a true vamos)
+	// ---- EndGame ----
+	// acaba el juego (setea exit a true)
 	void EndGame();
 
-	// ------------------- GETTERS ------------------
+	// ---- damage ----
+	// colisiones
+	void damage();
 
+	// ------------------- GETTERS ------------------
 	uint getWinWidth() { return winWidth; }
 	uint getWinHeight() { return winHeight; }
-	
 
 // ------ METODOS PRIVADOS -------
 private:

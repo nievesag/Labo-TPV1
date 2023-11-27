@@ -23,9 +23,6 @@ protected:
 	// vidas del objeto
 	int vidas;
 
-	// tipo de objeto
-	//int typeObj;
-
 	Texture* texture;
 
 	// rectangulo del render
@@ -33,6 +30,8 @@ protected:
 
 	// iterador de la lista
 	list<SceneObject*>::iterator it;
+
+	char frenemy;
 	
 	// metodos publicos
 public:
@@ -40,25 +39,25 @@ public:
 	SceneObject::SceneObject(SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
 		: destRect(destRect), position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game) { }
 
-
 	// -------------> los override van en las clases hijas que lo especifiquen <--------------
-	// (en alien, cannon etc)
-	
-	// virtual para que lo usen los hijos, const porque no es un metodo que cambie datos
+	// (en alien, cannon, laser, bunker)
+	// metodo virtual: para que lo usen los hijos
+	// const: porque no es un metodo que cambie datos
+
 	//
 	virtual void render() const;
 
 	//
-	//virtual bool update();
+	virtual bool update();
 
 	//
 	virtual void save(ostream&) const;
 
 	// ataque al objeto (basicamente colisiones)
-	virtual void hit(SDL_Rect ataque, bool frenemy);
+	virtual bool hit(SDL_Rect* ataque, char frenemy);
 
 	// devuelve rect (posicion) de cada objeto
-	virtual SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
+	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
 
 	// ----- Iterador de la lista ------
 	// Un iterador funciona como un puntero que apunta a los items de la lista 
@@ -73,11 +72,7 @@ public:
 
 	Texture* getTexture() const { return texture; };
 
-	void SetDestRect(SDL_Rect newDR) {
-		destRect = newDR;
-	};
-
-
+	char getFrenemy() { return frenemy; };
 };
 
 #endif

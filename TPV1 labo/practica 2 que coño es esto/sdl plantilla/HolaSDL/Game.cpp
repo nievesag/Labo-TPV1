@@ -73,6 +73,18 @@ void Game::EndGame()
 	exit = true;
 }
 
+/*
+void Game::damage()
+{
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
+
+		// solo estoy probando xd esto está regu pero la existencia del metodo esta bien
+		// faltan sobrecargas
+		(*it)->hit(it->getRect(), it->getFrenemy());
+	}
+}
+*/
+
 // RUN
 void Game::run()
 {

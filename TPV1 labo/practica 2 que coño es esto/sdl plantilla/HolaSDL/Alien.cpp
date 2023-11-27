@@ -2,30 +2,18 @@
 
 void Alien::render() const
 {
-	//SDL_Rect destRect;
+	SDL_Rect destRect;
 
-	// tamaño
-	//destRect.w = texture->getFrameWidth();
-	//destRect.h = texture->getFrameHeight();
+	// tamanio
+	destRect.w = texture->getFrameWidth();
+	destRect.h = texture->getFrameHeight();
 
 	// posicion
-	
-	Point2D<double> newPos(position.getX(), position.getY());
-
-	SDL_Rect newDestRect;
-
-	newDestRect.w = texture->getFrameWidth();
-	newDestRect.h = texture->getFrameHeight();
-
-	newDestRect.x = newPos.getX();
-	newDestRect.y = newPos.getY();
-
-	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! esto da error rarete sadly
-	//SetDestRect(newDestRect);
+	destRect.x = position.getX();
+	destRect.y = position.getY();
 
 	// lo mete en el render
-	texture->renderFrame(newDestRect, type, alienFrame);
-	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! cambiar newDestRect a detsRect
+	texture->renderFrame(destRect, type, alienFrame);
 }
 
 bool Alien::update()
@@ -59,6 +47,11 @@ void Alien::lowerAlien()
 		// acaba el juego
 		game->EndGame();
 	}
+}
+
+bool Alien::hit(SDL_Rect* rect, char frenemy)
+{
+	return false;
 }
 
 void Alien::move()

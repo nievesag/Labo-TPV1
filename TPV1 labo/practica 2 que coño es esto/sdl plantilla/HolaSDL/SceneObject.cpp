@@ -5,13 +5,17 @@ void SceneObject::render() const
 {
 }
 
+bool SceneObject::update()
+{
+	return false;
+}
+
 void SceneObject::save(ostream&) const
 {
 }
 
-//
-void SceneObject::hit(SDL_Rect ataque, bool frenemy)
+bool SceneObject::hit(SDL_Rect* ataque, char frenemy)
 {
+	return false;
 }
-
 

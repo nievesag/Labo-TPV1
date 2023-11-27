@@ -22,18 +22,9 @@ class Alien : public SceneObject
 	// atributos privados
 private:
 	Mothership* mothership;	  // puntero a mothership
-
-	// tipo de alien
-	int type;
-
-	// frame del alien (para animaciones)
-	int alienFrame;
-
-	// velocidad del alien
-	double alienSpeed;
-
-	// rectangulo de sdl
-	SDL_Rect destRect;
+	int type; // tipo de alien
+	int alienFrame; // frame del alien (para animaciones)
+	double alienSpeed; // velocidad del alien
 
 	// metodos publicos 
 public:
@@ -44,27 +35,34 @@ public:
 		alienSpeed = 0.1;
 	}
 
-	// aqui si van los overrides porque aqui se especifican las cositas
-	//
+	// ---- render ----
+	// renderiza
 	void render() const override;
 
-	//
+	// ---- update ----
+	// actualiza
 	bool update() override;
 
-	//
+	// ---- save ----
+	// guarda objeto
 	void save(ostream&) const override;
 
+	// ---- lowerAlien ----
 	// baja al alien
 	void lowerAlien();
 
+	// ---- hit ----
+	// colisiones
+	bool hit(SDL_Rect* rect, char frenemy) override;
+
 	// metodos privados (auxiliares)
 private:
-
+	// ---- move ----
 	// mueve al alien
 	void move();
 
+	// ---- animate ----
 	// anima al alien
 	void animate();
-
 };
 #endif

@@ -26,7 +26,6 @@ public:
 	Cannon(SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
 		: SceneObject(destRect, position, width, height, vidas, texture, game)  { };
 
-
 	// aqui si van los overrides porque aqui se especifican las cositas
 	//
 	void render() const override;
@@ -45,14 +44,16 @@ public:
 	// manejo de eventos del player
 	void handleEvent(SDL_Event event);
 
-private:
+	// ---- hit ----
+	// colisiones
+	bool hit(SDL_Rect* rect, char frenemy) override;
 
+private:
 	// movimiento de la nave
 	void movement();
 
 	// disparos de la nave
 	void shoot();
-
 };
 
 #endif

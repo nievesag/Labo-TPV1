@@ -28,6 +28,12 @@ bool Laser::update()
 	return false;
 }
 
+bool Laser::hit(SDL_Rect* rect, char frenemy)
+{
+
+	return false;
+}
+
 void Laser::move()
 {
 	// mueve al laser

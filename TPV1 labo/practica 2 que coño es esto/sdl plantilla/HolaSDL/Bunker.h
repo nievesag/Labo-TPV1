@@ -20,10 +20,7 @@ public:
 	// atributos privados
 	// ---- constructora ----
 	Bunker(int lifes, int hits, SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: lifes(lifes), hits(hits), SceneObject(destRect, position, width, height, vidas, texture, game) 
-	{
-
-	};
+		: lifes(lifes), hits(hits), SceneObject(destRect, position, width, height, vidas, texture, game) { };
 
 	//
 	void render() const override;
@@ -31,11 +28,9 @@ public:
 	//
 	bool update() override;
 
-	// 
-	//SDL_Rect* getRect() override;
-
-	//
-	//void hit() override;
+	// ---- hit ----
+	// colisiones
+	bool hit(SDL_Rect* rect, char frenemy) override;
 };
 
 #endif

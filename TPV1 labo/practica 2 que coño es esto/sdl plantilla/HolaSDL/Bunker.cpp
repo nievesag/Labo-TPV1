@@ -14,9 +14,6 @@ void Bunker::render() const
 
 	// lo mete en el render
 	texture->renderFrame(destRect, 0, hits);
-
-	// así no se recorta
-	//texture->render(destRect);
 }
 
 bool Bunker::update()
@@ -26,4 +23,9 @@ bool Bunker::update()
 
 	// si esta vivo devuelve true
     return true;
+}
+
+bool Bunker::hit(SDL_Rect* rect, char frenemy)
+{
+	return false;
 }

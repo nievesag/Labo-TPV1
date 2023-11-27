@@ -41,8 +41,8 @@ public:
 	bool update() override;
 
 	// ---- hit ----
-	// recibir daño
-	//void hit() override;
+	// colisiones
+	bool hit(SDL_Rect* rect, char frenemy) override;
 
 	// devuelve si esta fuera del marco de juego 
 	bool isOut();
@@ -53,7 +53,6 @@ public:
 protected:
 	// mueve el laser segun el vector velocidad
 	void move();
-
 };
 
 #endif
