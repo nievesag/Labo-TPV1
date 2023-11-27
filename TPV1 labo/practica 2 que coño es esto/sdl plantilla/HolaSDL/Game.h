@@ -21,8 +21,8 @@ using namespace std;
 using uint = unsigned int;
 
 // promesa del caballero (item del lol)
-class SceneObject;
-class Laser;
+//class SceneObject;
+//class Laser;
 
 // constantes de tamaño de pantalla -> inicializar en h
 	// tiene que ser estática porque es un atributo (constante para todos los objetos de la clase)

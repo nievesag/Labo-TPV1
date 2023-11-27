@@ -4,7 +4,7 @@
 #include "Vector2D.h"
 #include "texture.h"
 #include "SceneObject.h"
-#include "GameObject.h"
+//#include "GameObject.h"
 
 // PLACEHOLDERRRRR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #include "Game.h"

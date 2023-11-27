@@ -1,0 +1,23 @@
+framerate
+  ufo 
+  aliens
+  animaciones
+
+
+------------------------------
+
+
+colisiones
+  bunker - cannon - laserxlaser (yaoi)
+  score
+
+save
+
+movimiento aliens (bajen)
+
+
+
+
+REVISAR INCLUSIONES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+

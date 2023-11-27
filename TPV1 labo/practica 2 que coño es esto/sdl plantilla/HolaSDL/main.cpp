@@ -24,12 +24,10 @@ int main(int argc, char* argv[])
         game.run();
     }
     catch (exception& e) {
+
         cout << e.what() << std::endl;
         return EXIT_FAILURE;
     }
-
-	
-	
 
 	return 69;
 }
