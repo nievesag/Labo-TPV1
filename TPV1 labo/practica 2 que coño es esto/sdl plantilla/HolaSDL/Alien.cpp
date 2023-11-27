@@ -1,5 +1,9 @@
 #include "Alien.h"
 
+// bestie got bestied ?????? like what ????????
+#include "Game.h"
+
+
 void Alien::render() const
 {
 	// lo mete en el render

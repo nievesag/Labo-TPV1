@@ -6,8 +6,7 @@
 #include "SceneObject.h"
 #include "GameObject.h"
 
-// PLACEHOLDERRRRR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-#include "Game.h"
+class Game;
 
 using namespace std;
 using uint = unsigned int;

@@ -1,5 +1,8 @@
 #include "Laser.h"
 
+// bestie que es esto ????????? y por que lo arregla todo????? bestie??????
+#include "Game.h"
+
 void Laser::render() const
 {
 	
@@ -42,14 +45,16 @@ bool Laser::hit(SDL_Rect* rect, char frenemy)
 
 void Laser::move()
 {
+	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! pasar a variable
+
 	// mueve al laser
-	position = position - vel;
+	position.setY(position.getY() - (vel.getY()*0.2));
 }
 
 void Laser::updateRect()
 {
-	// posicion                  offset !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	destRect.x = position.getX() + 10;
+	// posicion               
+	destRect.x = position.getX();
 	destRect.y = position.getY();
 }
 

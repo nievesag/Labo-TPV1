@@ -1,5 +1,8 @@
 #include "Bunker.h"
 
+// para que el bestie bestiee
+// #include "Game.h"
+
 void Bunker::render() const
 {
 	// lo mete en el render

@@ -100,8 +100,8 @@ void Game::fireLaser(Point2D<double> pos, bool frenemy)
 	newObj->setListIterator(newit);
 }
 
-
-bool Game::damage(Laser* laser)
+/*
+* bool Game::damage(Laser* laser)
 {
 	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
 		 
@@ -111,6 +111,21 @@ bool Game::damage(Laser* laser)
 			return true;
 		}
 		else return false;		
+	}
+}
+*/
+
+
+bool Game::damage(Laser* myLaser)
+{
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
+
+		// se ha pegado un hostion (colisiones)
+		if ((*it)->hit(myLaser->getRect(), myLaser->getFrenemy())) {
+			// devuelve si ha hitteado	
+			return true;
+		}
+		else return false;
 	}
 }
 

@@ -1,5 +1,8 @@
 #include "Cannon.h"
 
+// bestieeeeeeeeeeeeeeed
+#include "Game.h"
+
 void Cannon::render() const
 {	
 	// lo mete en el render
