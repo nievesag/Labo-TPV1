@@ -118,7 +118,7 @@ public:
 
 	// ---- damage ----
 	// colisiones
-	void damage();
+	bool damage(Laser* laser);
 
 	// ---- dispara el laser ----
 	// dispara el laser (lo crea realemtente)

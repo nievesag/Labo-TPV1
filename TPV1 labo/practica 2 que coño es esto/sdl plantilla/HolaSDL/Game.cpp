@@ -102,17 +102,20 @@ void Game::fireLaser(Point2D<double> pos, bool frenemy)
 
 }
 
-/*
-void Game::damage()
+
+bool Game::damage(Laser* laser)
 {
 	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
-
-		// solo estoy probando xd esto está regu pero la existencia del metodo esta bien
-		// faltan sobrecargas
-		(*it)->hit(it->getRect(), it->getFrenemy());
+		 
+		// se ha pegado un hostion (colisiones)
+		if ((*it)->hit(laser->getRect(), laser->getFrenemy())) {
+			// devuelve si ha hitteado	
+			return true;
+		}
+		else return false;		
 	}
 }
-*/
+
 
 // RUN
 void Game::run()

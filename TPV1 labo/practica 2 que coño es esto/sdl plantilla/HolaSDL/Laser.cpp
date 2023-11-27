@@ -22,14 +22,22 @@ void Laser::update()
 	// actualiza el rect (colisiones)
 	updateRect();
 
+	// le pregunta si hay alguien a quien pegar un hostion
+	game->damage(this);
+
 }
 
 bool Laser::hit(SDL_Rect* rect, char frenemy)
 {
-	cout << "OUCHIEEEEE " << endl;
+	// si colisiona con un laser amigo 
+	if (SDL_HasIntersection(rect, &destRect) && frenemy) {
 
+		cout << "OUCHIEEEEE " << endl;
 
-	return false;
+		return true;
+	}
+	// si no
+	else return false;
 }
 
 void Laser::move()
