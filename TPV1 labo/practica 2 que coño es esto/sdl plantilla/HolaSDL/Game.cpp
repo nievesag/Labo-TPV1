@@ -73,23 +73,21 @@ void Game::EndGame()
 	exit = true;
 }
 
-void Game::fireLaser(SceneObject obj)
+void Game::fireLaser(Point2D<double> pos, bool frenemy)
 {
 	// Laser(Vector2D<double> velocity, SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
 
-	// settea la posicion
-	Point2D<double> pos(obj.getPosition().getX() , obj.getPosition().getY());
 	// settea la velocidad
 	Vector2D<double> vel(0,1);
 
-	if (true)
+	if (frenemy)
 		SDL_SetRenderDrawColor(renderer, 255, 0, 114, 255);	// cannon
 	else
 		SDL_SetRenderDrawColor(renderer, 255, 242, 0, 255);	// aliens
 
 
 	// crea el laser
-	SceneObject* newObj = new Laser(vel, SetDestRect(nullptr, pos), pos, 4, 10, 1, nullptr, this);
+	SceneObject* newObj = new Laser(vel, pos, 4, 10, 1, nullptr, this);
 
 	// lo mete en la lista
 	sceneObjectsList.push_back(newObj);
@@ -280,8 +278,7 @@ void Game::loadMap()
 			//cout << coord.getX() << " " << coord.getY() << endl;
 
 			// nave
-			SceneObject* obj = new Cannon(SetDestRect(textures[Nave], coord), coord, 
-				textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), 1, textures[Nave], this);
+			SceneObject* obj = new Cannon(coord, textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), 1, textures[Nave], this);
 
 			// lo mete en la lista
 			sceneObjectsList.push_back(obj);
@@ -298,8 +295,7 @@ void Game::loadMap()
 			in >> atype;
 
 			// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game)
-			SceneObject* obj = new Alien(milfship, 0, atype, SetDestRect(textures[atype], coord), coord, 
-				textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);
+			SceneObject* obj = new Alien(milfship, 0, atype, coord, textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);
 
 			// lo mete en la lista
 			sceneObjectsList.push_back(obj);
@@ -320,8 +316,7 @@ void Game::loadMap()
 			//cout << coord.getX() << " " << coord.getY() << endl;
 
 			//bunker
-			SceneObject* obj = new Bunker(3, 0, SetDestRect(textures[Escudo], coord), coord, 
-				textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight(), 1, textures[Escudo], this);
+			SceneObject* obj = new Bunker(3, 0, coord, textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight(), 1, textures[Escudo], this);
 
 			// lo mete en la lista
 			sceneObjectsList.push_back(obj);

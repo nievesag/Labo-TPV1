@@ -30,8 +30,8 @@ private:
 	// metodos publicos 
 public:
 	// ---- constructora ----
-	Laser(Vector2D<double> velocity, SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: vel(velocity), SceneObject(destRect, position, width, height, vidas, texture, game)
+	Laser(Vector2D<double> velocity, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: vel(velocity), SceneObject(position, width, height, vidas, texture, game)
 	{ 
 		// inicializa alive a true al construirse
 		alive = true;

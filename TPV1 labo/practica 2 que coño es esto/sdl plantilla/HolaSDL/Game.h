@@ -122,7 +122,7 @@ public:
 
 	// ---- dispara el laser ----
 	// dispara el laser (lo crea realemtente)
-	void fireLaser(SceneObject obj);
+	void fireLaser(Point2D<double> pos, bool frenemy);
 
 	// ------------------- GETTERS ------------------
 	uint getWinWidth() { return winWidth; }

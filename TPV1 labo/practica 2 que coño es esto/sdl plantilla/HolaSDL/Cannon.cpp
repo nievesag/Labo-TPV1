@@ -41,6 +41,8 @@ void Cannon::handleEvent(SDL_Event event)
 		else if (key == SDL_SCANCODE_SPACE) {
 			cout << "disparo" << endl;  
 			keySpace = true;
+
+			shoot();
 		}
 
 		// salir del juego
@@ -109,6 +111,6 @@ void Cannon::movement()
 void Cannon::shoot()
 {
 	//
-
+	game->fireLaser(this->position, true);
 
 }
