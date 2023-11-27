@@ -98,8 +98,6 @@ void Game::fireLaser(Point2D<double> pos, bool frenemy)
 
 	// le pasa el iterador
 	newObj->setListIterator(newit);
-	
-
 }
 
 
