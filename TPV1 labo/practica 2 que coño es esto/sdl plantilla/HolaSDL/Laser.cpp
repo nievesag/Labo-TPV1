@@ -12,8 +12,6 @@ void Laser::render() const
 
 	// dibuja el rectangulo
 	SDL_RenderFillRect(game->getRenderer(), &destRect);
-	
-	
 }
 
 void Laser::update()
@@ -37,7 +35,7 @@ bool Laser::hit(SDL_Rect* rect, char frenemy)
 void Laser::move()
 {
 	// mueve al laser
-	position = position + vel;
+	position = position - vel;
 }
 
 void Laser::updateRect()
@@ -46,3 +44,5 @@ void Laser::updateRect()
 	destRect.x = position.getX() + 10;
 	destRect.y = position.getY();
 }
+
+

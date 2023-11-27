@@ -27,6 +27,8 @@ private:
 
 	bool alive;
 
+	int cooldown;
+
 	// metodos publicos 
 public:
 	// ---- constructora ----
@@ -57,7 +59,11 @@ protected:
 	// mueve el laser segun el vector velocidad
 	void move();
 
+	// actualiza el rect
 	virtual void updateRect() override;
+
+	// maneja el cooldown
+	void coolDownManagement();
 };
 
 #endif

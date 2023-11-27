@@ -85,7 +85,8 @@ void Game::fireLaser(Point2D<double> pos, bool frenemy)
 	else
 		SDL_SetRenderDrawColor(renderer, 255, 242, 0, 255);	// aliens
 
-
+	// !!!!!!!!!!!!!!!!!!!!!!!!!! COOLDOWN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	
 	// crea el laser
 	SceneObject* newObj = new Laser(vel, pos, 4, 10, 1, nullptr, this);
 
@@ -278,7 +279,7 @@ void Game::loadMap()
 			//cout << coord.getX() << " " << coord.getY() << endl;
 
 			// nave
-			SceneObject* obj = new Cannon(coord, textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), 1, textures[Nave], this);
+			SceneObject* obj = new Cannon(100, coord, textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), 1, textures[Nave], this);
 
 			// lo mete en la lista
 			sceneObjectsList.push_back(obj);

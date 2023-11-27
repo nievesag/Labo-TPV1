@@ -11,8 +11,8 @@ void Cannon::update()
 	// actualiza el movimiento
 	movement();
 
-	// dispara
-	shoot();
+	// dispara si puede
+	coolDownManagement();
 
 	// actualiza el rect
 	updateRect();
@@ -41,8 +41,6 @@ void Cannon::handleEvent(SDL_Event event)
 		else if (key == SDL_SCANCODE_SPACE) {
 			cout << "disparo" << endl;  
 			keySpace = true;
-
-			shoot();
 		}
 
 		// salir del juego
@@ -74,6 +72,21 @@ void Cannon::updateRect()
 	// posicion
 	destRect.x = position.getX();
 	destRect.y = position.getY();
+}
+
+void Cannon::coolDownManagement()
+{
+	//
+
+	if (currentCD < cooldown) {
+		currentCD++;
+	}
+	else {
+		shoot();
+
+		currentCD = 0;
+	}
+
 }
 
 void Cannon::movement()
@@ -110,7 +123,6 @@ void Cannon::movement()
 
 void Cannon::shoot()
 {
-	//
-	game->fireLaser(this->position, true);
-
+	if(keySpace)
+		game->fireLaser(this->position, true);
 }

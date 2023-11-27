@@ -20,11 +20,19 @@ private:
 	// input
 	bool keyA = false, keyD = false, keyE = false, keySpace = false;
 
+	// cooldown del disparo
+	int cooldown;
+
+	// contador del cooldown
+	int currentCD;
+
 	// metodos publicos 
 public:
 	// ---- constructora ----
-	Cannon(Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: SceneObject(position, width, height, vidas, texture, game)  { };
+	Cannon(int cooldown, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: cooldown(cooldown), SceneObject(position, width, height, vidas, texture, game) {
+		currentCD = 0; 
+	};
 
 	// aqui si van los overrides porque aqui se especifican las cositas
 	//
@@ -48,8 +56,11 @@ public:
 	// colisiones
 	bool hit(SDL_Rect* rect, char frenemy) override;
 
+	// actualiza el rect
 	void updateRect() override;
 
+	// maneja el cooldown
+	void coolDownManagement();
 
 private:
 	// movimiento de la nave
