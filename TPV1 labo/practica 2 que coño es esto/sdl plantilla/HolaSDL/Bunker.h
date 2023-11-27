@@ -31,6 +31,9 @@ public:
 	// ---- hit ----
 	// colisiones
 	bool hit(SDL_Rect* rect, char frenemy) override;
+
+	//
+	void updateRect() override;
 };
 
 #endif
