@@ -168,9 +168,9 @@ void Game::render()
 	renderBackground();
 
 	// iterador para renderizar los objetos
-	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end()--; it++) {
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
 
-		(*it)->render();
+			(*it)->render();
 	}
 
 	// render de todo
