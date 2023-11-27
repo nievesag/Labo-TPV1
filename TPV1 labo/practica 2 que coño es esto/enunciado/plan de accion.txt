@@ -20,4 +20,5 @@ movimiento aliens (bajen)
 
 REVISAR INCLUSIONES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+HACER CLASS GAME EN TODOS LOS OBJETOS QUE NECESITAN DECLARACION (CANNON Y MOMMA) AAAAAAAAAAAAAAAAAAAAAAAAAAA Y EL INCLUDE SOLO EN EL GAME
 
