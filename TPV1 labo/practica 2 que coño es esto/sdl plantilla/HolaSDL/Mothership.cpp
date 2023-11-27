@@ -1,8 +1,8 @@
 #include "Mothership.h"
 
-bool Mothership::update()
+void Mothership::update()
 {
-	return true;
+
 
 }
 

@@ -2,24 +2,14 @@
 
 void Alien::render() const
 {
-	SDL_Rect destRect;
-
-	// tamanio
-	destRect.w = texture->getFrameWidth();
-	destRect.h = texture->getFrameHeight();
-
-	// posicion
-	destRect.x = position.getX();
-	destRect.y = position.getY();
-
 	// lo mete en el render
 	texture->renderFrame(destRect, type, alienFrame);
 }
 
-bool Alien::update()
+void Alien::update()
 {
 	// si esta muerto devuelve false
-	if (vidas <= 0) return false;
+	if (vidas <= 0);
 
 	// se mueve
 	move();
@@ -27,8 +17,9 @@ bool Alien::update()
 	// anima
 	animate();
 
-	// si esta vivo devuelve true
-	return true;
+	// actualiza el rect (para colisiones)
+	updateRect();
+
 }
 
 void Alien::save(ostream&) const
@@ -68,4 +59,12 @@ void Alien::move()
 void Alien::animate()
 {
 	// se anima ig
+}
+
+void Alien::updateRect()
+{
+	// posicion
+	destRect.x = position.getX();
+	destRect.y = position.getY();
+
 }

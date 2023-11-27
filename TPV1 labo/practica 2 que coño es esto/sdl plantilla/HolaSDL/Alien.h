@@ -41,7 +41,7 @@ public:
 
 	// ---- update ----
 	// actualiza
-	bool update() override;
+	void update() override;
 
 	// ---- save ----
 	// guarda objeto
@@ -64,5 +64,8 @@ private:
 	// ---- animate ----
 	// anima al alien
 	void animate();
+
+	//
+	void updateRect() override;
 };
 #endif

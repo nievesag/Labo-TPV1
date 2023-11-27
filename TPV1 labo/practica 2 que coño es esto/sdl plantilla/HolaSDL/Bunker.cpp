@@ -16,13 +16,9 @@ void Bunker::render() const
 	texture->renderFrame(destRect, 0, hits);
 }
 
-bool Bunker::update()
+void Bunker::update()
 {
-	// si esta muerto devuelve false
-	if (hits == lifes) return false;
-
-	// si esta vivo devuelve true
-    return true;
+	// update
 }
 
 bool Bunker::hit(SDL_Rect* rect, char frenemy)

@@ -12,6 +12,7 @@
 // -------------
 #include "Alien.h"
 #include "Cannon.h"
+#include "Laser.h"
 #include "Bunker.h"
 #include "SceneObject.h"
 #include "Mothership.h"
@@ -119,9 +120,15 @@ public:
 	// colisiones
 	void damage();
 
+	// ---- dispara el laser ----
+	// dispara el laser (lo crea realemtente)
+	void fireLaser(SceneObject obj);
+
 	// ------------------- GETTERS ------------------
 	uint getWinWidth() { return winWidth; }
 	uint getWinHeight() { return winHeight; }
+	
+	SDL_Renderer* getRenderer() { return renderer; };
 
 // ------ METODOS PRIVADOS -------
 private:

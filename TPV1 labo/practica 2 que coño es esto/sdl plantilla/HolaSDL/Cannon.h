@@ -31,7 +31,7 @@ public:
 	void render() const override;
 
 	//
-	bool update() override;
+	void update() override;
 
 	//
 	void save(ostream&) const override;
@@ -47,6 +47,9 @@ public:
 	// ---- hit ----
 	// colisiones
 	bool hit(SDL_Rect* rect, char frenemy) override;
+
+	//
+	void updateRect() override;
 
 private:
 	// movimiento de la nave

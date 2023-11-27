@@ -6,10 +6,13 @@
 #include "SceneObject.h"
 #include "GameObject.h"
 
+// PLACEHOLDERRRRR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#include "Game.h"
+
 using namespace std;
 using uint = unsigned int;
 
-class Laser : SceneObject
+class Laser : public SceneObject
 {
 	// atributos privados
 private:
@@ -38,7 +41,7 @@ public:
 	void render() const override;
 
 	// ---- update ----
-	bool update() override;
+	void update() override;
 
 	// ---- hit ----
 	// colisiones
@@ -53,6 +56,8 @@ public:
 protected:
 	// mueve el laser segun el vector velocidad
 	void move();
+
+	virtual void updateRect() override;
 };
 
 #endif

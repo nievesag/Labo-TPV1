@@ -28,7 +28,7 @@ public:
 	}
 		
 	//
-	bool update() override;
+	void update() override;
 
 	// ajusta la direccion de los aliens
 	Vector2D<int> getDirection();

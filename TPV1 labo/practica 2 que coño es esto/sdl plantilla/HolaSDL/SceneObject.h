@@ -37,7 +37,27 @@ protected:
 public:
 
 	SceneObject::SceneObject(SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: destRect(destRect), position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game) { }
+		: destRect(destRect), position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game) 
+	{ 
+
+		// settea el dest rect !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+		// si hay textura entonces no es un laser y tiene dimensiones
+		if (texture != nullptr) {
+			// setea las dimensiones
+			destRect.x = texture->getFrameWidth();
+			destRect.y = texture->getFrameHeight();
+		}
+		// si no tiene textura entonces es un laser y le da las dimensiones marcadas
+		else
+		{
+			// setea las dimensiones del laser
+			destRect.x = 0;
+			destRect.y = 0;
+		}
+
+
+	}
 
 	// -------------> los override van en las clases hijas que lo especifiquen <--------------
 	// (en alien, cannon, laser, bunker)
@@ -48,13 +68,16 @@ public:
 	virtual void render() const;
 
 	//
-	virtual bool update();
+	virtual void update();
 
 	//
 	virtual void save(ostream&) const;
 
 	// ataque al objeto (basicamente colisiones)
 	virtual bool hit(SDL_Rect* ataque, char frenemy);
+
+	//
+	virtual void updateRect();
 
 	// devuelve rect (posicion) de cada objeto
 	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };

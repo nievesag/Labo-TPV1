@@ -2,34 +2,34 @@
 
 void Laser::render() const
 {
-	/*
+	
 	// si es amigo/enemigo pintar de un color u otro
 	if (laserType == rojo)
 		SDL_SetRenderDrawColor(game->getRenderer(), 255, 0, 114, 255);	// cannon
 	else
 		SDL_SetRenderDrawColor(game->getRenderer(), 255, 242, 0, 255);	// aliens
 
-	// tamaño
-	destRect.w = 2;
-	destRect.h = 10;
-
-	// posicion
-	destRect.x = (position.getX() + offset);
-	destRect.y = position.getY();
 
 	// dibuja el rectangulo
 	SDL_RenderFillRect(game->getRenderer(), &destRect);
-	*/
+	
 	
 }
 
-bool Laser::update()
+void Laser::update()
 {
-	return false;
+	// mueve al laser
+	move();
+
+	// actualiza el rect (colisiones)
+	updateRect();
+
 }
 
 bool Laser::hit(SDL_Rect* rect, char frenemy)
 {
+	cout << "OUCHIEEEEE " << endl;
+
 
 	return false;
 }
@@ -38,4 +38,11 @@ void Laser::move()
 {
 	// mueve al laser
 	position = position + vel;
+}
+
+void Laser::updateRect()
+{
+	// posicion                  offset !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	destRect.x = position.getX() + 10;
+	destRect.y = position.getY();
 }

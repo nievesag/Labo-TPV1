@@ -1,22 +1,12 @@
 #include "Cannon.h"
 
 void Cannon::render() const
-{
-	SDL_Rect destRect;
-
-	// tamanio
-	destRect.w = texture->getFrameWidth();
-	destRect.h = texture->getFrameHeight();
-
-	// posicion
-	destRect.x = position.getX();
-	destRect.y = position.getY();
-
+{	
 	// lo mete en el render
 	texture->render(destRect);
 }
 
-bool Cannon::update()
+void Cannon::update()
 {
 	// actualiza el movimiento
 	movement();
@@ -24,7 +14,9 @@ bool Cannon::update()
 	// dispara
 	shoot();
 
-	return vidas > 0;
+	// actualiza el rect
+	updateRect();
+
 }
 
 void Cannon::save(ostream&) const
@@ -73,6 +65,13 @@ void Cannon::handleEvent(SDL_Event event)
 bool Cannon::hit(SDL_Rect* rect, char frenemy)
 {
 	return false;
+}
+
+void Cannon::updateRect()
+{
+	// posicion
+	destRect.x = position.getX();
+	destRect.y = position.getY();
 }
 
 void Cannon::movement()

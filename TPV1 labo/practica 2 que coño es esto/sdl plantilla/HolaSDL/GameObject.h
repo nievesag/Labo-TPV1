@@ -38,7 +38,7 @@ public:
 	// cuando se iguala un metodo a 0 obliga a todas las clases hijas a crearlas tmb (override)
 	// si no se va a quejar
 	// update
-	virtual bool update() = 0;
+	virtual void update() = 0;
 
 	// save del objeto
 	virtual void save(ostream&) const;

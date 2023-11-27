@@ -26,7 +26,7 @@ public:
 	void render() const override;
 
 	//
-	bool update() override;
+	void update() override;
 
 	// ---- hit ----
 	// colisiones

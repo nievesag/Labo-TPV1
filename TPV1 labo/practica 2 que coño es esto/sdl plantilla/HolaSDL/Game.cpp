@@ -73,6 +73,36 @@ void Game::EndGame()
 	exit = true;
 }
 
+void Game::fireLaser(SceneObject obj)
+{
+	// Laser(Vector2D<double> velocity, SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+
+	// settea la posicion
+	Point2D<double> pos(obj.getPosition().getX() , obj.getPosition().getY());
+	// settea la velocidad
+	Vector2D<double> vel(0,1);
+
+	if (true)
+		SDL_SetRenderDrawColor(renderer, 255, 0, 114, 255);	// cannon
+	else
+		SDL_SetRenderDrawColor(renderer, 255, 242, 0, 255);	// aliens
+
+
+	// crea el laser
+	SceneObject* newObj = new Laser(vel, SetDestRect(nullptr, pos), pos, 4, 10, 1, nullptr, this);
+
+	// lo mete en la lista
+	sceneObjectsList.push_back(newObj);
+
+	//iterador al final de la lista
+	list<SceneObject*>::iterator newit = sceneObjectsList.end();
+
+	// le pasa el iterador
+	newObj->setListIterator(newit);
+	
+
+}
+
 /*
 void Game::damage()
 {
