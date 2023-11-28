@@ -183,26 +183,12 @@ void Game::renderBackground()
 
 void Game::deleteSceneObjects()
 {
-	/*
-	while (objectsToErase.size() >= 0) {
-		delete(*(objectsToErase.front()));
-		sceneObjectsList.erase(objectsToErase.front());
-		objectsToErase.pop_front();
-	}
-	*/
-
-
 	// bucle para borrar los objetos que han de ser borrados
 	for (auto a : objectsToErase) {
-
-	
-		cout << "croqueta amarilla" << endl;
 
 		// lo borra de la lista
 		sceneObjectsList.erase(a);
 	}
-
-	
 
 	// limpia la lista
 	objectsToErase.clear();
@@ -241,12 +227,6 @@ void Game::hasDied(list<SceneObject*>::iterator& it)
 {
 	// aniade el objeto a la lista de borradores
 	objectsToErase.push_back(it);
-
-	sceneObjectsList;
-
-	cout << *it << endl;
-
-	//cout << "cojones de orangutan uwu" << endl;
 }
 #pragma endregion
 
@@ -273,7 +253,7 @@ void Game::loadTextures()
 void Game::loadMap()
 {
 	// lee el mapa
-	ifstream in("..\\mapas\\prueba.txt");
+	ifstream in("..\\mapas\\original.txt");
 	if (in.fail()) throw ("No se ha podido leer mapa");
 
 	// variables auxiliares

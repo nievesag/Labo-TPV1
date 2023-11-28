@@ -40,7 +40,7 @@ bool Laser::hit(SDL_Rect* rect, char frenemy)
 
 		//cout << "ESTA CHIUS AQUI QUE FUERTE Y SIN BATA" << endl;
 
-		//game->hasDied(it);
+		game->hasDied(it);
 
 		return true;
 	}
