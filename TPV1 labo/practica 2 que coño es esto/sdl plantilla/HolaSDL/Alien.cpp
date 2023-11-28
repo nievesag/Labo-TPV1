@@ -48,11 +48,14 @@ bool Alien::hit(SDL_Rect* rect, char frenemy)
 {
 	if (SDL_HasIntersection(rect, &destRect) && frenemy == 'a') {
 
+		cout << "ayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy *se rie*" << endl;
+
 		// informa al game que ha muerto
 		game->hasDied(it);
 
 		return true;
 	}
+
 	// si no
 	else return false;
 }

@@ -150,11 +150,9 @@ private:
 	// muestra en consola la puntuacion del jugador
 	void PlayerScore();
 
-	// crea el sdl rect
-	SDL_Rect SetDestRect(SceneObject* obj);
+	// delete scene objects
+	void deleteSceneObjects();
 
-	// lo mismo pero con textura y posicion
-	SDL_Rect SetDestRect(Texture* tex, Point2D<double> pos);
 };
 
 #endif

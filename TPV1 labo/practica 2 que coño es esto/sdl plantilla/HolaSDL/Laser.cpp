@@ -36,14 +36,16 @@ void Laser::update()
 bool Laser::hit(SDL_Rect* rect, char frenemy)
 {
 	// si colisiona con un laser amigo 
-	if (SDL_HasIntersection(rect, &destRect) && rect != &destRect) {
+	if (SDL_HasIntersection(rect, &destRect) && frenemy != laserType) {
 
-		game->hasDied(it);
+		//cout << "ESTA CHIUS AQUI QUE FUERTE Y SIN BATA" << endl;
+
+		//game->hasDied(it);
 
 		return true;
 	}
 	// si no
-	else return false;
+	return false;
 }
 
 void Laser::move()

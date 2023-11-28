@@ -1,3 +1,4 @@
+
 #include "checkML.h"
 #include "Game.h"
 
@@ -50,9 +51,9 @@ Game::Game()
 
 Game::~Game()
 {
-	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
+	/*for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
 		delete (*it);
-	}
+	}*/
 
 	// borra el mothership
 	delete milfship;
@@ -98,6 +99,8 @@ void Game::fireLaser(Point2D<double> pos, char frenemy)
 	//iterador al final de la lista
 	list<SceneObject*>::iterator newit = sceneObjectsList.end();
 
+	newit--;
+
 	// le pasa el iterador
 	newObj->setListIterator(newit);
 }
@@ -133,6 +136,7 @@ void Game::run()
 			update(); // actualiza todos los objetos de juego
 			startTime = SDL_GetTicks();
 		}
+
 		render(); // renderiza todos los objetos de juego
 	}
 }
@@ -145,15 +149,11 @@ void Game::update()
 		(*it)->update();
 	}
 
-	// bucle para borrar los objetos que han de ser borrados
-	for (auto a : objectsToErase) {
-			
-		// lo borra de la lista
-		a = sceneObjectsList.erase(a);
-	}
+	
+	
+	
 
-	// limpia la lista
-	objectsToErase.clear();
+	deleteSceneObjects();
 }
 
 // PINTAR
@@ -166,7 +166,7 @@ void Game::render()
 	renderBackground();
 
 	// iterador para renderizar los objetos
-	for (list<SceneObject*>::iterator& it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
 
 			(*it)->render();
 	}
@@ -181,36 +181,32 @@ void Game::renderBackground()
 	textures[Fondo]->render();
 }
 
-SDL_Rect Game::SetDestRect(SceneObject* obj)
+void Game::deleteSceneObjects()
 {
-	// SDL RECT 
-	SDL_Rect destRect;
+	/*
+	while (objectsToErase.size() >= 0) {
+		delete(*(objectsToErase.front()));
+		sceneObjectsList.erase(objectsToErase.front());
+		objectsToErase.pop_front();
+	}
+	*/
 
-	// tamaño
-	destRect.w = obj->getTexture()->getFrameWidth();
-	destRect.h = obj->getTexture()->getFrameHeight();
 
-	// posicion
-	destRect.x = obj->getPosition().getX();
-	destRect.y = obj->getPosition().getY();
+	// bucle para borrar los objetos que han de ser borrados
+	for (auto a : objectsToErase) {
 
-	return destRect;
-}
+	
+		cout << "croqueta amarilla" << endl;
 
-SDL_Rect Game::SetDestRect(Texture* tex, Point2D<double> pos)
-{
-	// SDL RECT 
-	SDL_Rect destRect;
+		// lo borra de la lista
+		sceneObjectsList.erase(a);
+	}
 
-	// tamaño
-	destRect.w = tex->getFrameWidth();
-	destRect.h = tex->getFrameHeight();
+	
 
-	// posicion
-	destRect.x = pos.getX();
-	destRect.y = pos.getY();
-
-	return destRect;
+	// limpia la lista
+	objectsToErase.clear();
+	
 }
 
 // MANEJAR EVENTOS
@@ -245,6 +241,12 @@ void Game::hasDied(list<SceneObject*>::iterator& it)
 {
 	// aniade el objeto a la lista de borradores
 	objectsToErase.push_back(it);
+
+	sceneObjectsList;
+
+	cout << *it << endl;
+
+	//cout << "cojones de orangutan uwu" << endl;
 }
 #pragma endregion
 
@@ -271,7 +273,7 @@ void Game::loadTextures()
 void Game::loadMap()
 {
 	// lee el mapa
-	ifstream in("..\\mapas\\original.txt");
+	ifstream in("..\\mapas\\prueba.txt");
 	if (in.fail()) throw ("No se ha podido leer mapa");
 
 	// variables auxiliares
@@ -349,5 +351,6 @@ void Game::loadMap()
 			obj->setListIterator(newit);
 		}
 	}
+
 }
 #pragma endregion

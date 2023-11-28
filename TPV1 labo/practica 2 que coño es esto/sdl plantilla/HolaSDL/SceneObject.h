@@ -86,7 +86,7 @@ public:
 	// ----- Iterador de la lista ------
 	// Un iterador funciona como un puntero que apunta a los items de la lista 
 	// Tipos: begin(), end(), advance(), next(), prev(), inserter()
-	void setListIterator(list<SceneObject*>::iterator newit)
+	void setListIterator(list<SceneObject*>::iterator& newit)
 	{
 		// setea el iterador de la posicion del objeto en la lista
 		it = newit;

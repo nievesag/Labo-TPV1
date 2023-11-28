@@ -42,8 +42,5 @@ public:
 
 	// save del objeto
 	virtual void save(ostream&) const;
-
-
-
 };
 #endif
