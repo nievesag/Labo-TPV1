@@ -326,7 +326,7 @@ void Game::loadMap()
 			Vector2D<int> vel(0, 0);
 
 			//bunker
-			SceneObject* obj = new Bunker(3, 0, coord, textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight(), 1, textures[Escudo], this);
+			SceneObject* obj = new Bunker(0, coord, textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight(), 3, textures[Escudo], this);
 
 			// lo mete en la lista
 			sceneObjectsList.push_back(obj);

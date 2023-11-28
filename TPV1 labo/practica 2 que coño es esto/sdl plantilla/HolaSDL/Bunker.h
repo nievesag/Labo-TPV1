@@ -12,15 +12,14 @@ using uint = unsigned int;
 class Bunker : public SceneObject
 {
 private:
-	int lifes,					// vidas restantes
-		hits;					// contador de golpes
+	int hits;					// contador de golpes
 
 	// metodos publicos
 public:
 	// atributos privados
 	// ---- constructora ----
-	Bunker(int lifes, int hits, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: lifes(lifes), hits(hits), SceneObject(position, width, height, vidas, texture, game) { };
+	Bunker(int hits, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: hits(hits), SceneObject(position, width, height, vidas, texture, game) { };
 
 	//
 	void render() const override;
