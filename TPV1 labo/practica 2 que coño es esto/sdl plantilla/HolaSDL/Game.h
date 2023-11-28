@@ -11,6 +11,7 @@
 
 // -------------
 #include "Alien.h"
+#include "ShooterAlien.h"
 #include "Cannon.h"
 #include "Laser.h"
 #include "Bunker.h"
@@ -116,10 +117,6 @@ public:
 	// acaba el juego (setea exit a true)
 	void EndGame();
 
-	// ---- damage ----
-	// colisiones
-	//bool damage(Laser* laser);
-
 	//
 	bool damage(Laser* myLaser);
 
@@ -132,6 +129,10 @@ public:
 	uint getWinHeight() { return winHeight; }
 	
 	SDL_Renderer* getRenderer() { return renderer; };
+
+	int getRandomRange(int min, int max) {
+		return uniform_int_distribution<int>(min, max)(randomGenerator);
+	}
 
 // ------ METODOS PRIVADOS -------
 private:

@@ -45,7 +45,7 @@ public:
 
 	// ---- update ----
 	// actualiza
-	void update() override;
+	virtual void update() override;
 
 	// ---- save ----
 	// guarda objeto
@@ -64,7 +64,7 @@ public:
 	}
 
 	// metodos privados (auxiliares)
-private:
+protected:
 	// ---- move ----
 	// mueve al alien
 	void move();

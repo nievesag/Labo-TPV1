@@ -83,10 +83,19 @@ void Game::fireLaser(Point2D<double> pos, char frenemy)
 	// settea la velocidad
 	Vector2D<double> vel(0,1);
 
-	if (frenemy == 'a')
+	if (frenemy == 'a') {
 		SDL_SetRenderDrawColor(renderer, 255, 0, 114, 255);	// cannon
-	else
+
+		//
+		vel.setY(1);
+	}	
+	else {
 		SDL_SetRenderDrawColor(renderer, 255, 242, 0, 255);	// aliens
+
+		//
+		vel.setY(-1);
+	}
+		
 
 	// !!!!!!!!!!!!!!!!!!!!!!!!!! COOLDOWN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
@@ -149,10 +158,6 @@ void Game::update()
 		(*it)->update();
 	}
 
-	
-	
-	
-
 	deleteSceneObjects();
 }
 
@@ -183,10 +188,6 @@ void Game::renderBackground()
 
 void Game::deleteSceneObjects()
 {
-	//DEBUG
-	if (objectsToErase.size() > 0)
-		cout << objectsToErase.size() << endl;
-
 
 	if (objectsToErase.size() > 0) {
 
@@ -289,7 +290,6 @@ void Game::loadMap()
 		
 		// si es la nave
 		if (type == 0) {
-			//cout << coord.getX() << " " << coord.getY() << endl;
 
 			// nave
 			SceneObject* obj = new Cannon(200, coord, textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), 1, textures[Nave], this);
@@ -310,8 +310,22 @@ void Game::loadMap()
 		else if (type == 1) {
 			in >> atype;
 
-			// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game)
-			SceneObject* obj = new Alien(milfship, 0, atype, coord, textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);
+			SceneObject* obj;
+
+			if (atype == 0) {
+
+				double min = getRandomRange(1, 5);
+				double max = getRandomRange(9, 12);
+
+				//				 minCD(minCD), maxCD(maxCD)
+				obj = new ShooterAlien(min, max, milfship, 0, atype, coord, textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);
+			}
+			else {
+				// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game)
+				obj = new Alien(milfship, 0, atype, coord, textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);
+			}
+
+			
 
 			// lo mete en la lista
 			sceneObjectsList.push_back(obj);

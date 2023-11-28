@@ -41,8 +41,7 @@ void Cannon::handleEvent(SDL_Event event)
 		else if (key == SDL_SCANCODE_D) keyD = true;
 
 		// disparar
-		else if (key == SDL_SCANCODE_SPACE) {
-			cout << "disparo" << endl;  
+		else if (key == SDL_SCANCODE_SPACE) { 
 			keySpace = true;
 		}
 
