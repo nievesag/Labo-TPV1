@@ -69,7 +69,6 @@ private:
 	// lista de iteradores de objetos que eliminar
 	list<list<SceneObject*>::iterator> objectsToErase;
 
-
 	// puntero al mothership
 	Mothership* milfship;
 
@@ -111,7 +110,7 @@ public:
 
 	// ---- hasDied ----
 	// metodo que llaman los objetos cuando han de ser eliminados
-	void hasDied(list<SceneObject*>::iterator it);
+	void hasDied(list<SceneObject*>::iterator& it);
 
 	// ---- EndGame ----
 	// acaba el juego (setea exit a true)

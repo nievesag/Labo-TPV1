@@ -25,6 +25,8 @@ private:
 	// contador del cooldown
 	int currentCD;
 
+
+
 	// metodos publicos 
 public:
 	// ---- constructora ----

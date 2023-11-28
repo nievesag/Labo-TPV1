@@ -68,7 +68,7 @@ protected:
 	void move();
 
 	// actualiza el rect
-	virtual void updateRect() override;
+	void updateRect() override;
 
 	// maneja el cooldown
 	void coolDownManagement();

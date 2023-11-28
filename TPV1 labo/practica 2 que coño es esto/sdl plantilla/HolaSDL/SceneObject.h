@@ -56,8 +56,6 @@ public:
 
 		destRect.x = position.getX();
 		destRect.y = position.getY();
-
-
 	}
 
 	// -------------> los override van en las clases hijas que lo especifiquen <--------------
@@ -97,7 +95,6 @@ public:
 	Point2D<double> getPosition() const { return position; };
 
 	Texture* getTexture() const { return texture; };
-
 };
 
 #endif

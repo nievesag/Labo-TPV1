@@ -112,7 +112,6 @@ bool Game::damage(Laser* myLaser)
 			return true;
 		}
 	}
-
 	return false;
 }
 
@@ -155,7 +154,6 @@ void Game::update()
 
 	// limpia la lista
 	objectsToErase.clear();
-
 }
 
 // PINTAR
@@ -168,7 +166,7 @@ void Game::render()
 	renderBackground();
 
 	// iterador para renderizar los objetos
-	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
+	for (list<SceneObject*>::iterator& it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
 
 			(*it)->render();
 	}
@@ -243,7 +241,7 @@ void Game::handleEvents()
 	}
 }
 
-void Game::hasDied(list<SceneObject*>::iterator it)
+void Game::hasDied(list<SceneObject*>::iterator& it)
 {
 	// aniade el objeto a la lista de borradores
 	objectsToErase.push_back(it);
@@ -336,8 +334,6 @@ void Game::loadMap()
 			// esto no se q es
 			Vector2D<int> vel(0, 0);
 
-			//cout << coord.getX() << " " << coord.getY() << endl;
-
 			//bunker
 			SceneObject* obj = new Bunker(3, 0, coord, textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight(), 1, textures[Escudo], this);
 
@@ -345,7 +341,6 @@ void Game::loadMap()
 			sceneObjectsList.push_back(obj);
 
 			//iterador al final de la lista
-			// (end--)--?
 			list<SceneObject*>::iterator newit = sceneObjectsList.end();
 
 			newit--;
