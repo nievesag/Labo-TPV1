@@ -28,8 +28,6 @@ bool Bunker::hit(SDL_Rect* rect, char frenemy)
 		return true;
 	}
 	// si no
-
-	
 	return false;
 }
 
