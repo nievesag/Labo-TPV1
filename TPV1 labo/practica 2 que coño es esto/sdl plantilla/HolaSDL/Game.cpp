@@ -183,25 +183,31 @@ void Game::renderBackground()
 
 void Game::deleteSceneObjects()
 {
+	//DEBUG
+	if (objectsToErase.size() > 0)
+		cout << objectsToErase.size() << endl;
 
-	
-	if(objectsToErase.size() > 0)
-	cout << objectsToErase.size() << endl;
-	
-	
 
-	
+	if (objectsToErase.size() > 0) {
 
-	// bucle para borrar los objetos que han de ser borrados
-	for (auto a : objectsToErase) {
+		// bucle para borrar los objetos que han de ser borrados
+		for (auto a : objectsToErase) {
 
-		// lo borra de la lista
-		sceneObjectsList.erase(a);
+			// nuevo iterator
+			list<SceneObject*>::iterator newIt;
+
+			//
+			newIt = a;
+
+			// borramos el objeto
+			delete (*newIt);
+
+			// lo borra de la lista
+			sceneObjectsList.erase(a);
+		}
+
+		objectsToErase.clear();
 	}
-
-	// limpia la lista
-	objectsToErase.clear();
-	
 }
 
 // MANEJAR EVENTOS
@@ -286,7 +292,7 @@ void Game::loadMap()
 			//cout << coord.getX() << " " << coord.getY() << endl;
 
 			// nave
-			SceneObject* obj = new Cannon(100, coord, textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), 1, textures[Nave], this);
+			SceneObject* obj = new Cannon(200, coord, textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), 1, textures[Nave], this);
 
 			// lo mete en la lista
 			sceneObjectsList.push_back(obj);
