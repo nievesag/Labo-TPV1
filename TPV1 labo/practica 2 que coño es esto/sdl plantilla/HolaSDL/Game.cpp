@@ -183,6 +183,15 @@ void Game::renderBackground()
 
 void Game::deleteSceneObjects()
 {
+
+	
+	if(objectsToErase.size() > 0)
+	cout << objectsToErase.size() << endl;
+	
+	
+
+	
+
 	// bucle para borrar los objetos que han de ser borrados
 	for (auto a : objectsToErase) {
 
