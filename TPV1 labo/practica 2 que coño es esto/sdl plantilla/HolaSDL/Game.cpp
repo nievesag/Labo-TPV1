@@ -86,13 +86,11 @@ void Game::fireLaser(Point2D<double> pos, char frenemy)
 	if (frenemy == 'a') {
 		SDL_SetRenderDrawColor(renderer, 255, 0, 114, 255);	// cannon
 
-		//
 		vel.setY(1);
 	}	
 	else {
 		SDL_SetRenderDrawColor(renderer, 255, 242, 0, 255);	// aliens
 
-		//
 		vel.setY(-1);
 	}
 		
@@ -325,8 +323,6 @@ void Game::loadMap()
 				obj = new Alien(milfship, 0, atype, coord, textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);
 			}
 
-			
-
 			// lo mete en la lista
 			sceneObjectsList.push_back(obj);
 
@@ -337,7 +333,6 @@ void Game::loadMap()
 
 			// le pasa el iterador
 			obj->setListIterator(newit);
-
 		}
 
 		// si es un bunker

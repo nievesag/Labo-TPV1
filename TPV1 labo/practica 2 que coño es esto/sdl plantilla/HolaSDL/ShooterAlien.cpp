@@ -15,13 +15,8 @@ void ShooterAlien::shoot()
 
 void ShooterAlien::attack()
 {
-	//cout << cooldown << " " << CDcounter << endl;
-
 	// gestion de cooldown
 	if (CDcounter >= cooldown) {
-
-		cout << "broly es el super sayian legendario" << endl;
-
 		// elige un nuevo cooldown 
 		cooldown = game->getRandomRange(minCD, maxCD) * 30;
 

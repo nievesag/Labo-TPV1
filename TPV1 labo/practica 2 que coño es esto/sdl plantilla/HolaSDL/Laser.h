@@ -59,10 +59,6 @@ public:
 
 	char getColor() { return laserType; };
 
-	void writeName() override {
-		//cout << "laser" << endl;
-	}
-
 protected:
 	// mueve el laser segun el vector velocidad
 	void move();
