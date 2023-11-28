@@ -6,7 +6,7 @@
 void Laser::render() const
 {
 	// si es amigo/enemigo pintar de un color u otro
-	if (laserType == rojo)
+	if (laserType == 'r')
 		SDL_SetRenderDrawColor(game->getRenderer(), 255, 0, 114, 255);	// cannon
 	else
 		SDL_SetRenderDrawColor(game->getRenderer(), 255, 242, 0, 255);	// aliens
@@ -24,7 +24,7 @@ void Laser::update()
 	updateRect();
 
 	// le pregunta si hay alguien a quien pegar un hostion
-	if (game->damage(this) || isOut) {
+	if (game->damage(this) || isOut()) {
 
 		// le dice al game que ha muerto
 		game->hasDied(it);

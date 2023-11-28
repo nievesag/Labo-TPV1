@@ -66,14 +66,13 @@ void Cannon::handleEvent(SDL_Event event)
 
 bool Cannon::hit(SDL_Rect* rect, char frenemy)
 {
-	/*
-	if (SDL_HasIntersection(rect, &destRect) && frenemy) {
+	if (SDL_HasIntersection(rect, &destRect) && frenemy == 'r') {
+		// informa al game que ha muerto
+		game->hasDied(it);
 
 		return true;
 	}
 	// si no
-	
-	*/
 	return false;
 }
 

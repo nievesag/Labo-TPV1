@@ -18,11 +18,8 @@ class Laser : public SceneObject
 {
 	// atributos privados
 private:
-	// rojo si viene de la nave
-	// azul si viene de los aliens
-	// antiguo frenemy -> mejor char????
-	enum frenemy{ rojo, azul };
-
+	// rojo 'r'  si viene de la nave
+	// azul 'a' si viene de los aliens
 	char laserType;
 
 	Vector2D<double> vel;

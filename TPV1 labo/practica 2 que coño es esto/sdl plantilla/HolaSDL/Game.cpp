@@ -267,7 +267,7 @@ void Game::loadTextures()
 void Game::loadMap()
 {
 	// lee el mapa
-	ifstream in("..\\mapas\\original.txt");
+	ifstream in("..\\mapas\\prueba.txt");
 	if (in.fail()) throw ("No se ha podido leer mapa");
 
 	// variables auxiliares
