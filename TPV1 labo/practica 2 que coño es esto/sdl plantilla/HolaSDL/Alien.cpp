@@ -73,7 +73,9 @@ void Alien::move()
 
 void Alien::animate()
 {
-	// se anima ig
+	// se anima omg
+	alienFrame = (alienFrame + 1) % 2;
+
 }
 
 void Alien::updateRect()
