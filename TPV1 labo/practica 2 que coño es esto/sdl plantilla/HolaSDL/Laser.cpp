@@ -24,15 +24,11 @@ void Laser::update()
 	updateRect();
 
 	// le pregunta si hay alguien a quien pegar un hostion
-	if (game->damage(this)) {
-
-		//cout << "BRUH" << endl;
+	if (game->damage(this) || isOut()) {
 
 		// le dice al game que ha muerto
-		//game->hasDied(it);
+		game->hasDied(it);
 	}
-
-	if(isOut()) game->hasDied(it);
 }
 
 bool Laser::hit(SDL_Rect* rect, char frenemy)
@@ -40,9 +36,8 @@ bool Laser::hit(SDL_Rect* rect, char frenemy)
 	// si colisiona con un laser amigo 
 	if (SDL_HasIntersection(rect, &destRect) && frenemy != laserType) {
 
-		//cout << "ESTA CHIUS AQUI QUE FUERTE Y SIN BATA" << endl;
-
-		game->hasDied(it);
+		// si se descomenta peta omg (es porque tiene que estar en el update no aqui)
+		//game->hasDied(it);
 
 		return true;
 	}

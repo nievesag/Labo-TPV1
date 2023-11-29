@@ -187,9 +187,6 @@ void Game::renderBackground()
 void Game::deleteSceneObjects()
 {
 
-	if (objectsToErase.size() > 0) cout << objectsToErase.size() << endl;
-
-
 	if (objectsToErase.size() > 0) {
 
 		//cout << "que hace esto aqui ¿?¿?¿?" << endl;
