@@ -41,5 +41,10 @@ public:
 	// colisiones
 	bool hit(SDL_Rect* rect, char frenemy) override;
 
+protected:
+	// ---- move ----
+	// mueve al alien
+	void move();
+
 };
 #endif
