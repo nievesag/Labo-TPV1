@@ -13,14 +13,7 @@ void Mothership::update()
 	}
 
 	// direccion de los aliens
-
-	/*
-	if (switchDir)
-	{
-		direction = -direction;
-		switchDir = false;
-	}
-	*/
+	
 	
 }
 
@@ -48,7 +41,7 @@ bool Mothership::shouldMove()
 
 void Mothership::cannotMove()
 {
-	cout << "state 1: " << currentState << endl;
+	//cout << "state 1: " << currentState << endl;
 
 	// RIGHT
 	if (currentState == RIGHT) { currentState = dRIGHT; }
@@ -59,5 +52,5 @@ void Mothership::cannotMove()
 	// DOWN LEFT
 	else { currentState = RIGHT; }
 
-	cout << "state 2: " << currentState << endl;
+	//cout << "state 2: " << currentState << endl;
 }

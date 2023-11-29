@@ -280,7 +280,7 @@ void Game::loadTextures()
 void Game::loadMap()
 {
 	// lee el mapa
-	ifstream in("..\\mapas\\prueba.txt");
+	ifstream in("..\\mapas\\original.txt");
 	if (in.fail()) throw ("No se ha podido leer mapa");
 
 	// variables auxiliares
@@ -289,7 +289,7 @@ void Game::loadMap()
 	int atype;
 
 	// crea la mothership
-	milfship = new Mothership(10, this, 10);
+	milfship = new Mothership(10, this, 30);
 
 
 	// in.eof() devuelve si se ha acabado el fichero

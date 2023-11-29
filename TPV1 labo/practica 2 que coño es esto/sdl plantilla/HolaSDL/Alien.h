@@ -27,13 +27,14 @@ protected:
 	int alienFrame; // frame del alien (para animaciones)
 	double alienSpeed; // velocidad del alien
 
+
 	// metodos publicos 
 public:
 	// ---- constructora ----
 	Alien(Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
 		: mothership(mothership), alienFrame(alienFrame), type(type), SceneObject(position, width, height, vidas, texture, game) 
 	{ 
-		alienSpeed = 0.1;
+		alienSpeed = 3;
 	}
 
 	// ---- render ----
