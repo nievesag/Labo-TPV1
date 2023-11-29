@@ -1,5 +1,0 @@
-Autores:
-  Inés Primo López
-  Nieves Alonso Gilsanz
-
-Funcionalidades Opcionales:
