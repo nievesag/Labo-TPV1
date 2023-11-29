@@ -24,13 +24,15 @@ void Laser::update()
 	updateRect();
 
 	// le pregunta si hay alguien a quien pegar un hostion
-	if (game->damage(this) || isOut()) {
+	if (game->damage(this)) {
 
 		//cout << "BRUH" << endl;
 
 		// le dice al game que ha muerto
 		//game->hasDied(it);
 	}
+
+	if(isOut()) game->hasDied(it);
 }
 
 bool Laser::hit(SDL_Rect* rect, char frenemy)

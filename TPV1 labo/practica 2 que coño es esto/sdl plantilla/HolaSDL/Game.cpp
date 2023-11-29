@@ -207,7 +207,7 @@ void Game::deleteSceneObjects()
 			newIt = a;
 
 			// borramos el objeto
-			delete (*newIt);
+			delete (*a);
 
 			// lo borra de la lista
 			sceneObjectsList.erase(a);
