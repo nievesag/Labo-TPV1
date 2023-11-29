@@ -186,10 +186,18 @@ void Game::renderBackground()
 
 void Game::deleteSceneObjects()
 {
+
+	if (objectsToErase.size() > 0) cout << objectsToErase.size() << endl;
+
+
 	if (objectsToErase.size() > 0) {
+
+		//cout << "que hace esto aqui ¿?¿?¿?" << endl;
 
 		// bucle para borrar los objetos que han de ser borrados
 		for (auto a : objectsToErase) {
+
+			//cout << "PERO ES QUE ENCIMA ENTRA ME MATO TIO" << endl;
 
 			// FALTA CONTROL DE ITERATOR INVALIDO
 			// nuevo iterator
@@ -239,8 +247,11 @@ void Game::handleEvents()
 
 void Game::hasDied(list<SceneObject*>::iterator& it)
 {
+	//cout << "muero pufff" << endl;
+
 	// aniade el objeto a la lista de borradores
 	objectsToErase.push_back(it);
+
 }
 #pragma endregion
 
@@ -311,8 +322,8 @@ void Game::loadMap()
 
 			if (atype == 0) {
 
-				double min = getRandomRange(1, 5);
-				double max = getRandomRange(9, 12);
+				double min = getRandomRange(12, 17);
+				double max = getRandomRange(18, 25);
 
 				//				 minCD(minCD), maxCD(maxCD)
 				obj = new ShooterAlien(min, max, milfship, 0, atype, coord, textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);
