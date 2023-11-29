@@ -42,19 +42,21 @@ void ShooterAlien::setCD()
 
 void ShooterAlien::update()
 {
-	// si esta muerto devuelve false
-	if (vidas <= 0);
+	if (mothership->shouldMove()) {
 
-	// se mueve
-	move();
+		// se mueve
+		move();
 
-	//
-	attack();
+		//
+		attack();
 
-	// anima
-	animate();
+		// anima
+		animate();
 
-	// actualiza el rect (para colisiones)
-	updateRect();
+		// actualiza el rect (para colisiones)
+		updateRect();
+	}
+
+	
 
 }

@@ -1,9 +1,27 @@
 #include "Mothership.h"
 
+#include "Game.h"
+
 void Mothership::update()
 {
+	// framerate de los aliens
+	if (alienTimer < ALIEN_RR) {
+		alienTimer++;
+	}
+	else {
+		alienTimer = 0;
+	}
 
+	// direccion de los aliens
 
+	/*
+	if (switchDir)
+	{
+		direction = -direction;
+		switchDir = false;
+	}
+	*/
+	
 }
 
 Vector2D<int> Mothership::getDirection()
@@ -22,6 +40,11 @@ Vector2D<int> Mothership::getDirection()
 	return dir;
 }
 
+
+bool Mothership::shouldMove()
+{
+	return alienTimer == ALIEN_RR;
+}
 
 void Mothership::cannotMove()
 {

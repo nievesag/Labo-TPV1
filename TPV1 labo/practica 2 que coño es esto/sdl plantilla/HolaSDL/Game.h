@@ -37,8 +37,11 @@ static constexpr double FRAMERATE = 60,						// frames por segundo
 						LASER_SPEED = 6 * TIME_BT_FRAMES,	// velocidad de laser
 						ALIEN_SPEED = 4 * TIME_BT_FRAMES,	// velocidad de aliens
 						CANNON_SPEED = 10 * TIME_BT_FRAMES,	// velocidad de cannon
+						UFO_SPEED = 6 * TIME_BT_FRAMES,	// velocidad de aliens
+						ALIEN_RR = 0.5 * FRAMERATE, // cantidad de frames entre updates del alien
 						END_GAME = 300,						// distancia de los aliens para acabar
 						ALIEN_RF = 5 * FRAMERATE;			// cada cuanto se actualiza el alien
+
 
 
 // ----------------------------------- x X x G A M E x X x ------------------------------------
@@ -72,6 +75,7 @@ private:
 
 	// puntero al mothership
 	Mothership* milfship;
+
 
 	// MANEJO DEL TIEMPO EN RUN
 	// crea semilla

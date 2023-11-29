@@ -151,11 +151,16 @@ void Game::run()
 // ACTUALIZAR 
 void Game::update()
 {
+	// actualiza el mothership
+	milfship->update();
+
+	// actualiza los objetos de escena
 	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
 
 		(*it)->update();
 	}
 
+	// borra los objetos a borrar
 	deleteSceneObjects();
 }
 
@@ -284,7 +289,8 @@ void Game::loadMap()
 	int atype;
 
 	// crea la mothership
-	milfship = new Mothership(10, this);
+	milfship = new Mothership(10, this, 10);
+
 
 	// in.eof() devuelve si se ha acabado el fichero
 	while (!in.eof()) {

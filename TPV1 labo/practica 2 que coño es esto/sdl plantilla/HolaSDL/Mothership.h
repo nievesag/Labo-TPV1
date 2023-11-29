@@ -20,10 +20,13 @@ private:
 	// offset del descenso
 	int level;
 
+	// tiempo para los updates
+	int alienTimer;
+
 	// metodos publicos
 public:
-	Mothership::Mothership(int offset, Game* game) 
-		: level(level), GameObject(game) {
+	Mothership::Mothership(int offset, Game* game, int alienTimer) 
+		: level(level), GameObject(game), alienTimer(alienTimer) {
 		currentState = RIGHT;
 	}
 		

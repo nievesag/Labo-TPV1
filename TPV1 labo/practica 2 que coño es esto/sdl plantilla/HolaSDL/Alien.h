@@ -21,7 +21,7 @@ using uint = unsigned int;
 class Alien : public SceneObject
 {
 	// atributos privados
-private:
+protected:
 	Mothership* mothership;	  // puntero a mothership
 	int type; // tipo de alien
 	int alienFrame; // frame del alien (para animaciones)

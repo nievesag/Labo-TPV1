@@ -12,17 +12,19 @@ void Alien::render() const
 
 void Alien::update()
 {
-	// si esta muerto devuelve false
-	if (vidas <= 0);
+	if (mothership->shouldMove()) {
 
-	// se mueve
-	move();
+		cout << "aaaaaaaaaaaaaa" << endl;
 
-	// anima
-	animate();
+		// se mueve
+		move();
 
-	// actualiza el rect (para colisiones)
-	updateRect();
+		// anima
+		animate();
+
+		// actualiza el rect (para colisiones)
+		updateRect();
+	}
 
 }
 
