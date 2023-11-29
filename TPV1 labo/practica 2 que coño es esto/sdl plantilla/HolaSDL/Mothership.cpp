@@ -28,7 +28,7 @@ Vector2D<int> Mothership::getDirection()
 	// LEFT
 	else if (currentState == LEFT) { dir.setX(-1); dir.setY(0); }
 	// DOWN LEFT
-	else { dir.setX(-1); dir.setY(1); }
+	else if (currentState == dLEFT) { dir.setX(-1); dir.setY(1); }
 
 	return dir;
 }
