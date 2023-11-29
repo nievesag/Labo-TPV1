@@ -325,8 +325,8 @@ void Game::loadMap()
 
 			if (atype == 0) {
 
-				double min = getRandomRange(12, 17);
-				double max = getRandomRange(18, 25);
+				double min = getRandomRange(2, 7);
+				double max = getRandomRange(8, 15);
 
 				//				 minCD(minCD), maxCD(maxCD)
 				obj = new ShooterAlien(min, max, milfship, 0, atype, coord, textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);

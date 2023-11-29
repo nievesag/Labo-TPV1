@@ -38,7 +38,7 @@ static constexpr double FRAMERATE = 60,						// frames por segundo
 						ALIEN_SPEED = 4 * TIME_BT_FRAMES,	// velocidad de aliens
 						CANNON_SPEED = 10 * TIME_BT_FRAMES,	// velocidad de cannon
 						UFO_SPEED = 6 * TIME_BT_FRAMES,		// velocidad de aliens
-						ALIEN_RR = 1.5 * FRAMERATE,			// cantidad de frames entre updates del alien
+						ALIEN_RR = 8 * FRAMERATE,			// cantidad de frames entre updates del alien
 						END_GAME = 300,						// distancia de los aliens para acabar
 						ALIEN_RF = 5 * FRAMERATE;			// cada cuanto se actualiza el alien
 
