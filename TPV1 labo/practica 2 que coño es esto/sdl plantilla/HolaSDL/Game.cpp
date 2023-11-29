@@ -186,12 +186,12 @@ void Game::renderBackground()
 
 void Game::deleteSceneObjects()
 {
-
 	if (objectsToErase.size() > 0) {
 
 		// bucle para borrar los objetos que han de ser borrados
 		for (auto a : objectsToErase) {
 
+			// FALTA CONTROL DE ITERATOR INVALIDO
 			// nuevo iterator
 			list<SceneObject*>::iterator newIt;
 
@@ -285,7 +285,6 @@ void Game::loadMap()
 		in >> y;
 		Point2D<double> coord(x, y);
 
-		
 		// si es la nave
 		if (type == 0) {
 
