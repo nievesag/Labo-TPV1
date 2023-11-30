@@ -23,7 +23,6 @@ void Alien::update()
 		// actualiza el rect (para colisiones)
 		updateRect();
 	}
-
 }
 
 void Alien::save(ostream&) const

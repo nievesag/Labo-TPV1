@@ -1,6 +1,4 @@
 #include "Bunker.h"
-
-// para que el bestie bestiee
 #include "Game.h"
 
 void Bunker::render() const
@@ -11,8 +9,6 @@ void Bunker::render() const
 
 void Bunker::update()
 {
-	// update
-
 	// creo que sobra ????
 	updateRect();
 }

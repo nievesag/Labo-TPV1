@@ -13,8 +13,6 @@ void Mothership::update()
 	}
 
 	// direccion de los aliens
-	
-	
 }
 
 Vector2D<int> Mothership::getDirection()
@@ -41,8 +39,6 @@ bool Mothership::shouldMove()
 
 void Mothership::cannotMove()
 {
-	//cout << "state 1: " << currentState << endl;
-
 	// RIGHT
 	if (currentState == RIGHT) { currentState = dRIGHT; }
 	// DOWN RIGHT
@@ -51,6 +47,4 @@ void Mothership::cannotMove()
 	else if (currentState == LEFT) { currentState = dLEFT; }
 	// DOWN LEFT
 	else { currentState = RIGHT; }
-
-	//cout << "state 2: " << currentState << endl;
 }

@@ -289,7 +289,6 @@ void Game::loadMap()
 	// crea la mothership
 	milfship = new Mothership(10, this, 30);
 
-
 	// in.eof() devuelve si se ha acabado el fichero
 	while (!in.eof()) {
 		in >> type;
@@ -364,6 +363,11 @@ void Game::loadMap()
 
 			// le pasa el iterador
 			obj->setListIterator(newit);
+		}
+
+		// si es un ufo
+		else if (type == 3) {
+
 		}
 	}
 
