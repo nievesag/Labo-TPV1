@@ -225,8 +225,6 @@ void Game::fireLaser(Point2D<double> pos, char frenemy)
 
 		vel.setY(-1);
 	}
-
-	// !!!!!!!!!!!!!!!!!!!!!!!!!! COOLDOWN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 	// crea el laser
 	SceneObject* newObj = new Laser(frenemy, vel, pos, 4, 10, 1, nullptr, this);

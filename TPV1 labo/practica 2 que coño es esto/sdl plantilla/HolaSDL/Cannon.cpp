@@ -41,12 +41,10 @@ void Cannon::handleEvent(SDL_Event event)
 		else if (key == SDL_SCANCODE_D) keyD = true;
 
 		// disparar
-		else if (key == SDL_SCANCODE_SPACE) { 
-			keySpace = true;
-		}
+		else if (key == SDL_SCANCODE_SPACE) keySpace = true;
 
 		// salir del juego
-		else if (key == SDL_SCANCODE_B) keyE = true;
+		else if (key == SDL_SCANCODE_E) keyE = true;
 	}
 
 	else if (event.type == SDL_KEYUP) {
@@ -69,7 +67,7 @@ bool Cannon::hit(SDL_Rect* rect, char frenemy)
 	if (SDL_HasIntersection(rect, &destRect) && frenemy == 'r') {
 		// informa al game que ha muerto
 		game->hasDied(it);
-
+		game->EndGame();
 		return true;
 	}
 	// si no
@@ -85,8 +83,6 @@ void Cannon::updateRect()
 
 void Cannon::coolDownManagement()
 {
-	//
-
 	if (currentCD < cooldown) {
 		currentCD++;
 	}
@@ -95,7 +91,6 @@ void Cannon::coolDownManagement()
 
 		currentCD = 0;
 	}
-
 }
 
 void Cannon::movement()
@@ -108,7 +103,8 @@ void Cannon::movement()
 		direction = Vector2D<double>(0, 0);
 	}
 	// se mueve
-	else if (keyA != keyD) {
+	else if (keyA != keyD) // si NO se pulsan 2 teclas a la vez
+	{
 		if (keyA) {
 			// movimiento a la izq x de direction = -1
 			direction = Vector2D<double>(-1, 0);
