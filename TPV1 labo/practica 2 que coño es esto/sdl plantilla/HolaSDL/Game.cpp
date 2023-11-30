@@ -76,56 +76,6 @@ void Game::EndGame()
 	exit = true;
 }
 
-void Game::fireLaser(Point2D<double> pos, char frenemy)
-{
-	// Laser(Vector2D<double> velocity, SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-
-	// settea la velocidad
-	Vector2D<double> vel(0,1);
-
-	if (frenemy == 'a') {
-		SDL_SetRenderDrawColor(renderer, 255, 0, 114, 255);	// cannon
-
-		vel.setY(1);
-	}	
-	else {
-		SDL_SetRenderDrawColor(renderer, 255, 242, 0, 255);	// aliens
-
-		vel.setY(-1);
-	}
-		
-
-	// !!!!!!!!!!!!!!!!!!!!!!!!!! COOLDOWN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	
-	// crea el laser
-	SceneObject* newObj = new Laser(frenemy, vel, pos, 4, 10, 1, nullptr, this);
-
-	// lo mete en la lista
-	sceneObjectsList.push_back(newObj);
-
-	//iterador al final de la lista
-	list<SceneObject*>::iterator newit = sceneObjectsList.end();
-
-	newit--;
-
-	// le pasa el iterador
-	newObj->setListIterator(newit);
-}
-
-bool Game::damage(Laser* myLaser)
-{
-	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
-
-		// se ha pegado un hostion (colisiones)
-		if ((*it)->hit(myLaser->getRect(), myLaser->getColor())) {
-			// devuelve si ha hitteado	
-			return true;
-		}
-	}
-	return false;
-}
-
-
 // RUN
 void Game::run()
 {
@@ -189,6 +139,35 @@ void Game::renderBackground()
 	textures[Fondo]->render();
 }
 
+// MANEJAR EVENTOS
+void Game::handleEvents()
+{
+	SDL_Event event; // crea evento
+	ifstream in("..\\mapas\\original.txt");
+	int type;
+
+	// MIENTRAS HAYA EVENTOS
+		// si hay eventos &event se llena con el evento a ejecutar si no NULL
+		// es decir, pollea hasta que se hayan manejado todos los eventos
+	while (SDL_PollEvent(&event) && !exit) {
+
+		// si se solicita quit bool exit = true
+		if (event.type == SDL_QUIT) EndGame();
+
+		// MANEJO DE EVENTOS DE OBJETOS DE JUEGO
+		else { 
+			// el objeto en begin es el cannon
+			list<SceneObject*>::iterator it = sceneObjectsList.begin();
+
+			// DYNAMIC CAST: se comprueba en ejecucion que el objeto 
+			// en la posicion begin del iterador apunte a un objeto de tipo Cannon
+			// si lo es se accede al metodo 
+			dynamic_cast<Cannon*>(*it)->handleEvent(event);
+		}
+	}
+}
+
+// ELIMINACION DE OBJETOS
 void Game::deleteSceneObjects()
 {
 
@@ -219,41 +198,62 @@ void Game::deleteSceneObjects()
 	}
 }
 
-// MANEJAR EVENTOS
-void Game::handleEvents()
-{
-	SDL_Event event; // crea evento
-	ifstream in("..\\mapas\\original.txt");
-	int type;
-
-	// MIENTRAS HAYA EVENTOS
-		// si hay eventos &event se llena con el evento a ejecutar si no NULL
-		// es decir, pollea hasta que se hayan manejado todos los eventos
-	while (SDL_PollEvent(&event) && !exit) {
-
-		// si se solicita quit bool exit = true
-		if (event.type == SDL_QUIT) EndGame();
-
-		// MANEJO DE EVENTOS DE OBJETOS DE JUEGO
-		else { 
-			// el objeto en begin es el cannon
-			list<SceneObject*>::iterator it = sceneObjectsList.begin();
-
-			// DYNAMIC CAST: se comprueba en ejecucion que el objeto 
-			// en la posicion begin del iterador apunte a un objeto de tipo Cannon
-			// si lo es se accede al metodo 
-			dynamic_cast<Cannon*>(*it)->handleEvent(event);
-		}
-	}
-}
-
 void Game::hasDied(list<SceneObject*>::iterator& it)
 {
 	//cout << "muero pufff" << endl;
 
 	// aniade el objeto a la lista de borradores
 	objectsToErase.push_back(it);
+}
+#pragma endregion
 
+#pragma region CONTROL DE DAÑO
+void Game::fireLaser(Point2D<double> pos, char frenemy)
+{
+	// Laser(Vector2D<double> velocity, SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+
+	// settea la velocidad
+	Vector2D<double> vel(0,1);
+
+	if (frenemy == 'a') {
+		SDL_SetRenderDrawColor(renderer, 255, 0, 114, 255);	// cannon
+
+		vel.setY(1);
+	}	
+	else {
+		SDL_SetRenderDrawColor(renderer, 255, 242, 0, 255);	// aliens
+
+		vel.setY(-1);
+	}
+
+	// !!!!!!!!!!!!!!!!!!!!!!!!!! COOLDOWN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	
+	// crea el laser
+	SceneObject* newObj = new Laser(frenemy, vel, pos, 4, 10, 1, nullptr, this);
+
+	// lo mete en la lista
+	sceneObjectsList.push_back(newObj);
+
+	//iterador al final de la lista
+	list<SceneObject*>::iterator newit = sceneObjectsList.end();
+
+	newit--;
+
+	// le pasa el iterador
+	newObj->setListIterator(newit);
+}
+
+bool Game::damage(Laser* myLaser)
+{
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
+
+		// se ha pegado un hostion (colisiones)
+		if ((*it)->hit(myLaser->getRect(), myLaser->getColor())) {
+			// devuelve si ha hitteado	
+			return true;
+		}
+	}
+	return false;
 }
 #pragma endregion
 

@@ -1,8 +1,5 @@
 #include "ShooterAlien.h"
-
-//
 #include "Game.h"
-
 
 void ShooterAlien::shoot()
 {
@@ -18,7 +15,7 @@ void ShooterAlien::attack()
 	// gestion de cooldown
 	if (CDcounter >= cooldown) {
 		// elige un nuevo cooldown 
-		cooldown = game->getRandomRange(minCD, maxCD) * 30;
+		cooldown = game->getRandomRange(minCD, maxCD);
 
 		// reinicia el contador
 		CDcounter = 0;
@@ -27,7 +24,6 @@ void ShooterAlien::attack()
 		CDcounter++;
 
 	shoot();
-
 }
 
 void ShooterAlien::setCD()
@@ -36,8 +32,6 @@ void ShooterAlien::setCD()
 	cooldown = game->getRandomRange(minCD, maxCD);
 
 	CDcounter = 0;
-
-	cout << cooldown << endl;
 }
 
 void ShooterAlien::update()
@@ -56,7 +50,4 @@ void ShooterAlien::update()
 		// actualiza el rect (para colisiones)
 		updateRect();
 	}
-
-	
-
 }

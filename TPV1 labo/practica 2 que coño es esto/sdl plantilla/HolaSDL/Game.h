@@ -35,9 +35,9 @@ static constexpr uint winHeight = 600;
 static constexpr double FRAMERATE = 60,						// frames por segundo
 						TIME_BT_FRAMES = 1 / FRAMERATE,		// tiempo entre frames
 						LASER_SPEED = 6 * TIME_BT_FRAMES,	// velocidad de laser
-						ALIEN_SPEED = 4 * TIME_BT_FRAMES,	// velocidad de aliens
+						ALIEN_SPEED = 5 * TIME_BT_FRAMES,	// velocidad de aliens
 						CANNON_SPEED = 10 * TIME_BT_FRAMES,	// velocidad de cannon
-						UFO_SPEED = 6 * TIME_BT_FRAMES,		// velocidad de aliens
+						UFO_SPEED = 6 * TIME_BT_FRAMES,		// velocidad de ufo
 						ALIEN_RR = 8 * FRAMERATE,			// cantidad de frames entre updates del alien
 						END_GAME = 300,						// distancia de los aliens para acabar
 						ALIEN_RF = 5 * FRAMERATE;			// cada cuanto se actualiza el alien
@@ -155,7 +155,6 @@ private:
 
 	// delete scene objects
 	void deleteSceneObjects();
-
 };
 
 #endif
