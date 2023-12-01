@@ -57,7 +57,7 @@ private:
 	SDL_Renderer* renderer = nullptr; // puntero a renderer !!! TODO EN EL MISMO RENDERER
 
 	// enum texture name -> el indice tiene la info de la textura
-	enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, Ufo };
+	enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, UfoT };
 
 	// booleano salida del juego
 	bool exit = false;

@@ -2,7 +2,7 @@
 #define UFO_H
 
 #include "checkML.h"
-#include <SDL.h>
+//#include <SDL.h>
 // ----------------------------------
 #include "Vector2D.h"
 #include "texture.h"

@@ -267,7 +267,7 @@ bool Game::damage(Laser* myLaser)
 // UFO
 void Game::showUfo(Point2D<double> pos, int estate)
 {
-	/*
+	
 	// settea la velocidad
 	Vector2D<double> vel(0, 1);
 	double min = getRandomRange(2, 7);
@@ -278,7 +278,7 @@ void Game::showUfo(Point2D<double> pos, int estate)
 	vel.setX(-1);
 
 	// crea el ufo
-	SceneObject* newObj = new Ufo(min, max, vel, pos, textures[Ufo]->getFrameWidth(), textures[Ufo]->getFrameHeight(), 1, textures[Ufo], this);
+	Ufo* newObj = new Ufo(min, max, vel, pos, textures[UfoT]->getFrameWidth(), textures[UfoT]->getFrameHeight(), 1, textures[UfoT], this);
 
 	// lo mete en la lista
 	sceneObjectsList.push_back(newObj);
@@ -290,7 +290,7 @@ void Game::showUfo(Point2D<double> pos, int estate)
 
 	// le pasa el iterador
 	newObj->setListIterator(newit);
-	*/
+	
 }
 
 // CARGA
