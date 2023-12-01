@@ -10,7 +10,7 @@ void ShooterAlien::shoot()
 	}
 }
 
-void ShooterAlien::attack()
+void ShooterAlien::manageCooldown()
 {
 	// gestion de cooldown
 	if (CDcounter >= cooldown) {
@@ -42,7 +42,7 @@ void ShooterAlien::update()
 		move();
 
 		//
-		attack();
+		manageCooldown();
 
 		// anima
 		animate();

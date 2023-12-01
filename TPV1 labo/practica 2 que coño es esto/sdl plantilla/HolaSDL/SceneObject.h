@@ -37,9 +37,6 @@ public:
 	SceneObject::SceneObject(Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
 		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game) 
 	{ 
-
-		// settea el dest rect !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 		// si hay textura entonces no es un laser y tiene dimensiones
 		if (texture != nullptr) {
 			// setea las dimensiones

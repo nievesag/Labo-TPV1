@@ -32,9 +32,7 @@ public:
 	void shoot();
 
 	// gestiona el cooldown de los disparos
-	void attack();
-
-	void reloadTime();
+	void manageCooldown();
 
 	// settea cooldown del alien
 	void setAttackCD(double newCD) { cooldown = newCD; }

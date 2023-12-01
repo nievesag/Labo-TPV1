@@ -62,9 +62,6 @@ protected:
 
 	// actualiza el rect
 	void updateRect() override;
-
-	// maneja el cooldown
-	void coolDownManagement();
 };
 
 #endif

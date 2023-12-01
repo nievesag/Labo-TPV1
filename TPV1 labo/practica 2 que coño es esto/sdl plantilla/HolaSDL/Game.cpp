@@ -1,9 +1,7 @@
-
 #include "checkML.h"
 #include "Game.h"
 
 using namespace std;
-
 
 struct TextureSpec
 {
@@ -23,7 +21,6 @@ array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
 	{ "..\\images\\bunker.png", 4, 1 },				  // bunker  // 88,57
 	{ "..\\images\\stars.png", 1, 1 }
 };
-
 
 // constructora del game
 Game::Game()
@@ -168,6 +165,7 @@ void Game::handleEvents()
 }
 
 // ELIMINACION DE OBJETOS
+#pragma region ELIMINACION DE OBJETOS
 void Game::deleteSceneObjects()
 {
 
@@ -200,18 +198,17 @@ void Game::deleteSceneObjects()
 
 void Game::hasDied(list<SceneObject*>::iterator& it)
 {
-	//cout << "muero pufff" << endl;
-
 	// aniade el objeto a la lista de borradores
 	objectsToErase.push_back(it);
 }
 #pragma endregion
+// fin logica
+#pragma endregion 
 
+// CONTROL DE DAÑO
 #pragma region CONTROL DE DAÑO
 void Game::fireLaser(Point2D<double> pos, char frenemy)
 {
-	// Laser(Vector2D<double> velocity, SDL_Rect destRect, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-
 	// settea la velocidad
 	Vector2D<double> vel(0,1);
 
@@ -254,6 +251,33 @@ bool Game::damage(Laser* myLaser)
 	return false;
 }
 #pragma endregion
+
+// UFO
+void Game::showUfo(Point2D<double> pos, int estate)
+{
+	// settea la velocidad
+	Vector2D<double> vel(0, 1);
+	double min = getRandomRange(2, 7);
+	double max = getRandomRange(8, 15);
+
+	SDL_SetRenderDrawColor(renderer, 255, 0, 114, 255);	// cannon
+
+	vel.setX(-1);
+
+	// crea el laser
+	SceneObject* newObj = new Ufo(min, max, estate, vel, pos, 4, 10, 1, nullptr, this);
+
+	// lo mete en la lista
+	sceneObjectsList.push_back(newObj);
+
+	//iterador al final de la lista
+	list<SceneObject*>::iterator newit = sceneObjectsList.end();
+
+	newit--;
+
+	// le pasa el iterador
+	newObj->setListIterator(newit);
+}
 
 // CARGA
 #pragma region LOADS
@@ -364,12 +388,6 @@ void Game::loadMap()
 			// le pasa el iterador
 			obj->setListIterator(newit);
 		}
-
-		// si es un ufo
-		else if (type == 3) {
-
-		}
 	}
-
 }
 #pragma endregion

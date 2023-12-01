@@ -17,6 +17,7 @@
 #include "Bunker.h"
 #include "SceneObject.h"
 #include "Mothership.h"
+#include "Ufo.h"
 
 using namespace std;
 using uint = unsigned int;
@@ -123,8 +124,10 @@ public:
 	bool damage(Laser* myLaser);
 
 	// ---- dispara el laser ----
-	// dispara el laser (lo crea realemtente)
+	// dispara el laser (lo crea)
 	void fireLaser(Point2D<double> pos, char frenemy);
+
+	void showUfo(Point2D<double> pos, int estate);
 
 	// ------------------- GETTERS ------------------
 	uint getWinWidth() { return winWidth; }
