@@ -39,8 +39,6 @@ public:
 	Ufo(double minCD, double maxCD, int estado, Vector2D<double> velocity, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
 		: minCD(minCD), maxCD(maxCD), estado(estado), vel(velocity), SceneObject(position, width, height, vidas, texture, game)
 	{
-		// inicializa a oculto al construirse??????????
-		//estado = oculto;
 		setCD();
 	};
 
@@ -51,8 +49,6 @@ public:
 	// ---- update ----
 	// actualiza
 	void update() override;
-
-	void updateState();
 
 	// ---- hit ----
 	// colisiones

@@ -19,15 +19,12 @@
 #include "Mothership.h"
 #include "Ufo.h"
 
+
 using namespace std;
 using uint = unsigned int;
 
-// promesa del caballero (item del lol)
-//class SceneObject;
-//class Laser;
-
 // constantes de tamaño de pantalla -> inicializar en h
-	// tiene que ser estática porque es un atributo (constante para todos los objetos de la clase)
+// tiene que ser estática porque es un atributo (constante para todos los objetos de la clase)
 static constexpr uint winWidth = 800;
 static constexpr uint winHeight = 600;
 
@@ -39,17 +36,16 @@ static constexpr double FRAMERATE = 60,						// frames por segundo
 						ALIEN_SPEED = 5 * TIME_BT_FRAMES,	// velocidad de aliens
 						CANNON_SPEED = 10 * TIME_BT_FRAMES,	// velocidad de cannon
 						UFO_SPEED = 6 * TIME_BT_FRAMES,		// velocidad de ufo
-						ALIEN_RR = 8 * FRAMERATE,			// cantidad de frames entre updates del alien
+						ALIEN_FR = 8 * FRAMERATE,			// cantidad de frames entre updates del alien
 						END_GAME = 300,						// distancia de los aliens para acabar
 						ALIEN_RF = 5 * FRAMERATE;			// cada cuanto se actualiza el alien
 
-// ----------------------------------- x X x G A M E x X x ------------------------------------
+// ----------------------------------- G A M E  ------------------------------------
 class Game
 {
-	//  ------------------  P L A C E H O L D E R R R R R R R R R R R  omg ---------------------
 public:
 	// cantidad de texturas que va a haber
-	static const int NUM_TEXTURES = 6;
+	static const int NUM_TEXTURES = 7;
 
 	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo Texture* 
 	array<Texture*, NUM_TEXTURES> textures{};
@@ -61,7 +57,7 @@ private:
 	SDL_Renderer* renderer = nullptr; // puntero a renderer !!! TODO EN EL MISMO RENDERER
 
 	// enum texture name -> el indice tiene la info de la textura
-	enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo };
+	enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, Ufo };
 
 	// booleano salida del juego
 	bool exit = false;
@@ -75,10 +71,8 @@ private:
 	// puntero al mothership
 	Mothership* milfship;
 
-
 	// MANEJO DEL TIEMPO EN RUN
-	// crea semilla
-	mt19937_64 randomGenerator;
+	mt19937_64 randomGenerator;	// crea semilla
 	uint32_t startTime, frameTime;	
 
 	int SCORE;	// score general del player
@@ -127,6 +121,8 @@ public:
 	// dispara el laser (lo crea)
 	void fireLaser(Point2D<double> pos, char frenemy);
 
+	// ---- saca el ufo ----
+	// crea ufo
 	void showUfo(Point2D<double> pos, int estate);
 
 	// ------------------- GETTERS ------------------
@@ -138,6 +134,9 @@ public:
 	int getRandomRange(int min, int max) {
 		return uniform_int_distribution<int>(min, max)(randomGenerator);
 	}
+
+	// muestra en consola la puntuacion del jugador
+	void PlayerScore();
 
 // ------ METODOS PRIVADOS -------
 private:
@@ -153,8 +152,6 @@ private:
 	// renderea el fondo
 	void renderBackground();
 
-	// muestra en consola la puntuacion del jugador
-	void PlayerScore();
 
 	// delete scene objects
 	void deleteSceneObjects();

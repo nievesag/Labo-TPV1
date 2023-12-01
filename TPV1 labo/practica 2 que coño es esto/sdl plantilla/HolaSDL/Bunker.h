@@ -33,10 +33,6 @@ public:
 
 	//
 	void updateRect() override;
-
-	void writeName() override {
-		//cout << "bunker" << endl;
-	}
 };
 
 #endif

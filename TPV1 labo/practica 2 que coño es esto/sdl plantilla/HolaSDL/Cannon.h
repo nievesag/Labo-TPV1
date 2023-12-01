@@ -25,8 +25,6 @@ private:
 	// contador del cooldown
 	int currentCD;
 
-
-
 	// metodos publicos 
 public:
 	// ---- constructora ----
@@ -35,14 +33,12 @@ public:
 		currentCD = 0; 
 	};
 
-	// aqui si van los overrides porque aqui se especifican las cositas
-	//
+	// ---- aqui si van los overrides porque aqui se especifican las cosas ----
+
 	void render() const override;
 
-	//
 	void update() override;
 
-	//
 	void save(ostream&) const override;
 
 	// getter de vidas restantes
@@ -61,11 +57,7 @@ public:
 	void updateRect() override;
 
 	// maneja el cooldown
-	void coolDownManagement();
-
-	void writeName() override {
-		//cout << "cannon" << endl;
-	}
+	void manageCooldown();
 
 private:
 	// movimiento de la nave

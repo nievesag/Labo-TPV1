@@ -1,6 +1,4 @@
 #include "Cannon.h"
-
-// bestieeeeeeeeeeeeeeed
 #include "Game.h"
 
 void Cannon::render() const
@@ -15,17 +13,17 @@ void Cannon::update()
 	movement();
 
 	// dispara si puede
-	coolDownManagement();
+	manageCooldown();
 
 	// actualiza el rect
 	updateRect();
-
 }
 
-void Cannon::save(ostream&) const
+void Cannon::updateRect()
 {
-
-
+	// posicion
+	destRect.x = position.getX();
+	destRect.y = position.getY();
 }
 
 void Cannon::handleEvent(SDL_Event event)
@@ -68,20 +66,20 @@ bool Cannon::hit(SDL_Rect* rect, char frenemy)
 		// informa al game que ha muerto
 		game->hasDied(it);
 		game->EndGame();
+
+		// escribe gameover
+		cout << "GAME OVER" << endl;
+
+		// pone la puntuacion
+		game->PlayerScore();
+
 		return true;
 	}
 	// si no
 	return false;
 }
 
-void Cannon::updateRect()
-{
-	// posicion
-	destRect.x = position.getX();
-	destRect.y = position.getY();
-}
-
-void Cannon::coolDownManagement()
+void Cannon::manageCooldown()
 {
 	if (currentCD < cooldown) {
 		currentCD++;
@@ -91,6 +89,12 @@ void Cannon::coolDownManagement()
 
 		currentCD = 0;
 	}
+}
+
+void Cannon::shoot()
+{
+	if(keySpace)
+		game->fireLaser(this->position, 'a');
 }
 
 void Cannon::movement()
@@ -126,8 +130,8 @@ void Cannon::movement()
 		position.setX(game->getWinWidth() - texture->getFrameWidth());
 }
 
-void Cannon::shoot()
+void Cannon::save(ostream&) const
 {
-	if(keySpace)
-		game->fireLaser(this->position, 'a');
+
+
 }

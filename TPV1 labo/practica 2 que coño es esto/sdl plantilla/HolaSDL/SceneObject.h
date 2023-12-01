@@ -75,8 +75,6 @@ public:
 	//
 	virtual void updateRect();
 
-	virtual void writeName() ;
-
 	// devuelve rect (posicion) de cada objeto
 	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
 

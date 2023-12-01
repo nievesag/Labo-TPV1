@@ -1,19 +1,7 @@
 #include "GameObject.h"
 
+GameObject::~GameObject() {}
 
-//
-GameObject::~GameObject()
-{
+void GameObject::render(SDL_Rect destRect) const {}
 
-
-}
-
-void GameObject::render(SDL_Rect destRect) const
-{
-}
-
-void GameObject::save(ostream&) const
-{
-}
-
-
+void GameObject::save(ostream&) const {}

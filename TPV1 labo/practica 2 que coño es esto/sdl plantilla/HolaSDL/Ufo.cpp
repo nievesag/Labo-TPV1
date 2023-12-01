@@ -9,6 +9,9 @@ void Ufo::render() const
 
 void Ufo::update()
 {
+	if (estado != destruido) {
+
+	}
 	// mueve al laser
 	move();
 
@@ -16,13 +19,13 @@ void Ufo::update()
 
 	// actualiza el rect (colisiones)
 	updateRect();
-
-
 }
 
-void Ufo::updateState()
+void Ufo::updateRect()
 {
-
+	// posicion               
+	destRect.x = position.getX();
+	destRect.y = position.getY();
 }
 
 bool Ufo::hit(SDL_Rect* rect, char frenemy)
@@ -76,13 +79,6 @@ void Ufo::move()
 {
 	// mueve al laser
 	position.setX(position.getX() - (vel.getX() * 0.2));
-}
-
-void Ufo::updateRect()
-{
-	// posicion               
-	destRect.x = position.getX();
-	destRect.y = position.getY();
 }
 
 void Ufo::save(ostream&) const

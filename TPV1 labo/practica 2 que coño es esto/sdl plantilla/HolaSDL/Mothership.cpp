@@ -5,7 +5,7 @@
 void Mothership::update()
 {
 	// framerate de los aliens
-	if (alienTimer < ALIEN_RR) {
+	if (alienTimer < ALIEN_FR) {
 		alienTimer++;
 	}
 	else {
@@ -34,7 +34,7 @@ Vector2D<int> Mothership::getDirection()
 
 bool Mothership::shouldMove()
 {
-	return alienTimer == ALIEN_RR;
+	return alienTimer == ALIEN_FR;
 }
 
 void Mothership::cannotMove()
