@@ -1,20 +1,14 @@
-framerate
-  ufo 
-  aliens
-  animaciones
+- framerate
+  animaciones aliens
   movimiento aliens (bajen)
 
+- save
 
-colisiones
-  cannon - laserxlaser (yaoi)
-  score
-
-ALIENS QUE DISPARAN
-
-save
-
-
-
+-----------------
+HECHO a medias:
+- excepciones
+- ufo
+- score
 
 
 ----------------------------------------

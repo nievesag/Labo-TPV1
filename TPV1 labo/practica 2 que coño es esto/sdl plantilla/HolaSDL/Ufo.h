@@ -33,6 +33,8 @@ private:
 
 	Vector2D<double> vel;
 
+	int UfoScore = 100;
+
 	// metodos publicos
 public:
 	// ---- constructora ----

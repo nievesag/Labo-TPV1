@@ -27,6 +27,7 @@ protected:
 	int alienFrame; // frame del alien (para animaciones)
 	double alienSpeed; // velocidad del alien
 
+	int alienScore;
 
 	// metodos publicos 
 public:
@@ -35,6 +36,10 @@ public:
 		: mothership(mothership), alienFrame(alienFrame), type(type), SceneObject(position, width, height, vidas, texture, game) 
 	{ 
 		alienSpeed = 3;
+		if (type == 0) alienScore = 30;
+		else if (type == 1) alienScore = 20;
+		else if (type == 2) alienScore = 10;
+		else alienScore = 0;
 	}
 
 	// ---- render ----
@@ -57,7 +62,6 @@ public:
 	// colisiones
 	bool hit(SDL_Rect* rect, char frenemy) override;
 
-
 	// metodos privados (auxiliares)
 protected:
 	// ---- move ----
@@ -70,5 +74,8 @@ protected:
 
 	//
 	void updateRect() override;
+
+	// devuelve el numero de puntuacion a añadir segun el tipo de alien
+	int GetAlienPoints() const { return alienScore; }
 };
 #endif

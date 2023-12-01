@@ -19,7 +19,7 @@ array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
 	{ "..\\images\\spaceship.png", 1, 1 },			  // nave	 // 34,21
 	{ "..\\images\\bunker.png", 4, 1 },				  // bunker  // 88,57
 	{ "..\\images\\stars.png", 1, 1 },				  // fondo 
-	{ "..\\images\\ufo.png", 4, 1 }				      // ufo	 // 48,26
+	{ "..\\images\\ufo.png", 1, 2 }				      // ufo	 // 48,26
 };
 
 // constructora del game
@@ -89,6 +89,11 @@ void Game::run()
 
 		render(); // renderiza todos los objetos de juego
 	}
+	
+	// escribe gameover
+	cout << "GAME OVER" << endl;
+	// escribe punuacion
+	PlayerScore();
 }
 
 // ACTUALIZAR 
@@ -130,11 +135,6 @@ void Game::renderBackground()
 {
 	// renderiza el fondo
 	textures[Fondo]->render();
-}
-
-void Game::PlayerScore()
-{
-
 }
 
 // MANEJAR EVENTOS
@@ -202,6 +202,18 @@ void Game::hasDied(list<SceneObject*>::iterator& it)
 	objectsToErase.push_back(it);
 }
 #pragma endregion
+
+// MANEJAR SCORE
+void Game::increaseScore(int score)
+{
+	SCORE += score;
+}
+
+void Game::PlayerScore()
+{
+	cout << "SCORE: " << SCORE << endl;
+}
+
 // fin logica
 #pragma endregion 
 
@@ -255,6 +267,7 @@ bool Game::damage(Laser* myLaser)
 // UFO
 void Game::showUfo(Point2D<double> pos, int estate)
 {
+	/*
 	// settea la velocidad
 	Vector2D<double> vel(0, 1);
 	double min = getRandomRange(2, 7);
@@ -272,11 +285,12 @@ void Game::showUfo(Point2D<double> pos, int estate)
 
 	//iterador al final de la lista
 	list<SceneObject*>::iterator newit = sceneObjectsList.end();
-
+	
 	newit--;
 
 	// le pasa el iterador
 	newObj->setListIterator(newit);
+	*/
 }
 
 // CARGA

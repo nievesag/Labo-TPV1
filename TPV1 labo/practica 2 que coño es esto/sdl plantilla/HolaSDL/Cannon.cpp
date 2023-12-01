@@ -67,12 +67,6 @@ bool Cannon::hit(SDL_Rect* rect, char frenemy)
 		game->hasDied(it);
 		game->EndGame();
 
-		// escribe gameover
-		cout << "GAME OVER" << endl;
-
-		// pone la puntuacion
-		game->PlayerScore();
-
 		return true;
 	}
 	// si no

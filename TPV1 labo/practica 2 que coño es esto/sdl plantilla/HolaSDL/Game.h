@@ -75,7 +75,7 @@ private:
 	mt19937_64 randomGenerator;	// crea semilla
 	uint32_t startTime, frameTime;	
 
-	int SCORE;	// score general del player
+	int SCORE = 0;	// score general del player
 
 	// metodos publicos 
 public:
@@ -137,6 +137,8 @@ public:
 
 	// muestra en consola la puntuacion del jugador
 	void PlayerScore();
+
+	void increaseScore(int score);
 
 // ------ METODOS PRIVADOS -------
 private:

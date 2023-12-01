@@ -35,6 +35,7 @@ bool Ufo::hit(SDL_Rect* rect, char frenemy)
 		hits++;
 
 		if (hits >= vidas) game->hasDied(it);
+		game->increaseScore(UfoScore);
 
 		return true;
 	}

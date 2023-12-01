@@ -1,8 +1,5 @@
 #include "Alien.h"
-
-// bestie got bestied ?????? like what ????????
 #include "Game.h"
-
 
 void Alien::render() const
 {
@@ -25,11 +22,6 @@ void Alien::update()
 	}
 }
 
-void Alien::save(ostream&) const
-{
-	cout << "coñardo";
-}
-
 void Alien::lowerAlien()
 {
 	// si no se acaba (PLACEHOLDER!!!!!!!!!!!!!!!!!!!!!)
@@ -47,15 +39,13 @@ bool Alien::hit(SDL_Rect* rect, char frenemy)
 {
 	if (SDL_HasIntersection(rect, &destRect) && frenemy == 'a') {
 
-		//cout << "bruh" << endl;
-
 		// informa al game que ha muerto
 		game->hasDied(it);
 
+		game->increaseScore(GetAlienPoints());
+
 		return true;
 	}
-
-	// si no
 	else return false;
 }
 
@@ -72,9 +62,8 @@ void Alien::move()
 
 void Alien::animate()
 {
-	// se anima omg
+	// se anima
 	alienFrame = (alienFrame + 1) % 2;
-
 }
 
 void Alien::updateRect()
@@ -82,5 +71,9 @@ void Alien::updateRect()
 	// posicion
 	destRect.x = position.getX();
 	destRect.y = position.getY();
+}
 
+void Alien::save(ostream&) const
+{
+	
 }
