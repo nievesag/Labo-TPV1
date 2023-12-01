@@ -9,16 +9,15 @@ void Ufo::render() const
 
 void Ufo::update()
 {
-	if (estado != destruido) {
-
-	}
-	// mueve al laser
-	move();
-
-	manageCooldown();
-
 	// actualiza el rect (colisiones)
 	updateRect();
+
+	if (state != destruido) {
+
+		// mueve al laser
+		move();
+		manageCooldown();
+	}
 }
 
 void Ufo::updateRect()
@@ -35,6 +34,7 @@ bool Ufo::hit(SDL_Rect* rect, char frenemy)
 		hits++;
 
 		if (hits >= vidas) game->hasDied(it);
+		state = destruido;
 		game->increaseScore(UfoScore);
 
 		return true;
@@ -49,7 +49,9 @@ void Ufo::appear()
 	{
 		// crea un laser nuevo
 		game->showUfo(this->getPosition(), 1);
+		state = visible;
 	}
+	else state = oculto;
 }
 
 void Ufo::manageCooldown()

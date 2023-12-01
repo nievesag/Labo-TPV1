@@ -16,15 +16,15 @@ class Game;
 using namespace std;
 using uint = unsigned int;
 
-enum estado { visible, oculto, destruido };
 
 class Ufo : public SceneObject
 {
 	// atributos privados
 private:
-	int estado;
+	enum estado { visible, oculto, destruido };
 	int hits;
 	int ufoFrame; // frame del ufo (para animaciones)
+	estado state;
 
 	// cooldown de aparicion
 	double cooldown,	// cooldown de aparicion
@@ -38,8 +38,8 @@ private:
 	// metodos publicos
 public:
 	// ---- constructora ----
-	Ufo(double minCD, double maxCD, int estado, Vector2D<double> velocity, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: minCD(minCD), maxCD(maxCD), estado(estado), vel(velocity), SceneObject(position, width, height, vidas, texture, game)
+	Ufo(double minCD, double maxCD, Vector2D<double> velocity, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: minCD(minCD), maxCD(maxCD), vel(velocity), SceneObject(position, width, height, vidas, texture, game)
 	{
 		setCD();
 	};
@@ -78,5 +78,17 @@ protected:
 
 	// actualiza el rect
 	void updateRect() override;
+
+	void setState(int i) {
+		if (i == 0) {
+			state = visible;
+		}
+		else if (i == 1) {
+
+		}
+		else if (i == 2) {
+
+		}
+	}
 };
 #endif

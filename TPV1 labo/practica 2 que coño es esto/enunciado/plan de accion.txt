@@ -7,8 +7,7 @@
 -----------------
 HECHO a medias:
 - excepciones
-- ufo
-- score
+- ufo -> falla que se cree en game en principio :(
 
 
 ----------------------------------------

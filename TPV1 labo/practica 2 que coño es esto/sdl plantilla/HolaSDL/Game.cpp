@@ -278,7 +278,7 @@ void Game::showUfo(Point2D<double> pos, int estate)
 	vel.setX(-1);
 
 	// crea el ufo
-	SceneObject* newObj = new Ufo(min, max, estate, vel, pos, textures[Ufo]->getFrameWidth(), textures[Ufo]->getFrameHeight(), 1, textures[Ufo], this);
+	SceneObject* newObj = new Ufo(min, max, vel, pos, textures[Ufo]->getFrameWidth(), textures[Ufo]->getFrameHeight(), 1, textures[Ufo], this);
 
 	// lo mete en la lista
 	sceneObjectsList.push_back(newObj);
