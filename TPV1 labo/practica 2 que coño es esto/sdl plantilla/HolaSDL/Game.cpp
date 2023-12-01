@@ -265,9 +265,8 @@ bool Game::damage(Laser* myLaser)
 #pragma endregion
 
 // UFO
-void Game::showUfo(Point2D<double> pos, int estate)
+void Game::showUfo(Point2D<double> pos)
 {
-	
 	// settea la velocidad
 	Vector2D<double> vel(0, 1);
 	double min = getRandomRange(2, 7);

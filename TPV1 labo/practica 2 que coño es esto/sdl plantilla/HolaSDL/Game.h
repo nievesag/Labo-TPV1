@@ -123,7 +123,7 @@ public:
 
 	// ---- saca el ufo ----
 	// crea ufo
-	void showUfo(Point2D<double> pos, int estate);
+	void showUfo(Point2D<double> pos);
 
 	// ------------------- GETTERS ------------------
 	uint getWinWidth() { return winWidth; }
@@ -153,7 +153,6 @@ private:
 
 	// renderea el fondo
 	void renderBackground();
-
 
 	// delete scene objects
 	void deleteSceneObjects();

@@ -4,7 +4,7 @@
 void Ufo::render() const
 {
 	// lo mete en el render
-	texture->renderFrame(destRect, 10, hits);
+	texture->renderFrame(destRect, 5, hits);
 }
 
 void Ufo::update()
@@ -48,7 +48,7 @@ void Ufo::appear()
 	if (CDcounter >= cooldown)
 	{
 		// crea un laser nuevo
-		game->showUfo(this->getPosition(), 1);
+		game->showUfo(spawn);
 		state = visible;
 	}
 	else state = oculto;

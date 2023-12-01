@@ -33,6 +33,8 @@ private:
 
 	Vector2D<double> vel;
 
+	Point2D<double> spawn = { 400, 500 };
+
 	int UfoScore = 100;
 
 	// metodos publicos
@@ -78,17 +80,5 @@ protected:
 
 	// actualiza el rect
 	void updateRect() override;
-
-	void setState(int i) {
-		if (i == 0) {
-			state = visible;
-		}
-		else if (i == 1) {
-
-		}
-		else if (i == 2) {
-
-		}
-	}
 };
 #endif
