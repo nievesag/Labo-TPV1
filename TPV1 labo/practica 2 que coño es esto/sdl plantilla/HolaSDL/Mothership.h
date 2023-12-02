@@ -37,6 +37,8 @@ public:
 
 		dir = 1;
 
+		alienCount = 0;
+
 		/*
 		* if (n == 1) currentState = dRIGHT;
 		else if (n == 2) currentState = LEFT;
@@ -57,7 +59,10 @@ public:
 	int getLevel() { return level; }
 
 	// añade alien al contador
-	void addAlien() { alienCount++; }
+	void addAlien() { 
+		cout << alienCount << endl;
+		
+		alienCount++; }
 
 	// 'mata' al alien (resta al contador)
 	void alienDied() { alienCount--; };

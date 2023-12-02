@@ -17,7 +17,7 @@ void Mothership::update()
 void Mothership::save(ostream& out) const
 {
 	// guarda el indicador de numero, la altura de los aliens, el estado actual y el cooldown
-	out << "3 " << level << " " << currentState << " " << alienTimer << endl;
+	out << "3 " << level << " " << dir << " " << alienTimer << endl;
 
 }
 

@@ -19,9 +19,6 @@ void Alien::update()
 
 		// anima
 		animate();
-
-		// actualiza el rect (para colisiones)
-		updateRect();
 	}
 }
 
@@ -50,10 +47,16 @@ void Alien::move()
 	//
 	position.setY(initialY + ALIEN_SPEED * mothership->getLevel());
 
+	// actualiza el rect (para colisiones)
+	updateRect();
+
 	// si se pasa de corto o de largo cambia la direccion y lo baja una posicion
 	if (position.getX() < 0 || position.getX() > game->getWinWidth() - texture->getFrameWidth()) {
+
 		mothership->cannotMove();
 	}
+
+	
 }
 
 void Alien::animate()
