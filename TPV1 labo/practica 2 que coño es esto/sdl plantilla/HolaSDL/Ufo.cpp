@@ -45,7 +45,7 @@ bool Ufo::hit(SDL_Rect* rect, char frenemy)
 
 void Ufo::appear()
 {
-	if (CDcounter >= cooldown)
+	if (CDcounter >= cooldown && !isOut)
 	{
 		// crea un laser nuevo
 		game->showUfo(spawn);
@@ -57,7 +57,7 @@ void Ufo::appear()
 void Ufo::manageCooldown()
 {
 	// gestion de cooldown
-	if (CDcounter >= cooldown) {
+	if (CDcounter >= cooldown && isOut) {
 		// elige un nuevo cooldown 
 		cooldown = game->getRandomRange(minCD, maxCD);
 
@@ -76,6 +76,11 @@ void Ufo::setCD()
 	cooldown = game->getRandomRange(minCD, maxCD);
 
 	CDcounter = 0;
+}
+
+bool Ufo::isOut()
+{
+	return (this->position.getX() >= winWidth + 50);
 }
 
 void Ufo::move()
