@@ -140,6 +140,8 @@ void Game::save(const string& file)
 	// abre un canal para guardar en un archivo con el nombre deseado
 	ofstream out(SAVED_FOLDER + file + ".txt");
 
+	milfship->save(out);
+
 	// bucle para llegar a los save de todos los objetos
 	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
 
@@ -620,6 +622,8 @@ void Game::loadAnyFile(const string& file)
 				// lee el tipo
 				in >> alienType;
 
+				in >> cooldown;
+
 				// ---------------- Creacion del objeto ------------------
 
 				// rango del cooldown aleatorio
@@ -832,8 +836,8 @@ void Game::mainMenu()
 	else if (ans == 1) {
 
 		// carga una partida
-		//loadThisGame();
-		loadMap(); // placeholder apra que no pete
+		loadThisGame();
+		//loadMap(); // placeholder apra que no pete
 	}
 
 }
