@@ -72,7 +72,9 @@ private:
 	// default variables
 	int defaultLives = 1,	// default number of lives
 		defaultFrame = 0,	// default starting frame
-		ans;				// respuesta en los menuses
+		ans,				// respuesta en los menuses
+		laserW = 4,			// dimensiones del laser
+		laserH = 10;
 	
 
 	// lista de objetos de escena (cannon, aliens, bunkeres, laser)
@@ -173,6 +175,9 @@ private:
 
 	// delete scene objects
 	void deleteSceneObjects();
+
+	// añade los objetos a la lista de sceneObejcts
+	void addToSceneObjects();
 
 	// guarda la partida (esto va dentro del handle events de la S de save pero es por orden)
 	void saveThisGame();

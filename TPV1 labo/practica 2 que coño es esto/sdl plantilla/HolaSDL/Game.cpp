@@ -324,22 +324,16 @@ void Game::PlayerScore()
 #pragma region CONTROL DE DAÑO
 void Game::fireLaser(Point2D<double> pos, char frenemy)
 {
-	// settea la velocidad
-	Vector2D<double> vel(0,1);
 
 	if (frenemy == 'a') {
 		SDL_SetRenderDrawColor(renderer, 255, 0, 114, 255);	// cannon
-
-		vel.setY(1);
 	}	
 	else {
 		SDL_SetRenderDrawColor(renderer, 255, 242, 0, 255);	// aliens
-
-		vel.setY(-1);
 	}
 	
 	// crea el laser
-	SceneObject* newObj = new Laser(frenemy, vel, pos, 4, 10, 1, nullptr, this);
+	SceneObject* newObj = new Laser(frenemy, pos, 4, 10, 1, nullptr, this);
 
 	// lo mete en la lista
 	sceneObjectsList.push_back(newObj);
@@ -427,7 +421,7 @@ void Game::loadMap()
 	int atype;
 
 	// crea la mothership
-	milfship = new Mothership(10, this, 30);
+	milfship = new Mothership(10, this, 30, 0);
 
 	// in.eof() devuelve si se ha acabado el fichero
 	while (!in.eof()) {
@@ -517,7 +511,7 @@ void Game::loadAnyFile(const string& file)
 	int objID;						// id
 	int x, y;						// pos
 	int alienType, cooldown, vidas,	// otros
-		estado, hits, timer;
+		estado, hits, timer, score;
 	char color;						// color
 
 	// mientras no se acabe el archivo sigue leyendo
@@ -661,7 +655,6 @@ void Game::loadAnyFile(const string& file)
 				// setup de la mothership:
 				// id level estado timer
 
-
 				// ---------------- Lectura de variables ---------------
 
 				// lee la altura
@@ -687,7 +680,6 @@ void Game::loadAnyFile(const string& file)
 				// setup del bunker:
 				// id x y vidas hits
 
-
 				// ---------------- Lectura de variables ---------------
 
 				// lee la posicion
@@ -701,9 +693,22 @@ void Game::loadAnyFile(const string& file)
 				in >> vidas;
 				in >> hits;
 
-
 				// ---------------- Creacion del objeto ------------------
 
+				//bunker
+				SceneObject* obj = new Bunker(hits, coord, textures[Escudo]->getFrameWidth(), 
+					textures[Escudo]->getFrameHeight(), vidas, textures[Escudo], this);
+
+				// lo mete en la lista
+				sceneObjectsList.push_back(obj);
+
+				//iterador al final de la lista
+				list<SceneObject*>::iterator newit = sceneObjectsList.end();
+
+				newit--;
+
+				// le pasa el iterador
+				obj->setListIterator(newit);
 
 				// ----------------------- Fin del stup -----------------------
 
@@ -744,7 +749,6 @@ void Game::loadAnyFile(const string& file)
 				// setup del laser:
 				// id x y color
 
-
 				// ---------------- Lectura de variables ---------------
 
 				// lee la posicion
@@ -759,6 +763,27 @@ void Game::loadAnyFile(const string& file)
 
 				// ---------------- Creacion del objeto ------------------
 
+				if (color == 'a') {
+					SDL_SetRenderDrawColor(renderer, 255, 0, 114, 255);	// cannon
+				}
+				else {
+					SDL_SetRenderDrawColor(renderer, 255, 242, 0, 255);	// aliens
+				}
+
+				//bunker
+				SceneObject* obj = new Laser(color, coord, laserW, laserH, 
+					defaultLives, nullptr, this);
+
+				// lo mete en la lista
+				sceneObjectsList.push_back(obj);
+
+				//iterador al final de la lista
+				list<SceneObject*>::iterator newit = sceneObjectsList.end();
+
+				newit--;
+
+				// le pasa el iterador
+				obj->setListIterator(newit);
 
 				// ----------------------- Fin del stup -----------------------
 
@@ -768,7 +793,9 @@ void Game::loadAnyFile(const string& file)
 
 			// si es la puntuacion
 			case 7: {
-				in >> timer;
+				in >> score;
+
+				SCORE = score;
 
 				break;
 			}
@@ -805,7 +832,8 @@ void Game::mainMenu()
 	else if (ans == 1) {
 
 		// carga una partida
-		loadThisGame();
+		//loadThisGame();
+		loadMap(); // placeholder apra que no pete
 	}
 
 }

@@ -31,11 +31,14 @@ private:
 	// metodos publicos 
 public:
 	// ---- constructora ----
-	Laser(char type, Vector2D<double> velocity, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: laserType(type), vel(velocity), SceneObject(position, width, height, vidas, texture, game)
+	Laser(char type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: laserType(type), SceneObject(position, width, height, vidas, texture, game)
 	{ 
 		// inicializa alive a true al construirse
 		alive = true;
+
+		if (laserType == 'a') vel.setY(1);
+		else vel.setY(-1);
 	};
 
 	// ---- render ----

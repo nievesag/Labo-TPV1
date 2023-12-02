@@ -23,6 +23,8 @@ public:
 	Vector2D(T x, T y)
 		: x(x), y(y) {} // los corchetes vacios inicializa las variables a 0
 
+	Vector2D() : x(0), y(0)	{}
+
 	// ---- getters ----
 	// const porque no editan las variables 
 	// getter x
