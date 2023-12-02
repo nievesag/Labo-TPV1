@@ -10,7 +10,7 @@ void Alien::render() const
 void Alien::update()
 {
 	// le pregunta 
-	//mothership->alienLanded(this);
+	mothership->alienLanded(this);
 
 	if (mothership->shouldMove()) {
 
@@ -25,15 +25,6 @@ void Alien::update()
 	}
 }
 
-void Alien::lowerAlien()
-{
-	// lo baja 
-	position.setY(position.getY() + texture->getFrameHeight());
-
-	// descent + ALIEN_MOV_SPEED * mothership->getLevel()
-
-	//cout << "holi" << endl;
-}
 
 bool Alien::hit(SDL_Rect* rect, char frenemy)
 {
@@ -56,6 +47,7 @@ void Alien::move()
 	// mueve al alien
 	position.setX(position.getX() + (mothership->getDirection().getX() * alienSpeed));
 
+	//
 	position.setY(initialY + ALIEN_SPEED * mothership->getLevel());
 
 	// si se pasa de corto o de largo cambia la direccion y lo baja una posicion

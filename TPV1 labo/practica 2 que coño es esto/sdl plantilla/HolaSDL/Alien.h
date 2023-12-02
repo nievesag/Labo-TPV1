@@ -59,10 +59,6 @@ public:
 	// guarda objeto
 	virtual void save(ostream& out) const override;
 
-	// ---- lowerAlien ----
-	// baja al alien
-	void lowerAlien();
-
 	// ---- hit ----
 	// colisiones
 	bool hit(SDL_Rect* rect, char frenemy) override;

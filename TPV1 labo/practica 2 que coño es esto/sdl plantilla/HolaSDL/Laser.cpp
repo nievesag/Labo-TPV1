@@ -67,7 +67,7 @@ void Laser::move()
 	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! pasar a variable
 
 	// mueve al laser
-	position.setY(position.getY() - (vel.getY()*0.2));
+	position.setY(position.getY() - (vel.getY()*LASER_SPEED));
 }
 
 void Laser::updateRect()
