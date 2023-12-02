@@ -43,7 +43,9 @@ Game::Game()
 
 	loadTextures();
 
-	loadMap();
+	mainMenu();
+
+	//loadMap();
 }
 
 Game::~Game()
@@ -72,6 +74,7 @@ void Game::EndGame()
 // RUN
 void Game::run()
 {
+
 	// get ticks al inicio del bucle
 	startTime = SDL_GetTicks();
 
@@ -154,10 +157,9 @@ void Game::save(const string& file)
 void Game::load(const string& file)
 {
 
+	loadAnyFile(file);
 
-
-
-	cout << "se cargaaaaaaaaaaaaa" << endl;
+	//cout << "se cargaaaaaaaaaaaaa" << endl;
 }
 
 void Game::renderBackground()
@@ -226,12 +228,8 @@ void Game::deleteSceneObjects()
 {
 	if (objectsToErase.size() > 0) {
 
-		//cout << "que hace esto aqui ¿?¿?¿?" << endl;
-
 		// bucle para borrar los objetos que han de ser borrados
 		for (auto a : objectsToErase) {
-
-			//cout << "PERO ES QUE ENCIMA ENTRA ME MATO TIO" << endl;
 
 			// FALTA CONTROL DE ITERATOR INVALIDO
 			// nuevo iterator
@@ -509,17 +507,18 @@ void Game::loadMap()
 	}
 }
 
-
 void Game::loadAnyFile(const string& file)
 {
 	// lee el mapa
-	ifstream in(file);
+	ifstream in(SAVED_FOLDER + file + ".txt");
 	if (in.fail()) throw ("No se ha podido leer mapa");
 
 	// variables auxiliares
 	int objID;						// id
 	int x, y;						// pos
-	int alienType, cooldown, vidas;	// otros
+	int alienType, cooldown, vidas,	// otros
+		estado, hits, timer;
+	char color;						// color
 
 	// mientras no se acabe el archivo sigue leyendo
 	while (!in.eof()) {
@@ -617,6 +616,17 @@ void Game::loadAnyFile(const string& file)
 
 				// ---------------- Lectura de variables ---------------
 
+				// lee la posicion
+				in >> x;
+				in >> y;
+
+				// crea el vector
+				Point2D<double> coord(x, y);
+
+				// lee el tipo
+				in >> alienType;
+				in >> cooldown;
+
 
 				// ---------------- Creacion del objeto ------------------
 
@@ -634,6 +644,13 @@ void Game::loadAnyFile(const string& file)
 
 
 				// ---------------- Lectura de variables ---------------
+
+				// lee la altura
+				in >> y;
+
+				// lee el tipo
+				in >> estado;
+				in >> timer;
 
 
 				// ---------------- Creacion del objeto ------------------
@@ -653,6 +670,17 @@ void Game::loadAnyFile(const string& file)
 
 				// ---------------- Lectura de variables ---------------
 
+				// lee la posicion
+				in >> x;
+				in >> y;
+
+				// crea el vector
+				Point2D<double> coord(x, y);
+
+				// lee el tipo
+				in >> vidas;
+				in >> hits;
+
 
 				// ---------------- Creacion del objeto ------------------
 
@@ -668,9 +696,18 @@ void Game::loadAnyFile(const string& file)
 				// setup del ufo:
 				// id y estado cooldown hits
 
-
-
 				// ---------------- Lectura de variables ---------------
+
+				// lee la posicion
+				in >> y;
+
+				// crea el vector
+				Point2D<double> coord(0, y);
+
+				// lee 
+				in >> estado;
+				in >> cooldown;
+				in >> hits;
 
 
 				// ---------------- Creacion del objeto ------------------
@@ -690,6 +727,15 @@ void Game::loadAnyFile(const string& file)
 
 				// ---------------- Lectura de variables ---------------
 
+				// lee la posicion
+				in >> x;
+				in >> y;
+
+				// crea el vector
+				Point2D<double> coord(x, y);
+
+				// lee el tipo
+				in >> color;
 
 				// ---------------- Creacion del objeto ------------------
 
@@ -702,6 +748,7 @@ void Game::loadAnyFile(const string& file)
 
 			// si es la puntuacion
 			case 7: {
+				in >> timer;
 
 				break;
 			}
@@ -713,6 +760,34 @@ void Game::loadAnyFile(const string& file)
 
 	}
 
+
+}
+
+void Game::mainMenu()
+{
+	// pregunta si quieres cargar juego
+	cout << "Load game? \n  Yes -> 1 \n  No -> 0" << endl;
+
+	// recibe la respuesta
+	cin >> ans;
+
+	// si la respuesta es invalida le dice que lo vuelva a intentar
+	while (ans != 0 && ans != 1) {
+
+		cout << "Invalid input, remember: \n  Yes -> 1 \n  No -> 0" << endl;
+		cin >> ans;
+	}
+	
+	// si la respuesta es no carga 
+	if (ans == 0) {
+
+		loadMap();
+	}
+	else if (ans == 1) {
+
+		// carga una partida
+		loadThisGame();
+	}
 
 }
 #pragma endregion

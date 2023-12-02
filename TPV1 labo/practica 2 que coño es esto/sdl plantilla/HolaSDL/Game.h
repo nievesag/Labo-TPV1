@@ -71,7 +71,8 @@ private:
 
 	// default variables
 	int defaultLives = 1,	// default number of lives
-		defaultFrame = 0;	// default starting frame
+		defaultFrame = 0,	// default starting frame
+		ans;				// respuesta en los menuses
 	
 
 	// lista de objetos de escena (cannon, aliens, bunkeres, laser)
@@ -181,6 +182,9 @@ private:
 
 	// carga cualquier archivo
 	void loadAnyFile(const string& file);
+
+	// ----------- Main menu -----------
+	void mainMenu();
 };
 
 #endif
