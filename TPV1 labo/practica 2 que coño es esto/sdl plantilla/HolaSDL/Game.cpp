@@ -625,10 +625,29 @@ void Game::loadAnyFile(const string& file)
 
 				// lee el tipo
 				in >> alienType;
-				in >> cooldown;
-
 
 				// ---------------- Creacion del objeto ------------------
+
+				// rango del cooldown aleatorio
+				double min = getRandomRange(2, 7);
+				double max = getRandomRange(8, 15);
+
+				//				 minCD(minCD), maxCD(maxCD)
+				SceneObject* obj = new ShooterAlien(min, max, milfship, defaultFrame, alienType, coord, 
+					textures[alienType]->getFrameWidth(), textures[alienType]->getFrameHeight(), defaultLives, 
+					textures[alienType], this);
+
+				// lo mete en la lista
+				sceneObjectsList.push_back(obj);
+
+				//iterador al final de la lista
+				list<SceneObject*>::iterator newit = sceneObjectsList.end();
+
+				// el ultimo iterador es ???, por lo que le restamos 1 para que no sea invalido
+				newit--;
+
+				// le pasa el iterador
+				obj->setListIterator(newit);
 
 
 				// ----------------------- Fin del stup -----------------------
@@ -652,9 +671,10 @@ void Game::loadAnyFile(const string& file)
 				in >> estado;
 				in >> timer;
 
-
 				// ---------------- Creacion del objeto ------------------
 
+				// crea la mothership
+				milfship = new Mothership(y, this, timer, estado);
 
 				// ----------------------- Fin del stup -----------------------
 
@@ -753,8 +773,6 @@ void Game::loadAnyFile(const string& file)
 				break;
 			}
 
-
-
 		}
 
 
@@ -781,6 +799,7 @@ void Game::mainMenu()
 	// si la respuesta es no carga 
 	if (ans == 0) {
 
+		// carga un mapa
 		loadMap();
 	}
 	else if (ans == 1) {

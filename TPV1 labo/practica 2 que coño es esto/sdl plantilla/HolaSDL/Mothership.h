@@ -25,9 +25,13 @@ private:
 
 	// metodos publicos
 public:
-	Mothership::Mothership(int offset, Game* game, int alienTimer) 
+	Mothership::Mothership(int level, Game* game, int alienTimer, int n) 
 		: level(level), GameObject(game), alienTimer(alienTimer) {
-		currentState = RIGHT;
+
+		if (n == 1) currentState = dRIGHT;
+		else if (n == 2) currentState = LEFT;
+		else if (n == 3) currentState = dLEFT;
+		else currentState = RIGHT;
 	}
 		
 	//
@@ -59,5 +63,6 @@ public:
 
 	// devuelve la cantidad de aliens que quedan
 	int getAlienCount();
+
 };
 #endif
