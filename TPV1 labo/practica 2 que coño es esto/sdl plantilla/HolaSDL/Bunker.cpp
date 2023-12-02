@@ -7,6 +7,18 @@ void Bunker::render() const
 	texture->renderFrame(destRect, 0, hits);
 }
 
+void Bunker::save(ostream& out) const
+{
+	// guarda el indicador de numero
+	out << "4 ";
+
+	// guarda la posicion
+	SceneObject::save(out);
+
+	// guarda las vidas y golpes recibidos (es que lo hacemos por hits por comodidad)
+	out << vidas << " " << hits << endl;
+}
+
 void Bunker::update()
 {
 	// creo que sobra ????

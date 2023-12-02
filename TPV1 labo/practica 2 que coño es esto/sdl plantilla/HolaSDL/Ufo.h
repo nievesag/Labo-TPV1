@@ -71,7 +71,7 @@ public:
 
 	// ---- save ----
 	// guarda objeto
-	void save(ostream&) const override;
+	void save(ostream& out) const override;
 
 protected:
 	// ---- move ----

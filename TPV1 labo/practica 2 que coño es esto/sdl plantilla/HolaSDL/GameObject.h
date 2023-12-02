@@ -40,6 +40,6 @@ public:
 	virtual void update() = 0;
 
 	// ---- save del objeto ----
-	virtual void save(ostream&) const;
+	virtual void save(ostream& out) const = 0;
 };
 #endif

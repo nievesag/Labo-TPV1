@@ -33,6 +33,8 @@ public:
 	//
 	void update() override;
 
+	void save(ostream& out) const override;
+
 	// ajusta la direccion de los aliens
 	Vector2D<int> getDirection();
 

@@ -4,7 +4,12 @@ void SceneObject::render() const {}
 
 void SceneObject::update() {}
 
-void SceneObject::save(ostream&) const {}
+void SceneObject::save(ostream& out) const {
+	
+	//  guarda la posicion (comun para todos)
+	out << position.getX() << " " << position.getY() << " ";
+
+}
 
 bool SceneObject::hit(SDL_Rect* ataque, char frenemy) { return false; }
 

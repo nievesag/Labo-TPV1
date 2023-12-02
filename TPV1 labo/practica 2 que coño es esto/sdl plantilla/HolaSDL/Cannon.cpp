@@ -124,8 +124,15 @@ void Cannon::movement()
 		position.setX(game->getWinWidth() - texture->getFrameWidth());
 }
 
-void Cannon::save(ostream&) const
+void Cannon::save(ostream& out) const
 {
+	// guarda el indicador de numero
+	out << "0 ";
 
+	// guarda la posicion
+	SceneObject::save(out);
+
+	// guarda las vidas del cannon y el cooldown del disparo
+	out << vidas << " " << cooldown << endl;
 
 }

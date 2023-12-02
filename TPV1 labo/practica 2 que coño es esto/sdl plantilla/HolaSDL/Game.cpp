@@ -131,6 +131,25 @@ void Game::render()
 	SDL_RenderPresent(renderer);
 }
 
+void Game::save(const string& file)
+{
+	// abre un canal para guardar en un archivo con el nombre deseado
+	ofstream out(file + ".txt");
+
+	// bucle para llegar a los save de todos los objetos
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
+
+		(*it)->save(out);
+	}
+
+	// guarda los puntos
+	out << "7 " << SCORE << endl;
+
+	// cierra el hilo
+	out.close();
+
+}
+
 void Game::renderBackground()
 {
 	// renderiza el fondo

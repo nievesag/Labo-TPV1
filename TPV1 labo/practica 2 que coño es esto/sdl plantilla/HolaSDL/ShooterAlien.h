@@ -41,5 +41,7 @@ public:
 
 	void update() override;
 
+	void save(ostream& out) const override;
+
 };
 #endif

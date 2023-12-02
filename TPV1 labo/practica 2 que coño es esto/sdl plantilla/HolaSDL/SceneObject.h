@@ -67,7 +67,7 @@ public:
 	virtual void update();
 
 	//
-	virtual void save(ostream&) const;
+	virtual void save(ostream& out) const override;
 
 	// ataque al objeto (basicamente colisiones)
 	virtual bool hit(SDL_Rect* ataque, char frenemy);

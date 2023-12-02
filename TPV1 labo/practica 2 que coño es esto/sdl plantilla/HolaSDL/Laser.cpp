@@ -31,6 +31,19 @@ void Laser::update()
 	}
 }
 
+void Laser::save(ostream& out) const
+{
+	// guarda el indicador de numero
+	out << "6 ";
+
+	// guarda la posicion
+	SceneObject::save(out);
+
+	// guarda el color 
+	out << laserType << endl;
+
+}
+
 bool Laser::hit(SDL_Rect* rect, char frenemy)
 {
 	// si colisiona con un laser amigo 

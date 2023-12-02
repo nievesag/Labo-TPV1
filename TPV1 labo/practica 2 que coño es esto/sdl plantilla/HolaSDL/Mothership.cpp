@@ -15,6 +15,13 @@ void Mothership::update()
 	// direccion de los aliens
 }
 
+void Mothership::save(ostream& out) const
+{
+	// guarda el indicador de numero, la altura de los aliens, el estado actual y el cooldown
+	out << "3 " << level << " " << currentState << " " << alienTimer << endl;
+
+}
+
 Vector2D<int> Mothership::getDirection()
 {
 	Vector2D<int> dir{0,0};

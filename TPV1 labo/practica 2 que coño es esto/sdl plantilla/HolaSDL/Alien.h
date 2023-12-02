@@ -52,7 +52,7 @@ public:
 
 	// ---- save ----
 	// guarda objeto
-	void save(ostream&) const override;
+	virtual void save(ostream& out) const override;
 
 	// ---- lowerAlien ----
 	// baja al alien

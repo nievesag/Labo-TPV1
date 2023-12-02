@@ -73,7 +73,15 @@ void Alien::updateRect()
 	destRect.y = position.getY();
 }
 
-void Alien::save(ostream&) const
+void Alien::save(ostream& out) const
 {
-	
+	// guarda el indicador de numero
+	out << "1 ";
+
+	//  guarda la posicion
+	SceneObject::save(out);
+
+	// guarda el subtipo
+	out << type << endl;
+
 }

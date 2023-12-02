@@ -39,7 +39,7 @@ public:
 
 	void update() override;
 
-	void save(ostream&) const override;
+	void save(ostream& out) const override;
 
 	// getter de vidas restantes
 	int getLives() {

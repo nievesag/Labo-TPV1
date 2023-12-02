@@ -99,7 +99,8 @@ public:
 	void render();
 
 	// ---- CARGAR Y SALVAR PARTIDAS ----
-	void save();
+	void save(const string& file);
+
 	void load();
 
 	// ---- handleEvents ----

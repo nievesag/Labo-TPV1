@@ -84,7 +84,13 @@ void Ufo::move()
 	position.setX(position.getX() - (vel.getX() * 0.2));
 }
 
-void Ufo::save(ostream&) const
+void Ufo::save(ostream& out) const
 {
+	// guarda el indicador de numero, la altura, el estado y el cooldown (y los golpes)
+	out << "5 "
+		<< spawn.getY() << " " 
+		<< state << " " 
+		<< cooldown << " " 
+		<< hits << endl;
 
 }

@@ -51,3 +51,16 @@ void ShooterAlien::update()
 		updateRect();
 	}
 }
+
+void ShooterAlien::save(ostream& out) const
+{
+	// guarda el indicador de numero
+	out << "2 ";
+
+	//  guarda la posicion
+	SceneObject::save(out);
+
+	// guarda el subtipo y el cooldown del disparo
+	out << type << " " << cooldown << endl;
+
+}

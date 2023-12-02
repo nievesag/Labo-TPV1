@@ -27,6 +27,8 @@ public:
 	//
 	void update() override;
 
+	void save(ostream& out) const override;
+
 	// ---- hit ----
 	// colisiones
 	bool hit(SDL_Rect* rect, char frenemy) override;
