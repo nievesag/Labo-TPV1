@@ -1,8 +1,7 @@
 - framerate
-  animaciones aliens
   movimiento aliens (bajen)
 
-- save
+- save del ufo --> mas bien load
 
 -----------------
 HECHO a medias:

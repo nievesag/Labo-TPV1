@@ -9,6 +9,9 @@ void Alien::render() const
 
 void Alien::update()
 {
+	// le pregunta 
+	mothership->alienLanded(this);
+
 	if (mothership->shouldMove()) {
 
 		// se mueve

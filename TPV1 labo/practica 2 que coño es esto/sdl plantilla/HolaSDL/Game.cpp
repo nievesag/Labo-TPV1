@@ -803,6 +803,9 @@ void Game::loadAnyFile(const string& file)
 			if (alien != nullptr) {
 				// llama al setteador
 				alien->setMothership(milfship);
+
+				// añade al contador de aliens de la mothership
+				milfship->addAlien();
 			}
 		}
 	}

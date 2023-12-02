@@ -2,6 +2,7 @@
 #define MOTHERSHIP_H
 
 #include "GameObject.h"
+#include "Alien.h"
 
 using namespace std;
 using uint = unsigned int;
@@ -22,6 +23,8 @@ private:
 
 	// tiempo para los updates
 	int alienTimer;
+
+	int alienCount;
 
 	// metodos publicos
 public:
@@ -44,25 +47,29 @@ public:
 
 	int getLevel() { return level; }
 
-	// devuelve si se sigue moviendo o no (?????????)
+	// añade alien al contador
+	void addAlien() { alienCount++; }
+
+	// 'mata' al alien (resta al contador)
+	void alienDied() { alienCount--; };
+
+	// devuelve la cantidad de aliens que quedan
+	int getAlienCount() { return alienCount; };
+
+	// devuelve si se sigue moviendo o no
 	bool shouldMove();
 	
 	// cambia la direccion actual de los aliens
 	void cannotMove();
 
-	// INFORMAN A ALIEN
-	// devuelve si el alien ha muerto
-	bool alienDied();
-
 	// devuelve si han llegado al suelo o no (se acaba partida))
-	bool alienLanded();
+	void alienLanded(const Alien* alien);
 
 	// INFORMAN AL JUEGO
-	// guatafac
-	bool haveLanded();
+	// consecuencias de haber aterrizado
+	void haveLanded();
 
-	// devuelve la cantidad de aliens que quedan
-	int getAlienCount();
+	
 
 };
 #endif
