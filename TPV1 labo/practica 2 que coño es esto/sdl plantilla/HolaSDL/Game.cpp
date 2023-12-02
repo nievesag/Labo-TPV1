@@ -134,7 +134,7 @@ void Game::render()
 void Game::save(const string& file)
 {
 	// abre un canal para guardar en un archivo con el nombre deseado
-	ofstream out(file + ".txt");
+	ofstream out(SAVED_FOLDER + file + ".txt");
 
 	// bucle para llegar a los save de todos los objetos
 	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
@@ -181,28 +181,7 @@ void Game::handleEvents()
 			// si es la tecla S (save)
 			if (key == SDL_SCANCODE_S) {
 
-				cout << "uwu que se va a guardar" << endl;
-
-				// pregunta en que numero se va a guardar la partida
-				cout << "Save this game in slot: " << std::endl;
-
-				// crea un char para guardar el numero y lo lee
-				char k;
-				cin >> k;
-
-				// comprueba que sea un numero, si no lo es le dice que es invalido
-				if (isdigit(k))
-				{
-					// pasa numero a string despues del save (savek)
-					save("save" + to_string(k - '0'));
-
-					// acaba el juego
-					EndGame();
-
-					// se ha salvado el juego !!!!!
-					cout << "Game saved!" << endl;
-				}
-				else cout << "Invalid number.";
+				saveThisGame();
 			}
 
 		}
@@ -256,6 +235,31 @@ void Game::hasDied(list<SceneObject*>::iterator& it)
 	objectsToErase.push_back(it);
 }
 #pragma endregion
+
+void Game::saveThisGame()
+{
+	// pregunta en que numero se va a guardar la partida
+	cout << "Save this game in slot: " << std::endl;
+
+	// crea un char para guardar el numero y lo lee
+	char k;
+	cin >> k;
+
+	// comprueba que sea un numero, si no lo es le dice que es invalido
+	if (isdigit(k))
+	{
+		// pasa numero a string despues del save (savek)
+		save("save" + to_string(k - '0'));
+
+		// acaba el juego
+		EndGame();
+
+		// se ha salvado el juego !!!!!
+		cout << "Game saved!" << endl;
+	}
+	else cout << "Invalid number.";
+
+}
 
 // MANEJAR SCORE
 void Game::increaseScore(int score)

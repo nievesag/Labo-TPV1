@@ -41,6 +41,11 @@ static constexpr double FRAMERATE = 60,						// frames por segundo
 						END_GAME = 300,						// distancia de los aliens para acabar
 						ALIEN_RF = 5 * FRAMERATE;			// cada cuanto se actualiza el alien
 
+// ------------------------------------- SAVE & READ FILES ----------------------------
+// archivo de strings con las roots de las carpetas etc
+static string SAVED_FOLDER = "..\\saved\\";
+
+
 // ----------------------------------- G A M E  ------------------------------------
 class Game
 {
@@ -158,6 +163,9 @@ private:
 
 	// delete scene objects
 	void deleteSceneObjects();
+
+	// guarda la partida (esto va dentro del handle events de la S de save pero es por orden)
+	void saveThisGame();
 };
 
 #endif
