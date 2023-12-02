@@ -75,10 +75,12 @@ bool Cannon::hit(SDL_Rect* rect, char frenemy)
 
 void Cannon::manageCooldown()
 {
+
 	if (currentCD < cooldown) {
 		currentCD++;
 	}
 	else {
+
 		shoot();
 
 		currentCD = 0;
@@ -104,6 +106,7 @@ void Cannon::movement()
 	else if (keyA != keyD) // si NO se pulsan 2 teclas a la vez
 	{
 		if (keyA) {
+
 			// movimiento a la izq x de direction = -1
 			direction = Vector2D<double>(-1, 0);
 		}

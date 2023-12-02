@@ -191,7 +191,6 @@ void Game::handleEvents()
 		// si se pulsa una tecla
 		else if (event.type == SDL_KEYDOWN && (key == SDL_SCANCODE_S || key == SDL_SCANCODE_L)) {
 
-			
 			// si es la tecla S (save)
 			if (key == SDL_SCANCODE_S) {
 
@@ -204,12 +203,6 @@ void Game::handleEvents()
 				// carga la partida indicada
 				loadThisGame();
 			}
-			// ¿?¿?¿?¿??¿?¿
-			else if (key == SDL_SCANCODE_M) {
-
-
-			}
-
 		}
 		// MANEJO DE EVENTOS DE OBJETOS DE JUEGO
 		else { 
@@ -812,7 +805,6 @@ void Game::loadAnyFile(const string& file)
 				alien->setMothership(milfship);
 			}
 		}
-
 	}
 
 
