@@ -6,6 +6,8 @@ void SceneObject::update() {}
 
 void SceneObject::save(ostream& out) const {
 	
+	cout << position.getX()<< " " << position.getY() << " ";
+
 	//  guarda la posicion (comun para todos)
 	out << position.getX() << " " << position.getY() << " ";
 

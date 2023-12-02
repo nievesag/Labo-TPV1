@@ -131,6 +131,7 @@ void Game::render()
 	SDL_RenderPresent(renderer);
 }
 
+// GUARDAR
 void Game::save(const string& file)
 {
 	// abre un canal para guardar en un archivo con el nombre deseado
@@ -148,6 +149,15 @@ void Game::save(const string& file)
 	// cierra el hilo
 	out.close();
 
+}
+
+void Game::load(const string& file)
+{
+
+
+
+
+	cout << "se cargaaaaaaaaaaaaa" << endl;
 }
 
 void Game::renderBackground()
@@ -175,13 +185,25 @@ void Game::handleEvents()
 		if (event.type == SDL_QUIT) EndGame();
 
 		// si se pulsa una tecla
-		else if (event.type == SDL_KEYDOWN && (key == SDL_SCANCODE_S)) {
+		else if (event.type == SDL_KEYDOWN && (key == SDL_SCANCODE_S || key == SDL_SCANCODE_L)) {
 
 			
 			// si es la tecla S (save)
 			if (key == SDL_SCANCODE_S) {
 
+				// guarda la partida (incluye la gestion del 'menu')
 				saveThisGame();
+			}
+			// si es la tecla L (load)
+			else if (key == SDL_SCANCODE_L) {
+
+				// carga la partida indicada
+				loadThisGame();
+			}
+			// ¿?¿?¿?¿??¿?¿
+			else if (key == SDL_SCANCODE_M) {
+
+
 			}
 
 		}
@@ -236,6 +258,7 @@ void Game::hasDied(list<SceneObject*>::iterator& it)
 }
 #pragma endregion
 
+#pragma region Gestion de menuses
 void Game::saveThisGame()
 {
 	// pregunta en que numero se va a guardar la partida
@@ -257,9 +280,33 @@ void Game::saveThisGame()
 		// se ha salvado el juego !!!!!
 		cout << "Game saved!" << endl;
 	}
-	else cout << "Invalid number.";
+	else cout << "Invalid number :(";
 
 }
+
+void Game::loadThisGame()
+{
+	// pregunta que slot se quiere cargar
+	cout << "Load slot: " << std::endl;
+
+	// crea un char para guardar el numero y lo lee
+	char k;
+	cin >> k;
+
+	// comprueba que sea un numero, si no lo es le dice que es invalido
+	if (isdigit(k))
+	{
+		// pasa numero a string despues del save (savek)
+		load("save" + to_string(k - '0'));
+
+		// se ha salvado el juego !!!!!
+		cout << "Game loaded!" << endl;
+	}
+	else cout << "Invalid number :(";
+
+}
+
+#pragma endregion
 
 // MANEJAR SCORE
 void Game::increaseScore(int score)
@@ -460,5 +507,108 @@ void Game::loadMap()
 			obj->setListIterator(newit);
 		}
 	}
+}
+
+
+void Game::loadAnyFile(const string& file)
+{
+	// lee el mapa
+	ifstream in(file);
+	if (in.fail()) throw ("No se ha podido leer mapa");
+
+	// variables auxiliares
+	int objID;
+	int x, y;
+	int atype;
+
+	// mientras no se acabe el archivo sigue leyendo
+	while (!in.eof()) {
+		
+		// lee el identificador
+		in >> objID;
+
+		// switch para leer y crear cada objeto
+		switch (objID)
+		{
+			// si es el cannon
+			case 0: {
+
+				// lee la posicion
+				in >> x;
+				in >> y;
+
+				Point2D<double> coord(x, y);
+
+				// nave
+				SceneObject* obj = new Cannon(200, coord, textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), 1, textures[Nave], this);
+
+				// lo mete en la lista
+				sceneObjectsList.push_back(obj);
+
+				//iterador al final de la lista
+				list<SceneObject*>::iterator newit = sceneObjectsList.end();
+
+				newit--;
+
+				// le pasa el iterador
+				obj->setListIterator(newit);
+				break;
+				}
+
+			// si es un alien
+			case 1: {
+
+				break;
+				}
+
+			// si es un shotter alien
+			case 2: {
+
+
+				break;
+				}
+			
+			// si es el mothership
+			case 3:{
+
+
+				break;
+				}
+
+			// si es un bunker
+			case 4: {
+
+
+				break;
+			}
+
+			// si es el ufo
+			case 5: {
+
+
+				break;
+			}
+
+			// si es un laser
+			case 6: {
+
+
+				break;
+			}
+
+			// si es la puntuacion
+			case 7: {
+
+				break;
+			}
+
+
+
+		}
+
+
+	}
+
+
 }
 #pragma endregion

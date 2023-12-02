@@ -105,9 +105,11 @@ public:
 	void render();
 
 	// ---- CARGAR Y SALVAR PARTIDAS ----
+	// salva la partida guardando la info de todos los objetos en un archivo 
 	void save(const string& file);
 
-	void load();
+	// carga la partida leyendo el archivo indicado
+	void load(const string& file);
 
 	// ---- handleEvents ----
 	// input del jugador
@@ -121,7 +123,7 @@ public:
 	// acaba el juego (setea exit a true)
 	void EndGame();
 
-	//
+	// devuelve si choca con algo (colisiones vamos)
 	bool damage(Laser* myLaser);
 
 	// ---- dispara el laser ----
@@ -145,6 +147,7 @@ public:
 	// muestra en consola la puntuacion del jugador
 	void PlayerScore();
 
+	// aumenta el score con la cantidad indicada
 	void increaseScore(int score);
 
 // ------ METODOS PRIVADOS -------
@@ -166,6 +169,12 @@ private:
 
 	// guarda la partida (esto va dentro del handle events de la S de save pero es por orden)
 	void saveThisGame();
+
+	// carga la paprtida indicada (lo mismo que la anterior)
+	void loadThisGame();
+
+	// carga cualquier archivo
+	void loadAnyFile(const string& file);
 };
 
 #endif
