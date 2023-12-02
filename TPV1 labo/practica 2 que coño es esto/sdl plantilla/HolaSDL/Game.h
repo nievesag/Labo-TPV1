@@ -38,7 +38,7 @@ static constexpr int FRAMERATE = 60,						// frames por segundo
 					ALIEN_RF = 5 * FRAMERATE;			// cada cuanto se actualiza el alien
 
 static constexpr double LASER_SPEED = 60 * TIME_BT_FRAMES,	// velocidad de laser
-						ALIEN_SPEED = 50 * TIME_BT_FRAMES,	// velocidad de aliens
+						ALIEN_SPEED = 10 * TIME_BT_FRAMES,	// velocidad de aliens
 						CANNON_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de cannon
 						UFO_SPEED = 6 * TIME_BT_FRAMES;		// velocidad de ufo
 						

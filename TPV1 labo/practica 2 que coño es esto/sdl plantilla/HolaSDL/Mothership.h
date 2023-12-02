@@ -7,6 +7,8 @@
 using namespace std;
 using uint = unsigned int;
 
+class Alien;
+
 class Mothership : public GameObject
 {
 	// atributos privados
@@ -17,6 +19,8 @@ private:
 
 	// estado actual del movimiento de los aliens
 	state currentState;
+
+	int dir;
 
 	// offset del descenso
 	int level;
@@ -31,10 +35,15 @@ public:
 	Mothership::Mothership(int level, Game* game, int alienTimer, int n) 
 		: level(level), GameObject(game), alienTimer(alienTimer) {
 
-		if (n == 1) currentState = dRIGHT;
+		dir = 1;
+
+		/*
+		* if (n == 1) currentState = dRIGHT;
 		else if (n == 2) currentState = LEFT;
 		else if (n == 3) currentState = dLEFT;
 		else currentState = RIGHT;
+		*/
+		
 	}
 		
 	//
@@ -66,7 +75,7 @@ public:
 	void cannotMove();
 
 	// devuelve si han llegado al suelo o no (se acaba partida))
-	void alienLanded(Alien* alien);
+	void alienLanded(const Alien* alien);
 
 	// INFORMAN AL JUEGO
 	// consecuencias de haber aterrizado

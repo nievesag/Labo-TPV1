@@ -28,7 +28,11 @@ void Alien::update()
 void Alien::lowerAlien()
 {
 	// lo baja 
-	position.setY(position.getY() + mothership->getLevel());
+	position.setY(position.getY() + texture->getFrameHeight());
+
+	// descent + ALIEN_MOV_SPEED * mothership->getLevel()
+
+	//cout << "holi" << endl;
 }
 
 bool Alien::hit(SDL_Rect* rect, char frenemy)
@@ -49,30 +53,15 @@ bool Alien::hit(SDL_Rect* rect, char frenemy)
 
 void Alien::move()
 {
-	// si va a la derecha o izquierda
-	if (mothership->getCurrentState() == 0 || mothership->getCurrentState() == 2) {
+	// mueve al alien
+	position.setX(position.getX() + (mothership->getDirection().getX() * alienSpeed));
 
-		// mueve al alien
-		position.setX(position.getX() + (mothership->getDirection().getX() * alienSpeed));
+	position.setY(initialY + ALIEN_SPEED * mothership->getLevel());
 
-		// si se pasa de corto o de largo cambia la direccion y lo baja una posicion
-		if (position.getX() < 0 || position.getX() > game->getWinWidth() - texture->getFrameWidth()) {
-			mothership->cannotMove();
-		}
-
-	}
-	// si tiene que bajar
-	else if (mothership->getCurrentState() == 1 || mothership->getCurrentState() == 3) {
-
-		// baja el alien
-		lowerAlien();
-
-		// cambia el estado
+	// si se pasa de corto o de largo cambia la direccion y lo baja una posicion
+	if (position.getX() < 0 || position.getX() > game->getWinWidth() - texture->getFrameWidth()) {
 		mothership->cannotMove();
 	}
-
-	
-
 }
 
 void Alien::animate()
@@ -86,6 +75,11 @@ void Alien::updateRect()
 	// posicion
 	destRect.x = position.getX();
 	destRect.y = position.getY();
+}
+
+void Alien::setAlienSpeed()
+{
+	alienSpeed = ALIEN_SPEED;
 }
 
 void Alien::save(ostream& out) const

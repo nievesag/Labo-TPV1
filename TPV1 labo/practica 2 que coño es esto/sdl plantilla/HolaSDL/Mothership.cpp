@@ -12,7 +12,6 @@ void Mothership::update()
 		alienTimer = 0;
 	}
 
-	// direccion de los aliens
 }
 
 void Mothership::save(ostream& out) const
@@ -24,18 +23,17 @@ void Mothership::save(ostream& out) const
 
 Vector2D<int> Mothership::getDirection()
 {
-	Vector2D<int> dir{0,0};
+	Vector2D<int> direc{0,0};
 
-	// RIGHT
-	if (currentState == RIGHT) { dir.setX(1); dir.setY(0); }
-	// DOWN RIGHT
-	else if (currentState== dRIGHT) { dir.setX(1); dir.setY(1); }
-	// LEFT
-	else if (currentState == LEFT) { dir.setX(-1); dir.setY(0); }
-	// DOWN LEFT
-	else if (currentState == dLEFT) { dir.setX(-1); dir.setY(1); }
+	if (dir == 1) {
 
-	return dir;
+		direc.setX(1);
+	}
+	else if (dir -1) {
+		direc.setX(-1);
+	}
+
+	return direc;
 }
 
 
@@ -46,6 +44,7 @@ bool Mothership::shouldMove()
 
 void Mothership::cannotMove()
 {
+	/*
 	// RIGHT
 	if (currentState == RIGHT) { currentState = dRIGHT; }
 	// DOWN RIGHT
@@ -54,9 +53,16 @@ void Mothership::cannotMove()
 	else if (currentState == LEFT) { currentState = dLEFT; }
 	// DOWN LEFT
 	else { currentState = RIGHT; }
+	*/
+
+	// cambia de direccion
+	dir *= -1;
+
+	level++;
+
 }
 
-void Mothership::alienLanded(Alien* alien)
+void Mothership::alienLanded(const Alien* alien)
 {
 	// si llegan a 3/4 de la altura acaba
 	if (alien->getPosition().getY() > winHeight * 3 / 4) {
@@ -65,19 +71,6 @@ void Mothership::alienLanded(Alien* alien)
 		haveLanded();
 	}
 }
-
-
-/*
-void Mothership::alienLanded(const Alien* alien)
-{
-	// si llegan a 3/4 de la altura acaba
-	if (alien->getPosition().getY() > winHeight * 3/4) {
-
-		// acaba el juego
-		haveLanded();
-	}
-}
-*/
 
 
 void Mothership::haveLanded()
