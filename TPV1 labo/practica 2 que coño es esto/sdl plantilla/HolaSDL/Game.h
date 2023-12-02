@@ -4,6 +4,7 @@
 #include <list>
 #include <array>
 #include <vector>
+#include <string>
 #include "texture.h"
 #include "GameObject.h"
 #include <random>

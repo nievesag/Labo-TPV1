@@ -168,9 +168,44 @@ void Game::handleEvents()
 		// es decir, pollea hasta que se hayan manejado todos los eventos
 	while (SDL_PollEvent(&event) && !exit) {
 
+		// escanea y evalua que tecla has tocado
+		SDL_Scancode key = event.key.keysym.scancode;
+
 		// si se solicita quit bool exit = true
 		if (event.type == SDL_QUIT) EndGame();
 
+		// si se pulsa una tecla
+		else if (event.type == SDL_KEYDOWN && (key == SDL_SCANCODE_S)) {
+
+			
+			// si es la tecla S (save)
+			if (key == SDL_SCANCODE_S) {
+
+				cout << "uwu que se va a guardar" << endl;
+
+				// pregunta en que numero se va a guardar la partida
+				cout << "Save this game in slot: " << std::endl;
+
+				// crea un char para guardar el numero y lo lee
+				char k;
+				cin >> k;
+
+				// comprueba que sea un numero, si no lo es le dice que es invalido
+				if (isdigit(k))
+				{
+					// pasa numero a string despues del save (savek)
+					save("save" + to_string(k - '0'));
+
+					// acaba el juego
+					EndGame();
+
+					// se ha salvado el juego !!!!!
+					cout << "Game saved!" << endl;
+				}
+				else cout << "Invalid number.";
+			}
+
+		}
 		// MANEJO DE EVENTOS DE OBJETOS DE JUEGO
 		else { 
 			// el objeto en begin es el cannon
