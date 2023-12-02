@@ -517,9 +517,9 @@ void Game::loadAnyFile(const string& file)
 	if (in.fail()) throw ("No se ha podido leer mapa");
 
 	// variables auxiliares
-	int objID;
-	int x, y;
-	int atype;
+	int objID;						// id
+	int x, y;						// pos
+	int alienType, cooldown, vidas;	// otros
 
 	// mientras no se acabe el archivo sigue leyendo
 	while (!in.eof()) {
@@ -527,20 +527,30 @@ void Game::loadAnyFile(const string& file)
 		// lee el identificador
 		in >> objID;
 
+
 		// switch para leer y crear cada objeto
 		switch (objID)
 		{
 			// si es el cannon
 			case 0: {
+				// set up del archivo para el cannon:
+				// id x y vidas cd
 
+				// ---------------- Lectura de variables ---------------
 				// lee la posicion
 				in >> x;
 				in >> y;
 
+				// lee las vidas y el cd
+				in >> vidas;
+				in >> cooldown;
+				
+				// crea el vector
 				Point2D<double> coord(x, y);
 
+				// ---------------- Creacion del objeto ------------------
 				// nave
-				SceneObject* obj = new Cannon(200, coord, textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), 1, textures[Nave], this);
+				SceneObject* obj = new Cannon(cooldown, coord, textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), vidas, textures[Nave], this);
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
@@ -548,51 +558,145 @@ void Game::loadAnyFile(const string& file)
 				//iterador al final de la lista
 				list<SceneObject*>::iterator newit = sceneObjectsList.end();
 
+				// el ultimo iterador es ???, por lo que le restamos 1 para que no sea invalido
 				newit--;
 
 				// le pasa el iterador
 				obj->setListIterator(newit);
+
+				// ----------------------- Fin del stup -----------------------
+
+				// acaba el caso
 				break;
 				}
 
 			// si es un alien
 			case 1: {
+				// setup del alien:
+				// id x y type
 
+				// ---------------- Lectura de variables ---------------
+				// lee la posicion
+				in >> x;
+				in >> y;
+
+				// crea el vector
+				Point2D<double> coord(x, y);
+
+				// lee el tipo
+				in >> alienType;
+
+				// ---------------- Creacion del objeto ------------------
+				
+				// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game)
+				SceneObject* obj = new Alien(milfship, defaultFrame, alienType, coord, textures[alienType]->getFrameWidth(), 
+					textures[alienType]->getFrameHeight(), defaultLives, textures[alienType], this);
+
+				// lo mete en la lista
+				sceneObjectsList.push_back(obj);
+
+				//iterador al final de la lista
+				list<SceneObject*>::iterator newit = sceneObjectsList.end();
+
+				// el ultimo iterador es ???, por lo que le restamos 1 para que no sea invalido
+				newit--;
+
+				// le pasa el iterador
+				obj->setListIterator(newit);
+
+				// ----------------------- Fin del stup -----------------------
+
+				// acaba el caso
 				break;
 				}
 
 			// si es un shotter alien
 			case 2: {
+				// setup del shooter alien:
+				// id x y type cooldown
+
+				// ---------------- Lectura de variables ---------------
 
 
+				// ---------------- Creacion del objeto ------------------
+
+
+				// ----------------------- Fin del stup -----------------------
+
+				// acaba el caso
 				break;
 				}
 			
 			// si es el mothership
 			case 3:{
+				// setup de la mothership:
+				// id level estado timer
 
 
+				// ---------------- Lectura de variables ---------------
+
+
+				// ---------------- Creacion del objeto ------------------
+
+
+				// ----------------------- Fin del stup -----------------------
+
+				// acaba el caso
 				break;
 				}
 
 			// si es un bunker
 			case 4: {
+				// setup del bunker:
+				// id x y vidas hits
 
 
+				// ---------------- Lectura de variables ---------------
+
+
+				// ---------------- Creacion del objeto ------------------
+
+
+				// ----------------------- Fin del stup -----------------------
+
+				// acaba el caso
 				break;
 			}
 
 			// si es el ufo
 			case 5: {
+				// setup del ufo:
+				// id y estado cooldown hits
 
 
+
+				// ---------------- Lectura de variables ---------------
+
+
+				// ---------------- Creacion del objeto ------------------
+
+
+				// ----------------------- Fin del stup -----------------------
+
+				// acaba el caso
 				break;
 			}
 
 			// si es un laser
 			case 6: {
+				// setup del laser:
+				// id x y color
 
 
+				// ---------------- Lectura de variables ---------------
+
+
+				// ---------------- Creacion del objeto ------------------
+
+
+				// ----------------------- Fin del stup -----------------------
+
+				// acaba el caso
 				break;
 			}
 

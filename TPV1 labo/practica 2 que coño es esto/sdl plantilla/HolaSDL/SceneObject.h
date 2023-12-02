@@ -5,6 +5,7 @@
 #include "Vector2D.h"
 #include "texture.h"
 #include <list>
+#include <math.h>
 
 using namespace std;
 using uint = unsigned int;

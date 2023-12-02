@@ -40,6 +40,7 @@ static constexpr double FRAMERATE = 60,						// frames por segundo
 						ALIEN_FR = 8 * FRAMERATE,			// cantidad de frames entre updates del alien
 						END_GAME = 300,						// distancia de los aliens para acabar
 						ALIEN_RF = 5 * FRAMERATE;			// cada cuanto se actualiza el alien
+						
 
 // ------------------------------------- SAVE & READ FILES ----------------------------
 // archivo de strings con las roots de las carpetas etc
@@ -67,6 +68,11 @@ private:
 
 	// booleano salida del juego
 	bool exit = false;
+
+	// default variables
+	int defaultLives = 1,	// default number of lives
+		defaultFrame = 0;	// default starting frame
+	
 
 	// lista de objetos de escena (cannon, aliens, bunkeres, laser)
 	list<SceneObject*> sceneObjectsList;
