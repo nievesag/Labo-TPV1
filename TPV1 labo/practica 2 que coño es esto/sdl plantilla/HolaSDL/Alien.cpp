@@ -10,7 +10,7 @@ void Alien::render() const
 void Alien::update()
 {
 	// le pregunta 
-	mothership->alienLanded(this);
+	//mothership->alienLanded(this);
 
 	if (mothership->shouldMove()) {
 
@@ -27,15 +27,8 @@ void Alien::update()
 
 void Alien::lowerAlien()
 {
-	// si no se acaba (PLACEHOLDER!!!!!!!!!!!!!!!!!!!!!)
-	if (true) {
-		// lo baja 
-		position.setY(position.getY() + mothership->getLevel());
-	}
-	else {
-		// acaba el juego
-		game->EndGame();
-	}
+	// lo baja 
+	position.setY(position.getY() + mothership->getLevel());
 }
 
 bool Alien::hit(SDL_Rect* rect, char frenemy)
@@ -56,13 +49,30 @@ bool Alien::hit(SDL_Rect* rect, char frenemy)
 
 void Alien::move()
 {
-	// mueve al alien
-	position.setX(position.getX() + (mothership->getDirection().getX() * alienSpeed));
+	// si va a la derecha o izquierda
+	if (mothership->getCurrentState() == 0 || mothership->getCurrentState() == 2) {
 
-	// si se pasa de corto o de largo cambia la direccion y lo baja una posicion
-	if (position.getX() < 0 || position.getX() > game->getWinWidth() - texture->getFrameWidth()) {
+		// mueve al alien
+		position.setX(position.getX() + (mothership->getDirection().getX() * alienSpeed));
+
+		// si se pasa de corto o de largo cambia la direccion y lo baja una posicion
+		if (position.getX() < 0 || position.getX() > game->getWinWidth() - texture->getFrameWidth()) {
+			mothership->cannotMove();
+		}
+
+	}
+	// si tiene que bajar
+	else if (mothership->getCurrentState() == 1 || mothership->getCurrentState() == 3) {
+
+		// baja el alien
+		lowerAlien();
+
+		// cambia el estado
 		mothership->cannotMove();
 	}
+
+	
+
 }
 
 void Alien::animate()

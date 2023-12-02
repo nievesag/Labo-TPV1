@@ -56,6 +56,9 @@ public:
 	// devuelve la cantidad de aliens que quedan
 	int getAlienCount() { return alienCount; };
 
+	// devuelve el estado del mvimiento
+	int getCurrentState() { return currentState; };
+
 	// devuelve si se sigue moviendo o no
 	bool shouldMove();
 	
@@ -63,7 +66,7 @@ public:
 	void cannotMove();
 
 	// devuelve si han llegado al suelo o no (se acaba partida))
-	void alienLanded(const Alien* alien);
+	void alienLanded(Alien* alien);
 
 	// INFORMAN AL JUEGO
 	// consecuencias de haber aterrizado

@@ -56,6 +56,18 @@ void Mothership::cannotMove()
 	else { currentState = RIGHT; }
 }
 
+void Mothership::alienLanded(Alien* alien)
+{
+	// si llegan a 3/4 de la altura acaba
+	if (alien->getPosition().getY() > winHeight * 3 / 4) {
+
+		// acaba el juego
+		haveLanded();
+	}
+}
+
+
+/*
 void Mothership::alienLanded(const Alien* alien)
 {
 	// si llegan a 3/4 de la altura acaba
@@ -65,6 +77,7 @@ void Mothership::alienLanded(const Alien* alien)
 		haveLanded();
 	}
 }
+*/
 
 
 void Mothership::haveLanded()
