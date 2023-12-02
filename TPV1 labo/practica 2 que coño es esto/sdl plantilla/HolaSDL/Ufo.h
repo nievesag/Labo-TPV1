@@ -73,6 +73,9 @@ public:
 	// guarda objeto
 	void save(ostream& out) const override;
 
+	// devuelve si esta fuera del marco de juego 
+	bool isOut();
+
 protected:
 	// ---- move ----
 	// mueve el ufo
