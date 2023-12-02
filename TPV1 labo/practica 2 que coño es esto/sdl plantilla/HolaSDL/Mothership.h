@@ -60,8 +60,6 @@ public:
 
 	// añade alien al contador
 	void addAlien() { 
-		cout << alienCount << endl;
-		
 		alienCount++; }
 
 	// 'mata' al alien (resta al contador)

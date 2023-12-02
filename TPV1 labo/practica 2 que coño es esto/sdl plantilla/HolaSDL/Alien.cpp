@@ -17,6 +17,9 @@ void Alien::update()
 		// se mueve
 		move();
 
+		// actualiza el rect (para colisiones)
+		updateRect();
+
 		// anima
 		animate();
 	}
@@ -44,11 +47,8 @@ void Alien::move()
 	// mueve al alien
 	position.setX(position.getX() + (mothership->getDirection().getX() * alienSpeed));
 
-	//
+	// baja cuando level sube (sube cada vez que le llama cannotMove)
 	position.setY(initialY + ALIEN_SPEED * mothership->getLevel());
-
-	// actualiza el rect (para colisiones)
-	updateRect();
 
 	// si se pasa de corto o de largo cambia la direccion y lo baja una posicion
 	if (position.getX() < 0 || position.getX() > game->getWinWidth() - texture->getFrameWidth()) {

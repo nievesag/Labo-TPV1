@@ -809,8 +809,6 @@ void Game::loadAnyFile(const string& file)
 			}
 		}
 	}
-
-
 }
 
 void Game::mainMenu()
