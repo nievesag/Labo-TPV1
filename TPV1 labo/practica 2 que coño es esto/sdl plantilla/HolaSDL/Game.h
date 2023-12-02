@@ -31,15 +31,15 @@ static constexpr uint winHeight = 600;
 
 // ------------------- FRAMES ---------------------
 // gestion de frames y framerate 
-static constexpr double FRAMERATE = 60,						// frames por segundo
-						TIME_BT_FRAMES = 1 / FRAMERATE,		// tiempo entre frames
-						LASER_SPEED = 6 * TIME_BT_FRAMES,	// velocidad de laser
-						ALIEN_SPEED = 5 * TIME_BT_FRAMES,	// velocidad de aliens
-						CANNON_SPEED = 10 * TIME_BT_FRAMES,	// velocidad de cannon
-						UFO_SPEED = 6 * TIME_BT_FRAMES,		// velocidad de ufo
-						ALIEN_FR = 8 * FRAMERATE,			// cantidad de frames entre updates del alien
-						END_GAME = 300,						// distancia de los aliens para acabar
-						ALIEN_RF = 5 * FRAMERATE;			// cada cuanto se actualiza el alien
+static constexpr int FRAMERATE = 60,						// frames por segundo
+					TIME_BT_FRAMES = 1 / FRAMERATE,		// tiempo entre frames
+					LASER_SPEED = 6 * TIME_BT_FRAMES,	// velocidad de laser
+					ALIEN_SPEED = 5 * TIME_BT_FRAMES,	// velocidad de aliens
+					CANNON_SPEED = 10 * TIME_BT_FRAMES,	// velocidad de cannon
+					UFO_SPEED = 6 * TIME_BT_FRAMES,		// velocidad de ufo
+					ALIEN_FR = 8 * FRAMERATE,			// cantidad de frames entre updates del alien
+					END_GAME = 300,						// distancia de los aliens para acabar
+					ALIEN_RF = 5 * FRAMERATE;			// cada cuanto se actualiza el alien
 						
 
 // ------------------------------------- SAVE & READ FILES ----------------------------
@@ -74,7 +74,8 @@ private:
 		defaultFrame = 0,	// default starting frame
 		ans,				// respuesta en los menuses
 		laserW = 4,			// dimensiones del laser
-		laserH = 10;
+		laserH = 10,
+		defaultCooldown;	// default cooldown (si es -1 se genera uno, en principio)
 	
 
 	// lista de objetos de escena (cannon, aliens, bunkeres, laser)

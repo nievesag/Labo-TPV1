@@ -22,10 +22,11 @@ private:
 public:
 
 	// desde esta constructora invocar a la contructora padre (Alien)
-	ShooterAlien(double minCD, double maxCD, Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: minCD(minCD), maxCD(maxCD), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, game) 
+	ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: cooldown(cooldown), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, game) 
 	{
-		setCD();
+		setInitialCooldown();
+		
 	}
 
 	// el alien dispara
@@ -42,6 +43,8 @@ public:
 	void update() override;
 
 	void save(ostream& out) const override;
+
+	void setInitialCooldown();
 
 };
 #endif

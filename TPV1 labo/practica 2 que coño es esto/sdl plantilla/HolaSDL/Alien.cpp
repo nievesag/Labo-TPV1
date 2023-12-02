@@ -49,6 +49,8 @@ bool Alien::hit(SDL_Rect* rect, char frenemy)
 	else return false;
 }
 
+
+
 void Alien::move()
 {
 	// mueve al alien

@@ -63,7 +63,7 @@ public:
 	bool hit(SDL_Rect* rect, char frenemy) override;
 
 	// añade el mothership al alien
-	void setMothership();
+	void setMothership(Mothership* mother) { mothership = mother; };
 
 	// metodos privados (auxiliares)
 protected:

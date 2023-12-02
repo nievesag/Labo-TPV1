@@ -64,3 +64,14 @@ void ShooterAlien::save(ostream& out) const
 	out << type << " " << cooldown << endl;
 
 }
+
+void ShooterAlien::setInitialCooldown()
+{
+	if (cooldown == -1) {
+		// rango del cooldown aleatorio
+		minCD = game->getRandomRange(2, 7);
+		maxCD = game->getRandomRange(8, 15);
+
+		setCD();
+	}
+}

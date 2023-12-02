@@ -458,15 +458,14 @@ void Game::loadMap()
 
 			if (atype == 0) {
 
-				double min = getRandomRange(2, 7);
-				double max = getRandomRange(8, 15);
-
-				//				 minCD(minCD), maxCD(maxCD)
-				obj = new ShooterAlien(min, max, milfship, 0, atype, coord, textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);
+				//
+				obj = new ShooterAlien(defaultCooldown, milfship, 0, atype, coord, textures[atype]->getFrameWidth(), 
+					textures[atype]->getFrameHeight(), 2, textures[atype], this);
 			}
 			else {
 				// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game)
-				obj = new Alien(milfship, 0, atype, coord, textures[atype]->getFrameWidth(), textures[atype]->getFrameHeight(), 2, textures[atype], this);
+				obj = new Alien(milfship, 0, atype, coord, textures[atype]->getFrameWidth(), 
+					textures[atype]->getFrameHeight(), 2, textures[atype], this);
 			}
 
 			// lo mete en la lista
@@ -521,7 +520,6 @@ void Game::loadAnyFile(const string& file)
 		
 		// lee el identificador
 		in >> objID;
-
 
 		// switch para leer y crear cada objeto
 		switch (objID)
@@ -626,12 +624,8 @@ void Game::loadAnyFile(const string& file)
 
 				// ---------------- Creacion del objeto ------------------
 
-				// rango del cooldown aleatorio
-				double min = getRandomRange(2, 7);
-				double max = getRandomRange(8, 15);
-
-				//				 minCD(minCD), maxCD(maxCD)
-				SceneObject* obj = new ShooterAlien(min, max, milfship, defaultFrame, alienType, coord, 
+				//
+				SceneObject* obj = new ShooterAlien(cooldown, milfship, defaultFrame, alienType, coord, 
 					textures[alienType]->getFrameWidth(), textures[alienType]->getFrameHeight(), defaultLives, 
 					textures[alienType], this);
 
@@ -806,6 +800,18 @@ void Game::loadAnyFile(const string& file)
 
 		}
 
+		// settea el mothership en los aliens
+		for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++)
+		{
+			// hace un dynamic cast de cada alien
+			Alien* alien = dynamic_cast<Alien*>(*it);
+
+			// si es un alien setea el mothership
+			if (alien != nullptr) {
+				// llama al setteador
+				alien->setMothership(milfship);
+			}
+		}
 
 	}
 
