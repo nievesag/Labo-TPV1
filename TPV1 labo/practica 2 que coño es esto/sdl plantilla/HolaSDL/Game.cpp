@@ -1,6 +1,10 @@
 #include "checkML.h"
 #include "Game.h"
 
+#include "FileNotFoundError.h"
+#include "SDLError.h"
+#include "FileFormatError.h" 
+
 using namespace std;
 
 // constructora del game
@@ -19,7 +23,7 @@ Game::Game()
 
 	// ERRORES DE SDL
 	if (window == nullptr || renderer == nullptr)
-		throw "Error cargando ventana de juego o renderer"s;
+		throw SDLError("Error cargando ventana de juego o renderer "s + SDL_GetError());
 
 	loadTextures();
 
@@ -362,9 +366,8 @@ void Game::loadTextures()
 		// la mete en el array
 		textures[i] = tex;
 		if (textures[i] == nullptr) {
-			// throwea algo en concreto
-			// ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ esto es un throweo generico (es un placeholder)
-			throw "uwu"s;
+
+			throw SDLError("Error cargando texturas "s + SDL_GetError());
 		}
 	}
 }
@@ -373,7 +376,12 @@ void Game::loadMap()
 {
 	// lee el mapa
 	ifstream in("..\\mapas\\original.txt");
-	if (in.fail()) throw ("No se ha podido leer mapa");
+	if (in.fail()) throw FileNotFoundError("No se ha podido leer el mapa "s + "..\\mapas\\original.txt");
+
+	// peek -> return a next character in the input string
+	// si son el siguiente caracter se ha acabado el fichero
+	if (in.peek() == in.eof())
+		throw FileFormatError("Mapa vacio "s + "..\\mapas\\original.txt");
 
 	// variables auxiliares
 	int type;
@@ -479,7 +487,7 @@ void Game::loadAnyFile(const string& file)
 {
 	// lee el mapa
 	ifstream in(SAVED_FOLDER + file + ".txt");
-	if (in.fail()) throw ("No se ha podido leer mapa");
+	if (in.fail()) throw FileNotFoundError("No se ha podido leer el mapa "s + file + ".txt");;
 
 	// variables auxiliares
 	int objID;						// id

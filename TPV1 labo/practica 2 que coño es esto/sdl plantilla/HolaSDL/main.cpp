@@ -13,6 +13,12 @@
 // GAME
 #include "Game.h"
 
+// ERRORES
+#include "InvadersError.h"
+#include "FileNotFoundError.h"
+#include "SDLError.h"
+#include "FileFormatError.h" 
+
 using namespace std;
 
 int main(int argc, char* argv[])
@@ -24,9 +30,9 @@ int main(int argc, char* argv[])
     }
 
     // ERROR DE SDL
-    catch (SDLerror& SDLerror) {
+    catch (SDLError& SDLError) {
 
-        cout << SDLerror.what() << endl;
+        cout << SDLError.what() << endl;
     }
 
     // ERROR DE ARCHIVO NO ENCONTRADO
