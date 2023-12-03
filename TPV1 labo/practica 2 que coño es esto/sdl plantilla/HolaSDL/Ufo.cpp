@@ -9,60 +9,54 @@ void Ufo::render() const
 
 void Ufo::update()
 {
-	/*
-	if (state != destruido) {
 
-		move();
-
-		manageCooldown();
-
-		// actualiza el rect (colisiones)
-		updateRect();
-
-	}
-	*/
-	
-	cout << state << endl;
+	//cout << state << endl;
 
 
 	updateRect();
 	switch (state)
 	{
-		case visible:
+	case visible:
 
-			// se mueve con zoomies
-			move();
+		// se mueve con zoomies
+		move();
 
-			// si se sale 
-			if (isOut()) {
+		// si se sale 
+		if (isOut()) {
 
-				// desaparece
-				disappear();
-			}
+			cout << "holi" << endl;
 
-			// si le pegan una hostia
-			if (hits >= vidas) {
+			// desaparece
+			disappear();
+		}
 
-				// muere
-				die();
-			}
+		// si le pegan una hostia
+		if (hits >= vidas) {
 
-			break;
-		case destruido:
-		
-			// simplemente la animacion y luego muere
-			anima();
+			// muere
+			die();
+		}
 
-			break;
-		case oculto:
-		
-			// gestiona el cooldown de aparicion
-			// cd management
-			manageCooldown();
+		break;
+	case oculto:
 
-			break;
+		// gestiona el cooldown de aparicion
+		// cd management
+		manageCooldown();
+
+		break;
+	case destruido:
+
+		// simplemente la animacion y luego muere
+		anima();
+
+		break;
+
 	}
 }
+
+// --------------------------------------------------------------------------------------
+
 
 void Ufo::updateRect()
 {
@@ -74,7 +68,7 @@ void Ufo::updateRect()
 void Ufo::anima()
 {
 
-	// ha de mostrar el frame de explosion (de ello se encarga el render) durane unos segundos y luego volver al estado hidden adem?s de devolverlo a la posici?n inicial
+	// yes
 	if (animTimer <= 0)
 	{
 		state = oculto;
@@ -85,6 +79,7 @@ void Ufo::anima()
 
 
 }
+
 
 bool Ufo::hit(SDL_Rect* rect, char frenemy)
 {
@@ -127,7 +122,7 @@ void Ufo::manageCooldown()
 {
 	// gestion de cooldown
 	if (CDcounter >= cooldown && isOut()) {
-		
+
 		// cambia el estado
 		appear();
 
@@ -178,9 +173,9 @@ void Ufo::save(ostream& out) const
 {
 	// guarda el indicador de numero, la altura, el estado y el cooldown (y los golpes)
 	out << "5 "
-		<< spawn.getY() << " " 
-		<< state << " " 
-		<< cooldown << " " 
+		<< spawn.getY() << " "
+		<< state << " "
+		<< cooldown << " "
 		<< hits << endl;
 
 }
