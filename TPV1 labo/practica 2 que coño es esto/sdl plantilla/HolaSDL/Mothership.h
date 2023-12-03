@@ -22,6 +22,8 @@ private:
 
 	int dir;
 
+	bool switchDir;
+
 	// offset del descenso
 	int level;
 
@@ -36,6 +38,8 @@ public:
 		: level(level), GameObject(game), alienTimer(alienTimer) {
 
 		dir = 1;
+
+		switchDir = false;
 
 		alienCount = 0;
 
@@ -54,7 +58,7 @@ public:
 	void save(ostream& out) const override;
 
 	// ajusta la direccion de los aliens
-	Vector2D<int> getDirection();
+	int getDirection();
 
 	int getLevel() { return level; }
 

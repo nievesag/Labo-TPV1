@@ -10,19 +10,31 @@ void Alien::render() const
 void Alien::update()
 {
 	// le pregunta 
-	mothership->alienLanded(this);
+	//mothership->alienLanded(this);
+
+
 
 	if (mothership->shouldMove()) {
 
-		// se mueve
-		move();
-
-		// actualiza el rect (para colisiones)
-		updateRect();
+		// mueve al alien
+		position.setX(position.getX() + (mothership->getDirection() * alienSpeed));
 
 		// anima
 		animate();
+
+		// actualiza el rect (para colisiones)
+		updateRect();
 	}
+
+	// si se pasa de corto o de largo cambia la direccion y lo baja una posicion
+	if ((position.getX() <= 0) || (position.getX() >= (game->getWinWidth() - texture->getFrameWidth()))) {
+
+		mothership->cannotMove();
+
+	}
+
+	// baja cuando level sube (sube cada vez que le llama cannotMove)
+	position.setY(initialY + ALIEN_SPEED * mothership->getLevel());
 }
 
 
@@ -44,17 +56,9 @@ bool Alien::hit(SDL_Rect* rect, char frenemy)
 
 void Alien::move()
 {
-	// mueve al alien
-	position.setX(position.getX() + (mothership->getDirection().getX() * alienSpeed));
+	
 
-	// baja cuando level sube (sube cada vez que le llama cannotMove)
-	position.setY(initialY + ALIEN_SPEED * mothership->getLevel());
-
-	// si se pasa de corto o de largo cambia la direccion y lo baja una posicion
-	if (position.getX() < 0 || position.getX() > game->getWinWidth() - texture->getFrameWidth()) {
-
-		mothership->cannotMove();
-	}
+	
 
 	
 }

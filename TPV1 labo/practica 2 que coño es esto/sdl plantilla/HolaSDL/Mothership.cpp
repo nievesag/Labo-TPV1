@@ -12,6 +12,12 @@ void Mothership::update()
 		alienTimer = 0;
 	}
 
+
+	if (shouldMove() && switchDir)
+	{
+		dir = -dir;
+		switchDir = false;
+	}
 }
 
 void Mothership::save(ostream& out) const
@@ -21,19 +27,11 @@ void Mothership::save(ostream& out) const
 
 }
 
-Vector2D<int> Mothership::getDirection()
+int Mothership::getDirection()
 {
-	Vector2D<int> direc{0,0};
+	
 
-	if (dir == 1) {
-
-		direc.setX(1);
-	}
-	else if (dir -1) {
-		direc.setX(-1);
-	}
-
-	return direc;
+	return dir;
 }
 
 
@@ -44,21 +42,12 @@ bool Mothership::shouldMove()
 
 void Mothership::cannotMove()
 {
-	/*
-	// RIGHT
-	if (currentState == RIGHT) { currentState = dRIGHT; }
-	// DOWN RIGHT
-	else if (currentState == dRIGHT) { currentState = LEFT; }
-	// LEFT
-	else if (currentState == LEFT) { currentState = dLEFT; }
-	// DOWN LEFT
-	else { currentState = RIGHT; }
-	*/
+	if (!switchDir) {
+		switchDir = true;
 
-	// cambia de direccion
-	dir *= -1;
-
-	level++;
+		level++;
+	}
+	
 
 }
 

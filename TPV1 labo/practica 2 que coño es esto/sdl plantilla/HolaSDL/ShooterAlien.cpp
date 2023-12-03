@@ -36,20 +36,9 @@ void ShooterAlien::setCD()
 
 void ShooterAlien::update()
 {
-	if (mothership->shouldMove()) {
+	manageCooldown();
 
-		// se mueve
-		move();
-
-		//
-		manageCooldown();
-
-		// anima
-		animate();
-
-		// actualiza el rect (para colisiones)
-		updateRect();
-	}
+	Alien::update();
 }
 
 void ShooterAlien::save(ostream& out) const
