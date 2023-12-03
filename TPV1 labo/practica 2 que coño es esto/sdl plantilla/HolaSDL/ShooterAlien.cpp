@@ -3,6 +3,7 @@
 
 void ShooterAlien::shoot()
 {
+
 	if (CDcounter >= cooldown)
 	{
 		// crea un laser nuevo
@@ -12,6 +13,7 @@ void ShooterAlien::shoot()
 
 void ShooterAlien::manageCooldown()
 {
+
 	// gestion de cooldown
 	if (CDcounter >= cooldown) {
 		// elige un nuevo cooldown 
@@ -29,16 +31,35 @@ void ShooterAlien::manageCooldown()
 void ShooterAlien::setCD()
 {
 	// elige un nuevo cooldown 
-	cooldown = game->getRandomRange(minCD, maxCD);
+	cooldown = game->getRandomRange(minCD , maxCD);
 
 	CDcounter = 0;
 }
 
 void ShooterAlien::update()
 {
-	manageCooldown();
+	if (mothership->shouldMove()) {
 
-	Alien::update();
+		// se mueve
+		position.setX(position.getX() + (mothership->getDirection() * alienSpeed));
+		//
+		manageCooldown();
+		// anima
+		animate();
+		// actualiza el rect (para colisiones)
+		updateRect();
+	}
+
+	// si se pasa de corto o de largo cambia la direccion y lo baja una posicion
+	if ((position.getX() <= 0) || (position.getX() >= (game->getWinWidth() - texture->getFrameWidth()))) {
+
+		mothership->cannotMove();
+
+	}
+
+	// baja cuando level sube (sube cada vez que le llama cannotMove)
+	position.setY(initialY + ALIEN_SPEED * mothership->getLevel());
+
 }
 
 void ShooterAlien::save(ostream& out) const
@@ -63,4 +84,6 @@ void ShooterAlien::setInitialCooldown()
 
 		setCD();
 	}
+
+	CDcounter = 0;
 }
