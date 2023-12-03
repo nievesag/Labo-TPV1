@@ -3,30 +3,9 @@
 
 using namespace std;
 
-struct TextureSpec
-{
-	const char* url;
-
-	// width height
-	int nw, nh;
-};
-
-// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo TextureSpec 
-// ubicacion, col, fil
-array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
-	TextureSpec{"..\\images\\aliens2.png", 2, 3},	  // alien 1 // 32,32
-	{ "..\\images\\aliens2.png", 2, 3 },			  // alien 2 // 44,32
-	{ "..\\images\\aliens2.png", 2, 3 },			  // alien 3 // 48,32
-	{ "..\\images\\spaceship.png", 1, 1 },			  // nave	 // 34,21
-	{ "..\\images\\bunker.png", 4, 1 },				  // bunker  // 88,57
-	{ "..\\images\\stars.png", 1, 1 },				  // fondo 
-	{ "..\\images\\ovni2.png", 3, 1 }				  // ufo	 // 48,26
-};
-
 // constructora del game
 Game::Game()
 {
-	int winX, winY; // Posición de la ventana
 	winX = winY = SDL_WINDOWPOS_CENTERED;
 
 	// Inicialización del sistema, ventana y renderer
@@ -141,9 +120,7 @@ void Game::renderBackground()
 // MANEJAR EVENTOS
 void Game::handleEvents()
 {
-	SDL_Event event; // crea evento
 	ifstream in("..\\mapas\\original.txt");
-	int type;
 
 	// MIENTRAS HAYA EVENTOS
 		// si hay eventos &event se llena con el evento a ejecutar si no NULL
@@ -194,11 +171,9 @@ void Game::deleteSceneObjects()
 		// bucle para borrar los objetos que han de ser borrados
 		for (auto a : objectsToErase) {
 
-			// FALTA CONTROL DE ITERATOR INVALIDO
 			// nuevo iterator
 			list<SceneObject*>::iterator newIt;
 
-			//
 			newIt = a;
 
 			// borramos el objeto
@@ -207,7 +182,6 @@ void Game::deleteSceneObjects()
 			// lo borra de la lista
 			sceneObjectsList.erase(a);
 		}
-
 		objectsToErase.clear();
 	}
 }
@@ -225,8 +199,7 @@ void Game::saveThisGame()
 	// pregunta en que numero se va a guardar la partida
 	cout << "Save this game in slot: " << std::endl;
 
-	// crea un char para guardar el numero y lo lee
-	char k;
+	// lee el numero en char k
 	cin >> k;
 
 	// comprueba que sea un numero, si no lo es le dice que es invalido
@@ -249,8 +222,7 @@ void Game::loadThisGame()
 	// pregunta que slot se quiere cargar
 	cout << "Load slot: " << std::endl;
 
-	// crea un char para guardar el numero y lo lee
-	char k;
+	// lee el numero en char k
 	cin >> k;
 
 	// comprueba que sea un numero, si no lo es le dice que es invalido

@@ -75,14 +75,11 @@ bool Cannon::hit(SDL_Rect* rect, char frenemy)
 
 void Cannon::manageCooldown()
 {
-
 	if (currentCD < cooldown) {
 		currentCD++;
 	}
 	else {
-
 		shoot();
-
 		currentCD = 0;
 	}
 }
