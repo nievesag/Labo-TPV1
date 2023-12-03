@@ -66,5 +66,4 @@ private:
 	// disparos de la nave
 	void shoot();
 };
-
 #endif

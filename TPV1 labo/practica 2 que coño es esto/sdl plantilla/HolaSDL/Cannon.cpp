@@ -137,5 +137,4 @@ void Cannon::save(ostream& out) const
 
 	// guarda las vidas del cannon y el cooldown del disparo
 	out << vidas << " " << cooldown << endl;
-
 }

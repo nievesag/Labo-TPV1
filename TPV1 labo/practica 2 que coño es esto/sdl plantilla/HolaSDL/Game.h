@@ -180,9 +180,6 @@ private:
 	// delete scene objects
 	void deleteSceneObjects();
 
-	// añade los objetos a la lista de sceneObejcts
-	void addToSceneObjects();
-
 	// guarda la partida (esto va dentro del handle events de la S de save pero es por orden)
 	void saveThisGame();
 
