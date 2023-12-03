@@ -19,7 +19,7 @@ array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
 	{ "..\\images\\spaceship.png", 1, 1 },			  // nave	 // 34,21
 	{ "..\\images\\bunker.png", 4, 1 },				  // bunker  // 88,57
 	{ "..\\images\\stars.png", 1, 1 },				  // fondo 
-	{ "..\\images\\ufo.png", 2, 1 }				      // ufo	 // 48,26
+	{ "..\\images\\ovni2.png", 3, 1 }				      // ufo	 // 48,26
 };
 
 // constructora del game
@@ -408,7 +408,7 @@ void Game::loadTextures()
 void Game::loadMap()
 {
 	// lee el mapa
-	ifstream in("..\\mapas\\prueba.txt");
+	ifstream in("..\\mapas\\original.txt");
 	if (in.fail()) throw ("No se ha podido leer mapa");
 
 	// variables auxiliares
@@ -499,8 +499,8 @@ void Game::loadMap()
 
 	
 	// ----------------------------------------------- UFO ----------------------------------------------------------------
-	// textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight() // defaultUfoHeight
-	SceneObject* obj = new Ufo(Point2D<double>(winWidth, 400), textures[UfoT]->getFrameWidth(),
+	// textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight() 
+	SceneObject* obj = new Ufo(Point2D<double>(winWidth, defaultUfoHeight), textures[UfoT]->getFrameWidth(),
 		textures[UfoT]->getFrameHeight(), 1, textures[UfoT], this);
 
 	// lo mete en la lista
