@@ -17,7 +17,7 @@ void ShooterAlien::manageCooldown()
 	// gestion de cooldown
 	if (CDcounter >= cooldown) {
 		// elige un nuevo cooldown 
-		cooldown = game->getRandomRange(minCD, maxCD);
+		cooldown = game->getRandomRange(minCD * SHOOT_FRAMES, maxCD* SHOOT_FRAMES);
 
 		// reinicia el contador
 		CDcounter = 0;
@@ -31,35 +31,25 @@ void ShooterAlien::manageCooldown()
 void ShooterAlien::setCD()
 {
 	// elige un nuevo cooldown 
-	cooldown = game->getRandomRange(minCD , maxCD);
+	cooldown = game->getRandomRange(minCD * SHOOT_FRAMES , SHOOT_FRAMES);
 
 	CDcounter = 0;
 }
 
 void ShooterAlien::update()
 {
-	if (mothership->shouldMove()) {
+	if (CDcounter <= 0)
+		CDcounter = game->getRandomRange(200 * TIME_BT_FRAMES, 2000 * TIME_BT_FRAMES); //IMPORTANTE: el min y max son numero de frames de update del alien, es decir, el alien disparara una vez cada x updates entre ese rango
+	else
+		CDcounter--;
 
-		// se mueve
-		position.setX(position.getX() + (mothership->getDirection() * alienSpeed));
-		//
-		manageCooldown();
-		// anima
-		animate();
-		// actualiza el rect (para colisiones)
-		updateRect();
+	if (CDcounter <= 0) { //se que esta feo de narices pero si lo ponia dentro de la comprobacion anterior todos los aliens disparaban en la primera iteracion (supongo que iniciando los aliens ya con un valor del random se solucionaria, pero no conseguia hacerlo)
+
+		game->fireLaser(this->getPosition(), 'r');
 	}
 
-	// si se pasa de corto o de largo cambia la direccion y lo baja una posicion
-	if ((position.getX() <= 0) || (position.getX() >= (game->getWinWidth() - texture->getFrameWidth()))) {
 
-		mothership->cannotMove();
-
-	}
-
-	// baja cuando level sube (sube cada vez que le llama cannotMove)
-	position.setY(initialY + ALIEN_SPEED * mothership->getLevel());
-
+	Alien::update();
 }
 
 void ShooterAlien::save(ostream& out) const

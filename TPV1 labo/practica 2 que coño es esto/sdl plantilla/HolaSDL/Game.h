@@ -35,7 +35,9 @@ static constexpr int FRAMERATE = 60,						// frames por segundo
 					TIME_BT_FRAMES = 100 / FRAMERATE,		// tiempo entre frames
 					ALIEN_FR = 8 * FRAMERATE,			// cantidad de frames entre updates del alien
 					END_GAME = 300,						// distancia de los aliens para acabar
-					ALIEN_RF = 5 * FRAMERATE;			// cada cuanto se actualiza el alien
+					ALIEN_RF = 5 * FRAMERATE,			// cada cuanto se actualiza el alien
+					SHOOT_FRAMES = 1000;
+
 
 static constexpr double LASER_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de laser
 						ALIEN_SPEED = 10 * TIME_BT_FRAMES,	// velocidad de aliens
