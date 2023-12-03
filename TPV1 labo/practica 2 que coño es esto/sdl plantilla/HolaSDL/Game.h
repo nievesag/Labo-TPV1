@@ -104,7 +104,10 @@ private:
 		laserW = 4,			// dimensiones del laser
 		laserH = 10,
 		defaultCooldown,	// default cooldown (si es -1 se genera uno)
-		defaultUfoHeight = 10;
+		defaultUfoHeight = 10,
+		defaultLaserW = 4,
+		defaultLaserH = 10,
+		defaultMothershipLevel = 0;
 	
 	// lista de objetos de escena (cannon, aliens, bunkeres, laser)
 	list<SceneObject*> sceneObjectsList;
@@ -149,7 +152,7 @@ public:
 	void save(const string& file);
 
 	// carga la partida leyendo el archivo indicado
-	void load(const string& file);
+	void load(const string& file, const string& root);
 
 	// ---- handleEvents ----
 	// input del jugador
@@ -169,10 +172,6 @@ public:
 	// ---- dispara el laser ----
 	// dispara el laser (lo crea)
 	void fireLaser(Point2D<double> pos, char frenemy);
-
-	// ---- saca el ufo ----
-	// crea ufo
-	void showUfo(Point2D<double> pos);
 
 	// ------------------- GETTERS -------------------
 	uint getWinWidth() { return winWidth; }
@@ -196,11 +195,6 @@ private:
 	// se cargan las texturas y se guardan en los arrays
 	void loadTextures();
 
-	// ----- loadMap ------
-	// para poder cargar el mapa con la informacion necesaria (crea los aliens y tal)
-	// pretendo que aqui se lean los txt y que se hagan bucles para crear los bichitos
-	void loadMap();
-
 	// renderea el fondo
 	void renderBackground();
 
@@ -214,7 +208,7 @@ private:
 	void loadThisGame();
 
 	// carga cualquier archivo
-	void loadAnyFile(const string& file);
+	void loadAnyFile(const string& file, const string& root);
 
 	// ---- Main menu ----
 	void mainMenu();

@@ -175,11 +175,6 @@ void Game::deleteSceneObjects()
 		// bucle para borrar los objetos que han de ser borrados
 		for (auto a : objectsToErase) {
 
-			// nuevo iterator
-			list<SceneObject*>::iterator newIt;
-
-			newIt = a;
-
 			// borramos el objeto
 			delete (*a);
 
@@ -233,7 +228,7 @@ void Game::loadThisGame()
 	if (isdigit(k))
 	{
 		// pasa numero a string despues del save (savek)
-		load("save" + to_string(k - '0'));
+		load("save" + to_string(k - '0'), "..\\saved\\");
 
 		// se ha salvado el juego
 		cout << "Game loaded!" << endl;
@@ -276,9 +271,9 @@ void Game::save(const string& file)
 	out.close();
 }
 
-void Game::load(const string& file)
+void Game::load(const string& file, const string& root)
 {
-	loadAnyFile(file);
+	loadAnyFile(file, root);
 }
 #pragma endregion
 
@@ -297,7 +292,7 @@ void Game::fireLaser(Point2D<double> pos, char frenemy)
 	}
 	
 	// crea el laser
-	SceneObject* newObj = new Laser(frenemy, pos, 4, 10, 1, nullptr, this);
+	SceneObject* newObj = new Laser(frenemy, pos, defaultLaserW, defaultLaserH, defaultLives, nullptr, this);
 
 	// lo mete en la lista
 	sceneObjectsList.push_back(newObj);
@@ -325,34 +320,6 @@ bool Game::damage(Laser* myLaser)
 }
 #pragma endregion
 
-// UFO
-void Game::showUfo(Point2D<double> pos)
-{
-	// settea la velocidad
-	Vector2D<double> vel(0, 1);
-	double min = getRandomRange(2, 7);
-	double max = getRandomRange(8, 15);
-
-	SDL_SetRenderDrawColor(renderer, 255, 0, 114, 255);	// cannon
-
-	vel.setX(-1);
-
-	// crea el ufo
-	SceneObject* newObj = new Ufo(Point2D<double>(winWidth, defaultUfoHeight), textures[UfoT]->getFrameWidth(),
-		textures[UfoT]->getFrameHeight(), 1, textures[UfoT], this);
-
-	// lo mete en la lista
-	sceneObjectsList.push_back(newObj);
-
-	//iterador al final de la lista
-	list<SceneObject*>::iterator newit = sceneObjectsList.end();
-	
-	newit--;
-
-	// le pasa el iterador
-	newObj->setListIterator(newit);
-}
-
 // CARGA
 #pragma region LOADS
 void Game::loadTextures()
@@ -372,121 +339,10 @@ void Game::loadTextures()
 	}
 }
 
-void Game::loadMap()
+void Game::loadAnyFile(const string& file, const string& root)
 {
 	// lee el mapa
-	ifstream in("..\\mapas\\original.txt");
-	if (in.fail()) throw FileNotFoundError("No se ha podido leer el mapa "s + "..\\mapas\\original.txt");
-
-	// peek -> return a next character in the input string
-	// si son el siguiente caracter se ha acabado el fichero
-	if (in.peek() == in.eof())
-		throw FileFormatError("Mapa vacio "s + "..\\mapas\\original.txt");
-
-	// variables auxiliares
-	int type;
-	int x, y;
-	int atype;
-
-	// crea la mothership
-	mother = new Mothership(0, this, 30, 0);
-
-	// in.eof() devuelve si se ha acabado el fichero
-	while (!in.eof()) {
-		in >> type;
-		in >> x;
-		in >> y;
-		Point2D<double> coord(x, y);
-
-		// si es la nave
-		if (type == 0) {
-
-			// nave
-			SceneObject* obj = new Cannon(200, coord, textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), 1, textures[Nave], this);
-
-			// lo mete en la lista
-			sceneObjectsList.push_back(obj);
-
-			//iterador al final de la lista
-			list<SceneObject*>::iterator newit = sceneObjectsList.end();
-
-			newit--;
-
-			// le pasa el iterador
-			obj->setListIterator(newit);
-		}
-
-		// si es un alien
-		else if (type == 1) {
-			in >> atype;
-
-			SceneObject* obj;
-
-			if (atype == 0) {
-
-				//
-				obj = new ShooterAlien(defaultCooldown, mother, 0, atype, coord, textures[atype]->getFrameWidth(), 
-					textures[atype]->getFrameHeight(), 2, textures[atype], this);
-			}
-			else {
-				// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game)
-				obj = new Alien(mother, 0, atype, coord, textures[atype]->getFrameWidth(), 
-					textures[atype]->getFrameHeight(), 2, textures[atype], this);
-			}
-
-			// lo mete en la lista
-			sceneObjectsList.push_back(obj);
-
-			//iterador al final de la lista
-			list<SceneObject*>::iterator newit = sceneObjectsList.end();
-
-			newit--;
-
-			// le pasa el iterador
-			obj->setListIterator(newit);
-		}
-
-		// si es un bunker
-		else if (type == 2) {
-			// esto no se q es
-			Vector2D<int> vel(0, 0);
-
-			//bunker
-			SceneObject* obj = new Bunker(0, coord, textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight(), 3, textures[Escudo], this);
-
-			// lo mete en la lista
-			sceneObjectsList.push_back(obj);
-
-			//iterador al final de la lista
-			list<SceneObject*>::iterator newit = sceneObjectsList.end();
-
-			newit--;
-
-			// le pasa el iterador
-			obj->setListIterator(newit);
-		}
-	}
-	
-	// ---- UFO ----
-	SceneObject* obj = new Ufo(Point2D<double>(winWidth, defaultUfoHeight), textures[UfoT]->getFrameWidth(),
-		textures[UfoT]->getFrameHeight(), 1, textures[UfoT], this);
-
-	// lo mete en la lista
-	sceneObjectsList.push_back(obj);
-
-	//iterador al final de la lista
-	list<SceneObject*>::iterator newit = sceneObjectsList.end();
-
-	newit--;
-
-	// le pasa el iterador
-	obj->setListIterator(newit);	
-}
-
-void Game::loadAnyFile(const string& file)
-{
-	// lee el mapa
-	ifstream in(SAVED_FOLDER + file + ".txt");
+	ifstream in(root + file + ".txt");
 	if (in.fail()) throw FileNotFoundError("No se ha podido leer el mapa "s + file + ".txt");;
 
 	// variables auxiliares
@@ -526,7 +382,8 @@ void Game::loadAnyFile(const string& file)
 				// ---------------- Creacion del objeto ------------------
 				
 				// nave
-				SceneObject* obj = new Cannon(cooldown, coord, textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), vidas, textures[Nave], this);
+				SceneObject* obj = new Cannon(cooldown, coord, textures[Nave]->getFrameWidth(), 
+					textures[Nave]->getFrameHeight(), vidas, textures[Nave], this);
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
@@ -793,21 +650,30 @@ void Game::loadAnyFile(const string& file)
 				break;
 			}
 		}
+		
+	}
 
-		// settea el mothership en los aliens
-		for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++)
-		{
-			// hace un dynamic cast de cada alien
-			Alien* alien = dynamic_cast<Alien*>(*it);
+	// si no existe una mothership la crea
+	if (mother == nullptr) {
 
-			// si es un alien setea el mothership
-			if (alien != nullptr) {
-				// llama al setteador
-				alien->setMothership(mother);
+		// crea la mothership
+		mother = new Mothership(defaultMothershipLevel, this, 30, 0);
+	}
 
-				// añade al contador de aliens de la mothership
-				mother->addAlien();
-			}
+
+	// settea el mothership en los aliens
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++)
+	{
+		// hace un dynamic cast de cada alien
+		Alien* alien = dynamic_cast<Alien*>(*it);
+
+		// si es un alien setea el mothership
+		if (alien != nullptr) {
+			// llama al setteador
+			alien->setMothership(mother);
+
+			// añade al contador de aliens de la mothership
+			mother->addAlien();
 		}
 	}
 }
@@ -831,7 +697,9 @@ void Game::mainMenu()
 	if (ans == 0) {
 
 		// carga un mapa
-		loadMap();
+		//loadMap();
+
+		loadAnyFile("original", "..\\mapas\\");
 	}
 	else if (ans == 1) {
 
