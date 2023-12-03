@@ -369,7 +369,8 @@ void Game::showUfo(Point2D<double> pos)
 	vel.setX(-1);
 
 	// crea el ufo
-	Ufo* newObj = new Ufo(vel, pos, textures[UfoT]->getFrameWidth(), textures[UfoT]->getFrameHeight(), 1, textures[UfoT], this);
+	SceneObject* newObj = new Ufo(Point2D<double>(winWidth, defaultUfoHeight), textures[UfoT]->getFrameWidth(),
+		textures[UfoT]->getFrameHeight(), 1, textures[UfoT], this);
 
 	// lo mete en la lista
 	sceneObjectsList.push_back(newObj);
@@ -499,7 +500,7 @@ void Game::loadMap()
 	
 	// ----------------------------------------------- UFO ----------------------------------------------------------------
 	// textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight()
-	SceneObject* obj = new Ufo(Vector2D<double>(10, 0), Point2D<double>(400, 400), textures[UfoT]->getFrameWidth(),
+	SceneObject* obj = new Ufo(Point2D<double>(winWidth, defaultUfoHeight), textures[UfoT]->getFrameWidth(),
 		textures[UfoT]->getFrameHeight(), 1, textures[UfoT], this);
 
 	// lo mete en la lista
@@ -743,11 +744,25 @@ void Game::loadAnyFile(const string& file)
 				// lee 
 				in >> estado;
 				in >> cooldown;
-				in >> hits;
+				in >> vidas;
 
 
 				// ---------------- Creacion del objeto ------------------
 
+				// textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight()
+				SceneObject* obj = new Ufo(Point2D<double>(winWidth, defaultUfoHeight), textures[UfoT]->getFrameWidth(),
+					textures[UfoT]->getFrameHeight(), vidas, textures[UfoT], this);
+
+				// lo mete en la lista
+				sceneObjectsList.push_back(obj);
+
+				//iterador al final de la lista
+				list<SceneObject*>::iterator newit = sceneObjectsList.end();
+
+				newit--;
+
+				// le pasa el iterador
+				obj->setListIterator(newit);
 
 				// ----------------------- Fin del stup -----------------------
 

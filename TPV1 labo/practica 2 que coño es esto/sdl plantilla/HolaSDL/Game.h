@@ -79,7 +79,8 @@ private:
 		ans,				// respuesta en los menuses
 		laserW = 4,			// dimensiones del laser
 		laserH = 10,
-		defaultCooldown;	// default cooldown (si es -1 se genera uno, en principio)
+		defaultCooldown,	// default cooldown (si es -1 se genera uno, en principio)
+		defaultUfoHeight = 10;
 	
 
 	// lista de objetos de escena (cannon, aliens, bunkeres, laser)

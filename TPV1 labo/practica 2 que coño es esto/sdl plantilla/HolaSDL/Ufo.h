@@ -34,17 +34,17 @@ private:
 	// gestion de animacion de la explosion
 	int animTimer = 10;
 
-	Vector2D<double> vel;
+	int vel = 10;
 
-	Point2D<double> spawn = { 400, 500 };
+	Point2D<double> spawn;
 
 	int UfoScore = 100;
 
 	// metodos publicos
 public:
 	// ---- constructora ----
-	Ufo( Vector2D<double> velocity, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: vel(velocity), SceneObject(position, width, height, vidas, texture, game)
+	Ufo( Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: spawn(position), SceneObject(position, width, height, vidas, texture, game)
 	{
 		state = oculto;
 

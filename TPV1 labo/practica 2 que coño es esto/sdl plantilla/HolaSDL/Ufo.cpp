@@ -9,53 +9,46 @@ void Ufo::render() const
 
 void Ufo::update()
 {
-
-	//cout << state << endl;
 	updateRect();
 	
 	switch (state)
 	{
-	case visible:
+		case visible:
 
-		// se mueve con zoomies
-		move();
+			// se mueve con zoomies
+			move();
 
-		// si se sale 
-		if (isOut()) {
+			// si se sale 
+			if (isOut()) {
 
-			//cout << "holi   -------------------------------------------------" << endl;
+				// desaparece
+				disappear();
+			}
 
-			// desaparece
-			disappear();
+			// si le pegan una hostia
+			if (vidas <= 0) {
+
+				// muere
+				die();
+			}
+
+			break;
+		case oculto:
+
+			// gestiona el cooldown de aparicion
+			// cd management
+			manageCooldown();
+
+			break;
+		case destruido:
+
+			// simplemente la animacion y luego muere
+			anima();
+
+			break;
+
 		}
-
-		// si le pegan una hostia
-		if (hits >= vidas) {
-
-			// muere
-			die();
-		}
-
-		break;
-	case oculto:
-
-		// gestiona el cooldown de aparicion
-		// cd management
-		manageCooldown();
-
-		break;
-	case destruido:
-
-		// simplemente la animacion y luego muere
-		anima();
-
-		break;
-
-	}
 }
-
-// --------------------------------------------------------------------------------------
-
 
 void Ufo::updateRect()
 {
@@ -66,7 +59,7 @@ void Ufo::updateRect()
 
 void Ufo::anima()
 {
-
+	// PLACEHOLDER
 	// yes
 	if (animTimer <= 0)
 	{
@@ -84,9 +77,9 @@ bool Ufo::hit(SDL_Rect* rect, char frenemy)
 {
 	if (SDL_HasIntersection(rect, &destRect) && frenemy) {
 
-		hits++;
+		vidas--;
 
-		if (hits >= vidas) game->hasDied(it);
+		if (vidas <= 0) game->hasDied(it);
 		state = destruido;
 		game->increaseScore(UfoScore);
 
@@ -123,10 +116,6 @@ void Ufo::die()
 void Ufo::manageCooldown()
 {
 
-	//cout << "AAAAAAAAAAA EL CD: " << cooldown << endl;
-
-	//cout << CDcounter << endl;
-
 	// gestion de cooldown
 	if (CDcounter >= cooldown) {
 
@@ -134,7 +123,7 @@ void Ufo::manageCooldown()
 		appear();
 
 		// reinicia la posicion
-		//
+		position.setX(spawn.getX());
 
 		// settea un nuevo cooldown
 		setCD();
@@ -167,18 +156,13 @@ void Ufo::setInitialCD()
 
 bool Ufo::isOut()
 {
-	return (this->position.getX() <= 0);
+	return (this->position.getX() + texture->getFrameWidth() <= 0);
 }
 
 void Ufo::move()
 {
-	//cout << "HOLIWIS" << endl;
-
-
-	cout << position.getX() << " " << position.getY() << endl;
-
 	// mueve al laser
-	position.setX(position.getX() - (vel.getX() * 0.09));
+	position.setX(position.getX() - vel);
 }
 
 void Ufo::save(ostream& out) const
@@ -188,6 +172,6 @@ void Ufo::save(ostream& out) const
 		<< spawn.getY() << " "
 		<< state << " "
 		<< cooldown << " "
-		<< hits << endl;
+		<< vidas << endl;
 
 }
