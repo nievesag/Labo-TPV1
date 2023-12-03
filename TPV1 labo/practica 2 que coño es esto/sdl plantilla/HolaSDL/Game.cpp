@@ -19,7 +19,7 @@ array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
 	{ "..\\images\\spaceship.png", 1, 1 },			  // nave	 // 34,21
 	{ "..\\images\\bunker.png", 4, 1 },				  // bunker  // 88,57
 	{ "..\\images\\stars.png", 1, 1 },				  // fondo 
-	{ "..\\images\\ufo.png", 3, 1 }				      // ufo	 // 48,26
+	{ "..\\images\\ufo.png", 2, 1 }				      // ufo	 // 48,26
 };
 
 // constructora del game

@@ -4,16 +4,15 @@
 void Ufo::render() const
 {
 	// lo mete en el render
-	texture->renderFrame(destRect, 0, hits);
+	texture->renderFrame(destRect, 0, 0);
 }
 
 void Ufo::update()
 {
 
 	//cout << state << endl;
-
-
 	updateRect();
+	
 	switch (state)
 	{
 	case visible:
@@ -24,7 +23,7 @@ void Ufo::update()
 		// si se sale 
 		if (isOut()) {
 
-			cout << "holi" << endl;
+			//cout << "holi   -------------------------------------------------" << endl;
 
 			// desaparece
 			disappear();
@@ -99,9 +98,12 @@ bool Ufo::hit(SDL_Rect* rect, char frenemy)
 
 void Ufo::appear()
 {
+
+	state = visible;
+
 	if (!isOut())
 	{
-		state = visible;
+		
 	}
 	else state = oculto;
 }
@@ -120,8 +122,13 @@ void Ufo::die()
 
 void Ufo::manageCooldown()
 {
+
+	//cout << "AAAAAAAAAAA EL CD: " << cooldown << endl;
+
+	//cout << CDcounter << endl;
+
 	// gestion de cooldown
-	if (CDcounter >= cooldown && isOut()) {
+	if (CDcounter >= cooldown) {
 
 		// cambia el estado
 		appear();
@@ -139,8 +146,8 @@ void Ufo::manageCooldown()
 
 void Ufo::setCD()
 {
-	// elige un nuevo cooldown 
-	cooldown = game->getRandomRange(10 * SHOOT_FRAMES, 50 * SHOOT_FRAMES);
+	// elige un nuevo cooldown         10 20
+	cooldown = game->getRandomRange(1 * SHOOT_FRAMES, 5 * SHOOT_FRAMES);
 
 	CDcounter = 0;
 }
@@ -160,13 +167,18 @@ void Ufo::setInitialCD()
 
 bool Ufo::isOut()
 {
-	return (this->position.getX() >= winWidth + 50);
+	return (this->position.getX() <= 0);
 }
 
 void Ufo::move()
 {
+	//cout << "HOLIWIS" << endl;
+
+
+	cout << position.getX() << " " << position.getY() << endl;
+
 	// mueve al laser
-	position.setX(position.getX() - (vel.getX() * 0.2));
+	position.setX(position.getX() - (vel.getX() * 0.09));
 }
 
 void Ufo::save(ostream& out) const
