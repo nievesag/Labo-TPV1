@@ -15,17 +15,18 @@ class ShooterAlien : public Alien
 private:
 	// cooldown del disparo
 	double cooldown,		// cooldown del disparo
-			CDcounter,		// contador de cooldown del disparo
-			minCD, maxCD;	// minimo y maximo cooldown
+			CDcounter = 0,		// contador de cooldown del disparo
+			minCD = 2, 
+			maxCD = 20;	// minimo y maximo cooldown
+
+
 
 	// metodos publicos
 public:
 	// desde esta constructora invocar a la contructora padre (Alien)
 	ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
 		: cooldown(cooldown), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, game) 
-	{
-		setInitialCooldown();
-	}
+	{}
 
 	// el alien dispara
 	void shoot();
@@ -41,7 +42,5 @@ public:
 	void update() override;
 
 	void save(ostream& out) const override;
-
-	void setInitialCooldown();
 };
 #endif

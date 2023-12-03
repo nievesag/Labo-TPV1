@@ -37,8 +37,7 @@ void ShooterAlien::setCD()
 void ShooterAlien::update()
 {
 	if (CDcounter <= 0)
-		//IMPORTANTE: el min y max son numero de frames de update del alien, es decir, el alien disparara una vez cada x updates entre ese rango
-		CDcounter = game->getRandomRange(2 * SHOOT_FRAMES, 20 * SHOOT_FRAMES); 
+		CDcounter = game->getRandomRange(minCD * SHOOT_FRAMES, maxCD * SHOOT_FRAMES); 
 	else
 		CDcounter--;
 
@@ -64,15 +63,3 @@ void ShooterAlien::save(ostream& out) const
 	out << type << " " << cooldown << endl;
 }
 
-void ShooterAlien::setInitialCooldown()
-{
-	if (cooldown == -1) {
-		// rango del cooldown aleatorio
-		minCD = game->getRandomRange(2, 7);
-		maxCD = game->getRandomRange(8, 15);
-
-		setCD();
-	}
-
-	CDcounter = 0;
-}

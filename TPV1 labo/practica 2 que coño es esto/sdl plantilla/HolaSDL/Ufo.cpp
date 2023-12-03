@@ -11,8 +11,6 @@ void Ufo::update()
 {
 	updateRect();
 
-	//cout << state << " ";
-	
 	switch (state)
 	{
 		case visible:
@@ -130,24 +128,12 @@ void Ufo::manageCooldown()
 
 void Ufo::setCD()
 {
-	// elige un nuevo cooldown         10 20
+	// elige un nuevo cooldown      
 	cooldown = game->getRandomRange(1 * SHOOT_FRAMES, 5 * SHOOT_FRAMES);
 
 	CDcounter = 0;
 }
 
-void Ufo::setInitialCD()
-{
-	if (cooldown == -1) {
-		// rango del cooldown aleatorio
-		minCD = game->getRandomRange(2, 7);
-		maxCD = game->getRandomRange(8, 15);
-
-		setCD();
-	}
-
-	CDcounter = 0;
-}
 
 bool Ufo::isOut()
 {

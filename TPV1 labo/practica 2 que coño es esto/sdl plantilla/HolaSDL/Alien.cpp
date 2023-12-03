@@ -51,7 +51,7 @@ bool Alien::hit(SDL_Rect* rect, char frenemy)
 void Alien::animate()
 {
 	// se anima
-	alienFrame = (alienFrame + 1) % 2;
+	alienFrame = (alienFrame + 1) % texture->getNumColumns();;
 }
 
 void Alien::updateRect()

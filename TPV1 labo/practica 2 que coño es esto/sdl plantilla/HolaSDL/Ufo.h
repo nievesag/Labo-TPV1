@@ -27,7 +27,8 @@ private:
 	// cooldown de aparicion
 	double cooldown,	// cooldown de aparicion
 		CDcounter,		// contador de cooldown de aparicion
-		minCD, maxCD;	// minimo y maximo cooldown
+		minCD = 1,
+		maxCD = 5;	// minimo y maximo cooldown
 
 	// gestion de animacion de la explosion
 	int animTimer = 10;
@@ -78,8 +79,6 @@ public:
 	void setShowCD(double newCD) { cooldown = newCD; }
 
 	void setCD();
-
-	void setInitialCD();
 
 	// ---- save ----
 	// guarda objeto
