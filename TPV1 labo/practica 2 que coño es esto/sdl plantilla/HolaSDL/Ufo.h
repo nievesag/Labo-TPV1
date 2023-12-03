@@ -31,6 +31,9 @@ private:
 		CDcounter,		// contador de cooldown de aparicion
 		minCD, maxCD;	// minimo y maximo cooldown
 
+	// gestion de animacion de la explosion
+	int animTimer = 10;
+
 	Vector2D<double> vel;
 
 	Point2D<double> spawn = { 400, 500 };
@@ -40,9 +43,11 @@ private:
 	// metodos publicos
 public:
 	// ---- constructora ----
-	Ufo(double minCD, double maxCD, Vector2D<double> velocity, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: minCD(minCD), maxCD(maxCD), vel(velocity), SceneObject(position, width, height, vidas, texture, game)
+	Ufo( Vector2D<double> velocity, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
+		: vel(velocity), SceneObject(position, width, height, vidas, texture, game)
 	{
+		state = oculto;
+
 		setCD();
 	};
 
@@ -61,6 +66,12 @@ public:
 	// el ufo aparece
 	void appear();
 
+	// el ufo desapaece
+	void disappear();
+
+	// el ufo muere
+	void die();
+
 	// gestiona el cooldown de aparicion
 	void manageCooldown();
 
@@ -68,6 +79,8 @@ public:
 	void setShowCD(double newCD) { cooldown = newCD; }
 
 	void setCD();
+
+	void setInitialCD();
 
 	// ---- save ----
 	// guarda objeto
@@ -83,5 +96,8 @@ protected:
 
 	// actualiza el rect
 	void updateRect() override;
+
+	// animacion del ufooooo (destruccion)
+	void anima();
 };
 #endif

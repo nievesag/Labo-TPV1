@@ -19,7 +19,7 @@ array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
 	{ "..\\images\\spaceship.png", 1, 1 },			  // nave	 // 34,21
 	{ "..\\images\\bunker.png", 4, 1 },				  // bunker  // 88,57
 	{ "..\\images\\stars.png", 1, 1 },				  // fondo 
-	{ "..\\images\\ufo.png", 1, 2 }				      // ufo	 // 48,26
+	{ "..\\images\\ufo.png", 3, 1 }				      // ufo	 // 48,26
 };
 
 // constructora del game
@@ -369,7 +369,7 @@ void Game::showUfo(Point2D<double> pos)
 	vel.setX(-1);
 
 	// crea el ufo
-	Ufo* newObj = new Ufo(min, max, vel, pos, textures[UfoT]->getFrameWidth(), textures[UfoT]->getFrameHeight(), 1, textures[UfoT], this);
+	Ufo* newObj = new Ufo(vel, pos, textures[UfoT]->getFrameWidth(), textures[UfoT]->getFrameHeight(), 1, textures[UfoT], this);
 
 	// lo mete en la lista
 	sceneObjectsList.push_back(newObj);
@@ -417,6 +417,8 @@ void Game::loadMap()
 
 	// crea la mothership
 	milfship = new Mothership(0, this, 30, 0);
+
+
 
 	// in.eof() devuelve si se ha acabado el fichero
 	while (!in.eof()) {
@@ -493,6 +495,24 @@ void Game::loadMap()
 			obj->setListIterator(newit);
 		}
 	}
+
+	
+	// ----------------------------------------------- UFO ----------------------------------------------------------------
+	// textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight()
+	SceneObject* obj = new Ufo(Vector2D<double>(10, 0), Point2D<double>(400, 400), textures[UfoT]->getFrameWidth(),
+		textures[UfoT]->getFrameHeight(), 1, textures[UfoT], this);
+
+	// lo mete en la lista
+	sceneObjectsList.push_back(obj);
+
+	//iterador al final de la lista
+	list<SceneObject*>::iterator newit = sceneObjectsList.end();
+
+	newit--;
+
+	// le pasa el iterador
+	obj->setListIterator(newit);
+	
 }
 
 void Game::loadAnyFile(const string& file)

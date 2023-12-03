@@ -4,19 +4,63 @@
 void Ufo::render() const
 {
 	// lo mete en el render
-	texture->renderFrame(destRect, 5, hits);
+	texture->renderFrame(destRect, 0, hits);
 }
 
 void Ufo::update()
 {
-	// actualiza el rect (colisiones)
-	updateRect();
-
+	/*
 	if (state != destruido) {
 
-		// mueve al laser
 		move();
+
 		manageCooldown();
+
+		// actualiza el rect (colisiones)
+		updateRect();
+
+	}
+	*/
+	
+	cout << state << endl;
+
+
+	updateRect();
+	switch (state)
+	{
+		case visible:
+
+			// se mueve con zoomies
+			move();
+
+			// si se sale 
+			if (isOut()) {
+
+				// desaparece
+				disappear();
+			}
+
+			// si le pegan una hostia
+			if (hits >= vidas) {
+
+				// muere
+				die();
+			}
+
+			break;
+		case destruido:
+		
+			// simplemente la animacion y luego muere
+			anima();
+
+			break;
+		case oculto:
+		
+			// gestiona el cooldown de aparicion
+			// cd management
+			manageCooldown();
+
+			break;
 	}
 }
 
@@ -25,6 +69,21 @@ void Ufo::updateRect()
 	// posicion               
 	destRect.x = position.getX();
 	destRect.y = position.getY();
+}
+
+void Ufo::anima()
+{
+
+	// ha de mostrar el frame de explosion (de ello se encarga el render) durane unos segundos y luego volver al estado hidden adem?s de devolverlo a la posici?n inicial
+	if (animTimer <= 0)
+	{
+		state = oculto;
+		//position = iniPos;
+		animTimer = ANIMATION_DURATION;
+	}
+	else animTimer--;
+
+
 }
 
 bool Ufo::hit(SDL_Rect* rect, char frenemy)
@@ -45,35 +104,61 @@ bool Ufo::hit(SDL_Rect* rect, char frenemy)
 
 void Ufo::appear()
 {
-	if (CDcounter >= cooldown && !isOut())
+	if (!isOut())
 	{
-		// crea un laser nuevo
-		game->showUfo(spawn);
 		state = visible;
 	}
 	else state = oculto;
+}
+
+void Ufo::disappear()
+{
+	// no tiene mas miesterio xd
+	state = oculto;
+}
+
+void Ufo::die()
+{
+	// muereeee
+	state = destruido;
 }
 
 void Ufo::manageCooldown()
 {
 	// gestion de cooldown
 	if (CDcounter >= cooldown && isOut()) {
-		// elige un nuevo cooldown 
-		cooldown = game->getRandomRange(minCD, maxCD);
+		
+		// cambia el estado
+		appear();
 
-		// reinicia el contador
-		CDcounter = 0;
+		// reinicia la posicion
+		//
+
+		// settea un nuevo cooldown
+		setCD();
 	}
 	else
 		CDcounter++;
 
-	appear();
 }
 
 void Ufo::setCD()
 {
 	// elige un nuevo cooldown 
-	cooldown = game->getRandomRange(minCD, maxCD);
+	cooldown = game->getRandomRange(10 * SHOOT_FRAMES, 50 * SHOOT_FRAMES);
+
+	CDcounter = 0;
+}
+
+void Ufo::setInitialCD()
+{
+	if (cooldown == -1) {
+		// rango del cooldown aleatorio
+		minCD = game->getRandomRange(2, 7);
+		maxCD = game->getRandomRange(8, 15);
+
+		setCD();
+	}
 
 	CDcounter = 0;
 }
