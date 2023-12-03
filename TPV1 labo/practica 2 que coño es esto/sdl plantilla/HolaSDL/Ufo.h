@@ -33,8 +33,9 @@ private:
 
 	// gestion de animacion de la explosion
 	int animTimer = 10;
+	int frame = 0;
 
-	int vel = 10;
+	int vel = 1;
 
 	Point2D<double> spawn;
 
@@ -99,5 +100,6 @@ protected:
 
 	// animacion del ufooooo (destruccion)
 	void anima();
+
 };
 #endif

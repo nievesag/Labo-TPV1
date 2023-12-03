@@ -58,14 +58,12 @@ bool Laser::hit(SDL_Rect* rect, char frenemy)
 
 bool Laser::isOut()
 {
-	return ((this->position.getY() >= winHeight - 50 && 'r')
-		|| (this->position.getY() <= 0 + 50 && 'a'));
+	return ((this->position.getY() >= winHeight && 'r')
+		|| (this->position.getY() <= 0 && 'a'));
 }
 
 void Laser::move()
 {
-	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! pasar a variable
-
 	// mueve al laser
 	position.setY(position.getY() - (vel.getY()*LASER_SPEED));
 }

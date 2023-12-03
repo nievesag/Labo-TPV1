@@ -4,12 +4,14 @@
 void Ufo::render() const
 {
 	// lo mete en el render
-	texture->renderFrame(destRect, 0, 0);
+	texture->renderFrame(destRect, 0, frame);
 }
 
 void Ufo::update()
 {
 	updateRect();
+
+	//cout << state << " ";
 	
 	switch (state)
 	{
@@ -59,18 +61,25 @@ void Ufo::updateRect()
 
 void Ufo::anima()
 {
-	// PLACEHOLDER
-	// yes
-	if (animTimer <= 0)
-	{
+	// si ha llegado al tope de frames vuelve a estar oculto
+	if (frame >= texture->getNumColumns()) {
+
+		// cambia el estado
 		state = oculto;
-		//position = iniPos;
+	}
+
+	// si el contador de animacion (tiempo entre frame y frame) es menor que 0
+	if (animTimer <= 0) {
+
+		// aumenta el frame
+		frame++;
+
+		// reinicia el contador
 		animTimer = ANIMATION_DURATION;
 	}
 	else animTimer--;
-
-
 }
+
 
 
 bool Ufo::hit(SDL_Rect* rect, char frenemy)
@@ -79,9 +88,17 @@ bool Ufo::hit(SDL_Rect* rect, char frenemy)
 
 		vidas--;
 
-		if (vidas <= 0) game->hasDied(it);
-		state = destruido;
-		game->increaseScore(UfoScore);
+		if (vidas <= 0) {
+
+			// lo 'mata' 
+			die();
+
+			// da los puntos
+			game->increaseScore(UfoScore);
+		}
+
+
+		
 
 		return true;
 	}
