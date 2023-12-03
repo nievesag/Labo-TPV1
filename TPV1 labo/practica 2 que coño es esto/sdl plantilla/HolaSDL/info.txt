@@ -1,0 +1,6 @@
+Autores:
+  Inés Primo López
+  Nieves Alonso Gilsanz
+
+Funcionalidades Opcionales:
+  Animación de los alienígenas

@@ -574,7 +574,7 @@ void Game::loadAnyFile(const string& file, const string& root)
 				// ---------------- Creacion del objeto ------------------
 
 				// textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight()
-				SceneObject* obj = new Ufo(Point2D<double>(winWidth, defaultUfoHeight), textures[UfoT]->getFrameWidth(),
+				SceneObject* obj = new Ufo(Point2D<double>(winWidth, y), textures[UfoT]->getFrameWidth(),
 					textures[UfoT]->getFrameHeight(), vidas, textures[UfoT], this);
 
 				// lo mete en la lista
