@@ -28,13 +28,11 @@ void Alien::update()
 	if ((position.getX() <= 0) || (position.getX() >= (game->getWinWidth() - texture->getFrameWidth()))) {
 
 		mothership->cannotMove();
-
 	}
 
 	// baja cuando level sube (sube cada vez que le llama cannotMove)
 	position.setY(initialY + ALIEN_SPEED * mothership->getLevel());
 }
-
 
 bool Alien::hit(SDL_Rect* rect, char frenemy)
 {
@@ -48,17 +46,6 @@ bool Alien::hit(SDL_Rect* rect, char frenemy)
 		return true;
 	}
 	else return false;
-}
-
-
-
-void Alien::move()
-{
-	
-
-	
-
-	
 }
 
 void Alien::animate()
@@ -89,5 +76,4 @@ void Alien::save(ostream& out) const
 
 	// guarda el subtipo
 	out << type << endl;
-
 }

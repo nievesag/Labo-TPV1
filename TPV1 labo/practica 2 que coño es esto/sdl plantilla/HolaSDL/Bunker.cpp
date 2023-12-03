@@ -21,7 +21,6 @@ void Bunker::save(ostream& out) const
 
 void Bunker::update()
 {
-	// creo que sobra ????
 	updateRect();
 }
 

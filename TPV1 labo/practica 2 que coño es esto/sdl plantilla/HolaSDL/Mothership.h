@@ -13,15 +13,16 @@ class Mothership : public GameObject
 {
 	// atributos privados
 private:
-	
 	// enum ciclico de estados
 	enum state : int { RIGHT, dRIGHT, LEFT, dLEFT };
 
 	// estado actual del movimiento de los aliens
 	state currentState;
 
+	// direction 
 	int dir;
 
+	// si debe cambiar de direccion
 	bool switchDir;
 
 	// offset del descenso
@@ -30,6 +31,7 @@ private:
 	// tiempo para los updates
 	int alienTimer;
 
+	// contador de aliens
 	int alienCount;
 
 	// metodos publicos
@@ -38,28 +40,20 @@ public:
 		: level(level), GameObject(game), alienTimer(alienTimer) {
 
 		dir = 1;
-
 		switchDir = false;
-
 		alienCount = 0;
-
-		/*
-		* if (n == 1) currentState = dRIGHT;
-		else if (n == 2) currentState = LEFT;
-		else if (n == 3) currentState = dLEFT;
-		else currentState = RIGHT;
-		*/
-		
 	}
 		
-	//
+	// actualiza mothership
 	void update() override;
 
+	// guarda mothership
 	void save(ostream& out) const override;
 
 	// ajusta la direccion de los aliens
 	int getDirection();
 
+	// acceso al nivel
 	int getLevel() { return level; }
 
 	// añade alien al contador
@@ -81,14 +75,11 @@ public:
 	// cambia la direccion actual de los aliens
 	void cannotMove();
 
-	// devuelve si han llegado al suelo o no (se acaba partida))
+	// devuelve si han llegado al suelo o no (se acaba partida)
 	void alienLanded(const Alien* alien);
 
-	// INFORMAN AL JUEGO
+	// INFORMA AL JUEGO
 	// consecuencias de haber aterrizado
 	void haveLanded();
-
-	
-
 };
 #endif

@@ -5,7 +5,6 @@
 #include "Vector2D.h"
 #include "texture.h"
 #include <list>
-#include <math.h>
 
 using namespace std;
 using uint = unsigned int;
@@ -14,7 +13,6 @@ class SceneObject : public GameObject
 {
 	// atributos protegidos
 protected:
-
 	// posicion del objeto
 	Point2D<double> position;
 
@@ -56,24 +54,27 @@ public:
 		destRect.y = position.getY();
 	}
 
-	// -------------> los override van en las clases hijas que lo especifiquen <--------------
+	// --------------> los override van en las clases hijas que lo especifiquen <--------------
 	// (en alien, cannon, laser, bunker)
 	// metodo virtual: para que lo usen los hijos
 	// const: porque no es un metodo que cambie datos
 
-	//
+	// ---- render ----
+	// renderiza
 	virtual void render() const;
 
-	//
+	// ---- update ----
+	// actualiza
 	virtual void update();
 
-	//
+	// ---- save ----
+	// guarda objeto
 	virtual void save(ostream& out) const override;
 
-	// ataque al objeto (basicamente colisiones)
+	// ---- hit ----
+	// colisiones
 	virtual bool hit(SDL_Rect* ataque, char frenemy);
 
-	//
 	virtual void updateRect();
 
 	// devuelve rect (posicion) de cada objeto
@@ -81,7 +82,7 @@ public:
 
 	// ----- Iterador de la lista ------
 	// Un iterador funciona como un puntero que apunta a los items de la lista 
-	// Tipos: begin(), end(), advance(), next(), prev(), inserter()
+	// begin(), end(), advance(), next(), prev(), inserter()
 	void setListIterator(list<SceneObject*>::iterator& newit)
 	{
 		// setea el iterador de la posicion del objeto en la lista
@@ -92,5 +93,4 @@ public:
 
 	Texture* getTexture() const { return texture; };
 };
-
 #endif

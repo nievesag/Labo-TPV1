@@ -39,21 +39,12 @@ void Laser::save(ostream& out) const
 
 	// guarda el color 
 	out << laserType << endl;
-
 }
 
 bool Laser::hit(SDL_Rect* rect, char frenemy)
 {
-	// si colisiona con un laser amigo 
-	if (SDL_HasIntersection(rect, &destRect) && frenemy != laserType) {
-
-		// si se descomenta peta omg (es porque tiene que estar en el update no aqui)
-		//game->hasDied(it);
-
-		return true;
-	}
-	// si no
-	return false;
+	// si colisiona con un laser amigo true
+	return (SDL_HasIntersection(rect, &destRect) && frenemy != laserType);
 }
 
 bool Laser::isOut()
@@ -74,5 +65,3 @@ void Laser::updateRect()
 	destRect.x = position.getX();
 	destRect.y = position.getY();
 }
-
-

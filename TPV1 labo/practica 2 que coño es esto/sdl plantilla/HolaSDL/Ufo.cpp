@@ -16,40 +16,32 @@ void Ufo::update()
 	switch (state)
 	{
 		case visible:
-
-			// se mueve con zoomies
+			// se mueve
 			move();
 
 			// si se sale 
 			if (isOut()) {
-
 				// desaparece
 				disappear();
 			}
-
-			// si le pegan una hostia
+			// si le pegan
 			if (vidas <= 0) {
-
 				// muere
 				die();
 			}
-
 			break;
-		case oculto:
 
+		case oculto:
 			// gestiona el cooldown de aparicion
 			// cd management
 			manageCooldown();
-
 			break;
-		case destruido:
 
+		case destruido:
 			// simplemente la animacion y luego muere
 			anima();
-
 			break;
-
-		}
+	}
 }
 
 void Ufo::updateRect()
@@ -80,8 +72,6 @@ void Ufo::anima()
 	else animTimer--;
 }
 
-
-
 bool Ufo::hit(SDL_Rect* rect, char frenemy)
 {
 	if (SDL_HasIntersection(rect, &destRect) && frenemy) {
@@ -96,10 +86,6 @@ bool Ufo::hit(SDL_Rect* rect, char frenemy)
 			// da los puntos
 			game->increaseScore(UfoScore);
 		}
-
-
-		
-
 		return true;
 	}
 	// si no
@@ -108,31 +94,24 @@ bool Ufo::hit(SDL_Rect* rect, char frenemy)
 
 void Ufo::appear()
 {
-
 	state = visible;
 
-	if (!isOut())
-	{
-		
-	}
+	if (!isOut()) { }
 	else state = oculto;
 }
 
 void Ufo::disappear()
 {
-	// no tiene mas miesterio xd
 	state = oculto;
 }
 
 void Ufo::die()
 {
-	// muereeee
 	state = destruido;
 }
 
 void Ufo::manageCooldown()
 {
-
 	// gestion de cooldown
 	if (CDcounter >= cooldown) {
 
@@ -147,7 +126,6 @@ void Ufo::manageCooldown()
 	}
 	else
 		CDcounter++;
-
 }
 
 void Ufo::setCD()
@@ -190,5 +168,4 @@ void Ufo::save(ostream& out) const
 		<< state << " "
 		<< cooldown << " "
 		<< vidas << endl;
-
 }

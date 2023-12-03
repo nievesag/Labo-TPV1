@@ -12,6 +12,7 @@ struct TextureSpec
 };
 
 // ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo TextureSpec 
+// ubicacion, col, fil
 array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
 	TextureSpec{"..\\images\\aliens2.png", 2, 3},	  // alien 1 // 32,32
 	{ "..\\images\\aliens2.png", 2, 3 },			  // alien 2 // 44,32
@@ -19,7 +20,7 @@ array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
 	{ "..\\images\\spaceship.png", 1, 1 },			  // nave	 // 34,21
 	{ "..\\images\\bunker.png", 4, 1 },				  // bunker  // 88,57
 	{ "..\\images\\stars.png", 1, 1 },				  // fondo 
-	{ "..\\images\\ovni2.png", 3, 1 }				      // ufo	 // 48,26
+	{ "..\\images\\ovni2.png", 3, 1 }				  // ufo	 // 48,26
 };
 
 // constructora del game
@@ -44,14 +45,12 @@ Game::Game()
 	loadTextures();
 
 	mainMenu();
-
-	//loadMap();
 }
 
 Game::~Game()
 {
 	// borra el mothership
-	delete milfship;
+	delete mother;
 
 	// limpia las texturas
 	for (int i = 0; i < NUM_TEXTURES; i++) delete textures[i];
@@ -74,7 +73,6 @@ void Game::EndGame()
 // RUN
 void Game::run()
 {
-
 	// get ticks al inicio del bucle
 	startTime = SDL_GetTicks();
 
@@ -93,9 +91,9 @@ void Game::run()
 		render(); // renderiza todos los objetos de juego
 	}
 	
-	// escribe gameover
+	// escribe game over
 	cout << "GAME OVER" << endl;
-	// escribe punuacion
+	// escribe puntuacion
 	PlayerScore();
 }
 
@@ -103,7 +101,7 @@ void Game::run()
 void Game::update()
 {
 	// actualiza el mothership
-	milfship->update();
+	mother->update();
 
 	// actualiza los objetos de escena
 	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
@@ -132,36 +130,6 @@ void Game::render()
 
 	// render de todo
 	SDL_RenderPresent(renderer);
-}
-
-// GUARDAR
-void Game::save(const string& file)
-{
-	// abre un canal para guardar en un archivo con el nombre deseado
-	ofstream out(SAVED_FOLDER + file + ".txt");
-
-	milfship->save(out);
-
-	// bucle para llegar a los save de todos los objetos
-	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
-
-		(*it)->save(out);
-	}
-
-	// guarda los puntos
-	out << "7 " << SCORE << endl;
-
-	// cierra el hilo
-	out.close();
-
-}
-
-void Game::load(const string& file)
-{
-
-	loadAnyFile(file);
-
-	//cout << "se cargaaaaaaaaaaaaa" << endl;
 }
 
 void Game::renderBackground()
@@ -251,7 +219,7 @@ void Game::hasDied(list<SceneObject*>::iterator& it)
 }
 #pragma endregion
 
-#pragma region Gestion de menuses
+#pragma region MENUS
 void Game::saveThisGame()
 {
 	// pregunta en que numero se va a guardar la partida
@@ -270,11 +238,10 @@ void Game::saveThisGame()
 		// acaba el juego
 		EndGame();
 
-		// se ha salvado el juego !!!!!
+		// se ha salvado el juego
 		cout << "Game saved!" << endl;
 	}
 	else cout << "Invalid number :(";
-
 }
 
 void Game::loadThisGame()
@@ -292,13 +259,12 @@ void Game::loadThisGame()
 		// pasa numero a string despues del save (savek)
 		load("save" + to_string(k - '0'));
 
-		// se ha salvado el juego !!!!!
+		// se ha salvado el juego
 		cout << "Game loaded!" << endl;
 	}
 	else cout << "Invalid number :(";
 
 }
-
 #pragma endregion
 
 // MANEJAR SCORE
@@ -312,6 +278,34 @@ void Game::PlayerScore()
 	cout << "SCORE: " << SCORE << endl;
 }
 
+// GUARDAR
+#pragma region SISTEMA GUARDADO
+void Game::save(const string& file)
+{
+	// abre un canal para guardar en un archivo con el nombre deseado
+	ofstream out(SAVED_FOLDER + file + ".txt");
+
+	mother->save(out);
+
+	// bucle para llegar a los save de todos los objetos
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
+
+		(*it)->save(out);
+	}
+
+	// guarda los puntos
+	out << "7 " << SCORE << endl;
+
+	// cierra el hilo
+	out.close();
+}
+
+void Game::load(const string& file)
+{
+	loadAnyFile(file);
+}
+#pragma endregion
+
 // fin logica
 #pragma endregion 
 
@@ -319,7 +313,6 @@ void Game::PlayerScore()
 #pragma region CONTROL DE DAÑO
 void Game::fireLaser(Point2D<double> pos, char frenemy)
 {
-
 	if (frenemy == 'a') {
 		SDL_SetRenderDrawColor(renderer, 255, 0, 114, 255);	// cannon
 	}	
@@ -382,7 +375,6 @@ void Game::showUfo(Point2D<double> pos)
 
 	// le pasa el iterador
 	newObj->setListIterator(newit);
-	
 }
 
 // CARGA
@@ -417,9 +409,7 @@ void Game::loadMap()
 	int atype;
 
 	// crea la mothership
-	milfship = new Mothership(0, this, 30, 0);
-
-
+	mother = new Mothership(0, this, 30, 0);
 
 	// in.eof() devuelve si se ha acabado el fichero
 	while (!in.eof()) {
@@ -455,12 +445,12 @@ void Game::loadMap()
 			if (atype == 0) {
 
 				//
-				obj = new ShooterAlien(defaultCooldown, milfship, 0, atype, coord, textures[atype]->getFrameWidth(), 
+				obj = new ShooterAlien(defaultCooldown, mother, 0, atype, coord, textures[atype]->getFrameWidth(), 
 					textures[atype]->getFrameHeight(), 2, textures[atype], this);
 			}
 			else {
 				// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game)
-				obj = new Alien(milfship, 0, atype, coord, textures[atype]->getFrameWidth(), 
+				obj = new Alien(mother, 0, atype, coord, textures[atype]->getFrameWidth(), 
 					textures[atype]->getFrameHeight(), 2, textures[atype], this);
 			}
 
@@ -496,10 +486,8 @@ void Game::loadMap()
 			obj->setListIterator(newit);
 		}
 	}
-
 	
-	// ----------------------------------------------- UFO ----------------------------------------------------------------
-	// textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight() 
+	// ---- UFO ----
 	SceneObject* obj = new Ufo(Point2D<double>(winWidth, defaultUfoHeight), textures[UfoT]->getFrameWidth(),
 		textures[UfoT]->getFrameHeight(), 1, textures[UfoT], this);
 
@@ -512,8 +500,7 @@ void Game::loadMap()
 	newit--;
 
 	// le pasa el iterador
-	obj->setListIterator(newit);
-	
+	obj->setListIterator(newit);	
 }
 
 void Game::loadAnyFile(const string& file)
@@ -544,6 +531,7 @@ void Game::loadAnyFile(const string& file)
 				// id x y vidas cd
 
 				// ---------------- Lectura de variables ---------------
+				
 				// lee la posicion
 				in >> x;
 				in >> y;
@@ -556,6 +544,7 @@ void Game::loadAnyFile(const string& file)
 				Point2D<double> coord(x, y);
 
 				// ---------------- Creacion del objeto ------------------
+				
 				// nave
 				SceneObject* obj = new Cannon(cooldown, coord, textures[Nave]->getFrameWidth(), textures[Nave]->getFrameHeight(), vidas, textures[Nave], this);
 
@@ -596,7 +585,7 @@ void Game::loadAnyFile(const string& file)
 				// ---------------- Creacion del objeto ------------------
 				
 				// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game)
-				SceneObject* obj = new Alien(milfship, defaultFrame, alienType, coord, textures[alienType]->getFrameWidth(), 
+				SceneObject* obj = new Alien(mother, defaultFrame, alienType, coord, textures[alienType]->getFrameWidth(), 
 					textures[alienType]->getFrameHeight(), defaultLives, textures[alienType], this);
 
 				// lo mete en la lista
@@ -638,8 +627,7 @@ void Game::loadAnyFile(const string& file)
 
 				// ---------------- Creacion del objeto ------------------
 
-				//
-				SceneObject* obj = new ShooterAlien(cooldown, milfship, defaultFrame, alienType, coord, 
+				SceneObject* obj = new ShooterAlien(cooldown, mother, defaultFrame, alienType, coord, 
 					textures[alienType]->getFrameWidth(), textures[alienType]->getFrameHeight(), defaultLives, 
 					textures[alienType], this);
 
@@ -679,7 +667,7 @@ void Game::loadAnyFile(const string& file)
 				// ---------------- Creacion del objeto ------------------
 
 				// crea la mothership
-				milfship = new Mothership(y, this, timer, estado);
+				mother = new Mothership(y, this, timer, estado);
 
 				// ----------------------- Fin del stup -----------------------
 
@@ -707,7 +695,7 @@ void Game::loadAnyFile(const string& file)
 
 				// ---------------- Creacion del objeto ------------------
 
-				//bunker
+				// bunker
 				SceneObject* obj = new Bunker(hits, coord, textures[Escudo]->getFrameWidth(), 
 					textures[Escudo]->getFrameHeight(), vidas, textures[Escudo], this);
 
@@ -745,7 +733,6 @@ void Game::loadAnyFile(const string& file)
 				in >> estado;
 				in >> cooldown;
 				in >> vidas;
-
 
 				// ---------------- Creacion del objeto ------------------
 
@@ -825,7 +812,6 @@ void Game::loadAnyFile(const string& file)
 
 				break;
 			}
-
 		}
 
 		// settea el mothership en los aliens
@@ -837,10 +823,10 @@ void Game::loadAnyFile(const string& file)
 			// si es un alien setea el mothership
 			if (alien != nullptr) {
 				// llama al setteador
-				alien->setMothership(milfship);
+				alien->setMothership(mother);
 
 				// añade al contador de aliens de la mothership
-				milfship->addAlien();
+				mother->addAlien();
 			}
 		}
 	}
@@ -871,8 +857,6 @@ void Game::mainMenu()
 
 		// carga una partida
 		loadThisGame();
-		//loadMap(); // placeholder apra que no pete
 	}
-
 }
 #pragma endregion

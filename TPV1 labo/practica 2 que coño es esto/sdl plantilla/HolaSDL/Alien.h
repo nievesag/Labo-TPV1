@@ -3,7 +3,7 @@
 
 #include "checkML.h"
 #include <SDL.h>
-// ----------------------------------
+
 #include "Vector2D.h"
 #include "texture.h"
 #include "SceneObject.h"
@@ -11,7 +11,6 @@
 #include "Laser.h"
 #include "Mothership.h"
 
-// PLACEHOLDERRRRR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 class Mothership;
 class Game;
 
@@ -23,9 +22,9 @@ class Alien : public SceneObject
 	// atributos privados
 protected:
 	Mothership* mothership;	  // puntero a mothership
-	int type; // tipo de alien
-	int alienFrame; // frame del alien (para animaciones)
-	double alienSpeed; // velocidad del alien
+	int type;			// tipo de alien
+	int alienFrame;		// frame del alien (para animaciones)
+	double alienSpeed;  // velocidad del alien
 
 	int alienScore;
 
@@ -68,21 +67,15 @@ public:
 
 	// metodos privados (auxiliares)
 protected:
-	// ---- move ----
-	// mueve al alien
-	void move();
-
 	// ---- animate ----
 	// anima al alien
 	void animate();
 
-	//
 	void updateRect() override;
 
 	// devuelve el numero de puntuacion a añadir segun el tipo de alien
 	int GetAlienPoints() const { return alienScore; }
 
-	//
 	void setAlienSpeed();
 };
 #endif

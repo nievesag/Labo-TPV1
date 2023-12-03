@@ -2,15 +2,13 @@
 #define UFO_H
 
 #include "checkML.h"
-//#include <SDL.h>
-// ----------------------------------
+
 #include "Vector2D.h"
 #include "texture.h"
 #include "SceneObject.h"
 #include "GameObject.h"
 #include "Laser.h"
 
-// PLACEHOLDERRRRR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 class Game;
 
 using namespace std;
@@ -98,8 +96,7 @@ protected:
 	// actualiza el rect
 	void updateRect() override;
 
-	// animacion del ufooooo (destruccion)
+	// animacion del ufo
 	void anima();
-
 };
 #endif

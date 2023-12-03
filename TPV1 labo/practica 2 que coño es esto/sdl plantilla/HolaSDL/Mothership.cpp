@@ -1,5 +1,4 @@
 #include "Mothership.h"
-
 #include "Game.h"
 
 void Mothership::update()
@@ -11,8 +10,7 @@ void Mothership::update()
 	else {
 		alienTimer = 0;
 	}
-
-
+	
 	if (shouldMove() && switchDir)
 	{
 		dir = -dir;
@@ -20,20 +18,10 @@ void Mothership::update()
 	}
 }
 
-void Mothership::save(ostream& out) const
-{
-	// guarda el indicador de numero, la altura de los aliens, el estado actual y el cooldown
-	out << "3 " << level << " " << dir << " " << alienTimer << endl;
-
-}
-
 int Mothership::getDirection()
 {
-	
-
 	return dir;
 }
-
 
 bool Mothership::shouldMove()
 {
@@ -47,8 +35,6 @@ void Mothership::cannotMove()
 
 		level++;
 	}
-	
-
 }
 
 void Mothership::alienLanded(const Alien* alien)
@@ -61,9 +47,14 @@ void Mothership::alienLanded(const Alien* alien)
 	}
 }
 
-
 void Mothership::haveLanded()
 {
 	// acaba el juego
 	game->EndGame();
+}
+
+void Mothership::save(ostream& out) const
+{
+	// guarda el indicador de numero, la altura de los aliens, el estado actual y el cooldown
+	out << "3 " << level << " " << dir << " " << alienTimer << endl;
 }

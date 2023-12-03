@@ -33,10 +33,10 @@ static constexpr uint winHeight = 600;
 // gestion de frames y framerate 
 static constexpr int FRAMERATE = 60,						// frames por segundo
 					TIME_BT_FRAMES = 100 / FRAMERATE,		// tiempo entre frames
-					ALIEN_FR = 8 * FRAMERATE,			// cantidad de frames entre updates del alien
-					END_GAME = 300,						// distancia de los aliens para acabar
-					ALIEN_RF = 5 * FRAMERATE,			// cada cuanto se actualiza el alien
-					SHOOT_FRAMES = TIME_BT_FRAMES*100,
+					ALIEN_FR = 8 * FRAMERATE,				// cantidad de frames entre updates del alien
+					END_GAME = 300,							// distancia de los aliens para acabar
+					ALIEN_RF = 5 * FRAMERATE,				// cada cuanto se actualiza el alien
+					SHOOT_FRAMES = TIME_BT_FRAMES * 100,	// cantidad de frames entre updates
 					ANIMATION_DURATION = 10;
 
 
@@ -46,12 +46,12 @@ static constexpr double LASER_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de laser
 						UFO_SPEED = 6 * TIME_BT_FRAMES;		// velocidad de ufo
 						
 
-// ------------------------------------- SAVE & READ FILES ----------------------------
+// ---------------------------- SAVE & READ FILES ----------------------------
 // archivo de strings con las roots de las carpetas etc
 static string SAVED_FOLDER = "..\\saved\\";
 
 
-// ----------------------------------- G A M E  ------------------------------------
+// -------------------------------- G A M E --------------------------------
 class Game
 {
 public:
@@ -63,7 +63,6 @@ public:
 
 	// atributos privados
 private:
-
 	SDL_Window* window = nullptr; // puntero a ventana
 	SDL_Renderer* renderer = nullptr; // puntero a renderer !!! TODO EN EL MISMO RENDERER
 
@@ -79,10 +78,9 @@ private:
 		ans,				// respuesta en los menuses
 		laserW = 4,			// dimensiones del laser
 		laserH = 10,
-		defaultCooldown,	// default cooldown (si es -1 se genera uno, en principio)
+		defaultCooldown,	// default cooldown (si es -1 se genera uno)
 		defaultUfoHeight = 10;
 	
-
 	// lista de objetos de escena (cannon, aliens, bunkeres, laser)
 	list<SceneObject*> sceneObjectsList;
 
@@ -90,7 +88,7 @@ private:
 	list<list<SceneObject*>::iterator> objectsToErase;
 
 	// puntero al mothership
-	Mothership* milfship;
+	Mothership* mother;
 
 	// MANEJO DEL TIEMPO EN RUN
 	mt19937_64 randomGenerator;	// crea semilla
@@ -138,7 +136,7 @@ public:
 	// acaba el juego (setea exit a true)
 	void EndGame();
 
-	// devuelve si choca con algo (colisiones vamos)
+	// devuelve si choca con algo (colisiones)
 	bool damage(Laser* myLaser);
 
 	// ---- dispara el laser ----
@@ -149,7 +147,7 @@ public:
 	// crea ufo
 	void showUfo(Point2D<double> pos);
 
-	// ------------------- GETTERS ------------------
+	// ------------------- GETTERS -------------------
 	uint getWinWidth() { return winWidth; }
 	uint getWinHeight() { return winHeight; }
 	
@@ -194,7 +192,7 @@ private:
 	// carga cualquier archivo
 	void loadAnyFile(const string& file);
 
-	// ----------- Main menu -----------
+	// ---- Main menu ----
 	void mainMenu();
 };
 
