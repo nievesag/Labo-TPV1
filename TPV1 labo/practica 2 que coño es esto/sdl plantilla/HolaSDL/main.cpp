@@ -14,7 +14,6 @@
 #include "Game.h"
 
 using namespace std;
-using uint = unsigned int;
 
 int main(int argc, char* argv[])
 {
@@ -23,10 +22,27 @@ int main(int argc, char* argv[])
         Game game;
         game.run();
     }
-    catch (exception& e) {
 
-        cout << e.what() << std::endl;
-        return EXIT_FAILURE;
+    // ERROR DE SDL
+    catch (SDLerror& SDLerror) {
+
+        cout << SDLerror.what() << endl;
+    }
+
+    // ERROR DE ARCHIVO NO ENCONTRADO
+    catch (FileNotFoundError& FileNotFoundError) {
+        cout << FileNotFoundError.what() << endl;
+    }
+
+    // ERROR DE FORMATO DE ARCHIVO
+    catch (FileFormatError& FileFormatError) {
+        cout << FileFormatError.what() << endl;
+    }
+
+    // ERROR GENERICO
+    catch (...)
+    {
+        cout << "An error occurred, you can't play Space Invaders :(" << endl;
     }
 
 	return 69;
