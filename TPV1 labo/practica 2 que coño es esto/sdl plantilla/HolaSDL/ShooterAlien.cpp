@@ -39,7 +39,7 @@ void ShooterAlien::setCD()
 void ShooterAlien::update()
 {
 	if (CDcounter <= 0)
-		CDcounter = game->getRandomRange(200 * TIME_BT_FRAMES, 2000 * TIME_BT_FRAMES); //IMPORTANTE: el min y max son numero de frames de update del alien, es decir, el alien disparara una vez cada x updates entre ese rango
+		CDcounter = game->getRandomRange(2 * SHOOT_FRAMES, 20 * SHOOT_FRAMES); //IMPORTANTE: el min y max son numero de frames de update del alien, es decir, el alien disparara una vez cada x updates entre ese rango
 	else
 		CDcounter--;
 
