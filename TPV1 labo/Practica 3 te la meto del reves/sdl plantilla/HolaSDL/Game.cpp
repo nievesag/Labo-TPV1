@@ -343,7 +343,7 @@ void Game::loadAnyFile(const string& file, const string& root)
 {
 	// lee el mapa
 	ifstream in(root + file + ".txt");
-	if (in.fail()) throw FileNotFoundError("No se ha podido leer el mapa "s + file + ".txt");;
+	if (in.fail()) throw FileNotFoundError("No se ha podido leer el mapa "s + file + ".txt");
 
 	// variables auxiliares
 	int objID;						// id

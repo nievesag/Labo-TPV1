@@ -1,6 +1,5 @@
 #include "texture.h"
-
-#include "invadersError.h"
+#include "SDLerror.h"
 #include <SDL_image.h>
 
 using namespace std;
