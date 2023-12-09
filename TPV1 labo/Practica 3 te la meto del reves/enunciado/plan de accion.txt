@@ -1,1 +1,24 @@
 ser tú mismo
+
+bien dicho
+
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+
+----------------> ESTADOS <-----------------------------
+----> mmaquina de estado entera skull emoji
+----> pasar CASI TODO el game a playstate....
+
+
+----------------> POWERUPS <-----------------------------
+----> BOMBA
+----> escudiño
+
+
+----------------> BOTONES <------------------------------
+----> no me lo he leido heh
+
+
+----------------> MEMORY LEAKS <--------------------------
+----> ...
