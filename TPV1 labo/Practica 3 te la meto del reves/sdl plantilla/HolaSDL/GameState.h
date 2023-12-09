@@ -7,10 +7,12 @@ using uint = unsigned int;
 // includes
 #include <SDL.h>		// SDL
 #include <fstream>		// stream
+#include <list>			// listas
 
 // 
 #include "gameList.h"
 #include "SceneObject.h"
+#include "EventHandler.h"
 
 class Game;
 
@@ -22,18 +24,25 @@ protected:
 	// referencia al game
 	Game* game;
 
+	// lista de objetos del juego mediante gameList
+	GameList<GameObject, true> gamelist;
+
+	// lista de eventos a gestionar
+	list<EventHandler*> eventList;
+
+
 public:
 
 	// render del estado
 	void render() const;
 
-	//
+	// actualiza el estado
 	void update();
 
-	// 
+	// gestiona los eventos del estado
 	void handleEvent(const SDL_Event& event);
 
-	//
+	// guarda el estado
 	void save(ostream& file);
 
 	// comento porque esta incompleta
@@ -42,10 +51,11 @@ public:
 	// getter del juego
 	Game getGame() const;
 
+	// añade un listener a eventos
+	void addEventListener(SDL_Event& event);
 
-
-
-
+	// añade un objeto a la lista de objetos
+	void addObject(SceneObject& object);
 
 };
 
