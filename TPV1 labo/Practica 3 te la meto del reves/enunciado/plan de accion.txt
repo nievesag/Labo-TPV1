@@ -7,8 +7,13 @@ bien dicho
 
 
 ----------------> ESTADOS <-----------------------------
-----> mmaquina de estado entera skull emoji
+----> maquina de estado entera skull emoji
 ----> pasar CASI TODO el game a playstate....
+----> que pase de un estado a otro (placeholder 
+				con teclado igual?)
+----> que se añadan al/quiten del stack al cambiar 
+					de estado
+----> descubir para que coño es el update realmente
 
 
 ----------------> POWERUPS <-----------------------------
