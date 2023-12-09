@@ -16,7 +16,11 @@ class PlayState : public GameState{
 
 protected:
 
-	// ??????????????????
+	// este es el nuevo game... pero que hace el atiguo ????
+
+	// en Game: punteros a window y render
+	//			array de texturas
+	//			maquina de estados
 
 public:
 

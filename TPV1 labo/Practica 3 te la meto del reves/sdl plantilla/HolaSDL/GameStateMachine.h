@@ -3,7 +3,8 @@
 
 // includes
 //
-#include<SDL.h>
+#include<SDL.h>		// SDL
+#include <stack>	// stack
 
 // 
 #include "GameState.h"
@@ -15,7 +16,13 @@ class GameStateMachine {
 
 protected:
 
-	// stack
+	// stack de estados:
+	//		Cada vez que se cambie de estado se añadira a la pila para mantener
+	// un especie de 'historial' de estados donde siempre se pueda volver al
+	// anterior con solo mirar a la pila.
+	// 
+	// Todos los metodos se ocupan de gestionar la pila 
+	stack<GameState> states;
 
 public:
 
