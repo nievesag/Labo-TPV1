@@ -17,7 +17,7 @@ class GameStateMachine {
 protected:
 
 	// stack de estados:
-	//		Cada vez que se cambie de estado se añadira a la pila para mantener
+	//		Cada vez que se cambie de estado se anyadira a la pila para mantener
 	// un especie de 'historial' de estados donde siempre se pueda volver al
 	// anterior con solo mirar a la pila.
 	// 
