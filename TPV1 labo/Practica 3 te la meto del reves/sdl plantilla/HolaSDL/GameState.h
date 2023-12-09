@@ -8,6 +8,10 @@ using uint = unsigned int;
 #include <SDL.h>		// SDL
 #include <fstream>		// stream
 
+// 
+#include "gameList.h"
+#include "SceneObject.h"
+
 class Game;
 
 
@@ -33,7 +37,7 @@ public:
 	void save(ostream& file);
 
 	// comento porque esta incompleta
-	//void hasDied(GameList<GameObject, true>::anchor);
+	void hasDied(GameList<GameObject, true>::anchor);
 
 	// getter del juego
 	Game getGame() const;

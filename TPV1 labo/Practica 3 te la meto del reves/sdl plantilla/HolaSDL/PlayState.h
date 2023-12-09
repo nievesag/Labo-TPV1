@@ -6,6 +6,8 @@
 
 // 
 #include "GameState.h"
+#include "gameList.h"
+#include "SceneObject.h"
 
 using namespace std;
 using uint = unsigned int;
@@ -25,7 +27,7 @@ public:
 	int getRandomRange(int min, int max);
 
 	// guatafac
-	//void hasDied(GameList<SceneObject>::anchor);
+	void hasDied(GameList<SceneObject>::anchor);
 
 
 
