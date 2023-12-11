@@ -8,6 +8,7 @@ using uint = unsigned int;
 #include <SDL.h>		// SDL
 #include <fstream>		// stream
 #include <list>			// listas
+#include <string>		// string
 
 // 
 #include "gameList.h"
@@ -73,8 +74,7 @@ public:
 	// getter del juego
 	Game getGame() const;
 
-	// getter del id del estado
-	virtual string getStateID() const = 0;
+	virtual string getID() const = 0;
 
 
 	// ---------------------- EVENTOS Y OBJETOS -------------------

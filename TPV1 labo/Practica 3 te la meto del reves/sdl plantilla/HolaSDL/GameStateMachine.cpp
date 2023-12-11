@@ -13,25 +13,31 @@ void GameStateMachine::pushState(GameState* newState)
 
 void GameStateMachine::replaceState(GameState* state)
 {
-
 	if (!states.empty())
 	{
-		if (true) // states.top().getStateID() == state->getStateID()
+		if (states.top().getID()  == state->getID())
 		{
-			return; // do nothing
+			return; // no hace nada
 		}
 		if (states.top().onExit())
 		{
+			// lo mismo que en popState
 			delete &states.top();
 			states.pop();
 		}
 	}
 
+
+	// esto es push state asi queeee
+	pushState(state);
+	/*
 	// 
 	states.push(*state);
 
 	// 
 	states.top().onEnter();
+	*/
+	
 
 }
 

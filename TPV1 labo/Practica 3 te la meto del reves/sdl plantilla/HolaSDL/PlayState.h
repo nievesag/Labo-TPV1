@@ -22,7 +22,7 @@ class PlayState : public GameState{
 private:
 
 	// id del estado
-	static const std::string s_playID;
+	const string s_playID;
 
 	// default variables
 	int defaultLives = 1,	// default number of lives
@@ -85,13 +85,13 @@ public:
 	//
 	virtual bool onExit();
 
+	//
+	virtual string getID() const;
+
 
 	// ------------------------------- GETTERS Y SETTERS --------------------------
 	// genera un int aleatorio con un minimo y un maximo
 	int getRandomRange(int min, int max);
-
-	// getter el id del estado
-	string getStateID() const { return s_playID; }
 
 
 	// ------------------------------ COLISIONES Y COMBATE ---------------------------

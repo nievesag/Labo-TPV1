@@ -76,10 +76,17 @@ bool PlayState::onExit()
 	return false;
 }
 
+string PlayState::getID() const
+{
+	return s_playID;
+}
+
 int PlayState::getRandomRange(int min, int max)
 {
 	return uniform_int_distribution<int>(min, max)(randomGenerator);
 }
+
+
 
 bool PlayState::damage(SDL_Rect rect, char frenemy)
 {

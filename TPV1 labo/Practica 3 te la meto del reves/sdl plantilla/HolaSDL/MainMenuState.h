@@ -10,7 +10,8 @@ using uint = unsigned int;
 class MainMenuState : public GameState {
 
 private:
-	static const std::string s_menuID;
+
+	static const string s_menuID;
 
 public:
 
@@ -31,8 +32,8 @@ public:
 
 	// ----------------------------------- GETTERS Y SETTERS -----------------------
 	//
-	string getStateID() const { return s_menuID; }
 
+	virtual string getID() const;
 };
 
 #endif
