@@ -16,7 +16,7 @@ void GameStateMachine::replaceState(GameState* state)
 
 	if (!states.empty())
 	{
-		if (states.top().getStateID() == state->getStateID())
+		if (true) // states.top().getStateID() == state->getStateID()
 		{
 			return; // do nothing
 		}
