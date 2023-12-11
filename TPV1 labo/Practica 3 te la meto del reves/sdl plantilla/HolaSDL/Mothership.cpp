@@ -1,6 +1,6 @@
 #include "checkML.h"
 #include "Mothership.h"
-#include "Game.h"
+#include "SDLApplication.h"
 
 void Mothership::update()
 {
@@ -51,7 +51,7 @@ void Mothership::alienLanded(const Alien* alien)
 void Mothership::haveLanded()
 {
 	// acaba el juego
-	game->EndGame();
+	application->EndGame();
 }
 
 void Mothership::save(ostream& out) const

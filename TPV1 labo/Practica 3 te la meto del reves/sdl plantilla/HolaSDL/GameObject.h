@@ -6,7 +6,7 @@
 #include "Vector2D.h"
 #include "texture.h"
 
-class Game;
+class SDLApplication;
 
 using namespace std;
 using uint = unsigned int;
@@ -17,15 +17,15 @@ class GameObject
 protected:
 
 	// puntero al game
-	Game* game;
+	SDLApplication* application;
 
 	// metodos publicos
 public:
 
 	GameObject::GameObject () {}
 
-	GameObject::GameObject(Game* game)
-		: game(game) {}
+	GameObject::GameObject(SDLApplication* application)
+		: application(application) {}
 
 	// destructora virtual para por polimorfismo
 	virtual GameObject::~GameObject();

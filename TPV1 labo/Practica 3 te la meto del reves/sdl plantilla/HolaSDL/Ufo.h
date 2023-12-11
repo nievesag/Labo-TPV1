@@ -43,8 +43,8 @@ private:
 	// metodos publicos
 public:
 	// ---- constructora ----
-	Ufo( Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: spawn(position), SceneObject(position, width, height, vidas, texture, game)
+	Ufo( Point2D<double> position, int width, int height, int vidas, Texture* texture, SDLApplication* application)
+		: spawn(position), SceneObject(position, width, height, vidas, texture, application)
 	{
 		state = oculto;
 

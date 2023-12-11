@@ -1,6 +1,6 @@
 #include "checkML.h"
 #include "Cannon.h"
-#include "Game.h"
+#include "SDLApplication.h"
 
 void Cannon::render() const
 {	
@@ -65,8 +65,8 @@ bool Cannon::hit(SDL_Rect* rect, char frenemy)
 {
 	if (SDL_HasIntersection(rect, &destRect) && frenemy == 'r') {
 		// informa al game que ha muerto
-		game->hasDied(it);
-		game->EndGame();
+		application->hasDied(it);
+		application->EndGame();
 
 		return true;
 	}
@@ -88,7 +88,7 @@ void Cannon::manageCooldown()
 void Cannon::shoot()
 {
 	if(keySpace)
-		game->fireLaser(this->position, 'a');
+		application->fireLaser(this->position, 'a');
 }
 
 void Cannon::movement()
@@ -113,7 +113,7 @@ void Cannon::movement()
 			direction = Vector2D<double>(1, 0);
 		}
 	}
-	if (keyE) game->EndGame();
+	if (keyE) application->EndGame();
 
 	// se mueve la nave
 	position.setX(position.getX() + (direction.getX() * CANNON_SPEED));
@@ -121,8 +121,8 @@ void Cannon::movement()
 	// para que no se pase de largo la nave
 	if (position.getX() < 0)
 		position.setX(0);
-	else if (position.getX() > game->getWinWidth() - texture->getFrameWidth())
-		position.setX(game->getWinWidth() - texture->getFrameWidth());
+	else if (position.getX() > application->getWinWidth() - texture->getFrameWidth())
+		position.setX(application->getWinWidth() - texture->getFrameWidth());
 }
 
 void Cannon::save(ostream& out) const

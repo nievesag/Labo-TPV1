@@ -1,5 +1,5 @@
 #include "checkML.h"
-#include "Game.h"
+#include "SDLApplication.h"
 
 #include "FileNotFoundError.h"
 #include "SDLError.h"
@@ -8,7 +8,7 @@
 using namespace std;
 
 // constructora del game
-Game::Game()
+SDLApplication::SDLApplication()
 {
 	winX = winY = SDL_WINDOWPOS_CENTERED;
 
@@ -30,7 +30,7 @@ Game::Game()
 	mainMenu();
 }
 
-Game::~Game()
+SDLApplication::~SDLApplication()
 {
 	// borra el mothership
 	delete mother;
@@ -48,13 +48,13 @@ Game::~Game()
 // cargar | manejar eventos -> actualizar -> pintar -> manejar eventos etc
 
 // ---------------------------------------------
-void Game::EndGame()
+void SDLApplication::EndGame()
 {
 	exit = true;
 }
 
 // RUN
-void Game::run()
+void SDLApplication::run()
 {
 	// get ticks al inicio del bucle
 	startTime = SDL_GetTicks();
@@ -81,7 +81,7 @@ void Game::run()
 }
 
 // ACTUALIZAR 
-void Game::update()
+void SDLApplication::update()
 {
 	// actualiza el mothership
 	mother->update();
@@ -97,7 +97,7 @@ void Game::update()
 }
 
 // PINTAR
-void Game::render()
+void SDLApplication::render()
 {
 	// limpia pantalla
 	SDL_RenderClear(renderer);
@@ -115,14 +115,14 @@ void Game::render()
 	SDL_RenderPresent(renderer);
 }
 
-void Game::renderBackground()
+void SDLApplication::renderBackground()
 {
 	// renderiza el fondo
 	textures[Fondo]->render();
 }
 
 // MANEJAR EVENTOS
-void Game::handleEvents()
+void SDLApplication::handleEvents()
 {
 	ifstream in("..\\mapas\\original.txt");
 
@@ -168,7 +168,7 @@ void Game::handleEvents()
 
 // ELIMINACION DE OBJETOS
 #pragma region ELIMINACION DE OBJETOS
-void Game::deleteSceneObjects()
+void SDLApplication::deleteSceneObjects()
 {
 	if (objectsToErase.size() > 0) {
 
@@ -185,7 +185,7 @@ void Game::deleteSceneObjects()
 	}
 }
 
-void Game::hasDied(list<SceneObject*>::iterator& it)
+void SDLApplication::hasDied(list<SceneObject*>::iterator& it)
 {
 	// aniade el objeto a la lista de borradores
 	objectsToErase.push_back(it);
@@ -193,7 +193,7 @@ void Game::hasDied(list<SceneObject*>::iterator& it)
 #pragma endregion
 
 #pragma region MENUS
-void Game::saveThisGame()
+void SDLApplication::saveThisGame()
 {
 	// pregunta en que numero se va a guardar la partida
 	cout << "Save this game in slot: " << std::endl;
@@ -216,7 +216,7 @@ void Game::saveThisGame()
 	else cout << "Invalid number :(";
 }
 
-void Game::loadThisGame()
+void SDLApplication::loadThisGame()
 {
 	// pregunta que slot se quiere cargar
 	cout << "Load slot: " << std::endl;
@@ -234,24 +234,23 @@ void Game::loadThisGame()
 		cout << "Game loaded!" << endl;
 	}
 	else cout << "Invalid number :(";
-
 }
 #pragma endregion
 
 // MANEJAR SCORE
-void Game::increaseScore(int score)
+void SDLApplication::increaseScore(int score)
 {
 	SCORE += score;
 }
 
-void Game::PlayerScore()
+void SDLApplication::PlayerScore()
 {
 	cout << "SCORE: " << SCORE << endl;
 }
 
 // GUARDAR
 #pragma region SISTEMA GUARDADO
-void Game::save(const string& file)
+void SDLApplication::save(const string& file)
 {
 	// abre un canal para guardar en un archivo con el nombre deseado
 	ofstream out(SAVED_FOLDER + file + ".txt");
@@ -271,7 +270,7 @@ void Game::save(const string& file)
 	out.close();
 }
 
-void Game::load(const string& file, const string& root)
+void SDLApplication::load(const string& file, const string& root)
 {
 	loadAnyFile(file, root);
 }
@@ -282,7 +281,7 @@ void Game::load(const string& file, const string& root)
 
 // CONTROL DE DAÑO
 #pragma region CONTROL DE DAÑO
-void Game::fireLaser(Point2D<double> pos, char frenemy)
+void SDLApplication::fireLaser(Point2D<double> pos, char frenemy)
 {
 	if (frenemy == 'a') {
 		SDL_SetRenderDrawColor(renderer, 255, 0, 114, 255);	// cannon
@@ -306,7 +305,7 @@ void Game::fireLaser(Point2D<double> pos, char frenemy)
 	newObj->setListIterator(newit);
 }
 
-bool Game::damage(Laser* myLaser)
+bool SDLApplication::damage(Laser* myLaser)
 {
 	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
 
@@ -322,7 +321,7 @@ bool Game::damage(Laser* myLaser)
 
 // CARGA
 #pragma region LOADS
-void Game::loadTextures()
+void SDLApplication::loadTextures()
 {
 	// bucle para rellenar el array de texturas
 	for (int i = 0; i < NUM_TEXTURES; i++) {
@@ -339,7 +338,7 @@ void Game::loadTextures()
 	}
 }
 
-void Game::loadAnyFile(const string& file, const string& root)
+void SDLApplication::loadAnyFile(const string& file, const string& root)
 {
 	// lee el mapa
 	ifstream in(root + file + ".txt");
@@ -678,7 +677,7 @@ void Game::loadAnyFile(const string& file, const string& root)
 	}
 }
 
-void Game::mainMenu()
+void SDLApplication::mainMenu()
 {
 	// pregunta si quieres cargar juego
 	cout << "Load game? \n  Yes -> 1 \n  No -> 0" << endl;

@@ -1,6 +1,6 @@
 #include "checkML.h"
 #include "Bunker.h"
-#include "Game.h"
+#include "SDLApplication.h"
 
 void Bunker::render() const
 {
@@ -31,7 +31,7 @@ bool Bunker::hit(SDL_Rect* rect, char frenemy)
 
 		hits++;
 
-		if (hits >= vidas) game->hasDied(it);
+		if (hits >= vidas) application->hasDied(it);
 
 		return true;
 	}

@@ -45,7 +45,7 @@
     <ClCompile Include="Laser.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="SDLApplication.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
     <ClCompile Include="Bunker.cpp">
@@ -101,7 +101,7 @@
     <ClInclude Include="Laser.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="SDLApplication.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Bunker.h">

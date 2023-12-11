@@ -22,7 +22,7 @@ class GameState {
 
 protected:
 	// referencia al game
-	Game* game;
+	SDLApplication* application;
 
 	// lista de objetos del juego mediante gameList
 	GameList<GameObject, true> gamelist;
@@ -34,10 +34,10 @@ protected:
 public:
 
 	// constructora normal por puntero a game
-	GameState(Game* game) : game(game) {};
+	GameState(Game* game) : application(application) {};
 
 	// constructora por copia
-	GameState(const GameState& gamestate) : game(gamestate.game) {
+	GameState(const GameState& gamestate) : application(gamestate.application) {
 		gamelist = gamestate.gamelist;
 		eventList = gamestate.eventList;
 	};

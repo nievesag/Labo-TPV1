@@ -12,7 +12,7 @@
 #include "Mothership.h"
 
 class Mothership;
-class Game;
+class SDLApplication;
 
 using namespace std;
 using uint = unsigned int;
@@ -33,8 +33,8 @@ protected:
 	// metodos publicos 
 public:
 	// ---- constructora ----
-	Alien(Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: mothership(mothership), alienFrame(alienFrame), type(type), SceneObject(position, width, height, vidas, texture, game) 
+	Alien(Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, SDLApplication* application)
+		: mothership(mothership), alienFrame(alienFrame), type(type), SceneObject(position, width, height, vidas, texture, application) 
 	{ 
 		setAlienSpeed();
 

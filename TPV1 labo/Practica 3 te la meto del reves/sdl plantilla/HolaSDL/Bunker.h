@@ -18,8 +18,8 @@ private:
 public:
 	// atributos privados
 	// ---- constructora ----
-	Bunker(int hits, Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: hits(hits), SceneObject(position, width, height, vidas, texture, game) { };
+	Bunker(int hits, Point2D<double> position, int width, int height, int vidas, Texture* texture, SDLApplication* application)
+		: hits(hits), SceneObject(position, width, height, vidas, texture, application) { };
 
 	// ---- render ----
 	// renderiza

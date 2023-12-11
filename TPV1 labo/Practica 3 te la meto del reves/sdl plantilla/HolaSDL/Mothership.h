@@ -36,8 +36,8 @@ private:
 
 	// metodos publicos
 public:
-	Mothership::Mothership(int level, Game* game, int alienTimer, int n) 
-		: level(level), GameObject(game), alienTimer(alienTimer) {
+	Mothership::Mothership(int level, SDLApplication* SDLApplication, int alienTimer, int n)
+		: level(level), GameObject(SDLApplication), alienTimer(alienTimer) {
 
 		dir = 1;
 		switchDir = false;

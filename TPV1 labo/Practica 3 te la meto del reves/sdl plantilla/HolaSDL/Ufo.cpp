@@ -1,6 +1,6 @@
 #include "checkML.h"
 #include "Ufo.h"
-#include "Game.h"
+#include "SDLApplication.h"
 
 void Ufo::render() const
 {
@@ -83,7 +83,7 @@ bool Ufo::hit(SDL_Rect* rect, char frenemy)
 			die();
 
 			// da los puntos
-			game->increaseScore(UfoScore);
+			application->increaseScore(UfoScore);
 		}
 		return true;
 	}
@@ -130,7 +130,7 @@ void Ufo::manageCooldown()
 void Ufo::setCD()
 {
 	// elige un nuevo cooldown      
-	cooldown = game->getRandomRange(1 * SHOOT_FRAMES, 5 * SHOOT_FRAMES);
+	cooldown = application->getRandomRange(1 * SHOOT_FRAMES, 5 * SHOOT_FRAMES);
 
 	CDcounter = 0;
 }

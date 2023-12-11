@@ -1,6 +1,6 @@
 #include "checkML.h"
 #include "Alien.h"
-#include "Game.h"
+#include "SDLApplication.h"
 
 void Alien::render() const
 {
@@ -26,7 +26,7 @@ void Alien::update()
 	}
 
 	// si se pasa de corto o de largo cambia la direccion y lo baja una posicion
-	if ((position.getX() <= 0) || (position.getX() >= (game->getWinWidth() - texture->getFrameWidth()))) {
+	if ((position.getX() <= 0) || (position.getX() >= (application->getWinWidth() - texture->getFrameWidth()))) {
 
 		mothership->cannotMove();
 	}
@@ -40,9 +40,9 @@ bool Alien::hit(SDL_Rect* rect, char frenemy)
 	if (SDL_HasIntersection(rect, &destRect) && frenemy == 'a') {
 
 		// informa al game que ha muerto
-		game->hasDied(it);
+		application->hasDied(it);
 
-		game->increaseScore(GetAlienPoints());
+		application->increaseScore(GetAlienPoints());
 
 		return true;
 	}

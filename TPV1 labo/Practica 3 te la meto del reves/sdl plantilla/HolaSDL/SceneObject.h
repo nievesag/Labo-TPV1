@@ -33,8 +33,8 @@ protected:
 	// metodos publicos
 public:
 
-	SceneObject::SceneObject(Point2D<double> position, int width, int height, int vidas, Texture* texture, Game* game)
-		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game) 
+	SceneObject::SceneObject(Point2D<double> position, int width, int height, int vidas, Texture* texture, SDLApplication* application)
+		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(application) 
 	{ 
 		// si hay textura entonces no es un laser y tiene dimensiones
 		if (texture != nullptr) {

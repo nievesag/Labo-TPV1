@@ -11,7 +11,7 @@
 #include <vector>
 
 // GAME
-#include "Game.h"
+#include "SDLApplication.h"
 
 // ERRORES
 #include "InvadersError.h"
@@ -25,8 +25,8 @@ int main(int argc, char* argv[])
 {
     try {
         // no hace falta borrarlo porque es estatico, se borra solo al salir de ambito (si fuese puntero: delete ay;)
-        Game game;
-        game.run();
+        SDLApplication application;
+        application.run();
     }
 
     // ERROR DE SDL

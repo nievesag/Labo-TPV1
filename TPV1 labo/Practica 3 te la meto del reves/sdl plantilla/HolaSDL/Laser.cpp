@@ -1,17 +1,17 @@
 #include "checkML.h"
 #include "Laser.h"
-#include "Game.h"
+#include "SDLApplication.h"
 
 void Laser::render() const
 {
 	// si es amigo/enemigo pintar de un color u otro
 	if (laserType == 'r')
-		SDL_SetRenderDrawColor(game->getRenderer(), 255, 0, 114, 255);	// cannon
+		SDL_SetRenderDrawColor(application->getRenderer(), 255, 0, 114, 255);	// cannon
 	else
-		SDL_SetRenderDrawColor(game->getRenderer(), 255, 242, 0, 255);	// aliens
+		SDL_SetRenderDrawColor(application->getRenderer(), 255, 242, 0, 255);	// aliens
 
 	// dibuja el rectangulo
-	SDL_RenderFillRect(game->getRenderer(), &destRect);
+	SDL_RenderFillRect(application->getRenderer(), &destRect);
 }
 
 void Laser::update()
@@ -23,10 +23,10 @@ void Laser::update()
 	updateRect();
 
 	// le pregunta si hay alguien a quien pegar un hostion
-	if (game->damage(this) || isOut()) {
+	if (application->damage(this) || isOut()) {
 
 		// le dice al game que ha muerto
-		game->hasDied(it);
+		application->hasDied(it);
 	}
 }
 

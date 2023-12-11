@@ -1,5 +1,5 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef SDLAPPLICATION_H
+#define SDLAPPLICATION_H
 
 #include <list>
 #include <array>
@@ -52,7 +52,7 @@ static string SAVED_FOLDER = "..\\saved\\";
 
 
 // -------------------------------- G A M E --------------------------------
-class Game
+class SDLApplication
 {
 public:
 	// cantidad de texturas que va a haber
@@ -81,7 +81,7 @@ private:
 
 	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo TextureSpec 
 	// ubicacion, col, fil
-	array<TextureSpec, Game::NUM_TEXTURES> textureSpec{
+	array<TextureSpec, SDLApplication::NUM_TEXTURES> textureSpec{
 		TextureSpec{"..\\images\\aliens2.png", 2, 3},	  // alien 1 // 32,32
 		{ "..\\images\\aliens2.png", 2, 3 },			  // alien 2 // 44,32
 		{ "..\\images\\aliens2.png", 2, 3 },			  // alien 3 // 48,32
@@ -130,10 +130,10 @@ private:
 public:
 	// ---- constructora ----
 	// la contructora del game debe inicializar los objetos de juego en una posición
-	Game::Game();
+	SDLApplication::SDLApplication();
 
 	// ---- destructora ----
-	Game::~Game();
+	SDLApplication::~SDLApplication();
 
 	// ---- run ----
 	// bucle principal del juego
