@@ -32,12 +32,11 @@ public:
 
 	// metodos virtuales puros -> estan vacios y preparados para un override en los objetos especificos
 	// ---- render ----
-	virtual void render(SDL_Rect destRect) const;
+	virtual void render() const;
 
-	// cuando se iguala un metodo a 0 obliga a todas las clases hijas a crearlas tmb (override)
-	// si no se va a quejar
 	// ---- update ----
-	virtual void update() = 0;
+	// actualiza
+	virtual void update();
 
 	// ---- save del objeto ----
 	virtual void save(ostream& out) const = 0;

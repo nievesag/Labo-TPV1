@@ -54,7 +54,7 @@ BOTONES Y EVENTOS (clases):
 BOTONES: gameObjects (render, update, handleEvents)
 	atributos:
 	- textura
-	- funciones a ejecutar si se pulsa, tipo ButtonЕ::Callback (stdЕ::function<void(void)>), se llaman desde handleEvent
+	- funciones a ejecutar si se pulsa, tipo Button::Callback (stdЕ::function<void(void)>), se llaman desde handleEvent
 	métodos:
 	- connect: registra callbacks
 		-> Crear un objeto función para invocar al método de un objeto:
@@ -65,11 +65,11 @@ BOTONES: gameObjects (render, update, handleEvents)
 	métodos:
 	- handleEvent: método virtual puro handleEvent, recibe SDL_Event 
 
-	- Game / SDLApplication: capturará los eventos con SDL_PollEvent, y los retrasmitirá a todos los oyentes registrados de tipo EventHandler
+- Game / SDLApplication: capturará los eventos con SDL_PollEvent, y los retrasmitirá a todos los oyentes registrados de tipo EventHandler
 	atributos:
 	- lista de punteros a oyentes
 
-CAPUTRAN EVENTOS: Cannon y Button, implementan interfaz, en la definición del método establecer cómo responder a los eventos
+CAPUTRAN EVENTOS: Cannon y Button, implementan EventHandler, en la definición del método establecer cómo responder a los eventos
 
 --------------------
 RECOMPENSAS Y BOMBAS (clases): AL DERRIBAR EL UFO -> RECOMPENSA O BOMBA (SceneObjects, no se salvan al guardar partida, solo interacción con cannon):

@@ -27,7 +27,7 @@ void Cannon::updateRect()
 	destRect.y = position.getY();
 }
 
-void Cannon::handleEvent(SDL_Event event)
+void Cannon::handleEvent(const SDL_Event& event)
 {
 	// escanea y evalua que tecla has tocado
 	SDL_Scancode key = event.key.keysym.scancode;

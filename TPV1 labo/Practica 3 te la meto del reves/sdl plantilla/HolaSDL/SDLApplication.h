@@ -50,7 +50,6 @@ static constexpr double LASER_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de laser
 // archivo de strings con las roots de las carpetas etc
 static string SAVED_FOLDER = "..\\saved\\";
 
-
 // -------------------------------- G A M E --------------------------------
 class SDLApplication
 {
@@ -65,6 +64,7 @@ public:
 private:
 	SDL_Window* window = nullptr; // puntero a ventana
 	SDL_Renderer* renderer = nullptr; // puntero a renderer !!! TODO EN EL MISMO RENDERER
+	SDL_Event event;
 
 	int winX, winY; // Posición de la ventana
 
@@ -94,7 +94,19 @@ private:
 	// booleano salida del juego
 	bool exit = false;
 
-	SDL_Event event; // crea evento
+	// lista de punteros a oyentes
+	list<EventHandler*> eventListeners;
+public:
+	// para registrar oyentes no se si se hace aqui
+	void addEventListener(EventHandler* event);
+
+	TextureSpec getTexture(TextureSpec textureSpec) const { return textureSpec; }
+
+	// ref a state machine
+
+// ------------------------- LA MAYORIA DE LO DE ABAJO NO LO NECESITA -------------
+
+private:
 	int type;
 
 	// default variables

@@ -14,7 +14,6 @@ class Game;
 using namespace std;
 using uint = unsigned int;
 
-
 class Ufo : public SceneObject
 {
 	// atributos privados
@@ -43,7 +42,7 @@ private:
 	// metodos publicos
 public:
 	// ---- constructora ----
-	Ufo( Point2D<double> position, int width, int height, int vidas, Texture* texture, SDLApplication* application)
+	Ufo(Point2D<double> position, int width, int height, int vidas, Texture* texture, SDLApplication* application)
 		: spawn(position), SceneObject(position, width, height, vidas, texture, application)
 	{
 		state = oculto;

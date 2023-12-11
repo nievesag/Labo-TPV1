@@ -5,13 +5,15 @@
 #include "texture.h"
 #include "SceneObject.h"
 #include "GameObject.h"
+#include "EventHandler.h"
+#include "Button.h"
 
 class SDLApplication;
 
 using namespace std;
 using uint = unsigned int;
 
-class Cannon : public SceneObject
+class Cannon : public EventHandler, public SceneObject
 {
 	// atributos privados
 private:
@@ -33,6 +35,12 @@ public:
 		currentCD = 0; 
 	};
 
+	/*
+	Cannon::Cannon(Button* button, Point2D<double> position) {
+		button.connect([this](auto event) { handleEvent(event); });
+	}
+	*/
+
 	// ---- aqui si van los overrides porque aqui se especifican las cosas ----
 
 	void render() const override;
@@ -47,7 +55,7 @@ public:
 	}
 
 	// manejo de eventos del player
-	void handleEvent(SDL_Event event);
+	void handleEvent(const SDL_Event& event) override;
 
 	// ---- hit ----
 	// colisiones

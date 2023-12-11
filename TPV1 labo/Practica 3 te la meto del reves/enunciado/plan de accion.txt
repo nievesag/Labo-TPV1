@@ -22,7 +22,9 @@ bien dicho
 
 
 ----------------> BOTONES <------------------------------
-----> no me lo he leido heh
+----> hacer que se registren los callbacks
+---------> implementar la interfaz en cannon y button:
+----> tocar handleEvents y constructora
 
 
 ----------------> MEMORY LEAKS <--------------------------
