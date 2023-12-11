@@ -10,6 +10,16 @@ using namespace std;
 // constructora del game
 SDLApplication::SDLApplication()
 {
+	// --------------------- MAQUINA DE ESTADOS ---------------------------
+	// !!! el render de los estados debe ser const pero hay un error y no tengo ganas ahora de arreglarlo
+	// crea una maquina de estados
+	gsMachine = new GameStateMachine();
+
+	//
+	gsMachine->replaceState(new MainMenuState(this));
+
+	// -----------------------------------------------------------------------------------------------
+
 	winX = winY = SDL_WINDOWPOS_CENTERED;
 
 	// Inicialización del sistema, ventana y renderer
@@ -50,6 +60,27 @@ SDLApplication::~SDLApplication()
 // MANEJAR EVENTOS 
 void SDLApplication::handleEvents()
 {
+	
+
+	while (SDL_PollEvent(&event) && !exit) {
+
+		// escanea y evalua que tecla has tocado
+		SDL_Scancode key = event.key.keysym.scancode;
+
+		// si se pulsa una tecla
+		if (key == SDL_SCANCODE_S) {
+
+			cout << "uwu";
+
+			// gsMachine->replaceState(new PlayState(this));
+		}
+	}
+
+
+
+
+	// lo antiguo !!!! limpiar
+	/*
 	ifstream in("..\\mapas\\original.txt");
 
 	// MIENTRAS HAYA EVENTOS
@@ -60,7 +91,7 @@ void SDLApplication::handleEvents()
 		for (EventHandler* listener : eventListeners)
 			listener->handleEvent(event);
 
-		/*
+		
 		// escanea y evalua que tecla has tocado
 		SDL_Scancode key = event.key.keysym.scancode;
 
@@ -93,8 +124,9 @@ void SDLApplication::handleEvents()
 			// si lo es se accede al metodo 
 			dynamic_cast<Cannon*>(*it)->handleEvent(event);
 		}
-		*/
+		
 	}
+		*/
 }
 
 // --------------------------------------------- NO SE NECESITA?
@@ -113,6 +145,7 @@ void SDLApplication::run()
 	{
 		handleEvents();
 
+		/*
 		// tiempo desde ultima actualizacion
 		frameTime = SDL_GetTicks() - startTime;
 
@@ -122,12 +155,15 @@ void SDLApplication::run()
 		}
 
 		render(); // renderiza todos los objetos de juego
+		*/
 	}
 	
+	/*
 	// escribe game over
 	cout << "GAME OVER" << endl;
 	// escribe puntuacion
 	PlayerScore();
+	*/
 }
 
 // ACTUALIZAR 

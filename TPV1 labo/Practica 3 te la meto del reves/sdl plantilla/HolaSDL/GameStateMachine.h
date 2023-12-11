@@ -44,7 +44,7 @@ public:
 	void update();
 
 	// renderiza 
-	void render() const;
+	void render();
 
 	// 
 	void handleEvent(const SDL_Event& event);

@@ -27,10 +27,10 @@ private:
 	// default variables
 	int defaultLives = 1,	// default number of lives
 		defaultFrame = 0,	// default starting frame
-		ans,				// respuesta en los menuses
+		ans = 0,			// respuesta en los menuses
 		laserW = 4,			// dimensiones del laser
 		laserH = 10,
-		defaultCooldown,	// default cooldown (si es -1 se genera uno)
+		defaultCooldown = 10,// default cooldown (si es -1 se genera uno)
 		defaultUfoHeight = 10,
 		defaultLaserW = 4,
 		defaultLaserH = 10,
@@ -67,14 +67,14 @@ protected:
 public:
 
 	// constructora
-
+	PlayState(SDLApplication* game) : GameState(game), app(game) {};
 
 	// -------------------------------- HERENCIA --------------------------------
 	// update
 	void update();
 
 	// render
-	void render();
+	virtual void render();
 
 	// save
 	void save(const ostream& file);

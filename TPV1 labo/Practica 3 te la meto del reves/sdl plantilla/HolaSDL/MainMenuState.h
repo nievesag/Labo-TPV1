@@ -16,7 +16,7 @@ private:
 public:
 
 	//constructora
-	 
+	MainMenuState(SDLApplication* game) : GameState(game) { };
 	 
 	
 	//

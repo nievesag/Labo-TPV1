@@ -30,14 +30,10 @@ protected:
 
 	// lista de eventos a gestionar
 	list<EventHandler*> eventList;
-
-	// id para cada estado
-	virtual std::string getStateID() const = 0;
-
 public:
 
 	// constructora normal por puntero a game
-	GameState(Game* game) : application(application) {};
+	GameState(SDLApplication* game) : application(game) {};
 
 	// constructora por copia
 	GameState(const GameState& gamestate) : application(gamestate.application) {
@@ -47,7 +43,7 @@ public:
 
 	// ---------------------------------- BASICOS ----------------------------
 	// render del estado
-	virtual void render() const = 0;
+	virtual void render() = 0;
 
 	// actualiza el estado
 	virtual void update() = 0;

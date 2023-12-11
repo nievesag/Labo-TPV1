@@ -19,7 +19,9 @@
 #include "SceneObject.h"
 #include "Mothership.h"
 #include "Ufo.h"
-
+#include "GameStateMachine.h"
+#include "MainMenuState.h"
+#include "PlayState.h"
 
 using namespace std;
 using uint = unsigned int;
@@ -62,6 +64,21 @@ public:
 
 	// atributos privados
 private:
+
+	// -------------------------------------- MAQUINA DE ESTADOS --------------------------
+	// placeholder ?
+
+	// crea un puntero a la maquina de estados
+	GameStateMachine* gsMachine;
+
+
+
+
+
+
+
+
+	// -------------------------------------- SDL --------------------------------
 	SDL_Window* window = nullptr; // puntero a ventana
 	SDL_Renderer* renderer = nullptr; // puntero a renderer !!! TODO EN EL MISMO RENDERER
 	SDL_Event event;

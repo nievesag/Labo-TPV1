@@ -11,6 +11,23 @@ void GameStateMachine::pushState(GameState* newState)
 
 }
 
+void GameStateMachine::popState()
+{
+	// si el stack no esta vacio
+	if (!states.empty())
+	{
+		// si sale
+		if (states.top().onExit())
+		{
+			// borra el puntero
+			delete& states.top();
+
+			// lo quita del stack
+			states.pop();
+		}
+	}
+}
+
 void GameStateMachine::replaceState(GameState* state)
 {
 	if (!states.empty())
@@ -41,19 +58,3 @@ void GameStateMachine::replaceState(GameState* state)
 
 }
 
-void GameStateMachine::popState()
-{
-	// si el stack no esta vacio
-	if (!states.empty())
-	{
-		// si sale
-		if (states.top().onExit())
-		{
-			// borra el puntero
-			delete &states.top();
-
-			// lo quita del stack
-			states.pop();
-		}
-
-}
