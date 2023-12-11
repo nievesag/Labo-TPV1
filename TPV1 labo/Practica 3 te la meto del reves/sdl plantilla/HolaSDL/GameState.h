@@ -30,6 +30,8 @@ protected:
 	// lista de eventos a gestionar
 	list<EventHandler*> eventList;
 
+	// id para cada estado
+	virtual std::string getStateID() const = 0;
 
 public:
 
@@ -50,7 +52,7 @@ public:
 	virtual void update() = 0;
 
 	// guarda el estado
-	virtual void save(ostream& file) = 0;
+	virtual void save(ostream& file);
 
 
 	// --------------------------------- OTHER --------------------------------
@@ -58,11 +60,15 @@ public:
 	void handleEvent(const SDL_Event& event);
 
 	// comento porque esta incompleta
-	void hasDied(GameList<GameObject, true>::anchor);
+	virtual void hasDied(GameList<GameObject, true>::anchor);
 
+
+	// ---------------------------------- GETTERS Y SETTERS -------------------------
 	// getter del juego
 	Game getGame() const;
 
+
+	// ---------------------- EVENTOS Y OBJETOS -------------------
 	// añade un listener a eventos
 	void addEventListener(SDL_Event& event);
 

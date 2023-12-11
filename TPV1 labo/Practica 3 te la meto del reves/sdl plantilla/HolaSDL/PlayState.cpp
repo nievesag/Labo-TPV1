@@ -60,6 +60,22 @@ void PlayState::save(const ostream& file)
 
 }
 
+bool PlayState::onEnter()
+{
+	cout << "entering PlayState\n";
+	return true;
+
+	return false;
+}
+
+bool PlayState::onExit()
+{
+
+	cout << "exiting PlayState\n";
+	return true;
+	return false;
+}
+
 int PlayState::getRandomRange(int min, int max)
 {
 	return uniform_int_distribution<int>(min, max)(randomGenerator);

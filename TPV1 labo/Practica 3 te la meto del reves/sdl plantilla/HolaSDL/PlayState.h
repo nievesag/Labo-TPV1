@@ -21,6 +21,9 @@ class PlayState : public GameState{
 
 private:
 
+	// id del estado
+	static const std::string s_playID;
+
 	// default variables
 	int defaultLives = 1,	// default number of lives
 		defaultFrame = 0,	// default starting frame
@@ -76,10 +79,19 @@ public:
 	// save
 	void save(const ostream& file);
 
+	//
+	virtual bool onEnter();
+
+	//
+	virtual bool onExit();
+
 
 	// ------------------------------- GETTERS Y SETTERS --------------------------
 	// genera un int aleatorio con un minimo y un maximo
 	int getRandomRange(int min, int max);
+
+	// getter el id del estado
+	virtual std::string getStateID() const { return s_playID; }
 
 
 	// ------------------------------ COLISIONES Y COMBATE ---------------------------
