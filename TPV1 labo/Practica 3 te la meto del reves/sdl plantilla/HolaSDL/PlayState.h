@@ -4,6 +4,8 @@
 // includes
 #include <SDL.h>
 #include <random>
+#include <fstream>
+#include <string>
 
 // 
 #include "GameState.h"
@@ -71,6 +73,9 @@ public:
 	// render
 	void render();
 
+	// save
+	void save(const ostream& file);
+
 
 	// ------------------------------- GETTERS Y SETTERS --------------------------
 	// genera un int aleatorio con un minimo y un maximo
@@ -88,7 +93,9 @@ public:
 	void fireLaser(Point2D<double> pos, char frenemy);
 
 
-
+	// ------------------------------------- OTROS ----------------------------
+	// delete scene objects
+	void deleteSceneObjects();
 
 };
 

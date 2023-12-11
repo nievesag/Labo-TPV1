@@ -1,6 +1,65 @@
 #include "PlayState.h"
 
 
+void PlayState::update()
+{
+	// actualiza el mothership
+	//mother->update();
+
+	// actualiza los objetos de escena
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
+
+		(*it)->update();
+	}
+
+	// borra los objetos a borrar
+	deleteSceneObjects();
+
+}
+
+void PlayState::render()
+{
+	// limpia pantalla
+	SDL_RenderClear(app->getRenderer());
+
+	// render del fondo
+	//renderBackground();
+
+	// iterador para renderizar los objetos
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
+
+		(*it)->render();
+	}
+
+	// render de todo
+	SDL_RenderPresent(app->getRenderer());
+
+}
+
+void PlayState::save(const ostream& file)
+{
+	// da error por razones que desconozco
+	/*
+	// abre un canal para guardar en un archivo con el nombre deseado
+	ofstream out(file + ".txt"); // SAVED_FOLDER + 
+
+	//mother->save(out);
+
+	// bucle para llegar a los save de todos los objetos
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
+
+		(*it)->save(out);
+	}
+
+	// guarda los puntos
+	out << "7 " << SCORE << endl;
+
+	// cierra el hilo
+	out.close();
+	*/
+
+}
+
 int PlayState::getRandomRange(int min, int max)
 {
 	return uniform_int_distribution<int>(min, max)(randomGenerator);
@@ -50,4 +109,21 @@ void PlayState::fireLaser(Point2D<double> pos, char frenemy)
 
 	// le pasa el iterador
 	newObj->setListIterator(newit);
+}
+
+void PlayState::deleteSceneObjects()
+{
+	if (objectsToErase.size() > 0) {
+
+		// bucle para borrar los objetos que han de ser borrados
+		for (auto a : objectsToErase) {
+
+			// borramos el objeto
+			delete (*a);
+
+			// lo borra de la lista
+			sceneObjectsList.erase(a);
+		}
+		objectsToErase.clear();
+	}
 }

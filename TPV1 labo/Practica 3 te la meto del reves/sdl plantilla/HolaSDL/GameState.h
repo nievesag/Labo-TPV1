@@ -50,7 +50,7 @@ public:
 	virtual void update() = 0;
 
 	// guarda el estado
-	virtual void save(ostream& file);
+	virtual void save(ostream& file) = 0;
 
 
 	// --------------------------------- OTHER --------------------------------
