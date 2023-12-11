@@ -74,6 +74,7 @@
     <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="FileFormatError.cpp" />
     <ClCompile Include="FileNotFoundError.cpp" />
+    <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="SDLApplication.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />

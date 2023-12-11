@@ -42,17 +42,20 @@ public:
 		eventList = gamestate.eventList;
 	};
 
+	// ---------------------------------- BASICOS ----------------------------
 	// render del estado
-	void render() const;
+	virtual void render() const = 0;
 
 	// actualiza el estado
-	void update();
-
-	// gestiona los eventos del estado
-	void handleEvent(const SDL_Event& event);
+	virtual void update() = 0;
 
 	// guarda el estado
-	void save(ostream& file);
+	virtual void save(ostream& file);
+
+
+	// --------------------------------- OTHER --------------------------------
+	// gestiona los eventos del estado
+	void handleEvent(const SDL_Event& event);
 
 	// comento porque esta incompleta
 	void hasDied(GameList<GameObject, true>::anchor);
