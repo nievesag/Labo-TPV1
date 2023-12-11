@@ -91,7 +91,7 @@ public:
 	int getRandomRange(int min, int max);
 
 	// getter el id del estado
-	virtual std::string getStateID() const { return s_playID; }
+	string getStateID() const { return s_playID; }
 
 
 	// ------------------------------ COLISIONES Y COMBATE ---------------------------

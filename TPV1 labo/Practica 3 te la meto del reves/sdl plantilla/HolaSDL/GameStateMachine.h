@@ -24,13 +24,10 @@ protected:
 	// Todos los metodos se ocupan de gestionar la pila 
 	stack<GameState> states;
 
-	stack<int> uwu;
 
 public:
 
 	GameStateMachine() {
-
-		
 
 	}
 
@@ -40,7 +37,7 @@ public:
 	// saca el estado mas reciente de la pila
 	void popState();
 
-	// intercambia el estado por el marcado
+	// intercambia el estado por el marcado, elimina el estado en la cima y anyade otro
 	void replaceState(GameState* state);
 
 	//

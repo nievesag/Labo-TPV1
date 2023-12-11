@@ -54,6 +54,12 @@ public:
 	// guarda el estado
 	virtual void save(ostream& file);
 
+	// cuando entra
+	virtual bool onEnter() = 0;
+
+	// cuando sale
+	virtual bool onExit() = 0;
+
 
 	// --------------------------------- OTHER --------------------------------
 	// gestiona los eventos del estado
@@ -66,6 +72,9 @@ public:
 	// ---------------------------------- GETTERS Y SETTERS -------------------------
 	// getter del juego
 	Game getGame() const;
+
+	// getter del id del estado
+	virtual string getStateID() const = 0;
 
 
 	// ---------------------- EVENTOS Y OBJETOS -------------------

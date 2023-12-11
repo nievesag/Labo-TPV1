@@ -2,42 +2,52 @@
 
 void GameStateMachine::pushState(GameState* newState)
 {
-	// ESTO ES QUITANDO EL CONST DEL METODO :(
+	// añade el estado
+	states.push(*newState);
 
-	// crea una copia del estado
-	GameState state = *newState;
+	// activa el onEnter del nuevo estado
+	states.top().onEnter();
 
-	// anyade el estado idicado
-	states.push(state);
+
+}
+
+void GameStateMachine::replaceState(GameState* state)
+{
+
+	if (!states.empty())
+	{
+		if (states.top().getStateID() == state->getStateID())
+		{
+			return; // do nothing
+		}
+		if (states.top().onExit())
+		{
+			delete &states.top();
+			states.pop();
+		}
+	}
+
+	// 
+	states.push(*state);
+
+	// 
+	states.top().onEnter();
 
 }
 
 void GameStateMachine::popState()
 {
-	// quita el estado de arriba
-	states.pop();
-}
+	// si el stack no esta vacio
+	if (!states.empty())
+	{
+		// si sale
+		if (states.top().onExit())
+		{
+			// borra el puntero
+			delete &states.top();
 
-void GameStateMachine::replaceState(GameState* state)
-{
-	// que cojones quiere
-
-}
-
-void GameStateMachine::update()
-{
-	// 
-
-}
-
-void GameStateMachine::render() const
-{
-	//
-
-}
-
-void GameStateMachine::handleEvent(const SDL_Event& event)
-{
-	//
+			// lo quita del stack
+			states.pop();
+		}
 
 }

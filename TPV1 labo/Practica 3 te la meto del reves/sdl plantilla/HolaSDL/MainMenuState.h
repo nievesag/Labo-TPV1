@@ -31,13 +31,7 @@ public:
 
 	// ----------------------------------- GETTERS Y SETTERS -----------------------
 	//
-	virtual std::string getStateID() const { return s_menuID; }
-
-
-
-
-
-
+	string getStateID() const { return s_menuID; }
 
 };
 
