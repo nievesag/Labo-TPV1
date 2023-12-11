@@ -4,7 +4,7 @@
 // includes
 //
 #include<SDL.h>		// SDL
-#include <stack>	// stack
+#include<stack>	// stack
 
 // 
 #include "GameState.h"
@@ -24,10 +24,18 @@ protected:
 	// Todos los metodos se ocupan de gestionar la pila 
 	stack<GameState> states;
 
+	stack<int> uwu;
+
 public:
 
+	GameStateMachine() {
+
+		
+
+	}
+
 	// empuja un estado a la pila
-	void pushState(GameState* state) const;
+	void pushState(GameState* newState);
 
 	// saca el estado mas reciente de la pila
 	void popState();

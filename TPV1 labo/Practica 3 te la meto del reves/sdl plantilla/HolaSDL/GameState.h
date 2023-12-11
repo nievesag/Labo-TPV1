@@ -33,6 +33,15 @@ protected:
 
 public:
 
+	// constructora normal por puntero a game
+	GameState(Game* game) : game(game) {};
+
+	// constructora por copia
+	GameState(const GameState& gamestate) : game(gamestate.game) {
+		gamelist = gamestate.gamelist;
+		eventList = gamestate.eventList;
+	};
+
 	// render del estado
 	void render() const;
 
