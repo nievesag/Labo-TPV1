@@ -67,7 +67,6 @@ SDLApplication::~SDLApplication()
 // MANEJAR EVENTOS 
 void SDLApplication::handleEvents()
 {
-	
 	while (SDL_PollEvent(&event) && !exit) {
 
 		// escanea y evalua que tecla has tocado
@@ -82,11 +81,6 @@ void SDLApplication::handleEvents()
 		}
 	}
 
-
-
-
-	// lo antiguo !!!! limpiar
-	/*
 	ifstream in("..\\mapas\\original.txt");
 
 	// MIENTRAS HAYA EVENTOS
@@ -97,7 +91,8 @@ void SDLApplication::handleEvents()
 		for (EventHandler* listener : eventListeners)
 			listener->handleEvent(event);
 
-		
+		// lo antiguo !!!! limpiar
+		/*
 		// escanea y evalua que tecla has tocado
 		SDL_Scancode key = event.key.keysym.scancode;
 
@@ -130,9 +125,9 @@ void SDLApplication::handleEvents()
 			// si lo es se accede al metodo 
 			dynamic_cast<Cannon*>(*it)->handleEvent(event);
 		}
-		
-	}
 		*/
+	}
+		
 }
 
 // --------------------------------------------- NO SE NECESITA?
