@@ -6,6 +6,8 @@
 #include "SceneObject.h"
 #include "GameObject.h"
 
+class PlayState;
+
 using namespace std;
 using uint = unsigned int;
 
@@ -18,8 +20,8 @@ private:
 public:
 	// atributos privados
 	// ---- constructora ----
-	Bunker(int hits, Point2D<double> position, int width, int height, int vidas, Texture* texture, SDLApplication* application)
-		: hits(hits), SceneObject(position, width, height, vidas, texture, application) { };
+	Bunker(int hits, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
+		: hits(hits), SceneObject(position, width, height, vidas, texture, game) { };
 
 	// ---- render ----
 	// renderiza

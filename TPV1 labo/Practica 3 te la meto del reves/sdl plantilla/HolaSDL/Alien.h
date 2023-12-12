@@ -14,6 +14,8 @@
 class Mothership;
 class SDLApplication;
 
+class PlayState;
+
 using namespace std;
 using uint = unsigned int;
 
@@ -22,6 +24,7 @@ class Alien : public SceneObject
 	// atributos privados
 protected:
 	Mothership* mothership;	  // puntero a mothership
+
 	int type;			// tipo de alien
 	int alienFrame;		// frame del alien (para animaciones)
 	double alienSpeed;  // velocidad del alien
@@ -33,8 +36,8 @@ protected:
 	// metodos publicos 
 public:
 	// ---- constructora ----
-	Alien(Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, SDLApplication* application)
-		: mothership(mothership), alienFrame(alienFrame), type(type), SceneObject(position, width, height, vidas, texture, application) 
+	Alien(Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
+		: mothership(mothership), alienFrame(alienFrame), type(type), SceneObject(position, width, height, vidas, texture, game) 
 	{ 
 		setAlienSpeed();
 

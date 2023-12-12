@@ -5,6 +5,7 @@
 #include "Vector2D.h"
 #include "texture.h"
 #include <list>
+#include "gameList.h"
 
 using namespace std;
 using uint = unsigned int;
@@ -28,12 +29,15 @@ protected:
 	SDL_Rect destRect;
 
 	// iterador de la lista
-	list<SceneObject*>::iterator it;
+	GameList<SceneObject, true>::anchor anc;
+
+	//list<SceneObject*>::iterator it;
+
 	
 	// metodos publicos
 public:
-	SceneObject(Point2D<double> position, int width, int height, int vidas, Texture* texture, SDLApplication* application)
-		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(application) 
+	SceneObject(Point2D<double> position, int width, int height, int vidas, Texture* texture,  PlayState* game)
+		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game) 
 	{ 
 		// si hay textura entonces no es un laser y tiene dimensiones
 		if (texture != nullptr) {
@@ -82,10 +86,10 @@ public:
 	// ----- Iterador de la lista ------
 	// Un iterador funciona como un puntero que apunta a los items de la lista 
 	// begin(), end(), advance(), next(), prev(), inserter()
-	void setListIterator(list<SceneObject*>::iterator& newit)
+	void setListAnchor(GameList<SceneObject, true>::anchor newanc) // list<SceneObject*>::iterator& newit
 	{
 		// setea el iterador de la posicion del objeto en la lista
-		it = newit;
+		anc = newanc;
 	};
 
 	Point2D<double> getPosition() const { return position; };

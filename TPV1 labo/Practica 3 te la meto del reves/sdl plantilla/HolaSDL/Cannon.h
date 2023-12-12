@@ -9,6 +9,7 @@
 #include "Button.h"
 
 class SDLApplication;
+class PlayState;
 
 using namespace std;
 using uint = unsigned int;
@@ -30,8 +31,8 @@ private:
 	// metodos publicos 
 public:
 	// ---- constructora ----
-	Cannon(int cooldown, Point2D<double> position, int width, int height, int vidas, Texture* texture, SDLApplication* application)
-		: cooldown(cooldown), SceneObject(position, width, height, vidas, texture, application) {
+	Cannon(int cooldown, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
+		: cooldown(cooldown), SceneObject(position, width, height, vidas, texture, game) {
 		currentCD = 0; 
 	};
 

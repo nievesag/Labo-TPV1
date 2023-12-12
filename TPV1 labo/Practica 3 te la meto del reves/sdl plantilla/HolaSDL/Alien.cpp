@@ -40,7 +40,7 @@ bool Alien::hit(SDL_Rect* rect, char frenemy)
 	if (SDL_HasIntersection(rect, &destRect) && frenemy == 'a') {
 
 		// informa al game que ha muerto
-		application->hasDied(it);
+		application->hasDied(anc);
 
 		application->increaseScore(GetAlienPoints());
 

@@ -7,6 +7,7 @@
 #include "GameObject.h"
 
 class SDLApplication;
+class PlayState;
 
 using namespace std;
 using uint = unsigned int;
@@ -28,8 +29,8 @@ private:
 	// metodos publicos 
 public:
 	// ---- constructora ----
-	Laser(char type, Point2D<double> position, int width, int height, int vidas, Texture* texture, SDLApplication* application)
-		: laserType(type), SceneObject(position, width, height, vidas, texture, application)
+	Laser(char type, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
+		: laserType(type), SceneObject(position, width, height, vidas, texture, game)
 	{ 
 		// inicializa alive a true al construirse
 		alive = true;

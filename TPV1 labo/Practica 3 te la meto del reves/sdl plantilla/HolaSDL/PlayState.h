@@ -83,10 +83,11 @@ public:
 	// save
 	void save(const ostream& file);
 
-	//
+	// es como la constructora del antiguo game, lee la partida 
+	// y carga todos los objetos y los prepara
 	bool onEnter() override;
 
-	//
+	// limpia los objetos
 	bool onExit() override;
 
 	//
@@ -103,7 +104,7 @@ public:
 	bool damage(SDL_Rect rect, char frenemy);
 
 	// guatafac
-	void hasDied(GameList<SceneObject>::anchor i);
+	void hasDied(GameList<SceneObject, true>::anchor i);
 
 	// dispara el laser (lo crea)
 	void fireLaser(Point2D<double> pos, char frenemy);

@@ -2,6 +2,7 @@
 
 void Button::update()
 {
+	/*
 	mousePos = SDL_GetMouseState(&x, &y);
 
 	if (mousePos->getX() < (m_position.getX() + width)
@@ -9,7 +10,8 @@ void Button::update()
 		&& pMousePos->getY() < (m_position.getY() + height)
 		&& pMousePos->getY() > m_position.getY()) {
 
-	}
+	}*/
+	
 }
 
 void Button::connect(SDLEventCallback buttonCallback)
