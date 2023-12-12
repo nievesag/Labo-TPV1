@@ -62,7 +62,7 @@ public:
 	// colisiones
 	bool hit(SDL_Rect* rect, char frenemy) override;
 
-	// añade el mothership al alien
+	// anyade el mothership al alien
 	void setMothership(Mothership* mother) { mothership = mother; };
 
 	// metodos privados (auxiliares)

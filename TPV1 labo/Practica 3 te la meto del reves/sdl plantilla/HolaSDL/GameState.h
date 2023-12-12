@@ -43,19 +43,19 @@ public:
 
 	// ---------------------------------- BASICOS ----------------------------
 	// render del estado
-	virtual void render() = 0;
+	virtual void render();
 
 	// actualiza el estado
-	virtual void update() = 0;
+	virtual void update();
 
 	// guarda el estado
 	virtual void save(ostream& file);
 
 	// cuando entra
-	virtual bool onEnter() = 0;
+	virtual bool onEnter();
 
 	// cuando sale
-	virtual bool onExit() = 0;
+	virtual bool onExit();
 
 
 	// --------------------------------- OTHER --------------------------------
@@ -70,7 +70,7 @@ public:
 	// getter del juego
 	SDLApplication getGame() const;
 
-	virtual string getID() const = 0;
+	virtual string getID() const;
 
 
 	// ---------------------- EVENTOS Y OBJETOS -------------------

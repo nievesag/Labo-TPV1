@@ -2,7 +2,7 @@
 
 void GameStateMachine::pushState(GameState* newState)
 {
-	// añade el estado
+	// anyade el estado
 	states.push(*newState);
 
 	// activa el onEnter del nuevo estado
@@ -56,5 +56,22 @@ void GameStateMachine::replaceState(GameState* state)
 	*/
 	
 
+}
+
+
+void GameStateMachine::update()
+{
+	//
+}
+
+
+void GameStateMachine::render()
+{
+	//
+}
+
+void GameStateMachine::handleEvent(const SDL_Event& event)
+{
+	//
 }
 

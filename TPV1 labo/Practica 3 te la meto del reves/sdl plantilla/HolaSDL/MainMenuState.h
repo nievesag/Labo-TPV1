@@ -20,20 +20,20 @@ public:
 	 
 	
 	//
-	virtual void update();
+	void update();
 	//
-	virtual void render();
+	void render();
 
 	//
-	virtual bool onEnter();
+	bool onEnter();
 	//
-	virtual bool onExit();
+	bool onExit();
 
 
 	// ----------------------------------- GETTERS Y SETTERS -----------------------
 	//
 
-	virtual string getID() const;
+	string getID() const;
 };
 
 #endif

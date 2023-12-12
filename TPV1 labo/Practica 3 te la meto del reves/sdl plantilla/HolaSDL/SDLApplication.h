@@ -26,7 +26,7 @@
 using namespace std;
 using uint = unsigned int;
 
-// constantes de tamaño de pantalla -> inicializar en h
+// constantes de tamanyo de pantalla -> inicializar en h
 // tiene que ser estática porque es un atributo (constante para todos los objetos de la clase)
 static constexpr uint winWidth = 800;
 static constexpr uint winHeight = 600;
@@ -129,10 +129,10 @@ private:
 	// default variables
 	int defaultLives = 1,	// default number of lives
 		defaultFrame = 0,	// default starting frame
-		ans,				// respuesta en los menuses
+		ans = 0,			// respuesta en los menuses
 		laserW = 4,			// dimensiones del laser
 		laserH = 10,
-		defaultCooldown,	// default cooldown (si es -1 se genera uno)
+		defaultCooldown = 10,// default cooldown (si es -1 se genera uno)
 		defaultUfoHeight = 10,
 		defaultLaserW = 4,
 		defaultLaserH = 10,
@@ -153,7 +153,7 @@ private:
 
 	int SCORE = 0;	// score general del player
 
-	char k; // crea un char para guardar el numero
+	char k = ' '; // crea un char para guardar el numero
 
 	// metodos publicos 
 public:

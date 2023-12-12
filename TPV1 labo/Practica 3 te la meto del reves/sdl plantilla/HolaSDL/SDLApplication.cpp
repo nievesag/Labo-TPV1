@@ -10,22 +10,7 @@ using namespace std;
 // constructora del game
 SDLApplication::SDLApplication()
 {
-	// --------------------- MAQUINA DE ESTADOS ---------------------------
-	// !!! el render de los estados debe ser const pero hay un error y no tengo ganas ahora de arreglarlo
-	// crea una maquina de estados
-
-	cout << "1" << endl;
-
-	gsMachine = new GameStateMachine();
-
-	cout << "2" << endl;
-
-	//
-	gsMachine->replaceState(new MainMenuState(this));
-
-	// -----------------------------------------------------------------------------------------------
-
-	/*
+	
 	winX = winY = SDL_WINDOWPOS_CENTERED;
 
 	// Inicialización del sistema, ventana y renderer
@@ -44,7 +29,22 @@ SDLApplication::SDLApplication()
 	loadTextures();
 
 	mainMenu();
-	*/
+
+
+	// --------------------- MAQUINA DE ESTADOS ---------------------------
+	// !!! el render de los estados debe ser const pero hay un error y no tengo ganas ahora de arreglarlo
+	// crea una maquina de estados
+
+	cout << "1" << endl;
+
+	gsMachine = new GameStateMachine();
+
+	cout << "2" << endl;
+
+	//
+	gsMachine->replaceState(new MainMenuState(this));
+
+	
 }
 
 SDLApplication::~SDLApplication()
@@ -300,6 +300,8 @@ void SDLApplication::PlayerScore()
 #pragma region SISTEMA GUARDADO
 void SDLApplication::save(const string& file)
 {
+	/*
+
 	// abre un canal para guardar en un archivo con el nombre deseado
 	ofstream out(SAVED_FOLDER + file + ".txt");
 
@@ -316,6 +318,7 @@ void SDLApplication::save(const string& file)
 
 	// cierra el hilo
 	out.close();
+	*/
 }
 
 void SDLApplication::load(const string& file, const string& root)
