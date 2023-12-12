@@ -36,7 +36,7 @@ private:
 
 	// metodos publicos
 public:
-	Mothership::Mothership(int level, Game* game, int alienTimer, int n) 
+	Mothership(int level, Game* game, int alienTimer, int n) 
 		: level(level), GameObject(game), alienTimer(alienTimer) {
 
 		dir = 1;

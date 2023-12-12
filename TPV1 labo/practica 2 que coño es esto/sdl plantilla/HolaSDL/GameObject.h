@@ -22,13 +22,13 @@ protected:
 	// metodos publicos
 public:
 
-	GameObject::GameObject () {}
+	GameObject () {}
 
-	GameObject::GameObject(Game* game)
+	GameObject(Game* game)
 		: game(game) {}
 
 	// destructora virtual para por polimorfismo
-	virtual GameObject::~GameObject();
+	virtual ~GameObject();
 
 	// metodos virtuales puros -> estan vacios y preparados para un override en los objetos especificos
 	// ---- render ----

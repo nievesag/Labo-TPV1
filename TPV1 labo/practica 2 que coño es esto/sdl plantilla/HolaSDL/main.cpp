@@ -7,7 +7,6 @@
 
 // AUX
 #include <iostream>
-#include <Windows.h>
 #include <vector>
 
 // GAME
