@@ -7,16 +7,16 @@ void PlayState::update()
 	//
 	cout << "update" << endl;
 
-	//for (gameList::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) 
-
-	for(GameList<SceneObject*>::iterator it = gamelist.begin();
-	/*
-	for (int i = 0; i < gamelist.size(); i++)
-	{
-		// gestionar con iterator
-		//gamelist[i]->update();
+	//bucle for each para recorrer los objetos de la lista sceneObjectsList:
+	//		-> tipo del objeto (& porque CREO que devuelve un puntero CREO) a : lista
+	for (SceneObject& a : sceneObjectsList) {
+		a.update();
 	}
-	*/
+
+	// tambien se puede hacer con un iterador:
+	// AHORA MISMO NO VA CON ITERADORES (SI LO DESCOMENTAS DA ERROR) PEROÇ
+	// QUIERO SACARLO CON ITERADORES IGUAL
+	// for(GameList<SceneObject, true>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++)
 
 }
 
@@ -24,11 +24,21 @@ void PlayState::render()
 {
 	//
 	cout << "render" << endl;
+
+	//bucle for each para recorrer los objetos de la lista sceneObjectsList:
+	for (SceneObject& a : sceneObjectsList) {
+		a.render();
+	}
 }
 
 bool PlayState::onEnter()
 {
-	cout << "entering PlayState\n";
+	//
+	
+
+
+	std::cout << "entering PlayState\n";
+
 	return true;
 }
 

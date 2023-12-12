@@ -2,7 +2,7 @@ ser tú mismo
 
 bien dicho
 
-
+ctrl rr
 /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
 
@@ -14,6 +14,8 @@ bien dicho
 ----> que se añadan al/quiten del stack al cambiar 
 					de estado
 ----> descubir para que coño es el update realmente
+
+----> hacer toBeDeleted de estados en el pop y push de la gsmachine (tu vieja)
 
 
 ----------------> POWERUPS <-----------------------------
