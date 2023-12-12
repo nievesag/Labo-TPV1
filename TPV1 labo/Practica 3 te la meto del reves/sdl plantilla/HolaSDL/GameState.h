@@ -30,6 +30,9 @@ protected:
 
 	// lista de eventos a gestionar
 	list<EventHandler*> eventList;
+
+	//
+
 public:
 
 	// constructora normal por puntero a game

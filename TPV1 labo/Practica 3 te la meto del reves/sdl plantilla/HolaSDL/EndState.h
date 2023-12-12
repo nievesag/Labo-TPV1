@@ -15,7 +15,7 @@ class EndState : public GameState{
 
 
 private:
-	const string s_endID;
+	const string s_endID = "END";
 
 public:
 	// constructora

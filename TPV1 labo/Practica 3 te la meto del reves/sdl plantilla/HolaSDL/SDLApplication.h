@@ -73,11 +73,6 @@ private:
 
 
 
-
-
-
-
-
 	// -------------------------------------- SDL --------------------------------
 	SDL_Window* window = nullptr; // puntero a ventana
 	SDL_Renderer* renderer = nullptr; // puntero a renderer !!! TODO EN EL MISMO RENDERER

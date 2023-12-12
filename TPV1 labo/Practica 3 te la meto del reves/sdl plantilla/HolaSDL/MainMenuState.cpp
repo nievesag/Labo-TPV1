@@ -15,13 +15,13 @@ void MainMenuState::render()
 bool MainMenuState::onEnter()
 {
 	cout << "entering MenuState\n";
-	return false;
+	return true;
 }
 
 bool MainMenuState::onExit()
 {
 	cout << "exiting MenuState\n";
-	return false;
+	return true;
 }
 
 string MainMenuState::getID() const

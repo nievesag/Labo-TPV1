@@ -3,10 +3,10 @@
 void GameStateMachine::pushState(GameState* newState)
 {
 	// anyade el estado
-	states.push(*newState);
+	states.push(newState);
 
 	// activa el onEnter del nuevo estado
-	states.top().onEnter();
+	states.top()->onEnter();
 
 
 }
@@ -17,7 +17,7 @@ void GameStateMachine::popState()
 	if (!states.empty())
 	{
 		// si sale
-		if (states.top().onExit())
+		if (states.top()->onExit())
 		{
 			// borra el puntero
 			delete& states.top();
@@ -32,11 +32,11 @@ void GameStateMachine::replaceState(GameState* state)
 {
 	if (!states.empty())
 	{
-		if (states.top().getID()  == state->getID())
+		if (states.top()->getID()  == state->getID())
 		{
 			return; // no hace nada
 		}
-		if (states.top().onExit())
+		if (states.top()->onExit())
 		{
 			// lo mismo que en popState
 			delete &states.top();

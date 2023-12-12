@@ -11,7 +11,7 @@ class MainMenuState : public GameState {
 
 private:
 
-	const string s_menuID;
+	const string s_menuID = "MENU";
 
 public:
 
@@ -20,20 +20,20 @@ public:
 	 
 	
 	//
-	void update();
+	void update() override;
 	//
-	void render();
+	void render() override;
 
 	//
-	bool onEnter();
+	bool onEnter() override;
 	//
-	bool onExit();
+	bool onExit() override;
 
 
 	// ----------------------------------- GETTERS Y SETTERS -----------------------
 	//
 
-	string getID() const;
+	string getID() const override;
 };
 
 #endif

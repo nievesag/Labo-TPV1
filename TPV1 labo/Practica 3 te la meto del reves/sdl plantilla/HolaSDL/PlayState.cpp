@@ -25,3 +25,8 @@ bool PlayState::onExit()
 	cout << "exiting PlayState\n";
 	return true;
 }
+
+string PlayState::getID() const
+{
+	return s_playID;
+}

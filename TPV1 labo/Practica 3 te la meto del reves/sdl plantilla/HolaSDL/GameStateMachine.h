@@ -23,7 +23,7 @@ protected:
 	// anterior con solo mirar a la pila.
 	// 
 	// Todos los metodos se ocupan de gestionar la pila 
-	stack<GameState> states;
+	stack<GameState*> states;
 
 
 public:

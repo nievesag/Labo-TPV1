@@ -22,7 +22,7 @@ class PlayState : public GameState{
 private:
 
 	// id del estado
-	const string s_playID;
+	const string s_playID = "PLAY";
 
 	// default variables
 	int defaultLives = 1,	// default number of lives
@@ -67,26 +67,28 @@ protected:
 public:
 
 	// constructora
-	PlayState::PlayState(SDLApplication* game) : GameState(game), app(game) {};
+	PlayState::PlayState(SDLApplication* game) : GameState(game), app(game) {
+	
+	};
 
 	// -------------------------------- HERENCIA --------------------------------
 	// update
-	void update();
+	void update() override;
 
 	// render
-	virtual void render();
+	void render() override;
 
 	// save
 	void save(const ostream& file);
 
 	//
-	virtual bool onEnter();
+	bool onEnter() override;
 
 	//
-	virtual bool onExit();
+	bool onExit() override;
 
 	//
-	virtual string getID() const;
+	string getID() const override;
 
 
 	// ------------------------------- GETTERS Y SETTERS --------------------------
