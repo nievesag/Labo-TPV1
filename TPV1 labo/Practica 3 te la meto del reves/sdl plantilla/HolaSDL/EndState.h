@@ -2,7 +2,10 @@
 #define ENDSTATE_H
 
 // include
+//
+#include <string>
 
+//
 #include "GameState.h"
 
 using namespace std;
@@ -12,7 +15,7 @@ class EndState : public GameState{
 
 
 private:
-	static const string s_endID;
+	const string s_endID;
 
 public:
 	// constructora

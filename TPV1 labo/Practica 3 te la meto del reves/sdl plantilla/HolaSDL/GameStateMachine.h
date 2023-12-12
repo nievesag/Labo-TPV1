@@ -5,6 +5,7 @@
 //
 #include<SDL.h>		// SDL
 #include<stack>	// stack
+#include <string>
 
 // 
 #include "GameState.h"

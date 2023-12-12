@@ -9,7 +9,7 @@ using uint = unsigned int;
 class PauseState : public GameState{
 
 private:
-	static const string s_pauseID;
+	const string s_pauseID;
 
 public:
 	// constructora

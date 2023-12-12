@@ -30,6 +30,11 @@ void GameState::hasDied(GameList<GameObject, true>::anchor)
 {
 }
 
+string GameState::getID() const
+{
+	return " ";
+}
+
 void GameState::addEventListener(SDL_Event& event)
 {
 }

@@ -11,7 +11,7 @@ class MainMenuState : public GameState {
 
 private:
 
-	static const string s_menuID;
+	const string s_menuID;
 
 public:
 
