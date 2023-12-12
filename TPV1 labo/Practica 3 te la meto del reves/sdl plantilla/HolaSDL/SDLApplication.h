@@ -26,14 +26,15 @@
 using namespace std;
 using uint = unsigned int;
 
+// SI ESTÁN DENTRO DE LA CLASE:
 // constantes de tamanyo de pantalla -> inicializar en h
 // tiene que ser estática porque es un atributo (constante para todos los objetos de la clase)
-static constexpr uint winWidth = 800;
-static constexpr uint winHeight = 600;
+constexpr uint winWidth = 800;
+constexpr uint winHeight = 600;
 
 // ------------------- FRAMES ---------------------
 // gestion de frames y framerate 
-static constexpr int FRAMERATE = 60,						// frames por segundo
+constexpr int FRAMERATE = 60,						// frames por segundo
 					TIME_BT_FRAMES = 100 / FRAMERATE,		// tiempo entre frames
 					ALIEN_FR = 8 * FRAMERATE,				// cantidad de frames entre updates del alien
 					END_GAME = 300,							// distancia de los aliens para acabar
@@ -42,7 +43,7 @@ static constexpr int FRAMERATE = 60,						// frames por segundo
 					ANIMATION_DURATION = 10;
 
 
-static constexpr double LASER_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de laser
+constexpr double LASER_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de laser
 						ALIEN_SPEED = 10 * TIME_BT_FRAMES,	// velocidad de aliens
 						CANNON_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de cannon
 						UFO_SPEED = 6 * TIME_BT_FRAMES;		// velocidad de ufo

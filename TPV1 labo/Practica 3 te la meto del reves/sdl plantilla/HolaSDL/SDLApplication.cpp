@@ -79,6 +79,7 @@ void SDLApplication::handleEvents()
 		}
 	}
 
+	// EVENTOS NO TOCAR O LA TENEMOS ------------
 	/*
 	ifstream in("..\\mapas\\original.txt");
 
@@ -90,6 +91,7 @@ void SDLApplication::handleEvents()
 		for (EventHandler* listener : eventListeners)
 			listener->handleEvent(event);
 
+		// HASTA AKI ------------
 		// lo antiguo !!!! limpiar
 		/*
 		// escanea y evalua que tecla has tocado

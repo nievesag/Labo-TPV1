@@ -36,7 +36,7 @@ private:
 
 	// metodos publicos
 public:
-	Mothership::Mothership(int level, SDLApplication* SDLApplication, int alienTimer, int n)
+	Mothership(int level, SDLApplication* SDLApplication, int alienTimer, int n)
 		: level(level), GameObject(SDLApplication), alienTimer(alienTimer) {
 
 		dir = 1;

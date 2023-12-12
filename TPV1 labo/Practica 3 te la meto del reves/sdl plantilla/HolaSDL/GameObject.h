@@ -21,14 +21,13 @@ protected:
 
 	// metodos publicos
 public:
+	GameObject() {}
 
-	GameObject::GameObject () {}
-
-	GameObject::GameObject(SDLApplication* application)
+	GameObject(SDLApplication* application)
 		: application(application) {}
 
 	// destructora virtual para por polimorfismo
-	virtual GameObject::~GameObject();
+	virtual ~GameObject();
 
 	// metodos virtuales puros -> estan vacios y preparados para un override en los objetos especificos
 	// ---- render ----

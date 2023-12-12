@@ -20,7 +20,7 @@ void GameStateMachine::popState()
 		if (states.top()->onExit())
 		{
 			// borra el puntero
-			delete& states.top();
+			delete states.top();
 
 			// lo quita del stack
 			states.pop();
@@ -39,7 +39,7 @@ void GameStateMachine::replaceState(GameState* state)
 		if (states.top()->onExit())
 		{
 			// lo mismo que en popState
-			delete &states.top();
+			delete states.top();
 			states.pop();
 		}
 	}
