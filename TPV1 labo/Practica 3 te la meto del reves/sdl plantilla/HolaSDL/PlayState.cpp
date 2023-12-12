@@ -6,6 +6,13 @@ void PlayState::update()
 {
 	//
 	cout << "update" << endl;
+
+	for (int i = 0; i < gamelist.size(); i++)
+	{
+		// gestionar con iterator
+		//gamelist[i]->update();
+	}
+
 }
 
 void PlayState::render()
