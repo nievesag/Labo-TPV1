@@ -403,6 +403,259 @@ void SDLApplication::loadAnyFile(const string& file, const string& root)
 		estado, hits, timer, score;
 	char color;						// color
 
+	// mientras no se acabe el archivo sigue leyendo
+	while (!in.eof()) {
+
+		// lee el identificador
+		in >> objID;
+
+
+		/*
+		// switch para leer y crear cada objeto
+		switch (objID)
+		{
+			// si es el cannon
+		case 0: {
+			// set up del archivo para el cannon:
+			// id x y vidas cd
+
+			// ---------------- Lectura de variables ---------------
+
+			// lee la posicion
+			in >> x;
+			in >> y;
+
+			// lee las vidas y el cd
+			in >> vidas;
+			in >> cooldown;
+
+			// crea el vector
+			Point2D<double> coord(x, y);
+
+			// ---------------- Creacion del objeto ------------------
+
+			// nave
+			SceneObject* obj = new Cannon(cooldown, coord, textures[Nave]->getFrameWidth(),
+				textures[Nave]->getFrameHeight(), vidas, textures[Nave], this);
+
+			// lo mete en la lista
+			sceneObjectsList.push_back(obj);
+			// ----------------------- Fin del stup -----------------------
+
+			// acaba el caso
+			break;
+		}
+
+			  // si es un alien
+		case 1: {
+			// setup del alien:
+			// id x y type
+
+			// ---------------- Lectura de variables ---------------
+			// lee la posicion
+			in >> x;
+			in >> y;
+
+			// crea el vector
+			Point2D<double> coord(x, y);
+
+			// lee el tipo
+			in >> alienType;
+
+			// ---------------- Creacion del objeto ------------------
+
+			// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game)
+			SceneObject* obj = new Alien(mother, defaultFrame, alienType, coord, textures[alienType]->getFrameWidth(),
+				textures[alienType]->getFrameHeight(), defaultLives, textures[alienType], this);
+
+			// lo mete en la lista
+			sceneObjectsList.push_back(obj);
+
+			// ----------------------- Fin del stup -----------------------
+
+			// acaba el caso
+			break;
+		}
+
+			  // si es un shotter alien
+		case 2: {
+			// setup del shooter alien:
+			// id x y type cooldown
+
+			// ---------------- Lectura de variables ---------------
+
+			// lee la posicion
+			in >> x;
+			in >> y;
+
+			// crea el vector
+			Point2D<double> coord(x, y);
+
+			// lee el tipo
+			in >> alienType;
+
+			in >> cooldown;
+
+			// ---------------- Creacion del objeto ------------------
+
+			SceneObject* obj = new ShooterAlien(cooldown, mother, defaultFrame, alienType, coord,
+				textures[alienType]->getFrameWidth(), textures[alienType]->getFrameHeight(), defaultLives,
+				textures[alienType], this);
+
+			// lo mete en la lista
+			sceneObjectsList.push_back(obj);
+
+
+			// ----------------------- Fin del stup -----------------------
+
+			// acaba el caso
+			break;
+		}
+
+			  // si es el mothership
+		case 3: {
+			// setup de la mothership:
+			// id level estado timer
+
+			// ---------------- Lectura de variables ---------------
+
+			// lee la altura
+			in >> y;
+
+			// lee el tipo
+			in >> estado;
+			in >> timer;
+
+			// ---------------- Creacion del objeto ------------------
+
+			// crea la mothership
+			mother = new Mothership(y, this, timer, estado);
+
+			// ----------------------- Fin del stup -----------------------
+
+			// acaba el caso
+			break;
+		}
+
+			  // si es un bunker
+		case 4: {
+			// setup del bunker:
+			// id x y vidas hits
+
+			// ---------------- Lectura de variables ---------------
+
+			// lee la posicion
+			in >> x;
+			in >> y;
+
+			// crea el vector
+			Point2D<double> coord(x, y);
+
+			// lee el tipo
+			in >> vidas;
+			in >> hits;
+
+			// ---------------- Creacion del objeto ------------------
+
+			// bunker
+			SceneObject* obj = new Bunker(hits, coord, textures[Escudo]->getFrameWidth(),
+				textures[Escudo]->getFrameHeight(), vidas, textures[Escudo], this);
+
+			// lo mete en la lista
+			sceneObjectsList.push_back(obj);
+
+
+			// ----------------------- Fin del stup -----------------------
+
+			// acaba el caso
+			break;
+		}
+
+			  // si es el ufo
+		case 5: {
+			// setup del ufo:
+			// id y estado cooldown hits
+
+			// ---------------- Lectura de variables ---------------
+
+			// lee la posicion
+			in >> y;
+
+			// crea el vector
+			Point2D<double> coord(0, y);
+
+			// lee 
+			in >> estado;
+			in >> cooldown;
+			in >> vidas;
+
+			// ---------------- Creacion del objeto ------------------
+
+			// textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight()
+			SceneObject* obj = new Ufo(Point2D<double>(winWidth, y), textures[UfoT]->getFrameWidth(),
+				textures[UfoT]->getFrameHeight(), vidas, textures[UfoT], this);
+
+			// lo mete en la lista
+			sceneObjectsList.push_back(obj);
+
+
+			// ----------------------- Fin del stup -----------------------
+
+			// acaba el caso
+			break;
+		}
+
+			  // si es un laser
+		case 6: {
+			// setup del laser:
+			// id x y color
+
+			// ---------------- Lectura de variables ---------------
+
+			// lee la posicion
+			in >> x;
+			in >> y;
+
+			// crea el vector
+			Vector2D<double> coord(x, y);
+
+			// lee el tipo
+			in >> color;
+
+			// ---------------- Creacion del objeto ------------------
+
+			if (color == 'a') {
+				SDL_SetRenderDrawColor(renderer, 255, 0, 114, 255);	// cannon
+			}
+			else {
+				SDL_SetRenderDrawColor(renderer, 255, 242, 0, 255);	// aliens
+			}
+
+			//bunker
+			SceneObject* obj = new Laser(color, coord, laserW, laserH, defaultLives, nullptr, this);
+
+			// lo mete en la lista
+			sceneObjectsList.push_back(obj);
+
+			// ----------------------- Fin del stup -----------------------
+
+			// acaba el caso
+			break;
+		}
+
+			  // si es la puntuacion
+		case 7: {
+			in >> score;
+
+			SCORE = score;
+
+			break;
+		}
+		}
+		*/
+		
+	}
+
 
 
 	// si no existe una mothership la crea

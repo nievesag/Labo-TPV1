@@ -50,10 +50,10 @@ protected:
 	// lista de objetos de escena (cannon, aliens, bunkeres, laser)
 	GameList<SceneObject, true> sceneObjectsList;
 
-	//GameList<SceneObject*>:: iterator it;
-
 	// lista de iteradores de objetos que eliminar
-	list<list<SceneObject*>::iterator> objectsToErase;
+	//list<list<SceneObject*>::iterator> objectsToErase;
+	// lista de anchors de objetos a eliminar
+	list<GameList<SceneObject, true>::anchor>objectsToErase;
 
 	// puntero al mothership
 	//Mothership* mother;

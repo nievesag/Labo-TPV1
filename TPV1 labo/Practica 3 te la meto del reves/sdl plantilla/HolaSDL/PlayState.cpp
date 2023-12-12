@@ -73,8 +73,8 @@ bool PlayState::damage(SDL_Rect rect, char frenemy)
 void PlayState::hasDied(GameList<SceneObject, true>::anchor i)
 {
 	// que cojones es un anchor ?????
-	// aniade el objeto a la lista de borradores
-	//objectsToErase.push_back(i);
+	// aniade el ANCHOR del objeto a la lista de borradores
+	objectsToErase.push_back(i);
 
 }
 
@@ -87,7 +87,7 @@ void PlayState::fireLaser(Point2D<double> pos, char frenemy)
 		SDL_SetRenderDrawColor(app->getRenderer(), 255, 242, 0, 255);	// aliens
 	}
 	// crea el laser
-	SceneObject* newObj = new Laser(frenemy, pos, defaultLaserW, defaultLaserH, defaultLives, nullptr, app);
+	SceneObject* newObj = new Laser(frenemy, pos, defaultLaserW, defaultLaserH, defaultLives, nullptr, this);
 
 	// lo mete en la lista:
 	// cuando se añade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
@@ -97,4 +97,6 @@ void PlayState::fireLaser(Point2D<double> pos, char frenemy)
 
 void PlayState::deleteSceneObjects()
 {
+	//
+
 }
