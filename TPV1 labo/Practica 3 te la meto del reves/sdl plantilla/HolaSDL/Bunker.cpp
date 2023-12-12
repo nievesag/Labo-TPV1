@@ -31,7 +31,7 @@ bool Bunker::hit(SDL_Rect* rect, char frenemy)
 
 		hits++;
 
-		if (hits >= vidas) application->hasDied(it);
+		if (hits >= vidas) game->hasDied(anc);
 
 		return true;
 	}

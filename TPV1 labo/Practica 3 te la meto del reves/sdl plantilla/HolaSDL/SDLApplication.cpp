@@ -351,10 +351,10 @@ void SDLApplication::fireLaser(Point2D<double> pos, char frenemy)
 	}
 
 	// crea el laser
-	SceneObject* newObj = new Laser(frenemy, pos, defaultLaserW, defaultLaserH, defaultLives, nullptr, this);
+	//SceneObject* newObj = new Laser(frenemy, pos, defaultLaserW, defaultLaserH, defaultLives, nullptr, this);
 
 	// lo mete en la lista
-	sceneObjectsList.push_back(newObj);
+	//sceneObjectsList.push_back(newObj);
 }
 
 bool SDLApplication::damage(Laser* myLaser)

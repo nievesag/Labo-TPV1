@@ -8,6 +8,7 @@ using namespace std;
 using uint = unsigned int;
 
 class SDLApplication;
+class PlayState;
 
 class ShooterAlien : public Alien
 {
@@ -23,8 +24,8 @@ private:
 	// metodos publicos
 public:
 	// desde esta constructora invocar a la contructora padre (Alien)
-	ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, SDLApplication* application)
-		: cooldown(cooldown), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, application) 
+	ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
+		: cooldown(cooldown), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, game) 
 	{}
 
 	// el alien dispara

@@ -65,7 +65,7 @@ bool Cannon::hit(SDL_Rect* rect, char frenemy)
 {
 	if (SDL_HasIntersection(rect, &destRect) && frenemy == 'r') {
 		// informa al game que ha muerto
-		application->hasDied(it);
+		game->hasDied(anc);
 		application->EndGame();
 
 		return true;

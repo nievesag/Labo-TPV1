@@ -26,7 +26,7 @@ void Laser::update()
 	if (application->damage(this) || isOut()) {
 
 		// le dice al game que ha muerto
-		application->hasDied(it);
+		game->hasDied(anc);
 	}
 }
 
