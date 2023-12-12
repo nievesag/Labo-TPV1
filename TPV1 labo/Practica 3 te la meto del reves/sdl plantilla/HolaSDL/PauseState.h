@@ -8,8 +8,29 @@ using uint = unsigned int;
 
 class PauseState : public GameState{
 
+private:
+	static const string s_pauseID;
+
+public:
+	// constructora
+	PauseState::PauseState(SDLApplication * game) : GameState(game) { };
 
 
+	//
+	virtual void update();
+	//
+	virtual void render();
+
+	//
+	virtual bool onEnter();
+	//
+	virtual bool onExit();
+
+
+	// ----------------------------------- GETTERS Y SETTERS -----------------------
+	//
+
+	virtual string getID() const;
 
 
 };

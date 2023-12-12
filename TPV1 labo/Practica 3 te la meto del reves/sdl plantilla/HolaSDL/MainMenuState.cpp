@@ -3,13 +3,13 @@
 void MainMenuState::update()
 {
 	//
-
+	cout << "update" << endl;
 }
 
 void MainMenuState::render()
 {
 	//
-
+	cout << "render" << endl;
 }
 
 bool MainMenuState::onEnter()

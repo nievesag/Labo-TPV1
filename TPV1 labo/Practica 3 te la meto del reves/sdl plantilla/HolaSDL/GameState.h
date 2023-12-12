@@ -15,7 +15,7 @@ using uint = unsigned int;
 #include "SceneObject.h"
 #include "EventHandler.h"
 
-class Game;
+class SDLApplication;
 
 
 class GameState {
@@ -68,7 +68,7 @@ public:
 
 	// ---------------------------------- GETTERS Y SETTERS -------------------------
 	// getter del juego
-	Game getGame() const;
+	SDLApplication getGame() const;
 
 	virtual string getID() const = 0;
 

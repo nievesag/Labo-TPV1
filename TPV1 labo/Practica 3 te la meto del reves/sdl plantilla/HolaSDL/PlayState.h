@@ -1,4 +1,4 @@
-#ifndef PLAYSTATEQ_H
+#ifndef PLAYSTATE_H
 #define PLAYSTATE_H
 
 // includes
@@ -67,7 +67,7 @@ protected:
 public:
 
 	// constructora
-	PlayState(SDLApplication* game) : GameState(game), app(game) {};
+	PlayState::PlayState(SDLApplication* game) : GameState(game), app(game) {};
 
 	// -------------------------------- HERENCIA --------------------------------
 	// update
