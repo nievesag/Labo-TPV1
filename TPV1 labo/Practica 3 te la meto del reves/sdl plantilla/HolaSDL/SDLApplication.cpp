@@ -169,6 +169,10 @@ void SDLApplication::run()
 // ACTUALIZAR 
 void SDLApplication::update()
 {
+	//
+	gsMachine->update();
+
+	/*
 	// actualiza el mothership
 	mother->update();
 
@@ -180,11 +184,18 @@ void SDLApplication::update()
 
 	// borra los objetos a borrar
 	deleteSceneObjects();
+	*/
+	
 }
 
 // PINTAR
 void SDLApplication::render()
 {
+	SDL_RenderClear(renderer);
+	gsMachine->render();
+	SDL_RenderPresent(renderer);
+
+	/*
 	// limpia pantalla
 	SDL_RenderClear(renderer);
 
@@ -199,6 +210,8 @@ void SDLApplication::render()
 
 	// render de todo
 	SDL_RenderPresent(renderer);
+	*/
+	
 }
 
 void SDLApplication::renderBackground()

@@ -61,13 +61,21 @@ void GameStateMachine::replaceState(GameState* state)
 
 void GameStateMachine::update()
 {
-	//
+	// si no esta vacia la pila actualiza el ultimo estado
+	if (!states.empty())
+	{
+		states.top()->update();
+	}
 }
 
 
 void GameStateMachine::render()
 {
-	//
+	// si no esta vacia la pila renderiza el ultimo estado
+	if (!states.empty())
+	{
+		states.top()->render();
+	}
 }
 
 void GameStateMachine::handleEvent(const SDL_Event& event)
