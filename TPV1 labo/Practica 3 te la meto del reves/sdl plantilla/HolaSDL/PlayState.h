@@ -48,7 +48,9 @@ protected:
 
 
 	// lista de objetos de escena (cannon, aliens, bunkeres, laser)
-	list<SceneObject*> sceneObjectsList;
+	GameList<SceneObject, true> sceneObjectsList;
+
+	//GameList<SceneObject*>:: iterator it;
 
 	// lista de iteradores de objetos que eliminar
 	list<list<SceneObject*>::iterator> objectsToErase;
