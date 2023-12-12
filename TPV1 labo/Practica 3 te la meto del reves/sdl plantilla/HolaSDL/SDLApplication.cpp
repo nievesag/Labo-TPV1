@@ -78,6 +78,55 @@ void SDLApplication::handleEvents()
 			gsMachine->replaceState(new PlayState(this));
 		}
 	}
+
+	/*
+	ifstream in("..\\mapas\\original.txt");
+
+	// MIENTRAS HAYA EVENTOS
+		// si hay eventos &event se llena con el evento a ejecutar si no NULL
+		// es decir, pollea hasta que se hayan manejado todos los eventos
+	while (SDL_PollEvent(&event) && !exit) {
+		// retrasmite el evento a todos los oyentes registrados de tipo EventHandler
+		for (EventHandler* listener : eventListeners)
+			listener->handleEvent(event);
+
+		// lo antiguo !!!! limpiar
+		/*
+		// escanea y evalua que tecla has tocado
+		SDL_Scancode key = event.key.keysym.scancode;
+
+		// si se solicita quit bool exit = true
+		if (event.type == SDL_QUIT) EndGame();
+
+		// si se pulsa una tecla
+		else if (event.type == SDL_KEYDOWN && (key == SDL_SCANCODE_S || key == SDL_SCANCODE_L)) {
+
+			// si es la tecla S (save)
+			if (key == SDL_SCANCODE_S) {
+
+				// guarda la partida (incluye la gestion del 'menu')
+				saveThisGame();
+			}
+			// si es la tecla L (load)
+			else if (key == SDL_SCANCODE_L) {
+
+				// carga la partida indicada
+				loadThisGame();
+			}
+		}
+		// MANEJO DE EVENTOS DE OBJETOS DE JUEGO
+		else { 
+			// el objeto en begin es el cannon
+			list<SceneObject*>::iterator it = sceneObjectsList.begin();
+
+			// DYNAMIC CAST: se comprueba en ejecucion que el objeto 
+			// en la posicion begin del iterador apunte a un objeto de tipo Cannon
+			// si lo es se accede al metodo 
+			dynamic_cast<Cannon*>(*it)->handleEvent(event);
+		}
+		*/
+
+
 }
 
 // --------------------------------------------- NO SE NECESITA?
