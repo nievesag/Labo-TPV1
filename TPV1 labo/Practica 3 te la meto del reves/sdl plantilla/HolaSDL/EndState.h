@@ -13,14 +13,12 @@ using uint = unsigned int;
 
 class EndState : public GameState{
 
-
 private:
 	const string s_endID = "END";
 
 public:
 	// constructora
 	EndState(SDLApplication * game) : GameState(game) { };
-
 
 	//
 	virtual void update();
@@ -32,14 +30,8 @@ public:
 	//
 	virtual bool onExit();
 
-
-	// ----------------------------------- GETTERS Y SETTERS -----------------------
+	// ----------- GETTERS Y SETTERS -----------
 	//
-
 	virtual string getID() const;
-
-
-
 };
-
 #endif

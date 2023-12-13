@@ -1,8 +1,8 @@
 #include "Button.h"
+#include "SDLApplication.h"
 
 void Button::update()
 {
-	SDL_Point point;
 	SDL_GetMouseState(&point.x, &point.y);
 
 	// comprueba si el cursor esta sobre el rectangulo
@@ -11,18 +11,11 @@ void Button::update()
 	}
 }
 
-void mouseClick(const SDL_Event& event) {
-	
-	// si se pulsa el boton izq del raton
-	if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
-
-		// guarda pos del cursor
-		SDL_Point point{ event.button.x, event.button.y };
-
-		// comprueba si el punto está en el rect del boton
-		if (SDL_PointInRect(&point, &destRect))
-			clickedAction();
-	}
+void Button::emit(const SDL_Event& event) const
+{
+	// llama a todas las funciones registradas (callbacks)
+	for (const SDLEventCallback& callback : callbacks)
+		callback(event);
 }
 
 void Button::render() const {
@@ -41,13 +34,27 @@ void Button::render() const {
 	SDL_SetRenderDrawColor(application->getRenderer(), 0, 0, 0, 225);
 }
 
+void mouseClick(const SDL_Event& event) {
+	
+	// si se pulsa el boton izq del raton
+	if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
+
+		// guarda pos del cursor al pulsar
+		SDL_Point point{ event.button.x, event.button.y };
+
+		// comprueba si el punto está en el rect del boton
+		if (SDL_PointInRect(&point, &destRect)) {
+			emit(event);
+		}	
+	}
+}
+
 void Button::connect(SDLEventCallback buttonCallback)
 {
-	/*
-	for (const SDLEventCallback& buttonCallback : eventCallbacks)
-		buttonCallback(event);
-	*/
+	callbacks.push_back(buttonCallback);
 }
+
+
 
 void clickedAction() {
 	application->handleEvents();

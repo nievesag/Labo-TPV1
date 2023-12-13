@@ -20,7 +20,9 @@ private:
 	// PLACEHOLDER!!!!!
 	vector<SDLEventCallback> eventCallbacks;
 
+	// posicion del cursor
 	int x, y;
+	SDL_Point point;
 
 	Texture* buttonTexture;
 
@@ -29,7 +31,7 @@ private:
 	// posicion del boton
 	Point2D<double> position;
 
-	// dimension del boton (height & width)
+	// dimension del boton (height & width)   
 	int width, height;
 
 	// rectangulo del render
@@ -42,6 +44,12 @@ private:
 		MOUSEOVER = 1,
 		CLICKED = 2
 	};
+
+	// CALLBACKS: funcion ejecutable «A» que se usa como argumento de función «B». 
+	// -> al llamar a «B» la funcion ejecuta «A»
+	
+	// lista de funciones a llamar cuando sucede un evento
+	list<SDLEventCallback> callbacks;
 
 public:
 	Button(Point2D<double> position, int width, int height, Texture* texture, SDLApplication* application) :
@@ -70,6 +78,10 @@ public:
 
 	// ---- update ----
 	void update() override;
+
+	void handleEvent(const SDL_Event& event) override;
+
+	void emit(const SDL_Event& event) const;
 
 	// devuelve rect (posicion) de cada objeto
 	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
