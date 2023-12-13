@@ -37,6 +37,31 @@ void PlayState::render()
 	}
 }
 
+void PlayState::save(const string& file)
+{
+
+	/*
+
+	// abre un canal para guardar en un archivo con el nombre deseado
+	ofstream out(SAVED_FOLDER + file + ".txt");
+
+	mother->save(out);
+
+	// bucle para llegar a los save de todos los objetos
+	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
+
+		(*it)->save(out);
+	}
+
+	// guarda los puntos
+	out << "7 " << SCORE << endl;
+
+	// cierra el hilo
+	out.close();
+	*/
+
+}
+
 bool PlayState::onEnter()
 {
 	//
@@ -118,6 +143,29 @@ void PlayState::deleteSceneObjects()
 		objectsToErase.clear();
 	}
 
+}
+
+void PlayState::saveThisGame()
+{
+	// pregunta en que numero se va a guardar la partida
+	cout << "Save this game in slot: " << std::endl;
+
+	// lee el numero en char k
+	cin >> k;
+
+	// comprueba que sea un numero, si no lo es le dice que es invalido
+	if (isdigit(k))
+	{
+		// pasa numero a string despues del save (savek)
+		save("save" + to_string(k - '0'));
+
+		// acaba el juego
+		//EndGame();
+
+		// se ha salvado el juego
+		cout << "Game saved!" << endl;
+	}
+	else cout << "Invalid number :(";
 }
 
 void PlayState::loadTextures()

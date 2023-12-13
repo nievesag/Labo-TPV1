@@ -119,7 +119,7 @@ public:
 	void render() override;
 
 	// save
-	void save(const ostream& file);
+	void save(const string& file);
 
 	// es como la constructora del antiguo game, lee la partida 
 	// y carga todos los objetos y los prepara
@@ -151,6 +151,9 @@ public:
 	// ------------------------------------- OTROS ----------------------------
 	// delete scene objects
 	void deleteSceneObjects();
+
+	// guarda la partida (esto va dentro del handle events de la S de save pero es por orden)
+	void saveThisGame();
 
 	// carga las texturas
 	void loadTextures();
