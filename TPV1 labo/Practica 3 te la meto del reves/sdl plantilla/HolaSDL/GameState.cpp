@@ -2,7 +2,11 @@
 
 void GameState::render()
 {
-	
+	/*
+	for (auto gamelist : gamelist.size) {
+		gamelist.update();
+	}
+	*/
 }
 
 void GameState::update()

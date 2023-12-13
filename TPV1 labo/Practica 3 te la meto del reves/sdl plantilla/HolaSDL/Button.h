@@ -17,9 +17,6 @@ using SDLEventCallback = function<void(const SDL_Event&)>;
 class Button : public EventHandler, public GameObject
 {
 private:
-	// PLACEHOLDER!!!!!
-	vector<SDLEventCallback> eventCallbacks;
-
 	// posicion del cursor
 	int x, y;
 	SDL_Point point;
@@ -51,6 +48,9 @@ private:
 	// lista de funciones a llamar cuando sucede un evento
 	list<SDLEventCallback> callbacks;
 
+	// lista de oyentes de eventos del botón -> reacciona al click
+	list<EventHandler*> clickListeners;
+
 public:
 	Button(Point2D<double> position, int width, int height, Texture* texture, SDLApplication* application) :
 		destRect{ 50, 50, 200, 100 }, buttonTexture(texture), GameObject(application)
@@ -58,6 +58,8 @@ public:
 		// para animacion
 		currentFrame = MOUSEOUT; // frame inicial a 0
 
+
+		/*
 		// si hay textura entonces no es un laser y tiene dimensiones
 		if (texture != nullptr) {
 			// setea las dimensiones
@@ -66,6 +68,7 @@ public:
 		}
 		destRect.x = position.getX();
 		destRect.y = position.getY();
+		*/
 	}
 
 	// METODOS

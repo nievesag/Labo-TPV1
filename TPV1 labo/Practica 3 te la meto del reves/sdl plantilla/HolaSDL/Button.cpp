@@ -54,8 +54,6 @@ void Button::connect(SDLEventCallback buttonCallback)
 	callbacks.push_back(buttonCallback);
 }
 
-
-
 void clickedAction() {
 	application->handleEvents();
 }

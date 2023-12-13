@@ -25,9 +25,6 @@ protected:
 	// lista de objetos del juego mediante gameList
 	GameList<SceneObject, true> gamelist;
 
-	// lista de eventos a gestionar
-	list<EventHandler*> eventList;
-
 	// lista de punteros a oyentes
 	list<EventHandler*> eventListeners;
 
@@ -38,7 +35,6 @@ public:
 	// constructora por copia
 	GameState(const GameState& gamestate) : application(gamestate.application) {
 		gamelist = gamestate.gamelist;
-		eventList = gamestate.eventList;
 	};
 
 	// ---------------------------------- BASICOS ----------------------------
@@ -78,6 +74,7 @@ public:
 
 	// para registrar oyentes
 	void addEventListener(EventHandler* listener);
+
 
 };
 
