@@ -9,7 +9,7 @@
 #include "GameObject.h"
 #include "Laser.h"
 
-class Game;
+class PlayState;
 
 using namespace std;
 using uint = unsigned int;
@@ -42,8 +42,8 @@ private:
 	// metodos publicos
 public:
 	// ---- constructora ----
-	Ufo(Point2D<double> position, int width, int height, int vidas, Texture* texture, SDLApplication* application)
-		: spawn(position), SceneObject(position, width, height, vidas, texture, application)
+	Ufo(Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
+		: spawn(position), SceneObject(position, width, height, vidas, texture, game)
 	{
 		state = oculto;
 

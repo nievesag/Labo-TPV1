@@ -27,8 +27,12 @@ protected:
 public:
 	GameObject() {}
 
+	// constructora con el estado (botones del playstate)
 	GameObject(PlayState* game)
 		: game(game) {}
+
+	// constructora con el application (botones fuera del playstate)
+	GameObject (SDLApplication* application) : application(application) {}
 
 	// destructora virtual para por polimorfismo
 	virtual ~GameObject();

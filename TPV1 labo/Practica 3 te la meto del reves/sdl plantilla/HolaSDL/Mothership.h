@@ -8,6 +8,7 @@ using namespace std;
 using uint = unsigned int;
 
 class Alien;
+class PlayState;
 
 class Mothership : public GameObject
 {
@@ -36,8 +37,8 @@ private:
 
 	// metodos publicos
 public:
-	Mothership(int level, SDLApplication* SDLApplication, int alienTimer, int n)
-		: level(level), GameObject(SDLApplication), alienTimer(alienTimer) {
+	Mothership(int level, PlayState* game, int alienTimer, int n)
+		: level(level), GameObject(game), alienTimer(alienTimer) {
 
 		dir = 1;
 		switchDir = false;
