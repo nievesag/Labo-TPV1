@@ -11,13 +11,6 @@ void Button::update()
 	}
 }
 
-void Button::emit(const SDL_Event& event) const
-{
-	// llama a todas las funciones registradas (callbacks)
-	for (const SDLEventCallback& callback : callbacks)
-		callback(event);
-}
-
 void Button::render() const {
 
 	// el color del rect depende de si el raton esta sobre el
@@ -34,7 +27,7 @@ void Button::render() const {
 	SDL_SetRenderDrawColor(application->getRenderer(), 0, 0, 0, 225);
 }
 
-void mouseClick(const SDL_Event& event) {
+void handleEvent(const SDL_Event& event) {
 	
 	// si se pulsa el boton izq del raton
 	if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
@@ -49,7 +42,9 @@ void mouseClick(const SDL_Event& event) {
 	}
 }
 
-void Button::connect(SDLEventCallback buttonCallback)
+void Button::emit(const SDL_Event& event) const
 {
-	callbacks.push_back(buttonCallback);
+	// llama al método virtual handleEvent de cada oyente
+	for (EventHandler* lis : clickListeners)
+		lis->handleEvent(event);
 }

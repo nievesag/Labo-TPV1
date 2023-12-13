@@ -27,6 +27,10 @@ SDLApplication::SDLApplication()
 		throw SDLError("Error cargando ventana de juego o renderer "s + SDL_GetError());
 
 	boton = new Button(this);
+	cannon = new Cannon();
+
+	gsMachine->addEventListener(boton);
+	gsMachine->addEventListener(cannon);
 
 	loadTextures();
 

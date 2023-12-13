@@ -74,8 +74,6 @@ public:
 
 	// para registrar oyentes
 	void addEventListener(EventHandler* listener);
-
-
 };
 
 #endif

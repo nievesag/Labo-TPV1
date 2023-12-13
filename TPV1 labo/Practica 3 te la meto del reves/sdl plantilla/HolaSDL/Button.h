@@ -46,7 +46,7 @@ private:
 
 public:
 	Button(SDLApplication* application) 
-		: GameObject(application)
+		: GameObject(application), destRect{ 50, 50, 200, 100 }
 	{
 		// para animacion
 		currentFrame = MOUSEOUT; // frame inicial a 0
@@ -72,10 +72,7 @@ public:
 	// ---- update ----
 	void update() override;
 
-	void emit(const SDL_Event& event) const;
-
-	// registra callbacks
-	void connect(SDLEventCallback buttonCallback);
+	void emit() const;
 
 	void handleEvent(const SDL_Event& event) override;
 

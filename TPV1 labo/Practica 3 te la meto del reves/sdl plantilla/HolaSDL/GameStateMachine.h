@@ -47,5 +47,4 @@ public:
 	// 
 	void handleEvent(const SDL_Event& event);
 };
-
 #endif
