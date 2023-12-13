@@ -662,7 +662,7 @@ void SDLApplication::loadAnyFile(const string& file, const string& root)
 	if (mother == nullptr) {
 
 		// crea la mothership
-		mother = new Mothership(defaultMothershipLevel, this, 30, 0);
+		//mother = new Mothership(defaultMothershipLevel, this, 30, 0);
 	}
 
 
