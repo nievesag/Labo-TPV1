@@ -34,6 +34,8 @@ private:
 	// rectangulo del render
 	SDL_Rect destRect;
 
+	bool click;
+
 	// estados del botón para render y animacion (?)
 	int currentFrame;
 	enum buttonState {
@@ -46,6 +48,9 @@ public:
 	Button(Point2D<double> position, int width, int height, Texture* texture, SDLApplication* application) :
 		position(position), width(width), height(height), buttonTexture(texture), GameObject(application)
 	{
+		// para animacion
+		currentFrame = MOUSEOUT; // frame inicial a 0
+
 		// si hay textura entonces no es un laser y tiene dimensiones
 		if (texture != nullptr) {
 			// setea las dimensiones
@@ -57,7 +62,9 @@ public:
 	}
 
 	// METODOS
-	void clicked(Button* btn) {  }
+	void clickedAction(Button* btn);
+
+	void mouseClick(SDL_MouseButtonEvent& b);
 
 	// ---- render ----
 	void render() const override;
