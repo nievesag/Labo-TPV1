@@ -47,5 +47,9 @@ public:
 
 	// ---- save del objeto ----
 	virtual void save(ostream& out) const = 0;
+
+	// anchor
+	//void setListAnchor(GameList<SceneObject, true>::anchor newanc);
+	
 };
 #endif
