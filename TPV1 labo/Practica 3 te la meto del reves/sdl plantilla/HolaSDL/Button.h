@@ -18,9 +18,12 @@ class Button : public EventHandler, public GameObject
 {
 private:
 	// PLACEHOLDER!!!!!
-	SDL_Event event;
 	vector<SDLEventCallback> eventCallbacks;
+
 	int x, y;
+
+	Texture* buttonTexture;
+
 	Point2D<int> mousePos;
 
 	// posicion del boton
@@ -29,12 +32,8 @@ private:
 	// dimension del boton (height & width)
 	int width, height;
 
-	Texture* buttonTexture;
-
 	// rectangulo del render
 	SDL_Rect destRect;
-
-	bool click;
 
 	// estados del botón para render y animacion (?)
 	int currentFrame;
@@ -46,7 +45,7 @@ private:
 
 public:
 	Button(Point2D<double> position, int width, int height, Texture* texture, SDLApplication* application) :
-		position(position), width(width), height(height), buttonTexture(texture), GameObject(application)
+		destRect{ 50, 50, 200, 100 }, buttonTexture(texture), GameObject(application)
 	{
 		// para animacion
 		currentFrame = MOUSEOUT; // frame inicial a 0
@@ -62,9 +61,9 @@ public:
 	}
 
 	// METODOS
-	void clickedAction(Button* btn);
+	void clickedAction();
 
-	void mouseClick(SDL_MouseButtonEvent& b);
+	void mouseClick(const SDL_Event& event);
 
 	// ---- render ----
 	void render() const override;
