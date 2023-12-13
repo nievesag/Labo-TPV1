@@ -67,9 +67,7 @@ public:
 
 	// Lista de funciones a llamar cuando se produzca un evento
 	std::vector<SDLEventCallback> callbacks;
-	void emit(const SDL_Event& event) const;
-	// Se suscribe a los eventos SDL del juego
-	void connect(SDLEventCallback cb);
+
 
 	// atributos privados
 private:
@@ -185,6 +183,12 @@ public:
 	// ---- handleEvents ----
 	// input del jugador
 	void handleEvents();
+
+	//
+	void emit(const SDL_Event& event) const;
+
+	// Se suscribe a los eventos SDL del juego
+	void connect(SDLEventCallback cb);
 
 	// ---- hasDied ----
 	// metodo que llaman los objetos cuando han de ser eliminados

@@ -44,14 +44,19 @@ private:
 	// lista de oyentes de eventos del botón -> reacciona al click
 	list<EventHandler*> clickListeners;
 
+	//
+	SDLApplication* app;
+
 public:
 	Button(SDLApplication* application) 
 		: GameObject(application), destRect{ 50, 50, 200, 100 }
 	{
 		// para animacion
 		currentFrame = MOUSEOUT; // frame inicial a 0
-		// Conectamos el handleEvent con el Game
-		application->connect([this](auto event) { handleEvent(event); });
+
+		app = application;
+
+		connectButton();
 
 		/*
 		// si hay textura entonces no es un laser y tiene dimensiones
@@ -75,6 +80,8 @@ public:
 	void emit(const SDL_Event& event) const;
 
 	void handleEvent(const SDL_Event& event) override;
+
+	void connectButton();
 
 	/*
 	// devuelve rect (posicion) de cada objeto

@@ -35,10 +35,14 @@ void handleEvent(const SDL_Event& event) {
 		// guarda pos del cursor al pulsar
 		SDL_Point point{ event.button.x, event.button.y };
 
+
+		/*
 		// comprueba si el punto está en el rect del boton
 		if (SDL_PointInRect(&point, &destRect)) {
 			emit(event);
-		}	
+		}
+		*/
+			
 	}
 }
 
@@ -47,4 +51,15 @@ void Button::emit(const SDL_Event& event) const
 	// llama al método virtual handleEvent de cada oyente
 	for (EventHandler* lis : clickListeners)
 		lis->handleEvent(event);
+}
+
+void Button::handleEvent(const SDL_Event& event)
+{
+
+}
+
+void Button::connectButton()
+{
+	// Conectamos el handleEvent con el Game
+	app->connect([this](auto event) { handleEvent(event); });
 }

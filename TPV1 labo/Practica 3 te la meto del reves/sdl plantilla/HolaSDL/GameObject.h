@@ -29,10 +29,16 @@ public:
 
 	// constructora con el estado (botones del playstate)
 	GameObject(PlayState* game)
-		: game(game) {}
+		: game(game) {
+
+		application = nullptr;
+
+	}
 
 	// constructora con el application (botones fuera del playstate)
-	GameObject (SDLApplication* application) : application(application) {}
+	GameObject (SDLApplication* application) : application(application) {
+		game = nullptr;
+	}
 
 	// destructora virtual para por polimorfismo
 	virtual ~GameObject();
@@ -46,7 +52,7 @@ public:
 	virtual void update();
 
 	// ---- save del objeto ----
-	virtual void save(ostream& out) const = 0;
+	virtual void save(ostream& out) const;
 
 	// anchor
 	//void setListAnchor(GameList<SceneObject, true>::anchor newanc);
