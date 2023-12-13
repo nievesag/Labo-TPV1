@@ -72,7 +72,7 @@ public:
 	// ---- update ----
 	void update() override;
 
-	void emit() const;
+	void emit(const SDL_Event& event) const;
 
 	void handleEvent(const SDL_Event& event) override;
 
