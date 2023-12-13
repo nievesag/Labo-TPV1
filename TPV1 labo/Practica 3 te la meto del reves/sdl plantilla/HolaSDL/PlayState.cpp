@@ -475,7 +475,9 @@ void PlayState::loadAnyFile(const string& file, const string& root)
 				mother->addAlien();
 			}
 			*/
-			
+
 		}
+	}
+
 }
 

@@ -60,7 +60,7 @@ private:
 
 	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo TextureSpec 
 	// ubicacion, col, fil
-	array<TextureSpec, SDLApplication::NUM_TEXTURES> textureSpec{
+	array<TextureSpec, PlayState::NUM_TEXTURES> textureSpec{
 		TextureSpec{"..\\images\\aliens2.png", 2, 3},	  // alien 1 // 32,32
 		{ "..\\images\\aliens2.png", 2, 3 },			  // alien 2 // 44,32
 		{ "..\\images\\aliens2.png", 2, 3 },			  // alien 3 // 48,32
