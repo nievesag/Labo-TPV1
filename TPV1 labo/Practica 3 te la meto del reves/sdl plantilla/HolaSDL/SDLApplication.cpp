@@ -4,13 +4,13 @@
 #include "FileNotFoundError.h"
 #include "SDLError.h"
 #include "FileFormatError.h" 
+#include "button.h"
 
 using namespace std;
 
 // constructora del game
 SDLApplication::SDLApplication()
 {
-	
 	winX = winY = SDL_WINDOWPOS_CENTERED;
 
 	// Inicialización del sistema, ventana y renderer
@@ -26,25 +26,21 @@ SDLApplication::SDLApplication()
 	if (window == nullptr || renderer == nullptr)
 		throw SDLError("Error cargando ventana de juego o renderer "s + SDL_GetError());
 
+	boton = new Button(this);
+
 	loadTextures();
 
 	mainMenu();
 
-
 	// --------------------- MAQUINA DE ESTADOS ---------------------------
 	// !!! el render de los estados debe ser const pero hay un error y no tengo ganas ahora de arreglarlo
 	// crea una maquina de estados
-
-
 	gsMachine = new GameStateMachine();
-
 
 	GameState* mms = new MainMenuState(this);
 
 	//
 	gsMachine->pushState(mms);
-
-	
 }
 
 SDLApplication::~SDLApplication()
@@ -67,6 +63,19 @@ SDLApplication::~SDLApplication()
 // MANEJAR EVENTOS 
 void SDLApplication::handleEvents()
 {
+	// EVENTOS NO TOCAR O LA TENEMOS ------------
+	// MIENTRAS HAYA EVENTOS
+		// si hay eventos &event se llena con el evento a ejecutar si no NULL
+		// es decir, pollea hasta que se hayan manejado todos los eventos
+	while (SDL_PollEvent(&event) && !exit) {
+		if (event.type == SDL_QUIT)
+			exit = true;
+		else
+			// emite el evento para todos los subscriptores
+			emit(event);
+	}
+
+	/*
 	while (SDL_PollEvent(&event) && !exit) {
 
 		// escanea y evalua que tecla has tocado
@@ -78,14 +87,7 @@ void SDLApplication::handleEvents()
 			gsMachine->replaceState(new PlayState(this));
 		}
 	}
-
-	// EVENTOS NO TOCAR O LA TENEMOS ------------
-	// MIENTRAS HAYA EVENTOS
-		// si hay eventos &event se llena con el evento a ejecutar si no NULL
-		// es decir, pollea hasta que se hayan manejado todos los eventos
-	while (SDL_PollEvent(&event) && !exit) {
-		gsMachine->handleEvent(event);
-	}
+*/
 
 	// HASTA AKI ------------
 	/*
@@ -127,7 +129,20 @@ void SDLApplication::handleEvents()
 		*/
 }
 
+void SDLApplication::connect(SDLEventCallback cb)
+{
+	callbacks.push_back(cb);
+}
+
+void SDLApplication::emit(const SDL_Event& event) const
+{
+	// Llama a todas las funciones registradas
+	for (const SDLEventCallback& callback : callbacks)
+		callback(event);
+}
+
 // --------------------------------------------- NO SE NECESITA?
+#pragma region COJONES
 void SDLApplication::EndGame()
 {
 	exit = true;
@@ -215,7 +230,6 @@ void SDLApplication::renderBackground()
 	// renderiza el fondo
 	textures[Fondo]->render();
 }
-
 
 // ELIMINACION DE OBJETOS
 #pragma region ELIMINACION DE OBJETOS
@@ -329,9 +343,7 @@ void SDLApplication::load(const string& file, const string& root)
 	loadAnyFile(file, root);
 }
 #pragma endregion
-
 // fin logica
-#pragma endregion 
 
 // CONTROL DE DAÑO
 #pragma region CONTROL DE DAÑO
@@ -703,4 +715,5 @@ void SDLApplication::mainMenu()
 		loadThisGame();
 	}
 }
+#pragma endregion
 #pragma endregion

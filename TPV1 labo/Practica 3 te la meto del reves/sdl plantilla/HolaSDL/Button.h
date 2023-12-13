@@ -9,6 +9,7 @@
 
 using namespace std;
 using uint = unsigned int;
+
 class SDLApplication;
 
 // utiliza callbacks funcionales de tipo <void(const SDL_Event&)>
@@ -22,14 +23,7 @@ private:
 	SDL_Point point;
 
 	Texture* buttonTexture;
-
-	Point2D<int> mousePos;
-
-	// posicion del boton
-	Point2D<double> position;
-
-	// dimension del boton (height & width)   
-	int width, height;
+	//SDLApplication* application;
 
 	// rectangulo del render
 	SDL_Rect destRect;
@@ -44,7 +38,6 @@ private:
 
 	// CALLBACKS: funcion ejecutable «A» que se usa como argumento de función «B». 
 	// -> al llamar a «B» la funcion ejecuta «A»
-	
 	// lista de funciones a llamar cuando sucede un evento
 	list<SDLEventCallback> callbacks;
 
@@ -52,12 +45,13 @@ private:
 	list<EventHandler*> clickListeners;
 
 public:
-	Button(Point2D<double> position, int width, int height, Texture* texture, SDLApplication* application) :
-		destRect{ 50, 50, 200, 100 }, buttonTexture(texture), GameObject(application)
+	Button(SDLApplication* application) 
+		: GameObject(application)
 	{
 		// para animacion
 		currentFrame = MOUSEOUT; // frame inicial a 0
-
+		// Conectamos el handleEvent con el Game
+		application->connect([this](auto event) { handleEvent(event); });
 
 		/*
 		// si hay textura entonces no es un laser y tiene dimensiones
@@ -72,28 +66,24 @@ public:
 	}
 
 	// METODOS
-	void clickedAction();
-
-	void mouseClick(const SDL_Event& event);
-
 	// ---- render ----
 	void render() const override;
 
 	// ---- update ----
 	void update() override;
 
-	void handleEvent(const SDL_Event& event) override;
-
 	void emit(const SDL_Event& event) const;
-
-	// devuelve rect (posicion) de cada objeto
-	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
-
-	Point2D<double> getPosition() const { return position; };
-
-	Texture* getTexture() const { return buttonTexture; };
 
 	// registra callbacks
 	void connect(SDLEventCallback buttonCallback);
+
+	void handleEvent(const SDL_Event& event) override;
+
+	/*
+	// devuelve rect (posicion) de cada objeto
+	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
+
+	Texture* getTexture() const { return buttonTexture; };
+	*/
 };
 #endif

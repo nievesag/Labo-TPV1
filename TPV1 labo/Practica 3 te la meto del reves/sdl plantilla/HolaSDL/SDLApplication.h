@@ -23,6 +23,8 @@
 #include "MainMenuState.h"
 #include "PlayState.h"
 
+class Button;
+
 using namespace std;
 using uint = unsigned int;
 
@@ -63,6 +65,12 @@ public:
 	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo Texture* 
 	array<Texture*, NUM_TEXTURES> textures{};
 
+	// Lista de funciones a llamar cuando se produzca un evento
+	std::vector<SDLEventCallback> callbacks;
+	void emit(const SDL_Event& event) const;
+	// Se suscribe a los eventos SDL del juego
+	void connect(SDLEventCallback cb);
+
 	// atributos privados
 private:
 
@@ -72,12 +80,11 @@ private:
 	// crea un puntero a la maquina de estados
 	GameStateMachine* gsMachine;
 
-
-
 	// -------------------------------------- SDL --------------------------------
 	SDL_Window* window = nullptr; // puntero a ventana
 	SDL_Renderer* renderer = nullptr; // puntero a renderer !!! TODO EN EL MISMO RENDERER
 	SDL_Event event;
+	Button* boton;
 
 	int winX, winY; // Posición de la ventana
 

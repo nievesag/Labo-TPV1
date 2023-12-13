@@ -37,8 +37,8 @@ private:
 
 	// metodos publicos
 public:
-	Mothership(int level, PlayState* game, int alienTimer, int n)
-		: level(level), GameObject(game), alienTimer(alienTimer) {
+	Mothership(int level, PlayState* playState, int alienTimer, int n)
+		: level(level), GameObject(playState), alienTimer(alienTimer) {
 
 		dir = 1;
 		switchDir = false;
