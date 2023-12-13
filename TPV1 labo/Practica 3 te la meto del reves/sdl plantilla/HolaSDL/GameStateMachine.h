@@ -16,7 +16,6 @@ using uint = unsigned int;
 class GameStateMachine {
 
 protected:
-
 	// stack de estados:
 	//		Cada vez que se cambie de estado se anyadira a la pila para mantener
 	// un especie de 'historial' de estados donde siempre se pueda volver al
@@ -25,9 +24,7 @@ protected:
 	// Todos los metodos se ocupan de gestionar la pila 
 	stack<GameState*> states;
 
-
 public:
-
 	GameStateMachine() {
 
 	}
@@ -49,11 +46,6 @@ public:
 
 	// 
 	void handleEvent(const SDL_Event& event);
-
-
-
-
-
 };
 
 #endif

@@ -17,6 +17,8 @@
 using namespace std;
 using uint = unsigned int;
 
+//class SDLApplication;
+
 class PlayState : public GameState{
 
 private:

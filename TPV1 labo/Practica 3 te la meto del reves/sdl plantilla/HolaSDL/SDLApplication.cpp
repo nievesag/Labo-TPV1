@@ -80,20 +80,18 @@ void SDLApplication::handleEvents()
 	}
 
 	// EVENTOS NO TOCAR O LA TENEMOS ------------
-	/*
-	ifstream in("..\\mapas\\original.txt");
-
 	// MIENTRAS HAYA EVENTOS
 		// si hay eventos &event se llena con el evento a ejecutar si no NULL
 		// es decir, pollea hasta que se hayan manejado todos los eventos
 	while (SDL_PollEvent(&event) && !exit) {
-		// retrasmite el evento a todos los oyentes registrados de tipo EventHandler
-		for (EventHandler* listener : eventListeners)
-			listener->handleEvent(event);
+		gsMachine->handleEvent(event);
+	}
 
-		// HASTA AKI ------------
+	// HASTA AKI ------------
+	/*
 		// lo antiguo !!!! limpiar
-		/*
+		ifstream in("..\\mapas\\original.txt");
+
 		// escanea y evalua que tecla has tocado
 		SDL_Scancode key = event.key.keysym.scancode;
 
@@ -127,8 +125,6 @@ void SDLApplication::handleEvents()
 			dynamic_cast<Cannon*>(*it)->handleEvent(event);
 		}
 		*/
-
-
 }
 
 // --------------------------------------------- NO SE NECESITA?
@@ -187,7 +183,6 @@ void SDLApplication::update()
 	// borra los objetos a borrar
 	deleteSceneObjects();
 	*/
-	
 }
 
 // PINTAR
@@ -213,7 +208,6 @@ void SDLApplication::render()
 	// render de todo
 	SDL_RenderPresent(renderer);
 	*/
-	
 }
 
 void SDLApplication::renderBackground()
@@ -408,7 +402,6 @@ void SDLApplication::loadAnyFile(const string& file, const string& root)
 
 		// lee el identificador
 		in >> objID;
-
 
 		/*
 		// switch para leer y crear cada objeto

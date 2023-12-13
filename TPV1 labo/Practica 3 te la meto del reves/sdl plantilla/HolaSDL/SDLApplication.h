@@ -107,15 +107,11 @@ private:
 	// booleano salida del juego
 	bool exit = false;
 
+public:
 	// lista de punteros a oyentes
 	list<EventHandler*> eventListeners;
-public:
-	// para registrar oyentes no se si se hace aqui
-	void addEventListener(EventHandler* event);
 
 	TextureSpec getTexture(TextureSpec textureSpec) const { return textureSpec; }
-
-	// ref a state machine
 
 // ------------------------- LA MAYORIA DE LO DE ABAJO NO LO NECESITA -------------
 

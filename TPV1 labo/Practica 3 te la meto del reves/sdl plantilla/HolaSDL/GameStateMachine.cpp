@@ -7,8 +7,6 @@ void GameStateMachine::pushState(GameState* newState)
 
 	// activa el onEnter del nuevo estado
 	states.top()->onEnter();
-
-
 }
 
 void GameStateMachine::popState()
@@ -54,10 +52,7 @@ void GameStateMachine::replaceState(GameState* state)
 	// 
 	states.top().onEnter();
 	*/
-	
-
 }
-
 
 void GameStateMachine::update()
 {
@@ -67,7 +62,6 @@ void GameStateMachine::update()
 		states.top()->update();
 	}
 }
-
 
 void GameStateMachine::render()
 {
@@ -80,6 +74,10 @@ void GameStateMachine::render()
 
 void GameStateMachine::handleEvent(const SDL_Event& event)
 {
-	//
+	// si no esta vacia la pila renderiza el ultimo estado
+	if (!states.empty())
+	{
+		states.top()->handleEvent(event);
+	}
 }
 
