@@ -2,9 +2,11 @@
 
 void Button::update()
 {
-	SDL_GetMouseState(&x, &y);
+	SDL_Point point;
+	SDL_GetMouseState(&point.x, &point.y);
 
-	if (x < (x + width) && y < (y + height)) {
+	// comprueba si el cursor esta sobre el rectangulo
+	if (SDL_PointInRect(&point, &destRect)) {
 		currentFrame = MOUSEOVER;
 	}
 }
@@ -26,9 +28,9 @@ void mouseClick(const SDL_Event& event) {
 void Button::render() const {
 
 	// el color del rect depende de si el raton esta sobre el
-	int r = 0, b = 255;
+	int r = 0, b = 255;    
 
-	if (MOUSEOVER) swap(r, b);
+	if (currentFrame == MOUSEOVER) swap(r, b);
 
 	SDL_SetRenderDrawColor(application->getRenderer(), r, 0, b, 225);
 
@@ -41,10 +43,10 @@ void Button::render() const {
 
 void Button::connect(SDLEventCallback buttonCallback)
 {
-	while (SDL_PollEvent(&event)) {
-		for (const SDLEventCallback& buttonCallback : eventCallbacks)
-			buttonCallback(event);
-	}
+	/*
+	for (const SDLEventCallback& buttonCallback : eventCallbacks)
+		buttonCallback(event);
+	*/
 }
 
 void clickedAction() {
