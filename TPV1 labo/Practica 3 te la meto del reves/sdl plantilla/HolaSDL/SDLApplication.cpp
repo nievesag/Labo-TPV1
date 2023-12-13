@@ -649,8 +649,6 @@ void SDLApplication::loadAnyFile(const string& file, const string& root)
 		
 	}
 
-
-
 	// si no existe una mothership la crea
 	if (mother == nullptr) {
 
