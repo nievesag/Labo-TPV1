@@ -11,6 +11,14 @@ void Button::update()
 	}
 }
 
+void Button::emit(const SDL_Event& event) const
+{
+	// llama al método virtual handleEvent de cada oyente
+	for (EventHandler* lis : clickListeners)
+		lis->handleEvent(event);
+}
+
+
 void Button::render() const {
 
 	// el color del rect depende de si el raton esta sobre el
@@ -25,9 +33,10 @@ void Button::render() const {
 
 	// Restablece el color de fondo (para el SDL_RenderClear)
 	SDL_SetRenderDrawColor(application->getRenderer(), 0, 0, 0, 225);
+
 }
 
-void handleEvent(const SDL_Event& event) {
+void Button::handleEvent(const SDL_Event& event) {
 	
 	// si se pulsa el boton izq del raton
 	if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
@@ -36,27 +45,16 @@ void handleEvent(const SDL_Event& event) {
 		SDL_Point point{ event.button.x, event.button.y };
 
 
-		/*
+		
 		// comprueba si el punto está en el rect del boton
 		if (SDL_PointInRect(&point, &destRect)) {
 			emit(event);
 		}
-		*/
+		
 			
 	}
 }
 
-void Button::emit(const SDL_Event& event) const
-{
-	// llama al método virtual handleEvent de cada oyente
-	for (EventHandler* lis : clickListeners)
-		lis->handleEvent(event);
-}
-
-void Button::handleEvent(const SDL_Event& event)
-{
-
-}
 
 void Button::connectButton()
 {
