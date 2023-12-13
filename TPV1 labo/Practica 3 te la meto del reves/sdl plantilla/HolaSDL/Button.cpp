@@ -18,7 +18,6 @@ void Button::emit(const SDL_Event& event) const
 		lis->handleEvent(event);
 }
 
-
 void Button::render() const {
 
 	// el color del rect depende de si el raton esta sobre el
@@ -44,17 +43,12 @@ void Button::handleEvent(const SDL_Event& event) {
 		// guarda pos del cursor al pulsar
 		SDL_Point point{ event.button.x, event.button.y };
 
-
-		
 		// comprueba si el punto está en el rect del boton
 		if (SDL_PointInRect(&point, &destRect)) {
 			emit(event);
 		}
-		
-			
 	}
 }
-
 
 void Button::connectButton()
 {
