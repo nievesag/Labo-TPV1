@@ -23,7 +23,7 @@ protected:
 	SDLApplication* application;
 
 	// lista de objetos del juego mediante gameList
-	GameList<GameObject, true> gamelist;
+	GameList<SceneObject, true> gamelist;
 
 	// lista de eventos a gestionar
 	list<EventHandler*> eventList;

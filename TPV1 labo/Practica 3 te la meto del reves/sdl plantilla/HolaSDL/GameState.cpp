@@ -52,7 +52,7 @@ void GameState::addEventListener(EventHandler* listener)
 
 void GameState::addObject(SceneObject* object)
 {
-	//gamelist.push_back(object);
+	gamelist.push_back(object);
 }
 
 
