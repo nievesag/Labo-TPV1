@@ -1,6 +1,8 @@
 #include "checkML.h"
 #include "Alien.h"
 #include "SDLApplication.h"
+#include "PlayState.h"
+
 
 void Alien::render() const
 {
@@ -40,7 +42,7 @@ bool Alien::hit(SDL_Rect* rect, char frenemy)
 	if (SDL_HasIntersection(rect, &destRect) && frenemy == 'a') {
 
 		// informa al game que ha muerto
-		game->hasDied(anc);
+		playState->hasDied(sceneanc);
 
 		//application->increaseScore(GetAlienPoints());
 

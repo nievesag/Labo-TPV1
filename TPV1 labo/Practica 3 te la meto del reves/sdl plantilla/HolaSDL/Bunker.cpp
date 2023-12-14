@@ -31,7 +31,7 @@ bool Bunker::hit(SDL_Rect* rect, char frenemy)
 
 		hits++;
 
-		if (hits >= vidas) game->hasDied(anc);
+		if (hits >= vidas) playState->hasDied(sceneanc);
 
 		return true;
 	}

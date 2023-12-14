@@ -7,6 +7,7 @@
 #include <list>
 #include "gameList.h"
 
+class GameState;
 class PlayState;
 
 using namespace std;
@@ -30,17 +31,17 @@ protected:
 	// rectangulo del render
 	SDL_Rect destRect;
 
-	// iterador de la lista
-	GameList<SceneObject, true>::anchor anc;
-
 	// puntero al playstate
-	PlayState* game;
+	PlayState* playState;
+
+	// anchor
+	GameList<SceneObject, true>::anchor sceneanc = nullptr;
 
 	
 	// metodos publicos
 public:
 	SceneObject(Point2D<double> position, int width, int height, int vidas, Texture* texture,  PlayState* game)
-		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game), game(game)
+		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game), playState(game)
 	{ 
 		// si hay textura entonces no es un laser y tiene dimensiones
 		if (texture != nullptr) {
@@ -92,7 +93,7 @@ public:
 	void setListAnchor(GameList<SceneObject, true>::anchor newanc) // list<SceneObject*>::iterator& newit
 	{
 		// setea el iterador de la posicion del objeto en la lista
-		anc = newanc;
+		sceneanc = newanc;
 	};
 
 	Point2D<double> getPosition() const { return position; };

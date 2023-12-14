@@ -96,11 +96,11 @@ protected:
 	list<GameList<SceneObject, true>::anchor>objectsToErase;
 
 	// puntero al mothership
-	Mothership* mother;
+	Mothership* mother = nullptr;
 
 	// MANEJO DEL TIEMPO EN RUN
 	mt19937_64 randomGenerator;	// crea semilla
-	uint32_t startTime, frameTime;
+	uint32_t startTime = 0, frameTime = 0;
 
 	int SCORE = 0;	// score general del player
 
@@ -110,7 +110,6 @@ public:
 
 	// constructora
 	PlayState::PlayState(SDLApplication* game) : GameState(game), app(game) {
-	
 
 	};
 

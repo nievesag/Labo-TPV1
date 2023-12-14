@@ -65,7 +65,7 @@ bool Cannon::hit(SDL_Rect* rect, char frenemy)
 {
 	if (SDL_HasIntersection(rect, &destRect) && frenemy == 'r') {
 		// informa al game que ha muerto
-		game->hasDied(anc);
+		playState->hasDied(sceneanc);
 
 
 		//application->EndGame();
@@ -90,7 +90,7 @@ void Cannon::manageCooldown()
 void Cannon::shoot()
 {
 	if(keySpace)
-		game->fireLaser(this->position, 'a');
+		playState->fireLaser(this->position, 'a');
 }
 
 void Cannon::movement()
@@ -115,7 +115,7 @@ void Cannon::movement()
 			direction = Vector2D<double>(1, 0);
 		}
 	}
-	if (keyE) game->EndGame();
+	if (keyE) playState->EndGame();
 
 	// se mueve la nave
 	position.setX(position.getX() + (direction.getX() * CANNON_SPEED));

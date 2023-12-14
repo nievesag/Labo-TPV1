@@ -6,8 +6,12 @@
 #include "Vector2D.h"
 #include "texture.h"
 
+
+#include "gameList.h"
+
 class SDLApplication;
 class GameState;
+class PlayState;
 
 using namespace std;
 using uint = unsigned int;
@@ -18,22 +22,22 @@ class GameObject
 protected:
 
 	// puntero al game
-	SDLApplication* application;
+	SDLApplication* application = nullptr;
 
 	// puntero al estado de juego (no al sdl application, al playState)
-	GameState* game;
+	GameState* game = nullptr;
+
+	// anchor
+	GameList<GameObject, true>::anchor anc = nullptr;
+
 
 	// metodos publicos
 public:
-	GameObject() {}
 
 	// constructora con el estado (botones del playstate)
-	GameObject(GameState* game)
-		: game(game) {
+	GameObject(GameState* game);
 
-		application = nullptr;
-
-	}
+	GameObject(PlayState* game);
 
 	// constructora con el application (botones fuera del playstate)
 	GameObject (SDLApplication* application) : application(application) {
