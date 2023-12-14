@@ -51,6 +51,11 @@ constexpr double LASER_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de laser
 						UFO_SPEED = 6 * TIME_BT_FRAMES;		// velocidad de ufo
 						
 
+// ----------------------------------- TEXTURAS -------------------------------
+ 
+// enum texture name -> el indice tiene la info de la textura
+enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, UfoT };
+
 // ---------------------------- SAVE & READ FILES ----------------------------
 // archivo de strings con las roots de las carpetas etc
 static string SAVED_FOLDER = "..\\saved\\";
@@ -81,16 +86,12 @@ private:
 
 	int winX, winY; // Posición de la ventana
 
-
-	// ----------------------------------- TEXTURAS -------------------------------
+	// ---------------------------------------- TEXTURAS -----------------------------
 	// cantidad de texturas que va a haber
 	static const int NUM_TEXTURES = 7;
 
 	// ARRAY DE TEXTURAS -> array estatico de tam NUM_TEXTURES de elementos de tipo Texture* 
 	array<Texture*, NUM_TEXTURES> textures{};
-
-	// enum texture name -> el indice tiene la info de la textura
-	enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, UfoT };
 
 	struct TextureSpec
 	{
@@ -102,7 +103,8 @@ private:
 
 	// ARRAY DE TEXTURAS -> array est�tico de tam NUM_TEXTURES de elementos de tipo TextureSpec 
 	// ubicacion, col, fil
-	array<TextureSpec, SDLApplication::NUM_TEXTURES> textureSpec{
+	array<TextureSpec, NUM_TEXTURES> textureSpec{
+
 		TextureSpec{"..\\images\\aliens2.png", 2, 3},	  // alien 1 // 32,32
 		{ "..\\images\\aliens2.png", 2, 3 },			  // alien 2 // 44,32
 		{ "..\\images\\aliens2.png", 2, 3 },			  // alien 3 // 48,32
@@ -165,6 +167,24 @@ public:
 	uint getWinHeight() { return winHeight; }
 	
 	SDL_Renderer* getRenderer() { return renderer; };
+
+
+	// getters de texturas
+	array<Texture*, NUM_TEXTURES> getTextures() { return textures; }
+
+	Texture* getTexture(TextureName tex) { return textures[tex]; }
+
+	Texture* getTexture(int tex) { return textures[tex]; }
+
+	void setTexture(int pos, Texture* tex) {
+
+		textures[pos] = tex;
+	}
+
+	TextureSpec getTextureSpec(int i) { return textureSpec[i]; }
+
+	int getNumText() { return NUM_TEXTURES; }
+
 
 // ------ METODOS PRIVADOS -------
 private:

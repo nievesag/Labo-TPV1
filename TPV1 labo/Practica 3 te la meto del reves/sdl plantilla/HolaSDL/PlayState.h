@@ -40,36 +40,6 @@ private:
 		defaultLaserH = 10,
 		defaultMothershipLevel = 0;
 
-	// ------------------------------------ TEXTURAS -----------------------------------
-	// cantidad de texturas que va a haber
-	static const int NUM_TEXTURES = 7;
-
-	// enum texture name -> el indice tiene la info de la textura
-	enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, UfoT };
-
-	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo Texture* 
-	array<Texture*, NUM_TEXTURES> textures{};
-
-	struct TextureSpec
-	{
-		const char* url;
-
-		// width height
-		int nw, nh;
-	};
-
-	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo TextureSpec 
-	// ubicacion, col, fil
-	array<TextureSpec, PlayState::NUM_TEXTURES> textureSpec{
-		TextureSpec{"..\\images\\aliens2.png", 2, 3},	  // alien 1 // 32,32
-		{ "..\\images\\aliens2.png", 2, 3 },			  // alien 2 // 44,32
-		{ "..\\images\\aliens2.png", 2, 3 },			  // alien 3 // 48,32
-		{ "..\\images\\spaceship.png", 1, 1 },			  // nave	 // 34,21
-		{ "..\\images\\bunker.png", 4, 1 },				  // bunker  // 88,57
-		{ "..\\images\\stars.png", 1, 1 },				  // fondo 
-		{ "..\\images\\ovni2.png", 3, 1 }				  // ufo	 // 48,26
-	};
-
 
 	// -------------------------------------- CARGA Y DESCARGA ---------------------------
 	// archivo de strings con las roots de las carpetas etc

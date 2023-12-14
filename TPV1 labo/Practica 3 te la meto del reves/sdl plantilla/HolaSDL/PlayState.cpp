@@ -186,14 +186,16 @@ void PlayState::loadTextures()
 
 	
 	// bucle para rellenar el array de texturas
-	for (int i = 0; i < NUM_TEXTURES; i++) {
+	for (int i = 0; i < app->getNumText(); i++) {
 
 		// crea la textura con el url, width y height
-		Texture* tex = new Texture(app->getRenderer(), textureSpec[i].url, textureSpec[i].nh, textureSpec[i].nw);
+		Texture* tex = new Texture(app->getRenderer(), app->getTextureSpec(i).url, app->getTextureSpec(i).nh, app->getTextureSpec(i).nw);
 
 		// la mete en el array
-		textures[i] = tex;
-		if (textures[i] == nullptr) {
+		app->setTexture(i, tex);
+
+
+		if (app->getTexture(i) == nullptr) {
 
 			// !!!!!!!! MIRAR 
 			//throw SDLError("Error cargando texturas "s + SDL_GetError());
@@ -252,8 +254,8 @@ void PlayState::loadAnyFile(const string& file, const string& root)
 				// ---------------- Creacion del objeto ------------------
 
 				// nave
-				SceneObject* obj = new Cannon(cooldown, coord, textures[Nave]->getFrameWidth(),
-					textures[Nave]->getFrameHeight(), vidas, textures[Nave], this);
+				SceneObject* obj = new Cannon(cooldown, coord, app->getTexture(Nave)->getFrameWidth(),
+					app->getTexture(Nave)->getFrameHeight(), vidas, app->getTexture(Nave), this);
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
@@ -282,8 +284,8 @@ void PlayState::loadAnyFile(const string& file, const string& root)
 				// ---------------- Creacion del objeto ------------------
 
 				// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game)
-				SceneObject* obj = new Alien(mother, defaultFrame, alienType, coord, textures[alienType]->getFrameWidth(),
-					textures[alienType]->getFrameHeight(), defaultLives, textures[alienType], this);
+				SceneObject* obj = new Alien(mother, defaultFrame, alienType, coord, app->getTexture(alienType)->getFrameWidth(),
+					app->getTexture(alienType)->getFrameHeight(), defaultLives, app->getTexture(alienType), this);
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
@@ -316,8 +318,8 @@ void PlayState::loadAnyFile(const string& file, const string& root)
 				// ---------------- Creacion del objeto ------------------
 
 				SceneObject* obj = new ShooterAlien(cooldown, mother, defaultFrame, alienType, coord,
-					textures[alienType]->getFrameWidth(), textures[alienType]->getFrameHeight(), defaultLives,
-					textures[alienType], this);
+					app->getTexture(alienType)->getFrameWidth(), app->getTexture(alienType)->getFrameHeight(), defaultLives,
+					app->getTexture(alienType), this);
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
@@ -375,8 +377,8 @@ void PlayState::loadAnyFile(const string& file, const string& root)
 				// ---------------- Creacion del objeto ------------------
 
 				// bunker
-				SceneObject* obj = new Bunker(hits, coord, textures[Escudo]->getFrameWidth(),
-					textures[Escudo]->getFrameHeight(), vidas, textures[Escudo], this);
+				SceneObject* obj = new Bunker(hits, coord, app->getTexture(Escudo)->getFrameWidth(),
+					app->getTexture(Escudo)->getFrameHeight(), vidas, app->getTexture(Escudo), this);
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
@@ -409,8 +411,8 @@ void PlayState::loadAnyFile(const string& file, const string& root)
 				// ---------------- Creacion del objeto ------------------
 
 				// textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight()
-				SceneObject* obj = new Ufo(Point2D<double>(winWidth, y), textures[UfoT]->getFrameWidth(),
-					textures[UfoT]->getFrameHeight(), vidas, textures[UfoT], this);
+				SceneObject* obj = new Ufo(Point2D<double>(winWidth, y), app->getTexture(UfoT)->getFrameWidth(),
+					app->getTexture(UfoT)->getFrameHeight(), vidas, app->getTexture(UfoT), this);
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
