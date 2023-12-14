@@ -7,6 +7,8 @@
 #include <list>
 #include "gameList.h"
 
+class PlayState;
+
 using namespace std;
 using uint = unsigned int;
 
@@ -31,13 +33,14 @@ protected:
 	// iterador de la lista
 	GameList<SceneObject, true>::anchor anc;
 
-	//list<SceneObject*>::iterator it;
+	// puntero al playstate
+	PlayState* game;
 
 	
 	// metodos publicos
 public:
 	SceneObject(Point2D<double> position, int width, int height, int vidas, Texture* texture,  PlayState* game)
-		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game) 
+		: position(position), width(width), height(height), vidas(vidas), texture(texture), GameObject(game), game(game)
 	{ 
 		// si hay textura entonces no es un laser y tiene dimensiones
 		if (texture != nullptr) {

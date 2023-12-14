@@ -51,7 +51,7 @@ void Mothership::alienLanded(const Alien* alien)
 void Mothership::haveLanded()
 {
 	// acaba el juego
-	application->EndGame();
+	game->EndGame();
 }
 
 void Mothership::save(ostream& out) const

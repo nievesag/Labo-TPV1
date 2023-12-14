@@ -189,16 +189,26 @@ void SDLApplication::update()
 
 }
 
-// PINTAR
-// 
-// ELIMINACION DE OBJETOS
+void SDLApplication::render()
+{
 
-// MANEJAR SCORE
-// 
-// GUARDAR
+}
 
-// fin logica
+void SDLApplication::loadTextures()
+{
+	// bucle para rellenar el array de texturas
+	for (int i = 0; i < NUM_TEXTURES; i++) {
 
-// CONTROL DE DAÑO
+		// crea la textura con el url, width y height
+		Texture* tex = new Texture(renderer, textureSpec[i].url, textureSpec[i].nh, textureSpec[i].nw);
 
-// CARGA
+		// la mete en el array
+		textures[i] = tex;
+		if (textures[i] == nullptr) {
+
+			throw SDLError("Error cargando texturas "s + SDL_GetError());
+		}
+	}
+
+
+}

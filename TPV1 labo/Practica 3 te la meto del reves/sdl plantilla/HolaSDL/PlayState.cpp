@@ -68,6 +68,9 @@ bool PlayState::onEnter()
 	
 	std::cout << "entering PlayState\n";
 
+	// carga la partida
+	loadAnyFile("original", "..\\mapas\\");
+
 	return true;
 }
 
@@ -85,6 +88,12 @@ string PlayState::getID() const
 int PlayState::getRandomRange(int min, int max)
 {
 	return uniform_int_distribution<int>(min, max)(randomGenerator);
+}
+
+void PlayState::EndGame()
+{
+
+
 }
 
 bool PlayState::damage(SDL_Rect rect, char frenemy)
@@ -490,5 +499,11 @@ void PlayState::loadAnyFile(const string& file, const string& root)
 	}
 	
 	
+}
+
+void PlayState::increaseScore(int score)
+{
+
+
 }
 

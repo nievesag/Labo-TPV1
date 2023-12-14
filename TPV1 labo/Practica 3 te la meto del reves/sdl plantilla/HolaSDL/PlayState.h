@@ -111,6 +111,7 @@ public:
 	// constructora
 	PlayState::PlayState(SDLApplication* game) : GameState(game), app(game) {
 	
+
 	};
 
 	// -------------------------------- HERENCIA --------------------------------
@@ -138,6 +139,9 @@ public:
 	// genera un int aleatorio con un minimo y un maximo
 	int getRandomRange(int min, int max);
 
+	//
+	void EndGame();
+
 
 	// ------------------------------ COLISIONES Y COMBATE ---------------------------
 	// collisiones
@@ -162,6 +166,9 @@ public:
 
 	// carga el cualquier archivo
 	void loadAnyFile(const string& file, const string& root);
+
+	//
+	void increaseScore(int score);
 
 };
 

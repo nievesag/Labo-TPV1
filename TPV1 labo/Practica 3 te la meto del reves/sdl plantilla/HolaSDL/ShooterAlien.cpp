@@ -7,7 +7,7 @@ void ShooterAlien::shoot()
 	if (CDcounter >= cooldown)
 	{
 		// crea un laser nuevo
-		application->fireLaser(this->getPosition(), 'r');
+		game->fireLaser(this->getPosition(), 'r');
 	}
 }
 
@@ -16,7 +16,7 @@ void ShooterAlien::manageCooldown()
 	// gestion de cooldown
 	if (CDcounter >= cooldown) {
 		// elige un nuevo cooldown 
-		cooldown = application->getRandomRange(minCD * SHOOT_FRAMES, maxCD* SHOOT_FRAMES);
+		cooldown = game->getRandomRange(minCD * SHOOT_FRAMES, maxCD* SHOOT_FRAMES);
 
 		// reinicia el contador
 		CDcounter = 0;
@@ -30,7 +30,7 @@ void ShooterAlien::manageCooldown()
 void ShooterAlien::setCD()
 {
 	// elige un nuevo cooldown 
-	cooldown = application->getRandomRange(minCD * SHOOT_FRAMES , SHOOT_FRAMES);
+	cooldown = game->getRandomRange(minCD * SHOOT_FRAMES , SHOOT_FRAMES);
 
 	CDcounter = 0;
 }
@@ -38,7 +38,7 @@ void ShooterAlien::setCD()
 void ShooterAlien::update()
 {
 	if (CDcounter <= 0)
-		CDcounter = application->getRandomRange(minCD * SHOOT_FRAMES, maxCD * SHOOT_FRAMES); 
+		CDcounter = game->getRandomRange(minCD * SHOOT_FRAMES, maxCD * SHOOT_FRAMES); 
 	else
 		CDcounter--;
 
@@ -46,7 +46,7 @@ void ShooterAlien::update()
 	// iniciando los aliens ya con un valor del random se solucionaria??
 	if (CDcounter <= 0) { 
 
-		application->fireLaser(this->getPosition(), 'r');
+		game->fireLaser(this->getPosition(), 'r');
 	}
 
 	Alien::update();

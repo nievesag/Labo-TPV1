@@ -23,7 +23,7 @@ void Laser::update()
 	updateRect();
 
 	// le pregunta si hay alguien a quien pegar un hostion
-	if (application->damage(this) || isOut()) {
+	if (game->damage(destRect, 'r') || isOut()) {
 
 		// le dice al game que ha muerto
 		game->hasDied(anc);

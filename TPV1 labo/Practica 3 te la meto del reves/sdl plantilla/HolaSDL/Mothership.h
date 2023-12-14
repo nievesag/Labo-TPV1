@@ -9,6 +9,7 @@ using uint = unsigned int;
 
 class Alien;
 class PlayState;
+class GameState;
 
 class Mothership : public GameObject
 {
@@ -35,9 +36,12 @@ private:
 	// contador de aliens
 	int alienCount;
 
+	// 
+	PlayState* game;
+
 	// metodos publicos
 public:
-	Mothership(int level, PlayState* playState, int alienTimer, int n)
+	Mothership(int level, GameState* playState, int alienTimer, int n)
 		: level(level), GameObject(playState), alienTimer(alienTimer) {
 
 		dir = 1;

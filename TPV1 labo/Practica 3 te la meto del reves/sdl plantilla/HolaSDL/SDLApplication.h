@@ -86,9 +86,6 @@ private:
 	// cantidad de texturas que va a haber
 	static const int NUM_TEXTURES = 7;
 
-	//	// cantidad de texturas que va a haber
-	static const int NUM_TEXTURES = 7;
-
 	// ARRAY DE TEXTURAS -> array estatico de tam NUM_TEXTURES de elementos de tipo Texture* 
 	array<Texture*, NUM_TEXTURES> textures{};
 
@@ -172,7 +169,9 @@ public:
 // ------ METODOS PRIVADOS -------
 private:
 
-	//
+	// ---- loadTexture ----
+	// se cargan las texturas y se guardan en los arrays
+	void loadTextures();
 };
 
 #endif
