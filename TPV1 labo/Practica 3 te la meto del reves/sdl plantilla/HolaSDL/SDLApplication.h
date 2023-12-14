@@ -1,4 +1,4 @@
-#ifndef SDLAPPLICATION_H
+ï»¿#ifndef SDLAPPLICATION_H
 #define SDLAPPLICATION_H
 
 #include <list>
@@ -28,9 +28,9 @@ class Button;
 using namespace std;
 using uint = unsigned int;
 
-// SI ESTÁN DENTRO DE LA CLASE:
+// SI ESTÃN DENTRO DE LA CLASE:
 // constantes de tamanyo de pantalla -> inicializar en h
-// tiene que ser estática porque es un atributo (constante para todos los objetos de la clase)
+// tiene que ser estÃ¡tica porque es un atributo (constante para todos los objetos de la clase)
 constexpr uint winWidth = 800;
 constexpr uint winHeight = 600;
 
@@ -59,11 +59,6 @@ static string SAVED_FOLDER = "..\\saved\\";
 class SDLApplication
 {
 public:
-	// cantidad de texturas que va a haber
-	static const int NUM_TEXTURES = 7;
-
-	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo Texture* 
-	array<Texture*, NUM_TEXTURES> textures{};
 
 	// Lista de funciones a llamar cuando se produzca un evento
 	std::vector<SDLEventCallback> callbacks;
@@ -84,7 +79,18 @@ private:
 	SDL_Event event;
 	Button* boton;
 
-	int winX, winY; // Posición de la ventana
+	int winX, winY; // PosiciÃ³n de la ventana
+
+
+	// ----------------------------------- TEXTURAS -------------------------------
+	// cantidad de texturas que va a haber
+	static const int NUM_TEXTURES = 7;
+
+	//	// cantidad de texturas que va a haber
+	static const int NUM_TEXTURES = 7;
+
+	// ARRAY DE TEXTURAS -> array estatico de tam NUM_TEXTURES de elementos de tipo Texture* 
+	array<Texture*, NUM_TEXTURES> textures{};
 
 	// enum texture name -> el indice tiene la info de la textura
 	enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, UfoT };
@@ -97,7 +103,7 @@ private:
 		int nw, nh;
 	};
 
-	// ARRAY DE TEXTURAS -> array estático de tam NUM_TEXTURES de elementos de tipo TextureSpec 
+	// ARRAY DE TEXTURAS -> array estï¿½tico de tam NUM_TEXTURES de elementos de tipo TextureSpec 
 	// ubicacion, col, fil
 	array<TextureSpec, SDLApplication::NUM_TEXTURES> textureSpec{
 		TextureSpec{"..\\images\\aliens2.png", 2, 3},	  // alien 1 // 32,32
@@ -109,53 +115,20 @@ private:
 		{ "..\\images\\ovni2.png", 3, 1 }				  // ufo	 // 48,26
 	};
 
-	// booleano salida del juego
 	bool exit = false;
 
 public:
 	// lista de punteros a oyentes
 	list<EventHandler*> eventListeners;
 
-	TextureSpec getTexture(TextureSpec textureSpec) const { return textureSpec; }
-
 // ------------------------- LA MAYORIA DE LO DE ABAJO NO LO NECESITA -------------
 
 private:
-	int type;
-
-	// default variables
-	int defaultLives = 1,	// default number of lives
-		defaultFrame = 0,	// default starting frame
-		ans = 0,			// respuesta en los menuses
-		laserW = 4,			// dimensiones del laser
-		laserH = 10,
-		defaultCooldown = 10,// default cooldown (si es -1 se genera uno)
-		defaultUfoHeight = 10,
-		defaultLaserW = 4,
-		defaultLaserH = 10,
-		defaultMothershipLevel = 0;
 	
-	// lista de objetos de escena (cannon, aliens, bunkeres, laser)
-	list<SceneObject*> sceneObjectsList;
-
-	// lista de iteradores de objetos que eliminar
-	list<list<SceneObject*>::iterator> objectsToErase;
-
-	// puntero al mothership
-	Mothership* mother;
-
-	// MANEJO DEL TIEMPO EN RUN
-	mt19937_64 randomGenerator;	// crea semilla
-	uint32_t startTime, frameTime;	
-
-	int SCORE = 0;	// score general del player
-
-	char k = ' '; // crea un char para guardar el numero
-
 	// metodos publicos 
 public:
 	// ---- constructora ----
-	// la contructora del game debe inicializar los objetos de juego en una posición
+	// la contructora del game debe inicializar los objetos de juego en una posiciÃ³n
 	SDLApplication::SDLApplication();
 
 	// ---- destructora ----
@@ -190,60 +163,16 @@ public:
 	// Se suscribe a los eventos SDL del juego
 	void connect(SDLEventCallback cb);
 
-	// ---- hasDied ----
-	// metodo que llaman los objetos cuando han de ser eliminados
-	void hasDied(list<SceneObject*>::iterator& it);
-
-	// ---- EndGame ----
-	// acaba el juego (setea exit a true)
-	void EndGame();
-
-	// devuelve si choca con algo (colisiones)
-	bool damage(Laser* myLaser);
-
-	// ---- dispara el laser ----
-	// dispara el laser (lo crea)
-	void fireLaser(Point2D<double> pos, char frenemy);
-
 	// ------------------- GETTERS -------------------
 	uint getWinWidth() { return winWidth; }
 	uint getWinHeight() { return winHeight; }
 	
 	SDL_Renderer* getRenderer() { return renderer; };
 
-	int getRandomRange(int min, int max) {
-		return uniform_int_distribution<int>(min, max)(randomGenerator);
-	}
-
-	// muestra en consola la puntuacion del jugador
-	void PlayerScore();
-
-	// aumenta el score con la cantidad indicada
-	void increaseScore(int score);
-
 // ------ METODOS PRIVADOS -------
 private:
-	// ---- loadTexture ----
-	// se cargan las texturas y se guardan en los arrays
-	void loadTextures();
 
-	// renderea el fondo
-	void renderBackground();
-
-	// delete scene objects
-	void deleteSceneObjects();
-
-	// guarda la partida (esto va dentro del handle events de la S de save pero es por orden)
-	void saveThisGame();
-
-	// carga la paprtida indicada (lo mismo que la anterior)
-	void loadThisGame();
-
-	// carga cualquier archivo
-	void loadAnyFile(const string& file, const string& root);
-
-	// ---- Main menu ----
-	void mainMenu();
+	//
 };
 
 #endif

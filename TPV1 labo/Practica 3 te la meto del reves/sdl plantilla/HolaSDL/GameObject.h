@@ -7,7 +7,7 @@
 #include "texture.h"
 
 class SDLApplication;
-class PlayState;
+class GameState;
 
 using namespace std;
 using uint = unsigned int;
@@ -21,14 +21,14 @@ protected:
 	SDLApplication* application;
 
 	// puntero al estado de juego (no al sdl application, al playState)
-	PlayState* game;
+	GameState* game;
 
 	// metodos publicos
 public:
 	GameObject() {}
 
 	// constructora con el estado (botones del playstate)
-	GameObject(PlayState* game)
+	GameObject(GameState* game)
 		: game(game) {
 
 		application = nullptr;
