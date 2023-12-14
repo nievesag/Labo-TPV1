@@ -68,6 +68,8 @@ bool PlayState::onEnter()
 	
 	std::cout << "entering PlayState\n";
 
+	loadTextures();
+
 	// carga la partida
 	loadAnyFile("original", "..\\mapas\\");
 
