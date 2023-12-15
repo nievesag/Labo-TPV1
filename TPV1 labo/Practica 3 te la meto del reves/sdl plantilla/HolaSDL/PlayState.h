@@ -79,7 +79,7 @@ protected:
 
 	char k; // crea un char para guardar el numero
 
-	void handleEvent(const SDL_Event &event) override;
+	void HandleEvent(const SDL_Event &event) override;
 
 public:
 	// constructora

@@ -29,7 +29,7 @@ bool GameState::onExit()
 	return false;
 }
 
-void GameState::handleEvent(const SDL_Event& event)
+void GameState::HandleEvent(const SDL_Event& event)
 {
 	for (EventHandler*& listener : eventListeners)
 		listener->handleEvent(event);

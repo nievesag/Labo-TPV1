@@ -57,7 +57,7 @@ public:
 
 	// --------------------------------- OTHER --------------------------------
 	// gestiona los eventos del estado
-	virtual void handleEvent(const SDL_Event &event);
+	virtual void HandleEvent(const SDL_Event &event);
 
 	// comento porque esta incompleta
 	virtual void hasDied(GameList<GameObject, true>::anchor);

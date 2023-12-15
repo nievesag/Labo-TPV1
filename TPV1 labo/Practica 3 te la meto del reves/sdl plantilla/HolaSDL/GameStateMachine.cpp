@@ -77,7 +77,7 @@ void GameStateMachine::handleEvent(const SDL_Event& event)
 	// si no esta vacia la pila renderiza el ultimo estado
 	if (!states.empty())
 	{
-		states.top()->handleEvent(event);
+		states.top()->HandleEvent(event);
 	}
 }
 

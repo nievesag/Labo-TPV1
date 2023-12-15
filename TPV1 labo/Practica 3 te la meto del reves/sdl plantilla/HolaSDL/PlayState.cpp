@@ -386,10 +386,10 @@ void PlayState::renderBackground() const {
 }
 
 // MANEJO DE EVENTOS
-void PlayState::handleEvent(const SDL_Event& event)
+void PlayState::HandleEvent(const SDL_Event& event)
 {
 	// gestiona todos los eventos del estado correspondiente
-	GameState::handleEvent(event);
+	GameState::HandleEvent(event);
 
 	// si se pulsa esc
 	if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
