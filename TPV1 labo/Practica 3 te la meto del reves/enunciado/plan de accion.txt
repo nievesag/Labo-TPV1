@@ -1,33 +1,24 @@
-ser tú mismo
+- ser tú mismo
+- bien dicho
 
-bien dicho
+ATAJOS:
+ctrl rr -> renombrar la misma palabra
+ctrl click -> ir al método
 
-ctrl rr -> seleccionar la misma palabra
 /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
+--------> ESTADOS <--------
+----> INÉS ESCRIBE AQUÍ LAS ACTUALIZACIONES
 
-----------------> ESTADOS <-----------------------------
-----> maquina de estado entera skull emoji
-----> pasar CASI TODO el game a playstate....
-----> que pase de un estado a otro (placeholder 
-				con teclado igual?)
-----> que se añadan al/quiten del stack al cambiar 
-					de estado
-----> descubir para que coño es el update realmente
-
-----> hacer toBeDeleted de estados en el pop y push de la gsmachine (tu vieja)
-
-
-----------------> POWERUPS <-----------------------------
+--------> POWERUPS <--------
+(todo)
 ----> BOMBA
 ----> escudiño
 
 
-----------------> BOTONES <------------------------------
-----> hacer que se registren los callbacks
----------> implementar la interfaz en cannon y button:
-----> tocar handleEvents y constructora
+--------> BOTONES E INPUT<--------
+----> poner botones por estado
+----> arreglar el error rarete de cannon
 
-
-----------------> MEMORY LEAKS <--------------------------
+--------> MEMORY LEAKS <--------
 ----> ...
