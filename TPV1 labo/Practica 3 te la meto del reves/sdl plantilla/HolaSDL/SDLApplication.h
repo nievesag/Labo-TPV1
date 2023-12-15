@@ -113,12 +113,8 @@ private:
 
 public:
 	// lista de punteros a oyentes
-	list<EventHandler*> eventListeners;
+	//list<EventHandler*> eventListeners;
 
-// ------------------------- LA MAYORIA DE LO DE ABAJO NO LO NECESITA -------------
-
-private:
-	
 	// metodos publicos 
 public:
 	// ---- constructora ----
@@ -164,6 +160,7 @@ public:
 	SDL_Renderer* getRenderer() { 
 		return renderer; };
 
+	GameStateMachine* getgsMachine() { return gsMachine; }
 
 	// getters de texturas
 	array<Texture*, NUM_TEXTURES> getTextures() { return textures; }

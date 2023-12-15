@@ -37,14 +37,8 @@ public:
 
 		// registra el cannon como oyente de eventos
 		// para reaccionar a input de teclado
-		playState->addEventListener(this);
+		//playState->addEventListener(this);
 	};
-
-	/*
-	Cannon::Cannon(Button* button, Point2D<double> position) {
-		button.connect([this](auto event) { handleEvent(event); });
-	}
-	*/
 
 	// ---- aqui si van los overrides porque aqui se especifican las cosas ----
 

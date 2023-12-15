@@ -6,7 +6,7 @@ void MainMenuState::update()
 	cout << "update" << endl;
 }
 
-void MainMenuState::render()
+void MainMenuState::render() const
 {
 	//
 	cout << "render" << endl;

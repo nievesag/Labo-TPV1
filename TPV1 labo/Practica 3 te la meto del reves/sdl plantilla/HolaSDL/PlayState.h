@@ -6,23 +6,27 @@
 #include <random>
 #include <fstream>
 #include <string>
+#include "checkML.h"
 
 // 
 #include "GameState.h"
-#include "gameList.h"
-#include "SceneObject.h"
-#include "Laser.h"
 #include "SDLApplication.h"
+
+//
+#include "SceneObject.h"
+#include "gameList.h"
+#include "Alien.h"
+#include "ShooterAlien.h"
+#include "Bunker.h"
+#include "Cannon.h"
+#include "Laser.h"
+#include "Ufo.h"
 
 using namespace std;
 using uint = unsigned int;
 
-//class SDLApplication;
-
 class PlayState : public GameState{
-
 private:
-
 	//------------------------------------------ GENERAL ---------------------------
 
 	// id del estado
@@ -47,8 +51,7 @@ private:
 
 
 protected:
-
-	// este es el nuevo game... pero que hace el atiguo ????
+	// este es el nuevo game, pero.... que hace el atiguo ????
 
 	// en Game: punteros a window y render
 	//			array de texturas
@@ -75,7 +78,6 @@ protected:
 	char k; // crea un char para guardar el numero
 
 public:
-
 	// constructora
 	PlayState::PlayState(SDLApplication* game);
 
@@ -84,7 +86,9 @@ public:
 	void update() override;
 
 	// render
-	void render() override;
+	void render() const override;
+
+	void handleEvent(const SDL_Event &event) override;
 
 	// save
 	void save(const string& file);
@@ -99,7 +103,6 @@ public:
 	//
 	string getID() const override;
 
-
 	// ------------------------------- GETTERS Y SETTERS --------------------------
 	// genera un int aleatorio con un minimo y un maximo
 	int getRandomRange(int min, int max);
@@ -108,7 +111,6 @@ public:
 	void EndGame();
 
 	SDL_Renderer* getAppRenderer();
-
 
 	// ------------------------------ COLISIONES Y COMBATE ---------------------------
 	// collisiones
@@ -119,7 +121,6 @@ public:
 
 	// dispara el laser (lo crea)
 	void fireLaser(Point2D<double> pos, char frenemy);
-
 
 	// ------------------------------------- OTROS ----------------------------
 	// delete scene objects
@@ -138,8 +139,7 @@ public:
 	void increaseScore(int score);
 	
 	// 
-	void renderBackground();
-
+	void renderBackground() const;
 };
 
 #endif

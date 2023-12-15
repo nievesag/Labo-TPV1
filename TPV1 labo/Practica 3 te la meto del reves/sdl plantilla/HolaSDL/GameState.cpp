@@ -1,21 +1,17 @@
 #include "GameState.h"
 
-void GameState::render()
+void GameState::render() const
 {
-	/*
-	for (auto gamelist : gamelist.size) {
-		gamelist.update();
+	for (SceneObject& objects : gamelist) {
+		objects.render();
 	}
-	*/
 }
 
 void GameState::update()
 {
-	/*
-	for (auto gamelist : gamelist.size) {
-		gamelist.update();
+	for (SceneObject& objects : gamelist) {
+		objects.update();
 	}
-	*/
 }
 
 void GameState::save(ostream& file)
@@ -58,5 +54,3 @@ void GameState::addObject(SceneObject* object)
 {
 	gamelist.push_back(object);
 }
-
-

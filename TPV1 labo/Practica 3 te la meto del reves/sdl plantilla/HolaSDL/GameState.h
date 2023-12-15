@@ -9,11 +9,13 @@ using uint = unsigned int;
 #include <fstream>		// stream
 #include <list>			// listas
 #include <string>		// string
+#include "checkML.h"
 
 // 
 #include "gameList.h"
 #include "SceneObject.h"
 #include "EventHandler.h"
+#include "GameObject.h"
 
 class SDLApplication;
 
@@ -39,7 +41,7 @@ public:
 
 	// ---------------------------------- BASICOS ----------------------------
 	// render del estado
-	virtual void render();
+	virtual void render() const;
 
 	// actualiza el estado
 	virtual void update();
@@ -56,14 +58,14 @@ public:
 
 	// --------------------------------- OTHER --------------------------------
 	// gestiona los eventos del estado
-	void handleEvent(const SDL_Event& event);
+	virtual void handleEvent(const SDL_Event& event);
 
 	// comento porque esta incompleta
 	virtual void hasDied(GameList<GameObject, true>::anchor);
 
 	// ---------------------------------- GETTERS Y SETTERS -------------------------
 	// getter del juego
-	SDLApplication getGame() const;
+	SDLApplication* getApplication() { return application; }
 
 	virtual string getID() const;
 
