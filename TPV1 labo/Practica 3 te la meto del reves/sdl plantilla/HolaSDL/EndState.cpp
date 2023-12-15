@@ -1,15 +1,23 @@
 #include "EndState.h"
 
+EndState::EndState(SDLApplication* game) 
+	: GameState(game)
+{
+}
+
 void EndState::update()
 {
 	// 
-	cout << "update" << endl;
+	//cout << "update" << endl;
 }
 
 void EndState::render()
 {
+	// ???
+	//application->getTexture(GameIsOver)->render();
+
 	// 
-	cout << "render" << endl;
+	//cout << "render" << endl;
 }
 
 bool EndState::onEnter()

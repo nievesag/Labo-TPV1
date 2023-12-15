@@ -7,6 +7,10 @@
 
 //
 #include "GameState.h"
+#include "SDLApplication.h"
+//class SDLApplication;
+
+class Button;
 
 using namespace std;
 using uint = unsigned int;
@@ -18,7 +22,7 @@ private:
 
 public:
 	// constructora
-	EndState(SDLApplication * game) : GameState(game) { };
+	EndState(SDLApplication* game);
 
 	//
 	virtual void update();

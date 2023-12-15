@@ -1,15 +1,24 @@
 #include "PauseState.h"
 
+PauseState::PauseState(SDLApplication* game) 
+	: GameState(game) 
+{
+
+}
+
 void PauseState::update()
 {
 	// 
-	cout << "update" << endl;
+	//cout << "update" << endl;
 }
 
 void PauseState::render()
 {
+	//
+	//application->getTexture(SaveGame)->render();
+
 	// 
-	cout << "update" << endl;
+	//cout << "update" << endl;
 }
 
 bool PauseState::onEnter()

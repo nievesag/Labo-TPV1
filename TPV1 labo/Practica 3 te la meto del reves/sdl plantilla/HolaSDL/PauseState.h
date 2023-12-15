@@ -2,6 +2,9 @@
 #define PAUSESTATE_H
 
 #include "GameState.h"
+#include "SDLApplication.h"
+
+class Button;
 
 using namespace std;
 using uint = unsigned int;
@@ -13,7 +16,7 @@ private:
 
 public:
 	// constructora
-	PauseState::PauseState(SDLApplication * game) : GameState(game) { };
+	PauseState::PauseState(SDLApplication* game);
 
 	//
 	virtual void update();

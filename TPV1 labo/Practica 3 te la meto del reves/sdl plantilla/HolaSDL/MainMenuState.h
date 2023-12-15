@@ -23,8 +23,6 @@ private:
 	Button* buttonCargarPartida;
 	Button* buttonSalir;
 
-	SDLApplication* app;
-
 public:
 	//constructora
 	MainMenuState(SDLApplication* game);

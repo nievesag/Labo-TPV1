@@ -15,6 +15,9 @@
 #include "GameStateMachine.h"
 #include "MainMenuState.h"
 #include "PlayState.h"
+#include "EndState.h"
+#include "PauseState.h"
+
 
 class Button;
 
@@ -46,7 +49,8 @@ constexpr double LASER_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de laser
 
 // ---- TEXTURAS ----
 // enum texture name -> el indice tiene la info de la textura
-enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, UfoT, BOMBA, Reward, Shield, MainMenu };
+enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, UfoT, BOMBA, Reward, Shield, MainMenu, NewGame,
+						LoadGame, ExitGame, ContGame, SaveGame, GoBack, GameIsOver, YouWon, Code };
 
 // ---- SAVE & READ FILES ----
 // archivo de strings con las roots de las carpetas etc
