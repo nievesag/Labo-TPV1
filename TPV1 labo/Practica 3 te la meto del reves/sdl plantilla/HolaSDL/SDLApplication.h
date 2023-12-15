@@ -83,7 +83,7 @@ private:
 
 	// ---------------------------------------- TEXTURAS -----------------------------
 	// cantidad de texturas que va a haber
-	static const int NUM_TEXTURES = 7;
+	static const int NUM_TEXTURES = 11;
 
 	// ARRAY DE TEXTURAS -> array estatico de tam NUM_TEXTURES de elementos de tipo Texture* 
 	array<Texture*, NUM_TEXTURES> textures{};
@@ -106,7 +106,13 @@ private:
 		{ "..\\images\\spaceship.png", 1, 1 },			  // nave	 // 34,21
 		{ "..\\images\\bunker.png", 4, 1 },				  // bunker  // 88,57
 		{ "..\\images\\stars.png", 1, 1 },				  // fondo 
-		{ "..\\images\\ovni2.png", 3, 1 }				  // ufo	 // 48,26
+		{ "..\\images\\ovni2.png", 3, 1 },				  // ufo	 // 48,26
+		{ "..\\objetos\\bomb.png", 3, 1 },				  // BOMBA
+		{ "..\\objetos\\shiled_reward.png", 3, 1 },		  // reward BOMBA
+		{ "..\\objetos\\shield.png", 3, 1 },			  // escudo
+		{ "..\\fondos\\mainMenu.png", 1, 1 }			  // fondo del menu inicial
+		
+
 	};
 
 	bool exit = false;

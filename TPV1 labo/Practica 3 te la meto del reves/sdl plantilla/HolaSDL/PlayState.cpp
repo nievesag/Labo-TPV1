@@ -396,18 +396,20 @@ void PlayState::handleEvent(const SDL_Event& event)
 	// si se pulsa esc
 	if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
 
+		cout << "END" << endl;
+
 		// pausa el juego
 		// (aniade el estado de pausa a la maquina de estados de application)
 		application->getgsMachine()->pushState(new PauseState(application));
 	}
+
+
+	
 }
 
 // GUARDADO
 void PlayState::save(const string& file)
 {
-
-	
-
 	// abre un canal para guardar en un archivo con el nombre deseado
 	ofstream out(SAVED_FOLDER + file + ".txt");
 
@@ -424,8 +426,6 @@ void PlayState::save(const string& file)
 
 	// cierra el hilo
 	out.close();
-	
-
 }
 
 void PlayState::saveThisGame()
