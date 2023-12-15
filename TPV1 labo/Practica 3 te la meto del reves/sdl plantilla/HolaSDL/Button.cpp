@@ -1,5 +1,4 @@
 #include "Button.h"
-#include "SDLApplication.h"
 
 void Button::update()
 {
@@ -15,7 +14,7 @@ void Button::emit() const
 {
 	// llama al método virtual handleEvent de cada oyente
 	for (SDLEventCallback buttonCallback : callbacks){}
-		//buttonCallback();
+		// buttonCallback();
 }
 
 void Button::render() const {

@@ -1,16 +1,16 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
+#include "checkML.h"
 #include "EventHandler.h"
 #include "GameObject.h"
 #include <functional>
 #include <SDL.h>
 #include "texture.h"
+#include "SDLApplication.h"
 
 using namespace std;
 using uint = unsigned int;
-
-class SDLApplication;
 
 // utiliza callbacks funcionales de tipo <void(const SDL_Event&)>
 using SDLEventCallback = function<void(const SDL_Event&)>;

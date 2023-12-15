@@ -59,7 +59,6 @@ protected:
 
 	SDLApplication* app;
 
-
 	// lista de objetos de escena (cannon, aliens, bunkeres, laser)
 	GameList<SceneObject, true> sceneObjectsList;
 
