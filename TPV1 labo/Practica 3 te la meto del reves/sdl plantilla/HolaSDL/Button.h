@@ -39,7 +39,7 @@ private:
 	list<SDLEventCallback> callbacks;
 
 	// METODOS PRIVADOS
-	void emit() const;
+	void emit(const SDL_Event& event) const;
 
 public:
 	Button(SDLApplication* application, Texture* texture, Point2D<double> pos)

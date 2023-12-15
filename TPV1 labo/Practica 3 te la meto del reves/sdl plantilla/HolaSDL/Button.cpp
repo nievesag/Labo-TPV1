@@ -10,11 +10,11 @@ void Button::update()
 	}
 }
 
-void Button::emit() const
+void Button::emit(const SDL_Event& event) const
 {
-	// llama al método virtual handleEvent de cada oyente
-	for (SDLEventCallback buttonCallback : callbacks){}
-		// buttonCallback();
+	// llama a todas las funciones registradas
+	for (const SDLEventCallback& buttonCallback : callbacks)
+		buttonCallback(event);
 }
 
 void Button::render() const {
@@ -31,7 +31,6 @@ void Button::render() const {
 
 	// Restablece el color de fondo (para el SDL_RenderClear)
 	SDL_SetRenderDrawColor(application->getRenderer(), 0, 0, 0, 225);
-
 }
 
 void Button::handleEvent(const SDL_Event& event) {
@@ -45,7 +44,7 @@ void Button::handleEvent(const SDL_Event& event) {
 		// comprueba si el punto está en el rect del boton
 		if (SDL_PointInRect(&point, &destRect)) {
 			currentFrame = CLICKED;
-			emit();
+			emit(event);
 		}
 	}
 }
