@@ -4,7 +4,6 @@
 #include "FileNotFoundError.h"
 #include "SDLError.h"
 #include "FileFormatError.h" 
-#include "button.h"
 
 using namespace std;
 
@@ -101,7 +100,6 @@ void SDLApplication::loadTextures()
 }
 
 // --------------------------------------------- NO SE NECESITA?
-// ACTUALIZAR 
 void SDLApplication::update()
 {
 	//

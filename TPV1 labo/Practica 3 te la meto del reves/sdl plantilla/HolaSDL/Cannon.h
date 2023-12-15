@@ -37,7 +37,7 @@ public:
 
 		// registra el cannon como oyente de eventos
 		// para reaccionar a input de teclado
-		//playState->addEventListener(this);
+		playState->addEventListener(this);
 	};
 
 	// ---- aqui si van los overrides porque aqui se especifican las cosas ----

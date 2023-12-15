@@ -11,14 +11,7 @@
 #include <fstream>
 
 // -------------
-#include "Alien.h"
-#include "ShooterAlien.h"
-#include "Cannon.h"
-#include "Laser.h"
-#include "Bunker.h"
 #include "SceneObject.h"
-#include "Mothership.h"
-#include "Ufo.h"
 #include "GameStateMachine.h"
 #include "MainMenuState.h"
 #include "PlayState.h"
@@ -34,7 +27,7 @@ using uint = unsigned int;
 constexpr uint winWidth = 800;
 constexpr uint winHeight = 600;
 
-// ------------------- FRAMES ---------------------
+// ---- FRAMES ----
 // gestion de frames y framerate 
 constexpr int FRAMERATE = 60,						// frames por segundo
 					TIME_BT_FRAMES = 100 / FRAMERATE,		// tiempo entre frames
@@ -51,37 +44,33 @@ constexpr double LASER_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de laser
 						UFO_SPEED = 6 * TIME_BT_FRAMES;		// velocidad de ufo
 						
 
-// ----------------------------------- TEXTURAS -------------------------------
- 
+// ---- TEXTURAS ----
 // enum texture name -> el indice tiene la info de la textura
 enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, UfoT, BOMBA, Reward, Shield, MainMenu };
 
-// ---------------------------- SAVE & READ FILES ----------------------------
+// ---- SAVE & READ FILES ----
 // archivo de strings con las roots de las carpetas etc
 static string SAVED_FOLDER = "..\\saved\\";
 
-// -------------------------------- G A M E --------------------------------
+// ---- APPLICATION ----
 class SDLApplication
 {
 	// atributos privados
 private:
-
-	// -------------------------------------- MAQUINA DE ESTADOS --------------------------
+	// ---- MAQUINA DE ESTADOS ----
 	// crea un puntero a la maquina de estados
 	GameStateMachine* gsMachine;
 
-	// MANEJO DEL TIEMPO EN RUN
+	// ---- MANEJO DEL TIEMPO EN RUN ----
 	uint32_t startTime, frameTime;
 
-	// -------------------------------------- SDL --------------------------------
+	// ---- SDL ----
 	SDL_Window* window = nullptr; // puntero a ventana
-	SDL_Renderer* renderer = nullptr; // puntero a renderer !!! TODO EN EL MISMO RENDERER
-	SDL_Event event;
-	Button* boton;
+	SDL_Renderer* renderer = nullptr; // puntero a renderer TODO EN EL MISMO RENDERER
+	int winX, winY; // posición de la ventana
+	SDL_Event event; // evento a pollear
 
-	int winX, winY; // Posición de la ventana
-
-	// ---------------------------------------- TEXTURAS -----------------------------
+	// ---- TEXTURAS ----
 	// cantidad de texturas que va a haber
 	static const int NUM_TEXTURES = 11;
 
@@ -115,10 +104,6 @@ private:
 
 	bool exit = false;
 
-public:
-	// lista de punteros a oyentes
-	//list<EventHandler*> eventListeners;
-
 	// metodos publicos 
 public:
 	// ---- constructora ----
@@ -132,6 +117,12 @@ public:
 	// bucle principal del juego
 	void run();
 
+	// ---- handleEvents ----
+	// input del jugador
+	void handleEvents();
+
+	// NO SE NECESITA???????????????????
+	#pragma region borrar?
 	// ---- update ----
 	// actualiza el juego
 	void update();
@@ -139,53 +130,37 @@ public:
 	// ---- render ----
 	// renderiza la pantalla
 	void render();
+	#pragma endregion
 
-	// ---- CARGAR Y SALVAR PARTIDAS ----
-	// salva la partida guardando la info de todos los objetos en un archivo 
-	void save(const string& file);
-
-	// carga la partida leyendo el archivo indicado
-	void load(const string& file, const string& root);
-
-	// ---- handleEvents ----
-	// input del jugador
-	void handleEvents();
-
-	//
-	void emit(const SDL_Event& event) const;
-
-	// Se suscribe a los eventos SDL del juego
-	//void connect(SDLEventCallback cb);
-
-	// ------------------- GETTERS -------------------
+	// ---- SETTERS Y GETTERS ----
+	#pragma region setters y getters
+	// tamaño de ventana
 	uint getWinWidth() { return winWidth; }
 	uint getWinHeight() { return winHeight; }
 	
+	// renderer
 	SDL_Renderer* getRenderer() { 
 		return renderer; };
 
+	// maquina de estados
 	GameStateMachine* getgsMachine() { return gsMachine; }
 
-	// getters de texturas
+	// get texturas
 	array<Texture*, NUM_TEXTURES> getTextures() { return textures; }
-
 	Texture* getTexture(TextureName tex) { return textures[tex]; }
-
 	Texture* getTexture(int tex) { return textures[tex]; }
+	TextureSpec getTextureSpec(int i) { return textureSpec[i]; }
+	int getNumText() { return NUM_TEXTURES; }
 
+	// set texturas
 	void setTexture(int pos, Texture* tex) {
 
 		textures[pos] = tex;
 	}
+	#pragma endregion
 
-	TextureSpec getTextureSpec(int i) { return textureSpec[i]; }
-
-	int getNumText() { return NUM_TEXTURES; }
-
-
-// ------ METODOS PRIVADOS -------
+// ---- METODOS PRIVADOS ----
 private:
-
 	// ---- loadTexture ----
 	// se cargan las texturas y se guardan en los arrays
 	void loadTextures();

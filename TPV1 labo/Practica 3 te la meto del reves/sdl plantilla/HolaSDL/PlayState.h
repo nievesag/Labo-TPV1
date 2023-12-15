@@ -79,6 +79,8 @@ protected:
 
 	char k; // crea un char para guardar el numero
 
+	void handleEvent(const SDL_Event &event) override;
+
 public:
 	// constructora
 	PlayState::PlayState(SDLApplication* game);
@@ -90,7 +92,6 @@ public:
 	// render
 	void render() const override;
 
-	void handleEvent(const SDL_Event &event) override;
 
 	// save
 	void save(const string& file);
