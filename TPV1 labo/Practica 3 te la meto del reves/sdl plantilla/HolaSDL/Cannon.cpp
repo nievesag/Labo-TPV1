@@ -67,7 +67,6 @@ bool Cannon::hit(SDL_Rect* rect, char frenemy)
 		// informa al game que ha muerto
 		playState->hasDied(sceneanc);
 
-
 		//application->EndGame();
 
 		return true;
@@ -121,10 +120,12 @@ void Cannon::movement()
 	position.setX(position.getX() + (direction.getX() * CANNON_SPEED));
 
 	// para que no se pase de largo la nave
-	if (position.getX() < 0)
+	if (position.getX() < 0) {
 		position.setX(0);
-	else if (position.getX() > application->getWinWidth() - texture->getFrameWidth())
+	}	
+	else if (position.getX() > application->getWinWidth() - texture->getFrameWidth()) {
 		position.setX(application->getWinWidth() - texture->getFrameWidth());
+	}
 }
 
 void Cannon::save(ostream& out) const

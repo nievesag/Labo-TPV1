@@ -14,8 +14,8 @@ void Button::update()
 void Button::emit() const
 {
 	// llama al método virtual handleEvent de cada oyente
-	for (SDLEventCallback cb : callbacks)
-		cb();
+	for (SDLEventCallback buttonCallback : callbacks)
+		buttonCallback();
 }
 
 void Button::render() const {
