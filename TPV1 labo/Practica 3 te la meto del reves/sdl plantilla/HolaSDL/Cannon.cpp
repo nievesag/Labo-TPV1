@@ -2,6 +2,16 @@
 #include "Cannon.h"
 #include "SDLApplication.h"
 
+Cannon::Cannon(int cooldown, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game) 
+	: cooldown(cooldown), SceneObject(position, width, height, vidas, texture, game) 
+{
+	currentCD = 0;
+
+	// registra el cannon como oyente de eventos
+	// para reaccionar a input de teclado
+	playState->addEventListener(this);
+}
+
 void Cannon::render() const
 {	
 	// lo mete en el render
