@@ -170,7 +170,11 @@ public:
 	uint getWinWidth() { return winWidth; }
 	uint getWinHeight() { return winHeight; }
 	
-	SDL_Renderer* getRenderer() { return renderer; };
+	SDL_Renderer* getRenderer() { 
+		
+		cout << "AAAAA" << endl;
+
+		return renderer; };
 
 
 	// getters de texturas

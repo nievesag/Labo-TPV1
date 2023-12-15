@@ -162,6 +162,7 @@ void SDLApplication::run()
 		}
 
 		render(); // renderiza todos los objetos de juego
+
 		
 	}
 

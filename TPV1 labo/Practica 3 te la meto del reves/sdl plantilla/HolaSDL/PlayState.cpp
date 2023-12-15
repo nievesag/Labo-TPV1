@@ -29,9 +29,6 @@ void PlayState::update()
 
 void PlayState::render()
 {
-	//
-	cout << "render" << endl;
-
 	//bucle for each para recorrer los objetos de la lista sceneObjectsList:
 	for (SceneObject& a : sceneObjectsList) {
 		a.render();
@@ -72,7 +69,7 @@ bool PlayState::onEnter()
 	loadTextures();
 
 	// carga la partida
-	loadAnyFile("original", "..\\mapas\\");
+	loadAnyFile("prueba", "..\\mapas\\");
 
 	return true;
 }
@@ -126,6 +123,8 @@ void PlayState::fireLaser(Point2D<double> pos, char frenemy)
 		SDL_SetRenderDrawColor(app->getRenderer(), 255, 0, 114, 255);	// cannon
 	}
 	else {
+
+		cout << " fire laser 2" << endl;
 		SDL_SetRenderDrawColor(app->getRenderer(), 255, 242, 0, 255);	// aliens
 	}
 	// crea el laser
@@ -190,6 +189,8 @@ void PlayState::loadTextures()
 	
 	// bucle para rellenar el array de texturas
 	for (int i = 0; i < app->getNumText(); i++) {
+
+		cout << " texture " << i << endl;
 
 		// crea la textura con el url, width y height
 		Texture* tex = new Texture(app->getRenderer(), app->getTextureSpec(i).url, app->getTextureSpec(i).nh, app->getTextureSpec(i).nw);
@@ -413,12 +414,15 @@ void PlayState::loadAnyFile(const string& file, const string& root)
 
 				// ---------------- Creacion del objeto ------------------
 
+				/*
 				// textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight()
 				SceneObject* obj = new Ufo(Point2D<double>(winWidth, y), app->getTexture(UfoT)->getFrameWidth(),
 					app->getTexture(UfoT)->getFrameHeight(), vidas, app->getTexture(UfoT), this);
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
+				*/
+				
 
 
 				// ----------------------- Fin del stup -----------------------
