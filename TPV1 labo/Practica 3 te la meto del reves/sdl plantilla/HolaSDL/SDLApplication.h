@@ -72,7 +72,7 @@ private:
 
 	// ---- TEXTURAS ----
 	// cantidad de texturas que va a haber
-	static const int NUM_TEXTURES = 11;
+	static const int NUM_TEXTURES = 20;
 
 	// ARRAY DE TEXTURAS -> array estatico de tam NUM_TEXTURES de elementos de tipo Texture* 
 	array<Texture*, NUM_TEXTURES> textures{};
@@ -99,7 +99,16 @@ private:
 		{ "..\\objetos\\bomb.png", 3, 1 },				  // BOMBA
 		{ "..\\objetos\\shiled_reward.png", 3, 1 },		  // reward BOMBA
 		{ "..\\objetos\\shield.png", 3, 1 },			  // escudo
-		{ "..\\fondos\\mainMenu.png", 1, 1 }			  // fondo del menu inicial
+		{ "..\\fondos\\mainMenu.png", 1, 1 },			  // fondo del menu inicial
+		{ "..\\textos\\nuevaPartida.png", 1, 1 },		  // texto: NUEVA PARTIDA
+		{ "..\\textos\\cargarPartida.png", 1, 1},		  // texto: CARGAR PARTIDA
+		{ "..\\textos\\salir.png", 1, 1 },				  // texto: SALIR
+		{ "..\\textos\\continuar.png", 1, 1 },			  // texto: CONTINUAR
+		{ "..\\textos\\guardarPartida.png", 1, 1 },		  // texto: GUARDAR
+		{ "..\\textos\\volverAlMenu.png", 1, 1 },		  // texto: VOLVER AL MENU
+		{ "..\\textos\\gameOver.png", 1, 1 },			  // texto: GAME OVER
+		{ "..\\textos\\hasGanado.png", 1, 1 },			  // texto: HAS GANADO
+		{ "..\\textos\\codigo.png", 1, 1 }				  // texto: CODIGO
 	};
 
 	bool exit = false;
