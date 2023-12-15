@@ -2,7 +2,7 @@ ser tú mismo
 
 bien dicho
 
-ctrl rr
+ctrl rr -> seleccionar la misma palabra
 /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
 
@@ -16,7 +16,6 @@ ctrl rr
 ----> descubir para que coño es el update realmente
 
 ----> hacer toBeDeleted de estados en el pop y push de la gsmachine (tu vieja)
-----> arreglar los iteradores del fireLaser y del hasDied
 
 
 ----------------> POWERUPS <-----------------------------

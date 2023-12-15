@@ -406,7 +406,7 @@ void PlayState::handleEvent(const SDL_Event& event)
 void PlayState::save(const string& file)
 {
 
-	/*
+	
 
 	// abre un canal para guardar en un archivo con el nombre deseado
 	ofstream out(SAVED_FOLDER + file + ".txt");
@@ -414,9 +414,9 @@ void PlayState::save(const string& file)
 	mother->save(out);
 
 	// bucle para llegar a los save de todos los objetos
-	for (list<SceneObject*>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++) {
+	for (SceneObject i : sceneObjectsList) {
 
-		(*it)->save(out);
+		(i).save(out);
 	}
 
 	// guarda los puntos
@@ -424,7 +424,7 @@ void PlayState::save(const string& file)
 
 	// cierra el hilo
 	out.close();
-	*/
+	
 
 }
 
