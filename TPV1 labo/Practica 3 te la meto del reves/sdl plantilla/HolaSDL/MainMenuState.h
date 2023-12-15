@@ -23,7 +23,7 @@ private:
 	Button* buttonCargarPartida;
 	Button* buttonSalir;
 
-	//SDLApplication* appilcation;
+	SDLApplication* app;
 
 public:
 	//constructora

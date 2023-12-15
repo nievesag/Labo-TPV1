@@ -1,6 +1,6 @@
 #include "MainMenuState.h"
 
-MainMenuState::MainMenuState(SDLApplication* game) : GameState(game)
+MainMenuState::MainMenuState(SDLApplication* game) : GameState(game), app(game)
 {
 
 	buttonNuevaPartida = (new Button(this, game->getTexture(11), Point2D<double>(1, 1)) );
@@ -9,14 +9,19 @@ MainMenuState::MainMenuState(SDLApplication* game) : GameState(game)
 
 void MainMenuState::update()
 {
+
+
 	//
-	cout << "update" << endl;
+	//cout << "update" << endl;
 }
 
 void MainMenuState::render() const
 {
+	// renderiza la imagen de fondo
+	app->getTexture(MainMenu)->render();
+
 	//
-	cout << "render" << endl;
+	//cout << "render" << endl;
 }
 
 bool MainMenuState::onEnter()
