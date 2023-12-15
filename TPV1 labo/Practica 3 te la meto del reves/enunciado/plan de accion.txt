@@ -17,7 +17,10 @@ ctrl click -> ir al método
 
 
 --------> BOTONES E INPUT<--------
-----> poner botones por estado
+----> poner botones por estado:
+	-> MAIN MENU: NUEVA PARTIDA / CARGAR PARTIDA / SALIR
+	-> PAUSE MENU: CONTINUAR / GUARDAR PARTIDA / CARGAR PARTIDA / SALIR
+	-> GAME OVER: VOLVER AL MENÚ / SALIR
 ----> arreglar el error rarete de cannon
 
 --------> MEMORY LEAKS <--------
