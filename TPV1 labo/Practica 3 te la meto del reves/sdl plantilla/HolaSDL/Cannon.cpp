@@ -91,6 +91,8 @@ void Cannon::manageCooldown()
 		currentCD++;
 	}
 	else {
+
+		cout << "???" << endl;
 		shoot();
 		currentCD = 0;
 	}
@@ -98,8 +100,13 @@ void Cannon::manageCooldown()
 
 void Cannon::shoot()
 {
-	if(keySpace)
+	if (keySpace) {
+
+		cout << "holi" << endl;
 		playState->fireLaser(this->position, 'a');
+
+	}
+		
 }
 
 void Cannon::movement()
