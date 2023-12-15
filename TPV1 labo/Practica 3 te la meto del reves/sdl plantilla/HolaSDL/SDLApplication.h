@@ -78,6 +78,10 @@ private:
 	// crea un puntero a la maquina de estados
 	GameStateMachine* gsMachine;
 
+	// MANEJO DEL TIEMPO EN RUN
+	
+	uint32_t startTime, frameTime;
+
 	// -------------------------------------- SDL --------------------------------
 	SDL_Window* window = nullptr; // puntero a ventana
 	SDL_Renderer* renderer = nullptr; // puntero a renderer !!! TODO EN EL MISMO RENDERER

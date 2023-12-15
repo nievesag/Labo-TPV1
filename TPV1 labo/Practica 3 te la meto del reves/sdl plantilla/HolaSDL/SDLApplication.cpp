@@ -50,8 +50,6 @@ SDLApplication::SDLApplication()
 
 SDLApplication::~SDLApplication()
 {
-
-
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit(); // cierra pantalla
@@ -149,17 +147,12 @@ void SDLApplication::emit(const SDL_Event& event) const
 void SDLApplication::run()
 {
 	// get ticks al inicio del bucle
-	//startTime = SDL_GetTicks();
+	startTime = SDL_GetTicks();
 
-	/*
-	
-	
-	
 	while (!exit)
 	{
 		handleEvents();
 
-		
 		// tiempo desde ultima actualizacion
 		frameTime = SDL_GetTicks() - startTime;
 
@@ -171,7 +164,7 @@ void SDLApplication::run()
 		render(); // renderiza todos los objetos de juego
 		
 	}
-*/
+
 	
 	/*
 	// escribe game over
@@ -191,7 +184,14 @@ void SDLApplication::update()
 
 void SDLApplication::render()
 {
+	//limpia la pantalla
+	SDL_RenderClear(renderer);
 
+	// renderiza
+	gsMachine->render();
+
+	// actualiza la pantalla
+	SDL_RenderPresent(renderer);
 }
 
 void SDLApplication::loadTextures()

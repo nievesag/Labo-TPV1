@@ -5,7 +5,7 @@
 void PlayState::update()
 {
 	//
-	cout << "update" << endl;
+	//cout << "update" << endl;
 
 	// actualiza el mothership
 	//mother->update();
@@ -13,6 +13,7 @@ void PlayState::update()
 	//bucle for each para recorrer los objetos de la lista sceneObjectsList:
 	//		-> tipo del objeto (& porque CREO que devuelve un puntero CREO) a : lista
 	for (SceneObject& a : sceneObjectsList) {
+
 		a.update();
 	}
 
