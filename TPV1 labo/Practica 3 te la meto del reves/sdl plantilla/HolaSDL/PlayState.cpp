@@ -488,12 +488,12 @@ void PlayState::loadAnyFile(const string& file, const string& root)
 			mother = new Mothership(defaultMothershipLevel, this, 30, 0);
 		}
 
-
+		/*
 		// settea el mothership en los aliens
 		for (SceneObject a : sceneObjectsList)
 		{
 			// !!!!!! SETTEAR BIEN EL MOTHERSHIP
-			/*
+			
 			// si es un alien setea el mothership
 			if (alien != nullptr) {
 				// llama al setteador
@@ -503,8 +503,9 @@ void PlayState::loadAnyFile(const string& file, const string& root)
 				mother->addAlien();
 			}
 			
-			*/
+			
 		}
+		*/
 	}
 	
 	
