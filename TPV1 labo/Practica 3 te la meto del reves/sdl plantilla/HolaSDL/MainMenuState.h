@@ -3,9 +3,10 @@
 
 // includes
 #include "GameState.h"
-#include "Button.h"
+//#include "Button.h"
 #include "SDLApplication.h"
-//class Button;
+//class SDLApplication;
+class Button;
 
 using namespace std;
 using uint = unsigned int;
@@ -21,12 +22,12 @@ private:
 	Button* buttonCargarPartida;
 	Button* buttonSalir;
 
-	SDLApplication* appilcation;
+	//SDLApplication* appilcation;
 
 public:
 	//constructora
 	MainMenuState(SDLApplication* game)
-		: GameState(game), buttonNuevaPartida(new Button(application, application->getTexture(11), Point2D<double>(1,1))) {}
+		: GameState(game), buttonNuevaPartida(new Button(this, game->getTexture(11), Point2D<double>(1,1))) {}
 	 
 	// 
 	void update() override;

@@ -42,8 +42,8 @@ private:
 	void emit(const SDL_Event& event) const;
 
 public:
-	Button(SDLApplication* application, Texture* texture, Point2D<double> pos)
-		: buttonTexture(texture), buttonPos(pos), GameObject(application), destRect{ 50, 50, 200, 100 }
+	Button(GameState* gameState, Texture* texture, Point2D<double> pos)
+		: GameObject(gameState), buttonTexture(texture), buttonPos(pos), destRect{ 50, 50, 200, 100 }
 	{
 		// para animacion
 		currentFrame = MOUSEOUT; // frame inicial a 0
