@@ -2,6 +2,18 @@
 #include "checkML.h"
 #include "SDLApplication.h"
 
+
+PlayState::PlayState(SDLApplication* game) : app(game), GameState(game) {
+
+}
+
+SDL_Renderer* PlayState::getAppRenderer() {
+
+	return app->getRenderer();
+}
+
+
+
 void PlayState::update()
 {
 	//
@@ -69,7 +81,7 @@ bool PlayState::onEnter()
 	loadTextures();
 
 	// carga la partida
-	loadAnyFile("prueba", "..\\mapas\\");
+	loadAnyFile("save7", "..\\mapas\\");
 
 	return true;
 }

@@ -6,12 +6,12 @@ void Laser::render() const
 {
 	// si es amigo/enemigo pintar de un color u otro
 	if (laserType == 'r')
-		SDL_SetRenderDrawColor(application->getRenderer(), 255, 0, 114, 255);	// cannon
+		SDL_SetRenderDrawColor(playState->getAppRenderer(), 255, 0, 114, 255);	// cannon
 	else
-		SDL_SetRenderDrawColor(application->getRenderer(), 255, 242, 0, 255);	// aliens
+		SDL_SetRenderDrawColor(playState->getAppRenderer(), 255, 242, 0, 255);	// aliens
 
 	// dibuja el rectangulo
-	SDL_RenderFillRect(application->getRenderer(), &destRect);
+	SDL_RenderFillRect(playState->getAppRenderer(), &destRect);
 }
 
 void Laser::update()

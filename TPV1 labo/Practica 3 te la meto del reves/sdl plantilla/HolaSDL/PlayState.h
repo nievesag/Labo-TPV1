@@ -77,9 +77,7 @@ protected:
 public:
 
 	// constructora
-	PlayState::PlayState(SDLApplication* game) : GameState(game), app(game) {
-
-	};
+	PlayState::PlayState(SDLApplication* game);
 
 	// -------------------------------- HERENCIA --------------------------------
 	// update
@@ -108,6 +106,8 @@ public:
 
 	//
 	void EndGame();
+
+	SDL_Renderer* getAppRenderer();
 
 
 	// ------------------------------ COLISIONES Y COMBATE ---------------------------
