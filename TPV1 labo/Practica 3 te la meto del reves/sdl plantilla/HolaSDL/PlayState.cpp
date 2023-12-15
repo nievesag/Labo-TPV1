@@ -354,7 +354,7 @@ void PlayState::update()
 	//cout << "update" << endl;
 
 	// actualiza el mothership
-	//mother->update();
+	mother->update();
 
 	//bucle for each para recorrer los objetos de la lista sceneObjectsList:
 	//		-> tipo del objeto (& porque CREO que devuelve un puntero CREO) a : lista
@@ -484,10 +484,11 @@ void PlayState::EndGame()
 // COLISONES
 bool PlayState::damage(SDL_Rect rect, char frenemy)
 {
-	for (SceneObject a : sceneObjectsList) {
+	for (SceneObject& a : sceneObjectsList) {
 
 		// se ha pegado un hostion (colisiones)
 		if (a.hit(&rect, frenemy)) {
+
 			// devuelve si ha hitteado	
 			return true;
 		}
@@ -529,8 +530,11 @@ void PlayState::increaseScore(int score)
 // BORRADO
 void PlayState::deleteSceneObjects()
 {
+
+
 	// creo que no hace falta este metodo por como va la clase gameList pero lo dejo asi
 	// de momento hasta que tenga tiempo para estudarmela
+	/*
 	if (objectsToErase.size() > 0) {
 
 		// bucle para borrar los objetos que han de ser borrados
@@ -544,6 +548,7 @@ void PlayState::deleteSceneObjects()
 		}
 		objectsToErase.clear();
 	}
+	*/
 }
 
 // GETTERS

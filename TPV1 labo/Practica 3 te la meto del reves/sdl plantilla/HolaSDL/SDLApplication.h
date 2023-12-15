@@ -151,7 +151,7 @@ public:
 	void emit(const SDL_Event& event) const;
 
 	// Se suscribe a los eventos SDL del juego
-	void connect(SDLEventCallback cb);
+	//void connect(SDLEventCallback cb);
 
 	// ------------------- GETTERS -------------------
 	uint getWinWidth() { return winWidth; }
