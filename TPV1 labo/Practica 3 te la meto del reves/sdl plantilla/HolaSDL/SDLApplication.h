@@ -63,23 +63,14 @@ static string SAVED_FOLDER = "..\\saved\\";
 // -------------------------------- G A M E --------------------------------
 class SDLApplication
 {
-public:
-
-	// Lista de funciones a llamar cuando se produzca un evento
-	std::vector<SDLEventCallback> callbacks;
-
-
 	// atributos privados
 private:
 
 	// -------------------------------------- MAQUINA DE ESTADOS --------------------------
-	// placeholder ?
-
 	// crea un puntero a la maquina de estados
 	GameStateMachine* gsMachine;
 
 	// MANEJO DEL TIEMPO EN RUN
-	
 	uint32_t startTime, frameTime;
 
 	// -------------------------------------- SDL --------------------------------

@@ -7,9 +7,9 @@
 #include "GameObject.h"
 #include "EventHandler.h"
 #include "Button.h"
-
+#include "PlayState.h"
 class SDLApplication;
-class PlayState;
+//class PlayState;
 
 using namespace std;
 using uint = unsigned int;
