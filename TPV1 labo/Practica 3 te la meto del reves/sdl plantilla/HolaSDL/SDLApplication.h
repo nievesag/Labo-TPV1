@@ -171,9 +171,6 @@ public:
 	uint getWinHeight() { return winHeight; }
 	
 	SDL_Renderer* getRenderer() { 
-		
-		cout << "AAAAA" << endl;
-
 		return renderer; };
 
 

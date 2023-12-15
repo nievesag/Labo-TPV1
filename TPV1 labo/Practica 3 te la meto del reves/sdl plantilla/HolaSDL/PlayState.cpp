@@ -41,6 +41,8 @@ void PlayState::update()
 
 void PlayState::render()
 {
+	renderBackground();
+
 	//bucle for each para recorrer los objetos de la lista sceneObjectsList:
 	for (SceneObject& a : sceneObjectsList) {
 		a.render();
@@ -135,8 +137,6 @@ void PlayState::fireLaser(Point2D<double> pos, char frenemy)
 		SDL_SetRenderDrawColor(app->getRenderer(), 255, 0, 114, 255);	// cannon
 	}
 	else {
-
-		cout << " fire laser 2" << endl;
 		SDL_SetRenderDrawColor(app->getRenderer(), 255, 242, 0, 255);	// aliens
 	}
 	// crea el laser
@@ -527,5 +527,11 @@ void PlayState::increaseScore(int score)
 {
 
 
+}
+
+void PlayState::renderBackground() {
+
+	// renderiza el fondo
+	app->getTexture(Fondo)->render();
 }
 

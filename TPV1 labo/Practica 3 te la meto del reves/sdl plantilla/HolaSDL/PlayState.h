@@ -136,6 +136,9 @@ public:
 
 	//
 	void increaseScore(int score);
+	
+	// 
+	void renderBackground();
 
 };
 
