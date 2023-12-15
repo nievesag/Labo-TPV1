@@ -54,7 +54,7 @@ constexpr double LASER_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de laser
 // ----------------------------------- TEXTURAS -------------------------------
  
 // enum texture name -> el indice tiene la info de la textura
-enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, UfoT };
+enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, UfoT, BOMBA, Reward, Shield, MainMenu };
 
 // ---------------------------- SAVE & READ FILES ----------------------------
 // archivo de strings con las roots de las carpetas etc
@@ -111,8 +111,6 @@ private:
 		{ "..\\objetos\\shiled_reward.png", 3, 1 },		  // reward BOMBA
 		{ "..\\objetos\\shield.png", 3, 1 },			  // escudo
 		{ "..\\fondos\\mainMenu.png", 1, 1 }			  // fondo del menu inicial
-		
-
 	};
 
 	bool exit = false;
