@@ -368,9 +368,6 @@ void PlayState::update()
 	// QUIERO SACARLO CON ITERADORES IGUAL
 	// for(GameList<SceneObject, true>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++)
 
-	// borra los objetos a borrar
-	//deleteSceneObjects();
-
 }
 
 // RENDER
@@ -500,9 +497,14 @@ void PlayState::hasDied(GameList<SceneObject, true>::anchor i)
 {
 	// que cojones es un anchor ?????
 	// aniade el ANCHOR del objeto a la lista de borradores
-	objectsToErase.push_back(i);
+	//objectsToErase.push_back(i);
+
+	sceneObjectsList.erase(i);
+
+	//toBeErased.push_back(i);
 
 }
+
 
 void PlayState::fireLaser(Point2D<double> pos, char frenemy)
 {
@@ -530,12 +532,14 @@ void PlayState::increaseScore(int score)
 // BORRADO
 void PlayState::deleteSceneObjects()
 {
+	// elimina los objetos de objectsToErase
+	toBeErased.clear();
 
 
 	// creo que no hace falta este metodo por como va la clase gameList pero lo dejo asi
 	// de momento hasta que tenga tiempo para estudarmela
-	/*
-	if (objectsToErase.size() > 0) {
+	
+	if (!objectsToErase.empty()) {
 
 		// bucle para borrar los objetos que han de ser borrados
 		for (auto a : objectsToErase) {
@@ -548,7 +552,7 @@ void PlayState::deleteSceneObjects()
 		}
 		objectsToErase.clear();
 	}
-	*/
+	
 }
 
 // GETTERS

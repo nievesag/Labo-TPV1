@@ -67,6 +67,9 @@ protected:
 	// lista de anchors de objetos a eliminar
 	list<GameList<SceneObject, true>::anchor>objectsToErase;
 
+	//
+	GameList<SceneObject, true> toBeErased;
+
 	// puntero al mothership
 	Mothership* mother = nullptr;
 
