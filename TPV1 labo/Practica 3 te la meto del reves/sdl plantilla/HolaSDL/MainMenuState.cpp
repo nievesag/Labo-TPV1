@@ -1,5 +1,12 @@
 #include "MainMenuState.h"
 
+MainMenuState::MainMenuState(SDLApplication* game) : GameState(game)
+{
+
+	buttonNuevaPartida = (new Button(this, game->getTexture(11), Point2D<double>(1, 1)) );
+
+}
+
 void MainMenuState::update()
 {
 	//

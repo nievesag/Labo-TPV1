@@ -1,11 +1,12 @@
 #ifndef MAINMENUSTATE_H
-#define MIANMENUSTATE_H
+#define MAINMENUSTATE_H
 
 // includes
 #include "GameState.h"
 //#include "Button.h"
 #include "SDLApplication.h"
 //class SDLApplication;
+
 class Button;
 
 using namespace std;
@@ -26,9 +27,9 @@ private:
 
 public:
 	//constructora
-	MainMenuState(SDLApplication* game)
-		: GameState(game), buttonNuevaPartida(new Button(this, game->getTexture(11), Point2D<double>(1,1))) {}
+	MainMenuState(SDLApplication* game);
 	 
+	// buttonNuevaPartida(new Button(this, game->getTexture(11), Point2D<double>(1,1))) 
 	// 
 	void update() override;
 
