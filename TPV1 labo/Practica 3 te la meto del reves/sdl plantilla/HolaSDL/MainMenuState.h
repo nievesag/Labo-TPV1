@@ -26,7 +26,7 @@ private:
 public:
 	//constructora
 	MainMenuState(SDLApplication* game)
-		: GameState(game), buttonNuevaPartida(new Button(application, application->getTexture(3), ) {};
+		: GameState(game), buttonNuevaPartida(new Button(application, application->getTexture(11), Point2D<double>(1,1))) {}
 	 
 	// 
 	void update() override;
@@ -44,5 +44,4 @@ public:
 	// 
 	string getID() const override;
 };
-
 #endif

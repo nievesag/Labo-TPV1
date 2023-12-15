@@ -28,4 +28,3 @@ string MainMenuState::getID() const
 {
 	return s_menuID;
 }
-

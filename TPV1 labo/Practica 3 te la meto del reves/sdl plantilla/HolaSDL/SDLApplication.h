@@ -89,26 +89,26 @@ private:
 	// ubicacion, col, fil
 	array<TextureSpec, NUM_TEXTURES> textureSpec{
 
-		TextureSpec{"..\\images\\aliens2.png", 2, 3},	  // alien 1 // 32,32
-		{ "..\\images\\aliens2.png", 2, 3 },			  // alien 2 // 44,32
-		{ "..\\images\\aliens2.png", 2, 3 },			  // alien 3 // 48,32
-		{ "..\\images\\spaceship.png", 1, 1 },			  // nave	 // 34,21
-		{ "..\\images\\bunker.png", 4, 1 },				  // bunker  // 88,57
-		{ "..\\images\\stars.png", 1, 1 },				  // fondo 
-		{ "..\\images\\ovni2.png", 3, 1 },				  // ufo	 // 48,26
-		{ "..\\objetos\\bomb.png", 3, 1 },				  // BOMBA
-		{ "..\\objetos\\shiled_reward.png", 3, 1 },		  // reward BOMBA
-		{ "..\\objetos\\shield.png", 3, 1 },			  // escudo
-		{ "..\\fondos\\mainMenu.png", 1, 1 },			  // fondo del menu inicial
-		{ "..\\textos\\nuevaPartida.png", 1, 1 },		  // texto: NUEVA PARTIDA
-		{ "..\\textos\\cargarPartida.png", 1, 1},		  // texto: CARGAR PARTIDA
-		{ "..\\textos\\salir.png", 1, 1 },				  // texto: SALIR
-		{ "..\\textos\\continuar.png", 1, 1 },			  // texto: CONTINUAR
-		{ "..\\textos\\guardarPartida.png", 1, 1 },		  // texto: GUARDAR
-		{ "..\\textos\\volverAlMenu.png", 1, 1 },		  // texto: VOLVER AL MENU
-		{ "..\\textos\\gameOver.png", 1, 1 },			  // texto: GAME OVER
-		{ "..\\textos\\hasGanado.png", 1, 1 },			  // texto: HAS GANADO
-		{ "..\\textos\\codigo.png", 1, 1 }				  // texto: CODIGO
+		TextureSpec{"..\\images\\aliens2.png", 2, 3},	  // alien 1 // 32,32			-> 0
+		{ "..\\images\\aliens2.png", 2, 3 },			  // alien 2 // 44,32			-> 1
+		{ "..\\images\\aliens2.png", 2, 3 },			  // alien 3 // 48,32			-> 2
+		{ "..\\images\\spaceship.png", 1, 1 },			  // nave	 // 34,21			-> 3
+		{ "..\\images\\bunker.png", 4, 1 },				  // bunker  // 88,57			-> 4
+		{ "..\\images\\stars.png", 1, 1 },				  // fondo						-> 5
+		{ "..\\images\\ovni2.png", 3, 1 },				  // ufo	 // 48,26			-> 6
+		{ "..\\objetos\\bomb.png", 3, 1 },				  // BOMBA						-> 7
+		{ "..\\objetos\\shiled_reward.png", 3, 1 },		  // reward BOMBA				-> 8
+		{ "..\\objetos\\shield.png", 3, 1 },			  // escudo						-> 9
+		{ "..\\fondos\\mainMenu.png", 1, 1 },			  // fondo del menu inicial		-> 10
+		{ "..\\textos\\nuevaPartida.png", 1, 1 },		  // texto: NUEVA PARTIDA		-> 11
+		{ "..\\textos\\cargarPartida.png", 1, 1},		  // texto: CARGAR PARTIDA		-> 12
+		{ "..\\textos\\salir.png", 1, 1 },				  // texto: SALIR				-> 13
+		{ "..\\textos\\continuar.png", 1, 1 },			  // texto: CONTINUAR			-> 14
+		{ "..\\textos\\guardarPartida.png", 1, 1 },		  // texto: GUARDAR				-> 15
+		{ "..\\textos\\volverAlMenu.png", 1, 1 },		  // texto: VOLVER AL MENU		-> 16
+		{ "..\\textos\\gameOver.png", 1, 1 },			  // texto: GAME OVER			-> 17
+		{ "..\\textos\\hasGanado.png", 1, 1 },			  // texto: HAS GANADO			-> 18
+		{ "..\\textos\\codigo.png", 1, 1 }				  // texto: CODIGO				-> 19
 	};
 
 	bool exit = false;
