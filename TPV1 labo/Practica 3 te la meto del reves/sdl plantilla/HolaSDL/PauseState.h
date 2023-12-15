@@ -15,24 +15,20 @@ public:
 	// constructora
 	PauseState::PauseState(SDLApplication * game) : GameState(game) { };
 
-
 	//
 	virtual void update();
+
 	//
 	virtual void render();
 
 	//
 	virtual bool onEnter();
+
 	//
 	virtual bool onExit();
 
-
-	// ----------------------------------- GETTERS Y SETTERS -----------------------
-	//
-
+	// ---- GETTERS Y SETTERS ----
 	virtual string getID() const;
-
-
 };
 
 #endif

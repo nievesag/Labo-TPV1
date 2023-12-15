@@ -58,7 +58,7 @@ public:
 
 	// --------------------------------- OTHER --------------------------------
 	// gestiona los eventos del estado
-	virtual void handleEvent(const SDL_Event& event);
+	virtual void handleEvent(const SDL_Event &event);
 
 	// comento porque esta incompleta
 	virtual void hasDied(GameList<GameObject, true>::anchor);
@@ -68,7 +68,6 @@ public:
 	SDLApplication* getApplication() { return application; }
 
 	virtual string getID() const;
-
 
 	// ---------------------- EVENTOS Y OBJETOS -------------------
 	// añade un objeto a la lista de objetos

@@ -6,7 +6,6 @@
 #include "PauseState.h"
 #include "EndState.h"
 
-
 PlayState::PlayState(SDLApplication* game) : app(game), GameState(game) {
 
 }
