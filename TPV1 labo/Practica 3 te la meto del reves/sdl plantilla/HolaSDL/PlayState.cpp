@@ -21,8 +21,6 @@ SDL_Renderer* PlayState::getAppRenderer() {
 // LOADS
 void PlayState::loadTextures()
 {
-
-	
 	// bucle para rellenar el array de texturas
 	for (int i = 0; i < app->getNumText(); i++) {
 
@@ -458,7 +456,7 @@ bool PlayState::onEnter()
 	
 	std::cout << "entering PlayState\n";
 
-	loadTextures();
+	//loadTextures();
 
 	// carga la partida
 	loadAnyFile("save7", "..\\mapas\\");

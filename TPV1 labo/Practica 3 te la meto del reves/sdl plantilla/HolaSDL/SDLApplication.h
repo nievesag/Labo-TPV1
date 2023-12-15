@@ -97,7 +97,7 @@ private:
 		{ "..\\images\\stars.png", 1, 1 },				  // fondo						-> 5
 		{ "..\\images\\ovni2.png", 3, 1 },				  // ufo	 // 48,26			-> 6
 		{ "..\\objetos\\bomb.png", 3, 1 },				  // BOMBA						-> 7
-		{ "..\\objetos\\shiled_reward.png", 3, 1 },		  // reward BOMBA				-> 8
+		{ "..\\objetos\\shield_reward.png", 3, 1 },		  // reward BOMBA				-> 8
 		{ "..\\objetos\\shield.png", 3, 1 },			  // escudo						-> 9
 		{ "..\\fondos\\mainMenu.png", 1, 1 },			  // fondo del menu inicial		-> 10
 		{ "..\\textos\\nuevaPartida.png", 1, 1 },		  // texto: NUEVA PARTIDA		-> 11

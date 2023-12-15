@@ -26,6 +26,11 @@ SDLApplication::SDLApplication()
 		throw SDLError("Error cargando ventana de juego o renderer "s + SDL_GetError());
 
 
+	// ---------------------- TEXRTURAS ----------------------------------
+
+	loadTextures();
+
+
 	// --------------------- MAQUINA DE ESTADOS ---------------------------
 	// !!! el render de los estados debe ser const pero hay un error y no tengo ganas ahora de arreglarlo
 	// crea una maquina de estados
