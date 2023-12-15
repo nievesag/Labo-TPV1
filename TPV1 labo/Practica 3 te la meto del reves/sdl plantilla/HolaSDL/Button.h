@@ -18,17 +18,14 @@ using SDLEventCallback = function<void(const SDL_Event&)>;
 class Button : public EventHandler, public GameObject
 {
 private:
-	// posicion del cursor
-	int x, y;
-	SDL_Point point;
+	
+	int x, y;			// posicion del cursor
+	SDL_Point point;	// guarda posicion del cursor en click
+	SDL_Rect destRect;	// rectangulo del render
+	Texture* buttonTexture;	// textura del boton
+	Point2D<double> buttonPos;	// posicion del boton en pantalla
 
-	Texture* buttonTexture;
-	//SDLApplication* application;
-
-	// rectangulo del render
-	SDL_Rect destRect;
-
-	// estados del botón para render y animacion (?)
+	// estados del botón para render y animacion
 	int currentFrame;
 	enum buttonState {
 		MOUSEOUT = 0,
@@ -41,22 +38,15 @@ private:
 	// lista de funciones a llamar cuando sucede un evento
 	list<SDLEventCallback> callbacks;
 
-	// lista de oyentes de eventos del botón -> reacciona al click
-	list<EventHandler*> clickListeners;
-
-	//
-	SDLApplication* app;
+	// METODOS PRIVADOS
+	void emit() const;
 
 public:
-	Button(SDLApplication* application) 
-		: GameObject(application), destRect{ 50, 50, 200, 100 }
+	Button(SDLApplication* application, Texture* texture, Point2D<double> pos)
+		: buttonTexture(texture), buttonPos(pos), GameObject(application), destRect{ 50, 50, 200, 100 }
 	{
 		// para animacion
 		currentFrame = MOUSEOUT; // frame inicial a 0
-
-		app = application;
-
-		connectButton();
 
 		/*
 		// si hay textura entonces no es un laser y tiene dimensiones
@@ -65,29 +55,26 @@ public:
 			destRect.w = texture->getFrameWidth();
 			destRect.h = texture->getFrameHeight();
 		}
-		destRect.x = position.getX();
-		destRect.y = position.getY();
+		destRect.x = buttonPos.getX();
+		destRect.y = buttonPos.getY();
 		*/
 	}
 
-	// METODOS
+	// METODOS PUBLICOS
 	// ---- render ----
 	void render() const override;
 
 	// ---- update ----
 	void update() override;
 
-	void emit(const SDL_Event& event) const;
-
+	// ---- update ----
 	void handleEvent(const SDL_Event& event) override;
 
-	void connectButton();
+	// ---- update ----
+	void connectButton(SDLEventCallback buttonCallback);
 
-	/*
-	// devuelve rect (posicion) de cada objeto
-	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
-
-	Texture* getTexture() const { return buttonTexture; };
-	*/
+	// ---- save ----
+	// no se si hace falta???? creo q si pero no se usarlo :P
+	void save(std::ostream& out) const override = 0;
 };
 #endif

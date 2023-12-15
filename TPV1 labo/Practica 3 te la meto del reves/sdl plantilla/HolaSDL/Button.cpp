@@ -11,11 +11,11 @@ void Button::update()
 	}
 }
 
-void Button::emit(const SDL_Event& event) const
+void Button::emit() const
 {
 	// llama al método virtual handleEvent de cada oyente
-	for (EventHandler* lis : clickListeners)
-		lis->handleEvent(event);
+	for (SDLEventCallback cb : callbacks)
+		cb();
 }
 
 void Button::render() const {
@@ -46,13 +46,12 @@ void Button::handleEvent(const SDL_Event& event) {
 		// comprueba si el punto está en el rect del boton
 		if (SDL_PointInRect(&point, &destRect)) {
 			currentFrame = CLICKED;
-			emit(event);
+			emit();
 		}
 	}
 }
 
-void Button::connectButton()
+void Button::connectButton(SDLEventCallback buttonCallback)
 {
-	// Conectamos el handleEvent con el Game
-	app->connect([this](auto event) { handleEvent(event); });
+	callbacks.push_back(buttonCallback);
 }
