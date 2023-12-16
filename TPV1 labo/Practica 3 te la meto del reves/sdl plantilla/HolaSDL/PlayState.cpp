@@ -11,7 +11,6 @@ PlayState::PlayState(SDLApplication* game) : app(game), GameState(game) {
 }
 
 SDL_Renderer* PlayState::getAppRenderer() {
-
 	return app->getRenderer();
 }
 
@@ -39,8 +38,6 @@ void PlayState::loadTextures()
 			//throw SDLError("Error cargando texturas "s + SDL_GetError());
 		}
 	}
-	
-	
 }
 
 void PlayState::loadAnyFile(const string& file, const string& root)
@@ -402,9 +399,6 @@ void PlayState::HandleEvent(const SDL_Event& event)
 		// (aniade el estado de pausa a la maquina de estados de application)
 		application->getgsMachine()->pushState(new PauseState(application));
 	}
-
-
-	
 }
 
 // GUARDADO
@@ -455,7 +449,6 @@ void PlayState::saveThisGame()
 bool PlayState::onEnter()
 {
 	//
-	
 	std::cout << "entering PlayState\n";
 
 	//loadTextures();
@@ -502,7 +495,6 @@ void PlayState::hasDied(GameList<SceneObject, true>::anchor i)
 	sceneObjectsList.erase(i);
 
 	//toBeErased.push_back(i);
-
 }
 
 

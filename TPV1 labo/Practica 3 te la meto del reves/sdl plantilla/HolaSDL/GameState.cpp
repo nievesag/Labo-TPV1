@@ -35,7 +35,6 @@ void GameState::HandleEvent(const SDL_Event& event)
 
 		listener->handleEvent(event);
 	}
-		
 }
 
 void GameState::hasDied(GameList<GameObject, true>::anchor)

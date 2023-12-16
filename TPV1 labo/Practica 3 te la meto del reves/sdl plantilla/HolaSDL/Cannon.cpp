@@ -28,6 +28,8 @@ void Cannon::update()
 
 	// actualiza el rect
 	updateRect();
+
+	shoot();
 }
 
 void Cannon::updateRect()
@@ -105,16 +107,9 @@ void Cannon::shoot()
 {
 	if (keySpace) {
 
-		cout << "dispara" << endl;
-
-		Point2D<double> pos{ this->position.getX() + 5, this->getPosition().getY() + 25 };
-		
+		Point2D<double> pos{ this->position.getX() + 15, this->getPosition().getY() + 25 };
  		playState->fireLaser(pos, 'a');
-
-		cout << "holi" << endl;
-
 	}
-		
 }
 
 void Cannon::movement()
