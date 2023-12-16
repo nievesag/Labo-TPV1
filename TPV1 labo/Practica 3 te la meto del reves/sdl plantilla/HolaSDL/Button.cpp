@@ -10,11 +10,11 @@ void Button::update()
 	}
 }
 
-void Button::emit(const SDL_Event& event) const
+void Button::emit() const
 {
 	// llama a todas las funciones registradas
-	for (const SDLEventCallback& buttonCallback : callbacks)
-		buttonCallback(event);
+	for (SDLEventCallback buttonCallback : callbacks)
+		buttonCallback();
 }
 
 void Button::render() const {
@@ -44,7 +44,7 @@ void Button::handleEvent(const SDL_Event& event) {
 		// comprueba si el punto está en el rect del boton
 		if (SDL_PointInRect(&point, &destRect)) {
 			currentFrame = CLICKED;
-			emit(event);
+			emit();
 		}
 	}
 }

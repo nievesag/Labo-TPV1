@@ -39,6 +39,7 @@ public:
 	// getID
 	string getID() const override;
 
+private:
 	// funciones de los botones
 	void nuevaPartida();
 	void cargarPartida();

@@ -13,7 +13,7 @@ using namespace std;
 using uint = unsigned int;
 
 // utiliza callbacks funcionales de tipo <void(const SDL_Event&)>
-using SDLEventCallback = function<void(const SDL_Event&)>;
+using SDLEventCallback = function<void(void)>;
 
 class Button : public EventHandler, public GameObject
 {
@@ -39,7 +39,7 @@ private:
 	list<SDLEventCallback> callbacks;
 
 	// METODOS PRIVADOS
-	void emit(const SDL_Event& event) const;
+	void emit() const;
 
 public:
 	Button(GameState* gameState, Texture* texture, Point2D<double> pos)
