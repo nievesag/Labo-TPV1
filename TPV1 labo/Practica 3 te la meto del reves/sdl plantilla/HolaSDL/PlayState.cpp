@@ -388,6 +388,8 @@ void PlayState::renderBackground() const {
 // MANEJO DE EVENTOS
 void PlayState::HandleEvent(const SDL_Event& event)
 {
+	cout << eventListeners.size() << endl;
+
 	// gestiona todos los eventos del estado correspondiente
 	GameState::HandleEvent(event);
 
@@ -507,7 +509,7 @@ void PlayState::hasDied(GameList<SceneObject, true>::anchor i)
 void PlayState::fireLaser(Point2D<double> pos, char frenemy)
 {
 	if (frenemy == 'a') {
-		SDL_SetRenderDrawColor(app->getRenderer(), 255, 0, 114, 255);	// cannon
+		SDL_SetRenderDrawColor(app->getRenderer(), 255, 0, 114, 255);	// cannon   255, 0, 114, 255
 	}
 	else {
 		SDL_SetRenderDrawColor(app->getRenderer(), 255, 242, 0, 255);	// aliens
@@ -530,6 +532,7 @@ void PlayState::increaseScore(int score)
 // BORRADO
 void PlayState::deleteSceneObjects()
 {
+	/*
 	// elimina los objetos de objectsToErase
 	toBeErased.clear();
 
@@ -550,6 +553,8 @@ void PlayState::deleteSceneObjects()
 		}
 		objectsToErase.clear();
 	}
+	*/
+	
 	
 }
 

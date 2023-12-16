@@ -31,8 +31,11 @@ bool GameState::onExit()
 
 void GameState::HandleEvent(const SDL_Event& event)
 {
-	for (EventHandler*& listener : eventListeners)
+	for (EventHandler* listener : eventListeners) {
+
 		listener->handleEvent(event);
+	}
+		
 }
 
 void GameState::hasDied(GameList<GameObject, true>::anchor)

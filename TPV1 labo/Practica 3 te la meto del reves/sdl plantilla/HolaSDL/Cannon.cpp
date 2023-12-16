@@ -73,7 +73,11 @@ void Cannon::handleEvent(const SDL_Event& event)
 
 bool Cannon::hit(SDL_Rect* rect, char frenemy)
 {
+
 	if (SDL_HasIntersection(rect, &destRect) && frenemy == 'r') {
+
+		cout << "TETORRAS" << endl;
+
 		// informa al game que ha muerto
 		playState->hasDied(sceneanc);
 
@@ -92,7 +96,6 @@ void Cannon::manageCooldown()
 	}
 	else {
 
-		cout << "???" << endl;
 		shoot();
 		currentCD = 0;
 	}
@@ -102,8 +105,13 @@ void Cannon::shoot()
 {
 	if (keySpace) {
 
+		cout << "dispara" << endl;
+
+		Point2D<double> pos{ this->position.getX() + 5, this->getPosition().getY() + 25 };
+		
+ 		playState->fireLaser(pos, 'a');
+
 		cout << "holi" << endl;
-		playState->fireLaser(this->position, 'a');
 
 	}
 		
