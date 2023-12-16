@@ -93,12 +93,15 @@ bool Cannon::hit(SDL_Rect* rect, char frenemy)
 
 void Cannon::manageCooldown()
 {
+	
+
 	if (currentCD < cooldown) {
 		currentCD++;
 	}
 	else {
 
 		shoot();
+
 		currentCD = 0;
 	}
 }
@@ -109,9 +112,8 @@ void Cannon::shoot()
 
 		Point2D<double> pos{ this->position.getX() + 15, this->getPosition().getY() + 25 };
 
- 		//playState->fireLaser(pos, 'a');
 
-		playState->fireLaser(pos, 'a');
+		playState->fireLaser(this->position, 'a');
 	}
 }
 

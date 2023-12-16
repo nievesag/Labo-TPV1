@@ -14,9 +14,6 @@ Laser::Laser(char type, Point2D<double> position, int width, int height, int vid
 
 void Laser::render() const
 {
-
-	cout << "renata tiene buen tema la tia" << endl;
-
 	// si es amigo/enemigo pintar de un color u otro
 	if (laserType == 'a')
 		SDL_SetRenderDrawColor(playState->getAppRenderer(), 255, 0, 114, 255);	// cannon
@@ -29,15 +26,6 @@ void Laser::render() const
 
 void Laser::update()
 {
-	if (laserType == 'a'){
-
-		cout << "tipo a..." << endl;
-	}
-	else if (laserType == 'r') {
-
-		cout << "tipo r..." << endl;
-	}
-
 	// mueve al laser
 	move();
 
