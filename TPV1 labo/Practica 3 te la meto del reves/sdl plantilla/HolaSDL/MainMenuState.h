@@ -24,24 +24,24 @@ private:
 	Button* buttonSalir;
 
 public:
-	//constructora
+	// constructora
 	MainMenuState(SDLApplication* game);
 	 
-	// buttonNuevaPartida(new Button(this, game->getTexture(11), Point2D<double>(1,1))) 
-	// 
-	void update() override;
-
-	// 
+	// renderizado del estado
 	void render() const override;
 
-	// 
+	// al entrar al estado
 	bool onEnter() override;
 
-	// 
+	// al salir del estado
 	bool onExit() override;
 
-	// ---- GETTERS Y SETTERS ----
-	// 
+	// getID
 	string getID() const override;
+
+	// funciones de los botones
+	void nuevaPartida();
+	void cargarPartida();
+	void salir();
 };
 #endif
