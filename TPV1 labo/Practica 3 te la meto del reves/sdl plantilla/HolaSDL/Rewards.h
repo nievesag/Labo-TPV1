@@ -42,6 +42,9 @@ public:
 
 	// mueve la reward segun el vector velocidad
 	void move();
+
+	// actualiza el rect
+	void updateRect() override;
 };
 
 #endif

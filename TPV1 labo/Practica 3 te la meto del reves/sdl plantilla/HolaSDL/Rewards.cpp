@@ -15,7 +15,7 @@ void Rewards::update()
 	updateRect();
 
 	// le pregunta si hay alguien a quien pegar un hostion
-	if (playState->mayGrantReward(destRect, 'r') || isOut()) {
+	if (playState->damage(destRect, 'r') || isOut()) {
 
 		// le dice al game que ha muerto
 		playState->hasDied(sceneanc);

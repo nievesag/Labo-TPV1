@@ -2,6 +2,16 @@
 #include "Laser.h"
 #include "SDLApplication.h"
 
+Laser::Laser(char type, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
+	: laserType(type), SceneObject(position, width, height, vidas, texture, game) 
+{
+	// inicializa alive a true al construirse
+	alive = true;
+
+	if (laserType == 'a') vel.setY(1);
+	else vel.setY(-1);
+}
+
 void Laser::render() const
 {
 	// si es amigo/enemigo pintar de un color u otro

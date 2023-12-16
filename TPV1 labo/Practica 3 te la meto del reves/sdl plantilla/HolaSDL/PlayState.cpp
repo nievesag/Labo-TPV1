@@ -382,6 +382,11 @@ void PlayState::renderBackground() const {
 	app->getTexture(Fondo)->render();
 }
 
+bool PlayState::mayGrantReward(SDL_Rect rect, char rewardType)
+{
+	return false;
+}
+
 // MANEJO DE EVENTOS
 void PlayState::HandleEvent(const SDL_Event& event)
 {

@@ -29,15 +29,7 @@ private:
 	// metodos publicos 
 public:
 	// ---- constructora ----
-	Laser(char type, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
-		: laserType(type), SceneObject(position, width, height, vidas, texture, game)
-	{ 
-		// inicializa alive a true al construirse
-		alive = true;
-
-		if (laserType == 'a') vel.setY(1);
-		else vel.setY(-1);
-	};
+	Laser(char type, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game);
 
 	// ---- render ----
 	void render() const override;

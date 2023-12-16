@@ -69,6 +69,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Alien.cpp" />
+    <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="Bunker.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Cannon.cpp" />
@@ -79,6 +80,7 @@
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="Rewards.cpp" />
     <ClCompile Include="SDLApplication.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
@@ -94,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Alien.h" />
+    <ClInclude Include="Bomb.h" />
     <ClInclude Include="Bunker.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Cannon.h" />
@@ -102,6 +105,7 @@
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="FileFormatError.h" />
     <ClInclude Include="FileNotFoundError.h" />
+    <ClInclude Include="Rewards.h" />
     <ClInclude Include="SDLApplication.h" />
     <ClInclude Include="gameList.h" />
     <ClInclude Include="GameObject.h" />
