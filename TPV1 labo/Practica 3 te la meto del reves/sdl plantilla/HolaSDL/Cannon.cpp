@@ -95,25 +95,31 @@ void Cannon::manageCooldown()
 {
 	
 
-	if (currentCD < cooldown) {
-		currentCD++;
-	}
-	else {
-
-		shoot();
-
-		currentCD = 0;
-	}
+	shoot();
 }
 
 void Cannon::shoot()
 {
+
+	if (currentCD < cooldown) {
+		currentCD++;
+	}
+
 	if (keySpace) {
 
-		Point2D<double> pos{ this->position.getX() + 15, this->getPosition().getY() + 25 };
+		if(currentCD >= cooldown){
 
+			//cout << "SHOOT!" << endl;
 
-		playState->fireLaser(this->position, 'a');
+			Point2D<double> pos{ this->position.getX() + 15, this->getPosition().getY() + 25 };
+
+			//cout << "EHHHHH??? " << endl;
+
+			playState->fireLaser(this->position, 'a');
+
+			currentCD = 0;
+		}
+		
 	}
 }
 
