@@ -23,8 +23,6 @@ void PlayState::loadTextures()
 	// bucle para rellenar el array de texturas
 	for (int i = 0; i < app->getNumText(); i++) {
 
-		cout << " texture " << i << endl;
-
 		// crea la textura con el url, width y height
 		Texture* tex = new Texture(app->getRenderer(), app->getTextureSpec(i).url, app->getTextureSpec(i).nh, app->getTextureSpec(i).nw);
 
@@ -391,7 +389,7 @@ bool PlayState::mayGrantReward(SDL_Rect rect)
 // MANEJO DE EVENTOS
 void PlayState::HandleEvent(const SDL_Event& event)
 {
-	cout << eventListeners.size() << endl;
+	//cout << eventListeners.size() << endl;
 
 	// gestiona todos los eventos del estado correspondiente
 	GameState::HandleEvent(event);
@@ -506,12 +504,6 @@ void PlayState::hasDied(GameList<SceneObject, true>::anchor i)
 
 void PlayState::fireLaser(Point2D<double> pos, char frenemy)
 {
-	if (frenemy == 'a') {
-		SDL_SetRenderDrawColor(app->getRenderer(), 255, 0, 114, 255);	// cannon   255, 0, 114, 255
-	}
-	else {
-		SDL_SetRenderDrawColor(app->getRenderer(), 255, 242, 0, 255);	// aliens
-	}
 	// crea el laser
 	SceneObject* newObj = new Laser(frenemy, pos, defaultLaserW, defaultLaserH, defaultLives, nullptr, this);
 

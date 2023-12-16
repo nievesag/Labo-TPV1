@@ -108,7 +108,10 @@ void Cannon::shoot()
 	if (keySpace) {
 
 		Point2D<double> pos{ this->position.getX() + 15, this->getPosition().getY() + 25 };
- 		playState->fireLaser(pos, 'a');
+
+ 		//playState->fireLaser(pos, 'a');
+
+		playState->fireLaser(pos, 'a');
 	}
 }
 
