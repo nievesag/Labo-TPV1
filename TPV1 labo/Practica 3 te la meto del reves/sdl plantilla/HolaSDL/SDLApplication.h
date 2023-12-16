@@ -33,18 +33,18 @@ constexpr uint winHeight = 600;
 // ---- FRAMES ----
 // gestion de frames y framerate 
 constexpr int FRAMERATE = 60,						// frames por segundo
-					TIME_BT_FRAMES = 100 / FRAMERATE,		// tiempo entre frames
-					ALIEN_FR = 8 * FRAMERATE,				// cantidad de frames entre updates del alien
-					END_GAME = 300,							// distancia de los aliens para acabar
-					ALIEN_RF = 5 * FRAMERATE,				// cada cuanto se actualiza el alien
-					SHOOT_FRAMES = TIME_BT_FRAMES * 100,	// cantidad de frames entre updates
-					ANIMATION_DURATION = 10;
-
+			TIME_BT_FRAMES = 100 / FRAMERATE,		// tiempo entre frames
+			ALIEN_FR = 8 * FRAMERATE,				// cantidad de frames entre updates del alien
+			END_GAME = 300,							// distancia de los aliens para acabar
+			ALIEN_RF = 5 * FRAMERATE,				// cada cuanto se actualiza el alien
+			SHOOT_FRAMES = TIME_BT_FRAMES * 100,	// cantidad de frames entre updates
+			ANIMATION_DURATION = 10;
 
 constexpr double LASER_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de laser
-						ALIEN_SPEED = 10 * TIME_BT_FRAMES,	// velocidad de aliens
-						CANNON_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de cannon
-						UFO_SPEED = 6 * TIME_BT_FRAMES;		// velocidad de ufo
+				ALIEN_SPEED = 10 * TIME_BT_FRAMES,	// velocidad de aliens
+				CANNON_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de cannon
+				UFO_SPEED = 6 * TIME_BT_FRAMES,		// velocidad de ufo
+				REWARD_SPEED = 1 * TIME_BT_FRAMES;	// velocidad de reward
 						
 
 // ---- TEXTURAS ----

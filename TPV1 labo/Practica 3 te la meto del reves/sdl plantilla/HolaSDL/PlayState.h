@@ -143,6 +143,9 @@ public:
 	
 	// 
 	void renderBackground() const;
+
+	// 
+	bool mayGrantReward(SDL_Rect rect, char rewardType);
 };
 
 #endif
