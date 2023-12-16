@@ -145,7 +145,7 @@ public:
 	void renderBackground() const;
 
 	// 
-	bool mayGrantReward(SDL_Rect rect, char rewardType);
+	bool mayGrantReward(SDL_Rect rect);
 };
 
 #endif

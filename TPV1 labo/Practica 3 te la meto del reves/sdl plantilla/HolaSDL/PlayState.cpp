@@ -382,8 +382,9 @@ void PlayState::renderBackground() const {
 	app->getTexture(Fondo)->render();
 }
 
-bool PlayState::mayGrantReward(SDL_Rect rect, char rewardType)
+bool PlayState::mayGrantReward(SDL_Rect rect)
 {
+	// deteccion de colision de la reward con el cannon
 	return false;
 }
 

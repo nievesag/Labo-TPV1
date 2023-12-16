@@ -3,28 +3,40 @@
 
 #include "SceneObject.h"
 #include "checkML.h"
+#include "cannon.h"
 
 using namespace std;
 using uint = unsigned int;
+
+// utiliza callbacks funcionales de tipo <void(const SDL_Event&)>
+using SDLEventCallback = function<void()>;
 
 // recompensa de inmunidad (clase extensible)
 class Rewards : public SceneObject
 {
 	// atributos privados
 private:
-	// inmunidad 'i' si es la reward de inmunidad
-	// (aqui solo hay una reward pero asi es extnsible si hubiese mas)
-	char rewardType;
-
 	SDL_Rect* rect;
 
+	Cannon* cannon;
+
 	Vector2D<double> vel;
+
+	SDLEventCallback callback;
+
+	// CALLBACKS: funcion ejecutable «A» que se usa como argumento de función «B». 
+	// -> al llamar a «B» la funcion ejecuta «A»
+	// lista de funciones a llamar cuando sucede un evento
+	list<SDLEventCallback> callbacks;
+
+	// METODOS PRIVADOS
+	void emit() const;
 
 	// metodos publicos
 public: 
 	// ---- constructora ----
-	Rewards(char type, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
-		: rewardType(type), SceneObject(position, width, height, vidas, texture, game)
+	Rewards(SDLEventCallback callback, char type, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
+		: callback(callback), SceneObject(position, width, height, vidas, texture, game)
 	{ };
 
 	// ---- render ----
@@ -35,7 +47,7 @@ public:
 
 	// ---- hit ----
 	// colision con la nave
-	bool obtain(SDL_Rect* rect, char frenemy);
+	//bool obtain(SDL_Rect* rect, char frenemy);
 
 	// devuelve si esta fuera del marco de juego 
 	bool isOut();
@@ -45,6 +57,9 @@ public:
 
 	// actualiza el rect
 	void updateRect() override;
+
+	// PARA CALLBACKS
+	void connectReward(SDLEventCallback rewardCallback);
 };
 
 #endif

@@ -1,6 +1,13 @@
 #include "Rewards.h"
 #include "SDLApplication.h"
 
+void Rewards::emit() const
+{
+	// llama a todas las funciones registradas
+	for (const SDLEventCallback& rewardCallback : callbacks)
+		rewardCallback();
+}
+
 void Rewards::render() const
 {
 
@@ -14,18 +21,14 @@ void Rewards::update()
 	// actualiza el rect (colisiones)
 	updateRect();
 
-	// le pregunta si hay alguien a quien pegar un hostion
-	if (playState->damage(destRect, 'r') || isOut()) {
+	if (isOut()) {
 
-		// le dice al game que ha muerto
-		playState->hasDied(sceneanc);
 	}
-}
 
-bool Rewards::obtain(SDL_Rect* rect, char frenemy)
-{
-	// WIP
-	return (SDL_HasIntersection(rect, &destRect));
+	// le pregunta si hay alguien a quien pegar un hostion
+	if (playState->mayGrantReward(destRect) && !isOut()) {
+		emit();
+	}
 }
 
 bool Rewards::isOut()
@@ -44,4 +47,9 @@ void Rewards::updateRect()
 	// posicion               
 	destRect.x = position.getX();
 	destRect.y = position.getY();
+}
+
+void Rewards::connectReward(SDLEventCallback rewardCallback)
+{
+	callbacks.push_back(rewardCallback);
 }

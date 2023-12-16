@@ -59,6 +59,8 @@ public:
 	// maneja el cooldown
 	void manageCooldown();
 
+	void invencible();
+
 private:
 	// movimiento de la nave
 	void movement();
