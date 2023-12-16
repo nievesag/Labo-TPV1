@@ -25,9 +25,6 @@ void MainMenuState::render() const
 {
 	// renderiza la imagen de fondo
 	application->getTexture(MainMenu)->render();
-
-	//
-	//cout << "render" << endl;
 }
 
 bool MainMenuState::onEnter()
@@ -41,11 +38,12 @@ bool MainMenuState::onExit()
 	cout << "exiting MenuState\n";
 	return true;
 }
-
+       
 string MainMenuState::getID() const
 {
 	return s_menuID;
 }
+
 
 // ---- FUNCIONES A REALIZAR POR LOS BOTONES ----
 
