@@ -28,6 +28,12 @@ private:
 	// contador del cooldown
 	int currentCD;
 
+	// si el cannon tiene la reward de invencibilidad o no
+	bool invencibleReward; 
+
+	int rewardTimer = 0;
+	int maxRewardTimer = 50;
+
 	// metodos publicos 
 public:
 	// ---- constructora ----
@@ -46,6 +52,11 @@ public:
 		return vidas;
 	}
 
+	// setter de vidas
+	void setLives(int newVidas) {
+		vidas = newVidas;
+	}
+
 	// manejo de eventos del player
 	void handleEvent(const SDL_Event& event) override;
 
@@ -57,9 +68,9 @@ public:
 	void updateRect() override;
 
 	// maneja el cooldown
-	void manageCooldown();
+	void manageRewardDuration();
 
-	void invencible();
+	void setInvencibleReward();
 
 private:
 	// movimiento de la nave

@@ -14,6 +14,7 @@ Cannon::Cannon(int cooldown, Point2D<double> position, int width, int height, in
 
 void Cannon::render() const
 {	
+	// QUE CAMBIE LA APARIENCIA CON EL REWARD????
 	// lo mete en el render
 	texture->render(destRect);
 }
@@ -24,12 +25,13 @@ void Cannon::update()
 	movement();
 
 	// dispara si puede
-	manageCooldown();
+	shoot();
 
 	// actualiza el rect
 	updateRect();
 
-	shoot();
+	// manejar el cooldown del reward
+	manageRewardDuration();
 }
 
 void Cannon::updateRect()
@@ -75,32 +77,29 @@ void Cannon::handleEvent(const SDL_Event& event)
 
 bool Cannon::hit(SDL_Rect* rect, char frenemy)
 {
-
 	if (SDL_HasIntersection(rect, &destRect) && (frenemy == 'r' || frenemy == 'b')) {
 
-		cout << "TETORRAS" << endl;
+		if (!invencibleReward) {
 
-		// informa al game que ha muerto
-		playState->hasDied(sceneanc);
+			// resta una vida
+			setLives(getLives() - 1);
+			
+			if (getLives() <= 0) {
 
-		//application->EndGame();
+				// informa al game que ha muerto
+				playState->hasDied(sceneanc);
 
+				//application->EndGame();
+			}
+		}
 		return true;
 	}
 	// si no
 	return false;
 }
 
-void Cannon::manageCooldown()
-{
-	
-
-	shoot();
-}
-
 void Cannon::shoot()
 {
-
 	if (currentCD < cooldown) {
 		currentCD++;
 	}
@@ -109,17 +108,12 @@ void Cannon::shoot()
 
 		if(currentCD >= cooldown){
 
-			//cout << "SHOOT!" << endl;
-
 			Point2D<double> pos{ this->position.getX() + 15, this->getPosition().getY() + 25 };
-
-			//cout << "EHHHHH??? " << endl;
 
 			playState->fireLaser(this->position, 'a');
 
 			currentCD = 0;
 		}
-		
 	}
 }
 
@@ -169,4 +163,30 @@ void Cannon::save(ostream& out) const
 
 	// guarda las vidas del cannon y el cooldown del disparo
 	out << vidas << " " << cooldown << endl;
+}
+
+
+// ---- REWARDS ----
+
+void Cannon::manageRewardDuration()
+{
+	// si se tiene la reward de invencibilidad
+	if (invencibleReward) {
+
+		// si se llega al tope de cooldown
+		if (rewardTimer >= maxRewardTimer)
+		{
+			// desactivar la reward
+			invencibleReward = false;
+			// resetea el contador
+			rewardTimer = 0;
+		}
+		// aumenta el contador
+		rewardTimer++;
+	}
+}
+
+void Cannon::setInvencibleReward()
+{
+	invencibleReward = true;
 }
