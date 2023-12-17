@@ -14,18 +14,18 @@ PauseState::PauseState(SDLApplication* game, PlayState* playState)
 	//addObject(buttonNuevaPartida);
 	//addObject(buttonCargarPartida);
 	//addObject(buttonSalir);
-	addObject(buttonContinuar);
-	//addObject(buttonGuardarPartida);
+	//addObject(buttonContinuar);
+	addObject(buttonGuardarPartida);
 
 	// para que los botones puedan reaccionar a eventos
-	addEventListener(buttonContinuar);
-	//addEventListener(buttonGuardarPartida);
+	//addEventListener(buttonContinuar);
+	addEventListener(buttonGuardarPartida);
 	//addEventListener(buttonCargarPartida);
 	//addEventListener(buttonSalir);
 
 	// uso de la expresion lambda
-	buttonContinuar->connectButton([this]() { continuarPartida(); });
-	//buttonGuardarPartida->connectButton([this]() { guardarPartida(); });
+	//buttonContinuar->connectButton([this]() { continuarPartida(); });
+	buttonGuardarPartida->connectButton([this]() { guardarPartida(); });
 	//buttonCargarPartida->connectButton([this]() { cargarPartida(); });
 	//buttonSalir->connectButton([this]() { salir(); });
 

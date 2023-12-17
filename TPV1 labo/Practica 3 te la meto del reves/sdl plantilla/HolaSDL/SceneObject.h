@@ -76,7 +76,7 @@ public:
 
 	// ---- save ----
 	// guarda objeto
-	virtual void save(ostream& out) const override;
+	virtual void save(ostream& out) const;
 
 	// ---- hit ----
 	// colisiones

@@ -412,11 +412,12 @@ void PlayState::save(const string& file)
 	ofstream out(SAVED_FOLDER + file + ".txt");
 
 	mother->save(out);
+	
+	
 
-	// bucle para llegar a los save de todos los objetos
-	for (SceneObject i : sceneObjectsList) {
+	for (GameList<SceneObject, true>::forward_iterator i = sceneObjectsList.begin(); i != sceneObjectsList.end(); ++i) {
 
-		(i).save(out);
+		(*i).save(out);
 	}
 
 	// guarda los puntos
