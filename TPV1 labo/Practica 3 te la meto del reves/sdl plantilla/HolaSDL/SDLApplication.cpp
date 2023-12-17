@@ -4,6 +4,8 @@
 #include "FileNotFoundError.h"
 #include "SDLError.h"
 #include "FileFormatError.h" 
+#include <SDL.h>
+#include <SDL_ttf.h>
 
 using namespace std;
 
@@ -14,6 +16,7 @@ SDLApplication::SDLApplication()
 
 	// Inicialización del sistema, ventana y renderer
 	SDL_Init(SDL_INIT_EVERYTHING);
+	TTF_Init();
 
 	// crea la ventana
 	window = SDL_CreateWindow("Space Invaders", winX, winY, winWidth, winHeight, SDL_WINDOW_SHOWN);

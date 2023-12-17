@@ -18,9 +18,6 @@
 #include "EndState.h"
 #include "PauseState.h"
 
-
-class Button;
-
 using namespace std;
 using uint = unsigned int;
 
