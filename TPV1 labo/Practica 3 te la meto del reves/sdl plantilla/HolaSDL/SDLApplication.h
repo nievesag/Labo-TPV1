@@ -44,7 +44,8 @@ constexpr double LASER_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de laser
 				ALIEN_SPEED = 10 * TIME_BT_FRAMES,	// velocidad de aliens
 				CANNON_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de cannon
 				UFO_SPEED = 6 * TIME_BT_FRAMES,		// velocidad de ufo
-				REWARD_SPEED = 1 * TIME_BT_FRAMES;	// velocidad de reward
+				REWARD_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de reward
+				BOMBA_SPEED = 1 * TIME_BT_FRAMES;	// velocidad de la BOMBA	
 						
 
 // ---- TEXTURAS ----

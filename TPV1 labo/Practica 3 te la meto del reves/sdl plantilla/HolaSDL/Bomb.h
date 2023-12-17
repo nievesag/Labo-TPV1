@@ -4,6 +4,9 @@
 #include "SceneObject.h"
 #include "checkML.h"
 
+class SDLApplication;
+class PlayState;
+
 using namespace std;
 using uint = unsigned int;
 
@@ -13,6 +16,7 @@ private:
 
 	Vector2D<double> vel;
 	bool alive;
+	int hits;	// contador de golpes
 
 public:
 	// ---- constructora ----

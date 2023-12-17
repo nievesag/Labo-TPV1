@@ -1,6 +1,7 @@
 #ifndef LASER_H
 #define LASER_H
 
+#include "checkML.h"
 #include "Vector2D.h"
 #include "texture.h"
 #include "SceneObject.h"
