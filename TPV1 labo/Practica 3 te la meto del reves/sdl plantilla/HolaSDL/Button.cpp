@@ -1,5 +1,26 @@
 #include "Button.h"
 
+
+
+Button::Button(GameState* gameState, Texture* texture, Point2D<double> pos)
+	: GameObject(gameState), buttonTexture(texture), buttonPos(pos), destRect{ 50, 50, 200, 100 }
+{
+	// para animacion
+	currentFrame = MOUSEOUT; // frame inicial a 0
+
+	/*
+	// si hay textura entonces no es un laser y tiene dimensiones
+	if (texture != nullptr) {
+		// setea las dimensiones
+		destRect.w = texture->getFrameWidth();
+		destRect.h = texture->getFrameHeight();
+	}
+	destRect.x = buttonPos.getX();
+	destRect.y = buttonPos.getY();
+	*/
+}
+
+
 void Button::update()
 {
 	SDL_GetMouseState(&point.x, &point.y);

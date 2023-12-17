@@ -6,25 +6,30 @@ MainMenuState::MainMenuState(SDLApplication* game) : GameState(game),
 	buttonSalir(new Button(this, game->getTexture(11), Point2D<double>(1, 1)))
 {
 	// emmmmmmmmmmm q
-	//addObject(buttonNuevaPartida);
+	addObject(buttonNuevaPartida);
 	//addObject(buttonCargarPartida);
 	//addObject(buttonSalir);
 
 	// para que los botones puedan reaccionar a eventos
 	addEventListener(buttonNuevaPartida);
-	addEventListener(buttonCargarPartida);
-	addEventListener(buttonSalir);
+	//addEventListener(buttonCargarPartida);
+	//addEventListener(buttonSalir);
 
 	// uso de la expresion lambda
 	buttonNuevaPartida->connectButton( [this]() { nuevaPartida(); });
-	buttonCargarPartida->connectButton( [this]() { cargarPartida(); });
-	buttonSalir->connectButton( [this]() { salir(); });
+	//buttonCargarPartida->connectButton( [this]() { cargarPartida(); });
+	//buttonSalir->connectButton( [this]() { salir(); });
 }
 
 void MainMenuState::render() const
 {
 	// renderiza la imagen de fondo
 	application->getTexture(MainMenu)->render();
+
+	for (GameObject& a : gamelist) {
+		a.render();
+	}
+	
 }
 
 bool MainMenuState::onEnter()
@@ -49,7 +54,7 @@ string MainMenuState::getID() const
 
 void MainMenuState::nuevaPartida()
 {
-
+	cout << "uwu soy una nueva partida" << endl;
 }
 
 void MainMenuState::cargarPartida()

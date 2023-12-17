@@ -36,16 +36,16 @@ SDLApplication::SDLApplication()
 	// crea una maquina de estados
 	gsMachine = new GameStateMachine();
 
-	//GameState* mms = new MainMenuState(this);
+	GameState* mms = new MainMenuState(this);
 
-	GameState* ps = new PlayState(this);
+	//GameState* ps = new PlayState(this);
 
 	//GameState* es = new EndState(this);
 
 	//GameState* pause = new PauseState(this);
 
 	//
-	gsMachine->pushState(ps);
+	gsMachine->pushState(mms);
 }
 
 SDLApplication::~SDLApplication()

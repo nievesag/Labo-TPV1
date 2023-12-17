@@ -25,7 +25,7 @@ protected:
 	SDLApplication* application;
 
 	// lista de objetos del juego mediante gameList
-	GameList<SceneObject, true> gamelist;
+	GameList<GameObject, true> gamelist;
 
 	// lista de punteros a oyentes
 	list<EventHandler*> eventListeners;
@@ -70,7 +70,7 @@ public:
 
 	// ---------------------- EVENTOS Y OBJETOS -------------------
 	// añade un objeto a la lista de objetos
-	void addObject(SceneObject* object);
+	void addObject(GameObject* object);
 
 	// para registrar oyentes
 	void addEventListener(EventHandler* listener);

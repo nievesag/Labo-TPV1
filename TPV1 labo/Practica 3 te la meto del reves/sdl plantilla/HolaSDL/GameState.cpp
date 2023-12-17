@@ -2,14 +2,14 @@
 
 void GameState::render() const
 {
-	for (SceneObject& objects : gamelist) {
+	for (GameObject& objects : gamelist) {
 		objects.render();
 	}
 }
 
 void GameState::update()
 {
-	for (SceneObject& objects : gamelist) {
+	for (GameObject& objects : gamelist) {
 		objects.update();
 	}
 }
@@ -49,7 +49,7 @@ void GameState::addEventListener(EventHandler* listener)
 	eventListeners.push_back(listener);
 }
 
-void GameState::addObject(SceneObject* object)
+void GameState::addObject(GameObject* object)
 {
 	gamelist.push_back(object);
 }

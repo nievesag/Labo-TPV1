@@ -59,7 +59,11 @@ public:
 	virtual void save(ostream& out) const;
 
 	// anchor
-	//void setListAnchor(GameList<SceneObject, true>::anchor newanc);
+	void setListAnchor(GameList<GameObject, true>::anchor newanc) // list<SceneObject*>::iterator& newit
+	{
+		// setea el iterador de la posicion del objeto en la lista
+		anc = newanc;
+	};
 	
 };
 #endif
