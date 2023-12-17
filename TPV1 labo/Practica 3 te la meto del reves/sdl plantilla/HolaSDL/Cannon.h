@@ -9,7 +9,6 @@
 #include "Button.h"
 #include "PlayState.h"
 class SDLApplication;
-//class PlayState;
 
 using namespace std;
 using uint = unsigned int;
