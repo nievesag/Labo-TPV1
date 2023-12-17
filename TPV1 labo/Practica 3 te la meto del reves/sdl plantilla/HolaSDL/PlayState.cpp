@@ -511,6 +511,21 @@ void PlayState::fireLaser(Point2D<double> pos, char frenemy)
 	sceneObjectsList.push_back(newObj);
 }
 
+void PlayState::fireBomb(Point2D<double> pos) {
+
+	// crea el laser
+	//SceneObject* newObj = new Laser(frenemy, pos, defaultLaserW, defaultLaserH, defaultLives, nullptr, this);
+	// Bomb(Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
+	SceneObject* newObj = new Bomb(pos, app->getTexture(BOMBA)->getFrameWidth(), app->getTexture(BOMBA)->getFrameHeight(),
+		defaultBombLives, app->getTexture(BOMBA), this);
+
+	// lo mete en la lista:
+	// cuando se añade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
+	// pero estatico ??? tipo no se mueve) para luego poder usarlo en eliminaciones de objetos.
+	sceneObjectsList.push_back(newObj);
+
+}
+
 void PlayState::increaseScore(int score)
 {
 

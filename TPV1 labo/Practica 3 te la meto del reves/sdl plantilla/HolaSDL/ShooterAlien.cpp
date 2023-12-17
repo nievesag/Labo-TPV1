@@ -1,13 +1,15 @@
 #include "checkML.h"
 #include "ShooterAlien.h"
 #include "SDLApplication.h"
+#include "PlayState.h"
 
 void ShooterAlien::shoot()
 {
 	if (CDcounter >= cooldown)
 	{
-		// crea un laser nuevo
-		playState->fireLaser(this->getPosition(), 'r');
+		
+
+		
 	}
 }
 
@@ -46,7 +48,20 @@ void ShooterAlien::update()
 	// iniciando los aliens ya con un valor del random se solucionaria??
 	if (CDcounter <= 0) { 
 
-		playState->fireLaser(this->getPosition(), 'r');
+
+		int prob = playState->getRandomRange(playState->getMinProbBomb(), playState->getMaxProbBomb());
+		cout << prob << endl;
+
+		if (prob == 1) {
+
+			cout << "BOMBA" << endl;
+
+			playState->fireBomb(this->getPosition());
+		}
+		else {
+			// crea un laser nuevo
+			playState->fireLaser(this->getPosition(), 'r');
+		}
 	}
 
 	Alien::update();

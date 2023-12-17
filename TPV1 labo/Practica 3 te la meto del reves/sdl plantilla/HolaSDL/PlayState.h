@@ -20,6 +20,7 @@
 #include "Bunker.h"
 #include "Cannon.h"
 #include "Laser.h"
+#include "Bomb.h"
 #include "Ufo.h"
 
 using namespace std;
@@ -42,7 +43,10 @@ private:
 		defaultUfoHeight = 10,
 		defaultLaserW = 4,
 		defaultLaserH = 10,
-		defaultMothershipLevel = 0;
+		defaultBombLives = 2,
+		defaultMothershipLevel = 0,
+		minProbabilityBomb = 1,
+		maxProbabilityBomb = 2;
 
 
 	// -------------------------------------- CARGA Y DESCARGA ---------------------------
@@ -128,6 +132,9 @@ public:
 	// dispara el laser (lo crea)
 	void fireLaser(Point2D<double> pos, char frenemy);
 
+	// dispara una bomba (la crea)
+	void fireBomb(Point2D<double> pos);
+
 	// ------------------------------------- OTROS ----------------------------
 	// delete scene objects
 	void deleteSceneObjects();
@@ -149,6 +156,12 @@ public:
 
 	// 
 	bool mayGrantReward(SDL_Rect rect);
+
+	// --------------------------------- OTROS GETTERS Y SETTERS ----------------------
+
+	int getMinProbBomb() { return minProbabilityBomb; }
+
+	int getMaxProbBomb() { return maxProbabilityBomb; }
 };
 
 #endif

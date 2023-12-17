@@ -38,14 +38,14 @@ SDLApplication::SDLApplication()
 
 	//GameState* mms = new MainMenuState(this);
 
-	GameState* ps = new PlayState(this, "..\\mapas\\prueba");
+	GameState* ps = new PlayState(this, "..\\mapas\\save7");
 
 	//GameState* es = new EndState(this);
 
 	//GameState* pause = new PauseState(this);
 
 	//
-	gsMachine->pushState(mms);
+	gsMachine->pushState(ps);
 }
 
 SDLApplication::~SDLApplication()
