@@ -55,6 +55,12 @@ string MainMenuState::getID() const
 void MainMenuState::nuevaPartida()
 {
 	cout << "uwu soy una nueva partida" << endl;
+
+	// crea un nuevo estado con la direccion indicada
+	GameState* ps = new PlayState(application, "..\\mapas\\prueba");
+
+	// lo pasa al gsMachine que ya luego hace sus cosas
+	application->getgsMachine()->pushState(ps);
 }
 
 void MainMenuState::cargarPartida()

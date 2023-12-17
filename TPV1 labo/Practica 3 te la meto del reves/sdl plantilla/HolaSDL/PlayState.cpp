@@ -6,7 +6,7 @@
 #include "PauseState.h"
 #include "EndState.h"
 
-PlayState::PlayState(SDLApplication* game) : app(game), GameState(game) {
+PlayState::PlayState(SDLApplication* game, string loadFile) : app(game), GameState(game), loadFile(loadFile) {
 
 }
 
@@ -38,10 +38,10 @@ void PlayState::loadTextures()
 	}
 }
 
-void PlayState::loadAnyFile(const string& file, const string& root)
+void PlayState::loadAnyFile(const string& fileAndRoot)
 {
 	// lee el mapa
-	ifstream in(root + file + ".txt");
+	ifstream in(fileAndRoot + ".txt");
 
 	// !!!!!! MIRAR
 	//if (in.fail()) throw FileNotFoundError("No se ha podido leer el mapa "s + file + ".txt");
@@ -455,10 +455,8 @@ bool PlayState::onEnter()
 	//
 	std::cout << "entering PlayState\n";
 
-	//loadTextures();
-
 	// carga la partida
-	loadAnyFile("save7", "..\\mapas\\");
+	loadAnyFile(loadFile);
 
 	return true;
 }

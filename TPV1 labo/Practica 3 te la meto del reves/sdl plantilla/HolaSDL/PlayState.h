@@ -62,6 +62,9 @@ protected:
 	// lista de objetos de escena (cannon, aliens, bunkeres, laser)
 	GameList<SceneObject, true> sceneObjectsList;
 
+	// archivo que leer, lo pasas del menu inicial, ya sea carga o no
+	string loadFile;
+
 	// lista de iteradores de objetos que eliminar
 	//list<list<SceneObject*>::iterator> objectsToErase;
 	// lista de anchors de objetos a eliminar
@@ -83,7 +86,7 @@ protected:
 
 public:
 	// constructora
-	PlayState::PlayState(SDLApplication* game);
+	PlayState::PlayState(SDLApplication* game, string loadFile);
 
 	// -------------------------------- HERENCIA --------------------------------
 	// update
@@ -136,7 +139,7 @@ public:
 	void loadTextures();
 
 	// carga el cualquier archivo
-	void loadAnyFile(const string& file, const string& root);
+	void loadAnyFile(const string& fileAndRoot);
 
 	//
 	void increaseScore(int score);
