@@ -28,6 +28,8 @@ public:
 		// inicializa alive a true al construirse
 		alive = true;
 
+		hits = 0;
+
 		vel.setY(-1);
 	};
 

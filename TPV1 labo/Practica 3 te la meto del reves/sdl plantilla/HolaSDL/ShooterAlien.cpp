@@ -60,7 +60,7 @@ void ShooterAlien::update()
 		}
 		else {
 			// crea un laser nuevo
-			playState->fireLaser(this->getPosition(), 'r');
+			//playState->fireLaser(this->getPosition(), 'r');
 		}
 	}
 

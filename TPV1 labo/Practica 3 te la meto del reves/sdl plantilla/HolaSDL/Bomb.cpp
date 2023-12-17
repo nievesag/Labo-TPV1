@@ -20,7 +20,6 @@ void Bomb::update()
 
 		hits++;
 
-
 		if (hits >= vidas) {
 
 			// le dice al game que ha muerto

@@ -5,7 +5,7 @@
 #include "SDLError.h"
 #include "FileFormatError.h" 
 #include <SDL.h>
-#include <SDL_ttf.h>
+//#include <SDL_ttf.h>
 
 using namespace std;
 
@@ -16,7 +16,7 @@ SDLApplication::SDLApplication()
 
 	// Inicialización del sistema, ventana y renderer
 	SDL_Init(SDL_INIT_EVERYTHING);
-	TTF_Init();
+	//TTF_Init();
 
 	// crea la ventana
 	window = SDL_CreateWindow("Space Invaders", winX, winY, winWidth, winHeight, SDL_WINDOW_SHOWN);
@@ -41,7 +41,7 @@ SDLApplication::SDLApplication()
 
 	//GameState* mms = new MainMenuState(this);
 
-	GameState* ps = new PlayState(this, "..\\mapas\\save7");
+	GameState* ps = new PlayState(this, "..\\mapas\\original");
 
 	//GameState* es = new EndState(this);
 
