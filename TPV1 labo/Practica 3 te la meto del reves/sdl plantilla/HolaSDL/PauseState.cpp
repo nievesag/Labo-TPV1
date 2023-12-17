@@ -1,6 +1,10 @@
 #include "PauseState.h"
 
-PauseState::PauseState(SDLApplication* game, PlayState* playState) : GameState(game), playState(playState),
+#include "checkML.h"
+#include "SDLApplication.h"
+
+PauseState::PauseState(SDLApplication* game, PlayState* playState) 
+	: GameState(game), playState(playState), app(game),
 	buttonContinuar(new Button(this, game->getTexture(11), Point2D<double>(1, 1))),
 	buttonGuardarPartida(new Button(this, game->getTexture(11), Point2D<double>(1, 1))),
 	buttonCargarPartida(new Button(this, game->getTexture(11), Point2D<double>(1, 1))),
@@ -10,23 +14,26 @@ PauseState::PauseState(SDLApplication* game, PlayState* playState) : GameState(g
 	//addObject(buttonNuevaPartida);
 	//addObject(buttonCargarPartida);
 	//addObject(buttonSalir);
+	addObject(buttonContinuar);
+	//addObject(buttonGuardarPartida);
 
 	// para que los botones puedan reaccionar a eventos
 	addEventListener(buttonContinuar);
-	addEventListener(buttonGuardarPartida);
-	addEventListener(buttonCargarPartida);
-	addEventListener(buttonSalir);
+	//addEventListener(buttonGuardarPartida);
+	//addEventListener(buttonCargarPartida);
+	//addEventListener(buttonSalir);
 
 	// uso de la expresion lambda
 	buttonContinuar->connectButton([this]() { continuarPartida(); });
-	buttonGuardarPartida->connectButton([this]() { guardarPartida(); });
-	buttonCargarPartida->connectButton([this]() { cargarPartida(); });
-	buttonSalir->connectButton([this]() { salir(); });
+	//buttonGuardarPartida->connectButton([this]() { guardarPartida(); });
+	//buttonCargarPartida->connectButton([this]() { cargarPartida(); });
+	//buttonSalir->connectButton([this]() { salir(); });
+
 }
 
 void PauseState::render()
 {
-	//application->getTexture(SaveGame)->render();
+	app->getTexture(Fondo)->render();
 }
 
 bool PauseState::onEnter()
@@ -51,7 +58,7 @@ string PauseState::getID() const
 void PauseState::continuarPartida()
 {
 	// quita el estado on TOP
-	application->getgsMachine()->popState();
+	app->getgsMachine()->popState();
 }
 
 void PauseState::guardarPartida()
@@ -62,9 +69,7 @@ void PauseState::guardarPartida()
 
 void PauseState::cargarPartida()
 {
-	// quita este estado
-	application->getgsMachine()->popState();
-
+	
 	char k;
 	string file;
 
@@ -75,14 +80,24 @@ void PauseState::cargarPartida()
 	file = "..\\saved\\save" + to_string(k - '0');
 
 	// crea un nuevo estado con la direccion indicada
-	GameState* ps = new PlayState(application, file);
+	GameState* ps = new PlayState(app, file);
+
+	app;
+
+	app->getgsMachine();
 
 	// crea un nuevo play state y lo remplaza con el anterior
-	application->getgsMachine()->replaceState(ps);
+	app->getgsMachine()->replaceState(ps);
+
+	// quita este estado
+	app->getgsMachine()->popState();
+
+	
+
 }
 
 void PauseState::salir()
 {
 	// settea el exit a false (del sdl application)
-	application->setExit(true);
+	app->setExit(true);
 }

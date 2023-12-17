@@ -24,6 +24,9 @@ protected:
 	// Todos los metodos se ocupan de gestionar la pila 
 	stack<GameState*> states;
 
+	//
+	list<GameState*> statesToDelete;
+
 public:
 	GameStateMachine() {
 

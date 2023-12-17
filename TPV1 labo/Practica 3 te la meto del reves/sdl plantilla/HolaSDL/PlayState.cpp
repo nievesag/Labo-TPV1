@@ -397,11 +397,11 @@ void PlayState::HandleEvent(const SDL_Event& event)
 	// si se pulsa esc
 	if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
 
-		cout << "END" << endl;
+		//cout << "END" << endl;
 
 		// pausa el juego
 		// (aniade el estado de pausa a la maquina de estados de application)
-		application->getgsMachine()->pushState(new PauseState(application));
+		application->getgsMachine()->pushState(new PauseState(application, this));
 	}
 }
 
