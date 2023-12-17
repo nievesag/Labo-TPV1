@@ -2,7 +2,7 @@
 #include "SDLApplication.h"
 
 Rewards::Rewards(Point2D<double> position, int width, int height, Texture* rewardTexture, PlayState* game, SDLEventCallback rewardCallback)
-	: rewardCallback(rewardCallback), SceneObject(position, width, height, game), rewardTexture(rewardTexture)
+	: rewardCallback(rewardCallback), SceneObject(position, width, height, 1, rewardTexture, game), rewardTexture(rewardTexture)
 {
 	destRect.w = texture->getFrameWidth();
 	destRect.h = texture->getFrameHeight();

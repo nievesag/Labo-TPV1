@@ -77,7 +77,7 @@ protected:
 	Mothership* mother = nullptr;
 
 	// puntero al cannon
-	Cannon* cannon;
+	Cannon* cannon = nullptr;
 
 	mt19937_64 randomGenerator;	// crea semilla
 
