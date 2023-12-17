@@ -6,19 +6,19 @@ MainMenuState::MainMenuState(SDLApplication* game) : GameState(game),
 	buttonSalir(new Button(this, game->getTexture(11), Point2D<double>(1, 1)))
 {
 	// emmmmmmmmmmm q
-	//addObject(buttonNuevaPartida);
+	addObject(buttonNuevaPartida);
 	//addObject(buttonCargarPartida);
-	addObject(buttonSalir);
+	//addObject(buttonSalir);
 
 	// para que los botones puedan reaccionar a eventos
-	//addEventListener(buttonNuevaPartida);
+	addEventListener(buttonNuevaPartida);
 	//addEventListener(buttonCargarPartida);
-	addEventListener(buttonSalir);
+	//addEventListener(buttonSalir);
 
 	// uso de la expresion lambda
-	//buttonNuevaPartida->connectButton( [this]() { nuevaPartida(); });
+	buttonNuevaPartida->connectButton( [this]() { nuevaPartida(); });
 	//buttonCargarPartida->connectButton( [this]() { cargarPartida(); });
-	buttonSalir->connectButton( [this]() { salir(); });
+	//buttonSalir->connectButton( [this]() { salir(); });
 }
 
 void MainMenuState::render() const

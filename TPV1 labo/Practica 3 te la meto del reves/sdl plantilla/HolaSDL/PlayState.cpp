@@ -429,7 +429,7 @@ void PlayState::save(const string& file)
 void PlayState::saveThisGame()
 {
 	// pregunta en que numero se va a guardar la partida
-	cout << "Save this game in slot: " << std::endl;
+	// << "Save this game in slot: " << std::endl;
 
 	// lee el numero en char k
 	cin >> k;

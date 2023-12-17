@@ -14,6 +14,8 @@ class PauseState : public GameState{
 private:
 	const string s_pauseID = "PAUSE";
 
+	PlayState* playState;
+
 	// punteros a los botones del PAUSE MENU
 	// botones en este estado: CONTINUAR / GUARDAR PARTIDA / CARGAR PARTIDA / SALIR
 	Button* buttonContinuar;
@@ -23,7 +25,7 @@ private:
 
 public:
 	// constructora
-	PauseState::PauseState(SDLApplication* game);
+	PauseState::PauseState(SDLApplication* game, PlayState* playState);
 
 	// renderizado del estado
 	virtual void render();

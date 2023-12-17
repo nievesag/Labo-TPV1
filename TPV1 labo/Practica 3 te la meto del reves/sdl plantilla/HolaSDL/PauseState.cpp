@@ -1,6 +1,6 @@
 #include "PauseState.h"
 
-PauseState::PauseState(SDLApplication* game) : GameState(game),
+PauseState::PauseState(SDLApplication* game, PlayState* playState) : GameState(game), playState(playState),
 	buttonContinuar(new Button(this, game->getTexture(11), Point2D<double>(1, 1))),
 	buttonGuardarPartida(new Button(this, game->getTexture(11), Point2D<double>(1, 1))),
 	buttonCargarPartida(new Button(this, game->getTexture(11), Point2D<double>(1, 1))),
@@ -56,12 +56,29 @@ void PauseState::continuarPartida()
 
 void PauseState::guardarPartida()
 {
-
+	// llama al metodo de guardado del play state
+	playState->saveThisGame();
 }
 
 void PauseState::cargarPartida()
 {
+	// quita este estado
+	application->getgsMachine()->popState();
 
+	char k;
+	string file;
+
+	// lee el numero
+	cin >> k;
+
+	// crea un string con el archivo
+	file = "..\\saved\\save" + to_string(k - '0');
+
+	// crea un nuevo estado con la direccion indicada
+	GameState* ps = new PlayState(application, file);
+
+	// crea un nuevo play state y lo remplaza con el anterior
+	application->getgsMachine()->replaceState(ps);
 }
 
 void PauseState::salir()
