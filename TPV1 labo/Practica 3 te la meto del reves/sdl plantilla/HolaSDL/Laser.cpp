@@ -61,10 +61,11 @@ bool Laser::hit(SDL_Rect* rect, char frenemy)
 
 		// le dice al game que ha muerto
 		playState->hasDied(sceneanc);
+
+		return true;
 	}
 
-	// si colisiona con un laser amigo true
-	return (SDL_HasIntersection(rect, &destRect) && (frenemy != laserType));
+	return false;
 }
 
 bool Laser::isOut()
