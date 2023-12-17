@@ -6,18 +6,18 @@ MainMenuState::MainMenuState(SDLApplication* game) : GameState(game),
 	buttonSalir(new Button(this, game->getTexture(11), Point2D<double>(1, 1)))
 {
 	// emmmmmmmmmmm q
-	addObject(buttonNuevaPartida);
-	//addObject(buttonCargarPartida);
+	//addObject(buttonNuevaPartida);
+	addObject(buttonCargarPartida);
 	//addObject(buttonSalir);
 
 	// para que los botones puedan reaccionar a eventos
-	addEventListener(buttonNuevaPartida);
-	//addEventListener(buttonCargarPartida);
+	//addEventListener(buttonNuevaPartida);
+	addEventListener(buttonCargarPartida);
 	//addEventListener(buttonSalir);
 
 	// uso de la expresion lambda
-	buttonNuevaPartida->connectButton( [this]() { nuevaPartida(); });
-	//buttonCargarPartida->connectButton( [this]() { cargarPartida(); });
+	//buttonNuevaPartida->connectButton( [this]() { nuevaPartida(); });
+	buttonCargarPartida->connectButton( [this]() { cargarPartida(); });
 	//buttonSalir->connectButton( [this]() { salir(); });
 }
 
@@ -54,8 +54,6 @@ string MainMenuState::getID() const
 
 void MainMenuState::nuevaPartida()
 {
-	cout << "uwu soy una nueva partida" << endl;
-
 	// crea un nuevo estado con la direccion indicada
 	GameState* ps = new PlayState(application, "..\\mapas\\prueba");
 
@@ -65,7 +63,30 @@ void MainMenuState::nuevaPartida()
 
 void MainMenuState::cargarPartida()
 {
+	char k;
+	string file;
 
+	cin >> k;
+
+	if (isdigit(k))
+	{
+		
+
+		// se ha salvado el juego
+		cout << "Game loaded!" << endl;
+	}
+	else cout << "Invalid number :(";
+
+	file = "..\\saved\\save" + to_string(k - '0');
+
+
+
+	// crea un nuevo estado con la direccion indicada
+	GameState* ps = new PlayState(application, file);
+
+	// lo pasa al gsMachine que ya luego hace sus cosas
+	application->getgsMachine()->pushState(ps);
+	
 }
 
 void MainMenuState::salir()

@@ -5,6 +5,7 @@
 #include "GameState.h"
 //#include "Button.h"
 #include "SDLApplication.h"
+#include <string>
 //class SDLApplication;
 
 class Button;
