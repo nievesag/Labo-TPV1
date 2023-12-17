@@ -39,6 +39,8 @@ private:
 
 	int UfoScore = 100;
 
+	int rewardProb;
+
 	// metodos publicos
 public:
 	// ---- constructora ----
