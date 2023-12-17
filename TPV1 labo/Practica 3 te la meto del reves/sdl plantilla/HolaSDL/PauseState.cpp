@@ -50,7 +50,7 @@ string PauseState::getID() const
 
 void PauseState::continuarPartida()
 {
-
+	
 }
 
 void PauseState::guardarPartida()
@@ -65,4 +65,6 @@ void PauseState::cargarPartida()
 
 void PauseState::salir()
 {
+	// settea el exit a false (del sdl application)
+	application->setExit(true);
 }

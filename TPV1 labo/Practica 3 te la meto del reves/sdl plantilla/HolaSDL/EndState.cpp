@@ -45,10 +45,17 @@ string EndState::getID() const
 
 void EndState::volverMenu()
 {
+	// crea un nuevo estado con la direccion indicada
+	GameState* mms = new MainMenuState(application);
+
+	// lo pasa al gsMachine que ya luego hace sus cosas
+	application->getgsMachine()->pushState(mms);
 
 }
 
 void EndState::salir()
 {
+	// settea el exit a false (del sdl application)
+	application->setExit(true);
 
 }
