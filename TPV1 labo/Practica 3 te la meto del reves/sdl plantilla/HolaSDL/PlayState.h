@@ -24,6 +24,8 @@
 #include "Ufo.h"
 #include "Rewards.h"
 
+class Cannon;
+
 using namespace std;
 using uint = unsigned int;
 
@@ -77,7 +79,7 @@ protected:
 	Mothership* mother = nullptr;
 
 	// puntero al cannon
-	Cannon* cannon = nullptr;
+	Cannon* cannonRef;
 
 	mt19937_64 randomGenerator;	// crea semilla
 

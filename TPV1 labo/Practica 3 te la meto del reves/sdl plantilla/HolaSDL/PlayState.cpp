@@ -312,26 +312,27 @@ void PlayState::renderBackground() const {
 bool PlayState::mayGrantReward(SDL_Rect rect) const
 {
 	// deteccion de colision de la reward con el cannon
-	SDL_Rect cannonRect = *cannon->getRect();
+	SDL_Rect cannonRect = *cannonRef->getRect();
 	return SDL_HasIntersection(&rect, &cannonRect);
 }
 
 void PlayState::dropReward(Point2D<double> pos)
 {
+	Vector2D<double> aa{ pos.getX(), pos.getY() };
+
+	/*
 	// crea reward
-	SceneObject* newObj = new Rewards(pos, app->getTexture(Shield)->getFrameWidth(), 
+	SceneObject* newObj = new Rewards(aa, app->getTexture(Shield)->getFrameWidth(), 
 		app->getTexture(Shield)->getFrameHeight(), app->getTexture(Shield), 
-		this, cannon->setInvencibleReward());
+		this, cannonRef->setInvencibleReward());
 
-
-	SceneObject* a = new Rewards(pos, app->getTexture(Shield)->getFrameWidth(), 
-		app->getTexture(Shield)->getFrameHeight(), app->getTexture(Shield), 
-		this, cannon->setInvencibleReward());
 
 	// lo mete en la lista:
 	// cuando se añade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
 	// pero estatico ??? tipo no se mueve) para luego poder usarlo en eliminaciones de objetos.
 	sceneObjectsList.push_back(newObj);
+	*/
+	
 }
 
 // MANEJO DE EVENTOS
