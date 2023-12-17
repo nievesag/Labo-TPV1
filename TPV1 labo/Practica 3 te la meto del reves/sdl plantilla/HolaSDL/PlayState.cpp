@@ -325,7 +325,7 @@ void PlayState::dropReward(Point2D<double> pos)
 	// crea reward
 	SceneObject* newObj = new Rewards(pos, app->getTexture(Shield)->getFrameWidth(), 
 		app->getTexture(Shield)->getFrameHeight(), app->getTexture(Shield), 
-		this, [this] {cannonRef->setInvencibleReward();});
+		this, [this]() { cannonRef->setInvencibleReward(); });
 
 	// lo mete en la lista:
 	// cuando se añade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
