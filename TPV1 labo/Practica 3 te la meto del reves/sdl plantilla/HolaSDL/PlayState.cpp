@@ -309,10 +309,11 @@ void PlayState::renderBackground() const {
 	app->getTexture(Fondo)->render();
 }
 
-bool PlayState::mayGrantReward(SDL_Rect rect)
+bool PlayState::mayGrantReward(SDL_Rect rect) const
 {
 	// deteccion de colision de la reward con el cannon
-	return false;
+	SDL_Rect cannonRect = *cannon->getRect();
+	return SDL_HasIntersection(&rect, &cannonRect);
 }
 
 void PlayState::dropReward(Point2D<double> pos)

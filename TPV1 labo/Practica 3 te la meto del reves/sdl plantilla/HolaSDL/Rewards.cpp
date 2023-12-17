@@ -1,11 +1,11 @@
 #include "Rewards.h"
 #include "SDLApplication.h"
 
-void Rewards::emit() const
+Rewards::Rewards(Point2D<double> position, int width, int height, Texture* rewardTexture, PlayState* game, SDLEventCallback rewardCallback)
+	: rewardCallback(rewardCallback), SceneObject(position, width, height, game), rewardTexture(rewardTexture)
 {
-	// llama a todas las funciones registradas
-	for (const SDLEventCallback& rewardCallback : callbacks)
-		rewardCallback();
+	destRect.w = texture->getFrameWidth();
+	destRect.h = texture->getFrameHeight();
 }
 
 void Rewards::render() const
@@ -24,9 +24,15 @@ void Rewards::update()
 
 	// le pregunta si hay alguien a quien dar reward
 	if (playState->mayGrantReward(destRect)) {
-		emit();
+
+		// llama al callback de la reward
+		rewardCallback();
+
+		// elimina reward después de colisionar
+		playState->hasDied(sceneanc);
 	}
 	else if (isOut()) {
+		// elimina reward si se sale del marco de juego
 		playState->hasDied(sceneanc);
 	}
 }
@@ -47,9 +53,4 @@ void Rewards::updateRect()
 	// posicion               
 	destRect.x = position.getX();
 	destRect.y = position.getY();
-}
-
-void Rewards::connectReward(SDLEventCallback rewardCallback)
-{
-	callbacks.push_back(rewardCallback);
 }

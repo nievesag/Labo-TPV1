@@ -76,15 +76,19 @@ protected:
 	// puntero al mothership
 	Mothership* mother = nullptr;
 
+	// puntero al cannon
+	Cannon* cannon;
+
 	mt19937_64 randomGenerator;	// crea semilla
 
-	int SCORE = 0;	// score general del player
 
 	char k; // crea un char para guardar el numero
 
 	void HandleEvent(const SDL_Event &event) override;
 
 public:
+	int SCORE = 0;	// score general del player
+
 	// constructora
 	PlayState::PlayState(SDLApplication* game, string loadFile);
 
@@ -159,7 +163,7 @@ public:
 	int getMaxProbBomb() { return maxProbabilityBomb; }
 
 	// ---- REWARDS ----
-	bool mayGrantReward(SDL_Rect rect);
+	bool mayGrantReward(SDL_Rect rect) const;
 
 	// dropea reward (la crea)
 	void dropReward(Point2D<double> pos);
