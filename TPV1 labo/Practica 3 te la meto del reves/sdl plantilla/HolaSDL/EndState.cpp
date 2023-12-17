@@ -45,12 +45,9 @@ string EndState::getID() const
 
 void EndState::volverMenu()
 {
-	// crea un nuevo estado con la direccion indicada
-	GameState* mms = new MainMenuState(application);
-
-	// lo pasa al gsMachine que ya luego hace sus cosas
-	application->getgsMachine()->pushState(mms);
-
+	// quita los dos estados on TOP, porque siempre seran el propio endGame y el paystate
+	application->getgsMachine()->popState();
+	application->getgsMachine()->popState();
 }
 
 void EndState::salir()

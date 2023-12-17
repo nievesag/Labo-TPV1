@@ -50,7 +50,8 @@ string PauseState::getID() const
 
 void PauseState::continuarPartida()
 {
-	
+	// quita el estado on TOP
+	application->getgsMachine()->popState();
 }
 
 void PauseState::guardarPartida()
