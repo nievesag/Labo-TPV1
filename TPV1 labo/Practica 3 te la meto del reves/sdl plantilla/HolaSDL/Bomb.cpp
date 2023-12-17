@@ -41,8 +41,7 @@ bool Bomb::hit(SDL_Rect* rect, char frenemy)
 
 bool Bomb::isOut()
 {
-	return ((this->position.getY() >= winHeight)
-		|| (this->position.getY() <= 0));
+	return (this->position.getY() >= winHeight);
 }
 
 void Bomb::move()

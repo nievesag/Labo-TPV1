@@ -1,7 +1,5 @@
 #include "Button.h"
 
-
-
 Button::Button(GameState* gameState, Texture* texture, Point2D<double> pos)
 	: GameObject(gameState), buttonTexture(texture), buttonPos(pos), destRect{ 50, 50, 200, 100 }
 {
@@ -29,6 +27,7 @@ void Button::update()
 	if (SDL_PointInRect(&point, &destRect)) {
 		currentFrame = MOUSEOVER;
 	}
+	else currentFrame = MOUSEOUT;
 }
 
 void Button::emit() const

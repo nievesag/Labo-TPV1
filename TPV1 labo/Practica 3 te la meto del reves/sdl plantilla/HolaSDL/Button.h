@@ -12,7 +12,7 @@
 using namespace std;
 using uint = unsigned int;
 
-// utiliza callbacks funcionales de tipo <void(const SDL_Event&)>
+// utiliza callbacks funcionales de tipo <void(void)>
 using SDLEventCallback = function<void(void)>;
 
 class Button : public EventHandler, public GameObject
