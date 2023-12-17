@@ -39,6 +39,8 @@ public:
 	void update() override;
 
 	// save del infobar
+	// save del coso (esto esta en el playstate actualmente es muy facil de implementar)
+	// al hacer el cpp da error
 	void save(std::ostream& os) const override {}
 
 

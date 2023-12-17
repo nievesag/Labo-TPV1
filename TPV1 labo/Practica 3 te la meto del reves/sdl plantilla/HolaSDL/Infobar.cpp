@@ -18,8 +18,3 @@ void Infobar::update()
 	// update del score
 }
 
-void Infobar::save(std::ostream& os) const 
-{
-	// save del coso (esto esta en el playstate actualmente es muy facil de implementar)
-
-}
