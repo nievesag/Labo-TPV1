@@ -7,18 +7,18 @@ MainMenuState::MainMenuState(SDLApplication* game) : GameState(game),
 {
 	// emmmmmmmmmmm q
 	//addObject(buttonNuevaPartida);
-	addObject(buttonCargarPartida);
-	//addObject(buttonSalir);
+	//addObject(buttonCargarPartida);
+	addObject(buttonSalir);
 
 	// para que los botones puedan reaccionar a eventos
 	//addEventListener(buttonNuevaPartida);
-	addEventListener(buttonCargarPartida);
-	//addEventListener(buttonSalir);
+	//addEventListener(buttonCargarPartida);
+	addEventListener(buttonSalir);
 
 	// uso de la expresion lambda
 	//buttonNuevaPartida->connectButton( [this]() { nuevaPartida(); });
-	buttonCargarPartida->connectButton( [this]() { cargarPartida(); });
-	//buttonSalir->connectButton( [this]() { salir(); });
+	//buttonCargarPartida->connectButton( [this]() { cargarPartida(); });
+	buttonSalir->connectButton( [this]() { salir(); });
 }
 
 void MainMenuState::render() const
@@ -83,4 +83,6 @@ void MainMenuState::cargarPartida()
 void MainMenuState::salir()
 {
 	// exit sera???? pero paso de mriarlo tbh
+	application->setExit(true);
+
 }

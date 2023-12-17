@@ -45,7 +45,7 @@ SDLApplication::SDLApplication()
 	//GameState* pause = new PauseState(this);
 
 	//
-	gsMachine->pushState(ps);
+	gsMachine->pushState(mms);
 }
 
 SDLApplication::~SDLApplication()

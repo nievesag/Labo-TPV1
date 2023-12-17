@@ -173,6 +173,11 @@ public:
 	}
 	#pragma endregion
 
+	void setExit(bool e) {
+		exit = e;
+
+	}
+
 // ---- METODOS PRIVADOS ----
 private:
 	// ---- loadTexture ----
