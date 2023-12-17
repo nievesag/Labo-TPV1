@@ -55,7 +55,7 @@ void Laser::save(ostream& out) const
 bool Laser::hit(SDL_Rect* rect, char frenemy)
 {
 	// si colisiona con un laser amigo true
-	return (SDL_HasIntersection(rect, &destRect) && frenemy != laserType);
+	return (SDL_HasIntersection(rect, &destRect) && (frenemy != laserType || frenemy == 'b'));
 }
 
 bool Laser::isOut()

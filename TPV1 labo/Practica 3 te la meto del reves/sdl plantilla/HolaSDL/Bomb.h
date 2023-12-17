@@ -18,6 +18,8 @@ private:
 	bool alive;
 	int hits;	// contador de golpes
 
+	char c = 'b';
+
 public:
 	// ---- constructora ----
 	Bomb(Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
@@ -25,6 +27,8 @@ public:
 	{
 		// inicializa alive a true al construirse
 		alive = true;
+
+		vel.setY(-1);
 	};
 
 	// ---- render ----

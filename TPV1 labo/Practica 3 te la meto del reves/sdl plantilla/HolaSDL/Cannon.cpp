@@ -76,7 +76,7 @@ void Cannon::handleEvent(const SDL_Event& event)
 bool Cannon::hit(SDL_Rect* rect, char frenemy)
 {
 
-	if (SDL_HasIntersection(rect, &destRect) && frenemy == 'r') {
+	if (SDL_HasIntersection(rect, &destRect) && (frenemy == 'r' || frenemy == 'b')) {
 
 		cout << "TETORRAS" << endl;
 

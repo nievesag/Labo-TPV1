@@ -14,22 +14,30 @@ void Bomb::update()
 
 	// actualiza el rect (colisiones)
 	updateRect();
+
+	// le pregunta si hay alguien a quien pegar un hostion
+	if (playState->damage(destRect, c)) {
+
+		hits++;
+
+
+		if (hits >= vidas) {
+
+			// le dice al game que ha muerto
+			playState->hasDied(sceneanc);
+		}
+
+		
+	}
+	else if (isOut()) {
+
+		playState->hasDied(sceneanc);
+	}
 }
 
 bool Bomb::hit(SDL_Rect* rect, char frenemy)
 {
-	// mira la interseccion
-	if (SDL_HasIntersection(rect, &destRect) && frenemy == 'r') {
-
-		// suma golpes
-		hits++;
-
-		// si tiene mas golpes que vidas le dice que ha muerto
-		if (hits >= vidas) playState->hasDied(sceneanc);
-
-		return true;
-	}
-	else return false;
+	return SDL_HasIntersection(rect, &destRect) && (frenemy != 'b');
 }
 
 bool Bomb::isOut()
