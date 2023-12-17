@@ -243,14 +243,14 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 
 				// ---------------- Creacion del objeto ------------------
 
-				/*
+				
 				// textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight()
 				SceneObject* obj = new Ufo(Point2D<double>(winWidth, y), app->getTexture(UfoT)->getFrameWidth(),
 					app->getTexture(UfoT)->getFrameHeight(), vidas, app->getTexture(UfoT), this);
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
-				*/
+				
 				
 
 
@@ -316,25 +316,6 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 			// crea la mothership
 			mother = new Mothership(defaultMothershipLevel, this, 30, 0);
 		}
-
-		/*
-		// settea el mothership en los aliens
-		for (SceneObject a : sceneObjectsList)
-		{
-			// !!!!!! SETTEAR BIEN EL MOTHERSHIP
-			
-			// si es un alien setea el mothership
-			if (alien != nullptr) {
-				// llama al setteador
-				alien->setMothership(mother);
-
-				// añade al contador de aliens de la mothership
-				mother->addAlien();
-			}
-			
-			
-		}
-		*/
 	}
 	
 	
