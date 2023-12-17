@@ -54,7 +54,7 @@ string MainMenuState::getID() const
 void MainMenuState::nuevaPartida()
 {
 	// crea un nuevo estado con la direccion indicada
-	GameState* ps = new PlayState(application, "..\\mapas\\prueba");
+	GameState* ps = new PlayState(application, "..\\mapas\\original");
 
 	// lo pasa al gsMachine que ya luego hace sus cosas
 	application->getgsMachine()->pushState(ps);

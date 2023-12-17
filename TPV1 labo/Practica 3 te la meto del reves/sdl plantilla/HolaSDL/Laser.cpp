@@ -54,8 +54,18 @@ void Laser::save(ostream& out) const
 
 bool Laser::hit(SDL_Rect* rect, char frenemy)
 {
-	// si colisiona con un laser amigo true
-	return (SDL_HasIntersection(rect, &destRect) && (frenemy != laserType || frenemy == 'b'));
+
+	if (SDL_HasIntersection(rect, &destRect) && (frenemy != laserType)) {
+
+		cout << "colision" << endl;
+
+		// le dice al game que ha muerto
+		playState->hasDied(sceneanc);
+
+		return true;
+	}
+
+	return false;
 }
 
 bool Laser::isOut()
