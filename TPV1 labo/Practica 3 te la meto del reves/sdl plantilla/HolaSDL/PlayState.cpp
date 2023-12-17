@@ -320,19 +320,13 @@ void PlayState::dropReward(Point2D<double> pos)
 {
 	Vector2D<double> aa{ pos.getX(), pos.getY() };
 
-	/*
 	// crea reward
-	SceneObject* newObj = new Rewards(aa, app->getTexture(Shield)->getFrameWidth(), 
-		app->getTexture(Shield)->getFrameHeight(), app->getTexture(Shield), 
-		this, cannonRef->setInvencibleReward());
-
+	SceneObject* newObj = new Rewards(pos, app->getTexture(Shield)->getFrameWidth(), app->getTexture(Shield)->getFrameHeight(), app->getTexture(Shield), this, cannonRef->setInvencibleReward());
 
 	// lo mete en la lista:
 	// cuando se añade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
 	// pero estatico ??? tipo no se mueve) para luego poder usarlo en eliminaciones de objetos.
 	sceneObjectsList.push_back(newObj);
-	*/
-	
 }
 
 // MANEJO DE EVENTOS

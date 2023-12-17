@@ -18,7 +18,6 @@ class Rewards : public SceneObject
 private:
 
 	SDL_Rect* rect;
-	Texture* rewardTexture;
 
 	Vector2D<double> vel;
 
