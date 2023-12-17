@@ -1,5 +1,6 @@
 #include "GameState.h"
 
+
 void GameState::render() const
 {
 	for (GameObject& objects : gamelist) {

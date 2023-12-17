@@ -39,6 +39,8 @@ public:
 	// getID
 	string getID() const override;
 
+	SDL_Renderer* getAppRenderer();
+
 private:
 	// funciones de los botones
 	void nuevaPartida();

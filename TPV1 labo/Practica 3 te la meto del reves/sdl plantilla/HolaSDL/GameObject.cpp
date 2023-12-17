@@ -5,7 +5,7 @@
 #include "GameState.h"
 #include "PlayState.h"
 
-GameObject::GameObject(GameState* game) : game(game) {};
+GameObject::GameObject(GameState* game) : game(game), application(game->getApplication()){};
 
 GameObject::GameObject(PlayState* game) : game(game) {};
 

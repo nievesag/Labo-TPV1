@@ -27,6 +27,7 @@ private:
 
 	// estados del botón para render y animacion
 	int currentFrame;
+
 	enum buttonState {
 		MOUSEOUT = 0,
 		MOUSEOVER = 1,

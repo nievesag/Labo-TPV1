@@ -17,6 +17,7 @@ using uint = unsigned int;
 #include "EventHandler.h"
 #include "GameObject.h"
 
+
 class SDLApplication;
 
 class GameState {
@@ -67,6 +68,9 @@ public:
 	SDLApplication* getApplication() { return application; }
 
 	virtual string getID() const;
+
+	//
+	SDL_Renderer getAppRenderer();
 
 	// ---------------------- EVENTOS Y OBJETOS -------------------
 	// añade un objeto a la lista de objetos
