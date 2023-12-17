@@ -9,7 +9,7 @@ using namespace std;
 using uint = unsigned int;
 
 // utiliza callbacks funcionales de tipo <void(void)>
-//using SDLEventCallback = function<void(void)>;
+using SDLEventCallback = function<void(void)>;
 
 // recompensa de inmunidad (clase extensible)
 class Rewards : public SceneObject
