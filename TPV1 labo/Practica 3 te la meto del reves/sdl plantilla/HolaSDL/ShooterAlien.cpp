@@ -54,13 +54,11 @@ void ShooterAlien::update()
 
 		if (prob == 1) {
 
-			//cout << "BOMBA" << endl;
-
 			playState->fireBomb(this->getPosition());
 		}
 		else {
 			// crea un laser nuevo
-			//playState->fireLaser(this->getPosition(), 'r');
+			playState->fireLaser(this->getPosition(), 'r');
 		}
 	}
 
