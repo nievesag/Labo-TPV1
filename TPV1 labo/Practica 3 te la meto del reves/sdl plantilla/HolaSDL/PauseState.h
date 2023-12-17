@@ -30,16 +30,16 @@ public:
 	PauseState::PauseState(SDLApplication* game, PlayState* playState);
 
 	// renderizado del estado
-	virtual void render();
+	void render() const override;
 
 	// al entrar al estado
-	virtual bool onEnter();
+	bool onEnter() override;
 
 	// al salir del estado
-	virtual bool onExit();
+	bool onExit() override;
 
 	// getID
-	virtual string getID() const;
+	string getID() const override;
 
 private:
 	// funciones de los botones
@@ -47,7 +47,6 @@ private:
 	void guardarPartida();
 	void cargarPartida();
 	void salir();
-
 };
 
 #endif

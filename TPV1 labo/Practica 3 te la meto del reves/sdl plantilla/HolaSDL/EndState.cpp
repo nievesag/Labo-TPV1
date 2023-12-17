@@ -1,12 +1,12 @@
 #include "EndState.h"
 
-EndState::EndState(SDLApplication* game) : GameState(game),
-	buttonVolverMenu(new Button(this, game->getTexture(11), Point2D<double>(1, 1))),
-	buttonSalir(new Button(this, game->getTexture(11), Point2D<double>(1, 1)))
+EndState::EndState(SDLApplication* game, bool victory) : GameState(game), victory(victory),
+	buttonVolverMenu(new Button(this, game->getTexture(16), Point2D<double>(300, 250))),
+	buttonSalir(new Button(this, game->getTexture(13), Point2D<double>(330, 350)))
 {
-	// emmmmmmmmmmm q
-	//addObject(buttonVolverMenu);
-	//addObject(buttonSalir);
+	// lo aniede a la lista de objetos para poder renderizarlo
+	addObject(buttonVolverMenu);
+	addObject(buttonSalir);
 
 	// para que los botones puedan reaccionar a eventos
 	addEventListener(buttonVolverMenu);
@@ -18,9 +18,12 @@ EndState::EndState(SDLApplication* game) : GameState(game),
 }
 
 
-void EndState::render()
+void EndState::render() const
 {
-	//application->getTexture(GameIsOver)->render();
+	if (victory) {
+		application->getTexture(YouWon)->render();
+	}
+	else application->getTexture(GameIsOver)->render();
 }
 
 bool EndState::onEnter()
@@ -52,7 +55,6 @@ void EndState::volverMenu()
 
 void EndState::salir()
 {
-	// settea el exit a false (del sdl application)
+	// settea el exit a true (del sdl application)
 	application->setExit(true);
-
 }

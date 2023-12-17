@@ -1,24 +1,24 @@
 #include "MainMenuState.h"
 
 MainMenuState::MainMenuState(SDLApplication* game) : GameState(game), 
-	buttonNuevaPartida(new Button(this, game->getTexture(11), Point2D<double>(1, 1)) ),
-	buttonCargarPartida(new Button(this, game->getTexture(11), Point2D<double>(1, 1))),
-	buttonSalir(new Button(this, game->getTexture(11), Point2D<double>(1, 1)))
+	buttonNuevaPartida(new Button(this, game->getTexture(11), Point2D<double>(240, 150)) ),
+	buttonCargarPartida(new Button(this, game->getTexture(12), Point2D<double>(230, 200))),
+	buttonSalir(new Button(this, game->getTexture(13), Point2D<double>(340, 250)))
 {
-	// emmmmmmmmmmm q
+	// lo aniede a la lista de objetos para poder renderizarlo
 	addObject(buttonNuevaPartida);
-	//addObject(buttonCargarPartida);
-	//addObject(buttonSalir);
+	addObject(buttonCargarPartida);
+	addObject(buttonSalir);
 
 	// para que los botones puedan reaccionar a eventos
 	addEventListener(buttonNuevaPartida);
-	//addEventListener(buttonCargarPartida);
-	//addEventListener(buttonSalir);
+	addEventListener(buttonCargarPartida);
+	addEventListener(buttonSalir);
 
 	// uso de la expresion lambda
 	buttonNuevaPartida->connectButton( [this]() { nuevaPartida(); });
-	//buttonCargarPartida->connectButton( [this]() { cargarPartida(); });
-	//buttonSalir->connectButton( [this]() { salir(); });
+	buttonCargarPartida->connectButton( [this]() { cargarPartida(); });
+	buttonSalir->connectButton( [this]() { salir(); });
 }
 
 void MainMenuState::render() const
@@ -29,7 +29,6 @@ void MainMenuState::render() const
 	for (GameObject& a : gamelist) {
 		a.render();
 	}
-	
 }
 
 bool MainMenuState::onEnter()
@@ -63,6 +62,8 @@ void MainMenuState::nuevaPartida()
 
 void MainMenuState::cargarPartida()
 {
+	cout << "Inserte num de ranura de carga: " << endl;
+
 	char k;
 	string file;
 
@@ -77,12 +78,10 @@ void MainMenuState::cargarPartida()
 
 	// lo pasa al gsMachine que ya luego hace sus cosas
 	application->getgsMachine()->pushState(ps);
-	
 }
 
 void MainMenuState::salir()
 {
-	// exit sera???? pero paso de mriarlo tbh
+	// settea el exit a true (del sdl application)
 	application->setExit(true);
-
 }

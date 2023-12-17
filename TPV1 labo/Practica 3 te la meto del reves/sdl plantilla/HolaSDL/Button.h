@@ -22,6 +22,7 @@ private:
 	int x, y;			// posicion del cursor
 	SDL_Point point;	// guarda posicion del cursor en click
 	SDL_Rect destRect;	// rectangulo del render
+
 	Texture* buttonTexture;	// textura del boton
 	Point2D<double> buttonPos;	// posicion del boton en pantalla
 

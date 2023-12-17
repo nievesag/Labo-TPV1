@@ -1,21 +1,13 @@
 #include "Button.h"
 
 Button::Button(GameState* gameState, Texture* texture, Point2D<double> pos)
-	: GameObject(gameState), buttonTexture(texture), buttonPos(pos), destRect{ 50, 50, 200, 100 }
+	: GameObject(gameState), buttonTexture(texture), buttonPos(pos)
 {
 	// para animacion
 	currentFrame = MOUSEOUT; // frame inicial a 0
 
-	/*
-	// si hay textura entonces no es un laser y tiene dimensiones
-	if (texture != nullptr) {
-		// setea las dimensiones
-		destRect.w = texture->getFrameWidth();
-		destRect.h = texture->getFrameHeight();
-	}
-	destRect.x = buttonPos.getX();
-	destRect.y = buttonPos.getY();
-	*/
+	// setea posiciones y dimensiones en el destRect
+	destRect = SDL_Rect{ (int)pos.getX(), (int)pos.getY(), texture->getFrameWidth(), texture->getFrameHeight() };
 }
 
 
@@ -39,6 +31,9 @@ void Button::emit() const
 
 void Button::render() const {
 
+	buttonTexture->render(destRect);
+
+	/*
 	// el color del rect depende de si el raton esta sobre el
 	int r = 0, b = 255;    
 
@@ -51,6 +46,7 @@ void Button::render() const {
 
 	// Restablece el color de fondo (para el SDL_RenderClear)
 	SDL_SetRenderDrawColor(application->getRenderer(), 0, 0, 0, 225);
+	*/
 }
 
 void Button::handleEvent(const SDL_Event& event) {

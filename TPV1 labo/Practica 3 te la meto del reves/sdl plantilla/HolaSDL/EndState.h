@@ -25,21 +25,25 @@ private:
 	Button* buttonVolverMenu;
 	Button* buttonSalir;
 
+	// true si se ha ganado la partida -> menu victory
+	// false si se ha perdido la partida -> menu game over
+	bool victory; 
+
 public:
 	// constructora
-	EndState(SDLApplication* game);
+	EndState(SDLApplication* game, bool victory);
 
 	// renderizado del estado
-	virtual void render();
+	void render() const override;
 
 	// al entrar al estado
-	virtual bool onEnter();
+	bool onEnter() override;
 
 	// al salir del estado
-	virtual bool onExit();
+	bool onExit() override;
 
 	// getID
-	virtual string getID() const;
+	string getID() const override;
 
 private:
 	// funciones de los botones
