@@ -17,41 +17,37 @@ void GameStateMachine::popState()
 		// si sale
 		if (states.top()->onExit())
 		{
-			// borra el puntero
-			delete states.top();
+			// lo mete en la lista de estados a borrar
+			statesToDelete.push_back(states.top());
 
 			// lo quita del stack
 			states.pop();
 		}
 	}
+
 }
 
 void GameStateMachine::replaceState(GameState* state)
 {
+
 	if (!states.empty())
 	{
-		if (states.top()->getID()  == state->getID())
+		if (states.top()->getID() == state->getID())
 		{
 			return; // no hace nada
 		}
 		if (states.top()->onExit())
 		{
-			// lo mismo que en popState
-			delete states.top();
+			// lo mete en la lista de estados a borrar
+			statesToDelete.push_back(states.top());
+
+			// lo quita del stack
 			states.pop();
 		}
 	}
-
-
+	
 	// esto es push state asi queeee
 	pushState(state);
-	/*
-	// 
-	states.push(*state);
-
-	// 
-	states.top().onEnter();
-	*/
 }
 
 void GameStateMachine::update()
@@ -78,6 +74,15 @@ void GameStateMachine::handleEvent(const SDL_Event& event)
 	if (!states.empty())
 	{
 		states.top()->HandleEvent(event);
+	}
+
+
+	// borra los estados a borrar
+	while (!statesToDelete.empty()) {
+		
+		delete statesToDelete.front();
+
+		statesToDelete.pop_front();
 	}
 }
 

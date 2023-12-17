@@ -16,6 +16,8 @@ private:
 
 	PlayState* playState;
 
+	SDLApplication* app;
+
 	// punteros a los botones del PAUSE MENU
 	// botones en este estado: CONTINUAR / GUARDAR PARTIDA / CARGAR PARTIDA / SALIR
 	Button* buttonContinuar;
