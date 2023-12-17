@@ -66,20 +66,11 @@ void MainMenuState::cargarPartida()
 	char k;
 	string file;
 
+	// lee el numero
 	cin >> k;
 
-	if (isdigit(k))
-	{
-		
-
-		// se ha salvado el juego
-		cout << "Game loaded!" << endl;
-	}
-	else cout << "Invalid number :(";
-
+	// crea un string con el archivo
 	file = "..\\saved\\save" + to_string(k - '0');
-
-
 
 	// crea un nuevo estado con la direccion indicada
 	GameState* ps = new PlayState(application, file);
@@ -91,5 +82,5 @@ void MainMenuState::cargarPartida()
 
 void MainMenuState::salir()
 {
-
+	// exit sera???? pero paso de mriarlo tbh
 }
