@@ -31,7 +31,12 @@ PauseState::PauseState(SDLApplication* game, PlayState* playState)
 
 void PauseState::render() const
 {
-	app->getTexture(Fondo)->render();
+	// renderiza la imagen de fondo
+	application->getTexture(Fondo)->render();
+
+	for (GameObject& a : gamelist) {
+		a.render();
+	}
 }
 
 bool PauseState::onEnter()
