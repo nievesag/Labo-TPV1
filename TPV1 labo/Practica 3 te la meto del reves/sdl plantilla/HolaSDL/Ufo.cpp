@@ -107,6 +107,12 @@ void Ufo::disappear()
 void Ufo::die()
 {
 	state = destruido;
+
+	// gestion de dropeo de reward
+	rewardProb = playState->getRandomRange(playState->getMinProbReward(), playState->getMaxProbReward());
+	if (rewardProb == 1) {
+
+	}
 }
 
 void Ufo::manageCooldown()

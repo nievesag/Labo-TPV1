@@ -28,39 +28,34 @@ using uint = unsigned int;
 
 class PlayState : public GameState{
 private:
-	//------------------------------------------ GENERAL ---------------------------
+
+	// ---- GENERAL -----
 
 	// id del estado
 	const string s_playID = "PLAY";
 
 	// default variables
-	int defaultLives = 1,	// default number of lives
-		defaultFrame = 0,	// default starting frame
-		ans = 0,			// respuesta en los menuses
-		laserW = 4,			// dimensiones del laser
+	int defaultLives = 1,	    // default number of lives
+		defaultFrame = 0,	    // default starting frame
+		ans = 0,			    // respuesta en los menuses
+		laserW = 4,			    // dimensiones del laser
 		laserH = 10,
-		defaultCooldown = 10,// default cooldown (si es -1 se genera uno)
+		defaultCooldown = 10,   // default cooldown (si es -1 se genera uno)
 		defaultUfoHeight = 10,
 		defaultLaserW = 4,
 		defaultLaserH = 10,
 		defaultBombLives = 2,
 		defaultMothershipLevel = 0,
 		minProbabilityBomb = 1,
-		maxProbabilityBomb = 2;
+		maxProbabilityBomb = 2,
+		minProbabilityReward = 1,
+		maxProbabilityReward = 10;
 
-
-	// -------------------------------------- CARGA Y DESCARGA ---------------------------
+	// ---- CARGA Y GUARDADO ----
 	// archivo de strings con las roots de las carpetas etc
 	string SAVED_FOLDER = "..\\saved\\";
 
-
 protected:
-	// este es el nuevo game, pero.... que hace el atiguo ????
-
-	// en Game: punteros a window y render
-	//			array de texturas
-	//			maquina de estados
-
 	SDLApplication* app;
 
 	// lista de objetos de escena (cannon, aliens, bunkeres, laser)
@@ -92,13 +87,12 @@ public:
 	// constructora
 	PlayState::PlayState(SDLApplication* game, string loadFile);
 
-	// -------------------------------- HERENCIA --------------------------------
 	// update
 	void update() override;
 
 	// render
 	void render() const override;
-
+	void renderBackground() const;
 
 	// save
 	void save(const string& file);
@@ -110,58 +104,63 @@ public:
 	// limpia los objetos
 	bool onExit() override;
 
-	//
+	// getter de id del estado
 	string getID() const override;
-
-	// ------------------------------- GETTERS Y SETTERS --------------------------
-	// genera un int aleatorio con un minimo y un maximo
-	int getRandomRange(int min, int max);
 
 	//
 	void EndGame();
 
+	// ---- GETTERS Y SETTERS GENERALES ----
+
+	// genera un int aleatorio con un minimo y un maximo
+	int getRandomRange(int min, int max);
+
+	// getter del renderer de SDLApplication
 	SDL_Renderer* getAppRenderer();
 
-	// ------------------------------ COLISIONES Y COMBATE ---------------------------
-	// collisiones
+	// ---- CONTROL DE COLISIONES ----
+	// colisiones
 	bool damage(SDL_Rect rect, char frenemy);
 
-	// guatafac
+	// avisa si se ha muerto un objeto
 	void hasDied(GameList<SceneObject, true>::anchor i);
 
+	// ---- GENERACION DE LASERES Y BOMBAS ----
 	// dispara el laser (lo crea)
 	void fireLaser(Point2D<double> pos, char frenemy);
 
 	// dispara una bomba (la crea)
 	void fireBomb(Point2D<double> pos);
 
-	// ------------------------------------- OTROS ----------------------------
+	// ---- ELIMINACION OBJETOS ----
 	// delete scene objects
 	void deleteSceneObjects();
 
+	// ---- GUARDADO Y CARGA DE PARTIDA ----
 	// guarda la partida (esto va dentro del handle events de la S de save pero es por orden)
 	void saveThisGame();
-
-	// carga las texturas
-	void loadTextures();
 
 	// carga el cualquier archivo
 	void loadAnyFile(const string& fileAndRoot);
 
-	//
+	// ---- TEXTURAS ----
+	// carga las texturas
+	void loadTextures();
+
+	// ---- SCORE ----
 	void increaseScore(int score);
 	
-	// 
-	void renderBackground() const;
-
-	// 
-	bool mayGrantReward(SDL_Rect rect);
-
-	// --------------------------------- OTROS GETTERS Y SETTERS ----------------------
-
+	// ---- BOMB ----
 	int getMinProbBomb() { return minProbabilityBomb; }
 
 	int getMaxProbBomb() { return maxProbabilityBomb; }
+
+	// ---- REWARDS ----
+	bool mayGrantReward(SDL_Rect rect);
+
+	int getMinProbReward() { return minProbabilityReward; }
+
+	int getMaxProbReward() { return maxProbabilityReward; }
 };
 
 #endif
