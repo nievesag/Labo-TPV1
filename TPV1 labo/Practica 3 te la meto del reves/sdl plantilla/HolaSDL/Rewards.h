@@ -18,7 +18,7 @@ class Rewards : public SceneObject
 private:
 	SDL_Rect* rect;
 
-	Cannon* cannon;
+	//Cannon* cannon;
 
 	Vector2D<double> vel;
 
@@ -35,8 +35,8 @@ private:
 	// metodos publicos
 public: 
 	// ---- constructora ----
-	Rewards(SDLEventCallback callback, char type, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
-		: callback(callback), SceneObject(position, width, height, vidas, texture, game)
+	Rewards(char type, Point2D<double> position, int width, int height, Texture* texture, PlayState* game)
+		: SceneObject(position, width, height, texture, game)
 	{ };
 
 	// ---- render ----

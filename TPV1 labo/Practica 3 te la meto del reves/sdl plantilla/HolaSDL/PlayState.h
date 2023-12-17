@@ -22,6 +22,7 @@
 #include "Laser.h"
 #include "Bomb.h"
 #include "Ufo.h"
+#include "Rewards.h"
 
 using namespace std;
 using uint = unsigned int;
@@ -157,6 +158,9 @@ public:
 
 	// ---- REWARDS ----
 	bool mayGrantReward(SDL_Rect rect);
+
+	// dropea reward (la crea)
+	void dropReward(Point2D<double> pos);
 
 	int getMinProbReward() { return minProbabilityReward; }
 

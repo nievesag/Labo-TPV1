@@ -61,6 +61,27 @@ public:
 		destRect.y = position.getY();
 	}
 
+	SceneObject(Point2D<double> position, int width, int height, Texture* texture, PlayState* game)
+		: position(position), width(width), height(height), texture(texture), GameObject(game), playState(game)
+	{
+		// si hay textura entonces no es un laser y tiene dimensiones
+		if (texture != nullptr) {
+			// setea las dimensiones
+			destRect.w = texture->getFrameWidth();
+			destRect.h = texture->getFrameHeight();
+		}
+		// si no tiene textura entonces es un laser y le da las dimensiones marcadas
+		else
+		{
+			// setea las dimensiones del laser
+			destRect.w = 4;
+			destRect.h = 10;
+		}
+
+		destRect.x = position.getX();
+		destRect.y = position.getY();
+	}
+
 	// --------------> los override van en las clases hijas que lo especifiquen <--------------
 	// (en alien, cannon, laser, bunker)
 	// metodo virtual: para que lo usen los hijos

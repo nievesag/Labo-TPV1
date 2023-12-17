@@ -315,6 +315,17 @@ bool PlayState::mayGrantReward(SDL_Rect rect)
 	return false;
 }
 
+void PlayState::dropReward(Point2D<double> pos)
+{
+	// crea reward
+	SceneObject* newObj = new Rewards('i', pos, app->getTexture(Shield)->getFrameWidth(), app->getTexture(Shield)->getFrameHeight(), app->getTexture(Shield), this);
+
+	// lo mete en la lista:
+	// cuando se añade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
+	// pero estatico ??? tipo no se mueve) para luego poder usarlo en eliminaciones de objetos.
+	sceneObjectsList.push_back(newObj);
+}
+
 // MANEJO DE EVENTOS
 void PlayState::HandleEvent(const SDL_Event& event)
 {
@@ -415,7 +426,6 @@ void PlayState::hasDied(GameList<SceneObject, true>::anchor i)
 	//toBeErased.push_back(i);
 }
 
-
 void PlayState::fireLaser(Point2D<double> pos, char frenemy)
 {
 	// crea el laser
@@ -429,9 +439,7 @@ void PlayState::fireLaser(Point2D<double> pos, char frenemy)
 
 void PlayState::fireBomb(Point2D<double> pos) {
 
-	// crea el laser
-	//SceneObject* newObj = new Laser(frenemy, pos, defaultLaserW, defaultLaserH, defaultLives, nullptr, this);
-	// Bomb(Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
+	// crea la bomb
 	SceneObject* newObj = new Bomb(pos, app->getTexture(BOMBA)->getFrameWidth(), app->getTexture(BOMBA)->getFrameHeight(),
 		defaultBombLives, app->getTexture(BOMBA), this);
 
@@ -439,7 +447,6 @@ void PlayState::fireBomb(Point2D<double> pos) {
 	// cuando se añade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
 	// pero estatico ??? tipo no se mueve) para luego poder usarlo en eliminaciones de objetos.
 	sceneObjectsList.push_back(newObj);
-
 }
 
 void PlayState::increaseScore(int score)

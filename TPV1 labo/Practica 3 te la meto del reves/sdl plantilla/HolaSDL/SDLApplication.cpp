@@ -53,6 +53,12 @@ SDLApplication::SDLApplication()
 
 SDLApplication::~SDLApplication()
 {
+	delete gsMachine;
+
+	for (int i = 0; i < NUM_TEXTURES; i++) {
+		delete textures[i];
+	}
+
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit(); // cierra pantalla
