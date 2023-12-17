@@ -63,6 +63,8 @@ private:
 	// crea un puntero a la maquina de estados
 	GameStateMachine* gsMachine;
 
+	PlayState* playState;
+
 	// ---- MANEJO DEL TIEMPO EN RUN ----
 	uint32_t startTime, frameTime;
 
@@ -132,8 +134,6 @@ public:
 	// input del jugador
 	void handleEvents();
 
-	// NO SE NECESITA???????????????????
-	#pragma region borrar?
 	// ---- update ----
 	// actualiza el juego
 	void update();
@@ -141,7 +141,9 @@ public:
 	// ---- render ----
 	// renderiza la pantalla
 	void render();
-	#pragma endregion
+
+	// ---- score ----
+	void PlayerScore();
 
 	// ---- SETTERS Y GETTERS ----
 	#pragma region setters y getters

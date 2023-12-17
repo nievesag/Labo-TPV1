@@ -150,7 +150,9 @@ public:
 
 	// ---- SCORE ----
 	void increaseScore(int score);
-	
+
+	int getScore() { return SCORE; }
+
 	// ---- BOMB ----
 	int getMinProbBomb() { return minProbabilityBomb; }
 

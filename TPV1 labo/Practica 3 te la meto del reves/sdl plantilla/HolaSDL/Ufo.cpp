@@ -141,7 +141,6 @@ void Ufo::setCD()
 	CDcounter = 0;
 }
 
-
 bool Ufo::isOut()
 {
 	return (this->position.getX() + texture->getFrameWidth() <= 0);
