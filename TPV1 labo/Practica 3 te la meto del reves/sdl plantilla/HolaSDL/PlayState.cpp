@@ -61,17 +61,14 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 		// lee el identificador
 		in >> objID;
 
-
-
 		// switch para leer y crear cada objeto
+		// set up del archivo para cada objeto
 		switch (objID)
 		{
-				// si es el cannon
+			// CANNON
 			case 0: {
-				// set up del archivo para el cannon:
-				// id x y vidas cd
 
-				// ---------------- Lectura de variables ---------------
+			// ---------------- Lectura de variables ---------------
 
 				// lee la posicion
 				in >> x;
@@ -84,7 +81,7 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				// crea el vector
 				Point2D<double> coord(x, y);
 
-				// ---------------- Creacion del objeto ------------------
+			// ---------------- Creacion del objeto ------------------
 
 				// nave
 				SceneObject* obj = new Cannon(cooldown, coord, app->getTexture(Nave)->getFrameWidth(),
@@ -92,18 +89,15 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
-				// ----------------------- Fin del stup -----------------------
 
-				// acaba el caso
 				break;
 			}
 
-				  // si es un alien
+			// ALIEN
 			case 1: {
-				// setup del alien:
-				// id x y type
 
-				// ---------------- Lectura de variables ---------------
+			// ---------------- Lectura de variables ---------------
+
 				// lee la posicion
 				in >> x;
 				in >> y;
@@ -114,7 +108,7 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				// lee el tipo
 				in >> alienType;
 
-				// ---------------- Creacion del objeto ------------------
+			// ---------------- Creacion del objeto ------------------
 
 				// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game)
 				SceneObject* obj = new Alien(mother, defaultFrame, alienType, coord, app->getTexture(alienType)->getFrameWidth(),
@@ -123,18 +117,13 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
 
-				// ----------------------- Fin del stup -----------------------
-
-				// acaba el caso
 				break;
 			}
 
-				  // si es un shotter alien
+			// SHOOTER ALIEN
 			case 2: {
-				// setup del shooter alien:
-				// id x y type cooldown
 
-				// ---------------- Lectura de variables ---------------
+			// ---------------- Lectura de variables ---------------
 
 				// lee la posicion
 				in >> x;
@@ -148,7 +137,7 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 
 				in >> cooldown;
 
-				// ---------------- Creacion del objeto ------------------
+			// ---------------- Creacion del objeto ------------------
 
 				SceneObject* obj = new ShooterAlien(cooldown, mother, defaultFrame, alienType, coord,
 					app->getTexture(alienType)->getFrameWidth(), app->getTexture(alienType)->getFrameHeight(), defaultLives,
@@ -157,19 +146,13 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
 
-
-				// ----------------------- Fin del stup -----------------------
-
-				// acaba el caso
 				break;
 			}
 
-				  // si es el mothership
+			// MOTHERSHIP
 			case 3: {
-				// setup de la mothership:
-				// id level estado timer
 
-				// ---------------- Lectura de variables ---------------
+			// ---------------- Lectura de variables ---------------
 
 				// lee la altura
 				in >> y;
@@ -178,23 +161,19 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				in >> estado;
 				in >> timer;
 
-				// ---------------- Creacion del objeto ------------------
+			// ---------------- Creacion del objeto ------------------
 
 				// crea la mothership
 				mother = new Mothership(y, this, timer, estado);
 
-				// ----------------------- Fin del stup -----------------------
-
-				// acaba el caso
 				break;
 			}
 
-				  // si es un bunker
+			// BUNKER
 			case 4: {
-				// setup del bunker:
-				// id x y vidas hits
 
-				// ---------------- Lectura de variables ---------------
+
+			// ---------------- Lectura de variables ---------------
 
 				// lee la posicion
 				in >> x;
@@ -207,7 +186,7 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				in >> vidas;
 				in >> hits;
 
-				// ---------------- Creacion del objeto ------------------
+			// ---------------- Creacion del objeto ------------------
 
 				// bunker
 				SceneObject* obj = new Bunker(hits, coord, app->getTexture(Escudo)->getFrameWidth(),
@@ -216,19 +195,13 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
 
-
-				// ----------------------- Fin del stup -----------------------
-
-				// acaba el caso
 				break;
 			}
 
-				  // si es el ufo
+			// UFO
 			case 5: {
-				// setup del ufo:
-				// id y estado cooldown hits
 
-				// ---------------- Lectura de variables ---------------
+			// ---------------- Lectura de variables ---------------
 
 				// lee la posicion
 				in >> y;
@@ -241,9 +214,8 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				in >> cooldown;
 				in >> vidas;
 
-				// ---------------- Creacion del objeto ------------------
+			// ---------------- Creacion del objeto ------------------
 
-				
 				// textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight()
 				SceneObject* obj = new Ufo(Point2D<double>(winWidth, y), app->getTexture(UfoT)->getFrameWidth(),
 					app->getTexture(UfoT)->getFrameHeight(), vidas, app->getTexture(UfoT), this);
@@ -251,21 +223,13 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
 				
-				
-
-
-				// ----------------------- Fin del stup -----------------------
-
-				// acaba el caso
 				break;
 			}
 
-				  // si es un laser
+			// LASER
 			case 6: {
-				// setup del laser:
-				// id x y color
 
-				// ---------------- Lectura de variables ---------------
+			// ---------------- Lectura de variables ---------------
 
 				// lee la posicion
 				in >> x;
@@ -277,7 +241,7 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				// lee el tipo
 				in >> color;
 
-				// ---------------- Creacion del objeto ------------------
+			// ---------------- Creacion del objeto ------------------
 
 				if (color == 'a') {
 					SDL_SetRenderDrawColor(app->getRenderer(), 255, 0, 114, 255);	// cannon
@@ -292,13 +256,10 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
 
-				// ----------------------- Fin del stup -----------------------
-
-				// acaba el caso
 				break;
 			}
 
-				  // si es la puntuacion
+			// PUNTUACION
 			case 7: {
 				in >> score;
 
@@ -308,8 +269,6 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 			}
 		}
 
-
-
 		// si no existe una mothership la crea
 		if (mother == nullptr) {
 
@@ -317,16 +276,11 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 			mother = new Mothership(defaultMothershipLevel, this, 30, 0);
 		}
 	}
-	
-	
 }
 
 // UPDATE
 void PlayState::update()
 {
-	//
-	//cout << "update" << endl;
-
 	// actualiza el mothership
 	mother->update();
 
@@ -336,12 +290,6 @@ void PlayState::update()
 
 		a.update();
 	}
-
-	// tambien se puede hacer con un iterador:
-	// AHORA MISMO NO VA CON ITERADORES (SI LO DESCOMENTAS DA ERROR) PEROÇ
-	// QUIERO SACARLO CON ITERADORES IGUAL
-	// for(GameList<SceneObject, true>::iterator it = sceneObjectsList.begin(); it != sceneObjectsList.end(); it++)
-
 }
 
 // RENDER
@@ -370,15 +318,11 @@ bool PlayState::mayGrantReward(SDL_Rect rect)
 // MANEJO DE EVENTOS
 void PlayState::HandleEvent(const SDL_Event& event)
 {
-	//cout << eventListeners.size() << endl;
-
 	// gestiona todos los eventos del estado correspondiente
 	GameState::HandleEvent(event);
 
 	// si se pulsa esc
 	if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
-
-		//cout << "END" << endl;
 
 		// pausa el juego
 		// (aniade el estado de pausa a la maquina de estados de application)
@@ -394,8 +338,6 @@ void PlayState::save(const string& file)
 
 	mother->save(out);
 	
-	
-
 	for (GameList<SceneObject, true>::forward_iterator i = sceneObjectsList.begin(); i != sceneObjectsList.end(); ++i) {
 
 		(*i).save(out);
@@ -410,9 +352,6 @@ void PlayState::save(const string& file)
 
 void PlayState::saveThisGame()
 {
-	// pregunta en que numero se va a guardar la partida
-	// << "Save this game in slot: " << std::endl;
-
 	// lee el numero en char k
 	cin >> k;
 
@@ -434,12 +373,8 @@ void PlayState::saveThisGame()
 // MANEJO DE ESTADOS
 bool PlayState::onEnter()
 {
-	//
-	std::cout << "entering PlayState\n";
-
-	// carga la partida
-	loadAnyFile(loadFile);
-
+	cout << "entering PlayState\n";
+	loadAnyFile(loadFile);	// carga la partida
 	return true;
 }
 
@@ -451,8 +386,7 @@ bool PlayState::onExit()
 
 void PlayState::EndGame()
 {
-
-
+	application->setExit(true);
 }
 
 // COLISONES
@@ -539,8 +473,6 @@ void PlayState::deleteSceneObjects()
 		objectsToErase.clear();
 	}
 	*/
-	
-	
 }
 
 // GETTERS

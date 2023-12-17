@@ -172,7 +172,6 @@ public:
 
 	void setExit(bool e) {
 		exit = e;
-
 	}
 
 // ---- METODOS PRIVADOS ----
