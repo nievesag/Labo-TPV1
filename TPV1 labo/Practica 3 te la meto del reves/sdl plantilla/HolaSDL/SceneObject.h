@@ -107,7 +107,9 @@ public:
 	virtual void updateRect();
 
 	// devuelve rect (posicion) de cada objeto
-	SDL_Rect* getRect() { SDL_Rect* rect = &destRect; return rect; };
+	//SDL_Rect getRect() { SDL_Rect rect = destRect; return rect; };
+
+	SDL_Rect getRect();
 
 	// ----- Iterador de la lista ------
 	// Un iterador funciona como un puntero que apunta a los items de la lista 

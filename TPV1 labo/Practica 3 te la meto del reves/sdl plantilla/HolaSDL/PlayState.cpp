@@ -311,8 +311,9 @@ void PlayState::renderBackground() const {
 
 bool PlayState::mayGrantReward(SDL_Rect rect) const
 {
+	cout << "hola" << endl;
 	// deteccion de colision de la reward con el cannon
-	SDL_Rect cannonRect = *cannonRef->getRect();
+	SDL_Rect cannonRect = cannonRef->getRect();
 	return SDL_HasIntersection(&rect, &cannonRect);
 }
 
