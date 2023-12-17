@@ -10,24 +10,24 @@ void Rewards::emit() const
 
 void Rewards::render() const
 {
-
+	// lo mete en el render
+	texture->render(destRect);
 }
 
 void Rewards::update()
 {
-	// mueve al laser
+	// mueve la reward
 	move();
 
 	// actualiza el rect (colisiones)
 	updateRect();
 
-	if (isOut()) {
-
-	}
-
-	// le pregunta si hay alguien a quien pegar un hostion
-	if (playState->mayGrantReward(destRect) && !isOut()) {
+	// le pregunta si hay alguien a quien dar reward
+	if (playState->mayGrantReward(destRect)) {
 		emit();
+	}
+	else if (isOut()) {
+		playState->hasDied(sceneanc);
 	}
 }
 
