@@ -61,8 +61,9 @@ public:
 		destRect.y = position.getY();
 	}
 
-	SceneObject(Point2D<double> position, int width, int height, Texture* texture, PlayState* game)
-		: position(position), width(width), height(height), texture(texture), GameObject(game), playState(game)
+	// PARA REWARDS
+	SceneObject(Point2D<double> position, int width, int height, PlayState* game)
+		: position(position), width(width), height(height), GameObject(game), playState(game)
 	{
 		// si hay textura entonces no es un laser y tiene dimensiones
 		if (texture != nullptr) {
