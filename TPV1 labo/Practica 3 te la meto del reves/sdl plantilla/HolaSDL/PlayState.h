@@ -165,6 +165,10 @@ public:
 	int getMinProbReward() { return minProbabilityReward; }
 
 	int getMaxProbReward() { return maxProbabilityReward; }
+
+	Cannon* getCannon() {
+		return cannon;
+	}
 };
 
 #endif
