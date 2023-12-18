@@ -126,7 +126,7 @@ void Ufo::die()
 	// gestion de dropeo de reward
 	rewardProb = playState->getRandomRange(playState->getMinProbReward(), playState->getMaxProbReward());
 	if (rewardProb == 1) {
-		//playState->dropReward(position);
+		playState->dropReward(position);
 	}
 }
 
