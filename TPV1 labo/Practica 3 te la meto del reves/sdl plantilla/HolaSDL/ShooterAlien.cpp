@@ -2,6 +2,7 @@
 #include "ShooterAlien.h"
 #include "SDLApplication.h"
 #include "PlayState.h"
+#include "Alien.h"
 
 ShooterAlien::ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position, 
 	int width, int height, int vidas, Texture* texture, PlayState* game) 
