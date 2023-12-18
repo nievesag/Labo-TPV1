@@ -52,7 +52,7 @@ private:
 		minProbabilityBomb = 1,
 		maxProbabilityBomb = 2,
 		minProbabilityReward = 1,
-		maxProbabilityReward = 10;
+		maxProbabilityReward = 1;
 
 	// ---- CARGA Y GUARDADO ----
 	// archivo de strings con las roots de las carpetas etc
