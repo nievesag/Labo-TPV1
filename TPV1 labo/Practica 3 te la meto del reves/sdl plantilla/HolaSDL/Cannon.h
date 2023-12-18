@@ -31,7 +31,7 @@ private:
 	bool invencibleReward = false; 
 
 	int rewardTimer = 0;
-	int maxRewardTimer = 200;
+	int maxRewardTimer = 2000;
 
 	// metodos publicos 
 public:
