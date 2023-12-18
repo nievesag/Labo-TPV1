@@ -120,6 +120,8 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
 
+				mother->addAlien();
+
 				break;
 			}
 
@@ -148,6 +150,8 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
+
+				mother->addAlien();
 
 				break;
 			}
