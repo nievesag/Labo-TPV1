@@ -432,7 +432,6 @@ bool PlayState::damage(SDL_Rect rect, char frenemy)
 
 void PlayState::hasDied(GameList<SceneObject, true>::anchor i)
 {
-	gamelist.erase(i->elem->GameObject::getListAnchor());
 	sceneObjectsList.erase(i);
 }
 
