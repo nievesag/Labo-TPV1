@@ -9,14 +9,12 @@ ShooterAlien::ShooterAlien(double cooldown, Mothership* mothership, int alienFra
 	: cooldown(cooldown), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, game)
 {}
 
-
 void ShooterAlien::shoot()
 {
 	if (CDcounter >= cooldown)
 	{
-		
-
-		
+		// crea un laser nuevo
+		playState->fireLaser(this->getPosition(), 'r');
 	}
 }
 
