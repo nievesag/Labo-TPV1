@@ -181,7 +181,6 @@ public:
 	}
 
 	void increaseScore(int points) {
-		cout << "AAAAAA" << endl;
 
 		gameScore += points;
 	}

@@ -55,7 +55,6 @@ void ShooterAlien::update()
 
 
 		int prob = playState->getRandomRange(playState->getMinProbBomb(), playState->getMaxProbBomb());
-		//cout << prob << endl;
 
 		if (prob == 1) {
 

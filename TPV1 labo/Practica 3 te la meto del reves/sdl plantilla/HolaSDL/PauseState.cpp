@@ -41,13 +41,11 @@ void PauseState::render() const
 
 bool PauseState::onEnter()
 {
-	cout << "entering PauseState\n";
 	return true;
 }
 
 bool PauseState::onExit()
 {
-	cout << "exiting PauseState\n";
 	return true;
 }
 

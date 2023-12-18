@@ -12,14 +12,11 @@ void Ufo::update()
 {
 	updateRect();
 
-	//cout << hits << endl;
-
 	switch (state)
 	{
 		case visible:
 			frame = 0;
 
-			//cout << "ESTOY VISIBLE" << endl;
 			// se mueve
 			move();
 
@@ -133,8 +130,6 @@ void Ufo::manageCooldown()
 	// gestion de cooldown
 	if (CDcounter >= cooldown) {
 
-		//cout << "POR QUE NO APARECE" << endl;
-
 		// cambia el estado
 		appear();
 
@@ -163,7 +158,6 @@ bool Ufo::isOut()
 
 void Ufo::move()
 {
-	//cout << position.getX();
 
 	// mueve al laser
 	position.setX(position.getX() - vel);

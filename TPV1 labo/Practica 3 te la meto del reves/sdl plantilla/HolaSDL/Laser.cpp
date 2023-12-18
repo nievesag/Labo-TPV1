@@ -57,8 +57,6 @@ bool Laser::hit(SDL_Rect* rect, char frenemy)
 
 	if (SDL_HasIntersection(rect, &destRect) && (frenemy != laserType)) {
 
-		cout << "colision" << endl;
-
 		// le dice al game que ha muerto
 		playState->hasDied(sceneanc);
 

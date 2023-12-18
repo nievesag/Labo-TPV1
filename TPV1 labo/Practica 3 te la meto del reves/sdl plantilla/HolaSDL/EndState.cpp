@@ -34,13 +34,11 @@ void EndState::render() const
 
 bool EndState::onEnter()
 {
-	cout << "entering EndState\n";
 	return true;
 }
 
 bool EndState::onExit()
 {
-	cout << "exiting EndState\n";
 	return true;
 }
 

@@ -330,9 +330,6 @@ bool PlayState::mayGrantReward(SDL_Rect rect) const
 
 void PlayState::dropReward(Point2D<double> pos)
 {
-	//Vector2D<double> aa{ pos.getX(), pos.getY() };
-
-	cout << "DORPPED???" << endl;
 
 	// crea reward
          	SceneObject* newObj = new Rewards(pos, app->getTexture(Shield)->getFrameWidth(), 
@@ -403,7 +400,6 @@ void PlayState::saveThisGame()
 // MANEJO DE ESTADOS
 bool PlayState::onEnter()
 {
-	cout << "entering PlayState\n";
 	loadAnyFile(loadFile);	// carga la partida
 	return true;
 }
@@ -415,7 +411,6 @@ SDLApplication* PlayState::getApplication()
 
 bool PlayState::onExit()
 {
-	cout << "exiting PlayState\n";
 	return true;
 }
 

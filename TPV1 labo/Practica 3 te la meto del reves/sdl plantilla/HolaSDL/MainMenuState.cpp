@@ -33,13 +33,11 @@ void MainMenuState::render() const
 
 bool MainMenuState::onEnter()
 {
-	cout << "entering MenuState\n";
 	return true;
 }
 
 bool MainMenuState::onExit()
 {
-	cout << "exiting MenuState\n";
 	return true;
 }
        
