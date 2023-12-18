@@ -172,6 +172,8 @@ void Cannon::save(ostream& out) const
 
 void Cannon::manageRewardDuration()
 {
+	cout << rewardTimer << endl;
+
 	// si se tiene la reward de invencibilidad
 	if (invencibleReward) {
 

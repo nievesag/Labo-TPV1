@@ -28,10 +28,10 @@ private:
 	int currentCD;
 
 	// si el cannon tiene la reward de invencibilidad o no
-	bool invencibleReward; 
+	bool invencibleReward = false; 
 
 	int rewardTimer = 0;
-	int maxRewardTimer = 50;
+	int maxRewardTimer = 200;
 
 	// metodos publicos 
 public:

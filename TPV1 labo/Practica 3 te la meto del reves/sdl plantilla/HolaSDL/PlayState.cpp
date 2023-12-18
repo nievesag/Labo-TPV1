@@ -298,8 +298,6 @@ void PlayState::update()
 		a.update();
 	}
 
-	cout << mother->getAlienCount() << endl;
-
 	if (mother->getAlienCount() <= 0) {
 		goEndState(true);
 

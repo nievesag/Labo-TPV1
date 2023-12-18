@@ -69,8 +69,6 @@ void Ufo::anima()
 	// si el contador de animacion (tiempo entre frame y frame) es menor que 0
 	if (animTimer <= 0) {
 
-		cout << "hola" << endl;
-
 		// aumenta el frame
 		frame++;
 
@@ -114,7 +112,7 @@ void Ufo::appear()
 
 void Ufo::disappear()
 {
-      	state = oculto;
+    state = oculto;
 }
 
 void Ufo::die()
