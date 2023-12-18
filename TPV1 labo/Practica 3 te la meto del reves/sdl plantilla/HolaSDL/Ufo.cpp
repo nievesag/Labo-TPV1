@@ -35,16 +35,12 @@ void Ufo::update()
 			break;
 
 		case oculto:
-
-			cout << "ESTOY OCULTO" << endl;
 			// gestiona el cooldown de aparicion
 			// cd management
 			manageCooldown();
 			break;
 
 		case destruido:
-
-			cout << "ESTOY DESTRUIDO" << endl;
 			// simplemente la animacion y luego muere
 			anima();
 			break;
@@ -53,7 +49,6 @@ void Ufo::update()
 
 void Ufo::updateRect()
 {
-	cout << "llego" << endl;
 
 	// posicion               
 	destRect.x = position.getX();

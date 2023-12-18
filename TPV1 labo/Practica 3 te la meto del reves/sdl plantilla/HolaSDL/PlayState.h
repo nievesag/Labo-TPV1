@@ -25,6 +25,7 @@
 #include "Rewards.h"
 
 class Cannon;
+class Mothership;
 
 using namespace std;
 using uint = unsigned int;

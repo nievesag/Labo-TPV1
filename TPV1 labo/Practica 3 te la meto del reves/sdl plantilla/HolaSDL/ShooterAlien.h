@@ -4,11 +4,14 @@
 #include "Alien.h"
 #include <SDL.h>
 
+
+
 using namespace std;
 using uint = unsigned int;
 
 class SDLApplication;
 class PlayState;
+class Mothership;
 
 class ShooterAlien : public Alien
 {
