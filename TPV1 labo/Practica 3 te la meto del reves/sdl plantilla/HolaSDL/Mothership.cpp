@@ -17,6 +17,11 @@ void Mothership::update()
 		dir = -dir;
 		switchDir = false;
 	}
+
+	// si ya no quedan aliens va al menu de victory
+	if (alienCount <= 0) {
+		game->goEndState(true);
+	}
 }
 
 int Mothership::getDirection()
@@ -51,7 +56,7 @@ void Mothership::alienLanded(const Alien* alien)
 void Mothership::haveLanded()
 {
 	// acaba el juego
-	game->EndGame();
+	game->goEndState(false);
 }
 
 void Mothership::save(ostream& out) const
