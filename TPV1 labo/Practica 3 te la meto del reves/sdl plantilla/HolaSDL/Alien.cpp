@@ -4,6 +4,21 @@
 #include "PlayState.h"
 
 
+Alien::Alien(Mothership* mothership, int alienFrame, int type, Point2D<double> position,
+	int width, int height, int vidas, Texture* texture, PlayState* game)
+	: mothership(mothership), alienFrame(alienFrame), type(type), 
+	SceneObject(position, width, height, vidas, texture, game)
+{
+	setAlienSpeed();
+
+	initialY = position.getY();
+
+	if (type == 0) alienScore = 30;
+	else if (type == 1) alienScore = 20;
+	else if (type == 2) alienScore = 10;
+	else alienScore = 0;
+}
+
 void Alien::render() const
 {
 	// lo mete en el render

@@ -3,6 +3,12 @@
 #include "SDLApplication.h"
 #include "PlayState.h"
 
+ShooterAlien::ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position, 
+	int width, int height, int vidas, Texture* texture, PlayState* game) 
+	: cooldown(cooldown), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, game)
+{}
+
+
 void ShooterAlien::setCD()
 {
 	// elige un nuevo cooldown 
@@ -10,6 +16,7 @@ void ShooterAlien::setCD()
 
 	CDcounter = 0;
 }
+
 
 void ShooterAlien::update()
 {

@@ -5,7 +5,6 @@
 #include <SDL.h>
 
 
-
 using namespace std;
 using uint = unsigned int;
 
@@ -27,9 +26,9 @@ private:
 	// metodos publicos
 public:
 	// desde esta constructora invocar a la contructora padre (Alien)
-	ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
-		: cooldown(cooldown), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, game) 
-	{}
+	ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position,
+		int width, int height, int vidas, Texture* texture, PlayState* game);
+		
 
 	// settea cooldown del alien
 	void setAttackCD(double newCD) { cooldown = newCD; }
