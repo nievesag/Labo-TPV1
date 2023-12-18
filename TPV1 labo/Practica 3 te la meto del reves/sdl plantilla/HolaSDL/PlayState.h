@@ -83,7 +83,6 @@ protected:
 
 	mt19937_64 randomGenerator;	// crea semilla
 
-
 	char k; // crea un char para guardar el numero
 
 	void HandleEvent(const SDL_Event &event) override;
