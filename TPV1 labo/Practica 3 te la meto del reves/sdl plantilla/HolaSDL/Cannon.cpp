@@ -10,8 +10,6 @@ Cannon::Cannon(int cooldown, Point2D<double> position, int width, int height, in
 	// registra el cannon como oyente de eventos
 	// para reaccionar a input de teclado
 	playState->addEventListener(this);
-
-	//reward->connectReward([this]() { setInvencibleReward(); });
 }
 
 void Cannon::render() const

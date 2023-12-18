@@ -68,14 +68,6 @@ protected:
 	// archivo que leer, lo pasas del menu inicial, ya sea carga o no
 	string loadFile;
 
-	// lista de iteradores de objetos que eliminar
-	//list<list<SceneObject*>::iterator> objectsToErase;
-	// lista de anchors de objetos a eliminar
-	//list<GameList<SceneObject, true>::anchor>objectsToErase;
-
-	//
-	//GameList<SceneObject, true> toBeErased;
-
 	// puntero al mothership
 	Mothership* mother = nullptr;
 

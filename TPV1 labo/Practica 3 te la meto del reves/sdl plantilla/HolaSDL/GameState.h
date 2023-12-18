@@ -69,9 +69,6 @@ public:
 
 	virtual string getID() const;
 
-	//
-	SDL_Renderer getAppRenderer();
-
 	// ---------------------- EVENTOS Y OBJETOS -------------------
 	// añade un objeto a la lista de objetos
 	void addObject(GameObject* object);

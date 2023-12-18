@@ -300,7 +300,6 @@ void PlayState::update()
 
 	if (mother->getAlienCount() <= 0) {
 		goEndState(true);
-
 	}
 }
 
@@ -388,9 +387,6 @@ void PlayState::saveThisGame()
 		// pasa numero a string despues del save (savek)
 		save("save" + to_string(k - '0'));
 
-		// acaba el juego
-		//EndGame();
-
 		// se ha salvado el juego
 		cout << "Game saved!" << endl;
 	}
@@ -436,13 +432,7 @@ bool PlayState::damage(SDL_Rect rect, char frenemy)
 
 void PlayState::hasDied(GameList<SceneObject, true>::anchor i)
 {
-	// que cojones es un anchor ?????
-	// aniade el ANCHOR del objeto a la lista de borradores
-	//objectsToErase.push_back(i);
-
 	sceneObjectsList.erase(i);
-
-	//toBeErased.push_back(i);
 }
 
 void PlayState::fireLaser(Point2D<double> pos, char frenemy)

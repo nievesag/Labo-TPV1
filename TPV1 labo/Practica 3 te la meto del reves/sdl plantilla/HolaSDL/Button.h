@@ -59,8 +59,5 @@ public:
 	// ---- update ----
 	void connectButton(SDLEventCallback buttonCallback);
 
-	// ---- save ----
-	// no se si hace falta???? creo q si pero no se usarlo :P
-	// void save(std::ostream& out) const override = 0;
 };
 #endif

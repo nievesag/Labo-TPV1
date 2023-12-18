@@ -25,8 +25,6 @@ void Bomb::update()
 			// le dice al game que ha muerto
 			playState->hasDied(sceneanc);
 		}
-
-		
 	}
 	else if (isOut()) {
 
