@@ -1,8 +1,5 @@
 #include "checkML.h"
 #include "Alien.h"
-#include "SDLApplication.h"
-#include "PlayState.h"
-
 
 Alien::Alien(Mothership* mothership, int alienFrame, int type, Point2D<double> position,
 	int width, int height, int vidas, Texture* texture, PlayState* game)
@@ -59,9 +56,9 @@ bool Alien::hit(SDL_Rect* rect, char frenemy)
 		// informa al game que ha muerto
 		playState->hasDied(sceneanc);
 
-		//application->increaseScore(GetAlienPoints());
-
 		playState->getApplication()->increaseScore(GetAlienPoints());
+
+		mothership->subAlien();
 
 		return true;
 	}

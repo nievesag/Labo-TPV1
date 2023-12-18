@@ -4,7 +4,7 @@
 #include "PlayState.h"
 #include "Alien.h"
 
-ShooterAlien::ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position, 
+ShooterAlien::ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position,
 	int width, int height, int vidas, Texture* texture, PlayState* game) 
 	: cooldown(cooldown), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, game)
 {}
@@ -42,7 +42,6 @@ void ShooterAlien::setCD()
 	CDcounter = 0;
 }
 
-
 void ShooterAlien::update()
 {
 	if (CDcounter <= 0)
@@ -53,8 +52,6 @@ void ShooterAlien::update()
 	// !! dentro de la comprobacion anterior todos los aliens disparaban en la primera iteracion
 	// iniciando los aliens ya con un valor del random se solucionaria??
 	if (CDcounter <= 0) { 
-
-
 		int prob = playState->getRandomRange(playState->getMinProbBomb(), playState->getMaxProbBomb());
 		//cout << prob << endl;
 
@@ -82,4 +79,3 @@ void ShooterAlien::save(ostream& out) const
 	// guarda el subtipo y el cooldown del disparo
 	out << type << " " << cooldown << endl;
 }
-

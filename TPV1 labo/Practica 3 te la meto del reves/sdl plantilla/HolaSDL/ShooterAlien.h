@@ -2,15 +2,13 @@
 #define SHOOTERALIEN_H
 
 #include "Alien.h"
-#include <SDL.h>
 
+//class SDLApplication;
+//class PlayState;
+class Mothership;
 
 using namespace std;
 using uint = unsigned int;
-
-class SDLApplication;
-class PlayState;
-class Mothership;
 
 class ShooterAlien : public Alien
 {
@@ -29,12 +27,6 @@ public:
 	ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position,
 		int width, int height, int vidas, Texture* texture, PlayState* game);
 		
-
-	// el alien dispara
-	void shoot();
-
-	// gestiona el cooldown de los disparos
-	void manageCooldown();
 
 	// settea cooldown del alien
 	void setAttackCD(double newCD) { cooldown = newCD; }

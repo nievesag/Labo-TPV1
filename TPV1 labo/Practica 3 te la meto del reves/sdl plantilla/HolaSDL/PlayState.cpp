@@ -92,7 +92,6 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
 
-
 				break;
 			}
 
@@ -116,6 +115,8 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game)
 				SceneObject* obj = new Alien(mother, defaultFrame, alienType, coord, app->getTexture(alienType)->getFrameWidth(),
 					app->getTexture(alienType)->getFrameHeight(), defaultLives, app->getTexture(alienType), this);
+
+				mother->addAlien();
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
@@ -148,6 +149,8 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
+
+				mother->addAlien();
 
 				break;
 			}
