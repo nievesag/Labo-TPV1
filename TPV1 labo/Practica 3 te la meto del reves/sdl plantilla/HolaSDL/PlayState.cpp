@@ -92,7 +92,6 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
 
-
 				break;
 			}
 
@@ -116,6 +115,8 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 				// sobrecargas: Alien(mothership, frame, type, position, width, height, lifes, texture, game)
 				SceneObject* obj = new Alien(mother, defaultFrame, alienType, coord, app->getTexture(alienType)->getFrameWidth(),
 					app->getTexture(alienType)->getFrameHeight(), defaultLives, app->getTexture(alienType), this);
+
+				mother->addAlien();
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
@@ -148,6 +149,8 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
+
+				mother->addAlien();
 
 				break;
 			}
@@ -508,9 +511,9 @@ string PlayState::getID() const
 	return s_playID;
 }
 
-void PlayState::goEndState()
+void PlayState::goEndState(bool victory)
 {
 	// finaliza el juego
 		// (aniade el estado de fin a la maquina de estados de application)
-	application->getgsMachine()->pushState(new EndState(application, this));
+	application->getgsMachine()->pushState(new EndState(application, victory));
 }

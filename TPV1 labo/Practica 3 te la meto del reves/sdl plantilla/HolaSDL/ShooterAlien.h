@@ -28,12 +28,6 @@ public:
 		: cooldown(cooldown), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, game) 
 	{}
 
-	// el alien dispara
-	void shoot();
-
-	// gestiona el cooldown de los disparos
-	void manageCooldown();
-
 	// settea cooldown del alien
 	void setAttackCD(double newCD) { cooldown = newCD; }
 

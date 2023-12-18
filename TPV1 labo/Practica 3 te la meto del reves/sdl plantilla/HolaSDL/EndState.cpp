@@ -1,10 +1,10 @@
 #include "EndState.h"
 
 EndState::EndState(SDLApplication* game, bool victory) : GameState(game), victory(victory),
-	buttonVolverMenu(new Button(this, game->getTexture(16), Point2D<double>(300, 250))),
+	buttonVolverMenu(new Button(this, game->getTexture(16), Point2D<double>(220, 250))),
 	buttonSalir(new Button(this, game->getTexture(13), Point2D<double>(330, 350)))
 {
-	// lo aniede a la lista de objetos para poder renderizarlo
+	// lo aniede a la lista de objetos para poder renderizarlos
 	addObject(buttonVolverMenu);
 	addObject(buttonSalir);
 
@@ -20,10 +20,18 @@ EndState::EndState(SDLApplication* game, bool victory) : GameState(game), victor
 
 void EndState::render() const
 {
+	// dependiendo de si es has ganado o has perdido se renderiza un fondo u otro
 	if (victory) {
 		application->getTexture(YouWon)->render();
 	}
-	else application->getTexture(GameIsOver)->render();
+	else {
+		application->getTexture(GameIsOver)->render();
+	}
+
+	// para renderizar los botones
+	for (GameObject& a : gamelist) {
+		a.render();
+	}
 }
 
 bool EndState::onEnter()

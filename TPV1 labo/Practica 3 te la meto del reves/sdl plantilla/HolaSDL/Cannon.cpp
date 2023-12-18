@@ -91,7 +91,7 @@ bool Cannon::hit(SDL_Rect* rect, char frenemy)
 				// informa al game que ha muerto
 				playState->hasDied(sceneanc);
 
-				playState->goEndState();
+				playState->goEndState(false);
 			}
 		}
 		return true;
