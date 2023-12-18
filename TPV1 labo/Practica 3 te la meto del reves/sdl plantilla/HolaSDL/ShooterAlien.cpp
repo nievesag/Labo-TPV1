@@ -4,11 +4,36 @@
 #include "PlayState.h"
 #include "Alien.h"
 
-ShooterAlien::ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position, 
+ShooterAlien::ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position,
 	int width, int height, int vidas, Texture* texture, PlayState* game) 
 	: cooldown(cooldown), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, game)
 {}
 
+void ShooterAlien::shoot()
+{
+	if (CDcounter >= cooldown)
+	{
+		
+
+		
+	}
+}
+
+void ShooterAlien::manageCooldown()
+{
+	// gestion de cooldown
+	if (CDcounter >= cooldown) {
+		// elige un nuevo cooldown 
+		cooldown = playState->getRandomRange(minCD * SHOOT_FRAMES, maxCD* SHOOT_FRAMES);
+
+		// reinicia el contador
+		CDcounter = 0;
+	}
+	else
+		CDcounter++;
+
+	shoot();
+}
 
 void ShooterAlien::shoot()
 {
@@ -43,7 +68,6 @@ void ShooterAlien::setCD()
 
 	CDcounter = 0;
 }
-
 
 void ShooterAlien::update()
 {
