@@ -508,3 +508,23 @@ void PlayState::goEndState(bool victory)
 		// (aniade el estado de fin a la maquina de estados de application)
 	application->getgsMachine()->pushState(new EndState(application, victory));
 }
+
+void PlayState::emptyList() {
+
+
+	for (GameList<SceneObject, true>::forward_iterator i = sceneObjectsList.begin(); 
+		i != sceneObjectsList.end(); ++i) {
+
+
+	}
+
+	//for (auto it = sceneObjects.begin(); it != sceneObjects.end(); ++it)
+	//for (auto i : sceneObjects)
+		//sceneObjects.erase(i.getSceneObjsAnchor());
+	/*
+	for (auto i : deleteObjs)
+		deleteObjs.erase(i.getIterator());
+	*/
+	//sceneObjects.clear();
+	//deleteObjs.clear();
+}

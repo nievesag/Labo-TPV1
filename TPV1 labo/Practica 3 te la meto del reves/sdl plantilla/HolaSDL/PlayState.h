@@ -171,6 +171,9 @@ public:
 	int getMinProbReward() { return minProbabilityReward; }
 
 	int getMaxProbReward() { return maxProbabilityReward; }
+
+	// metodo para limpiar memoria dinamica 
+	void emptyList();
 };
 
 #endif

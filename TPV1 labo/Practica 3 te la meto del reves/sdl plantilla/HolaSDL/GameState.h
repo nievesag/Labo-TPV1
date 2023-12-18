@@ -40,6 +40,8 @@ public:
 		gamelist = gamestate.gamelist;
 	};
 
+	virtual ~GameState() = default;
+
 	// ---------------------------------- BASICOS ----------------------------
 	// render del estado
 	virtual void render() const;
