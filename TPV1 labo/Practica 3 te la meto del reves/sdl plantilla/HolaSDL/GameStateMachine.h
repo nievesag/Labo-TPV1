@@ -32,6 +32,8 @@ public:
 
 	}
 
+	~GameStateMachine();
+
 	// empuja un estado a la pila
 	void pushState(GameState* newState);
 

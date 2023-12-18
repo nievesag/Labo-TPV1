@@ -1,5 +1,18 @@
 #include "GameStateMachine.h"
 
+GameStateMachine::~GameStateMachine()
+{
+	while (!states.empty())
+	{
+		popState();
+	}
+
+	for (const auto i : statesToDelete) {
+
+		delete i;
+	}
+}
+
 void GameStateMachine::pushState(GameState* newState)
 {
 	// anyade el estado
