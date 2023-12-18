@@ -6,6 +6,8 @@ Rewards::Rewards(Point2D<double> position, int width, int height, Texture* rewar
 {
 	destRect.w = texture->getFrameWidth();
 	destRect.h = texture->getFrameHeight();
+
+	vel.setY(-1);
 }
 
 void Rewards::render() const
