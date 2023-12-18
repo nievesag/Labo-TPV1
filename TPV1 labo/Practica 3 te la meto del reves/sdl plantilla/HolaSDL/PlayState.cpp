@@ -5,6 +5,9 @@
 #include "PlayState.h"
 #include "PauseState.h"
 #include "EndState.h"
+#include "SDLerror.h"
+#include "FileNotFoundError.h"
+#include "FileFormatError.h"
 
 PlayState::PlayState(SDLApplication* game, string loadFile) : app(game), GameState(game), loadFile(loadFile) {
 
@@ -32,8 +35,7 @@ void PlayState::loadTextures()
 
 		if (app->getTexture(i) == nullptr) {
 
-			// !!!!!!!! MIRAR 
-			//throw SDLError("Error cargando texturas "s + SDL_GetError());
+			throw SDLError("Error cargando texturas "s + SDL_GetError());
 		}
 	}
 }
@@ -43,8 +45,7 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 	// lee el mapa
 	ifstream in(fileAndRoot + ".txt");
 
-	// !!!!!! MIRAR
-	//if (in.fail()) throw FileNotFoundError("No se ha podido leer el mapa "s + file + ".txt");
+	if (in.fail()) throw FileNotFoundError("No se ha podido leer el mapa "s + fileAndRoot + ".txt");
 
 	// variables auxiliares
 	int objID;						// id
@@ -52,7 +53,6 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 	int alienType, cooldown, vidas,	// otros
 		estado, hits, timer, score;
 	char color;						// color
-
 
 	
 	// mientras no se acabe el archivo sigue leyendo
@@ -311,7 +311,6 @@ void PlayState::renderBackground() const {
 
 bool PlayState::mayGrantReward(SDL_Rect rect) const
 {
-	cout << "hola" << endl;
 	// deteccion de colision de la reward con el cannon
 	SDL_Rect cannonRect = cannonRef->getRect();
 	return SDL_HasIntersection(&rect, &cannonRect);
@@ -505,4 +504,11 @@ int PlayState::getRandomRange(int min, int max)
 string PlayState::getID() const
 {
 	return s_playID;
+}
+
+void PlayState::goEndState()
+{
+	// finaliza el juego
+		// (aniade el estado de fin a la maquina de estados de application)
+	application->getgsMachine()->pushState(new EndState(application, this));
 }
