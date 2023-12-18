@@ -508,9 +508,9 @@ string PlayState::getID() const
 	return s_playID;
 }
 
-void PlayState::goEndState()
+void PlayState::goEndState(bool victory)
 {
 	// finaliza el juego
 		// (aniade el estado de fin a la maquina de estados de application)
-	application->getgsMachine()->pushState(new EndState(application, this));
+	application->getgsMachine()->pushState(new EndState(application, victory));
 }
