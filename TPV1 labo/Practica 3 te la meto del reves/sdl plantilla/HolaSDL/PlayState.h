@@ -85,7 +85,9 @@ public:
 	int SCORE = 0;	// score general del player
 
 	// constructora
-	PlayState::PlayState(SDLApplication* game, string loadFile);
+	PlayState(SDLApplication* game, string loadFile);
+
+	~PlayState();
 
 	// update
 	void update() override;
