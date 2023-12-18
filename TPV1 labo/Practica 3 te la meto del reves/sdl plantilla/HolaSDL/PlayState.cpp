@@ -336,7 +336,7 @@ void PlayState::dropReward(Point2D<double> pos)
 		this, [this]() { cannonRef->setInvencibleReward(); });
 
 	// lo mete en la lista:
-	// cuando se añade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
+	// cuando se aï¿½ade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
 	// pero estatico ??? tipo no se mueve) para luego poder usarlo en eliminaciones de objetos.
 	sceneObjectsList.push_back(newObj);
 }
@@ -432,7 +432,6 @@ bool PlayState::damage(SDL_Rect rect, char frenemy)
 
 void PlayState::hasDied(GameList<SceneObject, true>::anchor i)
 {
-	
 	sceneObjectsList.erase(i);
 }
 
@@ -442,7 +441,7 @@ void PlayState::fireLaser(Point2D<double> pos, char frenemy)
 	SceneObject* newObj = new Laser(frenemy, pos, defaultLaserW, defaultLaserH, defaultLives, nullptr, this);
 
 	// lo mete en la lista:
-	// cuando se añade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
+	// cuando se aï¿½ade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
 	// pero estatico ??? tipo no se mueve) para luego poder usarlo en eliminaciones de objetos.
 	sceneObjectsList.push_back(newObj);
 }
@@ -454,7 +453,7 @@ void PlayState::fireBomb(Point2D<double> pos) {
 		defaultBombLives, app->getTexture(BOMBA), this);
 
 	// lo mete en la lista:
-	// cuando se añade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
+	// cuando se aï¿½ade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
 	// pero estatico ??? tipo no se mueve) para luego poder usarlo en eliminaciones de objetos.
 	sceneObjectsList.push_back(newObj);
 }
