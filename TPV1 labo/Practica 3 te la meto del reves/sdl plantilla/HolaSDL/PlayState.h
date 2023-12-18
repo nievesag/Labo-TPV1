@@ -125,6 +125,9 @@ public:
 	// getter del renderer de SDLApplication
 	SDL_Renderer* getAppRenderer();
 
+	// getter del SDLApplication
+	SDLApplication* getApplication();
+
 	// ---- CONTROL DE COLISIONES ----
 	// colisiones
 	bool damage(SDL_Rect rect, char frenemy);

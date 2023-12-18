@@ -398,6 +398,11 @@ bool PlayState::onEnter()
 	return true;
 }
 
+SDLApplication* PlayState::getApplication()
+{
+	return application;
+}
+
 bool PlayState::onExit()
 {
 	cout << "exiting PlayState\n";

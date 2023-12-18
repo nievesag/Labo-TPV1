@@ -28,6 +28,7 @@ SDLApplication::SDLApplication()
 	if (window == nullptr || renderer == nullptr)
 		throw SDLError("Error cargando ventana de juego o renderer "s + SDL_GetError());
 
+	gameScore = 0;
 
 	// ---- TEXRTURAS ----
 	loadTextures();
@@ -124,7 +125,9 @@ void SDLApplication::render()
 	SDL_RenderPresent(renderer);
 }
 
+
+
 void SDLApplication::PlayerScore()
 {
-	cout << "SCORE: " << playState->getScore() << endl;
+	cout << "SCORE: " << gameScore << endl;
 }

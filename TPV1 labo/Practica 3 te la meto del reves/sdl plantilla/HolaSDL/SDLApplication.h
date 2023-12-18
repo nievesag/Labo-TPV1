@@ -54,6 +54,7 @@ enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, UfoT, BOMBA, Rew
 // archivo de strings con las roots de las carpetas etc
 static string SAVED_FOLDER = "..\\saved\\";
 
+
 // ---- APPLICATION ----
 class SDLApplication
 {
@@ -117,6 +118,9 @@ private:
 
 	bool exit = false;
 
+
+	int gameScore = 0;
+
 	// metodos publicos 
 public:
 	// ---- constructora ----
@@ -174,6 +178,12 @@ public:
 
 	void setExit(bool e) {
 		exit = e;
+	}
+
+	void increaseScore(int points) {
+		cout << "AAAAAA" << endl;
+
+		gameScore += points;
 	}
 
 // ---- METODOS PRIVADOS ----
