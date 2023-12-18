@@ -20,7 +20,6 @@ EndState::EndState(SDLApplication* game, bool victory) : GameState(game), victor
 
 void EndState::render() const
 {
-	// dependiendo de si es has ganado o has perdido se renderiza un fondo u otro
 	if (victory) {
 		application->getTexture(YouWon)->render();
 	}
@@ -28,7 +27,6 @@ void EndState::render() const
 		application->getTexture(GameIsOver)->render();
 	}
 
-	// para renderizar los botones
 	for (GameObject& a : gamelist) {
 		a.render();
 	}
