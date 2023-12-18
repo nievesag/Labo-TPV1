@@ -101,19 +101,19 @@ private:
 		{ "..\\images\\bunker.png", 4, 1 },				  // bunker  // 88,57			-> 4
 		{ "..\\images\\stars.png", 1, 1 },				  // fondo						-> 5
 		{ "..\\images\\ovni2.png", 3, 1 },				  // ufo	 // 48,26			-> 6
-		{ "..\\objetos\\bomb.png", 3, 1 },				  // BOMBA						-> 7
-		{ "..\\objetos\\shield_reward.png", 3, 1 },		  // reward BOMBA				-> 8
-		{ "..\\objetos\\shield.png", 3, 1 },			  // escudo						-> 9
-		{ "..\\fondos\\mainMenu.png", 1, 1 },			  // fondo del menu inicial		-> 10
-		{ "..\\textos\\nuevaPartida.png", 1, 1 },		  // texto: NUEVA PARTIDA		-> 11
-		{ "..\\textos\\cargarPartida.png", 1, 1},		  // texto: CARGAR PARTIDA		-> 12
-		{ "..\\textos\\salir.png", 1, 1 },				  // texto: SALIR				-> 13
-		{ "..\\textos\\continuar.png", 1, 1 },			  // texto: CONTINUAR			-> 14
-		{ "..\\textos\\guardarPartida.png", 1, 1 },		  // texto: GUARDAR				-> 15
-		{ "..\\textos\\volverAlMenu.png", 1, 1 },		  // texto: VOLVER AL MENU		-> 16
-		{ "..\\textos\\gameOver.png", 1, 1 },			  // texto: GAME OVER			-> 17
-		{ "..\\textos\\hasGanado.png", 1, 1 },			  // texto: HAS GANADO			-> 18
-		{ "..\\textos\\codigo.png", 1, 1 }				  // texto: CODIGO				-> 19
+		{ "..\\images\\bomb.png", 3, 1 },				  // BOMBA						-> 7
+		{ "..\\images\\shield_reward.png", 3, 1 },		  // reward BOMBA				-> 8
+		{ "..\\images\\shield.png", 3, 1 },			  // escudo						-> 9
+		{ "..\\images\\mainMenu.png", 1, 1 },			  // fondo del menu inicial		-> 10
+		{ "..\\images\\nuevaPartida.png", 1, 1 },		  // texto: NUEVA PARTIDA		-> 11
+		{ "..\\images\\cargarPartida.png", 1, 1},		  // texto: CARGAR PARTIDA		-> 12
+		{ "..\\images\\salir.png", 1, 1 },				  // texto: SALIR				-> 13
+		{ "..\\images\\continuar.png", 1, 1 },			  // texto: CONTINUAR			-> 14
+		{ "..\\images\\guardarPartida.png", 1, 1 },		  // texto: GUARDAR				-> 15
+		{ "..\\images\\volverAlMenu.png", 1, 1 },		  // texto: VOLVER AL MENU		-> 16
+		{ "..\\images\\gameOver.png", 1, 1 },			  // texto: GAME OVER			-> 17
+		{ "..\\images\\hasGanado.png", 1, 1 },			  // texto: HAS GANADO			-> 18
+		{ "..\\images\\codigo.png", 1, 1 }				  // texto: CODIGO				-> 19
 	};
 
 	bool exit = false;
