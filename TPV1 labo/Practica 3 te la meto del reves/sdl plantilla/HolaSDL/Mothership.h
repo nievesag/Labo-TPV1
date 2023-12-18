@@ -3,7 +3,6 @@
 
 #include "GameObject.h"
 #include "Alien.h"
-#include "PlayState.h"
 
 using namespace std;
 using uint = unsigned int;
@@ -65,11 +64,6 @@ public:
 	// añade alien al contador
 	void addAlien() { 
 		alienCount++; }
-
-	// resta alien al contador
-	void subAlien() {
-		alienCount--;
-	}
 
 	// 'mata' al alien (resta al contador)
 	void alienDied() { alienCount--; };

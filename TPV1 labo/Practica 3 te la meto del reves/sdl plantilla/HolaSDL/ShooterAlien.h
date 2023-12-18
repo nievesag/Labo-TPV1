@@ -30,6 +30,12 @@ public:
 		int width, int height, int vidas, Texture* texture, PlayState* game);
 		
 
+	// el alien dispara
+	void shoot();
+
+	// gestiona el cooldown de los disparos
+	void manageCooldown();
+
 	// settea cooldown del alien
 	void setAttackCD(double newCD) { cooldown = newCD; }
 
