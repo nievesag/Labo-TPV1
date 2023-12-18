@@ -34,32 +34,6 @@ void ShooterAlien::manageCooldown()
 	shoot();
 }
 
-void ShooterAlien::shoot()
-{
-	if (CDcounter >= cooldown)
-	{
-		
-
-		
-	}
-}
-
-void ShooterAlien::manageCooldown()
-{
-	// gestion de cooldown
-	if (CDcounter >= cooldown) {
-		// elige un nuevo cooldown 
-		cooldown = playState->getRandomRange(minCD * SHOOT_FRAMES, maxCD* SHOOT_FRAMES);
-
-		// reinicia el contador
-		CDcounter = 0;
-	}
-	else
-		CDcounter++;
-
-	shoot();
-}
-
 void ShooterAlien::setCD()
 {
 	// elige un nuevo cooldown 

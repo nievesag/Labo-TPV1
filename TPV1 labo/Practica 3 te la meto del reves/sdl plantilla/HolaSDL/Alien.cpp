@@ -1,5 +1,6 @@
 #include "checkML.h"
 #include "Alien.h"
+#include "SDLApplication.h"
 
 Alien::Alien(Mothership* mothership, int alienFrame, int type, Point2D<double> position,
 	int width, int height, int vidas, Texture* texture, PlayState* game)
