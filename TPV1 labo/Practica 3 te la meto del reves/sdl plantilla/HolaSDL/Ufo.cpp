@@ -17,6 +17,8 @@ void Ufo::update()
 	switch (state)
 	{
 		case visible:
+
+			//cout << "ESTOY VISIBLE" << endl;
 			// se mueve
 			move();
 
@@ -33,12 +35,16 @@ void Ufo::update()
 			break;
 
 		case oculto:
+
+			cout << "ESTOY OCULTO" << endl;
 			// gestiona el cooldown de aparicion
 			// cd management
 			manageCooldown();
 			break;
 
 		case destruido:
+
+			cout << "ESTOY DESTRUIDO" << endl;
 			// simplemente la animacion y luego muere
 			anima();
 			break;
@@ -47,6 +53,8 @@ void Ufo::update()
 
 void Ufo::updateRect()
 {
+	cout << "llego" << endl;
+
 	// posicion               
 	destRect.x = position.getX();
 	destRect.y = position.getY();
@@ -59,6 +67,8 @@ void Ufo::anima()
 
 		// cambia el estado
 		state = oculto;
+
+		frame = 0;
 	}
 
 	// si el contador de animacion (tiempo entre frame y frame) es menor que 0
@@ -97,25 +107,22 @@ void Ufo::appear()
 {
 	state = visible;
 
-	/*
-		if (!isOut()) { 
 	
-		cout << "holaaaaa" << endl;
-
+	if (!isOut()) { 
 	}
 	else state = oculto;
-	*/
+	
 
 }
 
 void Ufo::disappear()
 {
-	state = oculto;
+      	state = oculto;
 }
 
 void Ufo::die()
 {
-	state = destruido;
+ 	state = destruido;
 
 	hits = 0;
 
@@ -123,8 +130,6 @@ void Ufo::die()
 	rewardProb = playState->getRandomRange(playState->getMinProbReward(), playState->getMaxProbReward());
 	if (rewardProb == 1) {
 		//playState->dropReward(position);
-
-		cout << "AAAAAAAAA PARA YA" << endl;
 	}
 }
 
@@ -163,6 +168,8 @@ bool Ufo::isOut()
 
 void Ufo::move()
 {
+	//cout << position.getX();
+
 	// mueve al laser
 	position.setX(position.getX() - vel);
 }
