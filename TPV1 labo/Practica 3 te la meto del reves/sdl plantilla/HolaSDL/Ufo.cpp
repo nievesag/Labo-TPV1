@@ -12,6 +12,8 @@ void Ufo::update()
 {
 	updateRect();
 
+	//cout << hits << endl;
+
 	switch (state)
 	{
 		case visible:
@@ -24,7 +26,7 @@ void Ufo::update()
 				disappear();
 			}
 			// si le pegan
-			if (vidas <= 0) {
+			if (hits >= vidas) {
 				// muere
 				die();
 			}
@@ -75,9 +77,9 @@ bool Ufo::hit(SDL_Rect* rect, char frenemy)
 {
 	if (SDL_HasIntersection(rect, &destRect) && frenemy) {
 
-		vidas--;
+		hits++;
 
-		if (vidas <= 0) {
+		if (hits >= vidas) {
 
 			// lo 'mata' 
 			die();
@@ -95,8 +97,15 @@ void Ufo::appear()
 {
 	state = visible;
 
-	if (!isOut()) { }
+	/*
+		if (!isOut()) { 
+	
+		cout << "holaaaaa" << endl;
+
+	}
 	else state = oculto;
+	*/
+
 }
 
 void Ufo::disappear()
@@ -108,10 +117,14 @@ void Ufo::die()
 {
 	state = destruido;
 
+	hits = 0;
+
 	// gestion de dropeo de reward
 	rewardProb = playState->getRandomRange(playState->getMinProbReward(), playState->getMaxProbReward());
 	if (rewardProb == 1) {
-		playState->dropReward(position);
+		//playState->dropReward(position);
+
+		cout << "AAAAAAAAA PARA YA" << endl;
 	}
 }
 
@@ -119,6 +132,8 @@ void Ufo::manageCooldown()
 {
 	// gestion de cooldown
 	if (CDcounter >= cooldown) {
+
+		//cout << "POR QUE NO APARECE" << endl;
 
 		// cambia el estado
 		appear();

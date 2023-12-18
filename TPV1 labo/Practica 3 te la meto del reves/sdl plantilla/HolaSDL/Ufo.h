@@ -48,6 +48,7 @@ public:
 		: spawn(position), SceneObject(position, width, height, vidas, texture, game)
 	{
 		state = oculto;
+		hits = 0;
 
 		setCD();
 	};
