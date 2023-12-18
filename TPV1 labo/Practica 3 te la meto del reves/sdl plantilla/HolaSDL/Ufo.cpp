@@ -83,7 +83,7 @@ bool Ufo::hit(SDL_Rect* rect, char frenemy)
 			die();
 
 			// da los puntos
-			playState->increaseScore(UfoScore);
+			playState->getApplication()->increaseScore(UfoScore);
 		}
 		return true;
 	}
