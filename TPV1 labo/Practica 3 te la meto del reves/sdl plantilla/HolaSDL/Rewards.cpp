@@ -17,7 +17,7 @@ void Rewards::render() const
 void Rewards::update()
 {
 	// mueve la reward
-	move();
+  	move();
 
 	// actualiza el rect (colisiones)
 	updateRect();

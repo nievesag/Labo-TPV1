@@ -17,7 +17,7 @@ class Rewards : public SceneObject
 	// atributos privados
 private:
 
-	SDL_Rect* rect;
+	//SDL_Rect* rect;
 
 	Vector2D<double> vel;
 

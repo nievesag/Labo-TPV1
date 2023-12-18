@@ -84,11 +84,14 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 			// ---------------- Creacion del objeto ------------------
 
 				// nave
-				SceneObject* obj = new Cannon(cooldown, coord, app->getTexture(Nave)->getFrameWidth(),
+				Cannon* obj = new Cannon(cooldown, coord, app->getTexture(Nave)->getFrameWidth(),
 					app->getTexture(Nave)->getFrameHeight(), vidas, app->getTexture(Nave), this);
+
+				cannonRef = obj;
 
 				// lo mete en la lista
 				sceneObjectsList.push_back(obj);
+
 
 				break;
 			}
@@ -319,12 +322,12 @@ bool PlayState::mayGrantReward(SDL_Rect rect) const
 
 void PlayState::dropReward(Point2D<double> pos)
 {
-	Vector2D<double> aa{ pos.getX(), pos.getY() };
+	//Vector2D<double> aa{ pos.getX(), pos.getY() };
 
-	/*
-	
+	cout << "DORPPED???" << endl;
+
 	// crea reward
-	SceneObject* newObj = new Rewards(pos, app->getTexture(Shield)->getFrameWidth(), 
+         	SceneObject* newObj = new Rewards(pos, app->getTexture(Shield)->getFrameWidth(), 
 		app->getTexture(Shield)->getFrameHeight(), app->getTexture(Shield), 
 		this, [this]() { cannonRef->setInvencibleReward(); });
 
@@ -332,7 +335,6 @@ void PlayState::dropReward(Point2D<double> pos)
 	// cuando se añade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
 	// pero estatico ??? tipo no se mueve) para luego poder usarlo en eliminaciones de objetos.
 	sceneObjectsList.push_back(newObj);
-	*/
 }
 
 // MANEJO DE EVENTOS
