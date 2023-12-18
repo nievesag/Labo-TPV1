@@ -13,7 +13,6 @@
 
 class Mothership;
 class SDLApplication;
-
 class PlayState;
 
 using namespace std;

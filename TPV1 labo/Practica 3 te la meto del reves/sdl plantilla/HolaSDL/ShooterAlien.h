@@ -2,15 +2,13 @@
 #define SHOOTERALIEN_H
 
 #include "Alien.h"
-#include <SDL.h>
 
+//class SDLApplication;
+//class PlayState;
+class Mothership;
 
 using namespace std;
 using uint = unsigned int;
-
-class SDLApplication;
-class PlayState;
-class Mothership;
 
 class ShooterAlien : public Alien
 {
