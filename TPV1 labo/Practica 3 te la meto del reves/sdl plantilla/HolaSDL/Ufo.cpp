@@ -17,6 +17,7 @@ void Ufo::update()
 	switch (state)
 	{
 		case visible:
+			frame = 0;
 
 			//cout << "ESTOY VISIBLE" << endl;
 			// se mueve
@@ -63,11 +64,12 @@ void Ufo::anima()
 		// cambia el estado
 		state = oculto;
 
-		frame = 0;
 	}
 
 	// si el contador de animacion (tiempo entre frame y frame) es menor que 0
 	if (animTimer <= 0) {
+
+		cout << "hola" << endl;
 
 		// aumenta el frame
 		frame++;
