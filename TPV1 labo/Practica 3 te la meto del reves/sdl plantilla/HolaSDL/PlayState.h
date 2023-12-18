@@ -111,6 +111,8 @@ public:
 	// limpia los objetos
 	bool onExit() override;
 
+	void goEndState();
+
 	// getter de id del estado
 	string getID() const override;
 
