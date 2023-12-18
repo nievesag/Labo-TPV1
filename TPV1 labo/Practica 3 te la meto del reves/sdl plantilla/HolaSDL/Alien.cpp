@@ -57,6 +57,8 @@ bool Alien::hit(SDL_Rect* rect, char frenemy)
 		// informa al game que ha muerto
 		playState->hasDied(sceneanc);
 
+		mothership->alienDied();
+
 		//application->increaseScore(GetAlienPoints());
 
 		playState->getApplication()->increaseScore(GetAlienPoints());
