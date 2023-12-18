@@ -8,6 +8,31 @@ ShooterAlien::ShooterAlien(double cooldown, Mothership* mothership, int alienFra
 	: cooldown(cooldown), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, game)
 {}
 
+void ShooterAlien::shoot()
+{
+	if (CDcounter >= cooldown)
+	{
+		
+
+		
+	}
+}
+
+void ShooterAlien::manageCooldown()
+{
+	// gestion de cooldown
+	if (CDcounter >= cooldown) {
+		// elige un nuevo cooldown 
+		cooldown = playState->getRandomRange(minCD * SHOOT_FRAMES, maxCD* SHOOT_FRAMES);
+
+		// reinicia el contador
+		CDcounter = 0;
+	}
+	else
+		CDcounter++;
+
+	shoot();
+}
 
 void ShooterAlien::setCD()
 {
@@ -27,6 +52,8 @@ void ShooterAlien::update()
 	// !! dentro de la comprobacion anterior todos los aliens disparaban en la primera iteracion
 	// iniciando los aliens ya con un valor del random se solucionaria??
 	if (CDcounter <= 0) { 
+
+
 		int prob = playState->getRandomRange(playState->getMinProbBomb(), playState->getMaxProbBomb());
 		//cout << prob << endl;
 
@@ -54,3 +81,4 @@ void ShooterAlien::save(ostream& out) const
 	// guarda el subtipo y el cooldown del disparo
 	out << type << " " << cooldown << endl;
 }
+
