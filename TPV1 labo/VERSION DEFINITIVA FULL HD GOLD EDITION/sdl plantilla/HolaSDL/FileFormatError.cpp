@@ -1,6 +1,6 @@
 #include "FileFormatError.h"
 
-FileFormatError::FileFormatError(const string& message) : InvadersError(message) 
+FileFormatError::FileFormatError(const std::string& message) : InvadersError(message) 
 { 
 	errorMessage = message; 
 }

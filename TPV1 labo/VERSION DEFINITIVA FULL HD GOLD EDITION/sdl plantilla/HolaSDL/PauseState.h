@@ -6,13 +6,10 @@
 
 class Button;
 
-using namespace std;
-using uint = unsigned int;
-
 class PauseState : public GameState{
 
 private:
-	const string s_pauseID = "PAUSE";
+	const std::string s_pauseID = "PAUSE";
 
 	PlayState* playState;
 
@@ -39,7 +36,7 @@ public:
 	bool onExit() override;
 
 	// getID
-	string getID() const override;
+	std::string getID() const override;
 
 private:
 	// funciones de los botones

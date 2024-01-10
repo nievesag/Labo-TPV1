@@ -11,9 +11,6 @@
 
 class PlayState;
 
-using namespace std;
-using uint = unsigned int;
-
 class Ufo : public SceneObject
 {
 	// atributos privados
@@ -26,8 +23,8 @@ private:
 	// cooldown de aparicion
 	double cooldown,	// cooldown de aparicion
 		CDcounter,		// contador de cooldown de aparicion
-		minCD = 1,
-		maxCD = 5;	// minimo y maximo cooldown
+		minCD = 1,		// minimo y maximo cooldown
+		maxCD = 5;		
 
 	// gestion de animacion de la explosion
 	int animTimer = 10;
@@ -35,11 +32,11 @@ private:
 
 	int vel = 1;
 
-	Point2D<double> spawn;
+	Point2D<double> spawn; // punto de spawn
 
 	int UfoScore = 100;
 
-	int rewardProb;
+	int rewardProb; // probabilidad de soltar reward
 
 	// metodos publicos
 public:
@@ -84,7 +81,7 @@ public:
 
 	// ---- save ----
 	// guarda objeto
-	void save(ostream& out) const override;
+	void save(std::ostream& out) const override;
 
 	// devuelve si esta fuera del marco de juego 
 	bool isOut();

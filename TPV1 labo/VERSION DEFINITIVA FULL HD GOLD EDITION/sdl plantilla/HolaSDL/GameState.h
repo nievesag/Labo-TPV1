@@ -1,22 +1,16 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-using namespace std;
-using uint = unsigned int;
-
-// includes
 #include <SDL.h>		// SDL
 #include <fstream>		// stream
 #include <list>			// listas
 #include <string>		// string
 #include "checkML.h"
 
-// 
 #include "gameList.h"
 #include "SceneObject.h"
 #include "EventHandler.h"
 #include "GameObject.h"
-
 
 class SDLApplication;
 
@@ -29,7 +23,7 @@ protected:
 	GameList<GameObject, true> gamelist;
 
 	// lista de punteros a oyentes
-	list<EventHandler*> eventListeners;
+	std::list<EventHandler*> eventListeners;
 
 public:
 	// constructora normal por puntero a game
@@ -42,7 +36,7 @@ public:
 
 	virtual ~GameState() = default;
 
-	// ---------------------------------- BASICOS ----------------------------
+	// ------------------------- BASICOS -------------------------
 	// render del estado
 	virtual void render() const;
 
@@ -50,7 +44,7 @@ public:
 	virtual void update();
 
 	// guarda el estado
-	virtual void save(ostream& file);
+	virtual void save(std::ostream& file);
 
 	// cuando entra
 	virtual bool onEnter();
@@ -58,25 +52,24 @@ public:
 	// cuando sale
 	virtual bool onExit();
 
-	// --------------------------------- OTHER --------------------------------
+	// ------------------------- OTHER -------------------------
 	// gestiona los eventos del estado
 	virtual void HandleEvent(const SDL_Event &event);
 
 	// comento porque esta incompleta
 	virtual void hasDied(GameList<GameObject, true>::anchor);
 
-	// ---------------------------------- GETTERS Y SETTERS -------------------------
+	// ------------------------- GETTERS Y SETTERS -------------------------
 	// getter del juego
 	SDLApplication* getApplication() { return application; }
 
-	virtual string getID() const;
+	virtual std::string getID() const;
 
-	// ---------------------- EVENTOS Y OBJETOS -------------------
+	// ------------------------- EVENTOS Y OBJETOS -------------------------
 	// añade un objeto a la lista de objetos
 	void addObject(GameObject* object);
 
 	// para registrar oyentes
 	void addEventListener(EventHandler* listener);
 };
-
 #endif

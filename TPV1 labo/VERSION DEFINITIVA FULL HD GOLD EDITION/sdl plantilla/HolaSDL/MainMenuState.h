@@ -3,20 +3,15 @@
 
 // includes
 #include "GameState.h"
-//#include "Button.h"
 #include "SDLApplication.h"
 #include <string>
-//class SDLApplication;
 
 class Button;
-
-using namespace std;
-using uint = unsigned int;
 
 class MainMenuState : public GameState {
 
 private:
-	const string s_menuID = "MENU";
+	const std::string s_menuID = "MENU";
 
 	// punteros a los botones del MAIN MENU
 	// botones en este estado: NUEVA PARTIDA / CARGAR PARTIDA / SALIR
@@ -38,7 +33,7 @@ public:
 	bool onExit() override;
 
 	// getID
-	string getID() const override;
+	std::string getID() const override;
 
 private:
 	// funciones de los botones

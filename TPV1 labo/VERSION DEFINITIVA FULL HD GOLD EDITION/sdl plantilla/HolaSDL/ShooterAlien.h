@@ -3,12 +3,7 @@
 
 #include "Alien.h"
 
-//class SDLApplication;
-//class PlayState;
 class Mothership;
-
-using namespace std;
-using uint = unsigned int;
 
 class ShooterAlien : public Alien
 {
@@ -20,14 +15,12 @@ private:
 			minCD = 2, 
 			maxCD = 20;	// minimo y maximo cooldown
 
-
 	// metodos publicos
 public:
 	// desde esta constructora invocar a la contructora padre (Alien)
 	ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position,
 		int width, int height, int vidas, Texture* texture, PlayState* game);
 		
-
 	// el alien dispara
 	void shoot();
 
@@ -41,7 +34,6 @@ public:
 
 	void update() override;
 
-	void save(ostream& out) const override;
-
+	void save(std::ostream& out) const override;
 };
 #endif

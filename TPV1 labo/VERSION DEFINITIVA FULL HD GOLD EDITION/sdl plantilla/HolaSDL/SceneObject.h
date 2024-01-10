@@ -10,9 +10,6 @@
 class GameState;
 class PlayState;
 
-using namespace std;
-using uint = unsigned int;
-
 class SceneObject : public GameObject
 {
 	// atributos protegidos
@@ -37,7 +34,6 @@ protected:
 	// anchor
 	GameList<SceneObject, true>::anchor sceneanc = nullptr;
 
-	
 	// metodos publicos
 public:
 	SceneObject(Point2D<double> position, int width, int height, int vidas, Texture* texture,  PlayState* game)
@@ -98,7 +94,7 @@ public:
 
 	// ---- save ----
 	// guarda objeto
-	virtual void save(ostream& out) const;
+	virtual void save(std::ostream& out) const;
 
 	// ---- hit ----
 	// colisiones

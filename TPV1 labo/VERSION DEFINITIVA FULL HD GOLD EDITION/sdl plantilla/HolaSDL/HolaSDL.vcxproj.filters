@@ -134,7 +134,7 @@
     <ClInclude Include="InvadersError.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="SDLerror.h">
+    <ClInclude Include="SDLError.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="FileNotFoundError.h">

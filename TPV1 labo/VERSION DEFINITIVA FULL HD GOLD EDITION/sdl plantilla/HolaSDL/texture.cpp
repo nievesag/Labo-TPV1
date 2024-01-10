@@ -1,6 +1,7 @@
 #include "texture.h"
 #include "SDLerror.h"
 #include <SDL_image.h>
+#include "checkML.h"
 
 using namespace std;
 

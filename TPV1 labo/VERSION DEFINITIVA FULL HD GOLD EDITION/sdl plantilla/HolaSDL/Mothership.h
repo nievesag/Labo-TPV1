@@ -4,9 +4,6 @@
 #include "GameObject.h"
 #include "Alien.h"
 
-using namespace std;
-using uint = unsigned int;
-
 class Alien;
 class PlayState;
 class GameState;
@@ -53,7 +50,7 @@ public:
 	void update() override;
 
 	// guarda mothership
-	void save(ostream& out) const override;
+	void save(std::ostream& out) const override;
 
 	// ajusta la direccion de los aliens
 	int getDirection();

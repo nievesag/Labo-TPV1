@@ -27,16 +27,11 @@
 class Cannon;
 class Mothership;
 
-using namespace std;
-using uint = unsigned int;
-
 class PlayState : public GameState{
 private:
-
-	// ---- GENERAL -----
-
+	// ------------- GENERAL -------------
 	// id del estado
-	const string s_playID = "PLAY";
+	const std::string s_playID = "PLAY";
 
 	// default variables
 	int defaultLives = 1,	    // default number of lives
@@ -55,9 +50,9 @@ private:
 		minProbabilityReward = 1,
 		maxProbabilityReward = 1;
 
-	// ---- CARGA Y GUARDADO ----
+	// ------------- CARGA Y GUARDADO -------------
 	// archivo de strings con las roots de las carpetas etc
-	string SAVED_FOLDER = "..\\saved\\";
+	std::string SAVED_FOLDER = "..\\saved\\";
 
 protected:
 	SDLApplication* app;
@@ -66,7 +61,7 @@ protected:
 	GameList<SceneObject, true> sceneObjectsList;
 
 	// archivo que leer, lo pasas del menu inicial, ya sea carga o no
-	string loadFile;
+	std::string loadFile;
 
 	// puntero al mothership
 	Mothership* mother = nullptr;
@@ -74,8 +69,7 @@ protected:
 	// puntero al cannon
 	Cannon* cannonRef;
 
-	mt19937_64 randomGenerator;	// crea semilla
-
+	std::mt19937_64 randomGenerator;	// crea semilla
 
 	char k; // crea un char para guardar el numero
 
@@ -85,7 +79,7 @@ public:
 	int SCORE = 0;	// score general del player
 
 	// constructora
-	PlayState(SDLApplication* game, string loadFile);
+	PlayState(SDLApplication* game, std::string loadFile);
 
 	~PlayState();
 
@@ -97,7 +91,7 @@ public:
 	void renderBackground() const;
 
 	// save
-	void save(const string& file);
+	void save(const std::string& file);
 
 	// es como la constructora del antiguo game, lee la partida 
 	// y carga todos los objetos y los prepara
@@ -109,13 +103,12 @@ public:
 	void goEndState(bool victory);
 
 	// getter de id del estado
-	string getID() const override;
+	std::string getID() const override;
 
 	//
 	void EndGame();
 
-	// ---- GETTERS Y SETTERS GENERALES ----
-
+	// ------------- GETTERS Y SETTERS GENERALES -------------
 	// genera un int aleatorio con un minimo y un maximo
 	int getRandomRange(int min, int max);
 
@@ -125,46 +118,46 @@ public:
 	// getter del SDLApplication
 	SDLApplication* getApplication();
 
-	// ---- CONTROL DE COLISIONES ----
+	// ------------- CONTROL DE COLISIONES -------------
 	// colisiones
 	bool damage(SDL_Rect rect, char frenemy);
 
 	// avisa si se ha muerto un objeto
 	void hasDied(GameList<SceneObject, true>::anchor i);
 
-	// ---- GENERACION DE LASERES Y BOMBAS ----
+	// ------------- GENERACION DE LASERES Y BOMBAS -------------
 	// dispara el laser (lo crea)
 	void fireLaser(Point2D<double> pos, char frenemy);
 
 	// dispara una bomba (la crea)
 	void fireBomb(Point2D<double> pos);
 
-	// ---- ELIMINACION OBJETOS ----
+	// ------------- ELIMINACION OBJETOS -------------
 	// delete scene objects
 	void deleteSceneObjects();
 
-	// ---- GUARDADO Y CARGA DE PARTIDA ----
+	// ------------- GUARDADO Y CARGA DE PARTIDA -------------
 	// guarda la partida (esto va dentro del handle events de la S de save pero es por orden)
 	void saveThisGame();
 
 	// carga el cualquier archivo
-	void loadAnyFile(const string& fileAndRoot);
+	void loadAnyFile(const std::string& fileAndRoot);
 
-	// ---- TEXTURAS ----
+	// ------------- TEXTURAS -------------
 	// carga las texturas
 	void loadTextures();
 
-	// ---- SCORE ----
+	// ------------- SCORE -------------
 	void increaseScore(int score);
 
 	int getScore() { return SCORE; }
 
-	// ---- BOMB ----
+	// ------------- BOMB -------------
 	int getMinProbBomb() { return minProbabilityBomb; }
 
 	int getMaxProbBomb() { return maxProbabilityBomb; }
 
-	// ---- REWARDS ----
+	// ------------- REWARDS -------------
 	bool mayGrantReward(SDL_Rect rect) const;
 
 	// dropea reward (la crea)

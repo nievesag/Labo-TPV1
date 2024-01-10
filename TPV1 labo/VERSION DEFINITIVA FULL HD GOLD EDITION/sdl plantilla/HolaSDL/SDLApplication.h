@@ -10,7 +10,7 @@
 #include <random>
 #include <fstream>
 
-// -------------
+// ----------------------------
 #include "SceneObject.h"
 #include "GameStateMachine.h"
 #include "MainMenuState.h"
@@ -18,7 +18,6 @@
 #include "EndState.h"
 #include "PauseState.h"
 
-using namespace std;
 using uint = unsigned int;
 
 // SI ESTÁN DENTRO DE LA CLASE:
@@ -52,8 +51,7 @@ enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, UfoT, BOMBA, Rew
 
 // ---- SAVE & READ FILES ----
 // archivo de strings con las roots de las carpetas etc
-static string SAVED_FOLDER = "..\\saved\\";
-
+static std::string SAVED_FOLDER = "..\\saved\\";
 
 // ---- APPLICATION ----
 class SDLApplication
@@ -80,7 +78,7 @@ private:
 	static const int NUM_TEXTURES = 20;
 
 	// ARRAY DE TEXTURAS -> array estatico de tam NUM_TEXTURES de elementos de tipo Texture* 
-	array<Texture*, NUM_TEXTURES> textures{};
+	std::array<Texture*, NUM_TEXTURES> textures{};
 
 	struct TextureSpec
 	{
@@ -92,7 +90,7 @@ private:
 
 	// ARRAY DE TEXTURAS -> array est�tico de tam NUM_TEXTURES de elementos de tipo TextureSpec 
 	// ubicacion, col, fil
-	array<TextureSpec, NUM_TEXTURES> textureSpec{
+	std::array<TextureSpec, NUM_TEXTURES> textureSpec{
 
 		TextureSpec{"..\\images\\aliens2.png", 2, 3},	  // alien 1 // 32,32			-> 0
 		{ "..\\images\\aliens2.png", 2, 3 },			  // alien 2 // 44,32			-> 1
@@ -103,7 +101,7 @@ private:
 		{ "..\\images\\ovni2.png", 3, 1 },				  // ufo	 // 48,26			-> 6
 		{ "..\\images\\bomb.png", 3, 1 },				  // BOMBA						-> 7
 		{ "..\\images\\shield_reward.png", 3, 1 },		  // reward BOMBA				-> 8
-		{ "..\\images\\shield.png", 3, 1 },			  // escudo						-> 9
+		{ "..\\images\\shield.png", 3, 1 },				  // escudo						-> 9
 		{ "..\\images\\mainMenu.png", 1, 1 },			  // fondo del menu inicial		-> 10
 		{ "..\\images\\nuevaPartida.png", 1, 1 },		  // texto: NUEVA PARTIDA		-> 11
 		{ "..\\images\\cargarPartida.png", 1, 1},		  // texto: CARGAR PARTIDA		-> 12
@@ -117,7 +115,6 @@ private:
 	};
 
 	bool exit = false;
-
 
 	int gameScore = 0;
 
@@ -163,7 +160,7 @@ public:
 	GameStateMachine* getgsMachine() { return gsMachine; }
 
 	// get texturas
-	array<Texture*, NUM_TEXTURES> getTextures() { return textures; }
+	std::array<Texture*, NUM_TEXTURES> getTextures() { return textures; }
 	Texture* getTexture(TextureName tex) { return textures[tex]; }
 	Texture* getTexture(int tex) { return textures[tex]; }
 	TextureSpec getTextureSpec(int i) { return textureSpec[i]; }
@@ -171,17 +168,17 @@ public:
 
 	// set texturas
 	void setTexture(int pos, Texture* tex) {
-
 		textures[pos] = tex;
 	}
-	#pragma endregion
 
+	// set exit
 	void setExit(bool e) {
 		exit = e;
 	}
+	#pragma endregion
 
+	// aumenta la puntuacion del jugador
 	void increaseScore(int points) {
-
 		gameScore += points;
 	}
 

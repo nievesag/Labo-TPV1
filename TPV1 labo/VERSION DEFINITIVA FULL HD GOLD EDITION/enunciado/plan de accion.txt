@@ -7,13 +7,13 @@ ctrl click -> ir al método
 
 /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
-A ARREGLAR:
+A ARREGLAR: (-> X = YA ARREGLADO)
 
 El getTexture(14) y demás es difícil de entender, usad un enumerado para eso.
 
 
 🚨Atributo público: 
-	- SCORE en PlayState.h:85 (por mucho que esté en mayúscula no es una constante)
+	- SCORE en PlayState.h:85 (por mucho que esté en mayúscula no es una constante)  // NO ENTIENDO QUÉ QUIERE??? lo hago const?? q no sea atributo publico???
 
 
 🚨Variable global (¿no sería constante?): 
@@ -66,27 +66,27 @@ Tal vez el método se deba definir como constante:
  	- getCurrentState en Mothership.h:75
 
 
-Es mejor no abrir el espacio de nombres std (u otros) en una cabecera: 
-	- InvadersError.h:5
-	- MainMenuState.h:13 
-	- EndState.h:15
-	- EventHandler.h:7
-	- Bunker.h:11
-	- Laser.h:13
-	- PauseState.h:9
-	- GameObject.h:16
-	- SDLApplication.h:21
-	- GameStateMachine.h:13
-	- Button.h:12
-	- Bomb.h:10
-	- ShooterAlien.h:10
-	- Ufo.h:14 
-	- GameState.h:4
-	- Mothership.h:7
-	- Alien.h:18
- 	- PlayState.h:30
-	- SceneObject.h:13
-	- Rewards.h:8
+Es mejor no abrir el espacio de nombres std (u otros) en una cabecera:  -> XXXXX HECHO XXXXX 
+	- InvadersError.h:5 -> X
+	- MainMenuState.h:13 -> X
+	- EndState.h:15 -> X
+	- EventHandler.h:7 -> X
+	- Bunker.h:11 -> X
+	- Laser.h:13 -> X
+	- PauseState.h:9 -> X
+	- GameObject.h:16 -> X
+	- SDLApplication.h:21 -> X
+	- GameStateMachine.h:13 -> X
+	- Button.h:12 -> X
+	- Bomb.h:10 -> X
+	- ShooterAlien.h:10 -> X
+	- Ufo.h:14 -> X
+	- GameState.h:4 -> X
+	- Mothership.h:7 -> X
+	- Alien.h:18 -> X
+ 	- PlayState.h:30 -> X
+	- SceneObject.h:13 -> X
+	- Rewards.h:8 -> X
 
 
 Número mágico, ¿no será mejor definir una constante?: 
@@ -144,24 +144,30 @@ Número mágico, ¿no será mejor definir una constante?:
 	- 3 en Mothership.cpp:44
 
 
-El archivo queda fuera de la comprobación de fugas de memoria (checkML.h): 
-	- texture.cpp
-	- sdlerror.cpp
-	- filenotfounderror.cpp
-	- invaderserror.cpp
-	- fileformaterror.cpp
+El archivo queda fuera de la comprobación de fugas de memoria (checkML.h): -> XXXXX HECHO XXXXX 
+	- texture.cpp -> X
+	- sdlerror.cpp -> X
+	- filenotfounderror.cpp -> X
+	- invaderserror.cpp -> X
+	- fileformaterror.cpp -> X
 
 
-Las mayúsculas del archivo incluido no coinciden (portabilidad): 
-	- SDLError.h → SDLerror.h
-	- cannon.h → Cannon.h
+Las mayúsculas del archivo incluido no coinciden (portabilidad): -> XXXXX HECHO XXXXX 
+	- SDLError.h → SDLerror.h -> X
+	- cannon.h → Cannon.h -> ?????????????????
 
 
 Estos errores os aparecerán en Visual Studio si activáis la opción Modo de conformidad /fpermissive-:
 🛑 extra qualification on member 'SDLApplication': en SDLApplication.h:128 
+
 🛑 extra qualification on member '~SDLApplication': en SDLApplication.h:131
+
 🛑 exception specification of overriding function is more lax than base version: en InvadersError.h:15
-⚠️ using directive refers to implicitly-defined namespace 'std': en GameState.h:4 (se abierto un espacio de nombres antes de declararlo)
+
+⚠️ using directive refers to implicitly-defined namespace 'std': en GameState.h:4 (se abierto un espacio de nombres antes de declararlo) -> X
+
 🛑 extra qualification on member 'PauseState': en PauseState.h:30
-⚠️ expression result unused: en PauseState.cpp:89 (no tienen ningún efecto)
-☠️ 'Windows.h' file not found: en main.cpp:10 (quitadlo, no se usa)
+
+⚠️ expression result unused: en PauseState.cpp:89 (no tienen ningún efecto) -> X
+
+☠️ 'Windows.h' file not found: en main.cpp:10 (quitadlo, no se usa) -> X

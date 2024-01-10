@@ -4,9 +4,6 @@
 // includes
 #include <SDL.h>
 
-using namespace std;
-using uint = unsigned int;
-
 class EventHandler {
 public: 
 	// gestiona un evento

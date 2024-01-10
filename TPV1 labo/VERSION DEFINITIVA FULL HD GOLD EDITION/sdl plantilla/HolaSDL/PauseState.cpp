@@ -86,8 +86,6 @@ void PauseState::cargarPartida()
 	// crea un nuevo estado con la direccion indicada
 	GameState* ps = new PlayState(app, file);
 
-	app;
-
 	app->getgsMachine();
 
 	// crea un nuevo play state y lo remplaza con el anterior

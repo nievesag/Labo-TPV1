@@ -9,11 +9,8 @@
 #include "texture.h"
 #include "SDLApplication.h"
 
-using namespace std;
-using uint = unsigned int;
-
 // utiliza callbacks funcionales de tipo <void(void)>
-using SDLEventCallback = function<void(void)>;
+using SDLEventCallback = std::function<void(void)>;
 
 class Button : public EventHandler, public GameObject
 {
@@ -38,7 +35,7 @@ private:
 	// CALLBACKS: funcion ejecutable «A» que se usa como argumento de función «B». 
 	// -> al llamar a «B» la funcion ejecuta «A»
 	// lista de funciones a llamar cuando sucede un evento
-	list<SDLEventCallback> callbacks;
+	std::list<SDLEventCallback> callbacks;
 
 	// METODOS PRIVADOS
 	void emit() const;

@@ -118,7 +118,7 @@
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="SceneObject.h" />
-    <ClInclude Include="SDLerror.h" />
+    <ClInclude Include="SDLError.h" />
     <ClInclude Include="ShooterAlien.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="Ufo.h" />

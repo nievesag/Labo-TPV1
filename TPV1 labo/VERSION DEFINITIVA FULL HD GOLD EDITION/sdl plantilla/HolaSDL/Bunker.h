@@ -8,9 +8,6 @@
 
 class PlayState;
 
-using namespace std;
-using uint = unsigned int;
-
 class Bunker : public SceneObject
 {
 private:
@@ -39,7 +36,7 @@ public:
 
 	// ---- save ----
 	// guarda objeto
-	void save(ostream& out) const override;
+	void save(std::ostream& out) const override;
 };
 
 #endif

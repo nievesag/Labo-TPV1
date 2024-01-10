@@ -10,9 +10,6 @@
 class SDLApplication;
 class PlayState;
 
-using namespace std;
-using uint = unsigned int;
-
 class Laser : public SceneObject
 {
 	// atributos privados
@@ -38,7 +35,7 @@ public:
 	// ---- update ----
 	void update() override;
 
-	void save(ostream& out) const override;
+	void save(std::ostream& out) const override;
 
 	// ---- hit ----
 	// colisiones

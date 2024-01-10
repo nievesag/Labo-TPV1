@@ -15,9 +15,6 @@ class Mothership;
 class SDLApplication;
 class PlayState;
 
-using namespace std;
-using uint = unsigned int;
-
 class Alien : public SceneObject
 {
 	// atributos privados
@@ -48,7 +45,7 @@ public:
 
 	// ---- save ----
 	// guarda objeto
-	virtual void save(ostream& out) const override;
+	virtual void save(std::ostream& out) const override;
 
 	// ---- hit ----
 	// colisiones

@@ -2,23 +2,17 @@
 #define ENDSTATE_H
 
 // include
-//
 #include <string>
 
-//
 #include "GameState.h"
 #include "SDLApplication.h"
-//class SDLApplication;
 
 class Button;
-
-using namespace std;
-using uint = unsigned int;
 
 class EndState : public GameState{
 
 private:
-	const string s_endID = "END";
+	const std::string s_endID = "END";
 
 	// punteros a los botones del GAME OVER MENU
 	// botones en este estado: VOLVER AL MENÚ / SALIR
@@ -43,7 +37,7 @@ public:
 	bool onExit() override;
 
 	// getID
-	string getID() const override;
+	std::string getID() const override;
 
 private:
 	// funciones de los botones

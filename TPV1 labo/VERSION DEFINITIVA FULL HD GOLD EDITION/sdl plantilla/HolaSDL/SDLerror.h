@@ -2,6 +2,7 @@
 #define SDLERROR_H
 
 #include "InvadersError.h"
+#include "checkML.h"
 
 class SDLError : public InvadersError
 {

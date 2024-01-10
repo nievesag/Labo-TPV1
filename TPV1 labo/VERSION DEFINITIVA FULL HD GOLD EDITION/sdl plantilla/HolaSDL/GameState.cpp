@@ -15,7 +15,7 @@ void GameState::update()
 	}
 }
 
-void GameState::save(ostream& file)
+void GameState::save(std::ostream& file)
 {
 
 }
@@ -43,7 +43,7 @@ void GameState::hasDied(GameList<GameObject, true>::anchor)
 
 }
 
-string GameState::getID() const { return " "; }
+std::string GameState::getID() const { return " "; }
 
 void GameState::addEventListener(EventHandler* listener)
 {

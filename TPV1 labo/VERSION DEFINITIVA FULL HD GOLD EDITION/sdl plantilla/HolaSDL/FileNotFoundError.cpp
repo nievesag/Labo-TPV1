@@ -1,6 +1,6 @@
 #include "FileNotFoundError.h"
 
-FileNotFoundError::FileNotFoundError(const string& message) : InvadersError(message) 
+FileNotFoundError::FileNotFoundError(const std::string& message) : InvadersError(message) 
 { 
 	errorMessage = message; 
 }

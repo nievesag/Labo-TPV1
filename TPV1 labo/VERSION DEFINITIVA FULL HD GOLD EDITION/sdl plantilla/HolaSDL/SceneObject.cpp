@@ -5,7 +5,7 @@ void SceneObject::render() const {}
 
 void SceneObject::update() {}
 
-void SceneObject::save(ostream& out) const {
+void SceneObject::save(std::ostream& out) const {
 	
 	//  guarda la posicion (comun para todos)
 	out << round(position.getX()) << " " << round(position.getY()) << " ";

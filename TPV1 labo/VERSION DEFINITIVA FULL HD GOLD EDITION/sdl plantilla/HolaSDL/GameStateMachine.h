@@ -1,36 +1,28 @@
 #ifndef GAMESTATEMACHINE_H
 #define GAMESTATEMACHINE_H
 
-// includes
-//
-#include<SDL.h>		// SDL
-#include<stack>	// stack
+#include <SDL.h>	
 #include <string>
+#include <stack>	// stack
 
-// 
 #include "GameState.h"
-
-using namespace std;
-using uint = unsigned int;
 
 class GameStateMachine {
 
 protected:
-	// stack de estados:
-	//		Cada vez que se cambie de estado se anyadira a la pila para mantener
+	// STACK DE ESTADOS:
+	// Cada vez que se cambie de estado se anyadira a la pila para mantener
 	// un especie de 'historial' de estados donde siempre se pueda volver al
 	// anterior con solo mirar a la pila.
-	// 
-	// Todos los metodos se ocupan de gestionar la pila 
-	stack<GameState*> states;
 
-	//
-	list<GameState*> statesToDelete;
+	// Pila de estados
+	std::stack<GameState*> states; // Todos los metodos se ocupan de gestionar la pila 
+
+	// Lista de estados a eliminar
+	std::list<GameState*> statesToDelete;
 
 public:
-	GameStateMachine() {
-
-	}
+	GameStateMachine() {}
 
 	~GameStateMachine();
 
@@ -43,13 +35,13 @@ public:
 	// intercambia el estado por el marcado, elimina el estado en la cima y anyade otro
 	void replaceState(GameState* state);
 
-	//
+	// actualiza
 	void update();
 
 	// renderiza 
 	void render();
 
-	// 
+	// maneja eventos
 	void handleEvent(const SDL_Event& event);
 };
 #endif

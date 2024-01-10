@@ -2,15 +2,11 @@
 
 GameStateMachine::~GameStateMachine()
 {
-	while (!states.empty())
-	{
-		popState();
-	}
+	// mientras la pila de estados no este vacia elimina el estado superior de la pila
+	while (!states.empty()) { popState(); }
 
-	for (const auto i : statesToDelete) {
-
-		delete i;
-	}
+	// elimina cada elemento de la lista de estados a eliminar
+	for (const auto i : statesToDelete) { delete i; }
 }
 
 void GameStateMachine::pushState(GameState* newState)
@@ -37,12 +33,10 @@ void GameStateMachine::popState()
 			states.pop();
 		}
 	}
-
 }
 
 void GameStateMachine::replaceState(GameState* state)
 {
-
 	if (!states.empty())
 	{
 		if (states.top()->getID() == state->getID())
@@ -58,8 +52,6 @@ void GameStateMachine::replaceState(GameState* state)
 			states.pop();
 		}
 	}
-	
-	// esto es push state asi queeee
 	pushState(state);
 }
 
@@ -89,7 +81,6 @@ void GameStateMachine::handleEvent(const SDL_Event& event)
 		states.top()->HandleEvent(event);
 	}
 
-
 	// borra los estados a borrar
 	while (!statesToDelete.empty()) {
 		
@@ -98,4 +89,3 @@ void GameStateMachine::handleEvent(const SDL_Event& event)
 		statesToDelete.pop_front();
 	}
 }
-

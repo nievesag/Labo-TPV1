@@ -6,15 +6,11 @@
 #include "Vector2D.h"
 #include "texture.h"
 
-
 #include "gameList.h"
 
 class SDLApplication;
 class GameState;
 class PlayState;
-
-using namespace std;
-using uint = unsigned int;
 
 class GameObject
 {
@@ -30,10 +26,8 @@ protected:
 	// anchor
 	GameList<GameObject, true>::anchor anc = nullptr;
 
-
 	// metodos publicos
 public:
-
 	// constructora con el estado (botones del playstate)
 	GameObject(GameState* game);
 
@@ -56,7 +50,7 @@ public:
 	virtual void update();
 
 	// ---- save del objeto ----
-	virtual void save(ostream& out) const;
+	virtual void save(std::ostream& out) const;
 
 	// anchor
 	void setListAnchor(GameList<GameObject, true>::anchor newanc) // list<SceneObject*>::iterator& newit
@@ -65,8 +59,6 @@ public:
 		anc = newanc;
 	};
 	
-	GameList<GameObject, true>::anchor getListAnchor(){ return anc; };
-
-
+	GameList<GameObject, true>::anchor getListAnchor() { return anc; };
 };
 #endif

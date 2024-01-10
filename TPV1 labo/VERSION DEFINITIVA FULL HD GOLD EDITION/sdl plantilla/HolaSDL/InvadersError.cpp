@@ -1,7 +1,7 @@
 #include "InvadersError.h"
 #include "string"
 
-InvadersError::InvadersError(const string& message) : logic_error(message)
+InvadersError::InvadersError(const std::string& message) : logic_error(message)
 {
     errorMessage = message;
 }

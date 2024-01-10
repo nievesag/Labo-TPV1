@@ -7,17 +7,12 @@
 class SDLApplication;
 class PlayState;
 
-using namespace std;
-using uint = unsigned int;
-
 class Bomb : public SceneObject
 {
 private:
-
 	Vector2D<double> vel;
 	bool alive;
 	int hits;	// contador de golpes
-
 	char c = 'b';
 
 public:
