@@ -1,0 +1,81 @@
+práctica 3
+--------------------
+ESTADOS DE JUEGO (clases):
+- GameStateMachine
+	- atributo: pila de estados (tipo stack<GameState*>)
+	- pushState
+	- replaceState
+	- popState
+	dependiendo del estado desde game se llamará a los métodos de 	cada estado:
+	- update del game llama a update de estado x
+	- render del game llama a render de estado x
+	- handleEvent del game llama a handleEvent de estado x
+
+
+- GameState: clase raíz de la jerarquía de estados del juego
+	atributos:
+	- colección de objetos de juego: GameList<GameObject, true>
+	- manejadores de eventos: list<EventHandler*>
+	- puntero a juego
+	métodos:
+	- update
+	- render
+	- handleEvent
+	- addEventListener (añade oyentes al estado)
+	- addObject (añade objetos al estado)
+
+- PlayState: implementa el juego en sí (antes game), los objetos se comunican con el estado con damage, hasDied etc
+	atributos:
+	- lista GameObject, heredada de GameState
+	- lista GameList<SceneObject>, para colisiones
+
+- MainMenuState: implementa estado de menú principal, subclase de GameState
+	objetos de tipo Button + imágenes estáticas
+	
+- PauseState: implementa estado de menú de pausa, subclase de GameState
+	objetos de tipo Button + imágenes estáticas
+
+- EndState: implementa estado de fin de juego, subclase de GameState
+	objetos de tipo Button + imágenes estáticas
+
+- Game / SDLApplication:
+	atributos:
+	- punteros a SDL_Window y SDL_Renderer
+	- array de texturas 
+	- máquina de estados
+
+FIN GAME: pila de estados vacía / bool exit = true
+GAMEOBJECT: puntero a su GameState (no a game)
+SCENEOBJECT: puntero a su PlayState (el mismo q su GameState pero C++ no permite refinar el tipo de un atributo: o usar dos atributos o static_cast)
+
+--------------------
+BOTONES Y EVENTOS (clases):
+- Button: subclase de gameObject y EventHandler
+BOTONES: gameObjects (render, update, handleEvents)
+	atributos:
+	- textura
+	- funciones a ejecutar si se pulsa, tipo Button::Callback (stdЕ::function<void(void)>), se llaman desde handleEvent
+	métodos:
+	- connect: registra callbacks
+		-> Crear un objeto función para invocar al método de un objeto:
+			button.connect([this]() { método(); }); // expresión lambda
+			button.connect(stdЕ::bind(&ClaseЕ::método, this)); // puntero al método + objeto
+
+- EventHandler: clase abstracta, interfaz
+	métodos:
+	- handleEvent: método virtual puro handleEvent, recibe SDL_Event 
+
+- Game / SDLApplication: capturará los eventos con SDL_PollEvent, y los retrasmitirá a todos los oyentes registrados de tipo EventHandler
+	atributos:
+	- lista de punteros a oyentes
+
+CAPUTRAN EVENTOS: Cannon y Button, implementan EventHandler, en la definición del método establecer cómo responder a los eventos
+
+--------------------
+RECOMPENSAS Y BOMBAS (clases): AL DERRIBAR EL UFO -> RECOMPENSA O BOMBA (SceneObjects, no se salvan al guardar partida, solo interacción con cannon):
+- reward: otorga inmunidad al colisionar la nave con ella, ampliable a otros efectos: mismo comportamiento hasta ser capturados
+comportamiento común (caer desde el ufo) -> recibir textura para render -> callback con la acción a realizar al colisionar
+	métodos:
+	- update: para colisiones, llama a mayGrantReward de PlayState con su rect
+	
+- bomb: igual que un láser con dos vidas, cada colisión solo causará y recibirá un punto de daño

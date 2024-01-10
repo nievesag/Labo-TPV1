@@ -1,0 +1,167 @@
+- ser tú mismo
+- bien dicho
+
+ATAJOS:
+ctrl rr -> renombrar la misma palabra
+ctrl click -> ir al método
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+A ARREGLAR:
+
+El getTexture(14) y demás es difícil de entender, usad un enumerado para eso.
+
+
+🚨Atributo público: 
+	- SCORE en PlayState.h:85 (por mucho que esté en mayúscula no es una constante)
+
+
+🚨Variable global (¿no sería constante?): 
+	- SAVED_FOLDER en SDLApplication.h:55
+
+
+Referencia constante a un tipo básico (no tiene sentido): 
+	- const int & other en Vector2D.h:79 (además debería ser T)
+
+
+Tal vez el método se deba definir como constante: 
+	- getTexture en SDLApplication.h:168
+	- isOut en Rewards.cpp:42
+	- getMinProbBomb en PlayState.h:163
+	- onExit en EndState.cpp:40
+	- IsAlive en Laser.h:51
+	- getgsMachine en SDLApplication.h:163
+	- getMaxProbBomb en PlayState.h:165
+	- getMaxProbReward en PlayState.h:175
+	- getNumText en SDLApplication.h:170
+	- getApplication en PlayState.cpp:403
+	- getRenderer en SDLApplication.h:159
+	- isOut en Ufo.cpp:154
+	- getMinProbReward en PlayState.h:173
+	- getTexture en SDLApplication.h:167
+	- getWinWidth en SDLApplication.h:155
+ 	- getAlienCount en Mothership.h:72
+ 	- getListAnchor en GameObject.h:68
+	- onExit en MainMenuState.cpp:39
+ 	- shouldMove en Mothership.cpp:27
+	- onEnter en PauseState.cpp:42
+ 	- getTextureSpec en SDLApplication.h:169
+ 	- IsAlive en Bomb.h:50
+ 	- onExit en PauseState.cpp:47
+	- getColor en Laser.h:53
+	- getAppRenderer en PlayState.cpp:16
+	- getApplication en GameState.h:70
+	- onEnter en MainMenuState.cpp:34
+	- onExit en GameState.cpp:28
+ 	- onEnter en GameState.cpp:23
+ 	- getLevel en Mothership.h:62
+	- getTextures en SDLApplication.h:166
+ 	- getScore en PlayState.h:160
+	- getWinHeight en SDLApplication.h:156
+ 	- getDirection en Mothership.cpp:22
+	- onEnter en EndState.cpp:35
+	- isOut en Laser.cpp:69
+	- onExit en PlayState.cpp:408
+	- isOut en Bomb.cpp:40
+ 	- getCurrentState en Mothership.h:75
+
+
+Es mejor no abrir el espacio de nombres std (u otros) en una cabecera: 
+	- InvadersError.h:5
+	- MainMenuState.h:13 
+	- EndState.h:15
+	- EventHandler.h:7
+	- Bunker.h:11
+	- Laser.h:13
+	- PauseState.h:9
+	- GameObject.h:16
+	- SDLApplication.h:21
+	- GameStateMachine.h:13
+	- Button.h:12
+	- Bomb.h:10
+	- ShooterAlien.h:10
+	- Ufo.h:14 
+	- GameState.h:4
+	- Mothership.h:7
+	- Alien.h:18
+ 	- PlayState.h:30
+	- SceneObject.h:13
+	- Rewards.h:8
+
+
+Número mágico, ¿no será mejor definir una constante?: 
+	- 12 en MainMenuState.cpp:5
+	- 5 en PlayState.cpp:209
+	- 240 en MainMenuState.cpp:4
+	- 200 en MainMenuState.cpp:5 
+	- 350 en EndState.cpp:5
+ 	- 13 en MainMenuState.cpp:6
+	- 7 en PlayState.cpp:270
+	- 400 en PauseState.cpp:11
+ 	- 15 en PauseState.cpp:9
+	- 11 en MainMenuState.cpp:4
+	- 220 en EndState.cpp:4
+	- 4 en SceneObject.h:56 
+	- 4 en SceneObject.h:78
+	- 5 en Ufo.cpp:149
+	- 4 en Mothership.cpp:44
+	- 30 en PlayState.cpp:283
+	- 114 en Laser.cpp:19
+	- 250 en EndState.cpp:4
+	- 242 en Laser.cpp:21
+ 	- 16 en EndState.cpp:4
+ 	- 214 en PauseState.cpp:9
+	- 242 en PlayState.cpp:257
+ 	- 20 en Alien.cpp:15
+ 	- 330 en EndState.cpp:5
+ 	- 15 en Cannon.cpp:111
+ 	- 340 en MainMenuState.cpp:6
+ 	- 3 en PlayState.cpp:160
+ 	- 30 en Alien.cpp:14
+ 	- 10 en SceneObject.h:57
+ 	- 10 en SceneObject.h:79
+ 	- 12 en PauseState.cpp:10
+ 	- 25 en Cannon.cpp:111
+ 	- 14 en PauseState.cpp:8
+ 	- 69 en main.cpp:54
+	- 10 en Alien.cpp:16
+	- 2 en Alien.cpp:16
+	- 225 en PauseState.cpp:10
+	- 330 en PauseState.cpp:11
+ 	- 13 en PauseState.cpp:11 
+	- 250 en MainMenuState.cpp:6
+	- 300 en PauseState.cpp:10
+ 	- 200 en PauseState.cpp:9
+ 	- 13 en EndState.cpp:5
+ 	- 4 en PlayState.cpp:180
+	- 114 en PlayState.cpp:254
+	- 285 en PauseState.cpp:8 
+	- 2 en PlayState.cpp:129
+	- 150 en MainMenuState.cpp:4
+	- 6 en PlayState.cpp:237
+	- 100 en PauseState.cpp:8
+	- 230 en MainMenuState.cpp:5
+	- 3 en Mothership.cpp:44
+
+
+El archivo queda fuera de la comprobación de fugas de memoria (checkML.h): 
+	- texture.cpp
+	- sdlerror.cpp
+	- filenotfounderror.cpp
+	- invaderserror.cpp
+	- fileformaterror.cpp
+
+
+Las mayúsculas del archivo incluido no coinciden (portabilidad): 
+	- SDLError.h → SDLerror.h
+	- cannon.h → Cannon.h
+
+
+Estos errores os aparecerán en Visual Studio si activáis la opción Modo de conformidad /fpermissive-:
+🛑 extra qualification on member 'SDLApplication': en SDLApplication.h:128 
+🛑 extra qualification on member '~SDLApplication': en SDLApplication.h:131
+🛑 exception specification of overriding function is more lax than base version: en InvadersError.h:15
+⚠️ using directive refers to implicitly-defined namespace 'std': en GameState.h:4 (se abierto un espacio de nombres antes de declararlo)
+🛑 extra qualification on member 'PauseState': en PauseState.h:30
+⚠️ expression result unused: en PauseState.cpp:89 (no tienen ningún efecto)
+☠️ 'Windows.h' file not found: en main.cpp:10 (quitadlo, no se usa)
