@@ -282,7 +282,7 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 		if (mother == nullptr) {
 
 			// crea la mothership
-			mother = new Mothership(defaultMothershipLevel, this, 30, 0);
+			mother = new Mothership(defaultMothershipLevel, this, defaultAlienTimer, 0);
 		}
 	}
 }

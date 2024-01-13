@@ -1,8 +1,8 @@
 #include "EndState.h"
 
 EndState::EndState(SDLApplication* game, bool victory) : GameState(game), victory(victory),
-	buttonVolverMenu(new Button(this, game->getTexture(16), Point2D<double>(220, 250))),
-	buttonSalir(new Button(this, game->getTexture(13), Point2D<double>(330, 350)))
+	buttonVolverMenu(new Button(this, game->getTexture(GoBack), Point2D<double>(goBackButtonX, goBackButtonY))),
+	buttonSalir(new Button(this, game->getTexture(ExitGame), Point2D<double>(exitButton2X, exitButton2Y)))
 {
 	// lo aniede a la lista de objetos para poder renderizarlos
 	addObject(buttonVolverMenu);

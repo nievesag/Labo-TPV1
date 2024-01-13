@@ -48,7 +48,10 @@ constexpr double LASER_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de laser
 // (no a los numeros magicos)
 constexpr int exitButtonX = 340, exitButtonY = 250,
 			  loadButtonX = 230, loadButtonY = 200,
-			  newButtonX = 240, newButtonY = 150;
+			  newButtonX = 240, newButtonY = 150,
+			  goBackButtonX = 220, goBackButtonY = 250,
+			  exitButton2X = 330, exitButton2Y =250,
+			  defaultAlienTimer = 30;
 						
 
 // ---- TEXTURAS ----
