@@ -11,9 +11,9 @@ Alien::Alien(Mothership* mothership, int alienFrame, int type, Point2D<double> p
 
 	initialY = position.getY();
 
-	if (type == 0) alienScore = 30;
-	else if (type == 1) alienScore = 20;
-	else if (type == 2) alienScore = 10;
+	if (type == 0) alienScore = score3;
+	else if (type == 1) alienScore = score2;
+	else if (type == 2) alienScore = score1;
 	else alienScore = 0;
 }
 

@@ -12,6 +12,11 @@ class PlayState;
 
 class SceneObject : public GameObject
 {
+private:
+
+	int defaultdestW = 4,
+		defaultdestH = 10;
+
 	// atributos protegidos
 protected:
 	// posicion del objeto
@@ -49,8 +54,8 @@ public:
 		else
 		{
 			// setea las dimensiones del laser
-			destRect.w = 4;
-			destRect.h = 10;
+			destRect.w = defaultdestW;
+			destRect.h = defaultdestH;
 		}
 
 		destRect.x = position.getX();
@@ -71,8 +76,8 @@ public:
 		else
 		{
 			// setea las dimensiones del laser
-			destRect.w = 4;
-			destRect.h = 10;
+			destRect.w = defaultdestW;
+			destRect.h = defaultdestH;
 		}
 
 		destRect.x = position.getX();

@@ -146,7 +146,7 @@ void Ufo::manageCooldown()
 void Ufo::setCD()
 {
 	// elige un nuevo cooldown      
-	cooldown = playState->getRandomRange(1 * SHOOT_FRAMES, 5 * SHOOT_FRAMES);
+	cooldown = playState->getRandomRange(SHOOT_FRAMES, defaultShootFrameMult * SHOOT_FRAMES);
 
 	CDcounter = 0;
 }

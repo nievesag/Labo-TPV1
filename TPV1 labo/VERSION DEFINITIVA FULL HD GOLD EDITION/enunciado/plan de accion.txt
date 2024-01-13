@@ -101,8 +101,8 @@ Número mágico, ¿no será mejor definir una constante?:
  	- 15 en PauseState.cpp:9 -> X
 	- 11 en MainMenuState.cpp:4 -> X
 	- 220 en EndState.cpp:4 -> X
-	- 4 en SceneObject.h:56 
-	- 4 en SceneObject.h:78
+	- 4 en SceneObject.h:56 -> X
+	- 4 en SceneObject.h:78 -> X
 	- 5 en Ufo.cpp:149
 	- 4 en Mothership.cpp:44
 	- 30 en PlayState.cpp:283  -> X
@@ -118,8 +118,8 @@ Número mágico, ¿no será mejor definir una constante?:
  	- 340 en MainMenuState.cpp:6 -> X
  	- 3 en PlayState.cpp:160 -> ?????????????????????? (son los casos del switch jiji)
  	- 30 en Alien.cpp:14
- 	- 10 en SceneObject.h:57
- 	- 10 en SceneObject.h:79
+ 	- 10 en SceneObject.h:57 -> X
+ 	- 10 en SceneObject.h:79 -> X
  	- 12 en PauseState.cpp:10 -> X
  	- 25 en Cannon.cpp:111
  	- 14 en PauseState.cpp:8 -> X

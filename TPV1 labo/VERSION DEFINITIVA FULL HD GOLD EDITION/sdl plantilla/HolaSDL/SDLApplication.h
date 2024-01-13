@@ -51,6 +51,10 @@ constexpr int exitButtonX = 340, exitButtonY = 250,
 			  newButtonX = 240, newButtonY = 150,
 			  goBackButtonX = 220, goBackButtonY = 250,
 			  exitButton2X = 330, exitButton2Y =250,
+			  PScontinueButtonX = 285, PScontinueButtonY = 100,
+			  PSsaveButtonX = 214, PSsaveButtonY = 200,
+			  PSloadButtonX = 225, PSloadButtonY = 300,
+			  PSexitButtonX = 330, PSexitButtonY = 400,
 			  defaultAlienTimer = 30;
 						
 

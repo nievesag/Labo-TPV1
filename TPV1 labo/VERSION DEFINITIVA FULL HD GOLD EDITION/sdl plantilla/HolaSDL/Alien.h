@@ -17,6 +17,9 @@ class PlayState;
 
 class Alien : public SceneObject
 {
+private:
+	int score1 = 10, score2 = 20, score3 = 30;
+
 	// atributos privados
 protected:
 	Mothership* mothership;	  // puntero a mothership

@@ -31,6 +31,7 @@ private:
 	int frame = 0;
 
 	int vel = 1;
+	int defaultShootFrameMult = 5;
 
 	Point2D<double> spawn; // punto de spawn
 
