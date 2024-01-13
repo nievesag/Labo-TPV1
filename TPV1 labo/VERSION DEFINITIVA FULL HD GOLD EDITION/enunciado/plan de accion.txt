@@ -103,7 +103,7 @@ Número mágico, ¿no será mejor definir una constante?:
 	- 220 en EndState.cpp:4 -> X
 	- 4 en SceneObject.h:56 -> X
 	- 4 en SceneObject.h:78 -> X
-	- 5 en Ufo.cpp:149
+	- 5 en Ufo.cpp:149 -> X
 	- 4 en Mothership.cpp:44
 	- 30 en PlayState.cpp:283  -> X
 	- 114 en Laser.cpp:19
@@ -112,23 +112,23 @@ Número mágico, ¿no será mejor definir una constante?:
  	- 16 en EndState.cpp:4 -> X
  	- 214 en PauseState.cpp:9 -> X
 	- 242 en PlayState.cpp:257 -> ??????????????????? se etsa quejando de las variables de colores pero no voy a modificar eso que es un coñazo jiji
- 	- 20 en Alien.cpp:15
+ 	- 20 en Alien.cpp:15 -> X
  	- 330 en EndState.cpp:5 -> X
  	- 15 en Cannon.cpp:111
  	- 340 en MainMenuState.cpp:6 -> X
  	- 3 en PlayState.cpp:160 -> ?????????????????????? (son los casos del switch jiji)
- 	- 30 en Alien.cpp:14
+ 	- 30 en Alien.cpp:14 -> X
  	- 10 en SceneObject.h:57 -> X
  	- 10 en SceneObject.h:79 -> X
  	- 12 en PauseState.cpp:10 -> X
  	- 25 en Cannon.cpp:111
  	- 14 en PauseState.cpp:8 -> X
- 	- 69 en main.cpp:54
-	- 10 en Alien.cpp:16
-	- 2 en Alien.cpp:16
+ 	- 69 en main.cpp:54 -> estaba por la coña es el return 69
+	- 10 en Alien.cpp:16 -> X
+	- 2 en Alien.cpp:16 -> ??????????????????????????? me parece demasiado
 	- 225 en PauseState.cpp:10 -> X
 	- 330 en PauseState.cpp:11 -> X
- 	- 13 en PauseState.cpp:11 
+ 	- 13 en PauseState.cpp:11  -> X
 	- 250 en MainMenuState.cpp:6 -> X
 	- 300 en PauseState.cpp:10 -> X
  	- 200 en PauseState.cpp:9 -> X
