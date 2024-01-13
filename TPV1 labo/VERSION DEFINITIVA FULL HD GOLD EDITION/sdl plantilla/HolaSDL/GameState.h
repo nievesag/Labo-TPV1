@@ -47,10 +47,10 @@ public:
 	virtual void save(std::ostream& file);
 
 	// cuando entra
-	virtual bool onEnter();
+	virtual bool onEnter() const;
 
 	// cuando sale
-	virtual bool onExit();
+	virtual bool onExit() const;
 
 	// ------------------------- OTHER -------------------------
 	// gestiona los eventos del estado
@@ -61,7 +61,7 @@ public:
 
 	// ------------------------- GETTERS Y SETTERS -------------------------
 	// getter del juego
-	SDLApplication* getApplication() { return application; }
+	SDLApplication* getApplication() const { return application; }
 
 	virtual std::string getID() const;
 

@@ -59,6 +59,6 @@ public:
 		anc = newanc;
 	};
 	
-	GameList<GameObject, true>::anchor getListAnchor() { return anc; };
+	GameList<GameObject, true>::anchor getListAnchor() const { return anc; };
 };
 #endif

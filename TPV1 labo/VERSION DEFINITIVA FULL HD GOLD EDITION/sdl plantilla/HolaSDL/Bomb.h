@@ -39,10 +39,10 @@ public:
 	bool hit(SDL_Rect* rect, char frenemy) override;
 
 	// devuelve si esta fuera del marco de juego 
-	bool isOut();
+	bool isOut() const;
 
 	// devuelve si esta vivo el laser
-	bool IsAlive() { return alive; }
+	bool IsAlive() const { return alive; }
 
 protected:
 	// mueve la bomba segun el vector velocidad

@@ -84,7 +84,7 @@ public:
 	void save(std::ostream& out) const override;
 
 	// devuelve si esta fuera del marco de juego 
-	bool isOut();
+	bool isOut() const;
 
 protected:
 	// ---- move ----

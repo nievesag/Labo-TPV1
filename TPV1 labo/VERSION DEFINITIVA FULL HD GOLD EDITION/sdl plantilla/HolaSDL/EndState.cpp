@@ -32,12 +32,12 @@ void EndState::render() const
 	}
 }
 
-bool EndState::onEnter()
+bool EndState::onEnter() const
 {
 	return true;
 }
 
-bool EndState::onExit()
+bool EndState::onExit() const 
 {
 	return true;
 }

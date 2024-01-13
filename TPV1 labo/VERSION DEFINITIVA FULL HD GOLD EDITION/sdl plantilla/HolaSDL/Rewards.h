@@ -34,7 +34,7 @@ public:
 	void update() override;
 
 	// devuelve si esta fuera del marco de juego 
-	bool isOut();
+	bool isOut() const;
 
 	// mueve la reward segun el vector velocidad
 	void move();

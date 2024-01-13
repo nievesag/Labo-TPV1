@@ -30,10 +30,10 @@ public:
 	void render() const override;
 
 	// al entrar al estado
-	bool onEnter() override;
+	bool onEnter() const override;
 
 	// al salir del estado
-	bool onExit() override;
+	bool onExit() const override;
 
 	// getID
 	std::string getID() const override;

@@ -66,7 +66,7 @@ bool Laser::hit(SDL_Rect* rect, char frenemy)
 	return false;
 }
 
-bool Laser::isOut()
+bool Laser::isOut() const
 {
 	return ((this->position.getY() >= winHeight && 'r')
 		|| (this->position.getY() <= 0 && 'a'));

@@ -1,6 +1,4 @@
-//
 // Declaración e imeplementación de la clase Vector2D -> no necesita cpp
-//
 
 #ifndef VECTOR2D_H
 #define VECTOR2D_H
@@ -14,10 +12,6 @@ private:
 
 	// metodos publicos
 public:
-	// METODOS
-
-	// Vector2D() {} // constructora vacia
-
 	// ---- constructora ----
 	// constructora con las variables declaradas
 	Vector2D(T x, T y)
@@ -37,7 +31,7 @@ public:
 		return y;
 	}
 
-	// ----- setters -----------
+	// ---- setters ----
 	void setX(T newX) {
 		x = newX;
 	}
@@ -49,7 +43,7 @@ public:
 	// ---- OPERADORES ----
 
 	// operador +
-	Vector2D<T>& operator+(Vector2D<T> const& other) {
+	Vector2D<T>& operator+(Vector2D<T> const &other) {
 		Vector2D<T> aux(0, 0);
 
 		aux.x = this->getX() + other.x;
@@ -59,7 +53,7 @@ public:
 	}
 
 	// operador -
-	Vector2D<T>& operator-(Vector2D<T> const& other) {
+	Vector2D<T>& operator-(Vector2D<T> const &other) {
 		Vector2D<T> aux(0, 0);
 
 		aux.x = this->getX() - other.x;
@@ -69,14 +63,14 @@ public:
 	}
 
 	// producto escalar (*)
-	T& operator*(Vector2D<T> const& other) {
+	T& operator*(Vector2D<T> const &other) {
 		// pe = (v1*u2)+(v2+u2)
 		T esc = (getX() * other.x) + (getY() * other.y);
 		return esc;
 	}
 
 	// producto vector-escalar (*)	
-	Vector2D<T>& operator*(int const& other) {
+	Vector2D<T>& operator*(T &other) {
 		Vector2D<T> aux(0, 0);
 
 		aux.x = getX() * other;

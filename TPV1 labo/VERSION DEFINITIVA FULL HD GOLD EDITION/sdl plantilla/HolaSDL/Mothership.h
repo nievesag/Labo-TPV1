@@ -53,10 +53,10 @@ public:
 	void save(std::ostream& out) const override;
 
 	// ajusta la direccion de los aliens
-	int getDirection();
+	int getDirection() const;
 
 	// acceso al nivel
-	int getLevel() { return level; }
+	int getLevel() const { return level; }
 
 	// añade alien al contador
 	void addAlien() { 
@@ -66,13 +66,13 @@ public:
 	void alienDied() { alienCount--; };
 
 	// devuelve la cantidad de aliens que quedan
-	int getAlienCount() { return alienCount; };
+	int getAlienCount() const { return alienCount; };
 
 	// devuelve el estado del mvimiento
-	int getCurrentState() { return currentState; };
+	int getCurrentState() const { return currentState; };
 
 	// devuelve si se sigue moviendo o no
-	bool shouldMove();
+	bool shouldMove() const;
 	
 	// cambia la direccion actual de los aliens
 	void cannotMove();

@@ -39,12 +39,12 @@ void PauseState::render() const
 	}
 }
 
-bool PauseState::onEnter()
+bool PauseState::onEnter() const
 {
 	return true;
 }
 
-bool PauseState::onExit()
+bool PauseState::onExit() const
 {
 	return true;
 }

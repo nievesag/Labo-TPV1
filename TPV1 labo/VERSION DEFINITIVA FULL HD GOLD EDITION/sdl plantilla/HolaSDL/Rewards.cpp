@@ -39,7 +39,7 @@ void Rewards::update()
 	}
 }
 
-bool Rewards::isOut()
+bool Rewards::isOut() const
 {
 	return (this->position.getY() >= winHeight);
 }

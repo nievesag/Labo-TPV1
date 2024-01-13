@@ -17,53 +17,53 @@ El getTexture(14) y demás es difícil de entender, usad un enumerado para eso.
 
 
 🚨Variable global (¿no sería constante?): 
-	- SAVED_FOLDER en SDLApplication.h:55
+	- SAVED_FOLDER en SDLApplication.h:55 -> ????
 
 
-Referencia constante a un tipo básico (no tiene sentido): 
-	- const int & other en Vector2D.h:79 (además debería ser T)
+Referencia constante a un tipo básico (no tiene sentido): -> XXXXX HECHO XXXXX 
+	- const int & other en Vector2D.h:79 (además debería ser T) -> X
 
 
-Tal vez el método se deba definir como constante: 
-	- getTexture en SDLApplication.h:168
-	- isOut en Rewards.cpp:42
-	- getMinProbBomb en PlayState.h:163
-	- onExit en EndState.cpp:40
-	- IsAlive en Laser.h:51
-	- getgsMachine en SDLApplication.h:163
-	- getMaxProbBomb en PlayState.h:165
-	- getMaxProbReward en PlayState.h:175
-	- getNumText en SDLApplication.h:170
-	- getApplication en PlayState.cpp:403
-	- getRenderer en SDLApplication.h:159
-	- isOut en Ufo.cpp:154
-	- getMinProbReward en PlayState.h:173
-	- getTexture en SDLApplication.h:167
-	- getWinWidth en SDLApplication.h:155
- 	- getAlienCount en Mothership.h:72
- 	- getListAnchor en GameObject.h:68
-	- onExit en MainMenuState.cpp:39
- 	- shouldMove en Mothership.cpp:27
-	- onEnter en PauseState.cpp:42
- 	- getTextureSpec en SDLApplication.h:169
- 	- IsAlive en Bomb.h:50
- 	- onExit en PauseState.cpp:47
-	- getColor en Laser.h:53
-	- getAppRenderer en PlayState.cpp:16
-	- getApplication en GameState.h:70
-	- onEnter en MainMenuState.cpp:34
-	- onExit en GameState.cpp:28
- 	- onEnter en GameState.cpp:23
- 	- getLevel en Mothership.h:62
-	- getTextures en SDLApplication.h:166
- 	- getScore en PlayState.h:160
-	- getWinHeight en SDLApplication.h:156
- 	- getDirection en Mothership.cpp:22
-	- onEnter en EndState.cpp:35
-	- isOut en Laser.cpp:69
-	- onExit en PlayState.cpp:408
-	- isOut en Bomb.cpp:40
- 	- getCurrentState en Mothership.h:75
+Tal vez el método se deba definir como constante: -> XXXX HECHO XXXX
+	- getTexture en SDLApplication.h:168 -> X
+	- isOut en Rewards.cpp:42 -> X
+	- getMinProbBomb en PlayState.h:163 -> X
+	- onExit en EndState.cpp:40 -> X
+	- IsAlive en Laser.h:51 -> X
+	- getgsMachine en SDLApplication.h:163 -> X
+	- getMaxProbBomb en PlayState.h:165 -> X
+	- getMaxProbReward en PlayState.h:175 -> X
+	- getNumText en SDLApplication.h:170 -> X
+	- getApplication en PlayState.cpp:403 -> X
+	- getRenderer en SDLApplication.h:159 -> X
+	- isOut en Ufo.cpp:154 -> X
+	- getMinProbReward en PlayState.h:173 -> X
+	- getTexture en SDLApplication.h:167 -> X
+	- getWinWidth en SDLApplication.h:155 -> X
+ 	- getAlienCount en Mothership.h:72 -> X
+ 	- getListAnchor en GameObject.h:68 -> X
+	- onExit en MainMenuState.cpp:39 -> X
+ 	- shouldMove en Mothership.cpp:27 -> X
+	- onEnter en PauseState.cpp:42 -> X
+ 	- getTextureSpec en SDLApplication.h:169 -> X
+ 	- IsAlive en Bomb.h:50 -> X
+ 	- onExit en PauseState.cpp:47 -> X
+	- getColor en Laser.h:53 -> X
+	- getAppRenderer en PlayState.cpp:16 -> X
+	- getApplication en GameState.h:70 -> X
+	- onEnter en MainMenuState.cpp:34 -> X
+	- onExit en GameState.cpp:28 -> X
+ 	- onEnter en GameState.cpp:23 -> X
+ 	- getLevel en Mothership.h:62 -> X
+	- getTextures en SDLApplication.h:166 -> X
+ 	- getScore en PlayState.h:160 -> X
+	- getWinHeight en SDLApplication.h:156 -> X
+ 	- getDirection en Mothership.cpp:22 -> X
+	- onEnter en EndState.cpp:35 -> X
+	- isOut en Laser.cpp:69 -> X
+	- onExit en PlayState.cpp:408 -> X
+	- isOut en Bomb.cpp:40 -> X
+ 	- getCurrentState en Mothership.h:75 -> X
 
 
 Es mejor no abrir el espacio de nombres std (u otros) en una cabecera:  -> XXXXX HECHO XXXXX 
@@ -154,7 +154,7 @@ El archivo queda fuera de la comprobación de fugas de memoria (checkML.h): -> X
 
 Las mayúsculas del archivo incluido no coinciden (portabilidad): -> XXXXX HECHO XXXXX 
 	- SDLError.h → SDLerror.h -> X
-	- cannon.h → Cannon.h -> ?????????????????
+	- cannon.h → Cannon.h -> ????????????????? creo q está mal la corrección
 
 
 Estos errores os aparecerán en Visual Studio si activáis la opción Modo de conformidad /fpermissive-:

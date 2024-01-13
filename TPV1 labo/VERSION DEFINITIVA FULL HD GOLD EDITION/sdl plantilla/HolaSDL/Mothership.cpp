@@ -19,12 +19,12 @@ void Mothership::update()
 	}
 }
 
-int Mothership::getDirection()
+int Mothership::getDirection() const
 {
 	return dir;
 }
 
-bool Mothership::shouldMove()
+bool Mothership::shouldMove() const
 {
 	return alienTimer == ALIEN_FR;
 }

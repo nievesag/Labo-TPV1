@@ -51,7 +51,7 @@ enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, UfoT, BOMBA, Rew
 
 // ---- SAVE & READ FILES ----
 // archivo de strings con las roots de las carpetas etc
-static std::string SAVED_FOLDER = "..\\saved\\";
+static const std::string SAVED_FOLDER = "..\\saved\\";
 
 // ---- APPLICATION ----
 class SDLApplication
@@ -149,22 +149,22 @@ public:
 	// ---- SETTERS Y GETTERS ----
 	#pragma region setters y getters
 	// tamaño de ventana
-	uint getWinWidth() { return winWidth; }
-	uint getWinHeight() { return winHeight; }
+	uint getWinWidth() const { return winWidth; }
+	uint getWinHeight() const { return winHeight; }
 	
 	// renderer
-	SDL_Renderer* getRenderer() { 
+	SDL_Renderer* getRenderer() const {
 		return renderer; };
 
 	// maquina de estados
-	GameStateMachine* getgsMachine() { return gsMachine; }
+	GameStateMachine* getgsMachine() const { return gsMachine; }
 
 	// get texturas
-	std::array<Texture*, NUM_TEXTURES> getTextures() { return textures; }
-	Texture* getTexture(TextureName tex) { return textures[tex]; }
-	Texture* getTexture(int tex) { return textures[tex]; }
-	TextureSpec getTextureSpec(int i) { return textureSpec[i]; }
-	int getNumText() { return NUM_TEXTURES; }
+	std::array<Texture*, NUM_TEXTURES> getTextures() const { return textures; }
+	Texture* getTexture(TextureName tex) const { return textures[tex]; }
+	Texture* getTexture(int tex) const { return textures[tex]; }
+	TextureSpec getTextureSpec(int i) const { return textureSpec[i]; }
+	int getNumText() const { return NUM_TEXTURES; }
 
 	// set texturas
 	void setTexture(int pos, Texture* tex) {

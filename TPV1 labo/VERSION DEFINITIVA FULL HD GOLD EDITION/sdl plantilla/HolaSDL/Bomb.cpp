@@ -37,7 +37,7 @@ bool Bomb::hit(SDL_Rect* rect, char frenemy)
 	return SDL_HasIntersection(rect, &destRect) && (frenemy != 'b');
 }
 
-bool Bomb::isOut()
+bool Bomb::isOut() const
 {
 	return (this->position.getY() >= winHeight);
 }

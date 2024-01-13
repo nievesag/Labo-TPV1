@@ -20,12 +20,12 @@ void GameState::save(std::ostream& file)
 
 }
 
-bool GameState::onEnter()
+bool GameState::onEnter() const
 {
 	return false;
 }
 
-bool GameState::onExit()
+bool GameState::onExit() const
 {
 	return false;
 }

@@ -95,10 +95,10 @@ public:
 
 	// es como la constructora del antiguo game, lee la partida 
 	// y carga todos los objetos y los prepara
-	bool onEnter() override;
+	bool onEnter() const override;
 
 	// limpia los objetos
-	bool onExit() override;
+	bool onExit() const override;
 
 	void goEndState(bool victory);
 
@@ -113,10 +113,10 @@ public:
 	int getRandomRange(int min, int max);
 
 	// getter del renderer de SDLApplication
-	SDL_Renderer* getAppRenderer();
+	SDL_Renderer* getAppRenderer() const;
 
 	// getter del SDLApplication
-	SDLApplication* getApplication();
+	SDLApplication* getApplication() const;
 
 	// ------------- CONTROL DE COLISIONES -------------
 	// colisiones
@@ -150,12 +150,12 @@ public:
 	// ------------- SCORE -------------
 	void increaseScore(int score);
 
-	int getScore() { return SCORE; }
+	int getScore() const { return SCORE; }
 
 	// ------------- BOMB -------------
-	int getMinProbBomb() { return minProbabilityBomb; }
+	int getMinProbBomb() const { return minProbabilityBomb; }
 
-	int getMaxProbBomb() { return maxProbabilityBomb; }
+	int getMaxProbBomb() const { return maxProbabilityBomb; }
 
 	// ------------- REWARDS -------------
 	bool mayGrantReward(SDL_Rect rect) const;
@@ -163,9 +163,9 @@ public:
 	// dropea reward (la crea)
 	void dropReward(Point2D<double> pos);
 
-	int getMinProbReward() { return minProbabilityReward; }
+	int getMinProbReward() const { return minProbabilityReward; }
 
-	int getMaxProbReward() { return maxProbabilityReward; }
+	int getMaxProbReward() const { return maxProbabilityReward; }
 
 	// metodo para limpiar memoria dinamica 
 	void emptyList();

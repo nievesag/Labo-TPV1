@@ -31,12 +31,12 @@ void MainMenuState::render() const
 	}
 }
 
-bool MainMenuState::onEnter()
+bool MainMenuState::onEnter() const
 {
 	return true;
 }
 
-bool MainMenuState::onExit()
+bool MainMenuState::onExit() const
 {
 	return true;
 }
