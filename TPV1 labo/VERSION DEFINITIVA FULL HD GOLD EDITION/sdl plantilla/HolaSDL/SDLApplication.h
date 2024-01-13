@@ -42,6 +42,13 @@ constexpr double LASER_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de laser
 				UFO_SPEED = 6 * TIME_BT_FRAMES,		// velocidad de ufo
 				REWARD_SPEED = 1 * TIME_BT_FRAMES,	// velocidad de reward
 				BOMBA_SPEED = 1 * TIME_BT_FRAMES;	// velocidad de la BOMBA	
+
+
+// ------ VARIABLES GENERALES ---------
+// (no a los numeros magicos)
+constexpr int exitButtonX = 340, exitButtonY = 250,
+			  loadButtonX = 230, loadButtonY = 200,
+			  newButtonX = 240, newButtonY = 150;
 						
 
 // ---- TEXTURAS ----

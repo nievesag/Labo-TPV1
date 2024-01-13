@@ -11,6 +11,8 @@
 
 PlayState::PlayState(SDLApplication* game, string loadFile) : app(game), GameState(game), loadFile(loadFile) {
 
+	loadAnyFile(loadFile);	// carga la partida
+
 }
 
 SDL_Renderer* PlayState::getAppRenderer() const{
@@ -396,7 +398,6 @@ void PlayState::saveThisGame()
 // MANEJO DE ESTADOS
 bool PlayState::onEnter() const 
 {
-	loadAnyFile(loadFile);	// carga la partida
 	return true;
 }
 

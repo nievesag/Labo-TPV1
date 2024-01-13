@@ -90,16 +90,16 @@ Es mejor no abrir el espacio de nombres std (u otros) en una cabecera:  -> XXXXX
 
 
 Número mágico, ¿no será mejor definir una constante?: 
-	- 12 en MainMenuState.cpp:5
+	- 12 en MainMenuState.cpp:5 -> X
 	- 5 en PlayState.cpp:209
 	- 240 en MainMenuState.cpp:4
 	- 200 en MainMenuState.cpp:5 
 	- 350 en EndState.cpp:5
- 	- 13 en MainMenuState.cpp:6
+ 	- 13 en MainMenuState.cpp:6 -> X
 	- 7 en PlayState.cpp:270
 	- 400 en PauseState.cpp:11
  	- 15 en PauseState.cpp:9
-	- 11 en MainMenuState.cpp:4
+	- 11 en MainMenuState.cpp:4 -> X
 	- 220 en EndState.cpp:4
 	- 4 en SceneObject.h:56 
 	- 4 en SceneObject.h:78

@@ -1,9 +1,9 @@
 #include "MainMenuState.h"
 
 MainMenuState::MainMenuState(SDLApplication* game) : GameState(game), 
-	buttonNuevaPartida(new Button(this, game->getTexture(11), Point2D<double>(240, 150)) ),
-	buttonCargarPartida(new Button(this, game->getTexture(12), Point2D<double>(230, 200))),
-	buttonSalir(new Button(this, game->getTexture(13), Point2D<double>(340, 250)))
+	buttonNuevaPartida(new Button(this, game->getTexture(NewGame), Point2D<double>(newButtonX, newButtonY)) ),
+	buttonCargarPartida(new Button(this, game->getTexture(LoadGame), Point2D<double>(loadButtonX, loadButtonY))),
+	buttonSalir(new Button(this, game->getTexture(ExitGame), Point2D<double>(exitButtonX, exitButtonY)))
 {
 	// lo aniede a la lista de objetos para poder renderizarlo
 	addObject(buttonNuevaPartida);
