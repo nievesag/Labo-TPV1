@@ -104,24 +104,24 @@ Número mágico, ¿no será mejor definir una constante?:
 	- 4 en SceneObject.h:56 -> X
 	- 4 en SceneObject.h:78 -> X
 	- 5 en Ufo.cpp:149 -> X
-	- 4 en Mothership.cpp:44
+	- 4 en Mothership.cpp:44 -> ???????????
 	- 30 en PlayState.cpp:283  -> X
-	- 114 en Laser.cpp:19
+	- 114 en Laser.cpp:19 -> ????? COLORES
 	- 250 en EndState.cpp:4 -> X
-	- 242 en Laser.cpp:21
+	- 242 en Laser.cpp:21 -> ????? COLORES
  	- 16 en EndState.cpp:4 -> X
  	- 214 en PauseState.cpp:9 -> X
 	- 242 en PlayState.cpp:257 -> ??????????????????? se etsa quejando de las variables de colores pero no voy a modificar eso que es un coñazo jiji
  	- 20 en Alien.cpp:15 -> X
  	- 330 en EndState.cpp:5 -> X
- 	- 15 en Cannon.cpp:111
+ 	- 15 en Cannon.cpp:111 -> X
  	- 340 en MainMenuState.cpp:6 -> X
  	- 3 en PlayState.cpp:160 -> ?????????????????????? (son los casos del switch jiji)
  	- 30 en Alien.cpp:14 -> X
  	- 10 en SceneObject.h:57 -> X
  	- 10 en SceneObject.h:79 -> X
  	- 12 en PauseState.cpp:10 -> X
- 	- 25 en Cannon.cpp:111
+ 	- 25 en Cannon.cpp:111 -> X
  	- 14 en PauseState.cpp:8 -> X
  	- 69 en main.cpp:54 -> estaba por la coña es el return 69
 	- 10 en Alien.cpp:16 -> X
@@ -141,7 +141,7 @@ Número mágico, ¿no será mejor definir una constante?:
 	- 6 en PlayState.cpp:237 -> ?????????????????????? (son los casos del switch jiji)
 	- 100 en PauseState.cpp:8 -> X
 	- 230 en MainMenuState.cpp:5 -> X
-	- 3 en Mothership.cpp:44
+	- 3 en Mothership.cpp:44 -> ??????? es una proporcion idk
 
 
 El archivo queda fuera de la comprobación de fugas de memoria (checkML.h): -> XXXXX HECHO XXXXX 

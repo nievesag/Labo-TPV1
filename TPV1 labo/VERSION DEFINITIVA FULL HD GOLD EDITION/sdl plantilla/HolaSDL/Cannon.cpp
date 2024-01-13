@@ -108,7 +108,7 @@ void Cannon::shoot()
 
 		if(currentCD >= cooldown){
 
-			Point2D<double> pos{ this->position.getX() + 15, this->getPosition().getY() + 25 };
+			Point2D<double> pos{ this->position.getX() + cannonOffsetX, this->getPosition().getY() + cannonOffsetY };
 
 			playState->fireLaser(this->position, 'a');
 
