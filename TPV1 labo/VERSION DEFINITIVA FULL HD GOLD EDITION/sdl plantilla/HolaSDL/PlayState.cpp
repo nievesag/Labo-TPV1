@@ -272,7 +272,7 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 			case 7: {
 				in >> score;
 
-				SCORE = score;
+				score = score;
 
 				break;
 			}
@@ -372,7 +372,7 @@ void PlayState::save(const string& file)
 	}
 
 	// guarda los puntos
-	out << "7 " << SCORE << endl;
+	out << "7 " << score << endl;
 
 	// cierra el hilo
 	out.close();

@@ -33,6 +33,8 @@ private:
 	int rewardTimer = 0;
 	int maxRewardTimer = 2000;
 
+	int cannonOffsetX = 15, cannonOffsetY = 25;
+
 	// metodos publicos 
 public:
 	// ---- constructora ----

@@ -76,7 +76,7 @@ protected:
 	void HandleEvent(const SDL_Event &event) override;
 
 public:
-	int SCORE = 0;	// score general del player
+	int score = 0;	// score general del player
 
 	// constructora
 	PlayState(SDLApplication* game, std::string loadFile);
@@ -150,7 +150,7 @@ public:
 	// ------------- SCORE -------------
 	void increaseScore(int score);
 
-	int getScore() const { return SCORE; }
+	int getScore() const { return score; }
 
 	// ------------- BOMB -------------
 	int getMinProbBomb() const { return minProbabilityBomb; }
