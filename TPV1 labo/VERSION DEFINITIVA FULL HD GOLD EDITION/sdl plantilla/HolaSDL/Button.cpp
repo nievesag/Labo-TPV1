@@ -31,7 +31,14 @@ void Button::emit() const
 
 void Button::render() const {
 
-	buttonTexture->render(destRect);
+	if (currentFrame == MOUSEOVER) {
+		buttonTexture->render(destRect, SDL_Color{ 0,255,0,255 });
+	}
+	else {
+		buttonTexture->render(destRect);
+	}
+
+	//buttonTexture->render(destRect);
 }
 
 void Button::handleEvent(const SDL_Event& event) {

@@ -33,9 +33,9 @@ void Infobar::renderScore() const
 		textSurface->w,
 		textSurface->h
 	};
-	SDL_RenderCopy(renderer, scoreTexture, nullptr, &scoreRect);
+	font->load(fontRoot, 24);
 	SDL_FreeSurface(textSurface);
-	SDL_DestroyTexture(scoreTexture);
+	font->Free();
 }
 
 void Infobar::render() const
