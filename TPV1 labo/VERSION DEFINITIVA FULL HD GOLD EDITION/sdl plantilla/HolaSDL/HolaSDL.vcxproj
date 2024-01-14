@@ -76,7 +76,9 @@
     <ClCompile Include="EndState.cpp" />
     <ClCompile Include="FileFormatError.cpp" />
     <ClCompile Include="FileNotFoundError.cpp" />
+    <ClCompile Include="Font.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
+    <ClCompile Include="Infobar.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="PlayState.cpp" />
@@ -105,6 +107,8 @@
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="FileFormatError.h" />
     <ClInclude Include="FileNotFoundError.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="Infobar.h" />
     <ClInclude Include="Rewards.h" />
     <ClInclude Include="SDLApplication.h" />
     <ClInclude Include="gameList.h" />

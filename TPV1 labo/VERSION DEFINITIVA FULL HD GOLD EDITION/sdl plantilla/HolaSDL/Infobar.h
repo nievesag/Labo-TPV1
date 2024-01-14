@@ -20,7 +20,7 @@ private:
 
 	Font* font;	// fuente
 
-	//VARIABLES PARA MOSTRAR LAS VIDAS
+	// VARIABLES PARA MOSTRAR LAS VIDAS
 	const int lifesStartX = 20;
 	const int lifesStartY = 15;
 
@@ -31,8 +31,7 @@ private:
 
 	int currentLifes;
 
-
-	//VARIABLES PARA MOSTRAR LA PUNTUACION
+	// VARIABLES PARA MOSTRAR LA PUNTUACION
 	const int scoreStartX = 480;
 	const int scoreStartY = 15;
 
