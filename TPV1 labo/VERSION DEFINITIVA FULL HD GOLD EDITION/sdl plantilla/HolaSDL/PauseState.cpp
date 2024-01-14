@@ -8,7 +8,7 @@ PauseState::PauseState(SDLApplication* game, PlayState* playState)
 	buttonContinuar(new Button(this, game->getTexture(ContGame), Point2D<double>(PScontinueButtonX, PScontinueButtonY))),
 	buttonGuardarPartida(new Button(this, game->getTexture(SaveGame), Point2D<double>(PSsaveButtonX, PSsaveButtonY))),
 	buttonCargarPartida(new Button(this, game->getTexture(LoadGame), Point2D<double>(PSloadButtonX, PSloadButtonY))),
-	buttonSalir(new Button(this, game->getTexture(ExitGame), Point2D<double>(PSexitButtonX, PSloadButtonY)))
+	buttonSalir(new Button(this, game->getTexture(ExitGame), Point2D<double>(PSexitButtonX, PSexitButtonY)))
 {
 	// lo aniede a la lista de objetos para poder renderizarlo
 	addObject(buttonCargarPartida);
