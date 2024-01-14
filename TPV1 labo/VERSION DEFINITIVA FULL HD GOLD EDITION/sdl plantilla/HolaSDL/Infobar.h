@@ -9,56 +9,39 @@
 #include "texture.h"
 #include "Font.h"
 
+const std::string fontRoot = "..\\fonts\\font.ttf";
+
 class Infobar : public GameObject
 {
 private:
-	
-	Texture* cannonTexture; // textura para las vidas
-	Texture* scoreTexture;  // textura para la fuente de texto
+	Point2D<double> position = Point2D<double>(0, 0);
+	Texture* cannonTexture = nullptr; // textura del cannon
+	int spacing; // espacios entre vidas
 
-	mutable Texture* numberTexture;
+	SDL_Renderer* renderer; // referencia de render de game
 
-	Font* font;	// fuente
+	Font* font = new Font(fontRoot, 24); // fuente a usar para el score
+	SDL_Color color = { 255, 255, 255 , 255 }; // color de la fuente para score
 
-	// VARIABLES PARA MOSTRAR LAS VIDAS
-	const int lifesStartX = 20;
-	const int lifesStartY = 15;
-
-	const int lifesSeparationX = 45;
-	const int lifesSeparationY = 25;
-
-	const int lifesPerRow = 5;
-
-	int currentLifes;
-
-	// VARIABLES PARA MOSTRAR LA PUNTUACION
-	const int scoreStartX = 480;
-	const int scoreStartY = 15;
-
-	int currentScore = 0;
-
-	void RenderLifes() const;
-	void RenderScore() const;
+	int currentLifes; // vidas de cannon
+	int currentScore = 0; // score de cannon
 
 public:
-	//constructor
-	Infobar(GameState* game, Font* font, Texture* cannontext, Texture* scoreText, int playerLifes)
-		: GameObject(game), font(font), cannonTexture(cannontext), scoreTexture(scoreText), numberTexture(nullptr), currentLifes(playerLifes) {};
+	//constructoras
+	Infobar() = default;
+	Infobar(const Point2D<>& position, Texture* texture, int padding, GameState* gameState, SDL_Renderer* renderer);
 
-	//destructor
-	~Infobar() {
-		delete numberTexture;
-	}
+	// ---- setters ----
+	// settea el score
+	void setScore(int value) { currentScore = value; }
 
+	// setter las vidas
+	void setLifes(int value) { currentLifes = value; }
+
+	// ---- generales ----
 	void render() const override;
-
 	void update() override {};
-
-	void save(std::ostream& out)const override {};
-
-	//cambiar esto por acceso a las variables?
-	void updateCurrentLifes(int lifes);
-	void updateCurrentScore(int score);
+	void save(std::ostream& os) const override {}
 };
 
 #endif
