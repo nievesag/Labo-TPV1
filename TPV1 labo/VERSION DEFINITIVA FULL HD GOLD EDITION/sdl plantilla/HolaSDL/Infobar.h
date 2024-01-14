@@ -32,6 +32,9 @@ public:
 	Infobar() = default;
 	Infobar(const Point2D<double>& position, Texture* cannonTexture, int spacing, GameState* gameState, SDL_Renderer* renderer);
 
+	// destructora
+	~Infobar();
+
 	// ---- setters ----
 	// settea el score
 	void setScore(int value) { currentScore = value; }

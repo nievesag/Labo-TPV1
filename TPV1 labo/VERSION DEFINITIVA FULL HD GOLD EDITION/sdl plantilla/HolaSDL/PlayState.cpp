@@ -13,6 +13,8 @@ PlayState::PlayState(SDLApplication* game, string loadFile) : app(game), GameSta
 
 	loadAnyFile(loadFile);	// carga la partida
 
+	infoBar = new Infobar(Point2D<>(0, winHeight - game->getTexture(Nave)->getFrameHeight()), game->getTexture(Nave), infobarSpacing, this, game->getRenderer());
+	gamelist.push_back(infoBar);
 }
 
 SDL_Renderer* PlayState::getAppRenderer() const{
@@ -303,6 +305,9 @@ void PlayState::update()
 	if (mother->getAlienCount() <= 0) {
 		goEndState(true);
 	}
+
+	infoBar->setScore(score);
+	infoBar->setLifes(cannonRef->getLives());
 }
 
 // RENDER
@@ -338,7 +343,7 @@ void PlayState::dropReward(Point2D<double> pos)
 		this, [this]() { cannonRef->setInvencibleReward(); });
 
 	// lo mete en la lista:
-	// cuando se a�ade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
+	// cuando se aniade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
 	// pero estatico ??? tipo no se mueve) para luego poder usarlo en eliminaciones de objetos.
 	sceneObjectsList.push_back(newObj);
 }

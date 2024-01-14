@@ -23,6 +23,7 @@
 #include "Bomb.h"
 #include "Ufo.h"
 #include "Rewards.h"
+#include "InfoBar.h"
 
 class Cannon;
 class Mothership;
@@ -34,7 +35,8 @@ private:
 	const std::string s_playID = "PLAY";
 
 	// default variables
-	int defaultLives = 1,	    // default number of lives
+	int infobarSpacing = 10,	// espaciado para el infobar
+		defaultLives = 1,	    // default number of lives
 		defaultFrame = 0,	    // default starting frame
 		ans = 0,			    // respuesta en los menuses
 		laserW = 4,			    // dimensiones del laser
@@ -68,6 +70,9 @@ protected:
 
 	// puntero al cannon
 	Cannon* cannonRef;
+
+	// puntero a infobar
+	Infobar* infoBar;
 
 	std::mt19937_64 randomGenerator;	// crea semilla
 
