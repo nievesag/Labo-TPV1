@@ -33,6 +33,9 @@ public:
 
 	GameObject(PlayState* game);
 
+	// constructora default
+	GameObject() = default;
+
 	// constructora con el application (botones fuera del playstate)
 	GameObject (SDLApplication* application) : application(application) {
 		game = nullptr;

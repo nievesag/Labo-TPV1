@@ -11,6 +11,7 @@
 
 const std::string fontRoot = "..\\fonts\\font.ttf";
 
+// para mostrar en pantalla las vidas restantes del jugador y su score
 class Infobar : public GameObject
 {
 private:
@@ -29,7 +30,7 @@ private:
 public:
 	//constructoras
 	Infobar() = default;
-	Infobar(const Point2D<>& position, Texture* texture, int padding, GameState* gameState, SDL_Renderer* renderer);
+	Infobar(const Point2D<double>& position, Texture* cannonTexture, int spacing, GameState* gameState, SDL_Renderer* renderer);
 
 	// ---- setters ----
 	// settea el score
@@ -37,6 +38,10 @@ public:
 
 	// setter las vidas
 	void setLifes(int value) { currentLifes = value; }
+
+	// ---- bloques de renderizado ----
+	void renderLifes() const;
+	void renderScore() const;
 
 	// ---- generales ----
 	void render() const override;
