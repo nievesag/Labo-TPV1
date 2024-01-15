@@ -30,7 +30,6 @@ void Infobar::renderLifes() const
 
 void Infobar::renderScore() const
 {
-	//SDL_Surface* textSurface = font->generateSurface(std::to_string(currentScore).c_str(), color);
 	const Texture* scoreTexture = font->generateTexture(renderer, std::to_string(currentScore).c_str(), color);
 
 	const SDL_Rect scoreRect{

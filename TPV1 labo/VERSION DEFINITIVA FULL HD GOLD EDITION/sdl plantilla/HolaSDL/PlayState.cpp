@@ -336,7 +336,6 @@ bool PlayState::mayGrantReward(SDL_Rect rect) const
 
 void PlayState::dropReward(Point2D<double> pos)
 {
-
 	// crea reward
          	SceneObject* newObj = new Rewards(pos, app->getTexture(Shield)->getFrameWidth(), 
 		app->getTexture(Shield)->getFrameHeight(), app->getTexture(Shield), 
