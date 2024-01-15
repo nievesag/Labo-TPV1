@@ -47,7 +47,6 @@ void Ufo::update()
 
 void Ufo::updateRect()
 {
-
 	// posicion               
 	destRect.x = position.getX();
 	destRect.y = position.getY();
@@ -60,7 +59,6 @@ void Ufo::anima()
 
 		// cambia el estado
 		state = oculto;
-
 	}
 
 	// si el contador de animacion (tiempo entre frame y frame) es menor que 0
@@ -99,12 +97,9 @@ void Ufo::appear()
 {
 	state = visible;
 
-	
 	if (!isOut()) { 
 	}
 	else state = oculto;
-	
-
 }
 
 void Ufo::disappear()
@@ -158,7 +153,6 @@ bool Ufo::isOut() const
 
 void Ufo::move()
 {
-
 	// mueve al laser
 	position.setX(position.getX() - vel);
 }

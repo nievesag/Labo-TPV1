@@ -10,7 +10,6 @@ Button::Button(GameState* gameState, Texture* texture, Point2D<double> pos)
 	destRect = SDL_Rect{ (int)pos.getX(), (int)pos.getY(), texture->getFrameWidth(), texture->getFrameHeight() };
 }
 
-
 void Button::update()
 {
 	SDL_GetMouseState(&point.x, &point.y);
@@ -37,8 +36,6 @@ void Button::render() const {
 	else {
 		buttonTexture->render(destRect);
 	}
-
-	//buttonTexture->render(destRect);
 }
 
 void Button::handleEvent(const SDL_Event& event) {

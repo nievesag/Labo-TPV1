@@ -31,20 +31,11 @@ void MainMenuState::render() const
 	}
 }
 
-bool MainMenuState::onEnter() const
-{
-	return true;
-}
+bool MainMenuState::onEnter() const { return true; }
 
-bool MainMenuState::onExit() const
-{
-	return true;
-}
+bool MainMenuState::onExit() const { return true; }
        
-string MainMenuState::getID() const
-{
-	return s_menuID;
-}
+string MainMenuState::getID() const { return s_menuID; }
 
 
 // ---- FUNCIONES A REALIZAR POR LOS BOTONES ----

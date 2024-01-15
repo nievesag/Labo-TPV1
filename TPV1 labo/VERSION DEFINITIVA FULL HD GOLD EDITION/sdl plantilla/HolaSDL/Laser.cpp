@@ -54,7 +54,6 @@ void Laser::save(ostream& out) const
 
 bool Laser::hit(SDL_Rect* rect, char frenemy)
 {
-
 	if (SDL_HasIntersection(rect, &destRect) && (frenemy != laserType)) {
 
 		// le dice al game que ha muerto
@@ -62,7 +61,6 @@ bool Laser::hit(SDL_Rect* rect, char frenemy)
 
 		return true;
 	}
-
 	return false;
 }
 

@@ -32,20 +32,11 @@ void EndState::render() const
 	}
 }
 
-bool EndState::onEnter() const
-{
-	return true;
-}
+bool EndState::onEnter() const { return true; }
 
-bool EndState::onExit() const 
-{
-	return true;
-}
+bool EndState::onExit() const { return true; }
 
-string EndState::getID() const
-{
-	return s_endID;
-}
+string EndState::getID() const { return s_endID; }
 
 
 // ---- FUNCIONES A REALIZAR POR LOS BOTONES ----

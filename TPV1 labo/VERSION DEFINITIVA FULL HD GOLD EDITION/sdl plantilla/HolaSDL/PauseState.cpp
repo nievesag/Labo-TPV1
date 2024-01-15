@@ -39,20 +39,12 @@ void PauseState::render() const
 	}
 }
 
-bool PauseState::onEnter() const
-{
-	return true;
-}
+bool PauseState::onEnter() const { return true; }
 
-bool PauseState::onExit() const
-{
-	return true;
-}
+bool PauseState::onExit() const { return true; }
 
-string PauseState::getID() const
-{
-	return s_pauseID;
-}
+string PauseState::getID() const { return s_pauseID; }
+
 
 // ---- FUNCIONES A REALIZAR POR LOS BOTONES ----
 

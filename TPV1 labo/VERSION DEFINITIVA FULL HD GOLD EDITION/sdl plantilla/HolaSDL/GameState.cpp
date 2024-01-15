@@ -1,6 +1,5 @@
 #include "GameState.h"
 
-
 void GameState::render() const
 {
 	for (GameObject& objects : gamelist) {
@@ -15,20 +14,13 @@ void GameState::update()
 	}
 }
 
-void GameState::save(std::ostream& file)
-{
+void GameState::save(std::ostream& file) { }
 
-}
+bool GameState::onEnter() const { return false; }
 
-bool GameState::onEnter() const
-{
-	return false;
-}
+bool GameState::onExit() const { return false; }
 
-bool GameState::onExit() const
-{
-	return false;
-}
+std::string GameState::getID() const { return " "; }
 
 void GameState::HandleEvent(const SDL_Event& event)
 {
@@ -38,12 +30,7 @@ void GameState::HandleEvent(const SDL_Event& event)
 	}
 }
 
-void GameState::hasDied(GameList<GameObject, true>::anchor)
-{
-
-}
-
-std::string GameState::getID() const { return " "; }
+void GameState::hasDied(GameList<GameObject, true>::anchor) { }
 
 void GameState::addEventListener(EventHandler* listener)
 {

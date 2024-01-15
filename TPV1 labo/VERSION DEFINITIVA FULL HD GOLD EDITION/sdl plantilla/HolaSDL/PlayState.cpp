@@ -400,25 +400,13 @@ void PlayState::saveThisGame()
 }
 
 // MANEJO DE ESTADOS
-bool PlayState::onEnter() const 
-{
-	return true;
-}
+bool PlayState::onEnter() const { return true; }
 
-SDLApplication* PlayState::getApplication() const
-{
-	return application;
-}
+SDLApplication* PlayState::getApplication() const { return application; }
 
-bool PlayState::onExit() const
-{
-	return true;
-}
+bool PlayState::onExit() const { return true; }
 
-void PlayState::EndGame()
-{
-	application->setExit(true);
-}
+void PlayState::EndGame() { application->setExit(true); }
 
 // COLISONES
 bool PlayState::damage(SDL_Rect rect, char frenemy)
@@ -446,7 +434,7 @@ void PlayState::fireLaser(Point2D<double> pos, char frenemy)
 	SceneObject* newObj = new Laser(frenemy, pos, defaultLaserW, defaultLaserH, defaultLives, nullptr, this);
 
 	// lo mete en la lista:
-	// cuando se a�ade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
+	// cuando se aniade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
 	// pero estatico ??? tipo no se mueve) para luego poder usarlo en eliminaciones de objetos.
 	sceneObjectsList.push_back(newObj);
 }
@@ -458,42 +446,9 @@ void PlayState::fireBomb(Point2D<double> pos) {
 		defaultBombLives, app->getTexture(BOMBA), this);
 
 	// lo mete en la lista:
-	// cuando se a�ade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
+	// cuando se aniade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
 	// pero estatico ??? tipo no se mueve) para luego poder usarlo en eliminaciones de objetos.
 	sceneObjectsList.push_back(newObj);
-}
-
-void PlayState::increaseScore(int score)
-{
-
-
-}
-
-// BORRADO
-void PlayState::deleteSceneObjects()
-{
-	/*
-	// elimina los objetos de objectsToErase
-	toBeErased.clear();
-
-
-	// creo que no hace falta este metodo por como va la clase gameList pero lo dejo asi
-	// de momento hasta que tenga tiempo para estudarmela
-	
-	if (!objectsToErase.empty()) {
-
-		// bucle para borrar los objetos que han de ser borrados
-		for (auto a : objectsToErase) {
-
-			// borramos el objeto
-			delete (a);
-
-			// lo borra de la lista
-			sceneObjectsList.erase(a);
-		}
-		objectsToErase.clear();
-	}
-	*/
 }
 
 // GETTERS
@@ -502,10 +457,7 @@ int PlayState::getRandomRange(int min, int max)
 	return uniform_int_distribution<int>(min, max)(randomGenerator);
 }
 
-string PlayState::getID() const
-{
-	return s_playID;
-}
+string PlayState::getID() const { return s_playID; }
 
 PlayState::~PlayState()
 {
@@ -517,24 +469,4 @@ void PlayState::goEndState(bool victory)
 	// finaliza el juego
 		// (aniade el estado de fin a la maquina de estados de application)
 	application->getgsMachine()->pushState(new EndState(application, victory));
-}
-
-void PlayState::emptyList() {
-
-
-	for (GameList<SceneObject, true>::forward_iterator i = sceneObjectsList.begin(); 
-		i != sceneObjectsList.end(); ++i) {
-
-
-	}
-
-	//for (auto it = sceneObjects.begin(); it != sceneObjects.end(); ++it)
-	//for (auto i : sceneObjects)
-		//sceneObjects.erase(i.getSceneObjsAnchor());
-	/*
-	for (auto i : deleteObjs)
-		deleteObjs.erase(i.getIterator());
-	*/
-	//sceneObjects.clear();
-	//deleteObjs.clear();
 }

@@ -137,10 +137,6 @@ public:
 	// dispara una bomba (la crea)
 	void fireBomb(Point2D<double> pos);
 
-	// ------------- ELIMINACION OBJETOS -------------
-	// delete scene objects
-	void deleteSceneObjects();
-
 	// ------------- GUARDADO Y CARGA DE PARTIDA -------------
 	// guarda la partida (esto va dentro del handle events de la S de save pero es por orden)
 	void saveThisGame();
@@ -153,8 +149,6 @@ public:
 	void loadTextures();
 
 	// ------------- SCORE -------------
-	void increaseScore(int score);
-
 	int getScore() const { return score; }
 
 	// ------------- BOMB -------------
@@ -171,9 +165,6 @@ public:
 	int getMinProbReward() const { return minProbabilityReward; }
 
 	int getMaxProbReward() const { return maxProbabilityReward; }
-
-	// metodo para limpiar memoria dinamica 
-	void emptyList();
 };
 
 #endif

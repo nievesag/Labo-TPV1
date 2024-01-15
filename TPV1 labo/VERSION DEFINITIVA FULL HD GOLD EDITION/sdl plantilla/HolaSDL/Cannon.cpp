@@ -14,7 +14,6 @@ Cannon::Cannon(int cooldown, Point2D<double> position, int width, int height, in
 
 void Cannon::render() const
 {	
-	// QUE CAMBIE LA APARIENCIA CON EL REWARD????
 	// lo mete en el render
 	texture->render(destRect);
 }
@@ -165,9 +164,7 @@ void Cannon::save(ostream& out) const
 	out << vidas << " " << cooldown << endl;
 }
 
-
 // ---- REWARDS ----
-
 void Cannon::manageRewardDuration()
 {
 	// si se tiene la reward de invencibilidad

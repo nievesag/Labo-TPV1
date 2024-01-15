@@ -55,6 +55,5 @@ public:
 
 	// ---- update ----
 	void connectButton(SDLEventCallback buttonCallback);
-
 };
 #endif

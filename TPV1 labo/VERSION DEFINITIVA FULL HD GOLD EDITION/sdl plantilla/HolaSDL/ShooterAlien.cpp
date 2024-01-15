@@ -6,8 +6,7 @@
 
 ShooterAlien::ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position,
 	int width, int height, int vidas, Texture* texture, PlayState* game) 
-	: cooldown(cooldown), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, game)
-{}
+	: cooldown(cooldown), Alien(mothership, alienFrame, type, position, width, height, vidas, texture, game) { }
 
 void ShooterAlien::shoot()
 {
@@ -80,4 +79,3 @@ void ShooterAlien::save(ostream& out) const
 	// guarda el subtipo y el cooldown del disparo
 	out << type << " " << cooldown << endl;
 }
-
