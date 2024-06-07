@@ -1,6 +1,6 @@
-#include "checkML.h"
+#include "../checkML.h"
 #include "Ufo.h"
-#include "SDLApplication.h"
+#include "../SDLApplication.h"
 
 void Ufo::render() const
 {
@@ -164,5 +164,5 @@ void Ufo::save(ostream& out) const
 		<< spawn.getY() << " "
 		<< state << " "
 		<< cooldown << " "
-		<< vidas << endl;
+		<< vidas << "\n";
 }

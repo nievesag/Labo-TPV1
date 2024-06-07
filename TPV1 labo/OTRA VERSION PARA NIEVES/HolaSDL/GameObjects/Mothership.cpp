@@ -1,6 +1,6 @@
-#include "checkML.h"
+#include "../checkML.h"
 #include "Mothership.h"
-#include "SDLApplication.h"
+#include "../SDLApplication.h"
 
 void Mothership::update()
 {

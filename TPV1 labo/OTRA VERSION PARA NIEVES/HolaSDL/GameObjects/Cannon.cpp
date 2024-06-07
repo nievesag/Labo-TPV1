@@ -1,6 +1,6 @@
-#include "checkML.h"
+#include "../checkML.h"
 #include "Cannon.h"
-#include "SDLApplication.h"
+#include "../SDLApplication.h"
 
 Cannon::Cannon(int cooldown, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game) 
 	: cooldown(cooldown), SceneObject(position, width, height, vidas, texture, game) 

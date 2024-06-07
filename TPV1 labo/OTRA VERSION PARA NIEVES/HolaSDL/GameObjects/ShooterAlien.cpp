@@ -1,7 +1,7 @@
-#include "checkML.h"
+#include "../checkML.h"
 #include "ShooterAlien.h"
-#include "SDLApplication.h"
-#include "GameStates/PlayState.h"
+#include "../SDLApplication.h"
+#include "../GameStates/PlayState.h"
 #include "Alien.h"
 
 ShooterAlien::ShooterAlien(double cooldown, Mothership* mothership, int alienFrame, int type, Point2D<double> position,
