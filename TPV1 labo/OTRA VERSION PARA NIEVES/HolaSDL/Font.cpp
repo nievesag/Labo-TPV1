@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <SDL.h>
-#include "InvadersError.h"
+#include "Errors/InvadersError.h"
 
 Font::Font(const std::string& filename, int size) { load(filename, size); }
 

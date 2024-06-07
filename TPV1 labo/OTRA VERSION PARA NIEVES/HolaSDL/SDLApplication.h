@@ -6,17 +6,17 @@
 #include <vector>
 #include <string>
 #include "texture.h"
-#include "GameObject.h"
+#include "GameObjects/GameObject.h"
 #include <random>
 #include <fstream>
 
 // ----------------------------
-#include "SceneObject.h"
-#include "GameStateMachine.h"
-#include "MainMenuState.h"
-#include "PlayState.h"
-#include "EndState.h"
-#include "PauseState.h"
+#include "GameObjects/SceneObject.h"
+#include "GameStates/GameStateMachine.h"
+#include "GameStates/MainMenuState.h"
+#include "GameStates/PlayState.h"
+#include "GameStates/EndState.h"
+#include "GameStates/PauseState.h"
 
 using uint = unsigned int;
 

@@ -1,5 +1,5 @@
 #include "texture.h"
-#include "SDLerror.h"
+#include "Errors/SDLerror.h"
 #include <SDL_image.h>
 #include "checkML.h"
 

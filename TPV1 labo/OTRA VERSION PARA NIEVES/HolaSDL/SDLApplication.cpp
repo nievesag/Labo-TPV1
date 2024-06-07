@@ -1,9 +1,9 @@
 #include "checkML.h"
 #include "SDLApplication.h"
 
-#include "FileNotFoundError.h"
-#include "SDLError.h"
-#include "FileFormatError.h" 
+#include "Errors/FileNotFoundError.h"
+#include "Errors/SDLError.h"
+#include "Errors/FileFormatError.h" 
 #include <SDL.h>
 #include <SDL_ttf.h>
 

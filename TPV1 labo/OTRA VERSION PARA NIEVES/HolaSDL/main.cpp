@@ -13,10 +13,10 @@
 #include "SDLApplication.h"
 
 // ERRORES
-#include "InvadersError.h"
-#include "FileNotFoundError.h"
-#include "SDLError.h"
-#include "FileFormatError.h" 
+#include "Errors/InvadersError.h"
+#include "Errors/FileNotFoundError.h"
+#include "Errors/SDLError.h"
+#include "Errors/FileFormatError.h" 
 
 using namespace std;
 
