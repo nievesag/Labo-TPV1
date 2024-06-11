@@ -123,6 +123,9 @@
     <ClCompile Include="GameStates\ScrollingState.cpp">
       <Filter>Archivos de código fuente\GameStates</Filter>
     </ClCompile>
+    <ClCompile Include="ScrollImage.cpp">
+      <Filter>Archivos de código fuente\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="checkML.h">
@@ -223,6 +226,9 @@
     </ClInclude>
     <ClInclude Include="GameStates\ScrollingState.h">
       <Filter>Archivos de encabezado\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="ScrollImage.h">
+      <Filter>Archivos de encabezado\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

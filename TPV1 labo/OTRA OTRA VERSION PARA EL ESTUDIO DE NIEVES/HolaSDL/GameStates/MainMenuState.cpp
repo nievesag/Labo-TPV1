@@ -1,9 +1,11 @@
 #include "MainMenuState.h"
 
+#include "ScrollingState.h"
+
 MainMenuState::MainMenuState(SDLApplication* game) : GameState(game), 
-	buttonNuevaPartida(new Button(this, game->getTexture(NewGame), Point2D<double>(newButtonX, newButtonY)) ),
-	buttonCargarPartida(new Button(this, game->getTexture(LoadGame), Point2D<double>(loadButtonX, loadButtonY))),
-	buttonSalir(new Button(this, game->getTexture(ExitGame), Point2D<double>(exitButtonX, exitButtonY)))
+	 buttonNuevaPartida(new Button(this, game->getTexture(NewGame), Point2D<double>(newButtonX, newButtonY)) ),
+	 buttonCargarPartida(new Button(this, game->getTexture(LoadGame), Point2D<double>(loadButtonX, loadButtonY))),
+	 buttonSalir(new Button(this, game->getTexture(ExitGame), Point2D<double>(exitButtonX, exitButtonY)))
 {
 	// lo aniede a la lista de objetos para poder renderizarlo
 	addObject(buttonNuevaPartida);
@@ -42,8 +44,10 @@ string MainMenuState::getID() const { return s_menuID; }
 
 void MainMenuState::nuevaPartida()
 {
+	GameState* ps = new ScrollingState(application, application->getTexture(21), );
+
 	// crea un nuevo estado con la direccion indicada
-	GameState* ps = new PlayState(application, "..\\mapas\\original");
+	//GameState* ps = new PlayState(application, "..\\mapas\\original");
 
 	// lo pasa al gsMachine que ya luego hace sus cosas
 	application->getgsMachine()->pushState(ps);

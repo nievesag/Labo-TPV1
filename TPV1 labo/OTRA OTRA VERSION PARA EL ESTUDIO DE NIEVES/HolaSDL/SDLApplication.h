@@ -88,7 +88,7 @@ private:
 
 	// ---- TEXTURAS ----
 	// cantidad de texturas que va a haber
-	static const int NUM_TEXTURES = 21;
+	static const int NUM_TEXTURES = 22;
 
 	// ARRAY DE TEXTURAS -> array estatico de tam NUM_TEXTURES de elementos de tipo Texture* 
 	std::array<Texture*, NUM_TEXTURES> textures{};
@@ -125,7 +125,8 @@ private:
 		{ "..\\images\\gameOver.png", 1, 1 },			  // texto: GAME OVER			-> 17
 		{ "..\\images\\hasGanado.png", 1, 1 },			  // texto: HAS GANADO			-> 18
 		{ "..\\images\\codigo.png", 1, 1 },				  // texto: CODIGO				-> 19
-		{ "..\\images\\kamikaze.png", 1, 1 }				  // texto: KAMIKAZE			-> 20
+		{ "..\\images\\kamikaze.png", 1, 1 },			  // KAMIKAZE			        -> 20
+		{ "..\\images\\scroll.png", 1, 1 }				  // texto: SCROLL				-> 21
 	};
 
 	bool exit = false;

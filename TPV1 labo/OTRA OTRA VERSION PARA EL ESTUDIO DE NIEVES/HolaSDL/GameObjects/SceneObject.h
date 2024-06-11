@@ -64,6 +64,28 @@ public:
 		destRect.y = position.getY();
 	}
 
+	// para fuera de playState
+	SceneObject(Point2D<double> position, int width, int height, Texture* texture, GameState* game)
+		: position(position), width(width), height(height), texture(texture), GameObject(game)
+	{
+		// si hay textura entonces no es un laser y tiene dimensiones
+		if (texture != nullptr) {
+			// setea las dimensiones
+			destRect.w = texture->getFrameWidth();
+			destRect.h = texture->getFrameHeight();
+		}
+		// si no tiene textura entonces es un laser y le da las dimensiones marcadas
+		else
+		{
+			// setea las dimensiones del laser
+			destRect.w = defaultdestW;
+			destRect.h = defaultdestH;
+		}
+
+		destRect.x = position.getX();
+		destRect.y = position.getY();
+	}
+
 	// PARA REWARDS
 	SceneObject(Point2D<double> position, int width, int height, PlayState* game)
 		: position(position), width(width), height(height), GameObject(game), playState(game)
