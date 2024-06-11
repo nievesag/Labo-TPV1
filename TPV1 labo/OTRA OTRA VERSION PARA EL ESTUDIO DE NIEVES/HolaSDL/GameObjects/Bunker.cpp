@@ -27,9 +27,16 @@ void Bunker::update()
 
 bool Bunker::hit(SDL_Rect* rect, Weapon* frenemy)
 {	
-	if (SDL_HasIntersection(rect, &destRect) && frenemy->getChar()) {
-
-		hits++;
+	if (SDL_HasIntersection(rect, &destRect)) 
+	{
+		if(frenemy->getChar() == 'b' || frenemy->getChar() == 'k')
+		{
+			hits = hits + 2;
+		}
+		else
+		{
+			hits++;
+		}
 
 		if (hits >= vidas) playState->hasDied(sceneanc);
 

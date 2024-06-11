@@ -12,7 +12,7 @@
 
 class PlayState;
 
-class Ufo : public SceneObject
+class Ufo : public SceneObject, public Weapon
 {
 	// atributos privados
 private:
@@ -43,8 +43,8 @@ private:
 	// metodos publicos
 public:
 	// ---- constructora ----
-	Ufo(Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
-		: spawn(position), SceneObject(position, width, height, vidas, texture, game)
+	Ufo(char type, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
+		: spawn(position), SceneObject(position, width, height, vidas, texture, game), Weapon(type)
 	{
 		state = oculto;
 		hits = 0;

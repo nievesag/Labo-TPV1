@@ -120,6 +120,9 @@
     <ClCompile Include="GameObjects\Weapon.cpp">
       <Filter>Archivos de código fuente\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="GameStates\ScrollingState.cpp">
+      <Filter>Archivos de código fuente\GameStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="checkML.h">
@@ -217,6 +220,9 @@
     </ClInclude>
     <ClInclude Include="GameObjects\Weapon.h">
       <Filter>Archivos de encabezado\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStates\ScrollingState.h">
+      <Filter>Archivos de encabezado\GameStates</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

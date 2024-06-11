@@ -10,6 +10,8 @@ Cannon::Cannon(int cooldown, Point2D<double> position, int width, int height, in
 	// registra el cannon como oyente de eventos
 	// para reaccionar a input de teclado
 	playState->addEventListener(this);
+
+	setLives(maxLives);
 }
 
 void Cannon::render() const
@@ -76,13 +78,25 @@ void Cannon::handleEvent(const SDL_Event& event)
 
 bool Cannon::hit(SDL_Rect* rect, Weapon* frenemy)
 {
-	if (SDL_HasIntersection(rect, &destRect) && (frenemy->getChar() == 'r' || frenemy->getChar() == 'b')) {
+	if (SDL_HasIntersection(rect, &destRect)) {
 
-		if (!invencibleReward) {
+		if (!invencibleReward && frenemy->getChar() != 'a')
+		{
+			// bomba o kamikaze -> -2 vidas
+			if(frenemy->getChar() == 'b' || frenemy->getChar() == 'k')
+			{
+				// resta una vida
+				setLives(getLives() - 2);
+			}
 
-			// resta una vida
-			setLives(getLives() - 1);
-			
+			// aliens -> -1 vida
+			else if(frenemy->getChar() == 'r')
+			{
+				// resta una vida
+				setLives(getLives() - 1);
+			}
+
+			// si no quedan vidas despues de chocar
 			if (getLives() <= 0) {
 
 				// informa al game que ha muerto
@@ -90,8 +104,10 @@ bool Cannon::hit(SDL_Rect* rect, Weapon* frenemy)
 
 				playState->goEndState(false);
 			}
+
+			return true;
 		}
-		return true;
+
 	}
 	// si no
 	return false;
@@ -107,7 +123,7 @@ void Cannon::shoot()
 
 		if(currentCD >= cooldown){
 
-			Point2D<double> pos{ this->position.getX() + cannonOffsetX, this->getPosition().getY() + cannonOffsetY };
+ 			Point2D<double> pos{ this->position.getX() + cannonOffsetX, this->getPosition().getY() + cannonOffsetY };
 
 			playState->fireLaser(this->position, 'a');
 

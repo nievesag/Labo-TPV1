@@ -35,7 +35,7 @@ void Bomb::update()
 
 bool Bomb::hit(SDL_Rect* rect, Weapon* frenemy)
 {
-	return SDL_HasIntersection(rect, &destRect) && (frenemy->getChar() != 'b');
+	return SDL_HasIntersection(rect, &destRect) && (frenemy->getChar() != 'b') && (frenemy->getChar() != 'k');
 }
 
 bool Bomb::isOut() const

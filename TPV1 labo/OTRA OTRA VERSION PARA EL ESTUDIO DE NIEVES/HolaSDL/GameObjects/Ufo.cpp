@@ -70,25 +70,28 @@ void Ufo::anima()
 		// reinicia el contador
 		animTimer = ANIMATION_DURATION;
 	}
+
 	else animTimer--;
 }
 
 bool Ufo::hit(SDL_Rect* rect, Weapon* frenemy)
 {
-	if (SDL_HasIntersection(rect, &destRect) && frenemy->getChar()) {
-
+	if (SDL_HasIntersection(rect, &destRect) && frenemy->getChar() == 'a') 
+	{
 		hits++;
 
-		if (hits >= vidas) {
-
+		if (hits >= vidas) 
+		{
 			// lo 'mata' 
 			die();
 
 			// da los puntos
 			playState->getApplication()->increaseScore(UfoScore);
 		}
+
 		return true;
 	}
+
 	// si no
 	return false;
 }

@@ -94,6 +94,7 @@
     <ClCompile Include="GameStates\MainMenuState.cpp" />
     <ClCompile Include="GameStates\PauseState.cpp" />
     <ClCompile Include="GameStates\PlayState.cpp" />
+    <ClCompile Include="GameStates\ScrollingState.cpp" />
     <ClCompile Include="SDLApplication.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="texture.cpp" />
@@ -128,6 +129,7 @@
     <ClInclude Include="GameStates\MainMenuState.h" />
     <ClInclude Include="GameStates\PauseState.h" />
     <ClInclude Include="GameStates\PlayState.h" />
+    <ClInclude Include="GameStates\ScrollingState.h" />
     <ClInclude Include="SDLApplication.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="Vector2D.h" />

@@ -229,7 +229,7 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 			// ---------------- Creacion del objeto ------------------
 
 				// textures[Escudo]->getFrameWidth(), textures[Escudo]->getFrameHeight()
-				SceneObject* obj = new Ufo(Point2D<double>(winWidth, y), app->getTexture(UfoT)->getFrameWidth(),
+				SceneObject* obj = new Ufo('u', Point2D<double>(winWidth, y), app->getTexture(UfoT)->getFrameWidth(),
 					app->getTexture(UfoT)->getFrameHeight(), vidas, app->getTexture(UfoT), this);
 
 				// lo mete en la lista
@@ -452,8 +452,6 @@ void PlayState::fireLaser(Point2D<double> pos, char frenemy)
 	SceneObject* newObj = new Laser(frenemy, pos, defaultLaserW, defaultLaserH, defaultLives, nullptr, this);
 
 	// lo mete en la lista:
-	// cuando se aniade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
-	// pero estatico ??? tipo no se mueve) para luego poder usarlo en eliminaciones de objetos.
 	sceneObjectsList.push_back(newObj);
 }
 
@@ -464,8 +462,6 @@ void PlayState::fireBomb(Point2D<double> pos) {
 		defaultBombLives, app->getTexture(BOMBA), this);
 
 	// lo mete en la lista:
-	// cuando se aniade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
-	// pero estatico ??? tipo no se mueve) para luego poder usarlo en eliminaciones de objetos.
 	sceneObjectsList.push_back(newObj);
 }
 

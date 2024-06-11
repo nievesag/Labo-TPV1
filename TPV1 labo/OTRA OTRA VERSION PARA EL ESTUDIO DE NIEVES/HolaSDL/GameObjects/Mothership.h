@@ -64,13 +64,13 @@ public:
 		alienCount++; }
 
 	// 'mata' al alien (resta al contador)
-	void alienDied() { alienCount--; };
+	void alienDied() { alienCount--; }
 
 	// devuelve la cantidad de aliens que quedan
-	int getAlienCount() const { return alienCount; };
+	int getAlienCount() const { return alienCount; }
 
 	// devuelve el estado del mvimiento
-	int getCurrentState() const { return currentState; };
+	int getCurrentState() const { return currentState; }
 
 	// devuelve si se sigue moviendo o no
 	bool shouldMove() const;

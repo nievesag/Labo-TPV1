@@ -56,7 +56,7 @@ void Laser::save(ostream& out) const
 
 bool Laser::hit(SDL_Rect* rect, Weapon* frenemy)
 {
-	if (SDL_HasIntersection(rect, &destRect) && (frenemy->getChar() != laserType)) {
+	if (SDL_HasIntersection(rect, &destRect) && (frenemy->getChar() != laserType) && (frenemy->getChar() != 'k')) {
 
 		// le dice al game que ha muerto
 		playState->hasDied(sceneanc);

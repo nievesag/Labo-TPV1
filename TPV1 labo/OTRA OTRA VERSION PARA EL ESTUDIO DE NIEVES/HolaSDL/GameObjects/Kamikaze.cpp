@@ -11,14 +11,19 @@ Kamikaze::Kamikaze(char type, Point2D<double> position, int vidas, int width, in
 
 void Kamikaze::render() const
 {
-	double angle = 180 / (M_PI * (atan(position.getX() / position.getY())));
-	texture->render(destRect);
+	if(position.getY() <= playState->getCannonPos().getY())
+	{
+		double angle = 180 / (M_PI * (atan(vel.getX() * dir / vel.getY())));
+		texture->renderFrame(destRect, 0, 0, angle);
+	}
+	else
+	{
+		texture->render(destRect);
+	}
 }
 
 void Kamikaze::update()
 {
-	//cout << position.getY();
-
 	// mueve al kamikaze
 	move();
 
@@ -40,16 +45,15 @@ void Kamikaze::save(std::ostream& out) const
 
 bool Kamikaze::hit(SDL_Rect* rect, Weapon* frenemy)
 {
-	if (SDL_HasIntersection(rect, &destRect) && frenemy->getChar() == 'a') {
-
+	if (SDL_HasIntersection(rect, &destRect) && frenemy->getChar() == 'a') 
+	{
 		// informa al game que ha muerto
 		playState->hasDied(sceneanc);
 
-		mothership->alienDied();
-
 		return true;
 	}
-	else return false;
+
+	return false;
 }
 
 void Kamikaze::move()
