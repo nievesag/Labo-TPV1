@@ -35,7 +35,7 @@ void ScrollImage::update()
 
 bool ScrollImage::isOut() const
 {
-	return (position.getY() + texture->getFrameHeight()*2 <= winHeight);
+	return (position.getY() + texture->getFrameHeight() <= 0);
 }
 
 void ScrollImage::move()
