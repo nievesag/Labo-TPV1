@@ -100,7 +100,8 @@ Texture::render(const SDL_Rect& rect, SDL_Color color) const
 
 void Texture::renderRect(const SDL_Rect& source) const
 {
-	SDL_Rect dest{ 0, 0, 800, source.h };
+	SDL_Rect dest{ 0, 0, source.w, source.h };
+	SDL_Rect aux{ 0, source.y, 800, source.h };
 
-	SDL_RenderCopy(renderer, texture, &dest, &source);
+	SDL_RenderCopy(renderer, texture, &dest, &aux);
 }

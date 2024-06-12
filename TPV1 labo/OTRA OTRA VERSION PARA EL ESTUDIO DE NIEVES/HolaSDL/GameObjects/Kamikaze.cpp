@@ -5,8 +5,9 @@
 Kamikaze::Kamikaze(char type, Point2D<double> position, int vidas, int width, int height, Texture* texture, PlayState* game) :
 		SceneObject(position, width, height, vidas, texture, game), Weapon(type)
 {
-	vel.setX(0.3);
-	vel.setY(0.1);
+	vel.setX(5);
+	vel.setY(10);
+	CDcounter = 0;
 }
 
 void Kamikaze::render() const
@@ -24,11 +25,18 @@ void Kamikaze::render() const
 
 void Kamikaze::update()
 {
-	// mueve al kamikaze
-	move();
+	if(CDcounter >= cooldown)
+	{
+		CDcounter = 0;
 
-	// actualiza el rect (colisiones)
-	updateRect();
+		// mueve al kamikaze
+		move();
+
+		// actualiza el rect (colisiones)
+		updateRect();
+	}
+
+	CDcounter++;
 
 	// le pregunta si hay alguien a quien pegar un hostion
 	if (playState->damage(destRect, *this) || isOut()) {

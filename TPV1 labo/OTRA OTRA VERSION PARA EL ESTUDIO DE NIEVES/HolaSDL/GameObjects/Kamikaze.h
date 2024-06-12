@@ -17,9 +17,10 @@ class Kamikaze : public SceneObject, public Weapon
 private:
 	Vector2D<double> vel;
 	int dir;
-	double cooldown;
+	double const cooldown = 50; // tiempo para moverse
 	Mothership* mothership;	  // puntero a mothership
 	Point2D<double> cannonPos;
+	int CDcounter;
 
 public:
 	Kamikaze(char type, Point2D<double> position, int vidas, int width, int height, Texture* texture, PlayState* game);
