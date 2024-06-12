@@ -44,7 +44,7 @@ string MainMenuState::getID() const { return s_menuID; }
 
 void MainMenuState::nuevaPartida()
 {
-	GameState* ps = new ScrollingState(application, application->getTexture(21), );
+	GameState* ps = new ScrollingState(application, application->getTexture(22), new PlayState(application, "..\\mapas\\original"));
 
 	// crea un nuevo estado con la direccion indicada
 	//GameState* ps = new PlayState(application, "..\\mapas\\original");

@@ -97,3 +97,10 @@ Texture::render(const SDL_Rect& rect, SDL_Color color) const
 	render(rect);
 	SDL_SetTextureColorMod(texture, original.r, original.g, original.b);
 }
+
+void Texture::renderRect(const SDL_Rect& source) const
+{
+	SDL_Rect dest{ 0, 0, 800, source.h };
+
+	SDL_RenderCopy(renderer, texture, &dest, &source);
+}

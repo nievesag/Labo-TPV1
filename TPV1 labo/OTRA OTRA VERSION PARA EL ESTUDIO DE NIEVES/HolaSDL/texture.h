@@ -54,6 +54,9 @@ public:
 
 	/// Render the whole picture to the given rectangle with modified color
 	void render(const SDL_Rect& target, SDL_Color color) const;
+
+	// imprima el rectángulo dado de la textura cubriendo toda la ventana
+	void renderRect(const SDL_Rect& source) const;
 };
 
 inline int

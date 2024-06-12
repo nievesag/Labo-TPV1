@@ -1,9 +1,11 @@
 #pragma once
-#include "GameObjects/SceneObject.h"
+#include "../GameObjects/SceneObject.h"
 
 class ScrollImage : public SceneObject
 {
 	Vector2D<double> vel;
+
+	bool finish;
 
 public:
 	// ---- constructora ----
@@ -17,6 +19,11 @@ public:
 
 	// devuelve si esta fuera del marco de juego 
 	bool isOut() const;
+
+	bool getFinish() const
+	{
+		return finish;
+	}
 
 protected:
 	// mueve el laser segun el vector velocidad

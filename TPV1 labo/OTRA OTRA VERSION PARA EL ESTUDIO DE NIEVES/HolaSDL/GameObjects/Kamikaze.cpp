@@ -11,7 +11,7 @@ Kamikaze::Kamikaze(char type, Point2D<double> position, int vidas, int width, in
 
 void Kamikaze::render() const
 {
-	if(position.getY() <= playState->getCannonPos().getY())
+	if(dir != 0)
 	{
 		double angle = 180 / (M_PI * (atan(vel.getX() * dir / vel.getY())));
 		texture->renderFrame(destRect, 0, 0, angle);
@@ -67,13 +67,13 @@ void Kamikaze::move()
 	if (position.getY() <= cannonPos.getY())
 	{
 		// si estas mas a la izq del cannon -> te mueves a la der
-		if(position.getX() < cannonPos.getX())
+		if(position.getX() < cannonPos.getX() - 5.0)
 		{
 			dir = 1;
 		}
 
 		// si estas mas a la der del cannon -> te mueves a la izq
-		else if(position.getX() > cannonPos.getX())
+		else if(position.getX() > cannonPos.getX() + 5.0)
 		{
 			dir = -1;
 		}

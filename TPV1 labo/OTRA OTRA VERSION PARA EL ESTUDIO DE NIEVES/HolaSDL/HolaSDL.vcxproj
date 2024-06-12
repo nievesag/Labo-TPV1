@@ -85,6 +85,7 @@
     <ClCompile Include="GameObjects\Mothership.cpp" />
     <ClCompile Include="GameObjects\Rewards.cpp" />
     <ClCompile Include="GameObjects\SceneObject.cpp" />
+    <ClCompile Include="GameObjects\ScrollImage.cpp" />
     <ClCompile Include="GameObjects\ShooterAlien.cpp" />
     <ClCompile Include="GameObjects\Ufo.cpp" />
     <ClCompile Include="GameObjects\Weapon.cpp" />
@@ -95,7 +96,6 @@
     <ClCompile Include="GameStates\PauseState.cpp" />
     <ClCompile Include="GameStates\PlayState.cpp" />
     <ClCompile Include="GameStates\ScrollingState.cpp" />
-    <ClCompile Include="ScrollImage.cpp" />
     <ClCompile Include="SDLApplication.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="texture.cpp" />
@@ -121,6 +121,7 @@
     <ClInclude Include="GameObjects\Mothership.h" />
     <ClInclude Include="GameObjects\Rewards.h" />
     <ClInclude Include="GameObjects\SceneObject.h" />
+    <ClInclude Include="GameObjects\ScrollImage.h" />
     <ClInclude Include="GameObjects\ShooterAlien.h" />
     <ClInclude Include="GameObjects\Ufo.h" />
     <ClInclude Include="GameObjects\Weapon.h" />
@@ -131,7 +132,6 @@
     <ClInclude Include="GameStates\PauseState.h" />
     <ClInclude Include="GameStates\PlayState.h" />
     <ClInclude Include="GameStates\ScrollingState.h" />
-    <ClInclude Include="ScrollImage.h" />
     <ClInclude Include="SDLApplication.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="Vector2D.h" />

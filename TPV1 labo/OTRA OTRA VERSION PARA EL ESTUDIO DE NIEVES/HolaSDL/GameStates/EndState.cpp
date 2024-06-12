@@ -1,4 +1,5 @@
 #include "EndState.h"
+#include "ScrollingState.h"
 
 EndState::EndState(SDLApplication* game, bool victory) : GameState(game), victory(victory),
 	buttonVolverMenu(new Button(this, game->getTexture(GoBack), Point2D<double>(goBackButtonX, goBackButtonY))),
@@ -17,10 +18,10 @@ EndState::EndState(SDLApplication* game, bool victory) : GameState(game), victor
 	buttonSalir->connectButton([this]() { salir(); });
 }
 
-
 void EndState::render() const
 {
 	if (victory) {
+
 		application->getTexture(YouWon)->render();
 	}
 	else {
@@ -44,8 +45,7 @@ string EndState::getID() const { return s_endID; }
 void EndState::volverMenu()
 {
 	// quita los dos estados on TOP, porque siempre seran el propio endGame y el paystate
-	application->getgsMachine()->popState();
-	application->getgsMachine()->popState();
+	application->getgsMachine()->replaceState(new MainMenuState(application));
 }
 
 void EndState::salir()

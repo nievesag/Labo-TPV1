@@ -5,6 +5,7 @@
 #include "PlayState.h"
 #include "PauseState.h"
 #include "EndState.h"
+#include "ScrollingState.h"
 #include "../Errors/SDLerror.h"
 #include "../Errors/FileNotFoundError.h"
 #include "../Errors/FileFormatError.h"
@@ -303,7 +304,8 @@ void PlayState::update()
 		a.update();
 	}
 
-	if (mother->getAlienCount() <= 0) {
+	if (mother->getAlienCount() <= 0) 
+	{
 		goEndState(true);
 	}
 
@@ -480,7 +482,18 @@ PlayState::~PlayState()
 
 void PlayState::goEndState(bool victory)
 {
+	Texture* texEnd;
+
+	if(victory)
+	{
+		texEnd = application->getTexture(23);
+	}
+	else
+	{
+		texEnd = application->getTexture(21);
+	}
+
 	// finaliza el juego
 		// (aniade el estado de fin a la maquina de estados de application)
-	application->getgsMachine()->pushState(new EndState(application, victory));
+	application->getgsMachine()->pushState(new ScrollingState(application, texEnd, new EndState(application, victory)));
 }

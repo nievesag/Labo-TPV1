@@ -58,9 +58,9 @@ constexpr int exitButtonX = 340, exitButtonY = 250,
 			  defaultAlienTimer = 30;
 
 // ---- TEXTURAS ----
-// enum texture name -> el indice tiene la info de la textura
+// enum texture name -> el indice tiene la info de la texturas
 enum TextureName { Alien1, Alien2, Alien3, Nave, Escudo, Fondo, UfoT, BOMBA, Reward, Shield, MainMenu, NewGame,
-						LoadGame, ExitGame, ContGame, SaveGame, GoBack, GameIsOver, YouWon, Code, kamikaze };
+						LoadGame, ExitGame, ContGame, SaveGame, GoBack, GameIsOver, YouWon, Code, kamikaze, perder, intro, ganar };
 
 // ---- SAVE & READ FILES ----
 // archivo de strings con las roots de las carpetas etc
@@ -88,7 +88,7 @@ private:
 
 	// ---- TEXTURAS ----
 	// cantidad de texturas que va a haber
-	static const int NUM_TEXTURES = 22;
+	static const int NUM_TEXTURES = 24;
 
 	// ARRAY DE TEXTURAS -> array estatico de tam NUM_TEXTURES de elementos de tipo Texture* 
 	std::array<Texture*, NUM_TEXTURES> textures{};
@@ -126,7 +126,9 @@ private:
 		{ "..\\images\\hasGanado.png", 1, 1 },			  // texto: HAS GANADO			-> 18
 		{ "..\\images\\codigo.png", 1, 1 },				  // texto: CODIGO				-> 19
 		{ "..\\images\\kamikaze.png", 1, 1 },			  // KAMIKAZE			        -> 20
-		{ "..\\images\\scroll.png", 1, 1 }				  // texto: SCROLL				-> 21
+		{ "..\\images\\scroll.png", 1, 1 },				  // PERDER   					-> 21
+		{ "..\\images\\intro.png", 1, 1 },				  // INTRO						-> 22
+		{ "..\\images\\ganar.png", 1, 1 }				  // GANAR						-> 23
 	};
 
 	bool exit = false;
