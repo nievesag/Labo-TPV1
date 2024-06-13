@@ -1,9 +1,12 @@
 #include "ScrollingState.h"
+#include "../checkML.h"
 
 ScrollingState::ScrollingState(SDLApplication* game, Texture* texture, GameState* next) :
 			GameState(game), next_(next), tex(texture)
 {
 	scrollImg = new ScrollImage(Point2D<double>(0, winHeight), winWidth, winHeight, tex, this);
+
+	addObject(scrollImg);
 }
 
 void ScrollingState::render() const

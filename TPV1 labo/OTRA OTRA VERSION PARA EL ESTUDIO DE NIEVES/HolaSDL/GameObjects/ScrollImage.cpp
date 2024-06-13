@@ -1,5 +1,6 @@
 #include "ScrollImage.h"
 #include "../SDLApplication.h"
+#include "../checkML.h"
 
 ScrollImage::ScrollImage(Point2D<double> position, int width, int height, Texture* texture, GameState* game):
 	SceneObject(position, width, height, texture, game)

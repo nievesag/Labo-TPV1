@@ -1,5 +1,6 @@
 #include "Rewards.h"
 #include "../SDLApplication.h"
+#include "../checkML.h"
 
 Rewards::Rewards(Point2D<double> position, int width, int height, Texture* rewardTexture, PlayState* game, SDLEventCallback rewardCallback)
 	:  SceneObject(position, width, height, 1, rewardTexture, game), rewardCallback(rewardCallback)

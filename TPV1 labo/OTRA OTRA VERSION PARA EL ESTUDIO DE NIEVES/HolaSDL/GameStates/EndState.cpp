@@ -1,5 +1,6 @@
 #include "EndState.h"
 #include "ScrollingState.h"
+#include "../checkML.h"
 
 EndState::EndState(SDLApplication* game, bool victory) : GameState(game), victory(victory),
 	buttonVolverMenu(new Button(this, game->getTexture(GoBack), Point2D<double>(goBackButtonX, goBackButtonY))),
