@@ -64,6 +64,12 @@ public:
 		destRect.y = position.getY();
 	}
 
+	SceneObject(Point2D<double> position, Texture* tex, GameState* game)
+		: position(position), texture(tex), GameObject(game)
+	{
+		
+	}
+
 	// para fuera de playState
 	SceneObject(Point2D<double> position, int width, int height, Texture* texture, GameState* game)
 		: position(position), width(width), height(height), texture(texture), GameObject(game)

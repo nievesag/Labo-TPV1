@@ -1,4 +1,6 @@
 #include "MainMenuState.h"
+
+#include "ScreenSaverState.h"
 #include "../checkML.h"
 #include "ScrollingState.h"
 
@@ -21,6 +23,8 @@ MainMenuState::MainMenuState(SDLApplication* game) : GameState(game),
 	buttonNuevaPartida->connectButton( [this]() { nuevaPartida(); });
 	buttonCargarPartida->connectButton( [this]() { cargarPartida(); });
 	buttonSalir->connectButton( [this]() { salir(); });
+
+	CDcounter = 0;
 }
 
 void MainMenuState::render() const
@@ -31,6 +35,23 @@ void MainMenuState::render() const
 	for (GameObject& a : gamelist) {
 		a.render();
 	}
+}
+
+void MainMenuState::update()
+{
+	for(GameObject& e : gamelist)
+	{
+		e.update();
+	}
+
+	if(CDcounter >= cooldown)
+	{
+		CDcounter = 0;
+		GameState* ps = new ScreenSaverState(application);
+		application->getgsMachine()->pushState(ps);
+	}
+
+	CDcounter++;
 }
 
 bool MainMenuState::onEnter() const { return true; }

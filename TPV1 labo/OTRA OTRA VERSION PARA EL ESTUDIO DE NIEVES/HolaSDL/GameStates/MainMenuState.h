@@ -19,12 +19,18 @@ private:
 	Button* buttonCargarPartida;
 	Button* buttonSalir;
 
+	const int cooldown = 500;
+	int CDcounter = 0;
+	bool goToSaver = false;
+
 public:
 	// constructora
 	MainMenuState(SDLApplication* game);
 	 
 	// renderizado del estado
 	void render() const override;
+
+	void update() override;
 
 	// al entrar al estado
 	bool onEnter() const override;

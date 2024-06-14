@@ -156,7 +156,7 @@ bool Ufo::isOut() const
 
 void Ufo::move()
 {
-	// mueve al laser
+	// mueve al ufo
 	position.setX(position.getX() - vel);
 }
 
