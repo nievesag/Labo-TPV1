@@ -5,6 +5,8 @@ class ScreenSaverObject : public SceneObject
 {
 	int vel = 1;
 	Point2D<double> spawn;
+	bool canMove = true;
+	int angle = 0;
 
 public:
 	// ---- constructora ----
@@ -18,6 +20,8 @@ public:
 
 	// devuelve si esta fuera del marco de juego 
 	bool isOut() const;
+
+	void isCenter();
 
 protected:
 	// mueve el laser segun el vector velocidad

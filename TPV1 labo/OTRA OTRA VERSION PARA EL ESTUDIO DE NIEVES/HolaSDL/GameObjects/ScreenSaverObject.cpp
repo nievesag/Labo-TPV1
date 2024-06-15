@@ -11,16 +11,21 @@ ScreenSaverObject::ScreenSaverObject(Point2D<double> position, int width, int he
 
 void ScreenSaverObject::render() const
 {
-	texture->renderFrame(destRect, 0, 0);
+	texture->renderFrame(destRect, 0, 0, angle);
 }
 
 void ScreenSaverObject::update()
 {
-	// mueve la imagen
-	move();
+	isCenter();
 
-	// actualiza el rect
-	updateRect();
+	if (canMove)
+	{
+		// mueve la imagen
+		move();
+
+		// actualiza el rect
+		updateRect();
+	}
 
 	if(isOut())
 	{
@@ -31,6 +36,20 @@ void ScreenSaverObject::update()
 bool ScreenSaverObject::isOut() const
 {
 	return (this->position.getX() + texture->getFrameWidth() <= 0);
+}
+
+void ScreenSaverObject::isCenter()
+{
+	if(this->position.getX() + texture->getFrameWidth() == 400.f && angle < 360)
+	{
+		canMove = false;
+		angle++;
+	}
+	else
+	{
+		angle = 0;
+		canMove = true;
+	}
 }
 
 void ScreenSaverObject::move()

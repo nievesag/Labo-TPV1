@@ -39,6 +39,14 @@ void PauseState::render() const
 	}
 }
 
+void PauseState::update()
+{
+	for (GameObject& e : gamelist)
+	{
+		e.update();
+	}
+}
+
 bool PauseState::onEnter() const { return true; }
 
 bool PauseState::onExit() const { return true; }

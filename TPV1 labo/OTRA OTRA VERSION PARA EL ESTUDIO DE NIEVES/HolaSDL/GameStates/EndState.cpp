@@ -34,6 +34,14 @@ void EndState::render() const
 	}
 }
 
+void EndState::update()
+{
+	for (GameObject& e : gamelist)
+	{
+		e.update();
+	}
+}
+
 bool EndState::onEnter() const { return true; }
 
 bool EndState::onExit() const { return true; }

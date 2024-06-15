@@ -30,6 +30,8 @@ public:
 	// renderizado del estado
 	void render() const override;
 
+	void update() override;
+
 	// al entrar al estado
 	bool onEnter() const override;
 

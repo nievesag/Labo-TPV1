@@ -19,7 +19,7 @@ private:
 	Button* buttonCargarPartida;
 	Button* buttonSalir;
 
-	const int cooldown = 500;
+	const int cooldown = 5000;
 	int CDcounter = 0;
 	bool goToSaver = false;
 
