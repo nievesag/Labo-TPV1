@@ -34,7 +34,8 @@ void Rewards::update()
 		// elimina reward después de colisionar
 		playState->hasDied(sceneanc);
 	}
-	else if (isOut()) {
+	else if (isOut()) 
+	{
 		// elimina reward si se sale del marco de juego
 		playState->hasDied(sceneanc);
 	}

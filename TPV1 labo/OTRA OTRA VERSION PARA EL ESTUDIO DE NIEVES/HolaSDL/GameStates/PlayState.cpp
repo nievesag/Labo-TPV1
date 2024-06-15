@@ -11,15 +11,16 @@
 #include "../Errors/FileFormatError.h"
 #include "../GameObjects/Kamikaze.h"
 
-PlayState::PlayState(SDLApplication* game, string loadFile) : app(game), GameState(game), loadFile(loadFile) {
-
+PlayState::PlayState(SDLApplication* game, string loadFile) : app(game), GameState(game), loadFile(loadFile)
+{
 	loadAnyFile(loadFile);	// carga la partida
 
 	infoBar = new Infobar(Point2D<>(0, winHeight - game->getTexture(Nave)->getFrameHeight()), game->getTexture(Nave), infobarSpacing, this, game->getRenderer());
 	gamelist.push_back(infoBar);
 }
 
-SDL_Renderer* PlayState::getAppRenderer() const{
+SDL_Renderer* PlayState::getAppRenderer() const
+{
 	return app->getRenderer();
 }
 
@@ -60,7 +61,6 @@ void PlayState::loadAnyFile(const string& fileAndRoot)
 		estado, hits, timer, score;
 	char color;						// color
 
-	
 	// mientras no se acabe el archivo sigue leyendo
 	while (!in.eof()) {
 
@@ -297,8 +297,7 @@ void PlayState::update()
 	// actualiza el mothership
 	mother->update();
 
-	//bucle for each para recorrer los objetos de la lista sceneObjectsList:
-	//		-> tipo del objeto (& porque CREO que devuelve un puntero CREO) a : lista
+	//bucle for each para recorrer los objetos de la lista sceneObjectsList
 	for (SceneObject& a : sceneObjectsList) {
 
 		a.update();
@@ -344,8 +343,6 @@ Point2D<double> PlayState::getCannonPos() const
 
 void PlayState::createKamikaze(Point2D<double> pos)
 {
-	//int hola = getApplication()->getTexture(kamikaze)->getFrameWidth();
-
 	// crea kamikaze
 	SceneObject* newObj = new Kamikaze('k', pos, 1, app->getTexture(kamikaze)->getFrameWidth(),
 		app->getTexture(kamikaze)->getFrameHeight(), app->getTexture(kamikaze), this);
@@ -362,8 +359,6 @@ void PlayState::dropReward(Point2D<double> pos)
 		this, [this]() { cannonRef->setInvencibleReward(); });
 
 	// lo mete en la lista:
-	// cuando se aniade a la lista un objeto, le asigna directamente el anchor (entiendo que es un iterador
-	// pero estatico ??? tipo no se mueve) para luego poder usarlo en eliminaciones de objetos.
 	sceneObjectsList.push_back(newObj);
 }
 
@@ -421,8 +416,6 @@ void PlayState::saveThisGame()
 
 // MANEJO DE ESTADOS
 bool PlayState::onEnter() const { return true; }
-
-//SDLApplication* PlayState::getApplication() const { return application; }
 
 bool PlayState::onExit() const { return true; }
 
@@ -494,6 +487,6 @@ void PlayState::goEndState(bool victory)
 	}
 
 	// finaliza el juego
-		// (aniade el estado de fin a la maquina de estados de application)
+	// (aniade el estado de fin a la maquina de estados de application)
 	application->getgsMachine()->pushState(new ScrollingState(application, texEnd, new EndState(application, victory)));
 }

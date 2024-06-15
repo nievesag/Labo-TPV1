@@ -12,13 +12,19 @@ ScrollingState::ScrollingState(SDLApplication* game, Texture* texture, GameState
 void ScrollingState::render() const
 {
 	// renderiza la imagen
-	scrollImg->render();
+	for (GameObject& a : gamelist) 
+	{
+		a.render();
+	}
 }
 
 void ScrollingState::update()
 {
 	// actualiza la imagen
-	scrollImg->update();
+	for (GameObject& e : gamelist)
+	{
+		e.update();
+	}
 
 	// si ha llegado al final, pasas al siguiente estado
 	if(scrollImg->getFinish())

@@ -23,7 +23,7 @@ using namespace std;
 int main(int argc, char* argv[])
 {
     try {
-        // no hace falta borrarlo porque es estatico, se borra solo al salir de ambito (si fuese puntero: delete ay;)
+        // no hace falta borrarlo porque es estatico, se borra solo al salir de ambito
         SDLApplication application;
         application.run();
     }

@@ -1,8 +1,6 @@
 #include "../checkML.h"
 #include "SceneObject.h"
 
-#include "Weapon.h"
-
 void SceneObject::render() const {}
 
 void SceneObject::update() {}

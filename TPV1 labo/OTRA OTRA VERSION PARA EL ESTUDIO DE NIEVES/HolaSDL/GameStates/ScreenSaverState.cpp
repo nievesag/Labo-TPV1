@@ -13,12 +13,19 @@ void ScreenSaverState::render() const
 {
 	// renderiza el fondo
 	getApplication()->getTexture(24)->render();
-	screenSaver->render();
+
+	for (GameObject& a : gamelist) 
+	{
+		a.render();
+	}
 }
 
 void ScreenSaverState::update()
 {
-	screenSaver->update();
+	for (GameObject& e : gamelist)
+	{
+		e.update();
+	}
 }
 
 bool ScreenSaverState::onEnter() const { return true; }

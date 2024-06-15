@@ -58,8 +58,8 @@ void Mothership::cannotMove()
 void Mothership::alienLanded(const Alien* alien)
 {
 	// si llegan a 3/4 de la altura acaba
-	if (alien->getPosition().getY() >= winHeight * 3 / 4) {
-
+	if (alien->getPosition().getY() >= winHeight * 3 / 4) 
+	{
 		// acaba el juego
 		haveLanded();
 	}
@@ -76,7 +76,6 @@ void Mothership::setTimeCD()
 	// elige un nuevo cooldown      
 	rndCooldown = playState_->getRandomRange(50, 500);
 
-	//rndCooldown = 100;
 	CDcounter = 0;
 }
 

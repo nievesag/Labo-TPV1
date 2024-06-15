@@ -34,9 +34,9 @@ void Laser::update()
 	// actualiza el rect (colisiones)
 	updateRect();
 
-	// le pregunta si hay alguien a quien pegar un hostion
-	if (playState->damage(destRect, laserType) || isOut()) {
-
+	// le pregunta si hay alguien a quien pegar
+	if (playState->damage(destRect, laserType) || isOut())
+	{
 		// le dice al game que ha muerto
 		playState->hasDied(sceneanc);
 	}

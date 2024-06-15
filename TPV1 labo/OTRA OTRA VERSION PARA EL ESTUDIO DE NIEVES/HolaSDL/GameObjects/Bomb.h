@@ -18,18 +18,7 @@ private:
 
 public:
 	// ---- constructora ----
-	Bomb(char type, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game)
-		: SceneObject(position, width, height, vidas, texture, game), Weapon(type)
-	{
-		// inicializa alive a true al construirse
-		alive = true;
-
-		hits = 0;
-
-		vel.setY(-1);
-
-		c = type;
-	};
+	Bomb(char type, Point2D<double> position, int width, int height, int vidas, Texture* texture, PlayState* game);
 
 	// ---- render ----
 	void render() const override;
